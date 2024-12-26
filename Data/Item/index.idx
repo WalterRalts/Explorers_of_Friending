@@ -1,0 +1,133 @@
+﻿{
+"Version": "0.8.5.0",
+"Object": {
+"$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[RogueEssence.Data.EntrySummary, RogueEssence]], System.Private.CoreLib",
+"food_apple_big": {
+"$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
+"Icon": 2,
+"UsageType": 4,
+"States": [
+{
+"assembly": "PMDC, Version=0.8.5.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.EdibleState"
+},
+{
+"assembly": "PMDC, Version=0.8.5.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.FoodState"
+}
+],
+"Name": {
+"DefaultText": "Big Apple",
+"LocalTexts": {
+"fr": "Grosse Pomme",
+"de": "Großer Apfel",
+"es": "Manzana",
+"pt": "Maçã Grande",
+"it": "Melagrande",
+"ko": "큰사과",
+"ja": "おおきなリンゴ",
+"ja-jp": "おおきなリンゴ",
+"zh-hans": "大苹果"
+}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 4
+},
+"orb_all_protect": {
+"$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
+"Icon": 9,
+"UsageType": 1,
+"States": [
+{
+"assembly": "PMDC, Version=0.8.5.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.OrbState"
+}
+],
+"Name": {
+"DefaultText": "All Protect Orb",
+"LocalTexts": {
+"fr": "Invinçorbe Tous",
+"de": "Allmachtorb",
+"it": "Sfera Invincitutti",
+"ko": "모두보호구슬",
+"zh-hans": "全无敌之玉"
+}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 11
+},
+"seed_plain": {
+"$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
+"Icon": 4,
+"UsageType": 4,
+"States": [
+{
+"assembly": "PMDC, Version=0.8.5.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.EdibleState"
+},
+{
+"assembly": "PMDC, Version=0.8.5.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.SeedState"
+}
+],
+"Name": {
+"DefaultText": "Plain Seed",
+"LocalTexts": {
+"fr": "Graine Vide",
+"de": "Samen",
+"es": "Semilla Común",
+"it": "Semebase",
+"ko": "보통씨앗",
+"ja": "ただのタネ",
+"ja-jp": "ただのタネ",
+"zh-hans": "唯一之种"
+}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 7
+},
+"crunchy_leaf": {
+"$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
+"Icon": -1,
+"UsageType": 4,
+"States": [
+{
+"assembly": "PMDC, Version=0.8.5.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.EdibleState"
+}
+],
+"Name": {
+"DefaultText": "Crunchy Leaf",
+"LocalTexts": {}
+},
+"Released": false,
+"Comment": "",
+"SortOrder": 7
+},
+"packed_honey": {
+"$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
+"Icon": 7,
+"UsageType": 4,
+"States": [
+{
+"assembly": "PMDC, Version=0.8.5.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.DrinkState"
+},
+{
+"assembly": "PMDC, Version=0.8.5.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.EdibleState"
+}
+],
+"Name": {
+"DefaultText": "Packed Honey",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 4
+}
+}
+}

@@ -1,0 +1,45 @@
+﻿{
+"Version": "0.8.5.0",
+"Object": {
+"$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[RogueEssence.Data.EntrySummary, RogueEssence]], System.Private.CoreLib",
+"tile_switch": {
+"Name": {
+"DefaultText": "Switch Tile",
+"LocalTexts": {
+"fr": "Case Interrupteur",
+"de": "Schalterfeld",
+"es": "Baldosa Interruptor",
+"ko": "스위치 타일",
+"zh-hans": "机关地板"
+}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 0
+},
+"trap_explosion": {
+"Name": {
+"DefaultText": "Explosion Trap",
+"LocalTexts": {
+"fr": "Électromine",
+"de": "Bomben-Falle",
+"es": "Trampa Explosiva",
+"ko": "폭발 스위치",
+"zh-hans": "大爆炸陷阱"
+}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 0
+},
+"tile_gold": {
+"Name": {
+"DefaultText": "Gold Tile",
+"LocalTexts": {}
+},
+"Released": false,
+"Comment": "",
+"SortOrder": 0
+}
+}
+}

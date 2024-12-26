@@ -1,0 +1,23 @@
+﻿{
+"Version": "0.8.5.0",
+"Object": {
+"$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[RogueEssence.Data.EntrySummary, RogueEssence]], System.Private.CoreLib",
+"none": {
+"Name": {
+"DefaultText": "None",
+"LocalTexts": {
+"fr": "Aucun",
+"de": "Keine",
+"es": "Ninguno",
+"pt": "Nenhum",
+"it": "Nessuno",
+"ko": "분류없음",
+"zh-hans": "无"
+}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 0
+}
+}
+}

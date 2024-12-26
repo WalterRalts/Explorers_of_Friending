@@ -1,0 +1,76 @@
+﻿{
+"Version": "0.8.5.0",
+"Object": {
+"$type": "RogueEssence.Data.AutoTileData, RogueEssence",
+"Name": {
+"DefaultText": "",
+"LocalTexts": {}
+},
+"Comment": "",
+"Tiles": {
+"$type": "RogueEssence.Dungeon.AutoTileAdjacent, RogueEssence",
+"Tilex00": [
+[
+{
+"Frames": [
+{
+"Sheet": "",
+"TexLoc": {
+"X": 0,
+"Y": 0
+}
+}
+],
+"FrameLength": 60
+}
+]
+],
+"Tilex01": [],
+"Tilex02": [],
+"Tilex03": [],
+"Tilex13": [],
+"Tilex04": [],
+"Tilex05": [],
+"Tilex06": [],
+"Tilex26": [],
+"Tilex07": [],
+"Tilex17": [],
+"Tilex27": [],
+"Tilex37": [],
+"Tilex08": [],
+"Tilex09": [],
+"Tilex89": [],
+"Tilex0A": [],
+"Tilex0B": [],
+"Tilex1B": [],
+"Tilex8B": [],
+"Tilex9B": [],
+"Tilex0C": [],
+"Tilex4C": [],
+"Tilex0D": [],
+"Tilex4D": [],
+"Tilex8D": [],
+"TilexCD": [],
+"Tilex0E": [],
+"Tilex2E": [],
+"Tilex4E": [],
+"Tilex6E": [],
+"Tilex0F": [],
+"Tilex1F": [],
+"Tilex2F": [],
+"Tilex3F": [],
+"Tilex4F": [],
+"Tilex5F": [],
+"Tilex6F": [],
+"Tilex7F": [],
+"Tilex8F": [],
+"Tilex9F": [],
+"TilexAF": [],
+"TilexBF": [],
+"TilexCF": [],
+"TilexDF": [],
+"TilexEF": [],
+"TilexFF": []
+}
+}
+}

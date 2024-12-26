@@ -1,0 +1,60 @@
+﻿{
+"Version": "0.8.5.0",
+"Object": {
+"$type": "RogueEssence.Data.MonsterData, RogueEssence",
+"Name": {
+"DefaultText": "Ama Plain",
+"LocalTexts": {}
+},
+"Released": false,
+"Comment": "",
+"Title": {
+"DefaultText": "???",
+"LocalTexts": {}
+},
+"IndexNum": 0,
+"EXPTable": "erratic",
+"SkillGroup1": "amorphous",
+"SkillGroup2": "amorphous",
+"JoinRate": -100,
+"PromoteFrom": "",
+"Promotions": [],
+"Forms": [
+{
+"$type": "PMDC.Data.MonsterFormData, PMDC",
+"Released": false,
+"Generation": 0,
+"GenderlessWeight": 2,
+"MaleWeight": 2,
+"FemaleWeight": 2,
+"BaseHP": 15,
+"BaseAtk": 15,
+"BaseDef": 15,
+"BaseMAtk": 15,
+"BaseMDef": 15,
+"BaseSpeed": 14,
+"ExpYield": 48,
+"Height": 15.0,
+"Weight": 5.0,
+"Personalities": [
+0
+],
+"TeachSkills": [],
+"SharedSkills": [],
+"SecretSkills": [],
+"FormName": {
+"DefaultText": "",
+"LocalTexts": {}
+},
+"Temporary": false,
+"PromoteForm": 0,
+"Element1": "normal",
+"Element2": "none",
+"Intrinsic1": "adaptability",
+"Intrinsic2": "arena_trap",
+"Intrinsic3": "bulletproof",
+"LevelSkills": []
+}
+]
+}
+}

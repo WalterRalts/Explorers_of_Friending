@@ -1,0 +1,4714 @@
+﻿{
+"Version": "0.8.3.0",
+"Object": {
+"$type": "RogueEssence.Dungeon.Map, RogueEssence",
+"Name": {
+"DefaultText": "Tarro Forest",
+"LocalTexts": {}
+},
+"Released": false,
+"Comment": "",
+"Begun": false,
+"ID": 0,
+"MapTeams": [
+{
+"$type": "RogueEssence.Dungeon.MonsterTeam, RogueEssence",
+"Players": [
+{
+"Element1": "poison",
+"Element2": "flying",
+"TurnWait": 0,
+"TiersUsed": 0,
+"TurnUsed": false,
+"movementSpeed": 0,
+"dead": false,
+"serializationLoc": {
+"X": 6,
+"Y": 2
+},
+"serializationDir": 0,
+"ProxyName": "",
+"ProxySprite": {
+"Species": "",
+"Form": -1,
+"Skin": "",
+"Gender": -1
+},
+"CurrentForm": {
+"Species": "zubat",
+"Form": 0,
+"Skin": "normal",
+"Gender": 1
+},
+"ProxyAtk": -1,
+"ProxyDef": -1,
+"ProxyMAtk": -1,
+"ProxyMDef": -1,
+"ProxySpeed": -1,
+"Skills": [
+{
+"Element": {
+"SkillNum": "",
+"Charges": 0,
+"Enabled": false,
+"Sealed": false
+},
+"BackRef": 0
+},
+{
+"Element": {
+"SkillNum": "",
+"Charges": 0,
+"Enabled": false,
+"Sealed": false
+},
+"BackRef": 1
+},
+{
+"Element": {
+"SkillNum": "",
+"Charges": 0,
+"Enabled": false,
+"Sealed": false
+},
+"BackRef": 2
+},
+{
+"Element": {
+"SkillNum": "",
+"Charges": 0,
+"Enabled": false,
+"Sealed": false
+},
+"BackRef": 3
+}
+],
+"Intrinsics": [
+{
+"Element": {
+"ID": ""
+},
+"BackRef": 0
+}
+],
+"EquippedItem": {
+"ID": "seed_plain",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0
+},
+"Absentee": false,
+"ChargeBoost": 0,
+"HP": 20,
+"HPRemainder": 0,
+"Fullness": 100,
+"FullnessRemainder": 0,
+"MaxFullness": 100,
+"StatusEffects": {},
+"MustHitNext": false,
+"EXPMarked": false,
+"Tactic": {
+"Name": {
+"DefaultText": "Staged Boss",
+"LocalTexts": {}
+},
+"Released": false,
+"Comment": "",
+"ID": "staged_boss",
+"Assignable": false,
+"Plans": [
+{
+"$type": "PMDC.Dungeon.BossPlan, PMDC",
+"AttackPattern": 4,
+"PositionPattern": 2,
+"IQ": 253,
+"RestrictedMobilityTypes": 0,
+"RestrictMobilityPassable": false,
+"AttackRange": 0,
+"StatusRange": 0,
+"SelfStatusRange": 0
+},
+{
+"$type": "PMDC.Dungeon.WaitPlan, PMDC",
+"IQ": 253,
+"RestrictedMobilityTypes": 0,
+"RestrictMobilityPassable": false,
+"AttackRange": 0,
+"StatusRange": 0,
+"SelfStatusRange": 0
+}
+]
+},
+"Mobility": 7,
+"CantWalk": false,
+"ItemDisabled": false,
+"IntrinsicDisabled": false,
+"CanRemoveStuck": false,
+"StopItemAtHit": false,
+"MovesScrambled": false,
+"ChargeSaver": false,
+"WaitToAttack": false,
+"CantInteract": false,
+"EnemyOfFriend": false,
+"AttackFriend": false,
+"TileSight": -1,
+"CharSight": -1,
+"Unidentifiable": false,
+"Unlocatable": false,
+"SeeAllChars": false,
+"SeeItems": false,
+"SeeWallItems": false,
+"SeeTraps": false,
+"CharStates": [],
+"BackRef": {
+"Assembly": false,
+"Index": -1
+},
+"Nickname": "Zoomer",
+"OriginalUUID": "",
+"OriginalTeam": "",
+"BaseForm": {
+"Species": "zubat",
+"Form": 0,
+"Skin": "normal",
+"Gender": 1
+},
+"Level": 6,
+"EXP": 0,
+"MaxHPBonus": 0,
+"AtkBonus": 0,
+"DefBonus": 0,
+"MAtkBonus": 0,
+"MDefBonus": 0,
+"SpeedBonus": 0,
+"BaseSkills": [
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+}
+],
+"BaseIntrinsics": [
+""
+],
+"Relearnables": {},
+"Discriminator": 0,
+"MetAt": "",
+"MetLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"DefeatAt": "",
+"DefeatLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"IsFounder": false,
+"IsPartner": false,
+"NameLocked": false,
+"IsFavorite": false,
+"Unrecruitable": false,
+"ActionEvents": [],
+"ScriptVars": null
+}
+],
+"Guests": [],
+"inventory": [],
+"Name": "",
+"LeaderIndex": 0,
+"FoeConflict": false
+}
+],
+"AllyTeams": [],
+"rand": {
+"$type": "RogueElements.ReRandom, RogueElements",
+"FirstSeed": 0,
+"s": [
+16294208416658607535,
+7960286522194355700,
+487617019471545679,
+17909611376780542444
+]
+},
+"AssetName": "TarroTownBase",
+"ScriptEvents": {},
+"Music": "",
+"TileSight": 0,
+"CharSight": 1,
+"Status": {},
+"MapEffect": {
+"UniversalStates": [],
+"BeforeTryActions": [],
+"BeforeActions": [],
+"OnActions": [],
+"BeforeExplosions": [],
+"BeforeHits": [],
+"OnHits": [],
+"OnHitTiles": [],
+"AfterActions": [],
+"ElementEffects": [],
+"OnEquips": [],
+"OnPickups": [],
+"BeforeStatusAdds": [],
+"OnStatusAdds": [],
+"OnStatusRemoves": [],
+"OnMapStatusAdds": [],
+"OnMapStatusRemoves": [],
+"OnMapStarts": [],
+"OnTurnStarts": [],
+"OnTurnEnds": [],
+"OnMapTurnEnds": [],
+"OnWalks": [],
+"OnDeaths": [],
+"OnRefresh": [],
+"OnMapRefresh": [],
+"ModifyHPs": [],
+"RestoreHPs": [],
+"InitActionData": []
+},
+"TeamSpawns": [],
+"MoneyAmount": {
+"Min": 0,
+"Max": 0
+},
+"ItemSpawns": {
+"Spawns": {
+"spawns": {},
+"spawnTotal": 0
+}
+},
+"BlankBG": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+"TextureMap": {
+"floor": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+"wall": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+"unbreakable": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+"water": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+}
+},
+"Element": "none",
+"Background": {
+"$type": "RogueEssence.Dungeon.MapBG, RogueEssence",
+"MapLoc": {
+"X": 0,
+"Y": 0
+},
+"BGAnim": {
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"BGMovement": {
+"X": 0,
+"Y": 0
+},
+"Parallax": "0, 0",
+"RepeatX": false,
+"RepeatY": false
+},
+"ViewCenter": null,
+"ViewOffset": {
+"X": 0,
+"Y": 0
+},
+"HideMinimap": false,
+"NoRescue": false,
+"NoSwitching": false,
+"MapTurns": 0,
+"CurrentTurnMap": {
+"CurrentOrder": {
+"TurnTier": 0,
+"Faction": 0,
+"TurnIndex": 0
+},
+"TurnToChar": []
+},
+"DiscoveryArray": [
+[
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+],
+[
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+],
+[
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+],
+[
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+],
+[
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+],
+[
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+],
+[
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+],
+[
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+],
+[
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+],
+[
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+],
+[
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+],
+[
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+]
+],
+"Layers": [
+{
+"Name": "New Layer",
+"Layer": 0,
+"Visible": true,
+"Tiles": [
+[
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+}
+],
+[
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+}
+],
+[
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+}
+],
+[
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+}
+],
+[
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+}
+],
+[
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+}
+],
+[
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+}
+],
+[
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+}
+],
+[
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+}
+],
+[
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+}
+],
+[
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+}
+],
+[
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+{
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+}
+]
+]
+}
+],
+"Decorations": [
+{
+"Name": "New Deco",
+"Layer": 0,
+"Visible": true,
+"Anims": []
+}
+],
+"Tiles": [
+[
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 127
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 0,
+"Y": 0
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 567
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 0,
+"Y": 1
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 0,
+"Y": 2
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 567
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 0,
+"Y": 3
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 567
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 0,
+"Y": 4
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 0,
+"Y": 5
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 0,
+"Y": 6
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 0,
+"Y": 7
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 0,
+"Y": 8
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 311
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 0,
+"Y": 9
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 0,
+"Y": 10
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 191
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 0,
+"Y": 11
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+}
+],
+[
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 366
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 1,
+"Y": 0
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 9
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 1,
+"Y": 1
+},
+"ID": "stairs_go_up",
+"Revealed": true,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 5
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 1,
+"Y": 2
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 5
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 1,
+"Y": 3
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 5
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 1,
+"Y": 4
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 5
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 1,
+"Y": 5
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 5
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 1,
+"Y": 6
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 5
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 1,
+"Y": 7
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 5
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 1,
+"Y": 8
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 5
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 1,
+"Y": 9
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 12
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 1,
+"Y": 10
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 155
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 1,
+"Y": 11
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+}
+],
+[
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 622
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 2,
+"Y": 0
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 10
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 2,
+"Y": 1
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 137
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 2,
+"Y": 2
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 2,
+"Y": 3
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 2,
+"Y": 4
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 2,
+"Y": 5
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 2,
+"Y": 6
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 2,
+"Y": 7
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 2,
+"Y": 8
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 76
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 2,
+"Y": 9
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 10
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 2,
+"Y": 10
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 667
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 2,
+"Y": 11
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+}
+],
+[
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 366
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 3,
+"Y": 0
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 10
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 3,
+"Y": 1
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 19
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 3,
+"Y": 2
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 3,
+"Y": 3
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 3,
+"Y": 4
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 3,
+"Y": 5
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 3,
+"Y": 6
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 3,
+"Y": 7
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 3,
+"Y": 8
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 38
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 3,
+"Y": 9
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 10
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 3,
+"Y": 10
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 19
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 3,
+"Y": 11
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+}
+],
+[
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 110
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 4,
+"Y": 0
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 139
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 4,
+"Y": 1
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 4,
+"Y": 2
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 4,
+"Y": 3
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 4,
+"Y": 4
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 4,
+"Y": 5
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 4,
+"Y": 6
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 4,
+"Y": 7
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 4,
+"Y": 8
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 4,
+"Y": 9
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 207
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 4,
+"Y": 10
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 4,
+"Y": 11
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+}
+],
+[
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 366
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 5,
+"Y": 0
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 155
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 5,
+"Y": 1
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 511
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 5,
+"Y": 2
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 511
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 5,
+"Y": 3
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 255
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 5,
+"Y": 4
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 255
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 5,
+"Y": 5
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 255
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 5,
+"Y": 6
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 255
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 5,
+"Y": 7
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 255
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 5,
+"Y": 8
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 255
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 5,
+"Y": 9
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 511
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 5,
+"Y": 10
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 255
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 5,
+"Y": 11
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+}
+],
+[
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 110
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 6,
+"Y": 0
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 155
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 6,
+"Y": 1
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 255
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 6,
+"Y": 2
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 767
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 6,
+"Y": 3
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 511
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 6,
+"Y": 4
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 255
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 6,
+"Y": 5
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 511
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 6,
+"Y": 6
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 511
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 6,
+"Y": 7
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 255
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 6,
+"Y": 8
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 255
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 6,
+"Y": 9
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 767
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 6,
+"Y": 10
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 255
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 6,
+"Y": 11
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+}
+],
+[
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 366
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 7,
+"Y": 0
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 27
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 7,
+"Y": 1
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 7,
+"Y": 2
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 7,
+"Y": 3
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 7,
+"Y": 4
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 7,
+"Y": 5
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 7,
+"Y": 6
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 7,
+"Y": 7
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 7,
+"Y": 8
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 7,
+"Y": 9
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 63
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 7,
+"Y": 10
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 7,
+"Y": 11
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+}
+],
+[
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 366
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 8,
+"Y": 0
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 10
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 8,
+"Y": 1
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 137
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 8,
+"Y": 2
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 8,
+"Y": 3
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 8,
+"Y": 4
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 8,
+"Y": 5
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 8,
+"Y": 6
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 8,
+"Y": 7
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 8,
+"Y": 8
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 76
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 8,
+"Y": 9
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 10
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 8,
+"Y": 10
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 137
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 8,
+"Y": 11
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+}
+],
+[
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 110
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 9,
+"Y": 0
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 10
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 9,
+"Y": 1
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 19
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 9,
+"Y": 2
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 9,
+"Y": 3
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 9,
+"Y": 4
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 9,
+"Y": 5
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 9,
+"Y": 6
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 9,
+"Y": 7
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 55
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 9,
+"Y": 8
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "apple_woods_secondary",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 38
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 9,
+"Y": 9
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 10
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 9,
+"Y": 10
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 667
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 9,
+"Y": 11
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+}
+],
+[
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 366
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 10,
+"Y": 0
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 3
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 10,
+"Y": 1
+},
+"ID": "stairs_go_up",
+"Revealed": true,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 5
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 10,
+"Y": 2
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 5
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 10,
+"Y": 3
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 5
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 10,
+"Y": 4
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 5
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 10,
+"Y": 5
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 5
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 10,
+"Y": 6
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 5
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 10,
+"Y": 7
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 5
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 10,
+"Y": 8
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 5
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 10,
+"Y": 9
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "apple_woods_floor",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 6
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 10,
+"Y": 10
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 667
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 10,
+"Y": 11
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+}
+],
+[
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 239
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 11,
+"Y": 0
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 11,
+"Y": 1
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 717
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 11,
+"Y": 2
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 717
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 11,
+"Y": 3
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 11,
+"Y": 4
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 11,
+"Y": 5
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 11,
+"Y": 6
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 11,
+"Y": 7
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 205
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 11,
+"Y": 8
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 717
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 11,
+"Y": 9
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 461
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 11,
+"Y": 10
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Data": {
+"ID": "unbreakable",
+"TileTex": {
+"AutoTileset": "apple_woods_wall",
+"Associates": [],
+"Layers": [],
+"NeighborCode": 223
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 11,
+"Y": 11
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+}
+]
+],
+"EdgeView": 0,
+"EntryPoints": [
+{
+"Loc": {
+"X": 5,
+"Y": 11
+},
+"Dir": 4
+},
+{
+"Loc": {
+"X": 6,
+"Y": 11
+},
+"Dir": 4
+}
+],
+"Items": [
+{
+"IsMoney": true,
+"Cursed": false,
+"Value": "",
+"HiddenValue": "",
+"Amount": 10,
+"Price": 0,
+"TileLoc": {
+"X": 4,
+"Y": 1
+}
+},
+{
+"IsMoney": true,
+"Cursed": false,
+"Value": "",
+"HiddenValue": "",
+"Amount": 10,
+"Price": 0,
+"TileLoc": {
+"X": 7,
+"Y": 1
+}
+},
+{
+"IsMoney": true,
+"Cursed": false,
+"Value": "",
+"HiddenValue": "",
+"Amount": 10,
+"Price": 0,
+"TileLoc": {
+"X": 1,
+"Y": 4
+}
+},
+{
+"IsMoney": true,
+"Cursed": false,
+"Value": "",
+"HiddenValue": "",
+"Amount": 10,
+"Price": 0,
+"TileLoc": {
+"X": 10,
+"Y": 4
+}
+}
+]
+}
+}
