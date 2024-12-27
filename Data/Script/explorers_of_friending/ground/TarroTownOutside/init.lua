@@ -16,6 +16,7 @@ local TarroTownOutside = {}
 --Engine callback function
 function TarroTownOutside.Init(map)
   GAME:SetCanSwitch(false)
+  
   if GAME:GetPlayerPartyCount() == 1 then
     local mon_id = RogueEssence.Dungeon.MonsterID("azurill", 0, "normal", Gender.Female)
 
@@ -42,7 +43,9 @@ function TarroTownOutside.Init(map)
   end
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   partner.CollisionDisabled = true
-  
+  if SV.tarro_town.PieChapter >= 5 then
+    GROUND:Hide("Puchi")
+  end
 
   TarroTownOutside.CloudWatch()
   GAME:CutsceneMode(false)
@@ -196,25 +199,32 @@ function TarroTownOutside.TTOutsideSign_Action(obj, activator)
 end
 
 function TarroTownOutside.TTOutside_EExit_Touch(obj, activator)
-  local maru = CH("PLAYER")
-  local azura = CH('Teammate1')
-  local puchi = CH('Puchi')
-  GROUND:CharTurnToCharAnimated(puchi, maru, 4)
-  UI:SetSpeaker(puchi)
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("Oi.")
+  if SV.tarro_town.PieChapter < 5 then
+    local maru = CH("PLAYER")
+    local azura = CH('Teammate1')
+    local puchi = CH('Puchi')
+    GROUND:CharTurnToCharAnimated(puchi, maru, 4)
+    UI:SetSpeaker(puchi)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Oi.")
 
-  GROUND:CharTurnToCharAnimated(maru, puchi, 4)
-  GROUND:CharTurnToCharAnimated(azura, puchi, 4)
-  UI:SetSpeaker(puchi)
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("For the sake of your ears, please don't go that way.")
-  UI:SetSpeakerEmotion("Pain")
-  UI:WaitShowDialogue("Ma's all mad again.")
+    GROUND:CharTurnToCharAnimated(maru, puchi, 4)
+    GROUND:CharTurnToCharAnimated(azura, puchi, 4)
+    UI:SetSpeaker(puchi)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("For the sake of your ears, please don't go that way.")
+    UI:SetSpeakerEmotion("Pain")
+    UI:WaitShowDialogue("Ma's all mad again.")
 
-  UI:SetSpeaker(maru)
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("Oh. [pause=25]Darn.")
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Oh. [pause=25]Darn.")
+  else
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Probably not the time...")
+  end
+  
 end
 
 function TarroTownOutside.Puchi_Action(obj, activator)
@@ -299,7 +309,7 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Fine, fine, we're going now.")
-  elseif SV.tarro_town.PieChapter >= 2 then
+  elseif SV.tarro_town.PieChapter < 3 then
     GROUND:CharTurnToCharAnimated(maru, puchi, 4)
     GROUND:CharTurnToCharAnimated(azura, puchi, 4)
     GROUND:CharTurnToCharAnimated(puchi, maru, 4)
@@ -347,6 +357,40 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeaker(puchi)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("It was delicious.")
+  elseif SV.tarro_town.PieChapter <= 5 then
+    GROUND:CharTurnToCharAnimated(maru, puchi, 4)
+    GROUND:CharTurnToCharAnimated(azura, puchi, 4)
+    GROUND:CharTurnToCharAnimated(puchi, maru, 4)
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Puchi!")
+
+    UI:SetSpeaker(puchi)
+    GROUND:CharTurnToCharAnimated(puchi, maru, 4)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("[speed=0.2]...")
+
+    UI:SetSpeaker(puchi)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("If my nose isn't acting up, I smell Big Apple.")
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("You guys did it, congrats!")
+
+    UI:SetSpeaker(azura)
+    UI:SetSpeakerEmotion("Joyous")
+    UI:WaitShowDialogue("Pie[pause=20] pie[pause=20] pie[pause=20] pie!")
+
+    UI:SetSpeaker(puchi)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowTimedDialogue("Share???", 20)
+
+    UI:SetSpeaker(azura)
+    UI:SetSpeakerEmotion("Angry")
+    UI:WaitShowDialogue("No.")
+
+    UI:SetSpeaker(puchi)
+    UI:SetSpeakerEmotion("Pain")
+    UI:WaitShowDialogue("Heck.")
   end
   
 end

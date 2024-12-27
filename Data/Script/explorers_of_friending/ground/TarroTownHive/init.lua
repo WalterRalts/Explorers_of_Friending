@@ -43,11 +43,13 @@ end
 function TarroTownHive.Update(map)
   local maru = CH("PLAYER")
   local azura = CH('Teammate1')
-
+  
   if GAME:IsKeyDown(66) then
     print("Partner")
+    
   end
   if GAME:IsKeyDown(66) then
+    COMMON.FaceEachother("PLAYER", "Teammate1")
     if SV.tarro_town.PieChapter == 6 then
       UI:SetSpeaker(azura)
       UI:SetSpeakerEmotion("Inspired")
@@ -63,7 +65,7 @@ function TarroTownHive.Update(map)
 
       UI:SetSpeaker(maru)
       UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowDialogue(".[pause=60].[pause=60][emote=Worried].[pause=60] ...[emote=Worried]oh no.")
+      UI:WaitShowDialogue(".[pause=60].[pause=60][emote=Worried].[pause=60] ...[emote=Stunned]oh no.")
     else
       UI:SetSpeaker(azura)
       UI:SetSpeakerEmotion("Inspired")

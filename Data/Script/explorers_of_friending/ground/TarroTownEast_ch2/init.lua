@@ -37,15 +37,17 @@ function TarroTownEast_ch2.Init(map)
     GAME:FadeIn(20)
   end
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
-    partner.CollisionDisabled = true
+  partner.CollisionDisabled = true
+
+  
 end
 
 ---TarroTownEast_ch2.Enter(map)
 --Engine callback function
 function TarroTownEast_ch2.Enter(map)
-  GROUND:CharSetEmote(puchi, "sleep", 0)
-  GROUND:CharSetAnim(puchi, "Sleep", true)
+  SleepingPuchi = false
   GAME:FadeIn(20)
+  
 end
 
 ---TarroTownEast_ch2.Exit(map)
@@ -85,7 +87,12 @@ function TarroTownEast_ch2.Update(map)
       UI:WaitShowDialogue("Probably not.")
     end
   end
-  
+
+  if SleepingPuchi == false then
+    GROUND:CharSetEmote(puchi, "Sleep", 0)
+    GROUND:CharSetAnim(puchi, "Sleep", true)
+    SleepingPuchi = true
+  end
 end
 
 ---TarroTownEast_ch2.GameSave(map)
@@ -342,7 +349,6 @@ end
 function TarroTownEast_ch2.SennaHomeEntrance_Touch(obj, activator)
   if SV.tarro_town.PieChapter < 6 then
     local maru = CH("PLAYER")
-    local ziggy = CH("Ziggy")
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("I think I have better things to do...")
@@ -421,9 +427,6 @@ function TarroTownEast_ch2.Puchi_Action(obj, activator)
 end
 
 function TarroTownEast_ch2.Furie_Action(obj, activator)
-  local maru = CH("PLAYER")
-  local furie = CH('Furie')
-  local beel = CH('Beel')
   TarroTownEast_ch2.Beel_Action()
 end
 
@@ -434,9 +437,6 @@ function TarroTownEast_ch2.Beel_Action(obj, activator)
   UI:SetSpeaker(beel)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("I'm concerned for them,[pause=35] but as long as they're fine, then I am fine.")
-
-  GROUND:CharSetEmote(puchi, "exclaim", 1)
-  GROUND:CharSetAnim(puchi, "Hop", false)
 
   UI:SetSpeaker(furie)
   UI:SetSpeakerEmotion("Happy")

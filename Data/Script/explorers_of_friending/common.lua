@@ -1493,3 +1493,10 @@ function COMMON.CharAngry(char)
   GROUND:CharSetEmote(angry, "angry", 1)
   SOUND:PlaySE("Battle/EVT_Emote_Complain_2")
 end
+
+function COMMON.FaceEachother(char1, char2)
+  local face1 = CH(char1)
+  local face2 = CH(char2)
+  GROUND:CharTurnToCharAnimated(face1, face2, 2)
+  GROUND:CharTurnToCharAnimated(face2, face1, 2)
+end

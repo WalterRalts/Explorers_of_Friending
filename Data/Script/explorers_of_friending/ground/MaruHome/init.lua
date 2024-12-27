@@ -22,6 +22,7 @@ function MaruHome.Init(map)
   partner.CollisionDisabled = true
   if SV.tarro_town.PieChapter <= 1 then
     MaruHome.PieTime()
+    SV.tarro_town.PieChapter = 2
   elseif SV.tarro_town.PieChapter == 4 then
     MaruHome.RealPieTime()
     MaruHome.AfterPieTime()
@@ -40,13 +41,15 @@ end
 
 function MaruHome.PieTime()
   GAME:CutsceneMode(true)
-  local maru = CH("PLAYER")
+  local maru = CH("Maru")
   local azura = CH("Teammate1")
   local arama = CH("Arama")
   local amazuru = CH("Amazuru")
+  local real_maru = CH("PLAYER")
   GROUND:TeleportTo(amazuru, 186, 211, Direction.Right, 0)
   GROUND:TeleportTo(arama, 221, 211, Direction.Left, 0)
   GROUND:TeleportTo(maru, 227, 350, Direction.UpRight, 0)
+  GROUND:TeleportTo(real_maru, 1000, 1000, Direction.UpRight, 0)
   GROUND:TeleportTo(azura, 220, 350, Direction.UpRight, 0)
   GAME:MoveCamera(229, 248, 1, false)
   GAME:FadeIn(20)
@@ -209,10 +212,11 @@ function MaruHome.PieTime()
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Hehee.")
   GAME:FadeOut(false, 20)
+  GROUND:RemoveCharacter("Maru")
   GROUND:TeleportTo(amazuru, 172, 149, Direction.Down, 0)
+  GROUND:TeleportTo(real_maru, 221, 240, Direction.Up, 0)
   GROUND:TeleportTo(arama, 245, 184, Direction.DownLeft, 0)
   GAME:MoveCamera(0, 0, 0, true)
-  SV.tarro_town.PieChapter = 2
   print("Go back to ground.")
 end
 
@@ -587,34 +591,19 @@ function MaruHome.MaruHome_BasementEntrance_Touch(obj, activator)
   end
 end
 
-function MaruHome.MaruHome_Exit_Touch(obj, activator)
+function MaruHome.MaruHomeExit_Touch(obj, activator)
+  print("Exiting?")
   local maru = CH("PLAYER")
   if SV.tarro_town.PieChapter >= 2 and SV.tarro_town.PieChapter <= 4 then
-    UI:ResetSpeaker()
-    UI:ChoiceMenuYesNo("Would you like to leave?", false)
-    UI:WaitForChoice()
-    local result = UI:ChoiceResult()
-    if result then
-      print("Exiting?")
-      outside_enter = 1
-      GAME:FadeOut(false, 20)
-      GAME:EnterGroundMap("TarroTownEast", "TTEast_MaruHomeEnter")
-    else 
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowDialogue("(I guess I could stay a little longer...)")
-    end
+    print("Exiting?")
+    outside_enter = 1
+    GAME:FadeOut(false, 20)
+    GAME:EnterGroundMap("TarroTownEast", "TTEast_MaruHomeEnter")
   elseif SV.tarro_town.PieChapter <= 8 then
-    if result then
-      print("Exiting?")
-      outside_enter = 1
-      GAME:FadeOut(false, 20)
-      GAME:EnterGroundMap("TarroTownEast_ch2", "TTEast_MaruHomeEnter")
-    else 
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowDialogue("(I guess I could stay a little longer...)")
-    end
+    print("Exiting?")
+    outside_enter = 1
+    GAME:FadeOut(false, 20)
+    GAME:EnterGroundMap("TarroTownEast_ch2", "TTEast_MaruHomeEnter")
   end
 end
 

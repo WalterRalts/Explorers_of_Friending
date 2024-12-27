@@ -166,27 +166,32 @@ function TarroForestPassage.Buttums_1_Action(obj, activator)
   end
 
   UI:SetAutoFinish(false)
+  print(SV.deep_tarro_forest.dungpoints)
+  print(SV.tarro_tree_hollows.dungpoints)
+  print(GAME:DungeonUnlocked("tarro_tree_hollows"))
+  print(GAME:DungeonUnlocked("deep_tarro_forest"))
+  tarro_dungeonpoints = SV.tarro_forest.dungpoints + SV.deep_tarro_forest.dungpoints + SV.tarro_tree_hollows.dungpoints
   if SV.deep_tarro_forest.dungpoints > 0 and SV.tarro_tree_hollows.dungpoints > 0 then
-    tarro_dungeonpoints = SV.tarro_forest.dungpoints + SV.deep_tarro_forest.dungpoints + SV.tarro_tree_hollows.dungpoints
     UI:WaitShowDialogue("You currently have " ..tarro_dungeonpoints.. " dungeon points with the Tarro dungeons.")
+    --set up some sort of shop behind Buttum here after buttums let's the Bluetails know about their feats.
   else
     UI:WaitShowDialogue("You haven't explored all of the dungeons needed for this group.")
     UI:WaitShowDialogue("Recheck the sign after you find all of the Tarro dungeons:")
-    local no_dungeons_locked = 0
     if SV.deep_tarro_forest.dungpoints == 0 then
-      if GAME:DungeonUnlocked("deep_tarro_forest") == true then
-        string.gsub("Tarro Deep Forest still needs to be explored.", "Tarro Deep Forest", "An undiscovered dungeon")
+      if GAME:DungeonUnlocked("deep_tarro_forest") == false then
+        UI:WaitShowDialogue("An undiscovered dungeon still needs to be explored.")
       else
         UI:WaitShowDialogue("Tarro Deep Forest still needs to be explored.")
       end
     end
-    if SV.deep_tarro_forest.dungpoints == 0 then
-      if GAME:DungeonUnlocked("deep_tarro_forest") == true then
-        string.gsub("Tarro Tree Hollows still needs to be explored.", "Tarro Tree Hollows", "An undiscovered dungeon")
+    if SV.tarro_tree_hollows.dungpoints == 0 then
+      if GAME:DungeonUnlocked("tarro_tree_hollows") == false then
+        UI:WaitShowDialogue("An undiscovered dungeon still needs to be explored.")
       else
         UI:WaitShowDialogue("Tarro Tree Hollows still needs to be explored.")
       end
     end
+    UI:WaitShowDialogue("You currently have " ..tarro_dungeonpoints.. " dungeon points with the Tarro dungeons.")
   end
 end
 

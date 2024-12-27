@@ -215,12 +215,75 @@ function QuizTime.Init(map)
 
                 UI:SetSpeaker(ziggy)
                 UI:SetSpeakerEmotion("Normal")
-                UI:WaitShowDialogue("Nuh-uh.")
+                UI:WaitShowDialogue("Speaking of,[pause=45] there are plenty of things to do in Tarro Town.")
+                UI:WaitShowDialogue("You can do some cool stuff here,[pause=15] but the stores[emote=Inspired] are the best part about this place.")
+                UI:WaitShowDialogue("So, how many stores are there in town if we aren't counting the ones in the [color=#01FE10]Tarro Tree[color]!")
+                UI:SetSpeaker(maru)
+                UI:SetSpeakerEmotion("Worried")
+                local choices = {("2!"),
+                    ("3!"), 
+                    ("4!"), 
+                    ("5!")}
+                UI:BeginChoiceMenu("(How many stores are there...?)", choices, 1, 4)
+                UI:WaitForChoice()
+                result = UI:ChoiceResult()
+                if result == 1 then
+                    quiz_done = 2
+                    UI:SetSpeaker(ziggy)
+                    UI:SetSpeakerEmotion("Happy")
+                    UI:WaitShowDialogue("Hahahaha!")
+                    UI:WaitShowDialogue("I'm such a prankster, you guys got it wrooooong!")
+
+                    UI:SetSpeaker(maru)
+                    UI:SetSpeakerEmotion("Pain")
+                    UI:WaitShowDialogue("So close...")
+
+                    UI:SetSpeaker(senna)
+                    UI:SetSpeakerEmotion("Worried")
+                    UI:WaitShowDialogue("Wait... there's more than two?")
+
+                    UI:SetSpeaker(ziggy)
+                    UI:SetSpeakerEmotion("Worried")
+                    UI:WaitShowDialogue("There's a shop to the right that literally just opened,[pause=23] like,[pause=23] yesterday.[pause=23] but[emote=Happy] it counts!")
+                    UI:SetSpeakerEmotion("Joyous")
+                    UI:WaitShowTimedDialogue("That mean I wiiiiii-!")
+                    SV.tarro_town.PieChapter = 7
+                    --explosion sound
+                    SOUND:PlayBattleSE("DUN_Explosion")
+                    GROUND:MoveScreen(RogueEssence.Content.ScreenMover(0, 8, 30))
+                    SOUND:PlayBGM("None", true, 30)
+                    GAME:EnterGroundMap("TarroTownSquare", "Quiz_Fail")
+                elseif result == 2 then
+                    quiz_done = 2
+                    UI:SetSpeaker(ziggy)
+                    UI:SetSpeakerEmotion("Happy")
+                    UI:WaitShowDialogue("Hahahaha!")
+                    UI:WaitShowDialogue("I'm such a prankster, you guys got it wr-[pause=100]! W[emote=Worried]ait, you said three? Darn, you're right.")
+
+                    UI:SetSpeaker(senna)
+                    UI:SetSpeakerEmotion("Worried")
+                    UI:WaitShowTimedDialogue("Wait... there's more than tw-?")
+                    SOUND:PlayBattleSE("DUN_Explosion")
+                    GROUND:MoveScreen(RogueEssence.Content.ScreenMover(0, 8, 30))
+                    SOUND:PlayBGM("None", true, 30)
+                    SV.tarro_town.PieChapter = 7
+                    GAME:EnterGroundMap("TarroTownSquare", "Quiz_Fail")
+                else
+                    GROUND:CharTurnToCharAnimated(senna, azura, 4)
+                    GROUND:CharTurnToCharAnimated(puchi, azura, 4)
+                    GROUND:CharTurnToCharAnimated(ziggy, azura, 4)
+                    UI:SetSpeaker(ziggy)
+                    UI:SetSpeakerEmotion("Happy")
+                    UI:WaitShowTimedDialogue("Oof,[pause=25] so close.")
+                    UI:SetSpeakerEmotion("Normal")
+                    UI:WaitShowDialogue("But since you're wrong, you can come back later and try again.")
+                    quiz_done = 1
+                end
             elseif result == 2 then
                 COMMON.CharSweatdrop("Senna")
                 UI:SetSpeaker(senna)
                 UI:SetSpeakerEmotion("Stunned")
-                UI:WaitShowTimedDialogue("That's not...?")
+                UI:WaitShowTimedDialogue("That's [speed=0.6]not...?")
 
                 UI:SetSpeaker(ziggy)
                 UI:SetSpeakerEmotion("Inspired")
@@ -250,7 +313,7 @@ function QuizTime.Init(map)
                 GROUND:CharTurnToCharAnimated(ziggy, azura, 4)
                 UI:SetSpeaker(ziggy)
                 UI:SetSpeakerEmotion("Stunned")
-                UI:WaitShowTimedDialogue("Azu... that's your house.")
+                UI:WaitShowDialogue("Azu... that's your house.")
 
                 UI:SetSpeaker(senna)
                 UI:SetSpeakerEmotion("Happy")

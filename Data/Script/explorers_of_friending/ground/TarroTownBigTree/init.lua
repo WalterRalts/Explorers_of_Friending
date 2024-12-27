@@ -45,7 +45,7 @@ function TarroTownBigTree.Init(map)
     _DATA.Save.ActiveTeam.Players:Add(p3)
   end
   
- if SV.tarro_town.PieChapter == 6 then
+ if SV.tarro_town.PieChapter == 7 then
   _DATA.Save.ActiveTeam.Players[2]:RefreshTraits()
   _DATA.Save.ActiveTeam.Players[3]:RefreshTraits()
   _DATA.Save.ActiveTeam.Players[4]:RefreshTraits()
@@ -111,11 +111,11 @@ function TarroTownBigTree.TarroThingCut(map)
   
   TASK:JoinCoroutines({coro1, coro2})
 
-  GROUND:CharAnimateTurn(ama, Direction.DownRight, 2, false)
+  GROUND:CharAnimateTurn(ama, Direction.DownRight, 5, false)
   GAME:WaitFrames(10)
-  GROUND:CharAnimateTurn(ama, Direction.UpLeft, 2, false)
+  GROUND:CharAnimateTurn(ama, Direction.UpLeft, 5, false)
   GAME:WaitFrames(10)
-  GROUND:CharAnimateTurn(ama, Direction.DownLeft, 2, false)
+  GROUND:CharAnimateTurn(ama, Direction.DownLeft, 5, false)
   GAME:WaitFrames(34)
   GROUND:MoveToPosition(ama, 540, 270, false, 2)
   GROUND:Hide("Thing")
@@ -178,7 +178,7 @@ function TarroTownBigTree.TarroThingCut(map)
 
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Determined")
-  UI:WaitShowDialogue("Senna! You have us with you! T[emote=Angry][script=0]he epic Friend Circle will not be stopped!", angyzig)
+  UI:WaitShowDialogue("Senna! You have us with you! T[emote=Angry][script=0]he epic Friend Circle will not be stopped!", {angyzig})
   UI:WaitShowDialogue("You can't keep being scared of battling! Just do it, it's not that bad!")
 
   UI:SetSpeaker(senna)

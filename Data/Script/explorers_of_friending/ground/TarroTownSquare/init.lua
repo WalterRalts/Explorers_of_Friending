@@ -19,8 +19,12 @@ function TarroTownSquare.Init(map)
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
   local partner = CH('Teammate1')
+  local munch = CH('Munch')
+  local lax = CH("Lax")
+  local ziggy = CH("Ziggy")
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   partner.CollisionDisabled = true
+  
   
   if SV.tarro_town.PieChapter == 5 then
     TarroTownSquare.FightFightFight()
@@ -31,7 +35,13 @@ function TarroTownSquare.Init(map)
   if outside_enter == 3 then
     GROUND:TeleportTo(partner, 30, 254, Direction.Right, 0)
   end
-  
+  if SV.tarro_town.PieChapter == 7 then
+    ziggy.CollisionDisabled = true
+    TarroTownSquare.AfterQuiz()
+    SOUND:PlayBGM("None", false, 0)
+    GROUND:TeleportTo(munch, 455, 210, Direction.Down, 2)
+    GROUND:TeleportTo(lax, 390, 210, Direction.Down, 2)
+  end
 end
 
 function TarroTownSquare.FightFightFight()
@@ -269,7 +279,6 @@ function TarroTownSquare.FightFightFight()
     GROUND:TeleportTo(happy, 1344, 196, Direction.Left)
 	  GROUND:TeleportTo(gepii, 1304, 196, Direction.Right)
     
-
     GROUND:CharTurnToCharAnimated(gekis, getic, 10)
     GROUND:CharTurnToCharAnimated(getic, gekis, 10)
     UI:SetSpeaker(gekis)
@@ -295,7 +304,78 @@ function TarroTownSquare.FightFightFight()
 
     GAME:MoveCamera(0, 0, 1, true)
     GAME:CutsceneMode(false)
-    AI:EnsableCharacterAI(partner)
+    AI:EnableCharacterAI(partner)
+end
+
+function TarroTownSquare.AfterQuiz()
+  local partner = CH('Teammate1')
+  local maru = CH("PLAYER")
+  local azura = CH('Teammate1')
+  local puchi = CH("Puchi")
+  local senna = CH("Senna")
+  local ziggy = CH("Ziggy")
+  local munch = CH("Munch")
+  local lax = CH("Lax")
+  SOUND:PlayBGM("None", false, 0)
+  GROUND:CharAnimateTurn(puchi, Direction.Up, 2, true)
+  GROUND:CharAnimateTurn(ziggy, Direction.Up, 2, true)
+  GROUND:CharAnimateTurn(senna, Direction.Up, 5, true)
+  GROUND:CharAnimateTurn(azura, Direction.Up, 2, true)
+  GROUND:CharAnimateTurn(maru, Direction.Up, 2, true)
+  GAME:WaitFrames(70)
+  AI:DisableCharacterAI(partner)
+  UI:SetSpeaker(ziggy)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("W-[pause=5]what was that?")
+
+  UI:SetSpeaker(senna)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("An explosion from the Big Tree?")
+
+  COMMON.FaceEachother("Ziggy", "Senna")
+  UI:SetSpeaker(ziggy)
+  UI:SetSpeakerEmotion("Angry")
+  UI:WaitShowDialogue("No! It can't be!")
+
+  UI:SetSpeaker(senna)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowTimedDialogue("But...[pause=35] but[pause=15] it...")
+  
+  GROUND:CharAnimateTurn(ziggy, Direction.Up, 2, true)
+  UI:SetSpeaker(ziggy)
+  UI:SetSpeakerEmotion("Determined")
+  UI:WaitShowDialogue("We're going!")
+
+  UI:SetSpeaker(puchi)
+  UI:SetSpeakerEmotion("Pain")
+  UI:WaitShowDialogue("Ziggy,[pause=15] this feels like something our parents should take care of...")
+
+  UI:SetSpeaker(ziggy)
+  UI:SetSpeakerEmotion("Angry")
+  UI:WaitShowDialogue("That would take too long! [emote=Determined] Someone else would've heard it by now, c'mon! We can help!")
+
+  GROUND:MoveToPosition(ziggy, 444, 322, false, 2)
+  local coro1 = TASK:BranchCoroutine(function() 
+    GROUND:MoveToPosition(ziggy, 433, 265, false, 2)
+    end)
+  local coro2 = TASK:BranchCoroutine(function() 
+    GROUND:CharSetAnim(puchi, "Hop", false)
+    end)
+
+  TASK:JoinCoroutines({coro1, coro2})
+  GAME:WaitFrames(25)
+
+  UI:SetSpeaker(ziggy)
+  UI:SetSpeakerEmotion("Angry")
+  UI:WaitShowDialogue("Come on!")
+
+  GROUND:MoveToPosition(ziggy, 420, 200, false, 2)
+  GROUND:Hide("Ziggy")
+  SV.tarro_town.PieChapter = 7
+
+  GAME:MoveCamera(0, 0, 30, true)
+  GAME:CutsceneMode(false)
+  AI:EnableCharacterAI(partner)
 end
 ---TarroTownSquare.Enter(map)
 --Engine callback function
@@ -316,7 +396,12 @@ end
 --Engine callback function
 function TarroTownSquare.Update(map)
   local lax = CH("Lax")
-  GROUND:CharSetAnim(lax, "Sleep", true)
+  local sleepy_lax = false
+  if sleepy_lax == false then
+    GROUND:CharSetAnim(lax, "Sleep", true)
+    sleepy_lax = true
+  end
+  
   local maru = CH("PLAYER")
   local azura = CH('Teammate1')
 
@@ -1251,6 +1336,11 @@ function TarroTownSquare.Happy_Action(obj, activator)
      UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("I think you could.[pause=35] J[emote=Happy]ust get some practice in.")
   end
+end
+
+function TarroTownSquare.BigTree_Entrance_Touch(obj, activator)
+  GAME:FadeOut(false, 20)
+  GAME:EnterGroundMap("TarroTownBigTree", "Tree_Enter")
 end
 
 return TarroTownSquare
