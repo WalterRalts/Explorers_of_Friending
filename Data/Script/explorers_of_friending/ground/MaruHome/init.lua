@@ -588,8 +588,8 @@ function MaruHome.MaruHome_BasementEntrance_Touch(obj, activator)
 end
 
 function MaruHome.MaruHome_Exit_Touch(obj, activator)
+  local maru = CH("PLAYER")
   if SV.tarro_town.PieChapter >= 2 and SV.tarro_town.PieChapter <= 4 then
-    local maru = CH("PLAYER")
     UI:ResetSpeaker()
     UI:ChoiceMenuYesNo("Would you like to leave?", false)
     UI:WaitForChoice()

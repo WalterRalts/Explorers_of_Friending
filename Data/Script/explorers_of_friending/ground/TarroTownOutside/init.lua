@@ -195,6 +195,28 @@ function TarroTownOutside.TTOutsideSign_Action(obj, activator)
   UI:SetAutoFinish(false)
 end
 
+function TarroTownOutside.TTOutside_EExit_Touch(obj, activator)
+  local maru = CH("PLAYER")
+  local azura = CH('Teammate1')
+  local puchi = CH('Puchi')
+  GROUND:CharTurnToCharAnimated(puchi, maru, 4)
+  UI:SetSpeaker(puchi)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Oi.")
+
+  GROUND:CharTurnToCharAnimated(maru, puchi, 4)
+  GROUND:CharTurnToCharAnimated(azura, puchi, 4)
+  UI:SetSpeaker(puchi)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("For the sake of your ears, please don't go that way.")
+  UI:SetSpeakerEmotion("Pain")
+  UI:WaitShowDialogue("Ma's all mad again.")
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Oh. [pause=25]Darn.")
+end
+
 function TarroTownOutside.Puchi_Action(obj, activator)
   local maru = CH("PLAYER")
   local azura = CH('Teammate1')

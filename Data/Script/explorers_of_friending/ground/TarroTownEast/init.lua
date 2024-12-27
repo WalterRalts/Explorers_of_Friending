@@ -631,6 +631,16 @@ function TarroTownEast.TTEast_NExit_Touch(obj, activator)
   end
 end
 
+function TarroTownEast.Bluetail_Mailbox_Action(obj, activator)
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("(I guess I should check the mail...)")
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("(Nothin'.)")
+end
+
 return TarroTownEast
 
 
