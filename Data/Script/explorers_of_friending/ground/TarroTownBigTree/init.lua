@@ -94,13 +94,15 @@ function TarroTownBigTree.Init(map)
   partner4.CollisionDisabled = true
   puchi_tired = true
  end
-  
+ if SV.tarro_town.PieChapter == 7 then
+  GROUND:Hide("Thing")
+ end
 end
 
 function TarroTownBigTree.TarroThingCut(map)
   local ama = CH("Thing")
   GAME:CutsceneMode(true)
-  GAME:MoveCamera(464, 302, 1, false)
+  GAME:MoveCamera(464, 302, 7, false)
   
   local coro1 = TASK:BranchCoroutine(function() 
     GROUND:MoveToPosition(ama, 533, 254, false, 2)
@@ -112,12 +114,12 @@ function TarroTownBigTree.TarroThingCut(map)
   TASK:JoinCoroutines({coro1, coro2})
 
   GROUND:CharAnimateTurn(ama, Direction.DownRight, 5, false)
-  GAME:WaitFrames(10)
+  GAME:WaitFrames(20)
   GROUND:CharAnimateTurn(ama, Direction.UpLeft, 5, false)
-  GAME:WaitFrames(10)
+  GAME:WaitFrames(25)
   GROUND:CharAnimateTurn(ama, Direction.DownLeft, 5, false)
   GAME:WaitFrames(34)
-  GROUND:MoveToPosition(ama, 540, 270, false, 2)
+  GROUND:MoveToPosition(ama, 540, 232, false, 2)
   GROUND:Hide("Thing")
   local maru = CH("PLAYER")
   local azura = CH('Teammate1')
@@ -281,6 +283,24 @@ function TarroTownBigTree.InfoSign_Action(obj, activator)
   UI:SetSpeaker(azura)
   UI:SetSpeakerEmotion("Determined")
   UI:WaitShowDialogue("Let's get after it!")
+end
+
+function TarroTownBigTree.Tree_2ndFloorEntrance_Touch(obj, activator)
+  
+end
+
+function TarroTownBigTree.PurpKek_Counter_Action(obj, activator)
+  UI:SetSpeaker(senna)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Here is where the other Kecleon brother would set up shop.")
+
+  UI:SetSpeaker(ziggy)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Where did he go?")
+
+  UI:SetSpeaker(puchi)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Outside, maybe? He's usually always here...")
 end
 
 return TarroTownBigTree

@@ -54981,8 +54981,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 470,
-"Y": 293,
+"X": 464,
+"Y": 302,
 "Width": 16,
 "Height": 16
 }
@@ -55081,7 +55081,7 @@
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",

@@ -22,7 +22,7 @@ function TarroTownSquare.Init(map)
   local munch = CH('Munch')
   local lax = CH("Lax")
   local ziggy = CH("Ziggy")
-  AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
+  
   partner.CollisionDisabled = true
   
   
@@ -40,8 +40,10 @@ function TarroTownSquare.Init(map)
     TarroTownSquare.AfterQuiz()
     SOUND:PlayBGM("None", false, 0)
     GROUND:TeleportTo(munch, 455, 210, Direction.Down, 2)
-    GROUND:TeleportTo(lax, 390, 210, Direction.Down, 2)
+    GROUND:TeleportTo(lax, 390, 210, Direction.Left, 2)
+    GROUND:Hide("Ziggy")
   end
+  AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
 end
 
 function TarroTownSquare.FightFightFight()
@@ -475,18 +477,6 @@ function TarroTownSquare.Lax_Action(obj, activator)
   UI:SetSpeaker(munch)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("Pops... getcha self up, would ya.")
-  --[[def 0 {
-    with (actor ACTOR_NPC_MUNCH) {
-        Turn2DirectionLives(4, 10, ACTOR_NPC_LAX);
-    }
-    message_SetFaceOnly(ACTOR_NPC_LAX, FACE_DETERMINED, FACE_POS_STANDARD);
-    message_Talk(' Zzzz...');
-    
-    message_SetFaceOnly(ACTOR_NPC_MUNCH, FACE_WORRIED, FACE_POS_STANDARD);
-    message_Talk(' Pops... getcha self up, would ya.');
-    CallCommon(CORO_MESSAGE_CLOSE_WAIT_FUNC);
-    JumpCommon(CORO_END_TALK);
-}]]--
 end
 
 function TarroTownSquare.Getic_Action(obj, activator)
@@ -633,230 +623,246 @@ function TarroTownSquare.Puchi_Action()
   local senna = CH("Senna")
   local ziggy = CH("Ziggy")
 
-  if quiz_available == false or quiz_available == nil then
-    AI:DisableCharacterAI(azura)
-    GROUND:MoveToPosition(maru, 515, 396, false, 2)
-    GROUND:MoveToPosition(azura, 540, 366, false, 2)
-    GROUND:CharTurnToCharAnimated(maru, puchi, 4)
-    GROUND:CharTurnToCharAnimated(maru, puchi, 4)
-    UI:SetSpeaker(puchi)
-    UI:SetSpeakerEmotion("Pain")
-    UI:WaitShowDialogue("[speed=0.6]Ugh...[pause=35] I'm so tired...")
-
-    UI:SetSpeaker(senna)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Why did you come out here...?")
-    UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("You're usually home when this happens...")
-
-    UI:SetSpeaker(puchi)
-    GROUND:CharTurnToCharAnimated(puchi, ziggy, 2)
-    UI:SetSpeakerEmotion("Determined")
-    UI:WaitShowDialogue("[speed=0.6]...")
-
-    UI:SetSpeaker(senna)
-    GROUND:CharTurnToCharAnimated(senna, ziggy, 2)
-    UI:SetSpeakerEmotion("Sigh")
-    UI:WaitShowDialogue("Figured.")
-
-    UI:SetSpeaker(ziggy)
-    UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("[speed=0.6]Well...[pause=15] u-[pause=10]uh...[emote=Normal] h[speed=1.0]ear me out.")
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("If one of us got zapped,[emote=Worried][pause=20] then what are we gonna do?")
+  if SV.tarro_town.PieChapter <= 6 then
+    if quiz_available == false or quiz_available == nil then
+      AI:DisableCharacterAI(azura)
+      GROUND:MoveToPosition(maru, 515, 396, false, 2)
+      GROUND:MoveToPosition(azura, 540, 366, false, 2)
+      GROUND:CharTurnToCharAnimated(maru, puchi, 4)
+      GROUND:CharTurnToCharAnimated(maru, puchi, 4)
+      UI:SetSpeaker(puchi)
+      UI:SetSpeakerEmotion("Pain")
+      UI:WaitShowDialogue("[speed=0.6]Ugh...[pause=35] I'm so tired...")
+  
+      UI:SetSpeaker(senna)
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("Why did you come out here...?")
+      UI:SetSpeakerEmotion("Stunned")
+      UI:WaitShowDialogue("You're usually home when this happens...")
+  
+      UI:SetSpeaker(puchi)
+      GROUND:CharTurnToCharAnimated(puchi, ziggy, 2)
+      UI:SetSpeakerEmotion("Determined")
+      UI:WaitShowDialogue("[speed=0.6]...")
+  
+      UI:SetSpeaker(senna)
+      GROUND:CharTurnToCharAnimated(senna, ziggy, 2)
+      UI:SetSpeakerEmotion("Sigh")
+      UI:WaitShowDialogue("Figured.")
+  
+      UI:SetSpeaker(ziggy)
+      UI:SetSpeakerEmotion("Stunned")
+      UI:WaitShowDialogue("[speed=0.6]Well...[pause=15] u-[pause=10]uh...[emote=Normal] h[speed=1.0]ear me out.")
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("If one of us got zapped,[emote=Worried][pause=20] then what are we gonna do?")
+      
+      UI:SetSpeaker(senna)
+      GROUND:CharTurnToCharAnimated(senna, puchi, 2)
+      UI:SetSpeakerEmotion("Stunned")
+      UI:WaitShowDialogue("...th-[pause=15]that is a good point...")
+  
+      UI:SetSpeaker(puchi)
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("[speed=0.6]I should've stayed home...")
+  
+      UI:SetSpeaker(senna)
+      GROUND:CharTurnToCharAnimated(puchi, senna, 2)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Not like we're stopping you.")
+  
+      UI:SetSpeaker(puchi)
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowTimedDialogue("[speed=0.6]You're right... I'll jus")
+  
+      GROUND:CharTurnToCharAnimated(senna, ziggy, 7)
+      GROUND:CharTurnToCharAnimated(puchi, ziggy, 7)
+      UI:SetSpeaker(ziggy)
+      UI:SetSpeakerEmotion("Shouting")
+      UI:WaitShowDialogue("[speed=1.5]Waaaaaaaaaaait!")
+  
+      GROUND:CharTurnToCharAnimated(ziggy, maru, 7)
+      GROUND:CharTurnToCharAnimated(senna, maru, 7)
+      UI:SetSpeaker(ziggy)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Fwends!")
+  
+      GROUND:CharTurnToCharAnimated(puchi, maru, 2)
+      UI:SetSpeaker(senna)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Welcome to town, Maru, Azura!")
+  
+      UI:SetSpeaker(ziggy)
+      UI:SetSpeakerEmotion("Inspired")
+      UI:WaitShowDialogue("Gasp,[pause=15] that means it's time for [color=#FFFE11]the thing[color]!")
+  
+      UI:SetSpeaker(senna)
+      UI:SetSpeakerEmotion("Stunned")
+      GROUND:CharTurnToCharAnimated(senna, ziggy, 4)
+      UI:WaitShowDialogue("[speed=0.6]...[color=#FFFE11]the thing[color]?")
+  
+      UI:SetSpeaker(puchi)
+      UI:SetSpeakerEmotion("Pain")
+      UI:WaitShowDialogue("[speed=0.5]No... I'm too tired for the [color=#FFFE11]Friend Circle[color]...")
+  
+      UI:SetSpeaker(ziggy)
+      UI:SetSpeakerEmotion("Normal")
+      GAME:MoveCamera(480, 364, 1, false)
+      UI:WaitShowDialogue("[color=#FFFE11]Friend Circle[color] now!")
+      local coro1 = TASK:BranchCoroutine(function() GROUND:MoveToPosition(maru, 430, 382, false, 2) end)
+                                                    
+      local coro2 = TASK:BranchCoroutine(function() GROUND:MoveToPosition(azura, 517, 382, false, 3) end)
     
-    UI:SetSpeaker(senna)
-    GROUND:CharTurnToCharAnimated(senna, puchi, 2)
-    UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("...th-[pause=15]that is a good point...")
-
-    UI:SetSpeaker(puchi)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("[speed=0.6]I should've stayed home...")
-
-    UI:SetSpeaker(senna)
-    GROUND:CharTurnToCharAnimated(puchi, senna, 2)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Not like we're stopping you.")
-
-    UI:SetSpeaker(puchi)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowTimedDialogue("[speed=0.6]You're right... I'll jus")
-
-    GROUND:CharTurnToCharAnimated(senna, ziggy, 7)
-    GROUND:CharTurnToCharAnimated(puchi, ziggy, 7)
-    UI:SetSpeaker(ziggy)
-    UI:SetSpeakerEmotion("Shouting")
-    UI:WaitShowDialogue("[speed=1.5]Waaaaaaaaaaait!")
-
-    GROUND:CharTurnToCharAnimated(ziggy, maru, 7)
-    GROUND:CharTurnToCharAnimated(senna, maru, 7)
-    UI:SetSpeaker(ziggy)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Fwends!")
-
-    GROUND:CharTurnToCharAnimated(puchi, maru, 2)
-    UI:SetSpeaker(senna)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Welcome to town, Maru, Azura!")
-
-    UI:SetSpeaker(ziggy)
-    UI:SetSpeakerEmotion("Inspired")
-    UI:WaitShowDialogue("Gasp,[pause=15] that means it's time for [color=#FFFE11]the thing[color]!")
-
-    UI:SetSpeaker(senna)
-    UI:SetSpeakerEmotion("Stunned")
-    GROUND:CharTurnToCharAnimated(senna, ziggy, 4)
-    UI:WaitShowDialogue("[speed=0.6]...[color=#FFFE11]the thing[color]?")
-
-    UI:SetSpeaker(puchi)
-    UI:SetSpeakerEmotion("Pain")
-    UI:WaitShowDialogue("[speed=0.5]No... I'm too tired for the [color=#FFFE11]Friend Circle[color]...")
-
-    UI:SetSpeaker(ziggy)
-    UI:SetSpeakerEmotion("Normal")
-    GAME:MoveCamera(480, 364, 1, false)
-    UI:WaitShowDialogue("[color=#FFFE11]Friend Circle[color] now!")
-    local coro1 = TASK:BranchCoroutine(function() GROUND:MoveToPosition(maru, 430, 382, false, 2) end)
-                                                  
-	  local coro2 = TASK:BranchCoroutine(function() GROUND:MoveToPosition(azura, 517, 382, false, 3) end)
-	
-	  TASK:JoinCoroutines({coro1, coro2})
-    GROUND:CharAnimateTurn(puchi, Direction.Down, 2, true)
-    GROUND:CharTurnToCharAnimated(maru, azura, 4)
-    GROUND:CharTurnToCharAnimated(azura, maru, 4)
-    UI:SetSpeaker(ziggy)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Alrighty, then.[pause=50] Report in with your recent activities!")
-    UI:SetSpeaker(puchi)
-    UI:SetSpeakerEmotion("Determined")
-    UI:WaitShowDialogue("Sleeping...")
-
-    UI:SetSpeaker(senna)
-    UI:SetSpeakerEmotion("Pain")
-    UI:WaitShowDialogue("Hiding...")
-
-    UI:SetSpeaker(azura)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Exploring!")
-
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Ye.")
-
-    UI:SetSpeaker(ziggy)
-    UI:SetSpeakerEmotion("Inspired")
-    UI:WaitShowDialogue("You guys went exploring!?")
-    UI:SetSpeakerEmotion("Inspired")
-    UI:WaitShowDialogue("You HAVE to invite me next time.[pause=50] I've got this!")
-
-    UI:SetSpeaker(senna)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("A-[pause=20]as long as I'm not dragged along.")
-
-    UI:SetSpeaker(puchi)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Where did you two explore?")
-
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Tarro Forest. Had to get a Big Apple.")
-
-    UI:SetSpeaker(puchi)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Oh, in East Tarro. [pause=30]Was it a nice stroll, then?")
-
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("...is it that easy to go through.")
-
-    UI:SetSpeaker(senna)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("I'm sure it still counts as exploration.")
-
-    UI:SetSpeaker(azura)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Does exploring town count, too?")
-
-    UI:SetSpeaker(puchi)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("You've...[pause=35] n[emote=Worried]ever been here?")
-
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("Only when mom and dad get food.")
-
-    UI:SetSpeaker(ziggy)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("[speed=1.4]You guys have got to see the inside of the [color=#01FE10]Big Tree[color]![pause=35] A[emote=Joyous]ll of the newest new is happening in there!")
-
-    UI:SetSpeaker(senna)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("[speed=0.7] Lots of hiding spots in there, too.[pause=30] Good for having some time to yourself.")
-
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowTimedDialogue("Sounds fun, we should g")
-
-    UI:SetSpeaker(ziggy)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("[speed=1.4]Oh, oh, oh, oh![pause=25] [speed=0.9]What about a quiz first![pause=30] To see if you've really explored!")
-
-    UI:SetSpeaker(senna)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Oooh, like a test!")
-
-    UI:SetSpeaker(ziggy)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Let us know when you're ready ready ready!")
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("I already know what I'm gonna ask!")
-    GAME:MoveCamera(0, 0, 1, true)
-    AI:EnableCharacterAI(azura)
-    quiz_available = true
-  else
-    GROUND:CharTurnToCharAnimated(ziggy, maru, 4)
-    GROUND:CharTurnToCharAnimated(senna, maru, 4)
-    GROUND:CharTurnToCharAnimated(puchi, maru, 4)
-    UI:SetSpeaker(ziggy)
-    UI:SetSpeakerEmotion("Inspired")
-    local choices = {("Yes!"),
-        ("No!")}
-    UI:BeginChoiceMenu("Ready ready ready?", choices, 1, 2)
-    UI:WaitForChoice()
-    result = UI:ChoiceResult()
-    if result == 1 then
-        UI:SetSpeaker(maru)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("Sure.")
-
-        UI:SetSpeaker(ziggy)
-        UI:SetSpeakerEmotion("Joyous")
-        UI:WaitShowDialogue("Okay! Quiz time!")
-
-        UI:SetSpeaker(puchi)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("Sleep time...")
-
-        UI:SetSpeaker(ziggy)
-        UI:SetSpeakerEmotion("Angry")
-        UI:WaitShowDialogue("Nuh-uh.")
-        GAME:FadeOut(false, 30)
-        GAME:EnterGroundMap("QuizTime", "NewObject")
+      TASK:JoinCoroutines({coro1, coro2})
+      GROUND:CharAnimateTurn(puchi, Direction.Down, 2, true)
+      GROUND:CharTurnToCharAnimated(maru, azura, 4)
+      GROUND:CharTurnToCharAnimated(azura, maru, 4)
+      UI:SetSpeaker(ziggy)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Alrighty, then.[pause=50] Report in with your recent activities!")
+      UI:SetSpeaker(puchi)
+      UI:SetSpeakerEmotion("Determined")
+      UI:WaitShowDialogue("Sleeping...")
+  
+      UI:SetSpeaker(senna)
+      UI:SetSpeakerEmotion("Pain")
+      UI:WaitShowDialogue("Hiding...")
+  
+      UI:SetSpeaker(azura)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Exploring!")
+  
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Ye.")
+  
+      UI:SetSpeaker(ziggy)
+      UI:SetSpeakerEmotion("Inspired")
+      UI:WaitShowDialogue("You guys went exploring!?")
+      UI:SetSpeakerEmotion("Inspired")
+      UI:WaitShowDialogue("You HAVE to invite me next time.[pause=50] I've got this!")
+  
+      UI:SetSpeaker(senna)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("A-[pause=20]as long as I'm not dragged along.")
+  
+      UI:SetSpeaker(puchi)
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("Where did you two explore?")
+  
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Tarro Forest. Had to get a Big Apple.")
+  
+      UI:SetSpeaker(puchi)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Oh, in East Tarro. [pause=30]Was it a nice stroll, then?")
+  
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Stunned")
+      UI:WaitShowDialogue("...is it that easy to go through.")
+  
+      UI:SetSpeaker(senna)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("I'm sure it still counts as exploration.")
+  
+      UI:SetSpeaker(azura)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Does exploring town count, too?")
+  
+      UI:SetSpeaker(puchi)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("You've...[pause=35] n[emote=Worried]ever been here?")
+  
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Stunned")
+      UI:WaitShowDialogue("Only when mom and dad get food.")
+  
+      UI:SetSpeaker(ziggy)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("[speed=1.4]You guys have got to see the inside of the [color=#01FE10]Big Tree[color]![pause=35] A[emote=Joyous]ll of the newest new is happening in there!")
+  
+      UI:SetSpeaker(senna)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("[speed=0.7] Lots of hiding spots in there, too.[pause=30] Good for having some time to yourself.")
+  
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowTimedDialogue("Sounds fun, we should g")
+  
+      UI:SetSpeaker(ziggy)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("[speed=1.4]Oh, oh, oh, oh![pause=25] [speed=0.9]What about a quiz first![pause=30] To see if you've really explored!")
+  
+      UI:SetSpeaker(senna)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Oooh, like a test!")
+  
+      UI:SetSpeaker(ziggy)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Let us know when you're ready ready ready!")
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("I already know what I'm gonna ask!")
+      GAME:MoveCamera(0, 0, 1, true)
+      AI:EnableCharacterAI(azura)
+      quiz_available = true
     else
-        UI:SetSpeaker(ziggy)
-        UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("Oh, take your time, then.")
-
-        UI:SetSpeaker(senna)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("We'll be here waiting.") 
+      GROUND:CharTurnToCharAnimated(ziggy, maru, 4)
+      GROUND:CharTurnToCharAnimated(senna, maru, 4)
+      GROUND:CharTurnToCharAnimated(puchi, maru, 4)
+      UI:SetSpeaker(ziggy)
+      UI:SetSpeakerEmotion("Inspired")
+      local choices = {("Yes!"),
+          ("No!")}
+      UI:BeginChoiceMenu("Ready ready ready?", choices, 1, 2)
+      UI:WaitForChoice()
+      result = UI:ChoiceResult()
+      if result == 1 then
+          UI:SetSpeaker(maru)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("Sure.")
+  
+          UI:SetSpeaker(ziggy)
+          UI:SetSpeakerEmotion("Joyous")
+          UI:WaitShowDialogue("Okay! Quiz time!")
+  
+          UI:SetSpeaker(puchi)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("Sleep time...")
+  
+          UI:SetSpeaker(ziggy)
+          UI:SetSpeakerEmotion("Angry")
+          UI:WaitShowDialogue("Nuh-uh.")
+          GAME:FadeOut(false, 30)
+          GAME:EnterGroundMap("QuizTime", "NewObject")
+      else
+          UI:SetSpeaker(ziggy)
+          UI:SetSpeakerEmotion("Normal")
+          UI:WaitShowDialogue("Oh, take your time, then.")
+  
+          UI:SetSpeaker(senna)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("We'll be here waiting.") 
+      end
     end
+  else
+    UI:SetSpeaker(puchi)
+    UI:SetSpeakerEmotion("Pain")
+    UI:WaitShowDialogue("[speed=0.6]If I knew this was gonna happen,[pause=0] I would've[emote=Dizzy] stayed asleep...")
   end
+  
 end
 
 function TarroTownSquare.Senna_Action()
-  TarroTownSquare.Puchi_Action()
+  local senna = CH("Senna")
+  if SV.tarro_town.PieChapter <= 6 then
+    TarroTownSquare.Puchi_Action()
+  else
+    UI:SetSpeaker(senna)
+    UI:SetSpeakerEmotion("Sad")
+    UI:WaitShowDialogue("As much as I want to help him,[pause=35] I[emote=Pain] can't deal with things as well as he can...")
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Does that make me a bad older sister?")
+  end
 end
 
 function TarroTownSquare.Ziggy_Action()
@@ -1324,17 +1330,17 @@ function TarroTownSquare.Happy_Action(obj, activator)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("That's a weird thing to not notice...")
   elseif happy_dialogue == 2 then
-      UI:SetSpeaker(happy)
-      UI:SetSpeakerEmotion("Sigh")
-      UI:WaitShowDialogue("Ugh,[pause=55] now that a fight's been stopped,[pause=20] I[emote=Worried] should probably get back to practicing...")
+    UI:SetSpeaker(happy)
+    UI:SetSpeakerEmotion("Sigh")
+    UI:WaitShowDialogue("Ugh,[pause=55] now that a fight's been stopped,[pause=20] I[emote=Worried] should probably get back to practicing...")
 
-      UI:SetSpeaker(gepii)
-      UI:SetSpeakerEmotion("Pain")
-      UI:WaitShowDialogue("I could never do what you do, Haps.")
+    UI:SetSpeaker(gepii)
+    UI:SetSpeakerEmotion("Pain")
+    UI:WaitShowDialogue("I could never do what you do, Haps.")
 
-      UI:SetSpeaker(happy)
-     UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowDialogue("I think you could.[pause=35] J[emote=Happy]ust get some practice in.")
+    UI:SetSpeaker(happy)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("I think you could.[pause=35] J[emote=Happy]ust get some practice in.")
   end
 end
 

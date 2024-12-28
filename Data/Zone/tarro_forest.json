@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.6.0",
+"Version": "0.8.7.0",
 "Object": {
 "$type": "RogueEssence.Data.ZoneData, RogueEssence",
 "Name": {
@@ -11,8 +11,8 @@
 "Released": true,
 "Comment": "",
 "NoEXP": false,
-"ExpPercent": 100,
-"Level": -1,
+"ExpPercent": 50,
+"Level": 5,
 "LevelCap": false,
 "KeepSkills": false,
 "TeamRestrict": false,
@@ -299,6 +299,7 @@
 },
 "Value": {
 "$type": "RogueElements.RandomRoomSpawnStep`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.EffectTile, RogueEssence]], RogueElements",
+"SuccessPercent": 100,
 "IncludeHalls": false,
 "Filters": [
 {
@@ -666,6 +667,7 @@
 },
 "Value": {
 "$type": "RogueElements.RandomRoomSpawnStep`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.EffectTile, RogueEssence]], RogueElements",
+"SuccessPercent": 100,
 "IncludeHalls": false,
 "Filters": [
 {
@@ -1033,6 +1035,7 @@
 },
 "Value": {
 "$type": "RogueElements.RandomRoomSpawnStep`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.EffectTile, RogueEssence]], RogueElements",
+"SuccessPercent": 100,
 "IncludeHalls": false,
 "Filters": [
 {
@@ -1400,6 +1403,7 @@
 },
 "Value": {
 "$type": "RogueElements.RandomRoomSpawnStep`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.EffectTile, RogueEssence]], RogueElements",
+"SuccessPercent": 100,
 "IncludeHalls": false,
 "Filters": [
 {
@@ -1767,6 +1771,7 @@
 },
 "Value": {
 "$type": "RogueElements.RandomRoomSpawnStep`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.EffectTile, RogueEssence]], RogueElements",
+"SuccessPercent": 100,
 "IncludeHalls": false,
 "Filters": [
 {
@@ -1777,8 +1782,8 @@
 "Spawn": {
 "$type": "RogueElements.ContextSpawner`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.EffectTile, RogueEssence]], RogueElements",
 "Amount": {
-"Min": 0,
-"Max": 4
+"Min": 1,
+"Max": 6
 }
 }
 }
@@ -2164,7 +2169,7 @@
 "Amount": 0,
 "Price": 0
 },
-"Rate": 31
+"Rate": 30
 },
 {
 "Spawn": {
@@ -2174,7 +2179,17 @@
 "Amount": 0,
 "Price": 0
 },
-"Rate": 28
+"Rate": 25
+},
+{
+"Spawn": {
+"ID": "berry_leppa",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0
+},
+"Rate": 30
 },
 {
 "Spawn": {
@@ -2184,7 +2199,7 @@
 "Amount": 1,
 "Price": 0
 },
-"Rate": 45
+"Rate": 80
 }
 ],
 "Rate": 10
@@ -2220,7 +2235,7 @@
 "Amount": 2,
 "Price": 0
 },
-"Rate": 10
+"Rate": 20
 },
 {
 "Spawn": {
