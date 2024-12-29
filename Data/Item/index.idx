@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.5.0",
+"Version": "0.8.7.0",
 "Object": {
 "$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[RogueEssence.Data.EntrySummary, RogueEssence]], System.Private.CoreLib",
 "food_apple_big": {
@@ -128,6 +128,32 @@
 "Released": true,
 "Comment": "",
 "SortOrder": 4
+},
+"key_tree": {
+"$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
+"Icon": 0,
+"UsageType": 1,
+"States": [
+{
+"assembly": "PMDC, Version=0.8.7.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.UtilityState"
+}
+],
+"Name": {
+"DefaultText": "Key",
+"LocalTexts": {
+"fr": "Clé",
+"de": "Schlüssel",
+"it": "Chiave",
+"ko": "열쇠",
+"ja": "カギ",
+"ja-jp": "カギ",
+"zh-hans": "钥匙"
+}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 13
 }
 }
 }

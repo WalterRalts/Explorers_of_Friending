@@ -1993,7 +1993,7 @@
 },
 "Level": {
 "Min": 1,
-"Max": 5
+"Max": 3
 },
 "SpecifiedSkills": [
 "tackle",
@@ -2020,14 +2020,48 @@
 "Spawn": {
 "Spawn": {
 "BaseForm": {
+"Species": "caterpie",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 1,
+"Max": 4
+},
+"SpecifiedSkills": [
+"tackle",
+"string_shot"
+],
+"Intrinsic": "run_away",
+"Tactic": "wander_dumb",
+"SpawnConditions": [],
+"SpawnFeatures": [
+{
+"$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+}
+]
+},
+"Role": 0
+},
+"Rate": 10,
+"Range": {
+"Min": 2,
+"Max": 5
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
 "Species": "kakuna",
 "Form": 0,
 "Skin": "normal",
 "Gender": -1
 },
 "Level": {
-"Min": 1,
-"Max": 5
+"Min": 2,
+"Max": 6
 },
 "SpecifiedSkills": [
 "iron_defense"
@@ -2116,6 +2150,40 @@
 "Min": 0,
 "Max": 5
 }
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
+"Species": "weedle",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 1,
+"Max": 5
+},
+"SpecifiedSkills": [
+"bug_bite",
+"string_shot"
+],
+"Intrinsic": "",
+"Tactic": "wander_dumb",
+"SpawnConditions": [],
+"SpawnFeatures": [
+{
+"$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+}
+]
+},
+"Role": 0
+},
+"Rate": 5,
+"Range": {
+"Min": 3,
+"Max": 5
+}
 }
 ],
 "TeamSizes": [
@@ -2141,6 +2209,14 @@
 "Range": {
 "Min": 3,
 "Max": 5
+}
+},
+{
+"Spawn": 4,
+"Rate": 1,
+"Range": {
+"Min": 0,
+"Max": 1
 }
 }
 ],
@@ -2199,7 +2275,7 @@
 "Amount": 1,
 "Price": 0
 },
-"Rate": 80
+"Rate": 40
 }
 ],
 "Rate": 10
@@ -2281,6 +2357,16 @@
 "Price": 0
 },
 "Rate": 10
+},
+{
+"Spawn": {
+"ID": "berry_leppa",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0
+},
+"Rate": 40
 }
 ],
 "Rate": 10
@@ -2304,7 +2390,7 @@
 ]
 },
 "StartAmount": {
-"Min": 5,
+"Min": 10,
 "Max": 51
 },
 "AddAmount": {

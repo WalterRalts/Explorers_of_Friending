@@ -105,12 +105,14 @@ SV.tarro_forest =
 SV.deep_tarro_forest = 
 {
   revisit = false,
-  dungpoints = 0
+  dungpoints = 0,
 }
 
 SV.tarro_tree_hollows = 
 {
   revisit = false,
-  dungpoints = 0
+  dungpoints = 0,
+  sprout_money_give = false,
+  stairs_unlocked = false
 }
 ----------------------------------------------

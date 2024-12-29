@@ -26,9 +26,8 @@ end
 ---TarroTownHive.Enter(map)
 --Engine callback function
 function TarroTownHive.Enter(map)
-
+  SleepingPuchi = false
   GAME:FadeIn(20)
-
 end
 
 ---TarroTownHive.Exit(map)
