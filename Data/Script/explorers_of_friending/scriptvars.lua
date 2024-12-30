@@ -113,6 +113,7 @@ SV.tarro_tree_hollows =
   revisit = false,
   dungpoints = 0,
   sprout_money_give = false,
-  stairs_unlocked = false
+  stairs_unlocked = false,
+  entering_party = 0
 }
 ----------------------------------------------

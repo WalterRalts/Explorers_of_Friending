@@ -1,9 +1,9 @@
 ﻿{
-"Version": "0.8.5.0",
+"Version": "0.8.8.0",
 "Object": {
 "$type": "RogueEssence.Data.AutoTileData, RogueEssence",
 "Name": {
-"DefaultText": "",
+"DefaultText": "Tarro Treetops",
 "LocalTexts": {}
 },
 "Comment": "",
@@ -14,7 +14,7 @@
 {
 "Frames": [
 {
-"Sheet": "",
+"Sheet": "TarroForestTiling",
 "TexLoc": {
 "X": 0,
 "Y": 0

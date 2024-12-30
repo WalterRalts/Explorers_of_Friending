@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.7.0",
+"Version": "0.8.8.0",
 "Object": {
 "$type": "RogueEssence.Data.ZoneData, RogueEssence",
 "Name": {
@@ -9,7 +9,7 @@
 "Released": true,
 "Comment": "",
 "NoEXP": false,
-"ExpPercent": 100,
+"ExpPercent": 40,
 "Level": -1,
 "LevelCap": false,
 "KeepSkills": false,
@@ -3217,7 +3217,7 @@
 "Rate": 30,
 "Range": {
 "Min": 0,
-"Max": 7
+"Max": 5
 }
 },
 {
@@ -3230,9 +3230,9 @@
 },
 {
 "Spawn": 3,
-"Rate": 1,
+"Rate": 20,
 "Range": {
-"Min": 2,
+"Min": 3,
 "Max": 7
 }
 }
@@ -3459,7 +3459,7 @@
 ]
 },
 "Name": {
-"DefaultText": "Tarro Tree Hallows\\nB{0}F",
+"DefaultText": "Tarro Tree Hollows\\nB{0}F",
 "LocalTexts": {}
 },
 "Priority": {
@@ -3490,7 +3490,7 @@
 "ToSpawn": {
 "IsMoney": false,
 "Cursed": false,
-"Value": "food_apple",
+"Value": "berry_leppa",
 "HiddenValue": "",
 "Amount": 0,
 "Price": 0,
@@ -3553,8 +3553,8 @@
 "$type": "RogueElements.InitGridPlanStep`1[[RogueEssence.LevelGen.MapGenContext, RogueEssence]], RogueElements",
 "CellWidth": 5,
 "CellHeight": 5,
-"CellX": 7,
-"CellY": 7,
+"CellX": 8,
+"CellY": 8,
 "CellWall": 2,
 "Wrap": false
 }
@@ -3970,9 +3970,9 @@
 "$type": "RogueElements.InitGridPlanStep`1[[RogueEssence.LevelGen.MapGenContext, RogueEssence]], RogueElements",
 "CellWidth": 5,
 "CellHeight": 5,
-"CellX": 7,
-"CellY": 7,
-"CellWall": 2,
+"CellX": 8,
+"CellY": 8,
+"CellWall": 5,
 "Wrap": false
 }
 },
@@ -3985,11 +3985,11 @@
 "Value": {
 "$type": "RogueElements.GridPathBranch`1[[RogueEssence.LevelGen.MapGenContext, RogueEssence]], RogueElements",
 "RoomRatio": {
-"Min": 10,
-"Max": 31
+"Min": 30,
+"Max": 71
 },
 "BranchRatio": {
-"Min": 0,
+"Min": 100,
 "Max": 301
 },
 "NoForcedBranches": false,
@@ -4385,11 +4385,11 @@
 },
 "Value": {
 "$type": "RogueElements.InitGridPlanStep`1[[RogueEssence.LevelGen.MapGenContext, RogueEssence]], RogueElements",
-"CellWidth": 5,
-"CellHeight": 5,
-"CellX": 7,
-"CellY": 7,
-"CellWall": 2,
+"CellWidth": 6,
+"CellHeight": 6,
+"CellX": 8,
+"CellY": 8,
+"CellWall": 5,
 "Wrap": false
 }
 },
@@ -4402,11 +4402,11 @@
 "Value": {
 "$type": "RogueElements.GridPathBranch`1[[RogueEssence.LevelGen.MapGenContext, RogueEssence]], RogueElements",
 "RoomRatio": {
-"Min": 10,
-"Max": 31
+"Min": 65,
+"Max": 101
 },
 "BranchRatio": {
-"Min": 0,
+"Min": 150,
 "Max": 301
 },
 "NoForcedBranches": false,
@@ -4636,7 +4636,7 @@
 "OrderSoftness": 0,
 "WaterPercent": {
 "Min": 2,
-"Max": 21
+"Max": 11
 },
 "Bowl": true,
 "Terrain": {
@@ -4935,7 +4935,7 @@
 "Rate": 10,
 "Range": {
 "Min": 0,
-"Max": 10
+"Max": 3
 }
 },
 {
@@ -4948,7 +4948,7 @@
 "Gender": -1
 },
 "Level": {
-"Min": 1,
+"Min": 3,
 "Max": 8
 },
 "SpecifiedSkills": [
@@ -4956,7 +4956,7 @@
 "protect"
 ],
 "Intrinsic": "",
-"Tactic": "wander_dumb",
+"Tactic": "wander_smart",
 "SpawnConditions": [],
 "SpawnFeatures": []
 },
@@ -4964,8 +4964,8 @@
 },
 "Rate": 10,
 "Range": {
-"Min": 0,
-"Max": 1
+"Min": 1,
+"Max": 3
 }
 },
 {
@@ -5000,7 +5000,7 @@
 "Rate": 5,
 "Range": {
 "Min": 0,
-"Max": 10
+"Max": 3
 }
 }
 ],
@@ -5010,7 +5010,7 @@
 "Rate": 15,
 "Range": {
 "Min": 0,
-"Max": 7
+"Max": 3
 }
 },
 {
@@ -5018,15 +5018,15 @@
 "Rate": 10,
 "Range": {
 "Min": 1,
-"Max": 6
+"Max": 3
 }
 },
 {
 "Spawn": 3,
-"Rate": 1,
+"Rate": 10,
 "Range": {
 "Min": 2,
-"Max": 7
+"Max": 3
 }
 }
 ],
@@ -5235,12 +5235,12 @@
 ]
 },
 "StartAmount": {
-"Min": 1,
+"Min": 50,
 "Max": 101
 },
 "AddAmount": {
 "Min": 1,
-"Max": 101
+"Max": 51
 },
 "ModStates": []
 },
@@ -5252,7 +5252,7 @@
 ]
 },
 "Name": {
-"DefaultText": "Tarro Tree Hallows\\nB{0}F",
+"DefaultText": "Tarro Tree Upbranch\\nB{0}F",
 "LocalTexts": {}
 },
 "Priority": {
@@ -5314,10 +5314,51 @@
 ],
 "IsRelevant": true,
 "Comment": ""
+},
+{
+"$type": "RogueEssence.LevelGen.LayeredSegment, RogueEssence",
+"Floors": [
+{
+"$type": "RogueEssence.LevelGen.LoadGen, RogueEssence",
+"GenSteps": [
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "RogueEssence.LevelGen.MappedRoomStep`1[[RogueEssence.LevelGen.MapLoadContext, RogueEssence]], RogueEssence",
+"MapID": "TarroTreetops"
+}
+},
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "PMDC.LevelGen.MapTitleDropStep`1[[RogueEssence.LevelGen.MapLoadContext, RogueEssence]], PMDC",
+"DropPriority": {
+"str": [
+-15
+]
+}
+}
+}
+],
+"Comment": ""
+}
+],
+"ZoneSteps": [],
+"IsRelevant": false,
+"Comment": ""
 }
 ],
 "GroundMaps": [
-"TarroTownTreeBreak"
+"TarroTownTreeBreak",
+"TarroTownTreetop"
 ]
 }
 }

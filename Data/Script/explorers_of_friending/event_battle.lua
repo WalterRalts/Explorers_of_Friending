@@ -714,40 +714,75 @@ function BATTLE_SCRIPT.PuchiInteract(owner, ownerChar, context, args)
   UI:SetSpeaker(context.Target)
   
   local ratio = context.Target.HP * 100 // context.Target.MaxHP
+  local current_dungeon = DUNGEON:DungeonDisplayName()
   local say_choice = math.random(4)
-  if context.Target:GetStatusEffect("sleep") == nil then
-    if ratio <= 25 then
-      if say_choice <= 3 then
+  if current_dungeon == "Tarro Tree Hallows" then
+    if context.Target:GetStatusEffect("sleep") == nil then
+      if ratio <= 25 then
+        if say_choice <= 3 then
+          UI:SetSpeaker(context.Target)
+          UI:SetSpeakerEmotion("Pain")
+          UI:WaitShowDialogue("[speed=0.4]Usually... not this difficult... too tired...")
+        elseif say_choice == 4 then
+          UI:SetSpeakerEmotion("Teary-Eyed")
+          UI:WaitShowDialogue("[speed=0.6]I'm sorry, [color=#01FE10]Big Tree[color]![pause=55] [emote=Pain]I'm just... too tired...!")
+        end
+      elseif ratio <= 50 then
         UI:SetSpeaker(context.Target)
-        UI:SetSpeakerEmotion("Pain")
-        UI:WaitShowDialogue("[speed=0.4]Usually... not this difficult... too tired...")
-      elseif say_choice == 4 then
-        UI:SetSpeakerEmotion("Teary-Eyed")
-        UI:WaitShowDialogue("[speed=0.6]I'm sorry, [color=#01FE10]Big Tree[color]![pause=55] [emote=Pain]I'm just... too tired...!")
+        UI:SetSpeakerEmotion("Determined")
+        UI:WaitShowDialogue("I should've gotten more sleep before this.")
+      else
+        if say_choice == 1 then
+          UI:SetSpeaker(context.Target)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("This should be easy, just stay alert!")
+          UI:SetSpeakerEmotion("Pain")
+          UI:WaitShowDialogue("...more than me, at least.")
+        elseif say_choice == 2 then
+          UI:SetSpeaker(context.Target)
+          UI:SetSpeakerEmotion("Worried")
+          UI:WaitShowDialogue("The faster we do this, the quicker I can sleep...")
+        elseif say_choice <= 4 then
+          UI:SetSpeaker(context.Target)
+          UI:SetSpeakerEmotion("Normal")
+          UI:WaitShowDialogue("Maybe this can help me wake up a bit...")
+        end
       end
-    elseif ratio <= 50 then
-      UI:SetSpeaker(context.Target)
-      UI:SetSpeakerEmotion("Determined")
-      UI:WaitShowDialogue("I should've gotten more sleep before this.")
-    else
-      if say_choice == 1 then
+    end
+  elseif SV.tarro_town.PieChapter == 8 then
+    if context.Target:GetStatusEffect("sleep") == nil then
+      if ratio <= 25 then
+        if say_choice <= 3 then
+          UI:SetSpeaker(context.Target)
+          UI:SetSpeakerEmotion("Pain")
+          UI:WaitShowDialogue("[speed=0.4]No... I[pause=30][speed=1.0] refuse[emote=Determined] to lose here!")
+        elseif say_choice == 4 then
+          UI:SetSpeakerEmotion("Determined")
+          UI:WaitShowDialogue("[speed=1.0]Hey, [color=#01FE10]Big Tree[color]![pause=55] [emote=Happy]We can do it,[pause=15] we promise!")
+        end
+      elseif ratio <= 50 then
         UI:SetSpeaker(context.Target)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("This should be easy, just stay alert!")
-        UI:SetSpeakerEmotion("Pain")
-        UI:WaitShowDialogue("...more than me, at least.")
-      elseif say_choice == 2 then
-        UI:SetSpeaker(context.Target)
-        UI:SetSpeakerEmotion("Worried")
-        UI:WaitShowDialogue("The faster we do this, the quicker I can sleep...")
-      elseif say_choice <= 4 then
-        UI:SetSpeaker(context.Target)
-        UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("Maybe this can help me wake up a bit...")
+        UI:SetSpeakerEmotion("Dizzy")
+        UI:WaitShowDialogue("I still should've gotten more sleep!")
+      else
+        if say_choice == 1 then
+          UI:SetSpeaker(context.Target)
+          UI:SetSpeakerEmotion("Determined")
+          UI:WaitShowDialogue("So many of them![pause=35] Stay up,[pause=15] Puchi,[pause=25] stay awake!")
+          UI:SetSpeakerEmotion("Pain")
+          UI:WaitShowTimedDialogue("[speed=1.5]Don't yawn[pause=15] don't yawn[pause=15] don't yawn[pause=15] don't yawn[pause=15]...!!", 30)
+        elseif say_choice == 2 then
+          UI:SetSpeaker(context.Target)
+          UI:SetSpeakerEmotion("Worried")
+          UI:WaitShowDialogue("Really hoping I can help in my state...")
+        elseif say_choice <= 4 then
+          UI:SetSpeaker(context.Target)
+          UI:SetSpeakerEmotion("Normal")
+          UI:WaitShowDialogue("Well, I'm more awake than before,[pause=15] at least.")
+        end
       end
     end
   end
-  
 
   context.Target.CharDir = oldDir
 end
@@ -763,37 +798,71 @@ function BATTLE_SCRIPT.SennaInteract(owner, ownerChar, context, args)
   DUNGEON:CharTurnToChar(context.Target, context.User)
   
   UI:SetSpeaker(context.Target)
-  
+  local current_dungeon = DUNGEON:DungeonDisplayName()
   local ratio = context.Target.HP * 100 // context.Target.MaxHP
   local say_choice = math.random(3)
-  if ratio <= 25 then
-    if say_choice <= 2 then
+  if current_dungeon == "Tarro Tree Hallows" then
+    if ratio <= 25 then
+      if say_choice <= 2 then
+        UI:SetSpeakerEmotion("Pain")
+        UI:WaitShowDialogue("I don't...[pause=50] I ca[emote=Teary-Eyed]n't fail here...!")
+        UI:SetSpeakerEmotion("Determined")
+        UI:WaitShowDialogue("I have to...[pause=40] urk[emote=Pain]...!")
+      elseif say_choice == 3 then
+        UI:SetSpeakerEmotion("Determined")
+        UI:WaitShowDialogue("We promise to you, [color=#01FE10]Tarro Tree[color]![pause=55] [emote=Pain]Your history will live on!")
+      end
+    elseif ratio <= 50 then
       UI:SetSpeakerEmotion("Pain")
-      UI:WaitShowDialogue("I don't...[pause=50] I ca[emote=Teary-Eyed]n't fail here...!")
-      UI:SetSpeakerEmotion("Determined")
-      UI:WaitShowDialogue("I have to...[pause=40] urk[emote=Pain]...!")
-    elseif say_choice == 3 then
-      UI:SetSpeakerEmotion("Determined")
-      UI:WaitShowDialogue("We promise to you, [color=#01FE10]Tarro Tree[color]![pause=55] [emote=Pain]Your history will live on!")
+      UI:WaitShowDialogue("Oh... oh no oh no...")
+      
+    else
+      if say_choice == 1 then
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("I'll do my best, I think.")
+      elseif say_choice == 2 then
+        UI:SetSpeakerEmotion("Stunned")
+        UI:WaitShowDialogue("I-[pause=15]I guess the tree still doesn't accept random guests...")
+        UI:WaitShowDialogue("Is it summoning more Pokemon or something?")
+      elseif say_choice == 3 then
+        UI:SetSpeakerEmotion("Worried")
+        UI:WaitShowDialogue("I wish I practiced before this.[pause=0] S[emote=Stunned]omething about that thing is still scaring me...")
+      end
     end
-  elseif ratio <= 50 then
-    UI:SetSpeakerEmotion("Pain")
-    UI:WaitShowDialogue("Oh... oh no oh no...")
-    
-  else
-    if say_choice == 1 then
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("I'll do my best, I think.")
-    elseif say_choice == 2 then
-      UI:SetSpeakerEmotion("Stunned")
-      UI:WaitShowDialogue("I-[pause=15]I guess the tree still doesn't accept random guests...")
-      UI:WaitShowDialogue("Is it summoning more Pokemon or something?")
-    elseif say_choice == 3 then
-      UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowDialogue("I wish I practiced before this.[pause=0] S[emote=Stunned]omething about that thing is still scaring me...")
+  elseif SV.tarro_town.PieChapter == 8 then
+    if ratio <= 25 then
+      if say_choice <= 2 then
+        UI:SetSpeakerEmotion("Pain")
+        UI:WaitShowDialogue("I don't...[pause=50] I ca[emote=Teary-Eyed]n't fail here...!")
+        UI:SetSpeakerEmotion("Determined")
+        UI:WaitShowDialogue("I have to...[pause=40] urk[emote=Pain]...!")
+      elseif say_choice == 3 then
+        UI:SetSpeakerEmotion("Determined")
+        UI:WaitShowDialogue("T-this[pause=15] isn't[emote=Angry] over until we say it is!")
+        UI:SetSpeakerEmotion("Determined")
+        UI:WaitShowDialogue("[color=#01FE10]Big Tree[color]![pause=55] [emote=Happy]You'll be fine,[pause=15] I hope...!")
+      end
+    elseif ratio <= 50 then
+      UI:SetSpeakerEmotion("Pain")
+      UI:WaitShowDialogue("...[pause=35]no, no no[emote=Determined]! I can still do this!")
+      
+    else
+      if say_choice == 1 then
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("I'll still do my best!")
+      elseif say_choice == 2 then
+        UI:SetSpeakerEmotion("Stunned")
+        UI:WaitShowDialogue("Th-[pause=15]this can't be the tree's summoning...")
+        UI:SetSpeakerEmotion("Worried")
+        UI:WaitShowDialogue("It's helping us, what are these things?")
+      elseif say_choice == 3 then
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("Their moves are weird, I think,[pause=20] but they don't have anything blocking us.")
+        UI:SetSpeakerEmotion("Determined")
+        UI:WaitShowDialogue("You should go in full force...![pause=30] A[emote=Pain]head of me...")
+      end
     end
   end
-
   context.Target.CharDir = oldDir
 end
 
@@ -866,6 +935,4 @@ function BATTLE_SCRIPT.ZiggyInteract(owner, ownerChar, context, args)
     end
   end
 end
-
-
 

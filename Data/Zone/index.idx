@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.7.0",
+"Version": "0.8.8.0",
 "Object": {
 "$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[RogueEssence.Data.EntrySummary, RogueEssence]], System.Private.CoreLib",
 "tarro_town_outside": {
@@ -142,7 +142,7 @@
 },
 "tarro_tree_hollows": {
 "$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
-"ExpPercent": 100,
+"ExpPercent": 40,
 "Level": -1,
 "LevelCap": false,
 "KeepSkills": false,
@@ -156,7 +156,8 @@
 "CountedFloors": 10,
 "Rogue": 0,
 "Grounds": [
-"TarroTownTreeBreak"
+"TarroTownTreeBreak",
+"TarroTownTreetop"
 ],
 "Maps": [
 [
@@ -172,6 +173,9 @@
 0,
 1,
 2
+],
+[
+0
 ]
 ],
 "Name": {

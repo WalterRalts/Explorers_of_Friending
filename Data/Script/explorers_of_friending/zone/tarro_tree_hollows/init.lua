@@ -30,18 +30,25 @@ end
 ---tarro_tree_hollows.ExitSegment(zone, result, rescue, segmentID, mapID)
 --Engine callback function
 function tarro_tree_hollows.ExitSegment(zone, result, rescue, segmentID, mapID)
-    if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
-        if segmentID == 0 then
-          SV.tarro_town.PieChapter = 6.1
-        end
-        COMMON.EndDungeonDay(result, "tarro_town", -1, 1, 0)
-    else
-        if segmentID == 0 then
-          GAME:EnterZone("tarro_town", -1, 0, 0)
-        else
-          GAME:EnterZone("tarro_town", -1, 0, 0)
-        end
+  if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
+    if segmentID == 0 then
+      SV.tarro_town.PieChapter = 8
+      GAME:EnterZone("tarro_town", -1, 3, 0)
     end
+  else
+    if segmentID == 0 then
+      SV.tarro_tree_hollows.entering_party = GAME:GetPlayerPartyTable()
+      if SV.tarro_town.PieChapter == 7 then
+        GAME:RemovePlayerTeam(2)
+        GAME:RemovePlayerTeam(2)
+        GAME:RemovePlayerTeam(2)
+        SV.tarro_town.PieChapter = 8
+      end
+      GAME:EnterZone("tarro_tree_hollows", -1, 0, 0)
+    else
+      GAME:EndDungeonRun(result, "tarro_tree_hollows", -1, 0, 0, false, true)
+    end
+  end
 end
 
 ---tarro_tree_hollows.Rescued(zone, name, mail)

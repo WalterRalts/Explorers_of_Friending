@@ -152,15 +152,17 @@ function TarroTownBigTree.TarroThingCut(map)
   end)
   TASK:JoinCoroutines({coro3, coro4, coro5, coro6, coro7, coro8})
   
-
+  
   UI:SetSpeaker(puchi)
   UI:SetSpeakerEmotion("Surprised")
   UI:WaitShowDialogue("It's going into the tree,[pause=33] we gotta stop it!")
 
+  COMMON.FaceEachother("Puchi", "Senna")
   UI:SetSpeaker(senna)
   UI:SetSpeakerEmotion("Surprised")
   UI:WaitShowDialogue("H-[pause=10]huh...?![pause=25] We have to-[pause=30].[emote=Pain]..[pause=35]![br] Let's have the grown-ups deal with it.")
 
+  COMMON.FaceEachother("Ziggy", "Senna")
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Determined")
   UI:WaitShowTimedDialogue("They aren't here, Senna,[pause=35] come on! We might lose the tree!", 50)
@@ -211,8 +213,6 @@ function TarroTownBigTree.TarroThingCut(map)
   UI:SetSpeakerEmotion("Pain")
   UI:WaitShowDialogue("(...why am I still so tired...?)")
   GAME:CutsceneMode(false)
-
-  SV.tarro_town.PieChapter = 7
 end
 ---TarroTownBigTree.Enter(map)
 --Engine callback function

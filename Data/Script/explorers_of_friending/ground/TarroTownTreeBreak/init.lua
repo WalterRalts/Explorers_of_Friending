@@ -15,6 +15,13 @@ local TarroTownTreeBreak = {}
 ---TarroTownTreeBreak.Init(map)
 --Engine callback function
 function TarroTownTreeBreak.Init(map)
+  if SV.tarro_tree_hollows.revisit == true then
+    GROUND:Hide("Puchi")
+    GROUND:Hide("Senna")
+    GROUND:Hide("Ziggy")
+  else
+    TarroTownTreeBreak.BreakTime()
+  end
   SleepingPuchi = false
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
@@ -64,6 +71,9 @@ function TarroTownTreeBreak.GameLoad(map)
 
 end
 
+function TarroTownTreeBreak.BreakTime()
+  
+end
 -------------------------------
 -- Entities Callbacks
 -------------------------------
@@ -196,7 +206,7 @@ function TarroTownTreeBreak.Senna_Action(obj, activator)
   UI:SetSpeakerEmotion("Sigh")
   UI:WaitShowDialogue("Phew. Getting a break in a dungeon is so relaxing.")
   UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowTimedDialogue("Let us know when you're ready to good.[pause=45] I'm sure we[emote=Determined]'re almost there.", 35)
+  UI:WaitShowTimedDialogue("Let us know when you're ready to go.[pause=45] I'm sure we[emote=Determined]'re almost there.", 35)
 
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Happy")
@@ -285,6 +295,63 @@ function TarroTownTreeBreak.LockedStairs_Action(obj, activator)
       UI:WaitShowDialogue("There's a strange keyhole over the cover.")
     end
   else
+  end
+end
+
+function TarroTownTreeBreak.TarroTreeHollows_Continue_Touch(obj, activator)
+  local maru = CH("PLAYER")
+  UI:ResetSpeaker()
+  local choices = {
+    ("Let's keep going!"),
+    ("Wait...")
+  }
+  UI:BeginChoiceMenu("Continue?", choices, 1, 2)
+  UI:WaitForChoice()
+  result = UI:ChoiceResult()
+  if result == 1 then
+    --Keep Maru and Azura in the front
+    --Add back the other members
+    local total = 1
+    local playeridx = GAME:GetTeamLeaderIndex()
+    for i, p in ipairs(SV.tarro_tree_hollows.entering_party) do
+      if i ~= (playeridx + 1) and i ~= (playeridx + 2) then --Indices in lua tables begin at 1
+        GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
+        --GROUND:GiveCharIdleChatter(chara)
+        total = total + 1
+        print(total)
+      end
+    end
+    GAME:ContinueDungeon("tarro_tree_hollows", 1, 0, 0)
+  else
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("(Maybe there's more I can do first...?)")
+  end
+end
+
+function TarroTownTreeBreak.TarroTreeHollows_End_Touch(obj, activator)
+  local maru = CH("PLAYER")
+  local ziggy = CH("Ziggy")
+  UI:ResetSpeaker()
+  local choices = {
+    ("Time to go!"),
+    ("Wait...")
+  }
+  UI:BeginChoiceMenu("Continue?", choices, 1, 2)
+  UI:WaitForChoice()
+  result = UI:ChoiceResult()
+  if result == 1 then
+    if SV.tarro_town.PieChapter == 8 then
+      UI:SetSpeaker(ziggy)
+      UI:SetSpeakerEmotion("Angry")
+      UI:WaitShowDialogue("OI![pause=35] Don't give up on me, Mar! Let's go let's go let's go!")
+    else
+      GAME:ContinueDungeon("tarro_tree_hollows", -1, 0, 0)
+    end
+  else
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Determined")
+    UI:WaitShowDialogue("(We've got this!)")
   end
 end
 
