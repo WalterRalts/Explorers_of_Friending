@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.5.0",
+"Version": "0.8.8.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -22461,7 +22461,7 @@
 }
 ],
 "AssetName": "TarroForestPlaza",
-"Music": "B26. Ambush Forest.ogg",
+"Music": "Ambush Forest.ogg",
 "EdgeView": 1,
 "NoSwitching": false,
 "ViewCenter": null,
@@ -22490,8 +22490,9 @@
 "EntName": "Caterpie",
 "EntEnabled": true,
 "EntOrder": 0,
+"InteractOrder": 0,
 "serializationLoc": {
-"X": 150,
+"X": 149,
 "Y": 129
 },
 "serializationHeight": 0,
@@ -22541,6 +22542,7 @@
 "BaseIntrinsics": [
 ""
 ],
+"FormIntrinsicSlot": -1,
 "Relearnables": {},
 "Discriminator": 0,
 "MetAt": "",
@@ -22571,8 +22573,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 150,
-"Y": 129,
+"X": 147,
+"Y": 127,
 "Width": 16,
 "Height": 16
 }
@@ -22584,6 +22586,7 @@
 "EntName": "Caterpie_1",
 "EntEnabled": true,
 "EntOrder": 0,
+"InteractOrder": 0,
 "serializationLoc": {
 "X": 183,
 "Y": 123
@@ -22635,6 +22638,7 @@
 "BaseIntrinsics": [
 ""
 ],
+"FormIntrinsicSlot": -1,
 "Relearnables": {},
 "Discriminator": 0,
 "MetAt": "",
@@ -22666,7 +22670,7 @@
 "CollisionDisabled": false,
 "Collider": {
 "X": 183,
-"Y": 128,
+"Y": 123,
 "Width": 16,
 "Height": 16
 }
@@ -22678,6 +22682,7 @@
 "EntName": "Weedle",
 "EntEnabled": true,
 "EntOrder": 0,
+"InteractOrder": 0,
 "serializationLoc": {
 "X": 217,
 "Y": 127
@@ -22729,6 +22734,7 @@
 "BaseIntrinsics": [
 ""
 ],
+"FormIntrinsicSlot": -1,
 "Relearnables": {},
 "Discriminator": 0,
 "MetAt": "",
@@ -22759,8 +22765,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 216,
-"Y": 136,
+"X": 217,
+"Y": 127,
 "Width": 16,
 "Height": 16
 }
@@ -22772,6 +22778,7 @@
 "EntName": "Butterfree",
 "EntEnabled": true,
 "EntOrder": 0,
+"InteractOrder": 0,
 "serializationLoc": {
 "X": 184,
 "Y": 175
@@ -22823,6 +22830,7 @@
 "BaseIntrinsics": [
 ""
 ],
+"FormIntrinsicSlot": -1,
 "Relearnables": {},
 "Discriminator": 0,
 "MetAt": "",
@@ -22866,6 +22874,7 @@
 "EntName": "Metapod",
 "EntEnabled": true,
 "EntOrder": 0,
+"InteractOrder": 0,
 "serializationLoc": {
 "X": 166,
 "Y": 115
@@ -22917,6 +22926,7 @@
 "BaseIntrinsics": [
 ""
 ],
+"FormIntrinsicSlot": -1,
 "Relearnables": {},
 "Discriminator": 0,
 "MetAt": "",
@@ -22947,8 +22957,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 168,
-"Y": 117,
+"X": 166,
+"Y": 115,
 "Width": 16,
 "Height": 16
 }
@@ -22960,6 +22970,7 @@
 "EntName": "Kakuna",
 "EntEnabled": true,
 "EntOrder": 0,
+"InteractOrder": 0,
 "serializationLoc": {
 "X": 201,
 "Y": 117
@@ -23011,6 +23022,7 @@
 "BaseIntrinsics": [
 ""
 ],
+"FormIntrinsicSlot": -1,
 "Relearnables": {},
 "Discriminator": 0,
 "MetAt": "",
@@ -23041,8 +23053,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 197,
-"Y": 118,
+"X": 201,
+"Y": 117,
 "Width": 16,
 "Height": 16
 }
@@ -23054,6 +23066,7 @@
 "EntName": "Catering",
 "EntEnabled": true,
 "EntOrder": 0,
+"InteractOrder": 0,
 "serializationLoc": {
 "X": 76,
 "Y": 293
@@ -23105,6 +23118,7 @@
 "BaseIntrinsics": [
 ""
 ],
+"FormIntrinsicSlot": -1,
 "Relearnables": {},
 "Discriminator": 0,
 "MetAt": "",
@@ -23148,6 +23162,7 @@
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
+"InteractOrder": 0,
 "triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
@@ -23232,6 +23247,7 @@
 "BaseIntrinsics": [
 ""
 ],
+"FormIntrinsicSlot": -1,
 "Relearnables": {},
 "Discriminator": 0,
 "MetAt": "",
@@ -23264,6 +23280,7 @@
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
+"InteractOrder": 0,
 "triggerType": 0,
 "EntityCallbacks": [],
 "Collider": {
@@ -23280,6 +23297,7 @@
 "Direction": 6,
 "EntEnabled": true,
 "EntOrder": 0,
+"InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
 "X": 32,

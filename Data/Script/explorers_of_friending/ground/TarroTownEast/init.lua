@@ -20,7 +20,7 @@ function TarroTownEast.Init(map)
   local partner = CH('Teammate1')
   local azura = CH("Teammate1")
   local tango = CH("Tango")
-  GROUND:Hide("Mr. Seed")
+  GROUND:Hide("MrSeed")
   if outside_enter == 1 and SV.tarro_town.PieChapter <= 2 then
     GROUND:TeleportTo(partner, 355, 401, Direction.Down, 0)
     GAME:FadeIn(20)
@@ -32,8 +32,10 @@ function TarroTownEast.Init(map)
       end
   elseif SV.tarro_town.PieChapter == 4 then
     GROUND:TeleportTo(tango, 476, 279, Direction.UpLeft, 0)
-    GROUND:Unhide("Mr. Seed")
-    GROUND:TeleportTo(azura, 244, 96, Direction.Down, 0)
+    GROUND:Unhide("MrSeed")
+    if outside_enter == 4 then
+      GROUND:TeleportTo(azura, 244, 96, Direction.Down, 0)
+    end
   end
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   partner.CollisionDisabled = true
@@ -87,6 +89,41 @@ function TarroTownEast.Update(map)
       UI:SetSpeaker(maru)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("We got this, I'm sure.")
+    elseif SV.tarro_town.PieChapter <= 5 then
+      UI:SetSpeaker(azura)
+      GROUND:CharTurnToCharAnimated(maru, azura, 4)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowTimedDialogue("...", 75)
+
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowTimedDialogue("...", 75)
+
+      UI:SetSpeaker(azura)
+      GROUND:CharTurnToCharAnimated(azura, maru, 4)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Say, Maru...?")
+
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Mhm?")
+
+      UI:SetSpeaker(azura)
+      GROUND:CharTurnToCharAnimated(azura, maru, 4)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Why are we just[pause=10] S[emote=Shouting]TANDING HERE[pause=15] WHEN WE CAN GET OUR PIE?!")
+
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Stunned")
+      UI:WaitShowDialogue("T-[pause=25]to relax? [emote=Determined]We just went through a dungeon!")
+
+      UI:SetSpeaker(azura)
+      UI:SetSpeakerEmotion("Determined")
+      UI:WaitShowDialogue("[speed=0.05]...f[speed=1.0][emote=Happy]air enough.")
+
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Special1")
+      UI:WaitShowDialogue("(Ugh...)")
     else
       UI:SetSpeaker(maru)
       UI:SetSpeakerEmotion("Happy")
@@ -152,10 +189,10 @@ function TarroTownEast.TarroForrestFailed()
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("Next time,[pause=68] y[emote=Determined]ou got this!")
 
-  GROUND:MoveToPosition(senna, 52, 100, false, 2)
+  GROUND:MoveToPosition(senna, 52, 100, false, 3)
   GROUND:MoveToPosition(senna, 52, 246, false, 2)
   GAME:CutsceneMode(false)
-  GROUND:MoveToPosition(senna, 7, 246, false, 2)
+  GROUND:MoveToPosition(senna, 7, 246, false, 4)
 end
 
 ---TarroTownEast.GameSave(map)
@@ -240,10 +277,10 @@ function TarroTownEast.Ziggy_Action(obj, activator)
   local ziggy = CH("Ziggy")
   if SV.tarro_town.PieChapter <= 2 then
     AI:DisableCharacterAI(azura)
-    GROUND:MoveToPosition(maru, 460, 422, false, 2)
-    GROUND:MoveToPosition(azura, 460, 400, false, 2)
-    GROUND:CharTurnToCharAnimated(maru, ziggy, 4)
-    GROUND:CharAnimateTurn(azura, Direction.Right, 4, true)
+    GROUND:MoveToPosition(maru, 460, 422, false, 8)
+    GROUND:MoveToPosition(azura, 460, 400, false, 8)
+    GROUND:CharTurnToCharAnimated(maru, ziggy, 8)
+    GROUND:CharAnimateTurn(azura, Direction.Right, 7, true)
     if senna_check_ziggy == 1 then
       UI:SetSpeaker(azura)
       UI:SetSpeakerEmotion("Happy")
@@ -276,21 +313,21 @@ function TarroTownEast.Ziggy_Action(obj, activator)
       UI:WaitShowDialogue("What are you doing in front of your house?")
 
       UI:SetSpeaker(ziggy)
-      UI:WaitShowTimedDialogue("[speed=0.8]Okay, [pause=20]so I woke up this morning and \nthere was a surprising lack of Oran berries!", 45)
+      UI:WaitShowTimedDialogue("[speed=0.8]Okay, [pause=20]so I woke up this morning and \nthere was a surprising lack of Oran berries!", 25)
       UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowTimedDialogue("[speed=1.2]So, I asked my mom what happened to \nthem and she said that I probably ate them all and forgot.", 45)
+      UI:WaitShowTimedDialogue("[speed=1.2]So, I asked my mom what happened to \nthem and she said that I probably ate them all and forgot.", 35)
       UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowTimedDialogue("I couldn't ask my dad because he was \nbusy with whatever he was busy with...", 40)
-      UI:WaitShowTimedDialogue("...but he didn't look like he was doing \nanything...", 40)
+      UI:WaitShowTimedDialogue("I couldn't ask my dad because he was \nbusy with whatever he was busy with...", 30)
+      UI:WaitShowTimedDialogue("...but he didn't look like he was doing \nanything...", 30)
       UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowTimedDialogue("...and he turned around all startled with \na strange amount of berry juice around his face.", 30)
+      UI:WaitShowTimedDialogue("...and he turned around all startled with \na strange amount of berry juice around his face.", 20)
       UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowTimedDialogue("[speed=1.6]The juice also matched the color of the berries and my dad really likes Oran berries...", 30)
-      UI:WaitShowTimedDialogue("...so I'm pretty sure he's the one who \nate all of them.", 30);
+      UI:WaitShowTimedDialogue("[speed=1.9]The juice also matched the color of the berries and my dad really likes Oran berries...", 20)
+      UI:WaitShowTimedDialogue("...so I'm pretty sure he's the one who \nate all of them.", 20);
       UI:SetSpeakerEmotion("Angry")
       UI:WaitShowDialogue("[speed=2.2]But JUST[pause=25] IN[pause=25] CASE[pause=25], whoever decides to steal our berries will FACE[pause=25] MY[pause=25] ZIGGY[pause=25] POWERRRRRRRRR!");
       UI:SetSpeakerEmotion("Sigh")
-      UI:WaitShowDialogue("[speed=1.0]Phew... [pause=55]...[emote=Normal]and stuff like that.");
+      UI:WaitShowDialogue("[speed=1.0]Phew... [pause=50]...[emote=Normal]somethin' like that.");
 
       UI:SetSpeaker(maru)
       UI:SetSpeakerEmotion("Normal")
@@ -313,7 +350,7 @@ end
 function TarroTownEast.Sunny_Action(obj, activator)
   local sunny = CH("Sunny")
   local tango = CH('Tango')
-  local mrseed = CH("Mr. Seed")
+  local mrseed = CH("MrSeed")
   if SV.tarro_town.PieChapter < 4 then
     UI:SetSpeaker(sunny)
     UI:SetSpeakerEmotion("Happy")
@@ -326,7 +363,7 @@ function TarroTownEast.Sunny_Action(obj, activator)
 
     UI:SetSpeaker(sunny)
     UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Well... er... [pause=50][emote=Pain]...[br]I uh...[pause=65][br]...")
+    UI:WaitShowTimedDialogue("Well... er... [pause=50][emote=Pain]...[br]I uh...[pause=65][br]...", 30)
     UI:SetSpeakerEmotion("Determined")
     UI:WaitShowDialogue("I'll find someone!")
   elseif SV.tarro_town.PieChapter == 4 then
@@ -382,6 +419,10 @@ function TarroTownEast.Sunny_Action(obj, activator)
 end
 
 function TarroTownEast.Tango_Action(obj, activator)
+  TarroTownEast.Sunny_Action()
+end
+
+function TarroTownEast.MrSeed_Action(obj, activator)
   TarroTownEast.Sunny_Action()
 end
 
@@ -589,8 +630,8 @@ function TarroTownEast.SennaHomeEntrance_Touch(obj, activator)
   local ziggy = CH("Ziggy")
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Angry")
-  GROUND:CharAnimateTurn(maru, Direction.Right, 10, true)
-  GROUND:CharAnimateTurn(ziggy, Direction.Left, 10, true)
+  GROUND:CharAnimateTurn(maru, Direction.Right, 2, false)
+  GROUND:CharAnimateTurn(ziggy, Direction.Left, 2, false)
   UI:WaitShowDialogue("AHA! YOU'VE BEEN STEALING MY BERRIES![pause=45] E[emote=Worried]r, uh... [pause=20]OUR[emote=Determined] BERRIES!")
 
   UI:SetSpeaker(maru)

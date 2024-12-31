@@ -35,6 +35,7 @@ function TarroTownOutside.Init(map)
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
   local partner = CH('Teammate1')
+  TarroTownOutside.CloudWatch()
   if outside_enter == 1 then
     GROUND:TeleportTo(partner, 27, 379, Direction.Right, 0)
     GAME:FadeIn(20)
@@ -47,7 +48,7 @@ function TarroTownOutside.Init(map)
     GROUND:Hide("Puchi")
   end
 
-  TarroTownOutside.CloudWatch()
+  
   GAME:CutsceneMode(false)
 end
 
@@ -65,6 +66,9 @@ function TarroTownOutside.CloudWatch()
     local maru = CH("PLAYER")
     local azura = CH("Teammate1")
     GAME:CutsceneMode(true)
+    UI:WaitShowTitle("Chapter 0", 180)
+    GAME:WaitFrames(30)
+    UI:WaitHideTitle(180)
 
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
@@ -73,6 +77,40 @@ function TarroTownOutside.CloudWatch()
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Ooh! That one looks like me! Look!")
+
+    UI:WaitShowBG("WalkClouds", 0, 60)
+
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Ooh, really? [speed=0.05]...[pause=45][emote=Worried]u[speed=1.0]h,[pause=45] where[emote=Stunned]?")
+
+    UI:SetSpeaker(azura)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("It's righ-...![pause=70][emote=Worried] Uh, well... it's...")
+
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("Did you already lose it?")
+
+    UI:SetSpeaker(azura)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Yeah...")
+
+    COMMON.FaceEachother("PLAYER", "Teammate1")
+    UI:WaitHideBG(30)
+    GAME:FadeIn(30)
+
+    
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Maybe we should just go,[pause=10] mom promised some pie would be waiting on us by now.")
+
+    UI:SetSpeaker(azura)
+    UI:SetSpeakerEmotion("Inspired")
+    UI:WaitShowDialogue("Gasp![pause=25] P[emote=Joyous]ie[pause=15] pie[pause=15] pie[pause=15] pie!")
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Let's go!")
+
     SV.tarro_town.PieChapter = 0
     local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("AllyInteract")
     _DATA.Save.ActiveTeam.Players[1].ActionEvents:Add(talk_evt)
@@ -147,7 +185,7 @@ function TarroTownOutside.Update(map)
       UI:SetSpeaker(azura)
       GROUND:CharTurnToCharAnimated(maru, azura, 4)
       UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowDialogue("I'd love to watch cloud more, but can we get pie first?")
+      UI:WaitShowDialogue("I'd love to watch clouds more,[pause=15] but can we get pie first?")
       UI:WaitShowDialogue("The Big Apple might spoil!")
     else
       UI:SetSpeaker(azura)
@@ -188,7 +226,6 @@ function TarroTownOutside.TTOutside_WExit_Touch(obj, activator)
   else
     GAME:EnterGroundMap("TarroTownEast_ch2", "TTEast_WEnter")
   end
-  
 end
 
 function TarroTownOutside.TTOutsideSign_Action(obj, activator)

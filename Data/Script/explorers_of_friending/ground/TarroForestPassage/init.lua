@@ -130,8 +130,15 @@ function TarroForestPassage.TFPassage_DungeonExit_Touch(obj, activator)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("O-oh,[pause=15] sorry,[pause=10] I...[pause=25] uh...[emote=Happy][pause=20] forgot,[pause=25] haha...")
   else
-    GAME:FadeOut(false, 20)
-    GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast", "TTEast_TarroTownForest")
+    if SV.tarro_town.PieChapter >= 5 then
+      GAME:FadeOut(false, 20)
+      outside_enter = 4
+      GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch2", "TTEast_TarroTownForest")
+    else
+      GAME:FadeOut(false, 20)
+      outside_enter = 4
+      GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast", "TTEast_TarroTownForest")
+    end
   end
 end
 
@@ -152,7 +159,7 @@ function TarroForestPassage.Buttums_Action(obj, activator)
   UI:WaitShowDialogue("Come back when you're actually experienced. Read the sign.")--]]
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("O-oh,[pause=25] hey... uh...")
-  UI:WaitShowDialogue("This spot isn't...[pause=10] ready yet. But,[pause=25][emote=Happy] hey,[pause=25] at least we got the sign working.")
+  UI:WaitShowDialogue("This spot isn't...[pause=10] ready yet. But, [pause=25]h[emote=Happy]ey,[pause=25] at least we got the sign working.")
 end
 
 function TarroForestPassage.Buttums_1_Action(obj, activator)
