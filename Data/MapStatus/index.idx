@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.5.0",
+"Version": "0.8.8.0",
 "Object": {
 "$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[RogueEssence.Data.EntrySummary, RogueEssence]], System.Private.CoreLib",
 "thunderstorm": {
@@ -14,6 +14,15 @@
 "slumber_pollen": {
 "Name": {
 "DefaultText": "Slumber Pollen",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 0
+},
+"bag_limit": {
+"Name": {
+"DefaultText": "Bag Limit",
 "LocalTexts": {}
 },
 "Released": true,

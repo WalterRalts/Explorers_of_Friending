@@ -321,7 +321,10 @@ function TarroTownTreeBreak.TarroTreeHollows_Continue_Touch(obj, activator)
         print(total)
       end
     end
-    GAME:ContinueDungeon("tarro_tree_hollows", 1, 0, 0)
+  _DATA.Save.ActiveTeam.Players[2]:RefreshTraits()
+  _DATA.Save.ActiveTeam.Players[3]:RefreshTraits()
+  _DATA.Save.ActiveTeam.Players[4]:RefreshTraits()
+  GAME:ContinueDungeon("tarro_tree_hollows", 1, 0, 0)
   else
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Worried")

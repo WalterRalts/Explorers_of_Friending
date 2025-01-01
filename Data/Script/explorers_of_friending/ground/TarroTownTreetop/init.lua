@@ -15,10 +15,316 @@ local TarroTownTreetop = {}
 ---TarroTownTreetop.Init(map)
 --Engine callback function
 function TarroTownTreetop.Init(map)
-
-
+  if SV.tarro_tree_hollows.AmasDefeat == false then
+    TarroTownTreetop.ExploreExplode()
+  else
+    TarroTownTreetop.ExplodeEvade()
+  end
+  
 end
 
+---TarroTownTreetop.Init(map)
+--Engine callback function
+function TarroTownTreetop.ExploreExplode(map)
+  local ama1 = CH("Thing_1")
+  local ama2 = CH("Thing_2")
+  local ama3 = CH("Thing_3")
+  local ama4 = CH("Thing_4")
+  local ama5 = CH("Thing_5")
+  GROUND:Hide("Thing_1")
+  GROUND:Hide("Thing_2")
+  GROUND:Hide("Thing_3")
+  GROUND:Hide("Thing_4")
+  GROUND:Hide("Thing_5")
+  
+  local maru = CH("Maru")
+  local azura = CH('Azura')
+  local puchi = CH("Puchi")
+  local senna = CH("Senna")
+  local ziggy = CH("Ziggy")
+  GAME:FadeOut(false, 20)
+  GAME:CutsceneMode(true)
+  GAME:MoveCameraToChara(0, 0, 0, senna)
+
+  local coroc = TASK:BranchCoroutine(function()
+    GROUND:MoveToPosition(puchi, 49, 251, false, .4)
+    GROUND:CharTurnToCharAnimated(puchi, senna, 2)
+    end)
+  local corod = TASK:BranchCoroutine(function()
+    GROUND:MoveToPosition(senna, 28, 224, false, .4)
+    GROUND:CharTurnToCharAnimated(senna, puchi, 2)
+    end)
+  local coroe = TASK:BranchCoroutine(function()
+    GAME:FadeIn(300, false)
+    end)
+  local coro1 = TASK:BranchCoroutine(function()
+    UI:SetSpeaker(puchi)
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("...and you never realized?")
+
+    UI:SetSpeaker(senna)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Not really.[pause=15] He's a torpedo, and I can't stop him, so he's a bit of a problem...")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("But I'd never know what I'd do without my brother.")
+    end)
+  TASK:JoinCoroutines({coroc, corod, coroe, coro1})
+
+  GROUND:CharTurnToCharAnimated(senna, ziggy, 2)
+  UI:WaitShowDialogue("Speaking of which:[pause=25] did you find anything, Ziggy?")
+  GAME:MoveCamera(185, 135, 25, false)
+
+  local coro20 = TASK:BranchCoroutine(function()
+    UI:SetSpeaker(ziggy)
+    UI:SetSpeakerEmotion("Determined")
+    UI:WaitShowDialogue("You think you're gonna scare me?!")
+    UI:SetSpeakerEmotion("Angry")
+    UI:WaitShowDialogue("Get out of our tree!")
+    end)
+  local coro21 = TASK:BranchCoroutine(function()
+    GROUND:MoveToPosition(maru, 147, 250, true, 1)
+    GROUND:MoveToPosition(maru, 225, 210, true, 3)
+    end)
+  local coro22 = TASK:BranchCoroutine(function()
+    GROUND:MoveToPosition(azura, 201, 320, true, 2)
+    GROUND:MoveToPosition(azura, 200, 250, true, 2)
+    end)
+  TASK:JoinCoroutines({coro20, coro21, coro22})
+
+  local coro02 = TASK:BranchCoroutine(function()
+    GROUND:MoveToPosition(senna, 40, 170, true, 3)
+    GROUND:MoveToPosition(senna, 160, 160, true, 3)
+    end)
+  local coro01 = TASK:BranchCoroutine(function()
+    UI:SetSpeaker(senna)
+    UI:SetSpeakerEmotion("Surprised")
+    UI:WaitShowDialogue("Ziggy! Get away from it!")
+    end)
+
+  TASK:JoinCoroutines({coro01, coro02})
+
+  local coro12 = TASK:BranchCoroutine(function()
+    GROUND:MoveToPosition(puchi, 40, 170, false, 0.6)
+    GROUND:MoveToPosition(puchi, 160 - 42, 160, false, 0.7)
+
+    local emitter1 = RogueEssence.Content.SingleEmitter(RogueEssence.Content.AnimData("Blast_Seed", 3))
+    SOUND:PlayBattleSE("DUN_Explosion")
+    GROUND:Unhide("Thing_1")
+    emitter1.LocHeight = 6
+    GROUND:PlayVFX(emitter1, ama1.Bounds.Center.X, ama1.Bounds.Center.Y)
+
+    GAME:WaitFrames(45)
+    local emitter2 = RogueEssence.Content.SingleEmitter(RogueEssence.Content.AnimData("Blast_Seed", 3))
+    SOUND:PlayBattleSE("DUN_Explosion")
+    GROUND:Unhide("Thing_2")
+    emitter2.LocHeight = 6
+    GROUND:PlayVFX(emitter2, ama2.Bounds.Center.X, ama2.Bounds.Center.Y)
+
+    GAME:WaitFrames(30)
+    local emitter3 = RogueEssence.Content.SingleEmitter(RogueEssence.Content.AnimData("Blast_Seed", 3))
+    SOUND:PlayBattleSE("DUN_Explosion")
+    GROUND:Unhide("Thing_3")
+    emitter3.LocHeight = 6
+    GROUND:PlayVFX(emitter3, ama3.Bounds.Center.X, ama3.Bounds.Center.Y)
+
+    COMMON.FaceEachother("Maru", "Thing_3")
+    COMMON.FaceEachother("Azura", "Thing_4")
+    GAME:WaitFrames(20)
+    local emitter4 = RogueEssence.Content.SingleEmitter(RogueEssence.Content.AnimData("Blast_Seed", 3))
+    SOUND:PlayBattleSE("DUN_Explosion")
+    GROUND:Unhide("Thing_4")
+    emitter4.LocHeight = 6
+    GROUND:PlayVFX(emitter4, ama4.Bounds.Center.X, ama4.Bounds.Center.Y)
+
+    GAME:WaitFrames(20)
+    local emitter5 = RogueEssence.Content.SingleEmitter(RogueEssence.Content.AnimData("Blast_Seed", 3))
+    SOUND:PlayBattleSE("DUN_Explosion")
+    COMMON.FaceEachother("Thing_5", "Puchi")
+    GROUND:Unhide("Thing_5")
+    emitter5.LocHeight = 6
+    GROUND:PlayVFX(emitter5, ama5.Bounds.Center.X, ama5.Bounds.Center.Y)
+
+    GAME:WaitFrames(10)
+    end)
+  local coro11 = TASK:BranchCoroutine(function()
+    COMMON.FaceEachother("Ziggy", "Senna")
+    UI:SetSpeaker(ziggy)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("It hurt the tree, Senna! I need to bring justice!")
+
+    UI:SetSpeaker(senna)
+    UI:SetSpeakerEmotion("Angry")
+    UI:WaitShowDialogue("That thing is gonna hurt you!")
+
+    UI:SetSpeaker(ziggy)
+    UI:SetSpeakerEmotion("Determined")
+    GROUND:CharTurnToCharAnimated(ziggy, CH("Thing"), 3)
+    UI:WaitShowDialogue("It's a little sting that will be worth it to save the tree!")
+
+    UI:SetSpeaker(senna)
+    UI:SetSpeakerEmotion("Angry")
+    UI:WaitShowDialogue("No, I won't let you get hurt!")
+    end)
+
+  TASK:JoinCoroutines({coro11, coro12})
+
+  UI:SetSpeaker(puchi)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("Uh, guys...")
+
+  COMMON.FaceEachother("Ziggy", "Thing_2")
+  COMMON.FaceEachother("Senna", "Thing_5")
+  UI:SetSpeaker(senna)
+  UI:SetSpeakerEmotion("Surprised")
+  UI:WaitShowDialogue("Huh?! Where did they...?!")
+
+  UI:SetSpeaker(ziggy)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Is the tree this desperate to kick us out?! W[emote=Shouting]e're trying to help!")
+
+  GROUND:AddMapStatus("grassy_terrain")
+  GAME:WaitFrames(65)
+
+  UI:SetSpeaker(puchi)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("What...[pause=35] I feel...")
+
+  UI:SetSpeaker(senna)
+  UI:SetSpeakerEmotion("Surprised")
+  UI:WaitShowDialogue("Is this the... the tree?")
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("Could be, but I feel[emote=Determined] ready to win!")
+  SOUND:PlayBGM("Enraged Caldera.ogg", true)
+
+  UI:SetSpeaker(azura)
+  UI:SetSpeakerEmotion("Shouting")
+  UI:WaitShowDialogue("Let's do this!!")
+
+  UI:SetSpeaker(ziggy)
+  UI:SetSpeakerEmotion("Teary-Eyed")
+  UI:WaitShowDialogue("...[color=#01FE10]Big Tree[color]...")
+
+  UI:SetSpeaker(ziggy)
+  UI:SetSpeakerEmotion("Determined")
+  GROUND:CharTurnToCharAnimated(ziggy, CH("Thing"), 3)
+  UI:WaitShowDialogue("...")
+
+  GROUND:CharTurnToCharAnimated(senna, CH("Ziggy"), 3)
+  UI:SetSpeaker(senna)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("(I've never seen Ziggy so focused...!)")
+  UI:SetSpeakerEmotion("Determined")
+  UI:WaitShowDialogue("(I have to help!)")
+
+  COMMON.BossTransition()
+
+  GAME:CutsceneMode(false)
+  GAME:ContinueDungeon("tarro_tree_hollows", 2, 0, 0)
+end
+
+function TarroTownTreetop.ExplodeEvade(map)
+  local maru = CH("Maru")
+  local azura = CH('Azura')
+  local puchi = CH("Puchi")
+  local senna = CH("Senna")
+  local ziggy = CH("Ziggy")
+  leave_the_tree = false
+
+  GROUND:Hide("Thing")
+  GROUND:Hide("Thing_1")
+  GROUND:Hide("Thing_2")
+  GROUND:Hide("Thing_3")
+  GROUND:Hide("Thing_4")
+  GROUND:Hide("Thing_5")
+
+  GROUND:TeleportTo(maru, 230, 180, Direction.Up, 0)
+  GROUND:TeleportTo(azura, 200, 200, Direction.Up, 0)
+  GROUND:TeleportTo(puchi, 130, 185, Direction.Right, 0)
+  GROUND:TeleportTo(senna, 150, 150, Direction.UpRight, 0)
+
+  GAME:RemovePlayerTeam(2)
+  GAME:RemovePlayerTeam(2)
+  GAME:RemovePlayerTeam(2)
+
+  GROUND:CharSetAnim(senna, "Charge", true)
+
+  GAME:FadeIn(40)
+
+  UI:SetSpeaker(ziggy)
+  UI:SetSpeakerEmotion("Joyous")
+  UI:WaitShowDialogue("Alright!")
+
+  COMMON.FaceEachother("Ziggy", "Maru")
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Special1")
+  UI:WaitShowDialogue("Geez, that was tiring!")
+
+  UI:SetSpeaker(azura)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Can we go home now?")
+
+  UI:SetSpeaker(ziggy)
+  UI:SetSpeakerEmotion("Joyous")
+  UI:WaitShowDialogue("I can take on more, g[emote=Determined]ive me all you got![emote=Angry] Summon mooooooore!")
+
+  UI:SetSpeaker(puchi)
+  UI:SetSpeakerEmotion("Pain")
+  UI:WaitShowDialogue("[speed=0.4]No more... let me sleep... please...!")
+  GAME:WaitFrames(20)
+
+  GROUND:CharTurnToCharAnimated(ziggy, senna, 3)
+  
+  UI:SetSpeaker(ziggy)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Um,[pause=15] Sensen,[pause=25] the battle is over...")
+
+
+  UI:SetSpeaker(senna)
+  UI:SetSpeakerEmotion("Teary-Eyed")
+  UI:WaitShowDialogue("[speed=0.3]I...[pause=30] I did it...")
+
+  local coro12 = TASK:BranchCoroutine(function()
+    repeat
+      GROUND:TeleportTo(senna, senna.Position.X + 2, senna.Position.Y + 2, Direction.UpRight, 0)
+      GROUND:TeleportTo(senna, senna.Position.X - 2, senna.Position.Y - 2, Direction.UpRight, 0)
+    until leave_the_tree == true
+    end)
+  local coro11 = TASK:BranchCoroutine(function()
+    GROUND:CharSetAnim(senna, "None", true)
+    UI:SetSpeaker(senna)
+    UI:SetSpeakerEmotion("Teary-Eyed")
+    UI:WaitShowDialogue("[speed=0.3]I helped...[pause=30] save the tree...")
+
+    UI:SetSpeaker(azura)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Yeah, ya did!")
+
+    UI:SetSpeaker(puchi)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("You'll be okay Senna.")
+
+    UI:SetSpeaker(senna)
+    UI:SetSpeakerEmotion("Teary-Eyed")
+    UI:WaitShowTimedDialogue("...")
+
+    leave_the_tree = true
+    GAME:WaitFrames(70)
+
+    end)
+
+  TASK:JoinCoroutines({coro11, coro12})
+
+  UI:SetSpeaker(senna)
+  UI:SetSpeakerEmotion("Crying")
+  GROUND:CharSetEmote(senna, "sweating", 50)
+  UI:WaitShowTimedDialogue("[speed=0.7]Waaaaaaaa![pause=55] I'm so...[pause=15] sooooorry![pause=45]", 45)
+
+  GAME:FadeOut(false, 90)
+  
+end
 ---TarroTownTreetop.Enter(map)
 --Engine callback function
 function TarroTownTreetop.Enter(map)

@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.7.0",
+"Version": "0.8.8.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -185513,7 +185513,7 @@
 }
 ],
 "AssetName": "TarroTownSquare",
-"Music": "B04. Tropical Path.ogg",
+"Music": "Tropical Path.ogg",
 "EdgeView": 1,
 "NoSwitching": false,
 "ViewCenter": null,

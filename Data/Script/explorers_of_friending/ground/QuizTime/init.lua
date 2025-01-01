@@ -244,7 +244,7 @@ function QuizTime.Init(map)
 
                     UI:SetSpeaker(ziggy)
                     UI:SetSpeakerEmotion("Worried")
-                    UI:WaitShowDialogue("There's a shop to the right that literally just opened,[pause=23] like,[pause=23] yesterday.[pause=23] but[emote=Happy] it counts!")
+                    UI:WaitShowDialogue("There's a shop to the right that literally just opened,[pause=23] like,[pause=23] yesterday,[pause=23] but[emote=Happy] it counts!")
                     UI:SetSpeakerEmotion("Joyous")
                     UI:WaitShowTimedDialogue("That mean I wiiiiii-!")
                     SV.tarro_town.PieChapter = 7

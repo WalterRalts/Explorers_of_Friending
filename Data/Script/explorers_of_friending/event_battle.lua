@@ -714,9 +714,8 @@ function BATTLE_SCRIPT.PuchiInteract(owner, ownerChar, context, args)
   UI:SetSpeaker(context.Target)
   
   local ratio = context.Target.HP * 100 // context.Target.MaxHP
-  local current_dungeon = DUNGEON:DungeonDisplayName()
   local say_choice = math.random(4)
-  if current_dungeon == "Tarro Tree Hallows" then
+  if SV.tarro_town.PieChapter == 7 or SV.tarro_town.PieChapter == 8 then
     if context.Target:GetStatusEffect("sleep") == nil then
       if ratio <= 25 then
         if say_choice <= 3 then
@@ -749,13 +748,13 @@ function BATTLE_SCRIPT.PuchiInteract(owner, ownerChar, context, args)
         end
       end
     end
-  elseif SV.tarro_town.PieChapter == 8 then
+  elseif SV.tarro_town.PieChapter == 9 then
     if context.Target:GetStatusEffect("sleep") == nil then
       if ratio <= 25 then
         if say_choice <= 3 then
           UI:SetSpeaker(context.Target)
           UI:SetSpeakerEmotion("Pain")
-          UI:WaitShowDialogue("[speed=0.4]No... I[pause=30][speed=1.0] refuse[emote=Determined] to lose here!")
+          UI:WaitShowDialogue("[speed=0.4]No... I[pause=30][speed=1.0] can't[emote=Determined] lose here!")
         elseif say_choice == 4 then
           UI:SetSpeakerEmotion("Determined")
           UI:WaitShowDialogue("[speed=1.0]Hey, [color=#01FE10]Big Tree[color]![pause=55] [emote=Happy]We can do it,[pause=15] we promise!")
@@ -798,10 +797,9 @@ function BATTLE_SCRIPT.SennaInteract(owner, ownerChar, context, args)
   DUNGEON:CharTurnToChar(context.Target, context.User)
   
   UI:SetSpeaker(context.Target)
-  local current_dungeon = DUNGEON:DungeonDisplayName()
   local ratio = context.Target.HP * 100 // context.Target.MaxHP
   local say_choice = math.random(3)
-  if current_dungeon == "Tarro Tree Hallows" then
+  if SV.tarro_town.PieChapter == 7 or SV.tarro_town.PieChapter == 8 then
     if ratio <= 25 then
       if say_choice <= 2 then
         UI:SetSpeakerEmotion("Pain")
@@ -829,7 +827,7 @@ function BATTLE_SCRIPT.SennaInteract(owner, ownerChar, context, args)
         UI:WaitShowDialogue("I wish I practiced before this.[pause=0] S[emote=Stunned]omething about that thing is still scaring me...")
       end
     end
-  elseif SV.tarro_town.PieChapter == 8 then
+  elseif SV.tarro_town.PieChapter == 9 then
     if ratio <= 25 then
       if say_choice <= 2 then
         UI:SetSpeakerEmotion("Pain")
@@ -866,8 +864,6 @@ function BATTLE_SCRIPT.SennaInteract(owner, ownerChar, context, args)
   context.Target.CharDir = oldDir
 end
 
---special Halcyon interact script for the hero
---very simplified version of partner script, only dialogue possible is "(.........)"
 function BATTLE_SCRIPT.ZiggyInteract(owner, ownerChar, context, args)
 	context.CancelState.Cancel = true
   local tbl = LTBL(context.Target)
@@ -882,56 +878,109 @@ function BATTLE_SCRIPT.ZiggyInteract(owner, ownerChar, context, args)
   
   local ratio = context.Target.HP * 100 // context.Target.MaxHP
   local say_choice = math.random(4)
-  if ratio <= 25 then
-    if say_choice <= 3 then
-      UI:SetSpeakerEmotion("Stunned")
-      UI:WaitShowDialogue("Okay...[pause=40] maybe this isn't so fun[emote=Pain]...!")
-    elseif say_choice == 4 then
-      UI:SetSpeakerEmotion("Teary-Eyed")
-      UI:WaitShowDialogue("I'm sorry, [color=#01FE10]Tarro Tree[color]![pause=55] [emote=Pain]...maybe we can rescue you after...!")
-    end
-  elseif ratio <= 50 then
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("I like a good challenge.")
-  else
-    if say_choice == 1 then
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("Let go beat that thing up![pause=30] W[emote=Joyous]hoo!")
-    elseif say_choice == 2 then
-      UI:SetSpeakerEmotion("Determined")
-      UI:WaitShowDialogue("Whatever that thing was doesn't matter! Let's go let's go let's go!!")
-    elseif say_choice <= 4 then
-      UI:SetSpeakerEmotion("Joyous")
-      UI:WaitShowDialogue("I finally get to explore with you guys!")
-      local concern_mon = math.random(4)
-      local mon_define = _DATA.Save.ActiveTeam.Players[concern_mon - 1]
-
-      if concern_mon == 1 then
-        UI:SetSpeaker(mon_define)
-        DUNGEON:CharTurnToChar(context.Target, mon_define)
-        DUNGEON:CharTurnToChar(mon_define, context.Target)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("Yeah, that's so co-[speed=0.1]..[emote=Worried].[speed=1.0][pause=70] W[emote=Surprised]AIT![pause=20] We have[emote=Determined] to save the tree, Ziggy!")
-      elseif concern_mon == 2 then
-        UI:SetSpeaker(mon_define)
-        DUNGEON:CharTurnToChar(context.Target, mon_define)
-        DUNGEON:CharTurnToChar(mon_define, context.Target)
-        UI:SetSpeakerEmotion("Joyous")
-        UI:WaitShowDialogue("Yeah! This is fun!")
-      elseif concern_mon == 3 then
-        UI:SetSpeaker(mon_define)
-        DUNGEON:CharTurnToChar(context.Target, mon_define)
-        DUNGEON:CharTurnToChar(mon_define, context.Target)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("S-[pause=15]so fun...![pause=35] So...[pause=32] s[emote=Pain]o fun...")
-      elseif concern_mon == 4 then
-        UI:SetSpeaker(mon_define)
-        DUNGEON:CharTurnToChar(context.Target, mon_define)
-        DUNGEON:CharTurnToChar(mon_define, context.Target)
+  if SV.tarro_town.PieChapter == 7 or SV.tarro_town.PieChapter == 8 then
+    if ratio <= 25 then
+      if say_choice <= 3 then
         UI:SetSpeakerEmotion("Stunned")
-        UI:WaitShowDialogue("Ziggy, I don't think that's our greatest concern right now...")
+        UI:WaitShowDialogue("Okay...[pause=40] maybe this isn't so fun[emote=Pain]...!")
+      elseif say_choice == 4 then
+        UI:SetSpeakerEmotion("Teary-Eyed")
+        UI:WaitShowDialogue("I'm sorry, [color=#01FE10]Tarro Tree[color]![pause=55] [emote=Pain]...maybe we can rescue you after...!")
       end
-      
+    elseif ratio <= 50 then
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("I like a good challenge.")
+    else
+      if say_choice == 1 then
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Let go beat that thing up![pause=30] W[emote=Joyous]hoo!")
+      elseif say_choice == 2 then
+        UI:SetSpeakerEmotion("Determined")
+        UI:WaitShowDialogue("Whatever that thing was doesn't matter! Let's go let's go let's go!!")
+      elseif say_choice <= 4 then
+        UI:SetSpeakerEmotion("Joyous")
+        UI:WaitShowDialogue("I finally get to explore with you guys!")
+        local concern_mon = math.random(4)
+        local mon_define = _DATA.Save.ActiveTeam.Players[concern_mon - 1]
+  
+        if concern_mon == 1 then
+          UI:SetSpeaker(mon_define)
+          DUNGEON:CharTurnToChar(context.Target, mon_define)
+          DUNGEON:CharTurnToChar(mon_define, context.Target)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("Yeah, that's so co-[speed=0.1]..[emote=Worried].[speed=1.0][pause=70] W[emote=Surprised]AIT![pause=20] We have[emote=Determined] to save the tree, Ziggy!")
+        elseif concern_mon == 2 then
+          UI:SetSpeaker(mon_define)
+          DUNGEON:CharTurnToChar(context.Target, mon_define)
+          DUNGEON:CharTurnToChar(mon_define, context.Target)
+          UI:SetSpeakerEmotion("Joyous")
+          UI:WaitShowDialogue("Yeah! This is fun!")
+        elseif concern_mon == 3 then
+          UI:SetSpeaker(mon_define)
+          DUNGEON:CharTurnToChar(context.Target, mon_define)
+          DUNGEON:CharTurnToChar(mon_define, context.Target)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("S-[pause=15]so fun...![pause=35] So...[pause=32] s[emote=Pain]o fun...")
+        elseif concern_mon == 4 then
+          UI:SetSpeaker(mon_define)
+          DUNGEON:CharTurnToChar(context.Target, mon_define)
+          DUNGEON:CharTurnToChar(mon_define, context.Target)
+          UI:SetSpeakerEmotion("Stunned")
+          UI:WaitShowDialogue("Ziggy, I don't think that's our greatest concern right now...")
+        end
+      end
+    end
+  else
+    if ratio <= 25 then
+      if say_choice <= 3 then
+        UI:SetSpeakerEmotion("Pain")
+        UI:WaitShowDialogue("No...[pause=35] no, I can't fall! Not now!")
+      elseif say_choice == 4 then
+        UI:SetSpeakerEmotion("Teary-Eyed")
+        UI:WaitShowDialogue("[color=#01FE10]Tarro Tree[color]![pause=55] [emote=Pain]You are going to be freed from this!")
+      end
+    elseif ratio <= 50 then
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("I like a challenge good...[pause=30] u[emote=Worried]h... wait...")
+    else
+      if say_choice == 1 then
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("We got this, right, I'm sure we do. This is gonna be fun!")
+      elseif say_choice == 2 then
+        UI:SetSpeakerEmotion("Determined")
+        UI:WaitShowDialogue("Whatever these things are doesn't matter! Let's go let's go let's go!!")
+      elseif say_choice <= 4 then
+        UI:SetSpeakerEmotion("Joyous")
+        UI:WaitShowDialogue("You guys still holding up well?!")
+        local concern_mon = math.random(4)
+        local mon_define = _DATA.Save.ActiveTeam.Players[concern_mon - 1]
+  
+        if concern_mon == 1 then
+          UI:SetSpeaker(mon_define)
+          DUNGEON:CharTurnToChar(context.Target, mon_define)
+          DUNGEON:CharTurnToChar(mon_define, context.Target)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("I'm doing fine![pause=20] Let's[emote=Determined] save the tree!")
+        elseif concern_mon == 2 then
+          UI:SetSpeaker(mon_define)
+          DUNGEON:CharTurnToChar(context.Target, mon_define)
+          DUNGEON:CharTurnToChar(mon_define, context.Target)
+          UI:SetSpeakerEmotion("Shouting")
+          UI:WaitShowDialogue("Raaaaaaaah!")
+        elseif concern_mon == 3 then
+          UI:SetSpeaker(mon_define)
+          DUNGEON:CharTurnToChar(context.Target, mon_define)
+          DUNGEON:CharTurnToChar(mon_define, context.Target)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("I-... I'm holding up! Heh... haha[emote=Worried]...")
+        elseif concern_mon == 4 then
+          UI:SetSpeaker(mon_define)
+          DUNGEON:CharTurnToChar(context.Target, mon_define)
+          DUNGEON:CharTurnToChar(mon_define, context.Target)
+          UI:SetSpeakerEmotion("Stunned")
+          UI:WaitShowDialogue("I'm still a little tired,[pause=35] but I[emote=Happy] can do it.")
+        end
+      end
     end
   end
 end

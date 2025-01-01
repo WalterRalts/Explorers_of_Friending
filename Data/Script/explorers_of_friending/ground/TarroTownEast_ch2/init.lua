@@ -38,14 +38,13 @@ function TarroTownEast_ch2.Init(map)
   end
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   partner.CollisionDisabled = true
-
-  
+  SleepingPuchi = false
 end
 
 ---TarroTownEast_ch2.Enter(map)
 --Engine callback function
 function TarroTownEast_ch2.Enter(map)
-  SleepingPuchi = false
+  
   GAME:FadeIn(20)
   
 end
@@ -149,52 +148,9 @@ end
 function TarroTownEast_ch2.Sunny_Action(obj, activator)
   local sunny = CH("Sunny")
   local tango = CH('Tango')
-  local mrseed = CH("Mr. Seed")
+  local mrseed = CH("MrSeed")
   local cherry = CH("Cherry")
   if SV.tarro_town.PieChapter == 5 then
-    UI:SetSpeaker(sunny)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Alright, class!")
-    GROUND:CharTurnToCharAnimated(sunny, cherry, 4)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("In order to properly synthesize,[pause=25] you must learn to naturally absorb the sun!")
-    GROUND:CharTurnToCharAnimated(sunny, mrseed, 4)
-    UI:WaitShowDialogue("Ready?")
-    GROUND:CharTurnToCharAnimated(sunny, tango, 4)
-
-    GROUND:CharSetAnim(sunny, "Charge", true)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("[speed=0.4]Inhale, [pause=25][speed=1.0]and feel the sun through your pores...")
-    
-    UI:SetSpeaker(cherry)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Hey, Ms. Teacher?")
-    GROUND:CharTurnToCharAnimated(tango, cherry, 4)
-    GROUND:CharTurnToCharAnimated(sunny, cherry, 4)
-    UI:SetSpeaker(cherry)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("When's the part where we shoot big[emote=Happy] fire lasers?")
-
-    GROUND:CharSetAnim(sunny, "None", true)
-    UI:SetSpeaker(sunny)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("That's[pause=23] irrelevant right now, Cherry.")
-
-    UI:SetSpeaker(tango)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Heh.")
-
-    UI:SetSpeaker(sunny)
-    UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowDialogue("Tango, shush!")
-    
-    GROUND:CharSetAnim(sunny, "Idle", true)
-    GROUND:CharTurnToCharAnimated(tango, sunny, 4)
-    GROUND:CharTurnToCharAnimated(sunny, tango, 4)
-    UI:SetSpeaker(tango)
-    UI:SetSpeakerEmotion("Joyous")
-    UI:WaitShowDialogue("Haaahahahahaha!")
-  else
     UI:SetSpeaker(sunny)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Alright, class!")
@@ -226,19 +182,86 @@ function TarroTownEast_ch2.Sunny_Action(obj, activator)
     UI:SetSpeaker(tango)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Heh.")
-    
+
+    GROUND:CharSetAnim(sunny, "Idle", true)
     GROUND:CharTurnToCharAnimated(tango, sunny, 4)
     GROUND:CharTurnToCharAnimated(sunny, tango, 4)
     UI:SetSpeaker(sunny)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("Tango, shush!")
     
-    GROUND:CharSetAnim(sunny, "Idle", true)
+    
     UI:SetSpeaker(tango)
     UI:SetSpeakerEmotion("Joyous")
     UI:WaitShowDialogue("Hehehehahaha!")
-  end
+  else
+    UI:SetSpeaker(sunny)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Are you aware of the flowers that grow around us, class?")
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("You can really learn a lot from them.")
+
+    UI:SetSpeaker(tango)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Really...?")
+
+    UI:SetSpeaker(sunny)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Just listen closely, you can hear them speak through the breeze!")
+
+    GROUND:CharAnimateTurn(cherry, Direction.Right, 4, false)
+    GAME:WaitFrames(12)
+    local coro01 = TASK:BranchCoroutine(function() 
+      GROUND:CharAnimateTurn(mrseed, Direction.DownRight, 4, false)
+      end)	
+    local coro02 = TASK:BranchCoroutine(function() 
+      GROUND:CharAnimateTurn(tango, Direction.Down, 4, false)
+      end)
   
+    TASK:JoinCoroutines({coro01, coro02})
+    GAME:WaitFrames(95)
+    
+
+    UI:SetSpeaker(mrseed)
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("Nope.")
+
+    local function sunnycrying()
+      GROUND:CharTurnToCharAnimated(cherry, sunny, 4)
+      GROUND:CharSetAnim(sunny, "None", true)
+      print("Start")
+    end
+    
+    local coro1 = TASK:BranchCoroutine(function()
+      GAME:WaitFrames(10)
+      GROUND:CharTurnToCharAnimated(tango, sunny, 3)
+      GROUND:CharTurnToCharAnimated(mrseed, sunny, 4)
+      GAME:WaitFrames(30)
+      COMMON.CharSweatdrop("Tango")
+      end)	
+    local coro2 = TASK:BranchCoroutine(function() 
+      UI:SetSpeaker(cherry)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Yeah, I'm just hearing the wind[script=0] fl-...[pause=50][emote=Worried]", { sunnycrying })
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("Hey, teach,[pause=45] y[emote=Stunned]ou okay?")
+      end)
+  
+    TASK:JoinCoroutines({coro1, coro2})
+
+    UI:SetSpeaker(tango)
+    UI:SetSpeakerEmotion("Sigh")
+    UI:WaitShowDialogue("Oh no...")
+
+    UI:SetSpeaker(sunny)
+    UI:SetSpeakerEmotion("Teary-Eyed")
+    UI:WaitShowDialogue("[speed=0.6]Their story... just...[pause=35]*sniffle*...[pause=40] so beautiful...!")
+
+    GROUND:CharSetEmote(sunny, "sweating", 1)
+    UI:SetSpeakerEmotion("Crying")
+    UI:WaitShowDialogue("Waaaaaa!")
+    GROUND:CharSetAnim(sunny, "Idle", true)
+  end
 end
 
 function TarroTownEast_ch2.Tango_Action(obj, activator)
@@ -246,6 +269,10 @@ function TarroTownEast_ch2.Tango_Action(obj, activator)
 end
 
 function TarroTownEast_ch2.Cherry_Action(obj, activator)
+  TarroTownEast_ch2.Sunny_Action()
+end
+
+function TarroTownEast_ch2.MrSeed_Action(obj, activator)
   TarroTownEast_ch2.Sunny_Action()
 end
 
@@ -318,10 +345,13 @@ function TarroTownEast_ch2.Senna_Action(obj, activator)
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("[speed=0.6]Uhh...?")
 
+  local function ziggyturn()
+    GROUND:CharTurnToCharAnimated(ziggy, maru, 4)
+  end
+
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Determined")
-  GROUND:CharTurnToCharAnimated(ziggy, maru, 4)
-  UI:WaitShowDialogue("Ugh![pause=35] Mar, help! She's being insecure again!")
+  UI:WaitShowDialogue("Ugh![pause=35][script=0] Mar, help! She's being insecure again!", { ziggyturn })
   local function sennacharge()
     GROUND:CharSetAnim(senna, "Charge", true)
   end

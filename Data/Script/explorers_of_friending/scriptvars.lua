@@ -92,7 +92,8 @@ SV.tarro_town =
   PieChapter = -1,
   DarknessChapter = 0,
   spent_dungpoints = 0,
-  puchi_tired = true
+  puchi_tired = true,
+  bag_size = 5
 }
 --- Dungeons
 SV.tarro_forest = 
@@ -115,6 +116,7 @@ SV.tarro_tree_hollows =
   dungpoints = 0,
   sprout_money_give = false,
   stairs_unlocked = false,
-  entering_party = 0
+  entering_party = 0,
+  AmasDefeat = false
 }
 ----------------------------------------------

@@ -358,7 +358,7 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Hello, Azura.[pause=35] Hello, Maru.")
     UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("[speed=0.4]...s[speed=1.0]trange,[pause=0] I'd expect a bunch of crumbs on your face by now...")
+    UI:WaitShowDialogue("[speed=0.2]...s[speed=1.0]trange,[pause=0] I'd expect a bunch of crumbs on your face by now...")
 
     UI:SetSpeaker(azura)
     GROUND:CharTurnToCharAnimated(maru, azura, 4)

@@ -61,8 +61,10 @@ function TarroForestPassage.Update(map)
   if GAME:IsKeyDown(66) then
     UI:SetSpeaker(azura)
     GROUND:CharTurnToCharAnimated(maru, azura, 4)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("That wasn't so scary, actually.")
     UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("...how do we get out?[pause=40] Maybe a clue?")
+    UI:WaitShowDialogue("Kinda wanna go back home now, though...")
   end
   
 end

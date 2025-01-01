@@ -17,7 +17,8 @@ local tarro_tree_hollows = {}
 ---tarro_tree_hollows.Init(zone)
 --Engine callback function
 function tarro_tree_hollows.Init(zone)
-    
+  SV.tarro_town.bag_size = 10
+  tarro_tree_fail = false
 end
 
 ---tarro_tree_hollows.EnterSegment(zone, rescuing, segmentID, mapID)
@@ -32,21 +33,48 @@ end
 function tarro_tree_hollows.ExitSegment(zone, result, rescue, segmentID, mapID)
   if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
     if segmentID == 0 then
-      SV.tarro_town.PieChapter = 8
-      GAME:EnterZone("tarro_town", -1, 3, 0)
+      tarro_tree_fail = true
+      GAME:EnterZone("tarro_town", -1, 1, 0)
+    elseif segmentID == 1 then
+      tarro_tree_fail = true
+      GAME:RemovePlayerTeam(2)
+      GAME:RemovePlayerTeam(2)
+      GAME:RemovePlayerTeam(2)
+      COMMON.EndDungeonDay(result, "tarro_tree_hollows", -1, 0, 0)
     end
   else
-    if segmentID == 0 then
-      SV.tarro_tree_hollows.entering_party = GAME:GetPlayerPartyTable()
-      if SV.tarro_town.PieChapter == 7 then
-        GAME:RemovePlayerTeam(2)
-        GAME:RemovePlayerTeam(2)
-        GAME:RemovePlayerTeam(2)
-        SV.tarro_town.PieChapter = 8
+    if SV.tarro_tree_hollows.AmasDefeat == false then
+      if segmentID == 0 then
+        SV.tarro_tree_hollows.entering_party = GAME:GetPlayerPartyTable()
+        if SV.tarro_town.PieChapter == 7 then
+          GAME:RemovePlayerTeam(2)
+          GAME:RemovePlayerTeam(2)
+          GAME:RemovePlayerTeam(2)
+          SV.tarro_town.PieChapter = 8
+        end
+        GAME:EnterZone("tarro_tree_hollows", -1, 0, 0)
+      elseif segmentID == 1 then
+        SV.tarro_town.PieChapter = 9
+        GAME:EnterZone("tarro_tree_hollows", -1, 1, 0)
+      else
+        SV.tarro_town.PieChapter = 10
+        SV.tarro_tree_hollows.dungpoints = SV.tarro_tree_hollows.dungpoints + 200
+        SV.tarro_tree_hollows.AmasDefeat = true
+        GAME:EndDungeonRun(result, "tarro_tree_hollows", -1, 1, 0, false, true)
+        GAME:EnterZone("tarro_tree_hollows", -1, 1, 0)
       end
-      GAME:EnterZone("tarro_tree_hollows", -1, 0, 0)
     else
-      GAME:EndDungeonRun(result, "tarro_tree_hollows", -1, 0, 0, false, true)
+      if segmentID == 0 then
+        SV.tarro_tree_hollows.entering_party = GAME:GetPlayerPartyTable()
+        GAME:RemovePlayerTeam(2)
+        GAME:RemovePlayerTeam(2)
+        GAME:RemovePlayerTeam(2)
+        GAME:EnterZone("tarro_tree_hollows", -1, 0, 0)
+      else
+        SV.tarro_tree_hollows.dungpoints = SV.tarro_tree_hollows.dungpoints + 200
+        SV.tarro_tree_hollows.AmasDefeat = true
+        GAME:EndDungeonRun(result, "tarro_tree_hollows", -1, 1, 0, false, true)
+      end
     end
   end
 end

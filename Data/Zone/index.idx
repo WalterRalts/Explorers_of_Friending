@@ -43,7 +43,7 @@
 "MoneyRestrict": false,
 "BagRestrict": -1,
 "KeepTreasure": false,
-"BagSize": 4,
+"BagSize": -1,
 "Rescues": 0,
 "CountedFloors": 6,
 "Rogue": 0,

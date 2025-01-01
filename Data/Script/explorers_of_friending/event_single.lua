@@ -5,33 +5,48 @@ function SINGLE_CHAR_SCRIPT.Test(owner, ownerChar, context, args)
 end
 
 function SINGLE_CHAR_SCRIPT.SlumberPollen(owner, ownerChar, context, args)
-	PrintInfo("Test")
-	local puchi = GAME:GetPlayerPartyMember(3)
-	UI:SetSpeaker(puchi)
-	local sleep = RogueEssence.Dungeon.StatusEffect("sleep")
-	local turns = _DATA.Save.TotalTurns
-	if math.fmod(turns, 50) == 0 and turns > 5 then
-		local sleep_chance = math.random(3)
-		if sleep_chance == 3 then
-			if SV.tarro_town.puchi_tired and puchi:GetStatusEffect("sleep") == nil then
-				PrintInfo("Sleepy time!")
-				local say_choice = math.random(3)
-				if say_choice == 1 then
-					UI:SetSpeakerEmotion("Pain")
-					UI:WaitShowDialogue("Nope... rest time...!")
-				elseif say_choice == 2 then
-					UI:SetSpeakerEmotion("Dizzy")
-					UI:WaitShowDialogue("Fluffy clouds...!")
-				elseif say_choice == 3 then
-					UI:SetSpeakerEmotion("Stunned")
-					UI:WaitShowDialogue("Need...[pause=65][emote=Pain] energy...")
+	--only check if puchi is in the team
+	if GAME:GetPlayerPartyCount() > 4 then
+		local puchi = GAME:GetPlayerPartyMember(3)
+		UI:SetSpeaker(puchi)
+		local sleep = RogueEssence.Dungeon.StatusEffect("sleep")
+		local turns = _DATA.Save.TotalTurns
+		if math.fmod(turns, 50) == 0 and turns > 5 then
+			local sleep_chance = math.random(3)
+			if sleep_chance == 3 then
+				if SV.tarro_town.puchi_tired and puchi:GetStatusEffect("sleep") == nil then
+					PrintInfo("Sleepy time!")
+					local say_choice = math.random(3)
+					if say_choice == 1 then
+						UI:SetSpeakerEmotion("Pain")
+						UI:WaitShowDialogue("Nope... rest time...!")
+					elseif say_choice == 2 then
+						UI:SetSpeakerEmotion("Dizzy")
+						UI:WaitShowDialogue("Fluffy clouds...!")
+					elseif say_choice == 3 then
+						UI:SetSpeakerEmotion("Stunned")
+						UI:WaitShowDialogue("Need...[pause=65][emote=Pain] energy...")
+					end
+					sleep:LoadFromData()
+					TASK:WaitTask(puchi:AddStatusEffect(nil, sleep, false))
 				end
-				sleep:LoadFromData()
-				TASK:WaitTask(puchi:AddStatusEffect(nil, sleep, false))
-			end
-		else
+			else
 
+			end
 		end
+	end
+end
+
+function SINGLE_CHAR_SCRIPT.BagCount(owner, ownerChar, context, args)
+	local item_count = GAME:GetPlayerBagCount()
+	local bag_limit = SV.tarro_town.bag_size
+	print("bag check")
+
+	if item_count > bag_limit then
+		print("too many items!")
+		GAME:TakePlayerBagItem(SV.tarro_town.bag_size, true)
+		GAME:WaitFrames(25)
+		_DUNGEON:LogMsg("But no one can carry anymore, so it was thrown away!")
 	end
 end
 
