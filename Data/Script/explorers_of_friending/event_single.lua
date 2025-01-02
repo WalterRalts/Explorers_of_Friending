@@ -37,16 +37,27 @@ function SINGLE_CHAR_SCRIPT.SlumberPollen(owner, ownerChar, context, args)
 	end
 end
 
+bag_warn = false
 function SINGLE_CHAR_SCRIPT.BagCount(owner, ownerChar, context, args)
 	local item_count = GAME:GetPlayerBagCount()
 	local bag_limit = SV.tarro_town.bag_size
-	print("bag check")
+	
+	if item_count == bag_limit then
+		print("many items!")
+		if bag_warn == false then
+			GAME:WaitFrames(25)
+			_DUNGEON:LogMsg("Your inventory is full. Any picked up items will be removed!")
+			bag_warn = true
+		end
+	elseif item_count < bag_limit then
+		bag_warn = false
+	end
 
 	if item_count > bag_limit then
 		print("too many items!")
 		GAME:TakePlayerBagItem(SV.tarro_town.bag_size, true)
 		GAME:WaitFrames(25)
-		_DUNGEON:LogMsg("But no one can carry anymore, so it was thrown away!")
+		_DUNGEON:LogMsg("But no one can carry anymore, so it was thrown away somewhere!")
 	end
 end
 

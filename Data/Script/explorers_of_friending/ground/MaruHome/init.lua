@@ -26,6 +26,9 @@ function MaruHome.Init(map)
   elseif SV.tarro_town.PieChapter == 4 then
     MaruHome.RealPieTime()
     MaruHome.AfterPieTime()
+  elseif SV.tarro_town.PieChapter >= 10 then
+    GROUND:Hide("Arama")
+    MaruHome.MailTime()
   end
   GAME:FadeIn(20)
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
@@ -37,6 +40,19 @@ end
 --Engine callback function
 function MaruHome.Enter(map)
 
+end
+
+function MaruHome.MailTime()
+  local amazuru = CH("Amazuru")
+  local azura = CH("Teammate1")
+  local maru = CH("PLAYER")
+  GAME:MoveCamera(229, 248, 1, false)
+  GAME:FadeIn(20)
+  GROUND:CharTurnToCharAnimated(amazuru, maru, 4)
+
+  UI:SetSpeaker(amazuru)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("Hey, kids. Could you two go check the mail real quickly?")
 end
 
 function MaruHome.PieTime()
@@ -228,6 +244,7 @@ end
 
 function MaruHome.RealPieTime()
   GAME:CutsceneMode(true)
+  GAME:MoveCamera(229, 248, 1, false)
   local arama = CH("Arama")
   local amazuru = CH("Amazuru")
   local maru = CH("Maru")

@@ -324,6 +324,12 @@ function TarroTownTreeBreak.TarroTreeHollows_Continue_Touch(obj, activator)
   _DATA.Save.ActiveTeam.Players[2]:RefreshTraits()
   _DATA.Save.ActiveTeam.Players[3]:RefreshTraits()
   _DATA.Save.ActiveTeam.Players[4]:RefreshTraits()
+  local talk_npc = RogueEssence.Dungeon.BattleScriptEvent("SennaInteract")
+        _DATA.Save.ActiveTeam.Players[2].ActionEvents:Add(talk_npc)
+        talk_npc = RogueEssence.Dungeon.BattleScriptEvent("PuchiInteract")
+        _DATA.Save.ActiveTeam.Players[3].ActionEvents:Add(talk_npc)
+        talk_npc = RogueEssence.Dungeon.BattleScriptEvent("ZiggyInteract")
+        _DATA.Save.ActiveTeam.Players[4].ActionEvents:Add(talk_npc)
   GAME:ContinueDungeon("tarro_tree_hollows", 1, 0, 0)
   else
     UI:SetSpeaker(maru)
@@ -340,7 +346,7 @@ function TarroTownTreeBreak.TarroTreeHollows_End_Touch(obj, activator)
     ("Time to go!"),
     ("Wait...")
   }
-  UI:BeginChoiceMenu("Continue?", choices, 1, 2)
+  UI:BeginChoiceMenu("Leave?", choices, 1, 2)
   UI:WaitForChoice()
   result = UI:ChoiceResult()
   if result == 1 then

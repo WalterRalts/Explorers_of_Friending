@@ -238,6 +238,7 @@ function TarroTownTreetop.ExplodeEvade(map)
   GROUND:Hide("Thing_3")
   GROUND:Hide("Thing_4")
   GROUND:Hide("Thing_5")
+  GAME:MoveCamera(185, 135, 25, false)
 
   GROUND:TeleportTo(maru, 230, 180, Direction.Up, 0)
   GROUND:TeleportTo(azura, 200, 200, Direction.Up, 0)
@@ -287,9 +288,12 @@ function TarroTownTreetop.ExplodeEvade(map)
   UI:WaitShowDialogue("[speed=0.3]I...[pause=30] I did it...")
 
   local coro12 = TASK:BranchCoroutine(function()
+    GROUND:CharTurnToCharAnimated(azura, senna, 3)
     repeat
-      GROUND:TeleportTo(senna, senna.Position.X + 2, senna.Position.Y + 2, Direction.UpRight, 0)
-      GROUND:TeleportTo(senna, senna.Position.X - 2, senna.Position.Y - 2, Direction.UpRight, 0)
+      GROUND:TeleportTo(senna, 150, 150, Direction.UpRight, 0)
+      GAME:WaitFrames(2)
+      GROUND:TeleportTo(senna, 149, 149, Direction.UpRight, 0)
+      GAME:WaitFrames(2)
     until leave_the_tree == true
     end)
   local coro11 = TASK:BranchCoroutine(function()
@@ -301,6 +305,7 @@ function TarroTownTreetop.ExplodeEvade(map)
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Yeah, ya did!")
+    GROUND:CharTurnToCharAnimated(puchi, senna, 3)
 
     UI:SetSpeaker(puchi)
     UI:SetSpeakerEmotion("Happy")
@@ -308,7 +313,7 @@ function TarroTownTreetop.ExplodeEvade(map)
 
     UI:SetSpeaker(senna)
     UI:SetSpeakerEmotion("Teary-Eyed")
-    UI:WaitShowTimedDialogue("...")
+    UI:WaitShowTimedDialogue("...", 60)
 
     leave_the_tree = true
     GAME:WaitFrames(70)
@@ -320,10 +325,10 @@ function TarroTownTreetop.ExplodeEvade(map)
   UI:SetSpeaker(senna)
   UI:SetSpeakerEmotion("Crying")
   GROUND:CharSetEmote(senna, "sweating", 50)
-  UI:WaitShowTimedDialogue("[speed=0.7]Waaaaaaaa![pause=55] I'm so...[pause=15] sooooorry![pause=45]", 45)
+  UI:WaitShowTimedDialogue("[speed=0.7]Gyeeeeeeeeeeh![pause=55] I'm so...[pause=15] sooooorry![pause=45]", 45)
 
   GAME:FadeOut(false, 90)
-  
+  GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch2end", "Marker_1")
 end
 ---TarroTownTreetop.Enter(map)
 --Engine callback function

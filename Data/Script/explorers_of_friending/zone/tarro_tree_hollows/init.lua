@@ -24,8 +24,9 @@ end
 ---tarro_tree_hollows.EnterSegment(zone, rescuing, segmentID, mapID)
 --Engine callback function
 function tarro_tree_hollows.EnterSegment(zone, rescuing, segmentID, mapID)
-
-
+  if segmentID == 1 then
+    SV.tarro_tree_hollows.sprout_money_give = false
+  end
 end
 
 ---tarro_tree_hollows.ExitSegment(zone, result, rescue, segmentID, mapID)
@@ -34,13 +35,15 @@ function tarro_tree_hollows.ExitSegment(zone, result, rescue, segmentID, mapID)
   if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
     if segmentID == 0 then
       tarro_tree_fail = true
-      GAME:EnterZone("tarro_town", -1, 1, 0)
+      COMMON.EndDungeonDay(result, "tarro_town", -1, 1, 0)
     elseif segmentID == 1 then
       tarro_tree_fail = true
+      SV.tarro_tree_hollows.entering_party = GAME:GetPlayerPartyTable()
       GAME:RemovePlayerTeam(2)
       GAME:RemovePlayerTeam(2)
       GAME:RemovePlayerTeam(2)
       COMMON.EndDungeonDay(result, "tarro_tree_hollows", -1, 0, 0)
+    else
     end
   else
     if SV.tarro_tree_hollows.AmasDefeat == false then
@@ -71,8 +74,7 @@ function tarro_tree_hollows.ExitSegment(zone, result, rescue, segmentID, mapID)
         GAME:RemovePlayerTeam(2)
         GAME:EnterZone("tarro_tree_hollows", -1, 0, 0)
       else
-        SV.tarro_tree_hollows.dungpoints = SV.tarro_tree_hollows.dungpoints + 200
-        SV.tarro_tree_hollows.AmasDefeat = true
+        SV.tarro_tree_hollows.dungpoints = SV.tarro_tree_hollows.dungpoints + 100
         GAME:EndDungeonRun(result, "tarro_tree_hollows", -1, 1, 0, false, true)
       end
     end

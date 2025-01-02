@@ -28,7 +28,7 @@ function TarroTownEast.Init(map)
       if SV.tarro_town.PieChapter == 2.1 then
         TarroTownEast.TarroForrestFailed()
       elseif SV.tarro_town.PieChapter == 2.2 then
-        TarroTownEast.TarroForrestBossFailed()
+        TarroTownEast.TarroForrestFailed()
       end
   elseif SV.tarro_town.PieChapter == 4 then
     GROUND:TeleportTo(tango, 476, 279, Direction.UpLeft, 0)
@@ -542,7 +542,7 @@ function TarroTownEast.Senna_Action(obj, activator)
 
       UI:SetSpeaker(senna)
       UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowDialogue("[speed=0.05]...[speed=1.0]hm[emote=Happy]! [pause=23]Thank you, Azura, I appreciate it a lot.")
+      UI:WaitShowDialogue("[speed=0.5]...[speed=1.0]hm[emote=Happy]! [pause=23]Thank you, Azura, I appreciate it a lot.")
       UI:WaitShowDialogue("Sorry if I don't hang out with you guys more...")
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("I'll be sure to[speed=0.6] do [emote=Normal]th[speed=0.1]at.[pause=70][emote=Worried].[pause=70][emote=Sad]. [emote=Pain]later...")
@@ -551,9 +551,28 @@ function TarroTownEast.Senna_Action(obj, activator)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("Now then...")
     elseif result == 2 then
-        UI:WaitShowDialogue(STRINGS:Format(MapStrings['Strings_005']))
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("I mean, sure, but...")
+      UI:WaitShowDialogue("I still think you're a good friend.")
+
+      UI:SetSpeaker(senna)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("[speed=0.5]That's...[speed=1.0]fair enough[emote=Happy]! [pause=23]I know I have to work on it, but...")
+      UI:WaitShowDialogue("...it's probably better not to worry about it.[pause=15] Thanks, Maru.")
+
+      UI:SetSpeaker(azura)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Now then...")
     else
-        UI:WaitShowDialogue(STRINGS:Format(MapStrings['Strings_006']))
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Well... maybe...?")
+      UI:WaitShowDialogue("I dunno, you never seem anxious around us...")
+
+      UI:SetSpeaker(senna)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowTImedDialogue("True...")
     end
 
     UI:SetSpeaker(azura)
