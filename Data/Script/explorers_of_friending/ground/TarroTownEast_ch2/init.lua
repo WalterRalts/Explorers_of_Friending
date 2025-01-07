@@ -255,7 +255,7 @@ function TarroTownEast_ch2.Sunny_Action(obj, activator)
 
     UI:SetSpeaker(sunny)
     UI:SetSpeakerEmotion("Teary-Eyed")
-    UI:WaitShowDialogue("[speed=0.6]Their story... just...[pause=35]*sniffle*...[pause=40] so beautiful...!")
+    UI:WaitShowDialogue("[speed=0.6]Their story... just... [pause=35]*sniffle*...[pause=40] so beautiful...!")
 
     GROUND:CharSetEmote(sunny, "sweating", 1)
     UI:SetSpeakerEmotion("Crying")

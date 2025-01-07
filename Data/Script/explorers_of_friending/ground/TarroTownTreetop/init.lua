@@ -328,13 +328,11 @@ function TarroTownTreetop.ExplodeEvade(map)
   UI:WaitShowTimedDialogue("[speed=0.7]Gyeeeeeeeeeeh![pause=55] I'm so...[pause=15] sooooorry![pause=45]", 45)
 
   GAME:FadeOut(false, 90)
-  GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch2end", "Marker_1")
+  GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch2end", "Marker1")
 end
 ---TarroTownTreetop.Enter(map)
 --Engine callback function
 function TarroTownTreetop.Enter(map)
-
-  GAME:FadeIn(20)
 
 end
 
@@ -362,8 +360,6 @@ end
 ---TarroTownTreetop.GameLoad(map)
 --Engine callback function
 function TarroTownTreetop.GameLoad(map)
-
-  GAME:FadeIn(20)
 
 end
 

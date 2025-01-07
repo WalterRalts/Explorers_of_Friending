@@ -28,7 +28,16 @@ function MaruHome.Init(map)
     MaruHome.AfterPieTime()
   elseif SV.tarro_town.PieChapter >= 10 then
     GROUND:Hide("Arama")
-    MaruHome.MailTime()
+    GROUND:TeleportTo(CH("Amazuru"), 229, 248, Direction.DownRight, 0)
+    if SV.tarro_town.PieChapter == 10 then
+      UI:WaitShowTitle("Chapter 2:\nMysteries", 180)
+      GAME:WaitFrames(30)
+      UI:WaitHideTitle(180)
+      MaruHome.MailTime()
+    elseif SV.tarro_town.PieChapter == 11 then
+
+    end
+    COMMON.CreateWalkArea("Amazuru", 195, 225, 72, 72)
   end
   GAME:FadeIn(20)
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
@@ -52,7 +61,9 @@ function MaruHome.MailTime()
 
   UI:SetSpeaker(amazuru)
   UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("Hey, kids. Could you two go check the mail real quickly?")
+  UI:WaitShowDialogue("Hey, before you two leave, could you two go check the mail real quickly?")
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("I set your mom out to get it, but I think she got caught up with Mrs. Longline.")
 end
 
 function MaruHome.PieTime()
@@ -389,7 +400,6 @@ function MaruHome.AfterPieTime()
 
   UI:WaitShowTitle("Chapter 1:\nExplosive", 180)
   GAME:WaitFrames(30)
-  
 
   local coro01 = TASK:BranchCoroutine(function() 
     UI:WaitHideTitle(180)
@@ -603,6 +613,8 @@ end
 function MaruHome.Amazuru_Action(obj, activator)
   local amazuru = CH("Amazuru")
   local azura = CH("Teammate1")
+  local maru = CH("PLAYER")
+  GROUND:CharTurnToCharAnimated(amazuru, maru, 2)
 
   if SV.tarro_town.PieChapter < 5 then
     UI:SetSpeaker(amazuru)
@@ -623,10 +635,14 @@ function MaruHome.Amazuru_Action(obj, activator)
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("[speed=0.05]...b[speed=1.0][emote=Determined]ooooooo.")
-  elseif SV.tarro_town.PieChapter >= 5 then
+  elseif SV.tarro_town.PieChapter < 10 then
     UI:SetSpeaker(amazuru)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Have fun out there, kiddos!")
+  elseif SV.tarro_town.PieChapter < 15 then
+    UI:SetSpeaker(amazuru)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Shouldn't be too hard to find our mailbox,[pause=30] t[emote=Happy]he handle has our tail on it.")
   end
   
 end

@@ -233,8 +233,6 @@ end
 
 function TarroTownEast_ch2end.Enter(map)
   
-  GAME:FadeIn(20)
-  
 end
 
 ---TarroTownEast_ch2.Exit(map)
