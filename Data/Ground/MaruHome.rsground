@@ -25628,8 +25628,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 219,
-"Y": 344
+"X": 200,
+"Y": 360
 },
 "serializationHeight": 0,
 "serializationDir": 0,
@@ -25709,8 +25709,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 217,
-"Y": 346,
+"X": 219,
+"Y": 344,
 "Width": 16,
 "Height": 16
 }

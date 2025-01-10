@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.5.0",
+"Version": "0.8.8.0",
 "Object": {
 "$type": "RogueEssence.Data.ZoneData, RogueEssence",
 "Name": {
@@ -362,6 +362,7 @@
 },
 "Value": {
 "$type": "RogueElements.RandomRoomSpawnStep`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.EffectTile, RogueEssence]], RogueElements",
+"SuccessPercent": 100,
 "IncludeHalls": false,
 "Filters": [
 {
@@ -794,6 +795,7 @@
 },
 "Value": {
 "$type": "RogueElements.RandomRoomSpawnStep`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.EffectTile, RogueEssence]], RogueElements",
+"SuccessPercent": 100,
 "IncludeHalls": false,
 "Filters": [
 {
@@ -1226,6 +1228,7 @@
 },
 "Value": {
 "$type": "RogueElements.RandomRoomSpawnStep`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.EffectTile, RogueEssence]], RogueElements",
+"SuccessPercent": 100,
 "IncludeHalls": false,
 "Filters": [
 {
@@ -1658,6 +1661,7 @@
 },
 "Value": {
 "$type": "RogueElements.RandomRoomSpawnStep`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.EffectTile, RogueEssence]], RogueElements",
+"SuccessPercent": 100,
 "IncludeHalls": false,
 "Filters": [
 {
@@ -2090,6 +2094,7 @@
 },
 "Value": {
 "$type": "RogueElements.RandomRoomSpawnStep`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.EffectTile, RogueEssence]], RogueElements",
+"SuccessPercent": 100,
 "IncludeHalls": false,
 "Filters": [
 {
@@ -2522,6 +2527,7 @@
 },
 "Value": {
 "$type": "RogueElements.RandomRoomSpawnStep`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.EffectTile, RogueEssence]], RogueElements",
+"SuccessPercent": 100,
 "IncludeHalls": false,
 "Filters": [
 {
@@ -2954,6 +2960,7 @@
 },
 "Value": {
 "$type": "RogueElements.RandomRoomSpawnStep`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.EffectTile, RogueEssence]], RogueElements",
+"SuccessPercent": 100,
 "IncludeHalls": false,
 "Filters": [
 {
@@ -3168,49 +3175,31 @@
 "Spawn": {
 "Spawn": {
 "BaseForm": {
-"Species": "butterfree",
+"Species": "seedot",
 "Form": 0,
-"Skin": "normal",
+"Skin": "",
 "Gender": -1
 },
 "Level": {
-"Min": 7,
-"Max": 11
+"Min": 1,
+"Max": 10
 },
-"SpecifiedSkills": [],
-"Intrinsic": "compound_eyes",
-"Tactic": "wander_smart",
+"SpecifiedSkills": [
+"bide",
+"leech_seed",
+"harden"
+],
+"Intrinsic": "",
+"Tactic": "wander_normal",
 "SpawnConditions": [],
 "SpawnFeatures": [
 {
-"$type": "PMDC.LevelGen.MobSpawnItem, PMDC",
-"Items": [
-{
-"Spawn": {
-"ID": "seed_warp",
-"Cursed": false,
-"HiddenValue": "",
-"Amount": 0,
-"Price": 0
-},
-"Rate": 5
+"$type": "PMDC.LevelGen.MobSpawnMovesOff, PMDC",
+"StartAt": 0,
+"Remove": false
 },
 {
-"Spawn": {
-"ID": "berry_oran",
-"Cursed": false,
-"HiddenValue": "",
-"Amount": 0,
-"Price": 0
-},
-"Rate": 10
-}
-],
-"MapStartOnly": false,
-"Chance": {
-"Numerator": 1,
-"Denominator": 2
-}
+"$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
 }
 ]
 },
@@ -3219,115 +3208,7 @@
 "Rate": 10,
 "Range": {
 "Min": 0,
-"Max": 1
-}
-},
-{
-"Spawn": {
-"Spawn": {
-"BaseForm": {
-"Species": "metapod",
-"Form": 0,
-"Skin": "",
-"Gender": -1
-},
-"Level": {
-"Min": 2,
-"Max": 6
-},
-"SpecifiedSkills": [],
-"Intrinsic": "",
-"Tactic": "tit_for_tat",
-"SpawnConditions": [],
-"SpawnFeatures": []
-},
-"Role": 0
-},
-"Rate": 10,
-"Range": {
-"Min": 2,
-"Max": 6
-}
-},
-{
-"Spawn": {
-"Spawn": {
-"BaseForm": {
-"Species": "caterpie",
-"Form": 0,
-"Skin": "",
-"Gender": -1
-},
-"Level": {
-"Min": 1,
-"Max": 6
-},
-"SpecifiedSkills": [],
-"Intrinsic": "",
-"Tactic": "wander_dumb",
-"SpawnConditions": [],
-"SpawnFeatures": []
-},
-"Role": 0
-},
-"Rate": 20,
-"Range": {
-"Min": 0,
-"Max": 5
-}
-},
-{
-"Spawn": {
-"Spawn": {
-"BaseForm": {
-"Species": "weedle",
-"Form": 0,
-"Skin": "",
-"Gender": -1
-},
-"Level": {
-"Min": 3,
-"Max": 6
-},
-"SpecifiedSkills": [],
-"Intrinsic": "",
-"Tactic": "wander_dumb",
-"SpawnConditions": [],
-"SpawnFeatures": []
-},
-"Role": 0
-},
-"Rate": 10,
-"Range": {
-"Min": 3,
 "Max": 7
-}
-},
-{
-"Spawn": {
-"Spawn": {
-"BaseForm": {
-"Species": "weedle",
-"Form": 0,
-"Skin": "",
-"Gender": -1
-},
-"Level": {
-"Min": 1,
-"Max": 4
-},
-"SpecifiedSkills": [],
-"Intrinsic": "",
-"Tactic": "wander_dumb_itemless",
-"SpawnConditions": [],
-"SpawnFeatures": []
-},
-"Role": 0
-},
-"Rate": 15,
-"Range": {
-"Min": 2,
-"Max": 6
 }
 }
 ],
@@ -3461,11 +3342,11 @@
 ]
 },
 "StartAmount": {
-"Min": 1,
+"Min": 50,
 "Max": 101
 },
 "AddAmount": {
-"Min": 1,
+"Min": 50,
 "Max": 101
 },
 "ModStates": []

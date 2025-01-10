@@ -54900,8 +54900,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 416,
-"Y": 254
+"X": 432,
+"Y": 255
 },
 "serializationHeight": 0,
 "serializationDir": 6,
@@ -54981,7 +54981,7 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 416,
+"X": 435,
 "Y": 256,
 "Width": 16,
 "Height": 16
@@ -54996,8 +54996,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 485,
-"Y": 264
+"X": 493,
+"Y": 268
 },
 "serializationHeight": 0,
 "serializationDir": 2,
@@ -55078,7 +55078,7 @@
 "CollisionDisabled": false,
 "Collider": {
 "X": 489,
-"Y": 257,
+"Y": 270,
 "Width": 16,
 "Height": 16
 }
@@ -55092,8 +55092,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 485,
-"Y": 238
+"X": 487,
+"Y": 243
 },
 "serializationHeight": 0,
 "serializationDir": 2,
@@ -55173,8 +55173,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 471,
-"Y": 229,
+"X": 486,
+"Y": 241,
 "Width": 16,
 "Height": 16
 }
@@ -55188,8 +55188,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 465,
-"Y": 287
+"X": 472,
+"Y": 288
 },
 "serializationHeight": 0,
 "serializationDir": 3,
@@ -55269,104 +55269,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 465,
-"Y": 287,
-"Width": 16,
-"Height": 16
-}
-},
-{
-"Direction": 1,
-"IsInteracting": false,
-"AIEnabled": true,
-"EntName": "Loast",
-"EntEnabled": true,
-"EntOrder": 0,
-"InteractOrder": 0,
-"serializationLoc": {
-"X": 464,
-"Y": 218
-},
-"serializationHeight": 0,
-"serializationDir": 1,
-"triggerType": 1,
-"<AI>k__BackingField": null,
-"Data": {
-"Nickname": "Loast",
-"OriginalUUID": "",
-"OriginalTeam": "",
-"BaseForm": {
-"Species": "lotad",
-"Form": 0,
-"Skin": "normal",
-"Gender": 0
-},
-"Level": 1,
-"EXP": 0,
-"MaxHPBonus": 0,
-"AtkBonus": 0,
-"DefBonus": 0,
-"MAtkBonus": 0,
-"MDefBonus": 0,
-"SpeedBonus": 0,
-"BaseSkills": [
-{
-"SkillNum": "",
-"Charges": 0,
-"CanForget": true
-},
-{
-"SkillNum": "",
-"Charges": 0,
-"CanForget": true
-},
-{
-"SkillNum": "",
-"Charges": 0,
-"CanForget": true
-},
-{
-"SkillNum": "",
-"Charges": 0,
-"CanForget": true
-}
-],
-"BaseIntrinsics": [
-""
-],
-"FormIntrinsicSlot": -1,
-"Relearnables": {},
-"Discriminator": 0,
-"MetAt": "",
-"MetLoc": {
-"ID": "",
-"StructID": {
-"Segment": -1,
-"ID": -1
-},
-"EntryPoint": -1
-},
-"DefeatAt": "",
-"DefeatLoc": {
-"ID": "",
-"StructID": {
-"Segment": -1,
-"ID": -1
-},
-"EntryPoint": -1
-},
-"IsFounder": false,
-"IsPartner": false,
-"NameLocked": false,
-"IsFavorite": false,
-"Unrecruitable": false,
-"ActionEvents": [],
-"ScriptVars": null
-},
-"CollisionDisabled": false,
-"Collider": {
-"X": 464,
-"Y": 218,
+"X": 468,
+"Y": 290,
 "Width": 16,
 "Height": 16
 }
@@ -55375,20 +55279,20 @@
 "Direction": 2,
 "IsInteracting": false,
 "AIEnabled": true,
-"EntName": "Fair",
+"EntName": "Furie",
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 398,
-"Y": 445
+"X": 416,
+"Y": 453
 },
 "serializationHeight": 0,
 "serializationDir": 2,
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "Fair",
+"Nickname": "Furie",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -55461,8 +55365,104 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 398,
-"Y": 445,
+"X": 362,
+"Y": 451,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"Direction": 1,
+"IsInteracting": false,
+"AIEnabled": true,
+"EntName": "Loast",
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"serializationLoc": {
+"X": 474,
+"Y": 223
+},
+"serializationHeight": 0,
+"serializationDir": 1,
+"triggerType": 1,
+"<AI>k__BackingField": null,
+"Data": {
+"Nickname": "Loast",
+"OriginalUUID": "",
+"OriginalTeam": "",
+"BaseForm": {
+"Species": "lotad",
+"Form": 0,
+"Skin": "normal",
+"Gender": 1
+},
+"Level": 1,
+"EXP": 0,
+"MaxHPBonus": 0,
+"AtkBonus": 0,
+"DefBonus": 0,
+"MAtkBonus": 0,
+"MDefBonus": 0,
+"SpeedBonus": 0,
+"BaseSkills": [
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+}
+],
+"BaseIntrinsics": [
+""
+],
+"FormIntrinsicSlot": -1,
+"Relearnables": {},
+"Discriminator": 0,
+"MetAt": "",
+"MetLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"DefeatAt": "",
+"DefeatLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"IsFounder": false,
+"IsPartner": false,
+"NameLocked": false,
+"IsFavorite": false,
+"Unrecruitable": false,
+"ActionEvents": [],
+"ScriptVars": null
+},
+"CollisionDisabled": false,
+"Collider": {
+"X": 474,
+"Y": 223,
 "Width": 16,
 "Height": 16
 }
@@ -55476,15 +55476,15 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 364,
-"Y": 445
+"X": 376,
+"Y": 452
 },
 "serializationHeight": 0,
 "serializationDir": 6,
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Arama",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -55557,8 +55557,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 364,
-"Y": 445,
+"X": 376,
+"Y": 452,
 "Width": 16,
 "Height": 16
 }
@@ -55907,7 +55907,7 @@
 "triggerType": 0,
 "EntityCallbacks": [],
 "Collider": {
-"X": 24,
+"X": 19,
 "Y": 451,
 "Width": 16,
 "Height": 16
@@ -55924,7 +55924,7 @@
 "triggerType": 0,
 "Collider": {
 "X": 25,
-"Y": 427,
+"Y": 432,
 "Width": 16,
 "Height": 16
 }
@@ -55939,6 +55939,20 @@
 "Collider": {
 "X": 311,
 "Y": 400,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "TTEast_TarroTownForest",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 200,
+"Y": 96,
 "Width": 16,
 "Height": 16
 }

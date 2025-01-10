@@ -668,17 +668,23 @@ end
 
 function MaruHome.MaruHomeExit_Touch(obj, activator)
   print("Exiting?")
+  outside_enter = 1
   local maru = CH("PLAYER")
   if SV.tarro_town.PieChapter >= 2 and SV.tarro_town.PieChapter <= 4 then
     print("Exiting?")
-    outside_enter = 1
     GAME:FadeOut(false, 20)
     GAME:EnterGroundMap("TarroTownEast", "TTEast_MaruHomeEnter")
   elseif SV.tarro_town.PieChapter <= 8 then
     print("Exiting?")
-    outside_enter = 1
     GAME:FadeOut(false, 20)
     GAME:EnterGroundMap("TarroTownEast_ch2", "TTEast_MaruHomeEnter")
+  elseif SV.tarro_town.PieChapter <= 15 then
+    print("Exiting?")
+    GAME:FadeOut(false, 20)
+    GAME:EnterGroundMap("TarroTownEast_ch3", "TTEast_MaruHomeEnter")
+  else
+    print("Exiting?")
+    GAME:EnterGroundMap("TarroTownEast_extra", "TTEast_MaruHomeEnter")
   end
 end
 
