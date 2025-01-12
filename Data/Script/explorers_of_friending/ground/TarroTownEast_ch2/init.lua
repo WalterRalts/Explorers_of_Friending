@@ -184,12 +184,11 @@ function TarroTownEast_ch2.Sunny_Action(obj, activator)
     UI:WaitShowDialogue("Heh.")
 
     GROUND:CharSetAnim(sunny, "Idle", true)
-    GROUND:CharTurnToCharAnimated(tango, sunny, 4)
-    GROUND:CharTurnToCharAnimated(sunny, tango, 4)
+    COMMON.CharAngry("Sunny")
+    COMMON.FaceEachother("Sunny", "Tango")
     UI:SetSpeaker(sunny)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("Tango, shush!")
-    
     
     UI:SetSpeaker(tango)
     UI:SetSpeakerEmotion("Joyous")

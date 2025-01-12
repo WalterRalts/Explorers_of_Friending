@@ -30,9 +30,9 @@ function MaruHome.Init(map)
     GROUND:Hide("Arama")
     GROUND:TeleportTo(CH("Amazuru"), 229, 248, Direction.DownRight, 0)
     if SV.tarro_town.PieChapter == 10 then
-      UI:WaitShowTitle("Chapter 2:\nMysteries", 180)
+      UI:WaitShowTitle("Chapter 2:\nMysteries", 120)
       GAME:WaitFrames(30)
-      UI:WaitHideTitle(180)
+      UI:WaitHideTitle(120)
       MaruHome.MailTime()
     elseif SV.tarro_town.PieChapter == 11 then
 
@@ -53,7 +53,6 @@ end
 
 function MaruHome.MailTime()
   local amazuru = CH("Amazuru")
-  local azura = CH("Teammate1")
   local maru = CH("PLAYER")
   GAME:MoveCamera(229, 248, 1, false)
   GAME:FadeIn(20)
@@ -64,6 +63,7 @@ function MaruHome.MailTime()
   UI:WaitShowDialogue("Hey, before you two leave, could you two go check the mail real quickly?")
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("I set your mom out to get it, but I think she got caught up with Mrs. Longline.")
+  SV.tarro_town.PieChapter = 11
 end
 
 function MaruHome.PieTime()
@@ -669,7 +669,6 @@ end
 function MaruHome.MaruHomeExit_Touch(obj, activator)
   print("Exiting?")
   outside_enter = 1
-  local maru = CH("PLAYER")
   if SV.tarro_town.PieChapter >= 2 and SV.tarro_town.PieChapter <= 4 then
     print("Exiting?")
     GAME:FadeOut(false, 20)
@@ -702,6 +701,23 @@ function MaruHome.Maru_BedSave_Touch(obj, activator)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("(Not tired yet.[pause=40] L[emote=Happy]et's keep going.)")
   end
+end
+
+function MaruHome.WaterHole_Action(obj, activator)
+  local maru = CH("PLAYER")
+  local azura = CH("Teammate1")
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("Water hole!")
+
+  UI:SetSpeaker(azura)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("Water hole!")
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Water hole. 9/10. Not enough water.")
 end
 
 return MaruHome

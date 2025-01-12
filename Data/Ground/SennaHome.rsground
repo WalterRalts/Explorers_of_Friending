@@ -25406,7 +25406,7 @@
 ],
 "AssetName": "SennaHome",
 "Music": "Cave Camp.ogg",
-"EdgeView": 0,
+"EdgeView": 1,
 "NoSwitching": false,
 "ViewCenter": null,
 "ViewOffset": {
@@ -25540,7 +25540,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Senna",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -25613,8 +25613,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 237,
-"Y": 212,
+"X": 233,
+"Y": 213,
 "Width": 16,
 "Height": 16
 }
@@ -25636,7 +25636,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Ziggy",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -25718,12 +25718,12 @@
 ],
 "GroundObjects": [
 {
-"EntName": "Marker_2",
+"EntName": "SennaHome_Exit",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -25761,12 +25761,12 @@
 }
 },
 {
-"EntName": "NewObject",
+"EntName": "SennaBasement_Entrance",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -25804,12 +25804,12 @@
 }
 },
 {
-"EntName": "NewObject_1",
+"EntName": "WaterHole",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 1,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -25847,12 +25847,12 @@
 }
 },
 {
-"EntName": "NewObject_2",
+"EntName": "CookFire",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 1,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -25966,7 +25966,7 @@
 "ScriptVars": null
 },
 "EntName": "TEAMMATE_1",
-"Direction": 0,
+"Direction": 4,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -25983,7 +25983,7 @@
 "Markers": [
 {
 "EntName": "Marker",
-"Direction": 0,
+"Direction": 4,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,

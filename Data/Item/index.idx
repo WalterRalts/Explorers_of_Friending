@@ -1,7 +1,40 @@
 ﻿{
-"Version": "0.8.7.0",
+"Version": "0.8.8.0",
 "Object": {
 "$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[RogueEssence.Data.EntrySummary, RogueEssence]], System.Private.CoreLib",
+"berry_oran": {
+"$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
+"Icon": 3,
+"UsageType": 4,
+"States": [
+{
+"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.EdibleState"
+},
+{
+"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.BerryState"
+}
+],
+"Name": {
+"DefaultText": "Oran Berry",
+"LocalTexts": {
+"fr": "Baie Oran",
+"de": "Sinelbeere",
+"es": "Baya Aranja",
+"pt": "Fruta Laran",
+"it": "Baccarancia",
+"ko": "오랭열매",
+"ja": "オレンのみ",
+"ja-jp": "オレンのみ",
+"zh-hans": "橙橙果",
+"zh-hant": "橙橙果"
+}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 6
+},
 "food_apple_big": {
 "$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
 "Icon": 2,
@@ -95,7 +128,7 @@
 "UsageType": 4,
 "States": [
 {
-"assembly": "PMDC, Version=0.8.5.0, Culture=neutral, PublicKeyToken=null",
+"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.EdibleState"
 }
 ],
@@ -103,7 +136,7 @@
 "DefaultText": "Crunchy Leaf",
 "LocalTexts": {}
 },
-"Released": false,
+"Released": true,
 "Comment": "",
 "SortOrder": 7
 },
@@ -113,11 +146,11 @@
 "UsageType": 4,
 "States": [
 {
-"assembly": "PMDC, Version=0.8.5.0, Culture=neutral, PublicKeyToken=null",
+"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.DrinkState"
 },
 {
-"assembly": "PMDC, Version=0.8.5.0, Culture=neutral, PublicKeyToken=null",
+"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.EdibleState"
 }
 ],
@@ -154,6 +187,24 @@
 "Released": true,
 "Comment": "",
 "SortOrder": 13
+},
+"crunchy_salad": {
+"$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
+"Icon": 10,
+"UsageType": 4,
+"States": [
+{
+"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.EdibleState"
+}
+],
+"Name": {
+"DefaultText": "Crunchy Salad",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 0
 }
 }
 }

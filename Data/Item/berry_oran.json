@@ -3,26 +3,49 @@
 "Object": {
 "$type": "RogueEssence.Data.ItemData, RogueEssence",
 "Name": {
-"DefaultText": "Crunchy Leaf",
-"LocalTexts": {}
+"DefaultText": "Oran Berry",
+"LocalTexts": {
+"fr": "Baie Oran",
+"de": "Sinelbeere",
+"es": "Baya Aranja",
+"pt": "Fruta Laran",
+"it": "Baccarancia",
+"ko": "오랭열매",
+"ja": "オレンのみ",
+"ja-jp": "オレンのみ",
+"zh-hans": "橙橙果",
+"zh-hant": "橙橙果"
+}
 },
 "Desc": {
-"DefaultText": "A dry leaf. Not much to it, you should probably make it into something better. Can be cooked.",
-"LocalTexts": {}
+"DefaultText": "A peculiar berry with a mix of flavors. It fully restores HP.",
+"LocalTexts": {
+"fr": "Une baie particulière avec un subtil mélange de saveur. Elle restaure tout les PV du Pokémon.",
+"de": "Eine eigenartige Beere mit einer Mischung aus Geschmäckern. Es füllt die KP vollständig auf.",
+"es": "Baya peculiar con una mezcla de sabores. Restaura por completo los PS.",
+"pt": "Uma fruta peculiar com uma mistura de sabores. Restaura os PV por completo.",
+"it": "Bacca che concentra in sé tutto il meglio della natura, sprigionando in bocca un insolito concerto di sapori deliziosi. Ripristina tutti i PS del Pokémon.",
+"ko": "여러가지 맛이 섞인 신기한 열매. 먹으면 체력을 완전히 회복한다.",
+"zh-hans": "混杂着各种滋味的奇妙树果。食用后完全回复HP。",
+"zh-hant": "混雜著各種滋味的奇妙樹果。食用後完全回復HP。"
+}
 },
 "Released": true,
 "Comment": "",
-"Sprite": "crunchy_leaf",
-"Icon": -1,
-"SortCategory": 7,
-"Price": 5,
+"Sprite": "Berry_Oran",
+"Icon": 3,
+"SortCategory": 6,
+"Price": 50,
 "Rarity": 0,
-"MaxStack": 4,
+"MaxStack": 0,
 "CannotDrop": false,
 "BagEffect": false,
 "ItemStates": [
 {
 "$type": "PMDC.Dungeon.EdibleState, PMDC"
+},
+{
+"$type": "PMDC.Dungeon.BerryState, PMDC"
 }
 ],
 "GroundUseActions": [],
@@ -102,10 +125,23 @@
 ]
 },
 "Value": {
+"$type": "PMDC.Dungeon.RestoreHPEvent, PMDC",
+"Numerator": 1,
+"Denominator": 1,
+"AffectTarget": true
+}
+},
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
 "$type": "PMDC.Dungeon.RestoreBellyEvent, PMDC",
 "BoostAnims": [],
-"Heal": 2,
-"Msg": true,
+"Heal": 3,
+"Msg": false,
 "AddMaxBelly": 0,
 "NeedFullBelly": false
 }
@@ -116,9 +152,9 @@
 "ElementEffects": [],
 "IntroFX": [],
 "HitFX": {
-"Delay": 1,
+"Delay": 15,
 "AbsoluteDelay": false,
-"Sound": "DUN_Seed",
+"Sound": "DUN_Berry",
 "Emitter": {
 "$type": "RogueEssence.Content.SingleEmitter, RogueEssence",
 "LocHeight": 0,
@@ -127,7 +163,7 @@
 "Anim": {
 "$type": "RogueEssence.Content.StaticAnim, RogueEssence",
 "Anim": {
-"AnimIndex": "Circle_Small_Green_In",
+"AnimIndex": "Circle_Small_Blue_In",
 "FrameTime": 2,
 "StartFrame": -1,
 "EndFrame": -1,

@@ -97,7 +97,7 @@ function TarroTownEast_ch2end.WentWhere()
   UI:SetSpeakerEmotion("Determined")
   UI:WaitShowDialogue("Furie,[pause=20] I know that you're glad for you kid,[pause=20] but you shouldn't let Ziggian keep running off like that!")
 
-  GROUND:CharTurnToCharAnimated(arama, ziggy, 9)
+  GROUND:CharTurnToCharAnimated(arama, maru, 9)
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("Mrs. Bluetail, please[emote=Pain] don't call me that...")
@@ -150,7 +150,7 @@ function TarroTownEast_ch2end.WentWhere()
 
   UI:SetSpeaker(amazuru)
   UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("Big adventures leveling up in the world.")
+  UI:WaitShowDialogue("Big adventurers, leveling up in the world.")
 
   COMMON.FaceEachother("Arama", "Furie")
   UI:SetSpeaker(arama)

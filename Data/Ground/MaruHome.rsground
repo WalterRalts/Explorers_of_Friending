@@ -25814,7 +25814,7 @@
 ],
 "GroundObjects": [
 {
-"EntName": "WateringHole",
+"EntName": "WaterHole",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,

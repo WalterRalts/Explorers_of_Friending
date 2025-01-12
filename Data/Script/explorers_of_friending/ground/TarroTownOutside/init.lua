@@ -37,7 +37,7 @@ function TarroTownOutside.Init(map)
   local partner = CH('Teammate1')
   TarroTownOutside.CloudWatch()
   if outside_enter == 1 then
-    GROUND:TeleportTo(partner, 27, 379, Direction.Right, 0)
+    GROUND:TeleportTo(partner, 478, 379, Direction.Left, 0)
     GAME:FadeIn(20)
   else
     GAME:FadeIn(20)
@@ -223,23 +223,25 @@ function TarroTownOutside.TTOutside_WExit_Touch(obj, activator)
   GAME:FadeOut(false, 20)
   if SV.tarro_town.PieChapter < 5 then
     GAME:EnterGroundMap("TarroTownEast", "TTEast_WEnter")
-  else
+  elseif SV.tarro_town.PieChapter < 10 then
     GAME:EnterGroundMap("TarroTownEast_ch2", "TTEast_WEnter")
+  else
+    GAME:EnterGroundMap("TarroTownEast_ch3", "TTEast_WEnter")
   end
 end
 
 function TarroTownOutside.TTOutsideSign_Action(obj, activator)
   UI:ResetSpeaker()
   UI:SetAutoFinish(true)
-  UI:WaitShowDialogue("<- Tarro Town East \n Tarro Town West ->")
+  UI:WaitShowDialogue("Tarro Town East ->\n <- Tarro Town West")
   UI:SetAutoFinish(false)
 end
 
 function TarroTownOutside.TTOutside_EExit_Touch(obj, activator)
-  if SV.tarro_town.PieChapter < 5 then
-    local maru = CH("PLAYER")
-    local azura = CH('Teammate1')
-    local puchi = CH('Puchi')
+  local maru = CH("PLAYER")
+  local azura = CH('Teammate1')
+  local puchi = CH('Puchi')
+  if SV.tarro_town.PieChapter < 5 then  
     GROUND:CharTurnToCharAnimated(puchi, maru, 4)
     UI:SetSpeaker(puchi)
     UI:SetSpeakerEmotion("Normal")
@@ -256,12 +258,14 @@ function TarroTownOutside.TTOutside_EExit_Touch(obj, activator)
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Oh. [pause=25]Darn.")
-  else
+  elseif SV.tarro_town.PieChapter <= 10 then
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Probably not the time...")
+  else
+    GAME:FadeOut(false, 20)
+    GAME:EnterGroundMap("TarroTownWest", "TarroTownWest_Enter")
   end
-  
 end
 
 function TarroTownOutside.Puchi_Action(obj, activator)

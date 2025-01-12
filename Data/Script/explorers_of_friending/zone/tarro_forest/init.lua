@@ -40,7 +40,7 @@ function tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
         GAME:EnterZone("tarro_forest", -1, 0, 0)
       else
         SV.tarro_forest.ZoomerDefeated = true
-        GAME:EnterZone("tarro_forest", -1, 0, 0)
+        COMMON.EndDungeonDay(result, "tarro_forest", -1, 0, 0)
       end
     else
       if segmentID == 0 then

@@ -3,21 +3,21 @@
 "Object": {
 "$type": "RogueEssence.Data.ItemData, RogueEssence",
 "Name": {
-"DefaultText": "Crunchy Leaf",
+"DefaultText": "Crunchy Salad",
 "LocalTexts": {}
 },
 "Desc": {
-"DefaultText": "A dry leaf. Not much to it, you should probably make it into something better. Can be cooked.",
+"DefaultText": "Despite the presentation, it's still just a bunch of crunchy leaves. Fills the user's belly by a bit. This item can be cooked.",
 "LocalTexts": {}
 },
 "Released": true,
 "Comment": "",
-"Sprite": "crunchy_leaf",
-"Icon": -1,
-"SortCategory": 7,
-"Price": 5,
+"Sprite": "crunchy_salad",
+"Icon": 10,
+"SortCategory": 0,
+"Price": 50,
 "Rarity": 0,
-"MaxStack": 4,
+"MaxStack": 0,
 "CannotDrop": false,
 "BagEffect": false,
 "ItemStates": [
@@ -104,8 +104,8 @@
 "Value": {
 "$type": "PMDC.Dungeon.RestoreBellyEvent, PMDC",
 "BoostAnims": [],
-"Heal": 2,
-"Msg": true,
+"Heal": 15,
+"Msg": false,
 "AddMaxBelly": 0,
 "NeedFullBelly": false
 }
@@ -116,31 +116,12 @@
 "ElementEffects": [],
 "IntroFX": [],
 "HitFX": {
-"Delay": 1,
+"Delay": 0,
 "AbsoluteDelay": false,
-"Sound": "DUN_Seed",
+"Sound": "",
 "Emitter": {
-"$type": "RogueEssence.Content.SingleEmitter, RogueEssence",
-"LocHeight": 0,
-"finished": false,
-"Offset": 0,
-"Anim": {
-"$type": "RogueEssence.Content.StaticAnim, RogueEssence",
-"Anim": {
-"AnimIndex": "Circle_Small_Green_In",
-"FrameTime": 2,
-"StartFrame": -1,
-"EndFrame": -1,
-"AnimDir": -1,
-"Alpha": 255,
-"AnimFlip": 0
-},
-"TotalTime": 0,
-"Cycles": 1,
-"FrameOffset": 0
-},
-"Layer": 2,
-"UseDest": false
+"$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
+"LocHeight": 0
 },
 "ScreenMovement": {
 "MinShake": 0,

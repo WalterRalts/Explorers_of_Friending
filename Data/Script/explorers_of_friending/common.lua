@@ -1500,3 +1500,9 @@ function COMMON.FaceEachother(char1, char2)
   GROUND:CharTurnToCharAnimated(face1, face2, 2)
   GROUND:CharTurnToCharAnimated(face2, face1, 2)
 end
+
+function COMMON.CharExclaim(char)
+  local exclaim = CH(char)
+  GROUND:CharSetEmote(exclaim, "exclaim", 1)
+  SOUND:PlaySE("Battle/EVT_Emote_Exclaim")
+end

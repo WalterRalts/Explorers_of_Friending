@@ -55365,8 +55365,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 362,
-"Y": 451,
+"X": 416,
+"Y": 453,
 "Width": 16,
 "Height": 16
 }
@@ -55822,6 +55822,92 @@
 "Width": 48,
 "Height": 37
 }
+},
+{
+"EntName": "MaruMail",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 1,
+"ObjectAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"Passable": false,
+"CurrentAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"AnimTime": {
+"Ticks": 0
+},
+"Cycles": 0,
+"DrawOffset": {
+"X": 0,
+"Y": 0
+},
+"Collider": {
+"X": 379,
+"Y": 384,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "SennaMail",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 1,
+"ObjectAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"Passable": false,
+"CurrentAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"AnimTime": {
+"Ticks": 0
+},
+"Cycles": 0,
+"DrawOffset": {
+"X": 0,
+"Y": 0
+},
+"Collider": {
+"X": 506,
+"Y": 384,
+"Width": 16,
+"Height": 16
+}
 }
 ],
 "Spawners": [
@@ -55907,8 +55993,8 @@
 "triggerType": 0,
 "EntityCallbacks": [],
 "Collider": {
-"X": 19,
-"Y": 451,
+"X": 22,
+"Y": 448,
 "Width": 16,
 "Height": 16
 }
@@ -55923,8 +56009,8 @@
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 25,
-"Y": 432,
+"X": 27,
+"Y": 427,
 "Width": 16,
 "Height": 16
 }
@@ -55967,6 +56053,20 @@
 "Collider": {
 "X": 422,
 "Y": 19,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "TTEast_SennaHomeEnter",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 437,
+"Y": 399,
 "Width": 16,
 "Height": 16
 }

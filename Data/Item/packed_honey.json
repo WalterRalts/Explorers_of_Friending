@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.5.0",
+"Version": "0.8.8.0",
 "Object": {
 "$type": "RogueEssence.Data.ItemData, RogueEssence",
 "Name": {
@@ -44,6 +44,7 @@
 "PreActions": [],
 "ActionFX": {
 "Delay": 0,
+"AbsoluteDelay": false,
 "Sound": "",
 "Emitter": {
 "$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
@@ -73,6 +74,7 @@
 "IntroFX": [],
 "ExplodeFX": {
 "Delay": 0,
+"AbsoluteDelay": false,
 "Sound": "",
 "Emitter": {
 "$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
@@ -86,16 +88,12 @@
 }
 },
 "UseEvent": {
-"Element": "none",
+"Element": "bug",
 "Category": 0,
 "HitRate": -1,
 "SkillStates": [],
 "BeforeTryActions": [],
-"BeforeActions": [],
-"OnActions": [],
-"BeforeExplosions": [],
-"BeforeHits": [],
-"OnHits": [
+"BeforeActions": [
 {
 "Key": {
 "str": [
@@ -107,7 +105,12 @@
 "Amount": 4,
 "Distance": 6
 }
-},
+}
+],
+"OnActions": [],
+"BeforeExplosions": [],
+"BeforeHits": [],
+"OnHits": [
 {
 "Key": {
 "str": [
@@ -157,6 +160,7 @@
 "IntroFX": [],
 "HitFX": {
 "Delay": 10,
+"AbsoluteDelay": false,
 "Sound": "_UNK_DUN_Mud_2",
 "Emitter": {
 "$type": "RogueEssence.Content.SingleEmitter, RogueEssence",
@@ -230,7 +234,9 @@
 "BeforeHittings": [],
 "BeforeBeingHits": [],
 "AfterHittings": [],
-"AfterBeingHits": [
+"AfterBeingHits": [],
+"OnHitTiles": [],
+"AfterActions": [
 {
 "Key": {
 "str": [
@@ -244,8 +250,6 @@
 }
 }
 ],
-"OnHitTiles": [],
-"AfterActions": [],
 "UserElementEffects": [],
 "TargetElementEffects": [],
 "ModifyHPs": [],

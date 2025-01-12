@@ -9,7 +9,7 @@
 "LevelCap": false,
 "KeepSkills": false,
 "TeamRestrict": false,
-"TeamSize": 6,
+"TeamSize": -1,
 "MoneyRestrict": false,
 "BagRestrict": -1,
 "KeepTreasure": false,
@@ -21,9 +21,11 @@
 "TarroTownOutside",
 "TarroTownEast",
 "MaruHome",
+"TarroTownWest",
 "TarroTownEast_ch2",
 "TarroTownEast_ch2end",
-"TarroTownEast_ch3"
+"TarroTownEast_ch3",
+"SennaHome"
 ],
 "Maps": [],
 "Name": {
