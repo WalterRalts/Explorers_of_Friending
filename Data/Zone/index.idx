@@ -38,7 +38,7 @@
 },
 "tarro_forest": {
 "$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
-"ExpPercent": 50,
+"ExpPercent": 71,
 "Level": 5,
 "LevelCap": false,
 "KeepSkills": false,

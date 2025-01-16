@@ -112,6 +112,7 @@ SV.deep_tarro_forest =
 
 SV.tarro_tree_hollows = 
 {
+  tree_entered = false,
   revisit = false,
   dungpoints = 0,
   sprout_money_give = false,

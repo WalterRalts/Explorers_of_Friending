@@ -17,6 +17,9 @@ local TarroTownEast_ch3 = {}
 --Engine callback function
 function TarroTownEast_ch3.Init(map)
   print("Here!")
+  if mail_read == nil then
+    mail_read = 0
+  end
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
   local partner = CH('Teammate1')
@@ -213,47 +216,92 @@ end
 function TarroTownEast_ch3.Arama_Action(obj, activator)
   local furie = CH("Furie")
   local arama = CH("Arama")
+  local maru = CH("PLAYER")
+  local azura = CH("Teammate1")
 
-  UI:SetSpeaker(arama)
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("Maybe I just need a break.")
+  if mail_read == 1 then
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowTimedDialogue("Hey, mom.")
+  
+    UI:SetSpeaker(furie)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("I think it's a pretty decent idea, Mrs. Arama.")
 
-  UI:SetSpeaker(furie)
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("A break?[pause=0] Mrs. Arama, you worry too much.")
-  UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("Your kids are smart,[pause=30] they know why you watch over them so much.")
+    UI:SetSpeaker(azura)
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowTimedDialogue("Mama...")
+  
+    UI:SetSpeaker(arama)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("I can make enough for everyone, I'm sure!")
 
-  UI:SetSpeaker(arama)
-  UI:SetSpeakerEmotion("Pain")
-  UI:WaitShowDialogue("I just... don't want to...")  
+    COMMON.FaceEachother("PLAYER", "Teammate1")
+    GAME:WaitFrames(22)
+    COMMON.CharSweatdrop("PLAYER")
+    GAME:WaitFrames(12)
+    COMMON.CharSweatdrop("Teammate1")
+    GAME:WaitFrames(12)
 
-  UI:SetSpeaker(furie)
-  UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("You'll never lose them,[pause=15] and you'll never lose us.")
-  UI:SetSpeakerEmotion("Joyous")
-  UI:WaitShowDialogue("Friends until it ends,[pause=15] r[emote=Happy]emember?")
-
-  UI:SetSpeaker(arama)
-  UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("Pfft,[pause=20] you're such a noodle.")  
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("Guess we're telling dad...")
+  else
+    UI:SetSpeaker(arama)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Maybe I just need a break.")
+  
+    UI:SetSpeaker(furie)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("A break?[pause=0] Mrs. Arama, you worry too much.")
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Your kids are smart,[pause=30] they know why you watch over them so much.")
+  
+    UI:SetSpeaker(arama)
+    UI:SetSpeakerEmotion("Pain")
+    UI:WaitShowDialogue("I just... don't want to...")  
+  
+    UI:SetSpeaker(furie)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("You'll never lose them,[pause=15] and you'll never lose us.")
+    UI:SetSpeakerEmotion("Joyous")
+    UI:WaitShowDialogue("Friends until it ends,[pause=15] r[emote=Happy]emember?")
+  
+    UI:SetSpeaker(arama)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Pfft,[pause=20] you're such a noodle.")  
+  end
 end
 
 function TarroTownEast_ch3.MaruMail_Action(obj, activator)
   local maru = CH("PLAYER")
-  UI:ResetSpeaker()
-  UI:SetAutoFinish(true)
-  UI:WaitShowDialogue("Maru opens the mailbox. A letter is inside.")
-  UI:WaitShowDialogue("\'Meet me at the end of Deep Tarro.\n Do not worry about timing.\n I will know when you arrive...\'")
+  local azura = CH("Teammate1")
+  if mail_read == 0 then
+    UI:ResetSpeaker()
+    UI:SetAutoFinish(true)
+    UI:WaitShowDialogue("Maru opens the mailbox. A letter is inside.")
+    UI:WaitShowDialogue("\'Meet me at the end of Deep Tarro.\n Do not worry about timing.\n I will know when you arrive...\'")
 
-  UI:SetAutoFinish(false)
-  UI:SetSpeaker(maru)
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("There's a weird looking mark on here...")
+    UI:SetAutoFinish(false)
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("There's a weird looking mark on here...")
 
-  UI:SetSpeaker(azura)
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("Should we tell dad?")
+    UI:SetSpeaker(azura)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Should we tell dad?")
+
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Maybe this letter isn't for us. We should tell him.")
+    mail_read = 1
+  else
+    UI:ResetSpeaker()
+    UI:SetAutoFinish(true)
+    UI:WaitShowDialogue("The mailbox is empty.")
+
+    UI:SetAutoFinish(false)
+  end
 end
 
 return TarroTownEast_ch3

@@ -35,13 +35,22 @@ function TarroTownSquare.Init(map)
   if outside_enter == 3 then
     GROUND:TeleportTo(partner, 30, 254, Direction.Right, 0)
   end
-  if SV.tarro_town.PieChapter == 7 then
+  if outside_enter == 4 then
+    GROUND:TeleportTo(partner, 405, 230, Direction.Down, 0)
+  end
+  if SV.tarro_town.PieChapter >= 7 then
     ziggy.CollisionDisabled = true
-    TarroTownSquare.AfterQuiz()
+    if SV.tarro_tree_hollows.tree_entered == false then
+      TarroTownSquare.AfterQuiz()
+    end
     SOUND:PlayBGM("None", false, 0)
     GROUND:TeleportTo(munch, 455, 210, Direction.Down, 2)
     GROUND:TeleportTo(lax, 390, 210, Direction.Left, 2)
     GROUND:Hide("Ziggy")
+    if SV.tarro_tree_hollows.tree_entered == true then
+      GROUND:Hide("Senna")
+      GROUND:Hide("Puchi")
+    end
   end
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
 end
@@ -1372,6 +1381,9 @@ function TarroTownSquare.Happy_Action(obj, activator)
 end
 
 function TarroTownSquare.BigTree_Entrance_Touch(obj, activator)
+  if SV.tarro_town.PieChapter == 7.1 then
+    SV.tarro_town.PieChapter = 7
+  end
   GAME:FadeOut(false, 20)
   GAME:EnterGroundMap("TarroTownBigTree", "Tree_Enter")
 end

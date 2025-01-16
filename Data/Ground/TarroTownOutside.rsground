@@ -40307,7 +40307,7 @@
 },
 {
 "EntName": "TTOutside_WEnter",
-"Direction": 6,
+"Direction": 2,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -40315,6 +40315,20 @@
 "Collider": {
 "X": 462,
 "Y": 346,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "TTOutside_EEnter",
+"Direction": 2,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 45,
+"Y": 345,
 "Width": 16,
 "Height": 16
 }

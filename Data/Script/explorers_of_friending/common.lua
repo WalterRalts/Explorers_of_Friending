@@ -1490,7 +1490,7 @@ end
 
 function COMMON.CharAngry(char)
   local angry = CH(char)
-  GROUND:CharSetEmote(angry, "angry", 1)
+  GROUND:CharSetEmote(angry, "angry", 3)
   SOUND:PlaySE("Battle/EVT_Emote_Complain_2")
 end
 

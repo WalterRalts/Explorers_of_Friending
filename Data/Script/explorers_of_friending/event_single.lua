@@ -55,6 +55,8 @@ function SINGLE_CHAR_SCRIPT.BagCount(owner, ownerChar, context, args)
 
 	if item_count > bag_limit then
 		print("too many items!")
+		local extra_item = GAME:GetPlayerBagItem(SV.tarro_town.bag_size)
+		GAME:GivePlayerStorageItem(extra_item)
 		GAME:TakePlayerBagItem(SV.tarro_town.bag_size, true)
 		GAME:WaitFrames(25)
 		_DUNGEON:LogMsg("But no one can carry anymore, so it was thrown away somewhere!")

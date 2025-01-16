@@ -230,6 +230,33 @@ function TarroForestPassage.BigApple_Action(obj, activator)
   SV.tarro_town.PieChapter = 4
 end
 
+function TarroForestPassage.TF_DeepForestEnter_Touch(obj, activator)
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("(...maybe later...)")
+end
+
+function TarroForestPassage.AppleTree_Action(obj, activator)
+  UI:ResetSpeaker()
+  local choices = {("Yes!"),
+    ("No!")}
+  UI:BeginChoiceMenu("Shake the tree for an apple?", choices, 1, 2)
+  UI:WaitForChoice()
+  result = UI:ChoiceResult()
+  if result == 1 then
+    GROUND:CharSetAnim(CH("PLAYER"), "Attack", false)
+    SOUND:PlaySE("Battle/DUN_Tackle")
+    GAME:WaitFrames(4)
+    SOUND:PlaySE("Battle/DUN_Leaf_Storm_3")
+
+    GAME:WaitFrames(90)
+
+    UI:WaitShowDialogue("Nope.")
+  end
+  
+  
+end
+
 return TarroForestPassage
 
 
