@@ -15,17 +15,17 @@
 "Sprite": "PackedHoney",
 "Icon": 7,
 "SortCategory": 4,
-"Price": 50,
-"Rarity": 0,
+"Price": 100,
+"Rarity": 1,
 "MaxStack": -1,
 "CannotDrop": false,
 "BagEffect": false,
 "ItemStates": [
 {
-"$type": "PMDC.Dungeon.DrinkState, PMDC"
+"$type": "PMDC.Dungeon.EdibleState, PMDC"
 },
 {
-"$type": "PMDC.Dungeon.EdibleState, PMDC"
+"$type": "PMDC.Dungeon.DrinkState, PMDC"
 }
 ],
 "GroundUseActions": [],
@@ -103,7 +103,154 @@
 "SkillStates": [],
 "BeforeTryActions": [],
 "BeforeActions": [],
-"OnActions": [],
+"OnActions": [
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "PMDC.Dungeon.InvokeCustomBattleEvent, PMDC",
+"HitboxAction": {
+"$type": "RogueEssence.Dungeon.AttackAction, RogueEssence",
+"HitTiles": true,
+"BurstTiles": 2,
+"Emitter": {
+"$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
+"LocHeight": 0
+},
+"WideAngle": 1,
+"CharAnimData": {
+"$type": "RogueEssence.Dungeon.CharAnimFrameType, RogueEssence",
+"ActionType": 7
+},
+"TargetAlignments": 4,
+"TileEmitter": {
+"$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
+"LocHeight": 0
+},
+"PreActions": [],
+"ActionFX": {
+"Delay": 0,
+"AbsoluteDelay": false,
+"Sound": "",
+"Emitter": {
+"$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
+"LocHeight": 0
+},
+"ScreenMovement": {
+"MinShake": 0,
+"MaxShake": 0,
+"MaxShakeTime": 0
+}
+},
+"LagBehindTime": 0
+},
+"Explosion": {
+"TargetAlignments": 4,
+"HitTiles": true,
+"Range": 1,
+"Speed": 10,
+"TileEmitter": {
+"$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
+"LocHeight": 0
+},
+"Emitter": {
+"$type": "RogueEssence.Content.CircleSquareAreaEmitter, RogueEssence",
+"LocHeight": 0,
+"Anims": [
+{
+"$type": "RogueEssence.Content.StaticAnim, RogueEssence",
+"Anim": {
+"AnimIndex": "Blast_Seed",
+"FrameTime": 3,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"TotalTime": 0,
+"Cycles": 1,
+"FrameOffset": 0
+}
+],
+"ParticlesPerTile": 0.8,
+"RangeDiff": 0,
+"Layer": 2
+},
+"IntroFX": [],
+"ExplodeFX": {
+"Delay": 0,
+"AbsoluteDelay": false,
+"Sound": "DUN_Self-Destruct",
+"Emitter": {
+"$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
+"LocHeight": 0
+},
+"ScreenMovement": {
+"MinShake": 0,
+"MaxShake": 0,
+"MaxShakeTime": 0
+}
+}
+},
+"NewData": {
+"Element": "none",
+"Category": 0,
+"HitRate": -1,
+"SkillStates": [],
+"BeforeTryActions": [],
+"BeforeActions": [],
+"OnActions": [
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "PMDC.Dungeon.WarpFoesToTileEvent, PMDC",
+"Amount": 3,
+"Distance": 100
+}
+}
+],
+"BeforeExplosions": [],
+"BeforeHits": [],
+"OnHits": [],
+"OnHitTiles": [],
+"AfterActions": [],
+"ElementEffects": [],
+"IntroFX": [],
+"HitFX": {
+"Delay": 0,
+"AbsoluteDelay": false,
+"Sound": "",
+"Emitter": {
+"$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
+"LocHeight": 0
+},
+"ScreenMovement": {
+"MinShake": 0,
+"MaxShake": 0,
+"MaxShakeTime": 0
+}
+},
+"HitCharAction": {
+"$type": "RogueEssence.Dungeon.CharAnimProcess, RogueEssence",
+"Process": 0,
+"AnimOverride": 0
+}
+},
+"Msg": {
+"Key": ""
+},
+"AffectTarget": true
+}
+}
+],
 "BeforeExplosions": [],
 "BeforeHits": [],
 "OnHits": [
@@ -115,7 +262,7 @@
 },
 "Value": {
 "$type": "PMDC.Dungeon.WarpFoesToTileEvent, PMDC",
-"Amount": 8,
+"Amount": 3,
 "Distance": 100
 }
 },
@@ -128,7 +275,7 @@
 "Value": {
 "$type": "PMDC.Dungeon.RestoreBellyEvent, PMDC",
 "BoostAnims": [],
-"Heal": 15,
+"Heal": 20,
 "Msg": true,
 "AddMaxBelly": 1,
 "NeedFullBelly": false
@@ -142,8 +289,8 @@
 },
 "Value": {
 "$type": "PMDC.Dungeon.RestoreHPEvent, PMDC",
-"Numerator": 1,
-"Denominator": 10,
+"Numerator": 7,
+"Denominator": 15,
 "AffectTarget": true
 }
 }

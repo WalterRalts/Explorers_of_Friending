@@ -2804,7 +2804,7 @@
 "OrderComplexity": 3,
 "OrderSoftness": 0,
 "WaterPercent": {
-"Min": 2,
+"Min": 5,
 "Max": 21
 },
 "Bowl": true,
@@ -2909,7 +2909,7 @@
 "Spawn": {
 "$type": "RogueElements.ContextSpawner`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.InvItem, RogueEssence]], RogueElements",
 "Amount": {
-"Min": 0,
+"Min": 1,
 "Max": 4
 }
 }
@@ -2989,15 +2989,32 @@
 "X": 0,
 "Y": 0
 },
+"ID": "trap_gust",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+},
+"Rate": 30,
+"Range": {
+"Min": 0,
+"Max": 7
+}
+},
+{
+"Spawn": {
+"TileLoc": {
+"X": 0,
+"Y": 0
+},
 "ID": "trap_warp",
 "Revealed": false,
 "Owner": 0,
 "TileStates": []
 },
-"Rate": 11,
+"Rate": 10,
 "Range": {
 "Min": 3,
-"Max": 5
+"Max": 7
 }
 },
 {
@@ -3014,7 +3031,7 @@
 "Rate": 20,
 "Range": {
 "Min": 1,
-"Max": 5
+"Max": 7
 }
 }
 ]
@@ -3214,25 +3231,33 @@
 "TeamSizes": [
 {
 "Spawn": 1,
-"Rate": 30,
+"Rate": 45,
 "Range": {
 "Min": 0,
-"Max": 5
+"Max": 7
 }
 },
 {
 "Spawn": 2,
-"Rate": 10,
+"Rate": 30,
 "Range": {
 "Min": 1,
-"Max": 6
+"Max": 7
 }
 },
 {
 "Spawn": 3,
-"Rate": 20,
+"Rate": 15,
 "Range": {
 "Min": 3,
+"Max": 7
+}
+},
+{
+"Spawn": 4,
+"Rate": 5,
+"Range": {
+"Min": 4,
 "Max": 7
 }
 }
@@ -3330,10 +3355,10 @@
 "Rate": 5
 }
 ],
-"Rate": 10
+"Rate": 20
 }
 },
-"spawnTotal": 40
+"spawnTotal": 50
 },
 "Range": {
 "Min": 0,
@@ -3343,6 +3368,31 @@
 {
 "Item": {
 "spawns": {
+"Nimbles": {
+"Spawn": [
+{
+"Spawn": {
+"ID": "wand_slow",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0
+},
+"Rate": 10
+},
+{
+"Spawn": {
+"ID": "medicine_x_speed",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0
+},
+"Rate": 10
+}
+],
+"Rate": 15
+},
 "Throwables": {
 "Spawn": [
 {
@@ -3370,10 +3420,10 @@
 "ID": "wand_path",
 "Cursed": false,
 "HiddenValue": "",
-"Amount": 1,
+"Amount": 2,
 "Price": 0
 },
-"Rate": 10
+"Rate": 15
 }
 ],
 "Rate": 15
@@ -3421,10 +3471,10 @@
 "Rate": 5
 }
 ],
-"Rate": 15
+"Rate": 25
 }
 },
-"spawnTotal": 30
+"spawnTotal": 55
 },
 "Range": {
 "Min": 3,
@@ -3972,7 +4022,7 @@
 "CellHeight": 5,
 "CellX": 8,
 "CellY": 8,
-"CellWall": 5,
+"CellWall": 7,
 "Wrap": false
 }
 },
@@ -4389,7 +4439,7 @@
 "CellHeight": 6,
 "CellX": 8,
 "CellY": 8,
-"CellWall": 5,
+"CellWall": 10,
 "Wrap": false
 }
 },
@@ -5045,6 +5095,31 @@
 {
 "Item": {
 "spawns": {
+"Nimbles": {
+"Spawn": [
+{
+"Spawn": {
+"ID": "wand_slow",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0
+},
+"Rate": 10
+},
+{
+"Spawn": {
+"ID": "medicine_x_speed",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0
+},
+"Rate": 10
+}
+],
+"Rate": 15
+},
 "Throwables": {
 "Spawn": [
 {
@@ -5055,7 +5130,7 @@
 "Amount": 3,
 "Price": 0
 },
-"Rate": 10
+"Rate": 5
 },
 {
 "Spawn": {
@@ -5065,17 +5140,17 @@
 "Amount": 1,
 "Price": 0
 },
-"Rate": 10
+"Rate": 5
 },
 {
 "Spawn": {
 "ID": "wand_path",
 "Cursed": false,
 "HiddenValue": "",
-"Amount": 1,
+"Amount": 2,
 "Price": 0
 },
-"Rate": 5
+"Rate": 15
 }
 ],
 "Rate": 30
@@ -5090,7 +5165,7 @@
 "Amount": 0,
 "Price": 0
 },
-"Rate": 20
+"Rate": 25
 },
 {
 "Spawn": {
@@ -5100,7 +5175,7 @@
 "Amount": 0,
 "Price": 0
 },
-"Rate": 20
+"Rate": 25
 },
 {
 "Spawn": {
@@ -5120,107 +5195,16 @@
 "Amount": 0,
 "Price": 0
 },
-"Rate": 5
+"Rate": 15
 }
 ],
-"Rate": 10
+"Rate": 35
 }
 },
-"spawnTotal": 40
+"spawnTotal": 80
 },
 "Range": {
 "Min": 0,
-"Max": 3
-}
-},
-{
-"Item": {
-"spawns": {
-"Throwables": {
-"Spawn": [
-{
-"Spawn": {
-"ID": "ammo_stick",
-"Cursed": false,
-"HiddenValue": "",
-"Amount": 3,
-"Price": 0
-},
-"Rate": 5
-},
-{
-"Spawn": {
-"ID": "ammo_stick",
-"Cursed": false,
-"HiddenValue": "",
-"Amount": 1,
-"Price": 0
-},
-"Rate": 5
-},
-{
-"Spawn": {
-"ID": "wand_path",
-"Cursed": false,
-"HiddenValue": "",
-"Amount": 1,
-"Price": 0
-},
-"Rate": 10
-}
-],
-"Rate": 15
-},
-"Food": {
-"Spawn": [
-{
-"Spawn": {
-"ID": "berry_oran",
-"Cursed": false,
-"HiddenValue": "",
-"Amount": 0,
-"Price": 0
-},
-"Rate": 15
-},
-{
-"Spawn": {
-"ID": "food_apple",
-"Cursed": false,
-"HiddenValue": "",
-"Amount": 0,
-"Price": 0
-},
-"Rate": 15
-},
-{
-"Spawn": {
-"ID": "food_apple_big",
-"Cursed": false,
-"HiddenValue": "",
-"Amount": 0,
-"Price": 0
-},
-"Rate": 5
-},
-{
-"Spawn": {
-"ID": "berry_leppa",
-"Cursed": false,
-"HiddenValue": "",
-"Amount": 0,
-"Price": 0
-},
-"Rate": 5
-}
-],
-"Rate": 15
-}
-},
-"spawnTotal": 30
-},
-"Range": {
-"Min": 3,
 "Max": 7
 }
 }
@@ -5235,11 +5219,11 @@
 ]
 },
 "StartAmount": {
-"Min": 50,
-"Max": 101
+"Min": 1,
+"Max": 126
 },
 "AddAmount": {
-"Min": 1,
+"Min": 10,
 "Max": 51
 },
 "ModStates": []

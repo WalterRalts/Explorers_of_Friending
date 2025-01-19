@@ -147,11 +147,11 @@
 "States": [
 {
 "assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
-"type": "PMDC.Dungeon.DrinkState"
+"type": "PMDC.Dungeon.EdibleState"
 },
 {
 "assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
-"type": "PMDC.Dungeon.EdibleState"
+"type": "PMDC.Dungeon.DrinkState"
 }
 ],
 "Name": {

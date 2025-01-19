@@ -40,12 +40,14 @@ function tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
         GAME:EnterZone("tarro_forest", -1, 0, 0)
       else
         SV.tarro_forest.ZoomerDefeated = true
+        SV.tarro_forest.dungpoints = SV.tarro_forest.dungpoints + 50
         COMMON.EndDungeonDay(result, "tarro_forest", -1, 0, 0)
       end
     else
       if segmentID == 0 then
         COMMON.EndDungeonDay(result, "tarro_forest", -1, 1, 0)
         SV.tarro_forest.dungpoints = SV.tarro_forest.dungpoints + 50
+        SV.tarro_town.apple_tree_get = false
       end
     end
   end

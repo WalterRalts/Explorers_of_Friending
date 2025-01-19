@@ -1,7 +1,7 @@
 require 'explorers_of_friending.common'
 
 function BuzzerShopStart()
---- @param title string the title this window will have.
+--- @param title "Buzzer's Shop" the title this window will have, string.
 --- @param specialties table the specialties available in the menu. See ``ground.base_camp_2.base_camp_2_juice`` for format examples.
 --- @param confirm_action function the function called when the selection is confirmed.
 --- @param refuse_action function the function called when the player presses the cancel or menu button.

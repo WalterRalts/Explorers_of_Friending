@@ -101,7 +101,8 @@ SV.tarro_forest =
   ZoomerDefeated = false,
   revisit = false,
   dungpoints = 0,
-  caterpie_name = "a25ee5"
+  caterpie_name = "a25ee5",
+  apple_tree_get = false
 }
 
 SV.deep_tarro_forest = 

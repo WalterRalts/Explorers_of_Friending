@@ -42,7 +42,7 @@ function tarro_tree_hollows.ExitSegment(zone, result, rescue, segmentID, mapID)
       GAME:RemovePlayerTeam(2)
       GAME:RemovePlayerTeam(2)
       GAME:RemovePlayerTeam(2)
-      COMMON.EndDungeonDay(result, "tarro_tree_hollows", -1, 0, 0)
+      GAME:EndDungeonRun(result, "tarro_tree_hollows", -1, 0, 0, false, true)
     else
     end
   else

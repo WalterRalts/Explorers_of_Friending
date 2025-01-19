@@ -151,17 +151,31 @@ end
 
 function TarroForestPassage.Buttums_Action(obj, activator)
   local maru = CH("PLAYER")
-  local azura = CH('Teammate1')
   local buttums = CH("Buttums")
 
   GROUND:CharTurnToCharAnimated(buttums, maru, 4)
   UI:SetSpeaker(buttums)
-  --[[UI:SetSpeakerEmotion("Determined")
-  UI:WaitShowDialogue("You are not worthy for this place.")
-  UI:WaitShowDialogue("Come back when you're actually experienced. Read the sign.")--]]
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("O-oh,[pause=25] hey... uh...")
-  UI:WaitShowDialogue("This spot isn't...[pause=10] ready yet. But, [pause=25]h[emote=Happy]ey,[pause=25] at least we got the sign working.")
+  UI:SetSpeakerEmotion("Normal")
+  
+  tarro_dungeonpoints = SV.tarro_forest.dungpoints + SV.deep_tarro_forest.dungpoints + SV.tarro_tree_hollows.dungpoints
+  if tarro_dungeonpoints >= 300 then
+    if GAME:DungeonUnlocked("deep_tarro_forest") == false or GAME:DungeonUnlocked("deep_tarro_forest") == false then
+      UI:SetSpeaker(buttums)
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("Even though you have all the points...")
+
+      UI:SetSpeaker(buttums)
+      UI:SetSpeakerEmotion("Pain")
+      UI:WaitShowDialogue("You haven't found all the dungeons.")
+
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Come back when you're more experienced. Read the sign.")
+    else
+    end
+  else
+    UI:WaitShowDialogue("You are not worthy for this place yet; not enough points. Don't forget to read the sign.")
+  end
+  
 end
 
 function TarroForestPassage.Buttums_1_Action(obj, activator)
@@ -182,7 +196,7 @@ function TarroForestPassage.Buttums_1_Action(obj, activator)
   tarro_dungeonpoints = SV.tarro_forest.dungpoints + SV.deep_tarro_forest.dungpoints + SV.tarro_tree_hollows.dungpoints
   if SV.deep_tarro_forest.dungpoints > 0 and SV.tarro_tree_hollows.dungpoints > 0 then
     UI:WaitShowDialogue("You currently have " ..tarro_dungeonpoints.. " dungeon points with the Tarro dungeons.")
-    --set up some sort of shop behind Buttum here after buttums let's the Bluetails know about their feats.
+    --set up some sort of shop behind Buttums here after Buttums lets the Bluetails know about their feats.
   else
     UI:WaitShowDialogue("You haven't explored all of the dungeons needed for this group.")
     UI:WaitShowDialogue("Recheck the sign after you find all of the Tarro dungeons:")
@@ -231,6 +245,8 @@ function TarroForestPassage.BigApple_Action(obj, activator)
 end
 
 function TarroForestPassage.TF_DeepForestEnter_Touch(obj, activator)
+  local maru = CH("PLAYER")
+
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("(...maybe later...)")
@@ -251,7 +267,23 @@ function TarroForestPassage.AppleTree_Action(obj, activator)
 
     GAME:WaitFrames(90)
 
-    UI:WaitShowDialogue("Nope.")
+    local apple_give = math.random(100)
+    if apple_give >= 75 or SV.tarro_town.apple_tree_get == false then
+      SOUND:PlaySE("Battle/EVT_CH02_Item_Place")
+      SV.tarro_town.apple_tree_get = true
+      
+      if apple_give >= 95 then
+        UI:WaitShowDialogue("Maru got an apple.[pause=60] It's huge!")
+        GAME:GivePlayerItem("food_apple_big")
+      else
+        UI:WaitShowDialogue("Maru got an apple.")
+        GAME:GivePlayerItem("food_apple")
+      end
+    elseif SV.tarro_town.apple_tree_get == true then
+      UI:WaitShowDialogue("Looks like the tree is empty...")
+    else
+      UI:WaitShowDialogue("Nope.")
+    end
   end
   
   
