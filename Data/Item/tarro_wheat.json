@@ -3,28 +3,24 @@
 "Object": {
 "$type": "RogueEssence.Data.ItemData, RogueEssence",
 "Name": {
-"DefaultText": "Crunchy Leaf",
+"DefaultText": "Tarro Wheat",
 "LocalTexts": {}
 },
 "Desc": {
-"DefaultText": "A commonly-found leaf that's been sundried, releasing its water into the air. \\n Barely fills the Pokemon's belly, and restores one PP to its moves.",
+"DefaultText": "A grainy, malleable plant that gets exported from Tarro frequently, since it seemingly grows everywhere there. \\nFills the increases max belly by one.",
 "LocalTexts": {}
 },
 "Released": true,
 "Comment": "",
-"Sprite": "crunchy_leaf",
+"Sprite": "WheatPiece",
 "Icon": 5,
 "SortCategory": 7,
-"Price": 5,
+"Price": 3,
 "Rarity": 0,
-"MaxStack": 4,
+"MaxStack": 10,
 "CannotDrop": false,
 "BagEffect": false,
-"ItemStates": [
-{
-"$type": "PMDC.Dungeon.EdibleState, PMDC"
-}
-],
+"ItemStates": [],
 "GroundUseActions": [],
 "UseAction": {
 "$type": "RogueEssence.Dungeon.SelfAction, RogueEssence",
@@ -56,7 +52,7 @@
 "LagBehindTime": 0
 },
 "Explosion": {
-"TargetAlignments": 1,
+"TargetAlignments": 0,
 "HitTiles": false,
 "Range": 0,
 "Speed": 0,
@@ -102,22 +98,11 @@
 ]
 },
 "Value": {
-"$type": "PMDC.Dungeon.RestorePPEvent, PMDC",
-"PP": 1
-}
-},
-{
-"Key": {
-"str": [
-0
-]
-},
-"Value": {
 "$type": "PMDC.Dungeon.RestoreBellyEvent, PMDC",
 "BoostAnims": [],
-"Heal": 3,
-"Msg": true,
-"AddMaxBelly": 0,
+"Heal": 1,
+"Msg": false,
+"AddMaxBelly": 1,
 "NeedFullBelly": false
 }
 }
@@ -127,31 +112,12 @@
 "ElementEffects": [],
 "IntroFX": [],
 "HitFX": {
-"Delay": 1,
+"Delay": 0,
 "AbsoluteDelay": false,
-"Sound": "DUN_Seed",
+"Sound": "",
 "Emitter": {
-"$type": "RogueEssence.Content.SingleEmitter, RogueEssence",
-"LocHeight": 0,
-"finished": false,
-"Offset": 0,
-"Anim": {
-"$type": "RogueEssence.Content.StaticAnim, RogueEssence",
-"Anim": {
-"AnimIndex": "Circle_Small_Green_In",
-"FrameTime": 2,
-"StartFrame": -1,
-"EndFrame": -1,
-"AnimDir": -1,
-"Alpha": 255,
-"AnimFlip": 0
-},
-"TotalTime": 0,
-"Cycles": 1,
-"FrameOffset": 0
-},
-"Layer": 2,
-"UseDest": false
+"$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
+"LocHeight": 0
 },
 "ScreenMovement": {
 "MinShake": 0,
@@ -165,7 +131,7 @@
 "AnimOverride": 0
 }
 },
-"UsageType": 4,
+"UsageType": 0,
 "ArcThrow": false,
 "BreakOnThrow": false,
 "ThrowAnim": {

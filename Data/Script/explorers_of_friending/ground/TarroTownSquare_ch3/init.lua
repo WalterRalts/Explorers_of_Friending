@@ -6,6 +6,7 @@
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
 
+
 -- Package name
 local TarroTownSquare_ch3 = {}
 
@@ -19,393 +20,18 @@ function TarroTownSquare_ch3.Init(map)
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
   local partner = CH('Teammate1')
-  local munch = CH('Munch')
-  local lax = CH("Lax")
-  local ziggy = CH("Ziggy")
-  
   partner.CollisionDisabled = true
   
-  
-  if SV.tarro_town.PieChapter == 5 then
-    TarroTownSquare_ch3.FightFightFight()
-  end
-  if quiz_done == 1 and outside_enter == 1 then
-    GROUND:TeleportTo(partner, 504, 378, Direction.Left, 0)
-  end
   if outside_enter == 3 then
     GROUND:TeleportTo(partner, 30, 254, Direction.Right, 0)
   end
   if outside_enter == 4 then
     GROUND:TeleportTo(partner, 405, 230, Direction.Down, 0)
   end
-  if SV.tarro_town.PieChapter >= 7 then
-    ziggy.CollisionDisabled = true
-    if SV.tarro_tree_hollows.tree_entered == false then
-      TarroTownSquare_ch3.AfterQuiz()
-    end
-    SOUND:PlayBGM("None", false, 0)
-    GROUND:TeleportTo(munch, 455, 210, Direction.Down, 2)
-    GROUND:TeleportTo(lax, 390, 210, Direction.Left, 2)
-    GROUND:Hide("Ziggy")
-    if SV.tarro_tree_hollows.tree_entered == true then
-      GROUND:Hide("Senna")
-      GROUND:Hide("Puchi")
-    end
-  end
+  
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
 end
 
-function TarroTownSquare_ch3.FightFightFight()
-    SV.tarro_town.PieChapter = 6
-    GAME:FadeIn(20)
-
-    local partner = CH('Teammate1')
-    local gepii = CH("Gepii")
-    local getic = CH("Getic")
-    local gekis = CH("Gekis")
-    local happy = CH('Happy')
-    local plus = CH("Plus")
-    local minus = CH('Minus')
-    local maru = CH("PLAYER")
-    local azura = CH('Teammate1')
-    local buzzer = CH("Buzzer")
-    local puchi = CH("Puchi")
-    local senna = CH("Senna")
-    local ziggy = CH("Ziggy")
-    local kek = CH("Kecleon")
-    
-    GAME:MoveCamera(((1662 + 1708) / 2), 274, 1, false)
-    GROUND:TeleportTo(happy, 1616, 230, Direction.Right)
-	  GROUND:TeleportTo(gepii, 1616, 250, Direction.Right)
-
-    GROUND:TeleportTo(gekis, 1683, 190, Direction.Down)
-    GROUND:TeleportTo(buzzer, 1755, 160, Direction.DownLeft)
-    GROUND:TeleportTo(ribbon, 1775, 175, Direction.DownLeft)
-    GROUND:TeleportTo(kek, 1736, 296, Direction.UpLeft)
-
-    GROUND:TeleportTo(puchi, 1640, 450, Direction.DownLeft)
-    GROUND:TeleportTo(ziggy, 1726, 450, Direction.DownLeft)
-    GROUND:TeleportTo(senna, 1754, 450, Direction.UpLeft)
-
-    GROUND:CharSetAnim(minus, "Charge", true)
-    GROUND:CharSetAnim(plus, "Charge", true)
-    GAME:CutsceneMode(true)
-	  AI:DisableCharacterAI(partner)
-
-    UI:SetSpeaker(minus)
-    UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowDialogue("Like, literally, no way!")
-
-    UI:SetSpeaker(plus)
-    UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowDialogue("Nah, you know I'm right!")
-
-    UI:SetSpeaker(minus)
-    UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowDialogue("I know you are but what am I?!")
-
-    UI:SetSpeaker(plus)
-    UI:SetSpeakerEmotion("Angry")
-    local coro1 = TASK:BranchCoroutine(function() 
-      GAME:WaitFrames(24)
-      GROUND:MoveToPosition(puchi, 1636, 292, false, 2)
-      GROUND:CharTurnToCharAnimated(puchi, plus, 7)
-      end)	
-    local coro2 = TASK:BranchCoroutine(function() 
-      UI:WaitShowDialogue("What does that even mean?!")
-      end)
-
-    TASK:JoinCoroutines({coro1, coro2})
-    
-    UI:SetSpeaker(puchi)
-    UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("What... what is this about?")
-
-    GROUND:CharTurnToCharAnimated(gepii, puchi, 3)
-    UI:SetSpeaker(gepii)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Pouch? What are you doing here?")
-
-    GROUND:CharTurnToCharAnimated(puchi, gepii, 5)
-    UI:SetSpeaker(puchi)
-    UI:SetSpeakerEmotion("Sigh")
-    UI:WaitShowDialogue("I wish I knew...")
-    
-    GROUND:CharTurnToCharAnimated(minus, happy, 3)
-    UI:SetSpeaker(happy)
-    UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("Are you two gonna start paralyzing people again?")
-    
-    GROUND:CharTurnToCharAnimated(minus, plus, 3)
-    UI:SetSpeaker(minus)
-    UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowDialogue("I might start paralyzing HIM if he doesn't admit he's wrong!")
-
-    UI:SetSpeaker(plus)
-    UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowDialogue("Oh, so you wanna fight?!")
-
-    UI:SetSpeaker(ziggy)
-    UI:SetSpeakerEmotion("Shouting")
-    UI:WaitShowDialogue("NOT THIS TIME!")
-
-    local coro3 = TASK:BranchCoroutine(function() GAME:WaitFrames(24)
-      GROUND:MoveToPosition(ziggy, 1685, 247, false, 8)
-      GROUND:CharTurnToCharAnimated(ziggy, minus, 7)
-      UI:SetSpeaker(minus)
-      UI:SetSpeakerEmotion("Determined")
-      UI:WaitShowDialogue("Zigzag, I'm sorry, but I'm not letting this one slide![pause=40] O[emote=Angry]ut of my way!")
-      end)	
-    local coro4 = TASK:BranchCoroutine(function() GROUND:MoveToPosition(senna, 1685, 281, false, 3)
-      end)
-    local coro5 = TASK:BranchCoroutine(function() GROUND:MoveToPosition(azura, 1665, 295, false, 6)
-      end)
-
-    TASK:JoinCoroutines({coro3, coro4, coro5})
-    GROUND:CharTurnToCharAnimated(senna, ziggy, 1)
-    GROUND:CharTurnToCharAnimated(azura, ziggy, 1)
-    UI:SetSpeaker(ziggy)
-    UI:SetSpeakerEmotion("Determined")
-    UI:WaitShowDialogue("Nuh-uh!")
-
-    GROUND:CharTurnToCharAnimated(senna, plus, 3)
-    UI:SetSpeaker(plus)
-    UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowDialogue("If you wanna get in the way, fine! Minus can't hurt you anyway,[pause=20] since she can't aim!")
-    
-    GROUND:CharTurnToCharAnimated(senna, minus, 3)
-    UI:SetSpeaker(minus)
-    UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowDialogue("You wanna, like, test that?!")
-
-    local coro6 = TASK:BranchCoroutine(function() GAME:WaitFrames(24)
-      UI:SetSpeaker(ziggy)
-      UI:SetSpeakerEmotion("Determined")
-      UI:WaitShowDialogue("Nuh-uh!")
-
-      UI:SetSpeaker(senna)
-      UI:SetSpeakerEmotion("Worried")
-      GROUND:CharTurnToCharAnimated(azura, senna, 3)
-      UI:WaitShowDialogue("...[pause=20] .[emote=Determined]..")
-      
-      UI:SetSpeakerEmotion("Determined")
-      GROUND:CharTurnToCharAnimated(ziggy, senna, 3)
-      UI:WaitShowDialogue("You two are gonna hurt someone!")
-
-      UI:SetSpeaker(azura)
-      GROUND:CharTurnToCharAnimated(azura, minus, 3)
-      UI:SetSpeakerEmotion("Determined")
-      UI:WaitShowTimedDialogue("Yeah!", 50)
-      end)	
-    local coro7 = TASK:BranchCoroutine(function() GROUND:MoveToPosition(maru, 1706, 280, false, 2)
-      end)
-    
-    TASK:JoinCoroutines({coro6, coro7})
-
-    GROUND:CharTurnToCharAnimated(puchi, minus, 3)
-    GROUND:CharTurnToCharAnimated(gepii, plus, 3)
-    
-    UI:SetSpeaker(senna)
-    UI:SetSpeakerEmotion("Determined")
-    GROUND:CharTurnToCharAnimated(azura, senna, 3)
-    UI:WaitShowDialogue("Over one little fight!")
-
-    UI:SetSpeaker(azura)
-    GROUND:CharTurnToCharAnimated(azura, minus, 3)
-    UI:SetSpeakerEmotion("Determined")
-    UI:WaitShowTimedDialogue("Yeah!", 50)
-    UI:SetSpeaker(senna)
-    UI:SetSpeakerEmotion("Angry")
-    GROUND:CharTurnToCharAnimated(azura, senna, 3)
-    UI:WaitShowDialogue("What is this fight for?!")
-
-    UI:SetSpeaker(azura)
-    GROUND:CharTurnToCharAnimated(azura, minus, 3)
-    UI:SetSpeakerEmotion("Determined")
-    UI:WaitShowTimedDialogue("Yeah!", 50)
-
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("What is this fight about?")
-
-    UI:SetSpeaker(minus)
-    UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowDialogue("He thinks that red is better than blue!")
-
-    UI:SetSpeaker(plus)
-    UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowDialogue("Because it is better than blue!")
-
-    GAME:WaitFrames(90)
-    
-    local coro8 = TASK:BranchCoroutine(function() GAME:WaitFrames(24)
-      UI:SetSpeaker(getic)
-      UI:SetSpeakerEmotion("Sigh")
-      UI:WaitShowDialogue("You two are such kids...")
-
-      GROUND:CharTurnToCharAnimated(minus, gekis, 3)
-      COMMON.CharSweatdrop("Minus")
-      GROUND:CharSetAnim(minus, "None", true)
-      GROUND:CharSetAnim(plus, "None", true)
-
-      UI:SetSpeaker(minus)
-      UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowDialogue("Huh?")
-      end)	
-    local coro9 = TASK:BranchCoroutine(function()GROUND:MoveToPosition(kek, 1000, 250, false, 4)
-      end)
-
-    TASK:JoinCoroutines({coro8, coro9})
-
-    UI:SetSpeaker(happy)
-    UI:SetSpeakerEmotion("Sigh")
-    UI:WaitShowDialogue("I'm done...[pause=45] glad I didn't prepare for this.")
-
-    local function followhaps()
-      GROUND:MoveToPosition(happy, 1000, 269, false, 2)
-      GAME:WaitFrames(135)
-      GROUND:MoveToPosition(gepii, 1000, 269, false, 7)
-    end
-    UI:SetSpeaker(gepii)
-    UI:SetSpeakerEmotion("Shouting")
-    UI:WaitShowDialogue("Wait[script=0], Haps! [pause=40] Wait up!", followhaps())
-
-    UI:SetSpeaker(ziggy)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue('...this was honestly a total waste of my time.');
-    UI:WaitShowDialogue('My disappointment is immeasurable,[pause=0] and my day is ruined.');
-    GROUND:MoveToPosition(ziggy, 1000, 269, false, 7)
-
-    UI:SetSpeaker(puchi)
-    UI:SetSpeakerEmotion("Pain")
-    UI:WaitShowDialogue('I wanna go home...');
-    UI:WaitShowDialogue('Sleep...[pause=30] [emote=Dizzy][speed=0.6]need sleep...');
-    GROUND:MoveToPosition(puchi, 1000, 269, false, 2)
-
-    UI:SetSpeaker(senna)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue('No one got hurt.')
-    UI:SetSpeakerEmotion("Normal")
-    GROUND:CharTurnToCharAnimated(senna, ziggy, 3)
-    UI:WaitShowDialogue("Looks like they're going towards the [color=#01FE10]Big Tree[color]")
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("I'll go with them,[pause=40] meet you guys there.");
-    GROUND:MoveToPosition(senna, 1000, 269, false, 4)
-
-    GROUND:TeleportTo(kek, 157, 186, Direction.UpLeft)
-
-    GROUND:TeleportTo(puchi, 475, 353, Direction.Down)
-    GROUND:TeleportTo(ziggy, 449, 409, Direction.UpRight)
-    GROUND:TeleportTo(senna, 500, 409, Direction.UpLeft)
-
-    GROUND:TeleportTo(happy, 1344, 196, Direction.Left)
-	  GROUND:TeleportTo(gepii, 1304, 196, Direction.Right)
-    
-    GROUND:CharTurnToCharAnimated(gekis, getic, 10)
-    GROUND:CharTurnToCharAnimated(getic, gekis, 10)
-    UI:SetSpeaker(gekis)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Getic,[pause=10] you're in charge.")
-
-    UI:SetSpeaker(getic)
-    UI:SetSpeakerEmotion("Surprised")
-    UI:WaitShowTimedDialogue("What?![pause=40] But I-")
-
-    UI:SetSpeaker(gekis)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowTimedDialogue("Shopping tiiiiiiime!~", 30)
-
-    GROUND:MoveToPosition(gekis, 1655, 230, false, 7)
-    GROUND:MoveToPosition(gekis, 1200, 230, false, 7)
-    GROUND:TeleportTo(gepii, 126, 231, Direction.UpRight)
-
-    local coro6 = TASK:BranchCoroutine(function() GAME:WaitFrames(24)
-      UI:SetSpeaker(getic)
-      UI:SetSpeakerEmotion("Stunned")
-      UI:WaitShowDialogue("Wha-[pause=20], but I- thi-[pause=35] u[emote=Sigh]gh!")
-      end)	
-    local coro7 = TASK:BranchCoroutine(function() 
-      GROUND:CharAnimateTurn(getic, Direction.DownRight, 2, false)
-      end)
-    
-    TASK:JoinCoroutines({coro6, coro7})
-
-    GAME:MoveCamera(0, 0, 1, true)
-    GAME:CutsceneMode(false)
-    AI:EnableCharacterAI(partner)
-end
-
-function TarroTownSquare_ch3.AfterQuiz()
-  local partner = CH('Teammate1')
-  local maru = CH("PLAYER")
-  local azura = CH('Teammate1')
-  local puchi = CH("Puchi")
-  local senna = CH("Senna")
-  local ziggy = CH("Ziggy")
-  local munch = CH("Munch")
-  local lax = CH("Lax")
-  SOUND:PlayBGM("None", false, 0)
-  GROUND:CharAnimateTurn(puchi, Direction.Up, 2, true)
-  GROUND:CharAnimateTurn(ziggy, Direction.Up, 2, true)
-  GROUND:CharAnimateTurn(senna, Direction.Up, 5, true)
-  GROUND:CharAnimateTurn(azura, Direction.Up, 2, true)
-  GROUND:CharAnimateTurn(maru, Direction.Up, 2, true)
-  GAME:WaitFrames(70)
-  AI:DisableCharacterAI(partner)
-  UI:SetSpeaker(ziggy)
-  UI:SetSpeakerEmotion("Stunned")
-  UI:WaitShowDialogue("W-[pause=5]what was that?")
-
-  UI:SetSpeaker(senna)
-  UI:SetSpeakerEmotion("Stunned")
-  UI:WaitShowDialogue("An explosion from the Big Tree?")
-
-  COMMON.FaceEachother("Ziggy", "Senna")
-  UI:SetSpeaker(ziggy)
-  UI:SetSpeakerEmotion("Angry")
-  UI:WaitShowDialogue("No! It can't be!")
-
-  UI:SetSpeaker(senna)
-  UI:SetSpeakerEmotion("Stunned")
-  UI:WaitShowTimedDialogue("But...[pause=35] but[pause=15] it...")
-  
-  GROUND:CharAnimateTurn(ziggy, Direction.Up, 2, true)
-  UI:SetSpeaker(ziggy)
-  UI:SetSpeakerEmotion("Determined")
-  UI:WaitShowDialogue("We're going!")
-
-  UI:SetSpeaker(puchi)
-  UI:SetSpeakerEmotion("Pain")
-  UI:WaitShowDialogue("Ziggy,[pause=15] this feels like something our parents should take care of...")
-
-  UI:SetSpeaker(ziggy)
-  UI:SetSpeakerEmotion("Angry")
-  UI:WaitShowDialogue("That would take too long! [emote=Determined] Someone else would've heard it by now, c'mon! We can help!")
-
-  GROUND:MoveToPosition(ziggy, 444, 322, false, 2)
-  local coro1 = TASK:BranchCoroutine(function() 
-    GROUND:MoveToPosition(ziggy, 433, 265, false, 2)
-    end)
-  local coro2 = TASK:BranchCoroutine(function()
-    GAME:WaitFrames(15)
-    GROUND:CharSetAnim(ziggy, "Hop", false)
-    end)
-
-  TASK:JoinCoroutines({coro1, coro2})
-  GAME:WaitFrames(25)
-
-  UI:SetSpeaker(ziggy)
-  UI:SetSpeakerEmotion("Angry")
-  UI:WaitShowDialogue("Come on!")
-
-  GROUND:MoveToPosition(ziggy, 420, 200, false, 2)
-  GROUND:Hide("Ziggy")
-  SV.tarro_town.PieChapter = 7
-
-  GAME:MoveCamera(0, 0, 30, true)
-  GAME:CutsceneMode(false)
-  AI:EnableCharacterAI(partner)
-end
 ---TarroTownSquare_ch3.Enter(map)
 --Engine callback function
 function TarroTownSquare_ch3.Enter(map)
@@ -435,41 +61,15 @@ function TarroTownSquare_ch3.Update(map)
   local azura = CH('Teammate1')
 
   if GAME:IsKeyDown(66) then
-    if SV.tarro_town.PieChapter == 6 then
-      if quiz_available then
-        UI:SetSpeaker(azura)
-        UI:SetSpeakerEmotion("Worried")
-        UI:WaitShowDialogue("The town isn't that big, right?")
+    if SV.tarro_town.DarknessChapter == 1 then
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Now's probably a great time to go through the Big Tree.") 
 
-        UI:SetSpeaker(maru)
-        GROUND:CharTurnToCharAnimated(maru, azura, 4)
-        UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("You getting worried, Azura?")
-        UI:WaitShowDialogue("I could answer all the questions if you want me to.")
-
-        UI:SetSpeaker(azura)
-        UI:SetSpeakerEmotion("Surprised")
-        UI:WaitShowDialogue("Huh?! [pause=45]N[emote=Angry]o! Don't you dare!")
-      else
-        UI:SetSpeaker(azura)
-        GROUND:CharTurnToCharAnimated(maru, azura, 4)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("Let's go meet up with the others!")
-        UI:WaitShowDialogue("They might know more about town!")
-
-        UI:SetSpeaker(maru)
-        UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("Yep.")
-      end
-    elseif SV.tarro_town.PieChapter == 7 then
       UI:SetSpeaker(azura)
       GROUND:CharTurnToCharAnimated(maru, azura, 4)
-      UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowDialogue("Wonder why no one else is noticing...")
-
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowDialogue("So do I, but...")
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Oh yeah, let's go in there!")
     else
       UI:SetSpeaker(azura)
       GROUND:CharTurnToCharAnimated(maru, azura, 4)
@@ -543,17 +143,6 @@ function TarroTownSquare_ch3.Gekis_Action(obj, activator)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("The decision is much too difficult.")
   UI:WaitShowDialogue("I will purchase everything, thank you.")
-
-  UI:SetSpeaker(kek)
-  UI:SetSpeakerEmotion("Surprised")
-  UI:WaitShowDialogue("What?! [pause=0]Ms. Piona, please reconsider!")
-  UI:SetSpeakerEmotion("Pain")
-  UI:WaitShowDialogue("I won't have any stock for my other consumers!")
-
-  UI:SetSpeaker(gekis)
-  UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("It matters not, Mr. Kecleon.")
-  UI:WaitShowDialogue("I have all the funds necessary, and I am willing to make a payment.")
 end
 
 function TarroTownSquare_ch3.Ribbon_Action(obj, activator)
@@ -593,7 +182,27 @@ end
 function TarroTownSquare_ch3.Plus_Action()
   local doc = CH("Dr_Chance")
   local plus = CH("Plus")
-  local doc = CH("Dr_Chance")
+  local happy = CH("Happy")
+
+  UI:SetSpeaker(plus)
+  UI:SetSpeakerEmotion("Angry")
+  UI:WaitShowDialogue("Come on, you gotta let me see her!")
+  UI:SetSpeakerEmotion("Teary-Eyed")
+  UI:WaitShowDialogue("Please...!")
+
+  UI:SetSpeaker(happy)
+  UI:SetSpeakerEmotion("Angry")
+  UI:WaitShowDialogue("No, Plus, she needs her time to rest!")
+
+  UI:SetSpeaker(plus)
+  UI:SetSpeakerEmotion("Sad")
+  UI:WaitShowDialogue("This just isn't like her...!")
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Is she okay?")
+
+  UI:SetSpeaker(doc)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("I can assure you, Plus, she will be fine in a little while.")
 end
 
 function TarroTownSquare_ch3.Happy_Action(obj, activator)
@@ -700,11 +309,8 @@ function TarroTownSquare_ch3.PlumiHouse_Entrance_Touch(obj, activator)
 end
 
 function TarroTownSquare_ch3.BigTree_Entrance_Touch(obj, activator)
-  if SV.tarro_town.PieChapter == 7.1 then
-    SV.tarro_town.PieChapter = 7
-  end
   GAME:FadeOut(false, 20)
-  GAME:EnterGroundMap("TarroTownBigTree", "Tree_Enter")
+  GAME:EnterGroundMap("TarroTownBigTree_ch3", "Tree_Enter")
 end
 
 return TarroTownSquare_ch3

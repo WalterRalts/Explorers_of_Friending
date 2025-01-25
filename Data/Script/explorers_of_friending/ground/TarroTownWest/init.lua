@@ -132,7 +132,7 @@ end
 
 function TarroTownWest.TarroTownOutside_Entrance_Touch()
   GAME:FadeOut(false, 20)
-  GAME:EnterGroundMap("TarroTownOutside", "TTOutside_WEnter")
+  GAME:EnterGroundMap("TarroTownOutside", "TTOutside_EEnter")
 end
 
 function TarroTownWest.PlantationStorage_Entrance_Touch()

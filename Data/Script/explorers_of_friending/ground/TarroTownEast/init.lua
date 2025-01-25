@@ -687,6 +687,7 @@ function TarroTownEast.TTEast_NExit_Touch(obj, activator)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("Though, now may not be the time.[pause=45] Pie's waiting.")
   else
+    GAME:FadeOut(false, 20)
     GAME:EnterGroundMap("TarroTownSquare", "TTSquare_EastEnter")
   end
 end

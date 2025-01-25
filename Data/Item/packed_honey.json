@@ -7,7 +7,7 @@
 "LocalTexts": {}
 },
 "Desc": {
-"DefaultText": "Absolutely delicious, sticky Honey from the hives of Tarro Town. The scent alone will attract some hungry monsters. Its effects spread to close party members.",
+"DefaultText": "Absolutely delicious, sticky Honey from the hives of Tarro Town. The scent alone will attract some hungry monsters. \\nHeals for a little less than half a Pokemon's HP, and its effects spread to close party members.",
 "LocalTexts": {}
 },
 "Released": true,
@@ -23,9 +23,6 @@
 "ItemStates": [
 {
 "$type": "PMDC.Dungeon.EdibleState, PMDC"
-},
-{
-"$type": "PMDC.Dungeon.DrinkState, PMDC"
 }
 ],
 "GroundUseActions": [],

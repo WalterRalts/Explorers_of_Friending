@@ -40460,7 +40460,7 @@
 },
 {
 "EntName": "TTOutside_EEnter",
-"Direction": 2,
+"Direction": 6,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,

@@ -277,11 +277,13 @@ function TarroTownEast_ch3.MaruMail_Action(obj, activator)
   local maru = CH("PLAYER")
   local azura = CH("Teammate1")
   if mail_read == 0 then
+    
     UI:ResetSpeaker()
     UI:SetAutoFinish(true)
     UI:WaitShowDialogue("Maru opens the mailbox. A letter is inside.")
-    UI:WaitShowDialogue("\'Meet me at the end of Deep Tarro.\n Do not worry about timing.\n I will know when you arrive...\'")
+    UI:WaitShowDialogue("\'To the two small ones.\nMeet me at the end of Deep Tarro.\n Do not worry about timing.\n I will know when you arrive...\'")
 
+    UI:WaitShowBG("MarAzuMail", 3, 60)
     UI:SetAutoFinish(false)
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
@@ -290,6 +292,7 @@ function TarroTownEast_ch3.MaruMail_Action(obj, activator)
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("Should we tell dad?")
+    UI:WaitHideBG(30)
 
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
@@ -301,6 +304,23 @@ function TarroTownEast_ch3.MaruMail_Action(obj, activator)
     UI:WaitShowDialogue("The mailbox is empty.")
 
     UI:SetAutoFinish(false)
+  end
+end
+
+function TarroTownEast_ch3.TTEast_NExit_Touch(obj, activator)
+  if SV.tarro_town.PieChapter < 5 then
+    local maru = CH("PLAYER")
+
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("This path leads into town.")
+
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Though, now may not be the time.[pause=45] Pie's waiting.")
+  else
+    GAME:FadeOut(false, 20)
+    GAME:EnterGroundMap("tarro_town", "TarroTownSquare_ch3", "TTSquare_EastEnter")
   end
 end
 

@@ -124,7 +124,7 @@
 },
 "crunchy_leaf": {
 "$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
-"Icon": -1,
+"Icon": 5,
 "UsageType": 4,
 "States": [
 {
@@ -148,10 +148,6 @@
 {
 "assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.EdibleState"
-},
-{
-"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
-"type": "PMDC.Dungeon.DrinkState"
 }
 ],
 "Name": {
@@ -205,6 +201,19 @@
 "Released": true,
 "Comment": "",
 "SortOrder": 0
+},
+"tarro_wheat": {
+"$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
+"Icon": 5,
+"UsageType": 0,
+"States": [],
+"Name": {
+"DefaultText": "Tarro Wheat",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 7
 }
 }
 }

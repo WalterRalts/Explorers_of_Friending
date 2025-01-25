@@ -45,16 +45,17 @@ function TarroTownBigTree.Init(map)
   
       
       _DATA.Save.ActiveTeam.Players:Add(p3)
+      _DATA.Save.ActiveTeam.Players[2]:RefreshTraits()
+      _DATA.Save.ActiveTeam.Players[3]:RefreshTraits()
+      _DATA.Save.ActiveTeam.Players[4]:RefreshTraits()
+      local talk_npc = RogueEssence.Dungeon.BattleScriptEvent("SennaInteract")
+            _DATA.Save.ActiveTeam.Players[2].ActionEvents:Add(talk_npc)
+            talk_npc = RogueEssence.Dungeon.BattleScriptEvent("PuchiInteract")
+            _DATA.Save.ActiveTeam.Players[3].ActionEvents:Add(talk_npc)
+            talk_npc = RogueEssence.Dungeon.BattleScriptEvent("ZiggyInteract")
+            _DATA.Save.ActiveTeam.Players[4].ActionEvents:Add(talk_npc)
     end
-    _DATA.Save.ActiveTeam.Players[2]:RefreshTraits()
-    _DATA.Save.ActiveTeam.Players[3]:RefreshTraits()
-    _DATA.Save.ActiveTeam.Players[4]:RefreshTraits()
-    local talk_npc = RogueEssence.Dungeon.BattleScriptEvent("SennaInteract")
-          _DATA.Save.ActiveTeam.Players[2].ActionEvents:Add(talk_npc)
-          talk_npc = RogueEssence.Dungeon.BattleScriptEvent("PuchiInteract")
-          _DATA.Save.ActiveTeam.Players[3].ActionEvents:Add(talk_npc)
-          talk_npc = RogueEssence.Dungeon.BattleScriptEvent("ZiggyInteract")
-          _DATA.Save.ActiveTeam.Players[4].ActionEvents:Add(talk_npc)
+    
     
     MapStrings = STRINGS.MapStrings
     COMMON.RespawnAllies()
