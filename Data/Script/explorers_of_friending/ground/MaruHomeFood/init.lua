@@ -5,7 +5,7 @@
 ]]--
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
-require 'explorers_of_friending.cooking'
+require 'explorers_of_friending.ground.MaruHomeFood.cooking'
 
 -- Package name
 local MaruHomeFood = {}
@@ -16,7 +16,12 @@ local MaruHomeFood = {}
 ---MaruHomeFood.Init(map)
 --Engine callback function
 function MaruHomeFood.Init(map)
-  MaruHomeFood.Init()
+  SV.tarro_town.cooking_tutorial_done = 1
+  MaruHomeFood.CookingGameplay()
+end
+
+function MaruHomeFood.CookingGameplay(map)
+  Cooking(0, 0, 0)
 end
 
 ---MaruHomeFood.Enter(map)
@@ -24,7 +29,7 @@ end
 function MaruHomeFood.Enter(map)
 
   GAME:FadeIn(20)
-
+  
 end
 
 ---MaruHomeFood.Exit(map)
@@ -55,6 +60,8 @@ function MaruHomeFood.GameLoad(map)
   GAME:FadeIn(20)
 
 end
+
+
 
 -------------------------------
 -- Entities Callbacks

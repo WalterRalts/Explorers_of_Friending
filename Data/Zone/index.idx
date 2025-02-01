@@ -5,7 +5,7 @@
 "tarro_town_outside": {
 "$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
 "ExpPercent": 100,
-"Level": -1,
+"Level": 5,
 "LevelCap": false,
 "KeepSkills": false,
 "TeamRestrict": false,
@@ -26,7 +26,8 @@
 "TarroTownEast_ch2end",
 "TarroTownEast_ch3",
 "SennaHome",
-"CupShuffle"
+"CupShuffle",
+"MaruHomeFood"
 ],
 "Maps": [],
 "Name": {
@@ -39,7 +40,7 @@
 },
 "tarro_forest": {
 "$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
-"ExpPercent": 71,
+"ExpPercent": 70,
 "Level": 5,
 "LevelCap": false,
 "KeepSkills": false,
@@ -114,7 +115,7 @@
 "deep_tarro_forest": {
 "$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
 "ExpPercent": 50,
-"Level": -1,
+"Level": 10,
 "LevelCap": false,
 "KeepSkills": false,
 "TeamRestrict": false,
@@ -124,7 +125,7 @@
 "KeepTreasure": false,
 "BagSize": -1,
 "Rescues": 0,
-"CountedFloors": 7,
+"CountedFloors": 16,
 "Rogue": 0,
 "Grounds": [],
 "Maps": [
@@ -136,6 +137,17 @@
 4,
 5,
 6
+],
+[
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8
 ]
 ],
 "Name": {
@@ -148,7 +160,7 @@
 },
 "tarro_tree_hollows": {
 "$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
-"ExpPercent": 40,
+"ExpPercent": 50,
 "Level": -1,
 "LevelCap": false,
 "KeepSkills": false,

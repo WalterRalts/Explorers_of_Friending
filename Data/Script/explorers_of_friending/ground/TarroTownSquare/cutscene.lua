@@ -3,7 +3,6 @@ Square = {}
 function Square.FightFightFight()
   SV.tarro_town.PieChapter = 6
   GAME:MoveCamera(((1662 + 1708) / 2), 274, 1, false)
-  GAME:FadeIn(25)
 
   local partner = CH('Teammate1')
   local gepii = CH("Gepii")
@@ -37,6 +36,7 @@ function Square.FightFightFight()
   GROUND:CharSetAnim(plus, "Charge", true)
   GAME:CutsceneMode(true)
 	AI:DisableCharacterAI(partner)
+  GAME:FadeIn(25)
 
   UI:SetSpeaker(minus)
   UI:SetSpeakerEmotion("Angry")

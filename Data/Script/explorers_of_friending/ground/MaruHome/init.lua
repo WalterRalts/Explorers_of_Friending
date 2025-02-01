@@ -24,10 +24,10 @@ function MaruHome.Init(map)
   if SV.tarro_town.PieChapter <= 1 then
     Bluetails.PieTime()
     SV.tarro_town.PieChapter = 2
-  elseif SV.tarro_town.PieChapter == 4 then
+  elseif SV.tarro_town.PieChapter == 4 then -- Apple secured
     Bluetails.RealPieTime()
     Bluetails.AfterPieTime()
-  elseif SV.tarro_town.PieChapter >= 10 then
+  elseif SV.tarro_town.PieChapter == 10 or SV.tarro_town.PieChapter == 11 then -- before mail
     GROUND:Hide("Arama")
     GROUND:TeleportTo(CH("Amazuru"), 229, 248, Direction.DownRight, 0)
     if SV.tarro_town.PieChapter == 10 then
@@ -35,11 +35,17 @@ function MaruHome.Init(map)
       GAME:WaitFrames(30)
       UI:WaitHideTitle(120)
       Bluetails.MailTime()
-    elseif SV.tarro_town.PieChapter == 11 and mail_read == true then
+    elseif SV.tarro_town.PieChapter == 11 and mail_read == 1 then
       -- Move checks to DarknessChapter
       Bluetails.AfterMailTime()
+      mail_read = 3
+      SV.tarro_town.PieChapter = 12
+      SV.tarro_town.DarknessChapter = 1
     end
     COMMON.CreateWalkArea("Amazuru", 195, 225, 72, 72)
+  elseif SV.tarro_town.DarknessChapter == 1 then -- after mail and cooking
+    GROUND:Hide("Arama")
+    GROUND:Hide("Amazuru")
   end
   GAME:FadeIn(20)
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
@@ -88,6 +94,23 @@ function MaruHome.Update(map)
       GROUND:CharTurnToCharAnimated(maru, azura, 4)
       UI:SetSpeakerEmotion("Worried")
       UI:WaitShowDialogue("Gotta stop them now... I guess.")
+    elseif SV.tarro_town.DarknessChapter == 1 then
+      UI:SetSpeaker(azura)      
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("So... what now...?")
+      COMMON.FaceEachother("Teammate1", "PLAYER")
+
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("I guess we could try visiting town. [pause=25]Maybe Puchi's mom isn't mad anymore.")
+
+      UI:SetSpeaker(azura)      
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Maybe go into the dungeon?")
+
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("I don't see why not.")
     else
       UI:SetSpeaker(azura)
       GROUND:CharTurnToCharAnimated(maru, azura, 4)
@@ -118,13 +141,13 @@ end
 function MaruHome.MaruOven_Action(obj, activator)
   local maru = CH("PLAYER")
 
-  if SV.tarro_town.PieChapter <= 5 then
+  if SV.tarro_town.DarknessChapter == 1 then
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("This is what mom uses to cook with...")
 
     UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Though[pause=25], I should probably ask her for permission use it first...")
+    UI:WaitShowDialogue("Though[pause=25], I should probably ask her for permission to use it while she's away...")
   end
 end
 

@@ -11,7 +11,7 @@
 "Released": true,
 "Comment": "",
 "NoEXP": false,
-"ExpPercent": 71,
+"ExpPercent": 70,
 "Level": 5,
 "LevelCap": false,
 "KeepSkills": false,
@@ -2484,7 +2484,7 @@
 },
 "Value": {
 "$type": "RogueEssence.LevelGen.MappedRoomStep`1[[RogueEssence.LevelGen.MapLoadContext, RogueEssence]], RogueEssence",
-"MapID": "TarroForest"
+"MapID": "ZoomBossMap"
 }
 },
 {

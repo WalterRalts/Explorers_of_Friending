@@ -7,7 +7,7 @@
 "LocalTexts": {}
 },
 "Desc": {
-"DefaultText": "A grainy, malleable plant that gets exported from Tarro frequently, since it seemingly grows everywhere there. \\nFills the increases max belly by one.",
+"DefaultText": "A grainy, malleable plant that gets exported from Tarro frequently, since it seemingly grows everywhere there. \\nFills and increases the belly by one.",
 "LocalTexts": {}
 },
 "Released": true,
@@ -17,10 +17,14 @@
 "SortCategory": 7,
 "Price": 3,
 "Rarity": 0,
-"MaxStack": 10,
+"MaxStack": 5,
 "CannotDrop": false,
 "BagEffect": false,
-"ItemStates": [],
+"ItemStates": [
+{
+"$type": "PMDC.Dungeon.EdibleState, PMDC"
+}
+],
 "GroundUseActions": [],
 "UseAction": {
 "$type": "RogueEssence.Dungeon.SelfAction, RogueEssence",
@@ -52,7 +56,7 @@
 "LagBehindTime": 0
 },
 "Explosion": {
-"TargetAlignments": 0,
+"TargetAlignments": 1,
 "HitTiles": false,
 "Range": 0,
 "Speed": 0,
@@ -101,7 +105,7 @@
 "$type": "PMDC.Dungeon.RestoreBellyEvent, PMDC",
 "BoostAnims": [],
 "Heal": 1,
-"Msg": false,
+"Msg": true,
 "AddMaxBelly": 1,
 "NeedFullBelly": false
 }
@@ -112,12 +116,31 @@
 "ElementEffects": [],
 "IntroFX": [],
 "HitFX": {
-"Delay": 0,
+"Delay": 15,
 "AbsoluteDelay": false,
-"Sound": "",
+"Sound": "DUN_Bite",
 "Emitter": {
-"$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
-"LocHeight": 0
+"$type": "RogueEssence.Content.SingleEmitter, RogueEssence",
+"LocHeight": 0,
+"finished": false,
+"Offset": 0,
+"Anim": {
+"$type": "RogueEssence.Content.StaticAnim, RogueEssence",
+"Anim": {
+"AnimIndex": "Circle_Small_Blue_In",
+"FrameTime": 2,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"TotalTime": 0,
+"Cycles": 1,
+"FrameOffset": 0
+},
+"Layer": 2,
+"UseDest": false
 },
 "ScreenMovement": {
 "MinShake": 0,
@@ -131,7 +154,7 @@
 "AnimOverride": 0
 }
 },
-"UsageType": 0,
+"UsageType": 4,
 "ArcThrow": false,
 "BreakOnThrow": false,
 "ThrowAnim": {

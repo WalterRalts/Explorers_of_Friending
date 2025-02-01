@@ -97,11 +97,11 @@
 "UsageType": 4,
 "States": [
 {
-"assembly": "PMDC, Version=0.8.5.0, Culture=neutral, PublicKeyToken=null",
+"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.EdibleState"
 },
 {
-"assembly": "PMDC, Version=0.8.5.0, Culture=neutral, PublicKeyToken=null",
+"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.SeedState"
 }
 ],
@@ -205,10 +205,28 @@
 "tarro_wheat": {
 "$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
 "Icon": 5,
-"UsageType": 0,
-"States": [],
+"UsageType": 4,
+"States": [
+{
+"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.EdibleState"
+}
+],
 "Name": {
 "DefaultText": "Tarro Wheat",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 7
+},
+"tarro_bread": {
+"$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
+"Icon": -1,
+"UsageType": 4,
+"States": [],
+"Name": {
+"DefaultText": "Tarro Bread",
 "LocalTexts": {}
 },
 "Released": true,

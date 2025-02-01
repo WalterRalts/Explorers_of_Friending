@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.5.0",
+"Version": "0.8.8.0",
 "Object": {
 "$type": "RogueEssence.Dungeon.Map, RogueEssence",
 "Name": {
@@ -92,7 +92,7 @@
 }
 ],
 "EquippedItem": {
-"ID": "seed_warp",
+"ID": "berry_oran",
 "Cursed": false,
 "HiddenValue": "",
 "Amount": 0,
@@ -100,60 +100,39 @@
 },
 "Absentee": false,
 "ChargeBoost": 0,
-"HP": 30,
+"HP": 20,
 "HPRemainder": 0,
 "Fullness": 100,
 "FullnessRemainder": 0,
 "MaxFullness": 100,
 "StatusEffects": {},
-"MustHitNext": false,
+"MissChain": 0,
 "EXPMarked": false,
 "Tactic": {
 "Name": {
-"DefaultText": "Stick Together",
-"LocalTexts": {
-"fr": "Suivre le meneur",
-"fr-ca": "Rester ensemble",
-"de": "Zusammen bleiben",
-"es": "Vayamos juntos",
-"pt": "Fiquem Juntos",
-"it": "Restiamo uniti",
-"ko": "함께 가자",
-"zh-hans": "一起走吧"
-}
+"DefaultText": "Boss",
+"LocalTexts": {}
 },
 "Released": false,
 "Comment": "",
-"ID": "stick_together",
-"Assignable": true,
+"ID": "boss",
+"Assignable": false,
 "Plans": [
-{
-"$type": "PMDC.Dungeon.PrepareWithLeaderPlan, PMDC",
-"AttackPattern": 4,
-"IQ": 413,
-"RestrictedMobilityTypes": 0,
-"RestrictMobilityPassable": false,
-"AttackRange": 0,
-"StatusRange": 0,
-"SelfStatusRange": 0,
-"AbandonRangeOnHit": true
-},
 {
 "$type": "PMDC.Dungeon.AttackFoesPlan, PMDC",
 "AttackPattern": 4,
 "PositionPattern": 2,
-"IQ": 413,
+"IQ": 253,
 "RestrictedMobilityTypes": 0,
 "RestrictMobilityPassable": false,
 "AttackRange": 0,
 "StatusRange": 0,
-"SelfStatusRange": 0,
+"SelfStatusRange": 4,
 "AbandonRangeOnHit": true
 },
 {
-"$type": "PMDC.Dungeon.FindItemPlan, PMDC",
-"IncludeMoney": true,
-"IQ": 413,
+"$type": "PMDC.Dungeon.FollowLeaderPlan, PMDC",
+"IQ": 253,
 "RestrictedMobilityTypes": 0,
 "RestrictMobilityPassable": false,
 "AttackRange": 0,
@@ -163,7 +142,7 @@
 },
 {
 "$type": "PMDC.Dungeon.ExplorePlan, PMDC",
-"IQ": 413,
+"IQ": 253,
 "RestrictedMobilityTypes": 0,
 "RestrictMobilityPassable": false,
 "AttackRange": 0,
@@ -173,7 +152,7 @@
 },
 {
 "$type": "PMDC.Dungeon.WaitPlan, PMDC",
-"IQ": 413,
+"IQ": 253,
 "RestrictedMobilityTypes": 0,
 "RestrictMobilityPassable": false,
 "AttackRange": 0,
@@ -217,13 +196,13 @@
 "Skin": "normal",
 "Gender": 1
 },
-"Level": 7,
+"Level": 6,
 "EXP": 0,
-"MaxHPBonus": 11,
+"MaxHPBonus": 0,
 "AtkBonus": -3,
-"DefBonus": -1,
+"DefBonus": -3,
 "MAtkBonus": -3,
-"MDefBonus": -1,
+"MDefBonus": -3,
 "SpeedBonus": 0,
 "BaseSkills": [
 {
@@ -250,6 +229,7 @@
 "BaseIntrinsics": [
 "inner_focus"
 ],
+"FormIntrinsicSlot": 0,
 "Relearnables": {},
 "Discriminator": 0,
 "MetAt": "",
@@ -299,7 +279,7 @@
 },
 "AssetName": "ZoomBossMap",
 "ScriptEvents": {},
-"Music": "",
+"Music": "Overgrown Wilds.ogg",
 "TileSight": 0,
 "CharSight": 0,
 "Status": {},
@@ -8025,6 +8005,43 @@
 "Dir": 5
 }
 ],
-"Items": []
+"Items": [
+{
+"IsMoney": true,
+"Cursed": false,
+"Value": "",
+"HiddenValue": "",
+"Amount": 50,
+"Price": 0,
+"TileLoc": {
+"X": 12,
+"Y": 3
+}
+},
+{
+"IsMoney": true,
+"Cursed": false,
+"Value": "",
+"HiddenValue": "",
+"Amount": 50,
+"Price": 0,
+"TileLoc": {
+"X": 2,
+"Y": 3
+}
+},
+{
+"IsMoney": false,
+"Cursed": false,
+"Value": "berry_oran",
+"HiddenValue": "",
+"Amount": 1,
+"Price": 0,
+"TileLoc": {
+"X": 7,
+"Y": 1
+}
+}
+]
 }
 }

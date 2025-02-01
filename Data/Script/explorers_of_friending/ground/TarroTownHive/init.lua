@@ -182,7 +182,12 @@ end
 function TarroTownHive.TTSquare_HiveExit_Touch(obj, activator)
   GAME:FadeOut(false, 20)
   outside_enter = 3
-  GAME:EnterGroundMap("TarroTownSquare", "TTSquare_WestEnter")
+  if SV.tarro_town.PieChapter >= 10 then
+    GAME:EnterGroundMap("TarroTownSquare_ch3", "TTSquare_WestEnter")
+  else
+    GAME:EnterGroundMap("TarroTownSquare", "TTSquare_WestEnter")
+  end
+  
 end
 
 return TarroTownHive

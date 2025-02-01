@@ -117,11 +117,14 @@ end
 
 function TarroTownSquare_ch3.Getic_Action(obj, activator)
   local getic = CH("Getic")
+
+  COMMON.FaceEachother("Getic", "PLAYER")
   UI:SetSpeaker(getic)
-  UI:SetSpeakerEmotion("Sigh")
-  UI:WaitShowDialogue("Why do I have to watch these bothers?")
-  UI:SetSpeakerEmotion("Determined")
-  UI:WaitShowDialogue("I have much better things to do with my time.")
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Gonna let you know, Maru")
+  UI:SetSpeakerEmotion("Pain")
+  UI:WaitShowDialogue("You get older, and everything becomes pins and needles.")
+  GROUND:CharAnimateTurn(getic, Direction.DownRight, 4, false)
 end
 
 function TarroTownSquare_ch3.Buzzer_Action(obj, activator)
@@ -136,13 +139,9 @@ end
 
 function TarroTownSquare_ch3.Gekis_Action(obj, activator)
   local gekis = CH("Gekis")
-  local kek = CH("Kecleon")
   UI:SetSpeaker(gekis)
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("Ah, hm, [pause=20]what to buy, what to buy?")
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("The decision is much too difficult.")
-  UI:WaitShowDialogue("I will purchase everything, thank you.")
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("My two little kids...")
 end
 
 function TarroTownSquare_ch3.Ribbon_Action(obj, activator)
@@ -176,7 +175,7 @@ end
 function TarroTownSquare_ch3.TTown_SouthExit_Touch(obj, activator)
   GAME:FadeOut(false, 20)
   outside_enter = 2
-  GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch2", "TTSquare_TownExit")
+  GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch3", "TTSquare_TownExit")
 end
 
 function TarroTownSquare_ch3.Plus_Action()
@@ -215,84 +214,58 @@ end
 
 function TarroTownSquare_ch3.Gepii_Action(obj, activator)
     local gepii = CH("Gepii")
-    local happy = CH('Happy')
-    local maru = CH("PLAYER")
-    local azura = CH('Teammate1')
-    local doc = CH("Dr_Chance")
-    happy_dialogue = math.random(1, 4)
-    if happy_dialogue == 1 then
+    local getic = CH("Getic")
+    local gekis = CH("Gekis")
+    gepii_dialogue = math.random(1, 4)
+    if gepii_dialogue == 1 then
         UI:SetSpeaker(gepii)
         UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("One of these days, I'll ask my mum if I can go on a journey.")
-        UI:SetSpeakerEmotion("Happy")
-        GROUND:CharTurnToCharAnimated(happy, maru, 3)
-        GROUND:CharTurnToCharAnimated(gepii, maru, 3)
-        UI:WaitShowDialogue("...oh, hey![pause=45] Mars and Azure!")
-        UI:WaitShowDialogue("You guys are a great help in stopping those two!")
-        
-        GROUND:CharTurnToCharAnimated(gepii, happy, 3)
-        UI:SetSpeaker(happy)
+        UI:WaitShowDialogue("Hey mum, can I go into the forest and explore?")
+
+        UI:SetSpeaker(gekis)
+        UI:SetSpeakerEmotion("Worried")
+        UI:WaitShowDialogue("You'll have to have someone with you, Gepii.")
+
+        UI:SetSpeaker(getic)
         UI:SetSpeakerEmotion("Sigh")
-        UI:WaitShowDialogue("Yes, thank you.[pause=25] It's getting[emote=Worried] difficult to keep our supplies in check with them.")
-    elseif happy_dialogue == 2 then
-        UI:SetSpeaker(gepii)
-        UI:SetSpeakerEmotion("Worried")
-        UI:WaitShowDialogue("How do you manage to remember what all those medicines do anyway?")
-
-        UI:SetSpeaker(happy)
+        UI:WaitShowDialogue("And it isn't going to be me.")
         UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("Remember?[pause=30] No need[emote=Happy]! It's all written in the hospital record books.")
-        UI:SetSpeakerEmotion("Worried")
-        GROUND:CharTurnToCharAnimated(doc, happy, 3)
-        UI:WaitShowDialogue("What's it called again...? [pause=0] A... [pause=15][speed=0.5]a condemning...?[pause=25] Commendum...? [speed=0.3]Colendar?")
-        local function turntodoc()
-            GROUND:CharTurnToCharAnimated(happy, doc, 3)
-            GROUND:CharTurnToCharAnimated(gepii, doc, 3)
-            GROUND:CharTurnToCharAnimated(azura, doc, 3)
-        end
-        UI:SetSpeaker(doc)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("A com[script=0]pendium, sweetie.", {turntodoc})
-
-        UI:SetSpeaker(happy)
-        UI:SetSpeakerEmotion("Normal")
-        GROUND:CharTurnToCharAnimated(gepii, happy, 3)
-        UI:WaitShowDialogue("Yeah, that.[pause=30] Thanks,[emote=Happy] mom!")
-        GROUND:CharAnimateTurn(doc, Direction.Down, 2, false)
-    elseif happy_dialogue == 3 then
+        UI:WaitShowDialogue("Not right now, at least.")
+    elseif gepii_dialogue == 2 then
         UI:SetSpeaker(gepii)
-        UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("Does the hospital need extra funds?")
-        
-        GROUND:CharTurnToCharAnimated(doc, happy, 3)
-        UI:SetSpeaker(happy)
-        UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("I dunno, I'll have to ask mom. Why do you ask?")
+        UI:SetSpeakerEmotion("Sigh")
+        UI:WaitShowDialogue("We've been waiting for dad for forever.[pause=45] W[emote=Worried]hen is he going to get here?")
 
-        UI:SetSpeaker(gepii)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("I was think of giving you some, it's the reason[emote=Sigh] I'm not sick as often.")
-
-        UI:SetSpeaker(doc)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("Awww,[pause=15] that's so nice of you, Gepii.")
-        GROUND:CharAnimateTurn(doc, Direction.Down, 2, false)
-    elseif happy_dialogue == 4 then
-        UI:SetSpeaker(gepii)
-        UI:SetSpeakerEmotion("Inspired")
-        UI:WaitShowDialogue("I love this town.[pause=35] The job my dad has lets us live in luxury.")
-        
-        COMMON.CharSweatdrop("Happy")
-        UI:SetSpeaker(happy)
+        UI:SetSpeaker(getic)
         UI:SetSpeakerEmotion("Stunned")
-        UI:WaitShowDialogue("I get jealous of you sometimes, Gepii.")
+        UI:WaitShowDialogue("We've only been waiting for five minutes...")
 
         UI:SetSpeaker(gepii)
-        UI:SetSpeakerEmotion("Worried")
-        UI:WaitShowDialogue("Huh?[pause=35] There's no reason to be...")
+        UI:SetSpeakerEmotion("Angry")
+        UI:WaitShowDialogue("Five minutes too long...")
+    elseif gepii_dialogue == 3 then
+        UI:SetSpeaker(gepii)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("Ooh![pause=25] Let's get some of the honey!")
+        
+        UI:SetSpeaker(gekis)
+        UI:SetSpeakerEmotion("Stunned")
+        UI:WaitShowDialogue("Gepii, I bought you three whole jars last week.[pause=25] And you still haven't even opened one...")
+
+        UI:SetSpeaker(gepii)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("More!")
+    elseif gepii_dialogue == 4 then
+        COMMON.FaceEachother("PLAYER", "Gepii")
+        UI:SetSpeaker(gepii)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Oh hey, Mars![pause=25] Welcome to town!")
+        GROUND:CharAnimateTurn(gepii, Direction.Left, 4, false)
     end
     
 end
+
+--enters
 
 function TarroTownSquare_ch3.TTown_HiveEntrance_Touch(obj, activator)
   GAME:FadeOut(false, 20)

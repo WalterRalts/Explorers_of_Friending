@@ -1768,8 +1768,7 @@
 }
 }
 ],
-"OnTurnStarts": [],
-"OnTurnEnds": [
+"OnTurnStarts": [
 {
 "Key": {
 "str": [
@@ -1785,6 +1784,7 @@
 }
 }
 ],
+"OnTurnEnds": [],
 "OnMapTurnEnds": [],
 "OnWalks": [],
 "OnDeaths": [],

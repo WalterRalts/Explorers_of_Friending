@@ -93,7 +93,8 @@ SV.tarro_town =
   DarknessChapter = 0,
   spent_dungpoints = 0,
   puchi_tired = true,
-  bag_size = 5
+  bag_size = 5,
+  cooking_tutorial_done = 1
 }
 --- Dungeons
 SV.tarro_forest = 
@@ -121,4 +122,7 @@ SV.tarro_tree_hollows =
   entering_party = 0,
   AmasDefeat = false
 }
+
+----------------------------------------------
+--- Minigames
 ----------------------------------------------

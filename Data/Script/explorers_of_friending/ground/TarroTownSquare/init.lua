@@ -27,7 +27,7 @@ function TarroTownSquare.Init(map)
   partner.CollisionDisabled = true
   
   if SV.tarro_town.PieChapter == 5 then
-    TarroTownSquare.FightFightFight()
+    Square.FightFightFight()
   end
   if quiz_done == 1 and outside_enter == 1 then
     GROUND:TeleportTo(partner, 504, 378, Direction.Left, 0)
@@ -41,7 +41,7 @@ function TarroTownSquare.Init(map)
   if SV.tarro_town.PieChapter >= 7 then
     ziggy.CollisionDisabled = true
     if SV.tarro_tree_hollows.tree_entered == false then
-      TarroTownSquare.AfterQuiz()
+      Square.AfterQuiz()
     end
     SOUND:PlayBGM("None", false, 0)
     GROUND:TeleportTo(munch, 455, 210, Direction.Down, 2)
@@ -150,6 +150,16 @@ end
 -------------------------------
 -- Entities Callbacks
 -------------------------------
+---
+function TarroTownSquare.Munch_Action(obj, activator)
+  local munch = CH("Munch")
+  local lax = CH("Lax")
+
+  UI:SetSpeaker(munch)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Pops... getcha self up, would ya.")
+  
+end
 
 function TarroTownSquare.Lax_Action(obj, activator)
   local munch = CH("Munch")

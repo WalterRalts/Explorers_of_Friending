@@ -3,46 +3,33 @@
 "Object": {
 "$type": "RogueEssence.Data.ItemData, RogueEssence",
 "Name": {
-"DefaultText": "Packed Honey",
+"DefaultText": "Tarro Bread",
 "LocalTexts": {}
 },
 "Desc": {
-"DefaultText": "Absolutely delicious, sticky Honey from the hives of Tarro Town. The scent alone will attract some hungry monsters. \\nHeals for a little less than half a Pokemon's HP, and its effects spread to close party members.",
+"DefaultText": "A fluffy, grainy loaf! \\n Fills the user belly a little, then increases belly max.",
 "LocalTexts": {}
 },
 "Released": true,
 "Comment": "",
-"Sprite": "PackedHoney",
-"Icon": 7,
-"SortCategory": 4,
-"Price": 100,
-"Rarity": 1,
-"MaxStack": 0,
+"Sprite": "TarroBread",
+"Icon": -1,
+"SortCategory": 7,
+"Price": 15,
+"Rarity": 0,
+"MaxStack": 4,
 "CannotDrop": false,
 "BagEffect": false,
-"ItemStates": [
-{
-"$type": "PMDC.Dungeon.EdibleState, PMDC"
-}
-],
+"ItemStates": [],
 "GroundUseActions": [],
 "UseAction": {
-"$type": "RogueEssence.Dungeon.AreaAction, RogueEssence",
-"Emitter": {
-"$type": "RogueEssence.Content.EmptyCircleSquareEmitter, RogueEssence",
-"LocHeight": 0
-},
-"HitTiles": false,
-"BurstTiles": 0,
-"HitArea": 0,
-"Range": 1,
-"Speed": 0,
+"$type": "RogueEssence.Dungeon.SelfAction, RogueEssence",
 "CharAnimData": {
 "$type": "RogueEssence.Dungeon.CharAnimProcess, RogueEssence",
 "Process": 0,
 "AnimOverride": 0
 },
-"TargetAlignments": 3,
+"TargetAlignments": 1,
 "TileEmitter": {
 "$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
 "LocHeight": 0
@@ -65,7 +52,7 @@
 "LagBehindTime": 0
 },
 "Explosion": {
-"TargetAlignments": 3,
+"TargetAlignments": 0,
 "HitTiles": false,
 "Range": 0,
 "Speed": 0,
@@ -94,7 +81,7 @@
 }
 },
 "UseEvent": {
-"Element": "bug",
+"Element": "none",
 "Category": 0,
 "HitRate": -1,
 "SkillStates": [],
@@ -111,37 +98,12 @@
 ]
 },
 "Value": {
-"$type": "PMDC.Dungeon.WarpFoesToTileEvent, PMDC",
-"Amount": 2,
-"Distance": 100
-}
-},
-{
-"Key": {
-"str": [
-0
-]
-},
-"Value": {
 "$type": "PMDC.Dungeon.RestoreBellyEvent, PMDC",
 "BoostAnims": [],
-"Heal": 15,
+"Heal": 10,
 "Msg": true,
-"AddMaxBelly": 1,
+"AddMaxBelly": 2,
 "NeedFullBelly": false
-}
-},
-{
-"Key": {
-"str": [
-0
-]
-},
-"Value": {
-"$type": "PMDC.Dungeon.RestoreHPEvent, PMDC",
-"Numerator": 7,
-"Denominator": 15,
-"AffectTarget": true
 }
 }
 ],
@@ -150,31 +112,12 @@
 "ElementEffects": [],
 "IntroFX": [],
 "HitFX": {
-"Delay": 10,
+"Delay": 0,
 "AbsoluteDelay": false,
-"Sound": "_UNK_DUN_Mud_2",
+"Sound": "",
 "Emitter": {
-"$type": "RogueEssence.Content.SingleEmitter, RogueEssence",
-"LocHeight": 0,
-"finished": false,
-"Offset": 0,
-"Anim": {
-"$type": "RogueEssence.Content.StaticAnim, RogueEssence",
-"Anim": {
-"AnimIndex": "Absorb",
-"FrameTime": 3,
-"StartFrame": -1,
-"EndFrame": -1,
-"AnimDir": -1,
-"Alpha": 255,
-"AnimFlip": 0
-},
-"TotalTime": 0,
-"Cycles": 1,
-"FrameOffset": 0
-},
-"Layer": 4,
-"UseDest": false
+"$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
+"LocHeight": 0
 },
 "ScreenMovement": {
 "MinShake": 0,
@@ -189,7 +132,7 @@
 }
 },
 "UsageType": 4,
-"ArcThrow": true,
+"ArcThrow": false,
 "BreakOnThrow": false,
 "ThrowAnim": {
 "AnimIndex": "",
@@ -201,8 +144,8 @@
 "AnimFlip": 0
 },
 "ProximityEvent": {
-"Radius": 1,
-"TargetAlignments": 1,
+"Radius": -1,
+"TargetAlignments": 0,
 "BeforeExplosions": [],
 "OnEquips": [],
 "OnPickups": [],
@@ -222,20 +165,7 @@
 "BeforeTryActions": [],
 "BeforeActions": [],
 "OnActions": [],
-"BeforeHittings": [
-{
-"Key": {
-"str": [
-0
-]
-},
-"Value": {
-"$type": "PMDC.Dungeon.WarpFoesToTileEvent, PMDC",
-"Amount": 4,
-"Distance": 4
-}
-}
-],
+"BeforeHittings": [],
 "BeforeBeingHits": [],
 "AfterHittings": [],
 "AfterBeingHits": [],

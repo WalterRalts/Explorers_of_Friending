@@ -397,7 +397,9 @@ function COMMON.CreateMission(key, mission)
 
 end
 
-
+if SV.tarro_town.PieChapter >= 10 then
+  SV.tarro_town.cooking_tutorial_done = false
+end
 
 function COMMON.ExitDungeonMissionCheckEx(result, rescue, zoneId, segmentID)
 

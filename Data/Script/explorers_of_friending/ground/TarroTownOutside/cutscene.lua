@@ -56,6 +56,5 @@ function Outside.CloudWatch()
     SV.tarro_town.PieChapter = 0
     local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("AllyInteract")
     _DATA.Save.ActiveTeam.Players[1].ActionEvents:Add(talk_evt)
-    TarroTownOutside.Enter(map)
   end
 end

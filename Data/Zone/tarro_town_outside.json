@@ -10,7 +10,7 @@
 "Comment": "",
 "NoEXP": false,
 "ExpPercent": 100,
-"Level": -1,
+"Level": 5,
 "LevelCap": false,
 "KeepSkills": false,
 "TeamRestrict": false,
@@ -32,7 +32,8 @@
 "TarroTownEast_ch2end",
 "TarroTownEast_ch3",
 "SennaHome",
-"CupShuffle"
+"CupShuffle",
+"MaruHomeFood"
 ]
 }
 }
