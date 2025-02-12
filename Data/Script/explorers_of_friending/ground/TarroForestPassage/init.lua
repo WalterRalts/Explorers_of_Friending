@@ -354,16 +354,18 @@ function TarroForestPassage.TFPassage_DungeonExit_Touch(obj, activator)
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("O-oh,[pause=15] sorry,[pause=10] I...[pause=25] uh...[emote=Happy][pause=20] forgot,[pause=25] haha...")
-  else
-    if SV.tarro_town.PieChapter <= 10 then
-      GAME:FadeOut(false, 20)
-      outside_enter = 4
-      GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch2", "TTEast_TarroTownForest")
-    else -- == 11
-      GAME:FadeOut(false, 20)
-      outside_enter = 4
-      GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch3", "TTEast_TarroTownForest")
-    end
+  elseif SV.tarro_town.PieChapter == 4 then
+    GAME:FadeOut(false, 20)
+    outside_enter = 4
+    GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast", "TTEast_TarroTownForest")
+  elseif SV.tarro_town.PieChapter <= 10 then
+    GAME:FadeOut(false, 20)
+    outside_enter = 4
+    GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch2", "TTEast_TarroTownForest")
+  else -- == 11
+    GAME:FadeOut(false, 20)
+    outside_enter = 4
+    GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch3", "TTEast_TarroTownForest")
   end
 end
 
@@ -491,7 +493,7 @@ function TarroForestPassage.AppleTree_Action(obj, activator)
     GAME:WaitFrames(90)
 
     local apple_give = math.random(100)
-    if apple_give >= 55 or SV.tarro_town.apple_tree_get == false then
+    if apple_give >= 55 and SV.tarro_town.apple_tree_get == false then
       SOUND:PlaySE("Battle/EVT_CH02_Item_Place")
       SV.tarro_town.apple_tree_get = true
       

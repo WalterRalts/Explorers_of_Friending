@@ -2189,7 +2189,7 @@
 "TeamSizes": [
 {
 "Spawn": 1,
-"Rate": 15,
+"Rate": 20,
 "Range": {
 "Min": 0,
 "Max": 4
@@ -2213,7 +2213,7 @@
 },
 {
 "Spawn": 4,
-"Rate": 1,
+"Rate": 2,
 "Range": {
 "Min": 0,
 "Max": 1
@@ -2295,6 +2295,16 @@
 "Spawn": [
 {
 "Spawn": {
+"ID": "tarro_wheat",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 1,
+"Price": 0
+},
+"Rate": 10
+},
+{
+"Spawn": {
 "ID": "seed_plain",
 "Cursed": false,
 "HiddenValue": "",
@@ -2311,7 +2321,7 @@
 "Amount": 2,
 "Price": 0
 },
-"Rate": 20
+"Rate": 5
 },
 {
 "Spawn": {
@@ -2324,7 +2334,7 @@
 "Rate": 10
 }
 ],
-"Rate": 20
+"Rate": 10
 },
 "Food": {
 "Spawn": [
@@ -2369,10 +2379,10 @@
 "Rate": 40
 }
 ],
-"Rate": 25
+"Rate": 30
 }
 },
-"spawnTotal": 45
+"spawnTotal": 40
 },
 "Range": {
 "Min": 3,
@@ -2390,12 +2400,12 @@
 ]
 },
 "StartAmount": {
-"Min": 10,
-"Max": 51
+"Min": 5,
+"Max": 31
 },
 "AddAmount": {
-"Min": 15,
-"Max": 31
+"Min": 10,
+"Max": 21
 },
 "ModStates": []
 },
@@ -2454,11 +2464,8 @@
 }
 },
 "SpreadPlan": {
-"$type": "RogueEssence.LevelGen.SpreadPlanSpaced, RogueEssence",
-"FloorSpacing": {
-"Min": 1,
-"Max": 3
-},
+"$type": "RogueEssence.LevelGen.SpreadPlanChance, RogueEssence",
+"Chance": 50,
 "FloorRange": {
 "Min": 0,
 "Max": 5

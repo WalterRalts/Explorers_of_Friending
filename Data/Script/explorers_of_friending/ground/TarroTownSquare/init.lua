@@ -153,12 +153,17 @@ end
 ---
 function TarroTownSquare.Munch_Action(obj, activator)
   local munch = CH("Munch")
-  local lax = CH("Lax")
 
-  UI:SetSpeaker(munch)
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("Pops... getcha self up, would ya.")
-  
+  if SV.tarro_town.PieChapter >= 7 then
+    UI:SetSpeaker(munch)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("I heard that explosion,[pause=25] it was weird...")
+
+    UI:SetSpeakerEmotion("Pain")
+    UI:WaitShowDialogue("Too hungry to help, though.")
+  else
+    TarroTownSquare.Lax_Action()
+  end
 end
 
 function TarroTownSquare.Lax_Action(obj, activator)

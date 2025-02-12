@@ -25,7 +25,6 @@ function Square.FightFightFight()
 
   GROUND:TeleportTo(gekis, 1683, 190, Direction.Down)
   GROUND:TeleportTo(buzzer, 1755, 160, Direction.DownLeft)
-  GROUND:TeleportTo(ribbon, 1775, 175, Direction.DownLeft)
   GROUND:TeleportTo(kek, 1736, 296, Direction.UpLeft)
 
   GROUND:TeleportTo(puchi, 1640, 450, Direction.DownLeft)

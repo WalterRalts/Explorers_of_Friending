@@ -15,6 +15,9 @@ local TarroTownBigTree = {}
 ---TarroTownBigTree.Init(map)
 --Engine callback function
 function TarroTownBigTree.Init(map)
+  if thing_gone == true then
+    GROUND:Hide("Thing")
+  end
   --SV.tarro_town.PieChapter == 7 is the first cutscene
   if SV.tarro_town.PieChapter == 7 or tarro_tree_fail == false then -- before cutscene
     if GAME:GetPlayerPartyCount() == 2 or SV.tarro_tree_hollows.tree_entered == false then
@@ -79,7 +82,7 @@ function TarroTownBigTree.Init(map)
     partner4.CollisionDisabled = true
     puchi_tired = true
   elseif SV.tarro_tree_hollows.tree_entered == true then --after cutscene
-    GROUND:Hide("Thing")
+    
     local total = 1
     local playeridx = GAME:GetTeamLeaderIndex()
     for i, p in ipairs(SV.tarro_tree_hollows.entering_party) do
@@ -92,21 +95,7 @@ function TarroTownBigTree.Init(map)
     end
     MapStrings = STRINGS.MapStrings
     COMMON.RespawnAllies()
-    local partner = CH('Teammate1')
-    AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
-    partner.CollisionDisabled = true
-  
-    local partner2 = CH('Teammate2')
-    AI:SetCharacterAI(partner2, "origin.ai.ground_partner", CH('Teammate1'), partner2.Position)
-    partner2.CollisionDisabled = true
-  
-    local partner3 = CH('Teammate3')
-    AI:SetCharacterAI(partner3, "origin.ai.ground_partner", CH('Teammate2'), partner3.Position)
-    partner3.CollisionDisabled = true
-  
-    local partner4 = CH('Teammate4')
-    AI:SetCharacterAI(partner4, "origin.ai.ground_partner", CH('Teammate3'), partner4.Position)
-    partner4.CollisionDisabled = true
+    
     _DATA.Save.ActiveTeam.Players[2]:RefreshTraits()
     _DATA.Save.ActiveTeam.Players[3]:RefreshTraits()
     _DATA.Save.ActiveTeam.Players[4]:RefreshTraits()
@@ -115,6 +104,22 @@ function TarroTownBigTree.Init(map)
   if tarro_tree_fail == true then
     TarroTownBigTree.TryAgain()
   end
+
+  local partner = CH('Teammate1')
+  AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
+  partner.CollisionDisabled = true
+
+  local partner2 = CH('Teammate2')
+  AI:SetCharacterAI(partner2, "origin.ai.ground_partner", CH('Teammate1'), partner2.Position)
+  partner2.CollisionDisabled = true
+
+  local partner3 = CH('Teammate3')
+  AI:SetCharacterAI(partner3, "origin.ai.ground_partner", CH('Teammate2'), partner3.Position)
+  partner3.CollisionDisabled = true
+
+  local partner4 = CH('Teammate4')
+  AI:SetCharacterAI(partner4, "origin.ai.ground_partner", CH('Teammate3'), partner4.Position)
+  partner4.CollisionDisabled = true  
 end
 
 function TarroTownBigTree.TarroThingCut(map)
@@ -140,6 +145,7 @@ function TarroTownBigTree.TarroThingCut(map)
   GAME:WaitFrames(34)
   GROUND:MoveToPosition(ama, 550, 240, false, 2)
   GROUND:Hide("Thing")
+  thing_gone = true
   local maru = CH("PLAYER")
   local azura = CH('Teammate1')
   local ziggy = CH("Teammate4")
@@ -256,6 +262,10 @@ function TarroTownBigTree.TryAgain(map)
   local ziggy = CH("Teammate4")
   local senna = CH('Teammate2')
   local puchi = CH("Teammate3")
+  AI:DisableCharacterAI(azura)
+  AI:DisableCharacterAI(ziggy)
+  AI:DisableCharacterAI(senna)
+  AI:DisableCharacterAI(puchi)
   GROUND:TeleportTo(maru, 500, 275, Direction.DownLeft, 0)
   GROUND:TeleportTo(azura, 510, 300, Direction.DownLeft, 0)
   GROUND:TeleportTo(ziggy, 545, 290, Direction.Down, 0)
@@ -280,10 +290,16 @@ function TarroTownBigTree.TryAgain(map)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("Sensen, no...[pause=25] we all did pretty bad but that doesn't mean anything.")
 
+  COMMON.FaceEachother("PLAYER", "Senna")
+
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("We'll just try again,[pause=25] no problem.")
-
+  
+  AI:EnableCharacterAI(azura)
+  AI:EnableCharacterAI(ziggy)
+  AI:EnableCharacterAI(senna)
+  AI:EnableCharacterAI(puchi)
 end
 
 ---TarroTownBigTree.Enter(map)

@@ -71,25 +71,29 @@ function ZoomerBoss.PreBattle()
 
   GROUND:MoveInDirection(maru, Direction.Up, 24, false, 2)
   GROUND:MoveToPosition(maru, 130, 200, false, 2)
-  GROUND:EntTurn(maru, Direction.Left) --turn a specific direction
+  GROUND:CharAnimateTurn(maru, Direction.Left, 4, true)
+  
+  local coro1 = TASK:BranchCoroutine(function() 
+    UI:SetSpeaker(maru)
+    UI:WaitShowDialogue("...")
 
-  UI:SetSpeaker(maru)
-  UI:WaitShowDialogue("...")
-
-  GROUND:MoveInDirection(azura, Direction.Up, 24, false, 2)
-  GROUND:MoveToPosition(azura, 220, 200, false, 2)
-  GROUND:CharAnimateTurn(azura, Direction.Right, 4, true) --turn a specific direction
-
-  UI:SetSpeaker(maru)
-  UI:WaitShowDialogue("Nope, not seeing any big apples.")
-  UI:SetSpeakerEmotion("Worried")
-  GROUND:CharAnimateTurn(azura, Direction.Left, 4, true) --turn a specific direction
-  GROUND:CharAnimateTurn(maru, Direction.Right, 4, true)
+    UI:SetSpeaker(maru)
+    UI:WaitShowDialogue("Nope, not seeing any big apples.")
+    UI:SetSpeakerEmotion("Worried")
+    end)	
+  local coro2 = TASK:BranchCoroutine(function() 
+    GROUND:MoveInDirection(azura, Direction.Up, 24, false, 2)
+    GROUND:MoveToPosition(azura, 220, 200, false, 2)
+    GROUND:CharAnimateTurn(azura, Direction.Right, 4, false)
+    end)
+  
+  TASK:JoinCoroutines({coro1, coro2})
+  
+  COMMON.FaceEachother("PLAYER", "Azura")
   UI:WaitShowDialogue("Maybe we're in the wrong place...?") 
 
   UI:SetSpeaker(azura)
-  UI:SetSpeakerEmotion("Angry")
-  GROUND:CharSetEmote(azura, "angry", 1)
+  COMMON.CharAngry("Azura")
   UI:WaitShowDialogue("Nuh-uh! Keep looking!")
   UI:WaitShowDialogue("I want my pie!")
 
@@ -101,13 +105,20 @@ function ZoomerBoss.PreBattle()
   UI:SetSpeaker(STRINGS:Format("\\uE040"))
   UI:WaitShowDialogue("A Big Apple, you say??")
   
-  GROUND:CharAnimateTurn(azura, Direction.Up, 4, true) --turn a specific direction
-  GROUND:CharAnimateTurn(maru, Direction.Up, 4, true)
-
-  UI:SetSpeaker(azura)
-  UI:SetSpeakerEmotion("Inspired")
-  UI:WaitShowDialogue("Yes! A Big Apple, I say!")
-  UI:WaitShowDialogue("Do you have one!?")
+   --turn a specific direction
+  
+  local coro01 = TASK:BranchCoroutine(function()
+    GROUND:CharAnimateTurn(azura, Direction.Up, 8, false)
+    UI:SetSpeaker(azura)
+    UI:SetSpeakerEmotion("Inspired")
+    UI:WaitShowDialogue("Yes! A Big Apple, I say!")
+    UI:WaitShowDialogue("Do you have one!?")
+    end)	
+  local coro02 = TASK:BranchCoroutine(function()
+    GROUND:CharAnimateTurn(maru, Direction.Up, 4, true)
+    end)
+  
+  TASK:JoinCoroutines({coro01, coro02})
   
   UI:SetSpeaker(STRINGS:Format("\\uE040"))
   UI:WaitShowDialogue("Well, I would happen to know where to \nfind one of those. [pause=0]Kekekekeeeee.")
@@ -120,15 +131,16 @@ function ZoomerBoss.PreBattle()
   
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Stunned")
-  GROUND:CharSetEmote(azura, "sweatdrop", 1)
-  GROUND:CharSetEmote(maru, "sweatdrop", 1)
+  COMMON.CharSweatdrop("PLAYER")
+  GAME:WaitFrames(5)
+  COMMON.CharSweatdrop("Azura")
   UI:WaitShowDialogue("The voice is oblivious, it seems.")
   
   UI:SetSpeaker(zoomer)
   GROUND:MoveToPosition(zoomer, 170, 140, false, 4)
   GROUND:CharAnimateTurn(azura, Direction.UpLeft, 4, true) --turn a specific direction
-  GROUND:CharAnimateTurn(maru, Direction.UpRight, 2, true)
-  UI:SetSpeakerEmotion("Angry")
+  GROUND:CharAnimateTurn(maru, Direction.UpRight, 2, false)
+  COMMON.CharAngry("Zoomer")
   UI:WaitShowDialogue("Look, okay! [pause=0]This place is impossible!")
   GROUND:CharAnimateTurn(zoomer, Direction.Up, 4, true)
   UI:WaitShowDialogue("I don't...![pause=0] I just cannot right now!")
@@ -191,7 +203,7 @@ function ZoomerBoss.PostBattle()
   local zoomer = CH("Zoomer")
   local azura = CH("Azura")
   GAME:CutsceneMode(true)
-
+  GROUND:CharSetAnim(zoomer, "Sleep", true)
   GAME:MoveCamera(180, 200, 1, false)
   GROUND:TeleportTo(maru, 156, 177, Direction.Up, 0)
   GROUND:TeleportTo(zoomer, 172, 140, Direction.Down, 0)
@@ -199,8 +211,6 @@ function ZoomerBoss.PostBattle()
   
   GAME:FadeIn(20)
   
-  GROUND:CharSetAnim(zoomer, "Sleep", true)
-
   UI:SetSpeaker(zoomer)
   UI:SetSpeakerEmotion("Pain")
   UI:WaitShowDialogue("Urk...[pause=0] why...?")
@@ -219,16 +229,22 @@ function ZoomerBoss.PostBattle()
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("He'll just have to deal with it.")
   UI:WaitShowDialogue("Come on, Maru! Let's go back for pie!")
+
+  local coro1 = TASK:BranchCoroutine(function() 
+    GROUND:MoveToPosition(azura, 186, -50, true, 5)
+    end)	
+  local coro2 = TASK:BranchCoroutine(function() 
+    GROUND:MoveToPosition(maru, 125, 127, false, 1)
+    GAME:WaitFrames(10)
+    GROUND:CharTurnToCharAnimated(maru, zoomer, 7)
+    GAME:WaitFrames(60)
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Stunned")
+    COMMON.CharSweatdrop("PLAYER")
+    UI:WaitShowDialogue("Are you okay...?")
+    end)
   
-  GROUND:MoveToPosition(azura, 186, -50, true, 5)
-  GROUND:MoveToPosition(maru, 125, 127, false, 1)
-  GAME:WaitFrames(10)
-  GROUND:CharTurnToCharAnimated(maru, zoomer, 7)
-  GAME:WaitFrames(60)
-  UI:SetSpeaker(maru)
-  UI:SetSpeakerEmotion("Stunned")
-  GROUND:CharSetEmote(maru, "sweating", 1)
-  UI:WaitShowDialogue("Are you okay...?")
+  TASK:JoinCoroutines({coro1, coro2})
 
   UI:SetSpeaker(zoomer)
   UI:SetSpeakerEmotion("Pain")
@@ -244,6 +260,7 @@ function ZoomerBoss.PostBattle()
   GAME:WaitFrames(200)
   UI:SetSpeaker(zoomer)
   UI:SetSpeakerEmotion("Dizzy")
+  GROUND:CharSetAnim(zoomer, "Fainted", true)
   UI:WaitShowDialogue("...owie...")
   
   GAME:CutsceneMode(false)

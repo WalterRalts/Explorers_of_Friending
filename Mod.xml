@@ -4,7 +4,7 @@
   <Description>A new team of adventurers explore the mysteries of the chaotic world.</Description>
   <Namespace>explorers_of_friending</Namespace>
   <UUID>5C7B6D21-F2F6-4215-95F2-10287A7A3FC3</UUID>
-  <Version>0.2.2</Version>
+  <Version>0.2.4</Version>
   <GameVersion>0.0</GameVersion>
   <ModType>Quest</ModType>
   <Relationships />

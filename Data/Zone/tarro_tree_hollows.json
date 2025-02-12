@@ -300,7 +300,7 @@
 "Value": {
 "$type": "RogueElements.PerlinWaterStep`1[[RogueEssence.LevelGen.MapGenContext, RogueEssence]], RogueElements",
 "OrderComplexity": 3,
-"OrderSoftness": 0,
+"OrderSoftness": 1,
 "WaterPercent": {
 "Min": 2,
 "Max": 21
@@ -717,7 +717,7 @@
 "Value": {
 "$type": "RogueElements.PerlinWaterStep`1[[RogueEssence.LevelGen.MapGenContext, RogueEssence]], RogueElements",
 "OrderComplexity": 3,
-"OrderSoftness": 0,
+"OrderSoftness": 1,
 "WaterPercent": {
 "Min": 2,
 "Max": 21
@@ -1134,7 +1134,7 @@
 "Value": {
 "$type": "RogueElements.PerlinWaterStep`1[[RogueEssence.LevelGen.MapGenContext, RogueEssence]], RogueElements",
 "OrderComplexity": 3,
-"OrderSoftness": 0,
+"OrderSoftness": 1,
 "WaterPercent": {
 "Min": 2,
 "Max": 21
@@ -1551,7 +1551,7 @@
 "Value": {
 "$type": "RogueElements.PerlinWaterStep`1[[RogueEssence.LevelGen.MapGenContext, RogueEssence]], RogueElements",
 "OrderComplexity": 3,
-"OrderSoftness": 0,
+"OrderSoftness": 1,
 "WaterPercent": {
 "Min": 2,
 "Max": 21
@@ -1968,7 +1968,7 @@
 "Value": {
 "$type": "RogueElements.PerlinWaterStep`1[[RogueEssence.LevelGen.MapGenContext, RogueEssence]], RogueElements",
 "OrderComplexity": 3,
-"OrderSoftness": 0,
+"OrderSoftness": 1,
 "WaterPercent": {
 "Min": 2,
 "Max": 21
@@ -2385,7 +2385,7 @@
 "Value": {
 "$type": "RogueElements.PerlinWaterStep`1[[RogueEssence.LevelGen.MapGenContext, RogueEssence]], RogueElements",
 "OrderComplexity": 3,
-"OrderSoftness": 0,
+"OrderSoftness": 1,
 "WaterPercent": {
 "Min": 2,
 "Max": 21
@@ -2802,9 +2802,9 @@
 "Value": {
 "$type": "RogueElements.PerlinWaterStep`1[[RogueEssence.LevelGen.MapGenContext, RogueEssence]], RogueElements",
 "OrderComplexity": 3,
-"OrderSoftness": 0,
+"OrderSoftness": 1,
 "WaterPercent": {
-"Min": 5,
+"Min": 2,
 "Max": 21
 },
 "Bowl": true,
@@ -2909,7 +2909,7 @@
 "Spawn": {
 "$type": "RogueElements.ContextSpawner`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.InvItem, RogueEssence]], RogueElements",
 "Amount": {
-"Min": 1,
+"Min": 0,
 "Max": 4
 }
 }
@@ -3011,9 +3011,9 @@
 "Owner": 0,
 "TileStates": []
 },
-"Rate": 10,
+"Rate": 5,
 "Range": {
-"Min": 3,
+"Min": 2,
 "Max": 7
 }
 },
@@ -3104,7 +3104,7 @@
 },
 "Role": 0
 },
-"Rate": 10,
+"Rate": 100,
 "Range": {
 "Min": 0,
 "Max": 7
@@ -3138,7 +3138,7 @@
 },
 "Role": 0
 },
-"Rate": 15,
+"Rate": 200,
 "Range": {
 "Min": 2,
 "Max": 7
@@ -3186,7 +3186,7 @@
 },
 "Role": 0
 },
-"Rate": 10,
+"Rate": 100,
 "Range": {
 "Min": 0,
 "Max": 7
@@ -3221,7 +3221,47 @@
 },
 "Role": 3
 },
-"Rate": 10,
+"Rate": 150,
+"Range": {
+"Min": 2,
+"Max": 7
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
+"Species": "phantump",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 3,
+"Max": 7
+},
+"SpecifiedSkills": [
+"cut",
+"tackle",
+"round"
+],
+"Intrinsic": "",
+"Tactic": "wander_dumb_itemless",
+"SpawnConditions": [],
+"SpawnFeatures": [
+{
+"$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+},
+{
+"$type": "PMDC.LevelGen.MobSpawnMovesOff, PMDC",
+"StartAt": 3,
+"Remove": false
+}
+]
+},
+"Role": 3
+},
+"Rate": 100,
 "Range": {
 "Min": 2,
 "Max": 7
@@ -3249,7 +3289,7 @@
 "Spawn": 3,
 "Rate": 15,
 "Range": {
-"Min": 3,
+"Min": 2,
 "Max": 7
 }
 },
@@ -3257,7 +3297,7 @@
 "Spawn": 4,
 "Rate": 5,
 "Range": {
-"Min": 4,
+"Min": 3,
 "Max": 7
 }
 }
@@ -3492,12 +3532,12 @@
 ]
 },
 "StartAmount": {
-"Min": 1,
-"Max": 101
+"Min": 5,
+"Max": 51
 },
 "AddAmount": {
-"Min": 1,
-"Max": 101
+"Min": 5,
+"Max": 41
 },
 "ModStates": []
 },
@@ -3509,7 +3549,7 @@
 ]
 },
 "Name": {
-"DefaultText": "Tarro Tree Hollows\\nB{0}F",
+"DefaultText": "Tarro Tree Hollows\\n{0}F",
 "LocalTexts": {}
 },
 "Priority": {
@@ -3556,14 +3596,11 @@
 }
 },
 "SpreadPlan": {
-"$type": "RogueEssence.LevelGen.SpreadPlanSpaced, RogueEssence",
-"FloorSpacing": {
-"Min": 1,
-"Max": 3
-},
+"$type": "RogueEssence.LevelGen.SpreadPlanChance, RogueEssence",
+"Chance": 25,
 "FloorRange": {
 "Min": 0,
-"Max": 5
+"Max": 8
 }
 },
 "ModStates": []
@@ -4939,23 +4976,6 @@
 "X": 0,
 "Y": 0
 },
-"ID": "trap_warp",
-"Revealed": false,
-"Owner": 0,
-"TileStates": []
-},
-"Rate": 11,
-"Range": {
-"Min": 3,
-"Max": 5
-}
-},
-{
-"Spawn": {
-"TileLoc": {
-"X": 0,
-"Y": 0
-},
 "ID": "tile_wonder",
 "Revealed": true,
 "Owner": 0,
@@ -4963,8 +4983,8 @@
 },
 "Rate": 20,
 "Range": {
-"Min": 1,
-"Max": 5
+"Min": 0,
+"Max": 3
 }
 }
 ]
@@ -5187,7 +5207,7 @@
 "Rate": 10
 }
 ],
-"Rate": 10
+"Rate": 15
 },
 "Throwables": {
 "Spawn": [
@@ -5267,9 +5287,9 @@
 "Rate": 15
 }
 ],
-"Rate": 30
+"Rate": 35
 },
-"Ingredients": {
+"Cookables": {
 "Spawn": [
 {
 "Spawn": {
@@ -5289,7 +5309,7 @@
 "Amount": 1,
 "Price": 0
 },
-"Rate": 10
+"Rate": 15
 },
 {
 "Spawn": {
@@ -5315,7 +5335,7 @@
 "Rate": 20
 }
 },
-"spawnTotal": 90
+"spawnTotal": 100
 },
 "Range": {
 "Min": 0,
@@ -5333,12 +5353,12 @@
 ]
 },
 "StartAmount": {
-"Min": 1,
-"Max": 126
+"Min": 10,
+"Max": 31
 },
 "AddAmount": {
 "Min": 10,
-"Max": 51
+"Max": 61
 },
 "ModStates": []
 },
@@ -5350,7 +5370,7 @@
 ]
 },
 "Name": {
-"DefaultText": "Tarro Tree Upbranch\\nB{0}F",
+"DefaultText": "Tarro Tree Upbranch\\n{0}F",
 "LocalTexts": {}
 },
 "Priority": {
@@ -5432,8 +5452,13 @@
 }
 },
 "SpreadPlan": {
-"$type": "RogueEssence.LevelGen.SpreadPlanChance, RogueEssence",
-"Chance": 1200,
+"$type": "RogueEssence.LevelGen.SpreadPlanQuota, RogueEssence",
+"Quota": {
+"$type": "RogueElements.RandRange, RogueElements",
+"Min": 5,
+"Max": 16
+},
+"Replaceable": true,
 "FloorRange": {
 "Min": 0,
 "Max": 3

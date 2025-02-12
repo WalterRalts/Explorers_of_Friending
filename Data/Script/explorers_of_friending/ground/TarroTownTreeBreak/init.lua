@@ -72,7 +72,16 @@ function TarroTownTreeBreak.GameLoad(map)
 end
 
 function TarroTownTreeBreak.BreakTime()
-  
+  local azura = CH('Teammate1')
+  local maru = CH('PLAYER')
+
+  UI:SetSpeaker(azura)
+  UI:SetSpeakerEmotion("Inspired")
+  UI:WaitShowDialogue("Ooh, what's this place?")
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("Looks like it's break time!")
 end
 -------------------------------
 -- Entities Callbacks
@@ -317,14 +326,12 @@ function TarroTownTreeBreak.TarroTreeHollows_Continue_Touch(obj, activator)
       if i ~= (playeridx + 1) and i ~= (playeridx + 2) then --Indices in lua tables begin at 1
         GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
         --GROUND:GiveCharIdleChatter(chara)
+        _DATA.Save.ActiveTeam.Players[p]:RefreshTraits()
         total = total + 1
         print(total)
       end
     end
-  _DATA.Save.ActiveTeam.Players[2]:RefreshTraits()
-  _DATA.Save.ActiveTeam.Players[3]:RefreshTraits()
-  _DATA.Save.ActiveTeam.Players[4]:RefreshTraits()
-  GAME:ContinueDungeon("tarro_tree_hollows", 1, 0, 0)
+    GAME:ContinueDungeon("tarro_tree_hollows", 1, 0, 0)
   else
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Worried")

@@ -33,11 +33,10 @@ end
 --Engine callback function
 function tarro_tree_hollows.ExitSegment(zone, result, rescue, segmentID, mapID)
   if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then -- failing or otherwise
+    tarro_tree_fail = true
     if segmentID == 0 then
-      tarro_tree_fail = true
       COMMON.EndDungeonDay(result, "tarro_town", -1, 1, 0)
     elseif segmentID == 1 then
-      tarro_tree_fail = true
       SV.tarro_tree_hollows.entering_party = GAME:GetPlayerPartyTable()
       GAME:RemovePlayerTeam(2)
       GAME:RemovePlayerTeam(2)
@@ -48,7 +47,7 @@ function tarro_tree_hollows.ExitSegment(zone, result, rescue, segmentID, mapID)
       GAME:RemovePlayerTeam(2)
       GAME:RemovePlayerTeam(2)
       GAME:RemovePlayerTeam(2)
-      COMMON.EndDungeonDay(result, "tarro_tree_hollows", -1, 1, 0)
+      COMMON.EndDungeonDay(result, "tarro_tree_hollows", -1, 0, 0)
     end
   else -- succeed
     if SV.tarro_tree_hollows.AmasDefeat == false then -- boss undefeated
