@@ -22,46 +22,43 @@ end
 ---deep_tarro_forest.EnterSegment(zone, rescuing, segmentID, mapID)
 --Engine callback function
 function deep_tarro_forest.EnterSegment(zone, rescuing, segmentID, mapID)
-    if DUN_failure then
-        
-    end
+    
 end
 
 ---deep_tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
 --Engine callback function
 function deep_tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
     print("Hello!")
-    if SV.deep_tarro_forest.revisit == false then
+    if SV.deep_tarro_forest.revisit == false then --first time
+        print("Get out!")
+        GAME:SetTeamLeaderIndex(0)
         if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
             DUN_failure = true
             if segmentID == 0 then
-                COMMON.EndDungeonDay(result, "deep_tarro_forest", -1, 0, 0)
+                COMMON.EndDungeonDay(result, "tarro_forest", -1, 2, 0)
             elseif segmentID == 1 then
                 COMMON.EndDungeonDay(result, "deep_tarro_forest", -1, 1, 0)
             end
         else
-            if SV.tarro_forest.ZoomerDefeated == false then
-                if segmentID == 0 then
-                    GAME:EnterZone("deep_tarro_forest", -1, 1, 0)
-                else
-                    SV.tarro_forest.ZoomerDefeated = true
-                    SV.tarro_forest.dungpoints = SV.tarro_forest.dungpoints + 50
-                    COMMON.EndDungeonDay(result, "deep_tarro_forest", -1, 0, 0)
-                end
+            print("test")
+            if segmentID == 0 then
+                GAME:EnterZone("deep_tarro_forest", -1, 0, 0)
             else
-                if segmentID == 0 then
-                    SV.tarro_forest.dungpoints = SV.tarro_forest.dungpoints + 50
-                    SV.tarro_town.apple_tree_get = false
-                    COMMON.EndDungeonDay(result, "deep_tarro_forest", -1, 0, 0)
-                end
+                GAME:RemovePlayerTeam(2)
+                SV.tarro_town.DarknessChapter = 3
+                SV.deep_tarro_forest.revisit = true
+                SV.tarro_forest.dungpoints = SV.tarro_forest.dungpoints + 50
+                COMMON.EndDungeonDay(result, "the_field", -1, 0, 0)
             end
         end
-    else
+    else --if you've been here
+        print("On the grind!")
+        GAME:SetTeamLeaderIndex(0)
         if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
             if segmentID == 0 then
-            SV.tarro_town.PieChapter = 2.1
+                COMMON.EndDungeonDay(result, "tarro_forest", -1, 2, 0)
             elseif segmentID == 1 then
-            SV.tarro_town.PieChapter = 2.2
+                COMMON.EndDungeonDay(result, "deep_tarro_forest", -1, 1, 0)
             end
             COMMON.EndDungeonDay(result, "tarro_town_outside", -1, 1, 2)
         else
@@ -75,9 +72,9 @@ function deep_tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
                 end
             else
                 if segmentID == 0 then
-                    COMMON.EndDungeonDay(result, "tarro_forest", -1, 1, 0)
+                    SV.deep_tarro_forest.revisit = true
                     SV.tarro_forest.dungpoints = SV.tarro_forest.dungpoints + 50
-                    SV.tarro_town.apple_tree_get = false
+                    COMMON.EndDungeonDay(result, "guild_field", -1, 0, 0)
                 end
             end
         end

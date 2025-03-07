@@ -18,6 +18,18 @@ local function ingr_quip(player, item)
     elseif item == "stick" then
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("Look at da stick. Not sticky at all.")
+    elseif item == "path_wand" then
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("This wand opens new paths![pause=40] L[emote=Happy]iterally!")
+    elseif item == "food_apple" then
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Healthy and delicious!")
+    elseif item == "berry_oran" then
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("I can't count the number of times this berry helped me through being hurt.")
+    elseif item == "berry_leppa" then
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("Eating a Leppa helps me remember my moves.")
     end
 
     local choices = {("Sure!"),
@@ -31,7 +43,6 @@ end
 
 
 local function ingredients_list()
-    local item_no = GAME:GetPlayerBagCount()
     item_name = {}
 
     for i = 0, GAME:GetPlayerBagCount() - 1, 1 do
@@ -47,25 +58,33 @@ local function ingredients_list()
         item_name,
         5,
         1,
-        1
+        100
     )
     UI:WaitForChoice()
-    local ingredient_chosen = UI:ChoiceResult()
-    local ingredient_name = item_name[ingredient_chosen]
-    GAME:TakePlayerBagItem(ingredient_chosen)
-    print(ingredient_name .. " has been removed from slot " .. ingredient_chosen)
-
-    return ingredient_name
+    
+    if UI:ChoiceResult() == 100 then
+        print("Exit chosen.")
+        Exit_cooking = true
+        return "Exit"
+    else
+        Ingredient_chosen = UI:ChoiceResult()
+        print(Ingredient_chosen)
+        Ingredient_name = item_name[Ingredient_chosen]
+        GAME:TakePlayerBagItem(Ingredient_chosen)
+        print(Ingredient_name .. " has been removed from slot " .. Ingredient_chosen + 1)
+    end
+    
+    return Ingredient_name
 end
     
 
 -- Let's get makin'!
 function Cooking(player, partner, location)
     local maru = CH("PLAYER")
-    local azura = CH('Teammate1')
     local arama = CH('Arama')
     --check if the player has done a tutorial
     if SV.tarro_town.cooking_tutorial_done == 1 then
+        SV.tarro_town.cooking_tutorial_done = 2
         UI:SetSpeaker(arama)
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("I understand you two have already seen me make stuff.")
@@ -77,7 +96,7 @@ function Cooking(player, partner, location)
         UI:BeginChoiceMenu("It's fine if you don't, but[emote=Worried] I don't need you two burning something.", choices, 1, 2)
         UI:WaitForChoice()
         result = UI:ChoiceResult()
-        SV.tarro_town.cooking_tutorial_done = 2
+        
         if result == 1 then
             --tutorial here
             UI:SetSpeaker(arama)
@@ -144,27 +163,38 @@ function Cooking(player, partner, location)
             Recipes()
             UI:SetSpeaker(arama)
             UI:SetSpeakerEmotion("Happy")
-            UI:WaitShowDialogue("Alrighty, I guess you do know how to make somethin'.")
+            UI:WaitShowDialogue("Alrighty, I guess you do know how to.")
             UI:SetSpeakerEmotion("Worried")
             UI:WaitShowDialogue("Now I have to check what your dad is up to...")
             UI:SetSpeakerEmotion("Normal")
             UI:WaitShowDialogue("We'll let you know when we're ready.")
         end
+        
     else --Tutorial done or skipped
         ingr = {}
             
         for i = 1, 3, 1 do
             ::choose_again::
             local ingritem = ingredients_list()
+            print(ingritem)
+            if ingritem == "Exit" then
+                UI:SetSpeakerEmotion("Normal")
+                UI:WaitShowDialogue("Never mind.")
+                goto end_cooking
+            end
             chosen = ingr_quip(0, ingritem)
             if chosen == 1 then
                 ingr[i] = ingritem
             else
+                GAME:GivePlayerItem(ingritem)
+                UI:WaitShowDialogue("Let's try again.")
+                print(ingritem .. " has been put back.")
                 goto choose_again
             end
         end
         Recipes()
     end
-    GAME:FadeOut(false, 20)
+    ::end_cooking::
+    GAME:FadeOut(false, 30)
     GAME:EnterGroundMap("MaruHome", "MaruHome_MainEnter")
 end

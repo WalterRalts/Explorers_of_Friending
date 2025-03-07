@@ -120,7 +120,8 @@ SV.tarro_tree_hollows =
   sprout_money_give = false,
   stairs_unlocked = false,
   entering_party = 0,
-  AmasDefeat = false
+  AmasDefeat = false,
+  cooking_tutorial_done = 1
 }
 
 ----------------------------------------------

@@ -142,12 +142,18 @@ function MaruHome.MaruOven_Action(obj, activator)
   local maru = CH("PLAYER")
 
   if SV.tarro_town.DarknessChapter == 1 then
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("This is what mom uses to cook with...")
+    if oven_perms_given == true then
+      GAME:EnterGroundMap("MaruHomeFood", "Marker")
+    else
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("This is what mom uses to cook with...")
 
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Though[pause=25], I should probably ask her for permission to use it while she's away...")
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("Though[pause=25], I should probably ask her for permission to use it while she's away...")
+      oven_perms_given = false
+      oven_perms_need = true
+    end
   end
 end
 
@@ -227,6 +233,39 @@ function MaruHome.MaruHome_BasementEntrance_Touch(obj, activator)
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("(Probably not the time...)")
+  elseif SV.tarro_town.PieChapter >= 12 then
+    if oven_perms_need == false then
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("[speed=0.2]Hm...[pause=30] [speed=1.0]n[emote=Happy]ah.")
+    elseif oven_perms_need == nil then
+      UI:SetSpeaker(azura)
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("Maru,[pause=20] mama said she'd let us know.")
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("We should do something else.")
+    else
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Shouting")
+      UI:WaitShowDialogue("Ma!")
+
+      UI:SetSpeaker(STRINGS:Format("\\uE040"))
+      UI:WaitShowDialogue("Yeah?")
+
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Shouting")
+      UI:WaitShowDialogue("Can I use the oven?!")
+
+      GAME:WaitFrames(85)
+      UI:SetSpeaker(STRINGS:Format("\\uE040"))
+      UI:WaitShowDialogue("Yeah!")
+
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Okay!")
+      oven_perms_given = true
+    end
+    
   end
 end
 

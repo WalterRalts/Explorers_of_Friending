@@ -27,7 +27,7 @@
 },
 "Layer": 0,
 "BlockItem": true,
-"StepType": 0,
+"StepType": 3,
 "MinimapIcon": {
 "X": 0,
 "Y": -12
@@ -53,6 +53,112 @@
 ]
 },
 "Value": {
+"$type": "PMDC.Dungeon.SpawnRandomItemsEvent, PMDC",
+"Items": [
+{
+"Spawn": {
+"IsMoney": false,
+"Cursed": false,
+"Value": "loot_nugget",
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0,
+"TileLoc": {
+"X": 0,
+"Y": 0
+}
+},
+"Rate": 1
+},
+{
+"Spawn": {
+"IsMoney": true,
+"Cursed": false,
+"Value": "",
+"HiddenValue": "",
+"Amount": 1,
+"Price": 0,
+"TileLoc": {
+"X": 0,
+"Y": 0
+}
+},
+"Rate": 100
+},
+{
+"Spawn": {
+"IsMoney": true,
+"Cursed": false,
+"Value": "",
+"HiddenValue": "",
+"Amount": 5,
+"Price": 0,
+"TileLoc": {
+"X": 0,
+"Y": 0
+}
+},
+"Rate": 150
+},
+{
+"Spawn": {
+"IsMoney": true,
+"Cursed": false,
+"Value": "",
+"HiddenValue": "",
+"Amount": 10,
+"Price": 0,
+"TileLoc": {
+"X": 0,
+"Y": 0
+}
+},
+"Rate": 80
+},
+{
+"Spawn": {
+"IsMoney": true,
+"Cursed": false,
+"Value": "",
+"HiddenValue": "",
+"Amount": 50,
+"Price": 0,
+"TileLoc": {
+"X": 0,
+"Y": 0
+}
+},
+"Rate": 10
+},
+{
+"Spawn": {
+"IsMoney": true,
+"Cursed": false,
+"Value": "",
+"HiddenValue": "",
+"Amount": 75,
+"Price": 0,
+"TileLoc": {
+"X": 0,
+"Y": 0
+}
+},
+"Rate": 5
+}
+],
+"MinAmount": 3,
+"MaxAmount": 10,
+"MaxRangeWidth": 3,
+"MaxRangeHeight": 3
+}
+},
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
 "$type": "PMDC.Dungeon.InvokeTrapEvent, PMDC",
 "HitboxAction": {
 "$type": "RogueEssence.Dungeon.SelfAction, RogueEssence",
@@ -61,7 +167,7 @@
 "Process": 0,
 "AnimOverride": 0
 },
-"TargetAlignments": 0,
+"TargetAlignments": 1,
 "TileEmitter": {
 "$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
 "LocHeight": 0
@@ -141,84 +247,7 @@
 "HitFX": {
 "Delay": 0,
 "AbsoluteDelay": false,
-"Sound": "",
-"Emitter": {
-"$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
-"LocHeight": 0
-},
-"ScreenMovement": {
-"MinShake": 0,
-"MaxShake": 0,
-"MaxShakeTime": 0
-}
-},
-"HitCharAction": {
-"$type": "RogueEssence.Dungeon.CharAnimProcess, RogueEssence",
-"Process": 0,
-"AnimOverride": 0
-}
-},
-"Message": {
-"Key": ""
-},
-"OneTime": false
-}
-},
-{
-"Key": {
-"str": [
-0
-]
-},
-"Value": {
-"$type": "PMDC.Dungeon.InvokeTrapEvent, PMDC",
-"HitboxAction": {
-"$type": "RogueEssence.Dungeon.SelfAction, RogueEssence",
-"CharAnimData": {
-"$type": "RogueEssence.Dungeon.CharAnimProcess, RogueEssence",
-"Process": 0,
-"AnimOverride": 0
-},
-"TargetAlignments": 0,
-"TileEmitter": {
-"$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
-"LocHeight": 0
-},
-"PreActions": [],
-"ActionFX": {
-"Delay": 0,
-"AbsoluteDelay": false,
-"Sound": "",
-"Emitter": {
-"$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
-"LocHeight": 0
-},
-"ScreenMovement": {
-"MinShake": 0,
-"MaxShake": 0,
-"MaxShakeTime": 0
-}
-},
-"LagBehindTime": 0
-},
-"Explosion": {
-"TargetAlignments": 1,
-"HitTiles": false,
-"Range": 0,
-"Speed": 0,
-"TileEmitter": {
-"$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
-"LocHeight": 0
-},
-"Emitter": {
-"$type": "RogueEssence.Content.EmptyCircleSquareEmitter, RogueEssence",
-"LocHeight": 0
-},
-"IntroFX": [],
-"ExplodeFX": {
-"Delay": 0,
-"AbsoluteDelay": false,
-"Sound": "DUN_Money",
+"Sound": "_UNK_DUN_Shatter",
 "Emitter": {
 "$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
 "LocHeight": 0
@@ -226,48 +255,7 @@
 "ScreenMovement": {
 "MinShake": 1,
 "MaxShake": 3,
-"MaxShakeTime": 20
-}
-}
-},
-"NewData": {
-"Element": "none",
-"Category": 0,
-"HitRate": -1,
-"SkillStates": [],
-"BeforeTryActions": [],
-"BeforeActions": [],
-"OnActions": [],
-"BeforeExplosions": [],
-"BeforeHits": [],
-"OnHits": [],
-"OnHitTiles": [],
-"AfterActions": [
-{
-"Key": {
-"str": [
-0
-]
-},
-"Value": {
-"$type": "PMDC.Dungeon.RemoveTrapEvent, PMDC"
-}
-}
-],
-"ElementEffects": [],
-"IntroFX": [],
-"HitFX": {
-"Delay": 0,
-"AbsoluteDelay": false,
-"Sound": "",
-"Emitter": {
-"$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
-"LocHeight": 0
-},
-"ScreenMovement": {
-"MinShake": 0,
-"MaxShake": 0,
-"MaxShakeTime": 0
+"MaxShakeTime": 8
 }
 },
 "HitCharAction": {
@@ -277,9 +265,9 @@
 }
 },
 "Message": {
-"Key": ""
+"Key": "MSG_TILE_CHECK"
 },
-"OneTime": false
+"OneTime": true
 }
 }
 ],

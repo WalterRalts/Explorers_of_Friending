@@ -72,29 +72,11 @@ function TarroTownBigTree_ch3.TreeHallow_Entrance_Touch(obj, activator)
 end
 
 function TarroTownBigTree_ch3.InfoSign_Action(obj, activator)
-  local maru = CH("PLAYER")
-  local azura = CH('Teammate1')
-  local ziggy = CH("Teammate4")
-  local senna = CH('Teammate2')
-  local puchi = CH("Teammate3")
-
   UI:ResetSpeaker()
   UI:WaitShowDialogue("Today's news!:")
   UI:WaitShowDialogue("The mayor is looking for more recruits to carry her honey around.")
   UI:WaitShowDialogue("Payment will be done bihourly by Queen herself.")
-  UI:WaitShowDialogue("All help is welcome!")
-
-  UI:SetSpeaker(senna)
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("Weird, the sign is usually updated.")
-
-  UI:SetSpeaker(ziggy)
-  UI:SetSpeakerEmotion("Determined")
-  UI:WaitShowDialogue("That thing probably has something to do with this!")
-
-  UI:SetSpeaker(azura)
-  UI:SetSpeakerEmotion("Determined")
-  UI:WaitShowDialogue("Let's get after it!")
+  UI:WaitShowDialogue("All help is welcome! Please apply at the hive west of town!")
 end
 
 function TarroTownBigTree_ch3.Tree_2ndFloorEntrance_Touch(obj, activator)
@@ -102,54 +84,24 @@ function TarroTownBigTree_ch3.Tree_2ndFloorEntrance_Touch(obj, activator)
 end
 
 function TarroTownBigTree_ch3.PurpKek_Counter_Action(obj, activator)
-  local ziggy = CH("Teammate4")
-  local senna = CH('Teammate2')
-  local puchi = CH("Teammate3")
 
-  UI:SetSpeaker(senna)
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("Here is where the other Kecleon brother would set up shop.")
-
-  UI:SetSpeaker(ziggy)
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("Where did he go?")
-
-  UI:SetSpeaker(puchi)
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("Outside, maybe? He's usually always here...")
 end
 
 function TarroTownBigTree_ch3.Tree_Exit_Touch(obj, activator)
-  UI:ChoiceMenuYesNo("Exit?", false)
-  UI:WaitForChoice()
-  local choice = UI:ChoiceResult()
-  if choice then
-    local ziggy = CH("Teammate4")
-    local senna = CH('Teammate2')
-    local puchi = CH("Teammate3")
-  
-    UI:SetSpeaker(senna)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Leaving?")
+  outside_enter = 4
+  GAME:EnterGroundMap("tarro_town", "TarroTownSquare_ch3", "TarroTree_Exit")
+end
 
-    UI:SetSpeaker(ziggy)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("We'll wait here for you two to get stuff.")
+function TarroTownBigTree_ch3.Hollian_Action(obj, activator)
+  local holly = CH("Hollian")
 
-    UI:SetSpeaker(puchi)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("And I'll get more sleep...")
-    SV.tarro_tree_hollows.entering_party = GAME:GetPlayerPartyTable()
-    GAME:RemovePlayerTeam(2)
-    GAME:RemovePlayerTeam(2)
-    GAME:RemovePlayerTeam(2)
-    GAME:FadeOut(false, 20)
-    SV.tarro_town.PieChapter = 7.1
-    outside_enter = 4
-    GAME:EnterGroundMap("tarro_town", "TarroTownSquare", "TarroTree_Exit")
-  else
-    
-  end
+  UI:SetSpeaker(holly)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Sorry, the dungeon is only authorized to those equal to or higher than rescue teams.")
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("It's been done as word of an explosion went around from the kids.")
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("Don't know why we're listening to them[pause=35], [emote=Normal]but the issue is being investigated..")
 end
 
 return TarroTownBigTree_ch3

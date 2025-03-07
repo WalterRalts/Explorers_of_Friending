@@ -46,6 +46,7 @@ function TarroTownEast_ch2end.WentWhere()
   UI:WaitShowDialogue("[speed=0.6]You two went w[emote=Angry]heeeere?!")
   GAME:FadeIn(35)
 
+  UI:SetBounds(10, 16, 300, 50)
   UI:SetSpeaker(furie)
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("I can't believe it...!")
@@ -95,7 +96,7 @@ function TarroTownEast_ch2end.WentWhere()
   UI:SetSpeakerEmotion("Determined")
   UI:WaitShowDialogue("Wait wait wait, no no no no no no!")
   UI:SetSpeakerEmotion("Determined")
-  UI:WaitShowDialogue("Furie,[pause=20] I know that you're glad for you kid,[pause=20] but you shouldn't let Ziggian keep running off like that!")
+  UI:WaitShowDialogue("Furie,[pause=20] I know that you're glad for your kid,[pause=20] but you shouldn't let Ziggian keep running off like that!")
 
   GROUND:CharTurnToCharAnimated(arama, maru, 9)
   UI:SetSpeaker(ziggy)
@@ -167,12 +168,16 @@ function TarroTownEast_ch2end.WentWhere()
   UI:WaitShowDialogue("Yeah, all thanks to my training.")
 
   GROUND:CharTurnToCharAnimated(beel, arama, 4)
+
+  COMMON.FaceEachother("Arama", "Amazuru")
+  COMMON.CharAngry("Arama")
   UI:SetSpeaker(arama)
   UI:SetSpeakerEmotion("Angry")
   UI:WaitShowDialogue("Now's not the time honey! Our kids put themselves in danger!")
 
   UI:SetSpeaker(beel)
   UI:SetSpeakerEmotion("Normal")
+  GROUND:CharTurnToCharAnimated(arama, beel, 4)
   UI:WaitShowDialogue("With all due respect, Arama, you shouldn't underestimate them just because they're younger...")
   UI:WaitShowDialogue("Isn't that right, Amazuru.")
 
@@ -228,6 +233,7 @@ function TarroTownEast_ch2end.WentWhere()
   TASK:JoinCoroutines({coro001, coro002})
 
   GAME:CutsceneMode(false)
+  UI:ResetBounds()
   GAME:EnterGroundMap("MaruHome", "MaruHome_MainEnter")
 end
 

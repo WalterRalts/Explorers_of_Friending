@@ -758,96 +758,31 @@ function COMMON.DungeonInteract(chara, target, action_cancel, turn_cancel)
   if COMMON.CanTalk(target) then
     
     local ratio = target.HP * 100 // target.MaxHP
-    local ratio_player = chara.HP * 100 // target.MaxHP
-    local mon = _DATA:GetMonster(target.BaseForm.Species)
-    local mon_chara = _DATA:GetMonster(chara.BaseForm.Species)
-    local current_dungeon = DUNGEON:DungeonDisplayName()
-    local say_choice = math.random(3)
     
-    if current_dungeon == "Tarro Forest" and SV.tarro_town.PieChapter < 5 then
-      if ratio <= 25 then
-        UI:SetSpeaker(target)
-        UI:SetSpeakerEmotion("Pain")
-        UI:WaitShowDialogue("I... I can't... need pie...!")
-      elseif ratio <= 50 then
-        UI:SetSpeaker(target)
-        UI:SetSpeakerEmotion("Determined")
-        UI:WaitShowDialogue("It's tough, but I need my pie!")
-      else
-        if say_choice == 1 then
-          UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Happy")
-          UI:WaitShowDialogue("Okay, Maru! Let's go get that apple!")
-        elseif say_choice == 2 then
-          UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Worried")
-          UI:WaitShowDialogue("Where are those stairs?")
-
-          UI:SetSpeaker(chara)
-          UI:SetSpeakerEmotion("Normal")
-          UI:WaitShowDialogue("If we knew, we'd be out by now.")
-
-          UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Worried")
-          UI:WaitShowDialogue("We have to find it now...?")
-          UI:WaitShowDialogue("[speed=0.05]...[speed=1.0][emote=Happy]the pie'll be worth it!")
-        elseif say_choice == 3 then
-          UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Shouting")
-          UI:WaitShowDialogue("For the pie!")
-        end
-      end
-    elseif current_dungeon == "Tarro Tree Hallows" then
-      if ratio <= 25 then
-        UI:SetSpeaker(target)
-        UI:SetSpeakerEmotion("Pain")
-        UI:WaitShowDialogue("Urk...[pause=30] the tree[emote=Dizzy] is winning...!")
-      elseif ratio <= 50 then
-        UI:SetSpeaker(target)
-        UI:SetSpeakerEmotion("Determined")
-        UI:WaitShowDialogue("I can still keep going!")
-      else
-        if say_choice == 1 then
-          UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Normal")
-          UI:WaitShowDialogue("What was that thing...?")
-        elseif say_choice == 2 then
-          UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Worried")
-          UI:WaitShowDialogue("Stairs?")
-
-          UI:SetSpeaker(chara)
-          UI:SetSpeakerEmotion("Normal")
-          UI:WaitShowDialogue("Nope.")
-
-          UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Worried")
-          UI:WaitShowDialogue("Twists and turns...[pause=40] u[emote=Angry]gh.")
-        elseif say_choice == 3 then
-          UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Worried")
-          UI:WaitShowDialogue("Whatever that thing was, we[emote=Normal] can beat it.")
-        end
-      end
+    local mon = _DATA:GetMonster(target.BaseForm.Species)
+    local form = mon.Forms[target.BaseForm.Form]
+    
+    UI:SetSpeaker(target)
+  
+    local personality = form:GetPersonalityType(target.Discriminator)
+    
+    local personality_group = COMMON.PERSONALITY[personality]
+    local pool = {}
+    local key = ""
+    if ratio <= 25 then
+      UI:SetSpeakerEmotion("Pain")
+      pool = personality_group.PINCH
+      key = "TALK_PINCH_%04d"
+    elseif ratio <= 50 then
+      UI:SetSpeakerEmotion("Worried")
+      pool = personality_group.HALF
+      key = "TALK_HALF_%04d"
     else
-      if ratio <= 25 then
-        UI:SetSpeaker(target)
-        UI:SetSpeakerEmotion("Pain")
-        UI:WaitShowDialogue("Ack... I'm sorry...")
-      elseif ratio <= 50 then
-        UI:SetSpeaker(target)
-        UI:SetSpeakerEmotion("Determined")
-        UI:WaitShowDialogue("Nothing to worry 'bout.")
-        UI:SetSpeakerEmotion("Worried")
-        UI:WaitShowDialogue("...I think.")
-      else
-        UI:SetSpeaker(target)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("Let's go! Can't wait!")
-      end
+      pool = personality_group.FULL
+      key = "TALK_FULL_%04d"
     end
-  end  
-    --[[local running_pool = {table.unpack(pool)}
+    
+    local running_pool = {table.unpack(pool)}
     local valid_quote = false
     local chosen_quote = ""
     
@@ -916,12 +851,12 @@ function COMMON.DungeonInteract(chara, target, action_cancel, turn_cancel)
   
     UI:ResetSpeaker()
 	
-	  local chosen_quote = RogueEssence.StringKey("TALK_CANT"):ToLocal()
+	local chosen_quote = RogueEssence.StringKey("TALK_CANT"):ToLocal()
     chosen_quote = string.gsub(chosen_quote, "%[myname%]", target:GetDisplayName(true))
 	
     UI:WaitShowDialogue(chosen_quote)
   
-  end--]]
+  end
   
   --characters can comment on:
 
@@ -1505,4 +1440,13 @@ function COMMON.CharExclaim(char)
   local exclaim = CH(char)
   GROUND:CharSetEmote(exclaim, "exclaim", 1)
   SOUND:PlaySE("Battle/EVT_Emote_Exclaim")
+end
+
+function COMMON.CharDistance(char1, char2)
+  local char1x = CH(char1).Position.X
+  local char1y = CH(char1).Position.Y
+  local char2x = CH(char2).Position.X
+  local char2y = CH(char2).Position.Y
+  local distance = math.sqrt(((char2x - char1x) ^ 2) + ((char2y - char1y) ^ 2))
+  return distance
 end

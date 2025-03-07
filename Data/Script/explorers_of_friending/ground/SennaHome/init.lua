@@ -127,6 +127,7 @@ function SennaHome.Beel_Action(obj, activator)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("I always thought that getting straight to the point was the way to go...")
 
+  COMMON.FaceEachother("PLAYER", "Beel")
   UI:SetSpeaker(beel)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("I was proven wrong by Furie.[pause=10] My life has never been the same after that...")

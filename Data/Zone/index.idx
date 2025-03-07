@@ -98,6 +98,7 @@
 "Rogue": 0,
 "Grounds": [
 "TarroTownSquare",
+"TarroTownBigTree_ch3",
 "TarroTownBigTree",
 "QuizTime",
 "TarroTownHive",
@@ -114,7 +115,7 @@
 },
 "deep_tarro_forest": {
 "$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
-"ExpPercent": 50,
+"ExpPercent": 25,
 "Level": 10,
 "LevelCap": false,
 "KeepSkills": false,
@@ -125,7 +126,7 @@
 "KeepTreasure": false,
 "BagSize": -1,
 "Rescues": 0,
-"CountedFloors": 16,
+"CountedFloors": 15,
 "Rogue": 0,
 "Grounds": [
 "DeepForestBreak"
@@ -148,8 +149,7 @@
 4,
 5,
 6,
-7,
-8
+7
 ]
 ],
 "Name": {
@@ -203,6 +203,33 @@
 "LocalTexts": {}
 },
 "Released": true,
+"Comment": "",
+"SortOrder": 0
+},
+"the_field": {
+"$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
+"ExpPercent": 100,
+"Level": -1,
+"LevelCap": false,
+"KeepSkills": false,
+"TeamRestrict": false,
+"TeamSize": -1,
+"MoneyRestrict": false,
+"BagRestrict": -1,
+"KeepTreasure": false,
+"BagSize": -1,
+"Rescues": 0,
+"CountedFloors": 0,
+"Rogue": 0,
+"Grounds": [
+"TheField"
+],
+"Maps": [],
+"Name": {
+"DefaultText": "The Field",
+"LocalTexts": {}
+},
+"Released": false,
 "Comment": "",
 "SortOrder": 0
 }

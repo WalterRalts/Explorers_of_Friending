@@ -28,6 +28,7 @@ end
 --Engine callback function
 function tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
   if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
+    GAME:SetTeamLeaderIndex(0)
     if segmentID == 0 then
       SV.tarro_town.PieChapter = 2.1
     elseif segmentID == 1 then
@@ -35,6 +36,7 @@ function tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
     end
     COMMON.EndDungeonDay(result, "tarro_town_outside", -1, 1, 2)
   else
+    GAME:SetTeamLeaderIndex(0)
     if SV.tarro_forest.ZoomerDefeated == false then
       if segmentID == 0 then
         GAME:EnterZone("tarro_forest", -1, 0, 0)

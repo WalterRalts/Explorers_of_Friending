@@ -156,7 +156,7 @@
   </StartTeams>
   <StartLevel>5</StartLevel>
   <MaxLevel>100</MaxLevel>
-  <StartPersonality>5</StartPersonality>
+  <StartPersonality>-1</StartPersonality>
   <DefaultZone>debug_zone</DefaultZone>
   <DefaultRank>none</DefaultRank>
   <DefaultSkin>normal</DefaultSkin>

@@ -4,6 +4,22 @@ function SINGLE_CHAR_SCRIPT.Test(owner, ownerChar, context, args)
   PrintInfo("Test")
 end
 
+function SINGLE_CHAR_SCRIPT.AzuNotLeader(owner, ownerChar, context, args)
+	wholeads = GAME:GetTeamLeaderIndex()
+	local maru = GAME:GetPlayerPartyMember(wholeads - 1) --Maru should be in the first slot
+	if GAME:GetPlayerPartyMember(wholeads).BaseForm.Species == "azurill" then
+		UI:SetSpeaker(maru)
+        UI:SetSpeakerEmotion("Worried")
+        UI:WaitShowDialogue("Sorry, Azura. As an older brother, I can't let you lead.[pause=35] Let[emote=Happy] someone else lead instead.")
+
+		if GAME:GetPlayerPartyCount() > 2 then
+			GAME:SetTeamLeaderIndex(2)
+		else
+			GAME:SetTeamLeaderIndex(0)
+		end
+	end
+end
+
 function SINGLE_CHAR_SCRIPT.SlumberPollen(owner, ownerChar, context, args)
 	--only check if puchi is in the team
 	if GAME:GetPlayerPartyCount() > 4 then
@@ -11,10 +27,11 @@ function SINGLE_CHAR_SCRIPT.SlumberPollen(owner, ownerChar, context, args)
 		UI:SetSpeaker(puchi)
 		local sleep = RogueEssence.Dungeon.StatusEffect("sleep")
 		local turns = _DATA.Save.TotalTurns
-		if math.fmod(turns, 50) == 0 and turns > 5 then
-			local sleep_chance = math.random(3)
-			if sleep_chance == 3 then
-				if SV.tarro_town.puchi_tired and puchi:GetStatusEffect("sleep") == nil then
+		if turns % 60 == 0 and turns > 5 then
+			local sleep_chance = math.random(5)
+			if sleep_chance == 5 then
+				local sleep_roll = false
+				if SV.tarro_town.puchi_tired and puchi:GetStatusEffect("sleep") == nil and sleep_roll == false then
 					PrintInfo("Sleepy time!")
 					local say_choice = math.random(3)
 					if say_choice == 1 then
@@ -29,9 +46,10 @@ function SINGLE_CHAR_SCRIPT.SlumberPollen(owner, ownerChar, context, args)
 					end
 					sleep:LoadFromData()
 					TASK:WaitTask(puchi:AddStatusEffect(nil, sleep, false))
+					sleep_roll = true
 				end
 			else
-
+				PrintInfo("Sleep roll failed!")
 			end
 		end
 	end

@@ -26204,15 +26204,15 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 51,
-"Y": 355
+"X": 54,
+"Y": 358
 },
 "serializationHeight": 0,
 "serializationDir": 4,
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "Azura",
+"Nickname": "Puchi",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -26285,8 +26285,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 56,
-"Y": 336,
+"X": -69,
+"Y": 309,
 "Width": 16,
 "Height": 16
 }

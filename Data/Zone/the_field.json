@@ -3,10 +3,10 @@
 "Object": {
 "$type": "RogueEssence.Data.ZoneData, RogueEssence",
 "Name": {
-"DefaultText": "Tarro Town",
+"DefaultText": "The Field",
 "LocalTexts": {}
 },
-"Released": true,
+"Released": false,
 "Comment": "",
 "NoEXP": false,
 "ExpPercent": 100,
@@ -14,7 +14,7 @@
 "LevelCap": false,
 "KeepSkills": false,
 "TeamRestrict": false,
-"TeamSize": 5,
+"TeamSize": -1,
 "MoneyRestrict": false,
 "BagRestrict": -1,
 "KeepTreasure": false,
@@ -24,12 +24,7 @@
 "Rogue": 0,
 "Segments": [],
 "GroundMaps": [
-"TarroTownSquare",
-"TarroTownBigTree_ch3",
-"TarroTownBigTree",
-"QuizTime",
-"TarroTownHive",
-"TarroTownSquare_ch3"
+"TheField"
 ]
 }
 }

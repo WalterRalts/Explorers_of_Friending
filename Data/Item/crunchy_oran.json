@@ -3,24 +3,28 @@
 "Object": {
 "$type": "RogueEssence.Data.ItemData, RogueEssence",
 "Name": {
-"DefaultText": "Tarro Bread",
+"DefaultText": "Crunchy Oran Salad",
 "LocalTexts": {}
 },
 "Desc": {
-"DefaultText": "A fluffy, grainy loaf! \\n Fills the user belly a little, then increases belly max.",
+"DefaultText": "Unsurprisingly, the Oran berries add to the flavor of the leaves. Fills the user's belly and HP a bit.",
 "LocalTexts": {}
 },
 "Released": true,
 "Comment": "",
-"Sprite": "TarroBread",
-"Icon": -1,
-"SortCategory": 7,
-"Price": 15,
+"Sprite": "crunchy_oransalad",
+"Icon": 10,
+"SortCategory": 0,
+"Price": 75,
 "Rarity": 0,
-"MaxStack": 4,
+"MaxStack": 0,
 "CannotDrop": false,
 "BagEffect": false,
-"ItemStates": [],
+"ItemStates": [
+{
+"$type": "PMDC.Dungeon.EdibleState, PMDC"
+}
+],
 "GroundUseActions": [],
 "UseAction": {
 "$type": "RogueEssence.Dungeon.SelfAction, RogueEssence",
@@ -100,10 +104,23 @@
 "Value": {
 "$type": "PMDC.Dungeon.RestoreBellyEvent, PMDC",
 "BoostAnims": [],
-"Heal": 10,
+"Heal": 15,
 "Msg": true,
-"AddMaxBelly": 2,
+"AddMaxBelly": 0,
 "NeedFullBelly": false
+}
+},
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "PMDC.Dungeon.RestoreHPEvent, PMDC",
+"Numerator": 3,
+"Denominator": 5,
+"AffectTarget": false
 }
 }
 ],
@@ -114,13 +131,8 @@
 "HitFX": {
 "Delay": 0,
 "AbsoluteDelay": false,
-"Sound": "_UNK_EVT_065",
+"Sound": "DUN_Seed",
 "Emitter": {
-"$type": "RogueEssence.Content.SingleEmitter, RogueEssence",
-"LocHeight": 0,
-"finished": false,
-"Offset": 0,
-"Anim": {
 "$type": "RogueEssence.Content.SingleEmitter, RogueEssence",
 "LocHeight": 0,
 "finished": false,
@@ -128,7 +140,7 @@
 "Anim": {
 "$type": "RogueEssence.Content.StaticAnim, RogueEssence",
 "Anim": {
-"AnimIndex": "Circle_Small_Yellow_In",
+"AnimIndex": "Circle_Small_Green_In",
 "FrameTime": 2,
 "StartFrame": -1,
 "EndFrame": -1,
@@ -136,12 +148,9 @@
 "Alpha": 255,
 "AnimFlip": 0
 },
-"TotalTime": 30,
-"Cycles": 1,
+"TotalTime": 0,
+"Cycles": 2,
 "FrameOffset": 0
-},
-"Layer": 2,
-"UseDest": false
 },
 "Layer": 2,
 "UseDest": false
@@ -158,7 +167,7 @@
 "AnimOverride": 0
 }
 },
-"UsageType": 4,
+"UsageType": 0,
 "ArcThrow": false,
 "BreakOnThrow": false,
 "ThrowAnim": {

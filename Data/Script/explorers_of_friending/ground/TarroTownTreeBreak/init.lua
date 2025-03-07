@@ -15,19 +15,20 @@ local TarroTownTreeBreak = {}
 ---TarroTownTreeBreak.Init(map)
 --Engine callback function
 function TarroTownTreeBreak.Init(map)
-  if SV.tarro_tree_hollows.revisit == true then
-    GROUND:Hide("Puchi")
-    GROUND:Hide("Senna")
-    GROUND:Hide("Ziggy")
-  else
-    TarroTownTreeBreak.BreakTime()
-  end
   SleepingPuchi = false
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
   local partner = CH('Teammate1')
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   partner.CollisionDisabled = true
+  if SV.tarro_tree_hollows.revisit == true then
+    GROUND:Hide("Puchi")
+    GROUND:Hide("Senna")
+    GROUND:Hide("Ziggy")
+  else
+    Cute_talk = false
+    TarroTownTreeBreak.BreakTime()
+  end
 end
 
 ---TarroTownTreeBreak.Enter(map)
@@ -93,23 +94,29 @@ function TarroTownTreeBreak.Cute_Action(obj, activator)
   local maru = CH('PLAYER')
   pouch_money = GAME:GetPlayerMoney()
 
-  UI:SetSpeaker(cute)
-  UI:SetSpeakerEmotion("Joyous")
-  UI:WaitShowDialogue("Oh my goodness, hi hi hi!")
+  if Cute_talk == false then
+    UI:SetSpeaker(cute)
+    UI:SetSpeakerEmotion("Joyous")
+    UI:WaitShowDialogue("Oh my goodness, hi hi hi!")
 
-  UI:SetSpeaker(azura)
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("Aren't you that honey seller...?")
+    UI:SetSpeaker(azura)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Aren't you that honey seller...?")
 
-  UI:SetSpeaker(maru)
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("And how did you get through the [color=#01FE10]Big Tree[color]'s defenses?")
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("And how did you get through the [color=#01FE10]Big Tree[color]'s defenses?")
+
+    UI:SetSpeaker(cute)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("The Tree doesn't seem to recognize me![pause=10] Don't know why, but I would've been toast!")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("[speed=0.6]...[speed=1.2]anyway...")
+    Cute_talk = true
+  end
 
   UI:SetSpeaker(cute)
   UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("The Tree doesn't seem to recognize me![pause=10] Don't know why, but I would've been toast!")
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("[speed=0.6]...[speed=1.2]anyway.")
   local choices = {("Yes!"),
         ("No!")}
     UI:BeginChoiceMenu("What some honey?! Only 100 Poke!", choices, 1, 2)
@@ -213,7 +220,7 @@ function TarroTownTreeBreak.Senna_Action(obj, activator)
   COMMON.FaceEachother("PLAYER", "Senna")
   UI:SetSpeaker(senna)
   UI:SetSpeakerEmotion("Sigh")
-  UI:WaitShowDialogue("Phew. Getting a break in a dungeon is so relaxing.")
+  UI:WaitShowDialogue("Phew. What a relief.")
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowTimedDialogue("Let us know when you're ready to go.[pause=45] I'm sure we[emote=Determined]'re almost there.", 35)
 
@@ -326,11 +333,14 @@ function TarroTownTreeBreak.TarroTreeHollows_Continue_Touch(obj, activator)
       if i ~= (playeridx + 1) and i ~= (playeridx + 2) then --Indices in lua tables begin at 1
         GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
         --GROUND:GiveCharIdleChatter(chara)
-        _DATA.Save.ActiveTeam.Players[p]:RefreshTraits()
         total = total + 1
         print(total)
       end
     end
+    _DATA.Save.ActiveTeam.Players[2]:RefreshTraits()
+    _DATA.Save.ActiveTeam.Players[3]:RefreshTraits()
+    _DATA.Save.ActiveTeam.Players[4]:RefreshTraits()
+    GAME:FadeOut(false, 20)
     GAME:ContinueDungeon("tarro_tree_hollows", 1, 0, 0)
   else
     UI:SetSpeaker(maru)

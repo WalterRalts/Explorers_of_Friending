@@ -232,6 +232,24 @@
 "Released": true,
 "Comment": "",
 "SortOrder": 7
+},
+"crunchy_oran": {
+"$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
+"Icon": 10,
+"UsageType": 0,
+"States": [
+{
+"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.EdibleState"
+}
+],
+"Name": {
+"DefaultText": "Crunchy Oran Salad",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 0
 }
 }
 }

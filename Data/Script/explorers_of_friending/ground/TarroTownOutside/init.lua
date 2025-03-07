@@ -17,6 +17,7 @@ local TarroTownOutside = {}
 --Engine callback function
 function TarroTownOutside.Init(map)
   GAME:SetCanSwitch(false)
+  RogueEssence.Dungeon.ExplorerTeam.MAX_TEAM_SLOTS = 5
   
   if GAME:GetPlayerPartyCount() == 1 then
     local mon_id = RogueEssence.Dungeon.MonsterID("azurill", 0, "normal", Gender.Female)
@@ -368,10 +369,10 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeakerEmotion("Normal")
 
     local function azura_gasp()
-      COMMON.CharExclaim(azura)
+      COMMON.CharExclaim("Teammate1")
     end
 
-    UI:WaitShowDialogue("[speed=0.1]...[script=0]![speed=1.0][pause=30] W[emote=Surprised]ait![pause=40] T[emote=Inspired]hat must mean that you have a Big Apple!", azura_gasp())
+    UI:WaitShowDialogue("[speed=0.1]...![speed=1.0][pause=30] W[script=0][emote=Surprised]ait![pause=40] T[emote=Inspired]hat must mean that you have a Big Apple!", azura_gasp())
     UI:SetSpeakerEmotion("Joyous")
     UI:WaitShowDialogue("Gimme, gimme, gimme!")
 
@@ -381,7 +382,7 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:WaitShowDialogue("[pause=45]...I ate it.")
 
     GAME:WaitFrames(50)
-    COMMON.CharAngry(azura)
+    COMMON.CharAngry("Teammate1")
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("...")

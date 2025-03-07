@@ -3154,14 +3154,34 @@
 "Gender": -1
 },
 "Level": {
-"Min": 5,
-"Max": 8
+"Min": 2,
+"Max": 10
 },
 "SpecifiedSkills": [],
 "Intrinsic": "",
 "Tactic": "wander_dumb",
 "SpawnConditions": [],
 "SpawnFeatures": [
+{
+"$type": "PMDC.LevelGen.MobSpawnItem, PMDC",
+"Items": [
+{
+"Spawn": {
+"ID": "berry_oran",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0
+},
+"Rate": 10
+}
+],
+"MapStartOnly": false,
+"Chance": {
+"Numerator": 1,
+"Denominator": 2
+}
+},
 {
 "$type": "PMDC.LevelGen.MobSpawnItem, PMDC",
 "Items": [
@@ -4520,8 +4540,8 @@
 "$type": "RogueElements.InitGridPlanStep`1[[RogueEssence.LevelGen.MapGenContext, RogueEssence]], RogueElements",
 "CellWidth": 6,
 "CellHeight": 6,
-"CellX": 8,
-"CellY": 8,
+"CellX": 6,
+"CellY": 6,
 "CellWall": 10,
 "Wrap": false
 }

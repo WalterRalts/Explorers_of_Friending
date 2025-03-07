@@ -20,6 +20,7 @@ function TarroTownBigTree.Init(map)
   end
   --SV.tarro_town.PieChapter == 7 is the first cutscene
   if SV.tarro_town.PieChapter == 7 or tarro_tree_fail == false then -- before cutscene
+    GAME:SetCanSwitch(true)
     if GAME:GetPlayerPartyCount() == 2 or SV.tarro_tree_hollows.tree_entered == false then
       local mon_id1 = RogueEssence.Dungeon.MonsterID("sentret", 0, "normal", Gender.Female)
   
@@ -123,7 +124,6 @@ function TarroTownBigTree.Init(map)
 end
 
 function TarroTownBigTree.TarroThingCut(map)
-  
   local ama = CH("Thing")
   GAME:CutsceneMode(true)
   GAME:MoveCamera(464, 302, 7, false)

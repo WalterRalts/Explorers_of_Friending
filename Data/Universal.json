@@ -671,7 +671,20 @@
 }
 }
 ],
-"OnTurnStarts": [],
+"OnTurnStarts": [
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
+"Script": "AzuNotLeader",
+"ArgTable": "{}"
+}
+}
+],
 "OnTurnEnds": [
 {
 "Key": {

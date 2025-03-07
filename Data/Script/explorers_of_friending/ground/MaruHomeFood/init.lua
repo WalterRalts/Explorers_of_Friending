@@ -16,7 +16,6 @@ local MaruHomeFood = {}
 ---MaruHomeFood.Init(map)
 --Engine callback function
 function MaruHomeFood.Init(map)
-  SV.tarro_town.cooking_tutorial_done = 1
   MaruHomeFood.CookingGameplay()
 end
 
@@ -27,8 +26,6 @@ end
 ---MaruHomeFood.Enter(map)
 --Engine callback function
 function MaruHomeFood.Enter(map)
-
-  GAME:FadeIn(20)
   
 end
 

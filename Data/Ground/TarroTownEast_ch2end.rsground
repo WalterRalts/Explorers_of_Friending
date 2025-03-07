@@ -54981,8 +54981,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 389,
-"Y": 404,
+"X": 392,
+"Y": 398,
 "Width": 16,
 "Height": 16
 }
@@ -55676,7 +55676,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Arama",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {

@@ -54,7 +54,9 @@ function Outside.CloudWatch()
     UI:WaitShowDialogue("Let's go!")
 
     SV.tarro_town.PieChapter = 0
-    local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("AllyInteract")
-    _DATA.Save.ActiveTeam.Players[1].ActionEvents:Add(talk_evt)
+    local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("AzuraInteract")
+          _DATA.Save.ActiveTeam.Players[1].ActionEvents:Add(talk_evt)
+    local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("MaruInteract")
+          _DATA.Save.ActiveTeam.Players[0].ActionEvents:Add(talk_evt)
   end
 end

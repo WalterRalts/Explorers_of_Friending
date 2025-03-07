@@ -20,17 +20,139 @@ function DeepForestBreak.Init(map)
 end
 
 function DeepForestBreak.ZoomUp(map)
+  if DUN_failure == true or SV.deep_tarro_forest.revisit == true then
+    print("Oops!")
+  else
+    local mon_id = RogueEssence.Dungeon.MonsterID("zubat", 0, "normal", Gender.Male)
 
+    local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 10, "", 0)
+    p.IsFounder = false
+    p.IsPartner = false
+    p.Nickname = "Zoomer"
+
+    _DATA.Save.ActiveTeam.Players:Add(p)
+    _DATA.Save.ActiveTeam.Players[2]:RefreshTraits()
+    local talk_npc = RogueEssence.Dungeon.BattleScriptEvent("ZoomerInteract")
+          _DATA.Save.ActiveTeam.Players[2].ActionEvents:Add(talk_npc)
+  end
+
+  local maru = CH("Maru")
+  local azura = CH("Azura")
+  local zoomer = CH("Zoomer")
+  GROUND:Hide("PLAYER")
   GAME:FadeIn(20)
-  
+  GROUND:MoveInDirection(zoomer, Dir8.Left, 40, false, 2)
+  GAME:WaitFrames(90)
+  GROUND:MoveInDirection(zoomer, Dir8.Right, 80, false, 2)
+  GAME:WaitFrames(70)
+  GROUND:MoveInDirection(zoomer, Dir8.Left, 40, false, 2)
 
+  COMMON.CharAngry("Zoomer")
+  UI:SetSpeaker(zoomer)
+  UI:SetSpeakerEmotion("Angry")
+  UI:WaitShowDialogue("Uuuuugh!")
+
+  UI:SetSpeaker(zoomer)
+  UI:SetSpeakerEmotion("Angry")
+  UI:WaitShowDialogue("Where are they?!")
+
+  local coro1 = TASK:BranchCoroutine(function() 
+    UI:SetSpeaker(zoomer)
+    UI:SetSpeakerEmotion("Angry")
+    UI:WaitShowTimedDialogue("He sends me out here[pause=40]; I have to wait here!", 60)
+    UI:WaitShowTimedDialogue("'Do not worry, they will be there in a moment!'", 60)
+    UI:WaitShowTimedDialogue("I'm here, and they aren")
+    GROUND:CharAnimateTurn(zoomer, Dir8.Down, 2, true)
+
+    end)	
+  local coro2 = TASK:BranchCoroutine(function() 
+    GROUND:MoveInDirection(maru, Dir8.Up, 60, false, 2)
+    GROUND:MoveInDirection(azura, Dir8.Up, 60, false, 2)
+    GAME:WaitFrames(80)
+    COMMON.FaceEachother("Maru", "Azura")
+    GAME:WaitFrames(30)
+    COMMON.CharSweatdrop("Maru")
+    GAME:WaitFrames(25)
+    COMMON.CharSweatdrop("Azura")
+    GROUND:CharTurnToCharAnimated(azura, zoomer, 8)
+    GROUND:CharTurnToCharAnimated(maru, zoomer, 8)
+    end)
+  
+  TASK:JoinCoroutines({coro1, coro2})
+
+  UI:SetSpeaker(zoomer)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowTimedDialogue("...", 40)
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowTimedDialogue("...", 40)
+
+  UI:SetSpeaker(azura)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowTimedDialogue("...", 40)
+
+  GAME:WaitFrames(75)
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Hey, you look familiar.")
+
+  UI:SetSpeaker(zoomer)
+  UI:SetSpeakerEmotion("Angry")
+  UI:WaitShowDialogue("No way you two jerks got accepted!")
+  
+  GROUND:CharTurnToCharAnimated(zoomer, azura, 8)
+  UI:SetSpeaker(azura)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Accepted...?[pause=15] What does that mean?")
+
+  GROUND:CharTurnToCharAnimated(zoomer, maru, 8)
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Is that what that letter was about?")
+
+  UI:SetSpeaker(zoomer)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("Yes,[pause=35] yes it is.")
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Don't tell me you two just accepted it without even thinking.")
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Mom checked it first.")
+  UI:WaitShowDialogue("...did you get accepted, too?")
+  GROUND:CharAnimateTurn(zoomer, Dir8.Down, 3, true)
+
+  UI:SetSpeaker(zoomer)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("...sure.[br] Anyway, as much as I don't want to...")
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("I have to escort two brats.")
+  GROUND:CharAnimateTurn(zoomer, Dir8.Up, 3, true)
+
+  UI:SetSpeaker(zoomer)
+  UI:WaitShowDialogue("Let's go and get this over with.")
+
+  
+  local coro3 = TASK:BranchCoroutine(function() 
+    GROUND:MoveInDirection(maru, Dir8.Up, 150, false, 2)
+    end)	
+  local coro4 = TASK:BranchCoroutine(function() 
+    GROUND:MoveInDirection(zoomer, Dir8.Up, 150, false, 2)
+    end)
+  local coro5 = TASK:BranchCoroutine(function() 
+    GAME:WaitFrames(25)
+    GROUND:MoveInDirection(azura, Dir8.Up, 150, false, 3)
+    end)
+  TASK:JoinCoroutines({coro3, coro4, coro5})
+
+  GAME:FadeOut(false, 40)
+  GAME:ContinueDungeon("deep_tarro_forest", 1, 0, 0)
 end
 
 ---DeepForestBreak.Enter(map)
 --Engine callback function
 function DeepForestBreak.Enter(map)
-
-  GAME:FadeIn(20)
 
 end
 

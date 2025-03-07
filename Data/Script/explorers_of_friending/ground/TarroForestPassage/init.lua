@@ -43,6 +43,16 @@ function TarroForestPassage.Init(map)
   
 end
 
+
+
+---TarroForestPassage.Enter(map)
+--Engine callback function
+function TarroForestPassage.Enter(map)
+  
+  GAME:FadeIn(20)
+
+end
+
 function TarroForestPassage.Darkness()
   local maru = CH("PLAYER")
   local azura = CH('Teammate1')
@@ -255,14 +265,6 @@ function TarroForestPassage.Darkness()
   COMMON.UnlockWithFanfare("deep_tarro_forest", false)
   GAME:CutsceneMode(false)
   GAME:EnterZone("deep_tarro_forest", 0, 0, 0)
-end
-
----TarroForestPassage.Enter(map)
---Engine callback function
-function TarroForestPassage.Enter(map)
-  
-  GAME:FadeIn(20)
-
 end
 
 ---TarroForestPassage.Exit(map)

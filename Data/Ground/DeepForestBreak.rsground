@@ -14168,7 +14168,7 @@
 }
 ],
 "AssetName": "DeepForestBreak",
-"Music": "",
+"Music": "Ambush Forest.ogg",
 "EdgeView": 1,
 "NoSwitching": false,
 "ViewCenter": null,
@@ -14295,15 +14295,15 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 126,
-"Y": 263
+"X": 123,
+"Y": 264
 },
 "serializationHeight": 0,
 "serializationDir": 0,
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Maru",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -14376,8 +14376,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 121,
-"Y": 210,
+"X": 2,
+"Y": 170,
 "Width": 16,
 "Height": 16
 }
@@ -14472,8 +14472,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 0,
-"Y": 0,
+"X": 225,
+"Y": 264,
 "Width": 16,
 "Height": 16
 }
