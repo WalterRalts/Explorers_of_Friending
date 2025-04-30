@@ -435,7 +435,7 @@ function TarroTownEast_ch2.Puchi_Action(obj, activator)
 
   UI:SetSpeaker(puchi)
   UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("[speed=0.3]Ugh,[pause=25] someone decided to wake me up earlier than usual...")
+  UI:WaitShowDialogue("[speed=0.5]Ugh,[pause=25] someone decided to wake me up earlier than usual...")
   UI:SetSpeakerEmotion("Angry")
   GROUND:CharTurnToCharAnimated(puchi, ziggy, 4)
   UI:WaitShowDialogue("...grrrrr.")
@@ -491,87 +491,6 @@ function TarroTownEast_ch2.Beel_Action(obj, activator)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Hehe...!")
 end
---[[
-  Move2PositionMark<actor ACTOR_PLAYER>(2, Position<'m2', 48.5, 17>);
-  Move2PositionMark<actor ACTOR_ATTENDANT1>(2, Position<'m3', 45, 17>);
-  Turn2Direction<actor ACTOR_PLAYER>(6, 10, DIR_UP);
-  Turn2Direction<actor ACTOR_ATTENDANT1>(6, 10, DIR_UP);
-  message_SetFace(ACTOR_NPC_SENNA, FACE_PAIN, FACE_POS_BOTTOM_RC_FACEOUTW);
-  message_Talk(' Mn... I can\'t... I couldn\'t.');
-  CallCommon(CORO_MESSAGE_CLOSE_WAIT_FUNC);
-  message_SetFace(ACTOR_NPC_ZIGGY, FACE_DETERMINED, FACE_POS_BOTTOM_RC_FACEOUTW);
-  message_Talk(' Come on, Senna, you\'re their friend too!');
-  message_Talk(' They listen to you more, anyway!');
-  CallCommon(CORO_MESSAGE_CLOSE_WAIT_FUNC);
-  message_SetFace(ACTOR_NPC_SENNA, FACE_SAD, FACE_POS_BOTTOM_RC_FACEOUTW);
-  message_Talk(' I... wasn\'t much help before...');
-  CallCommon(CORO_MESSAGE_CLOSE_WAIT_FUNC);
-  Turn2DirectionLives<actor ACTOR_NPC_ZIGGY>(3, 10, ACTOR_PLAYER);
-  message_SetFace(ACTOR_NPC_ZIGGY, FACE_DETERMINED, FACE_POS_BOTTOM_RC_FACEOUTW);
-  message_Talk(' Mar, help! She\'s being insecure again!');
-  CallCommon(CORO_MESSAGE_CLOSE_WAIT_FUNC);
-  SetAnimation<actor ACTOR_NPC_SENNA>(10);
-  message_SetWaitMode(30, 30);
-  message_SetFace(ACTOR_NPC_SENNA, FACE_STUNNED, FACE_POS_BOTTOM_RC_FACEOUTW);
-  message_Talk(' Wha-...');
-  CallCommon(CORO_MESSAGE_CLOSE_WAIT_FUNC);
-  SetAnimation<actor ACTOR_NPC_SENNA>(9);
-  message_SetWaitMode(-1, -1);
-  message_SetFace(ACTOR_NPC_SENNA, FACE_ANGRY, FACE_POS_BOTTOM_RC_FACEOUTW);
-  message_Talk(' H-hey!');
-  CallCommon(CORO_MESSAGE_CLOSE_WAIT_FUNC);
-  SetAnimation<actor ACTOR_NPC_ZIGGY>(9);
-  Turn2DirectionLives<actor ACTOR_NPC_ZIGGY>(3, 10, ACTOR_NPC_SENNA);
-  message_SetFace(ACTOR_NPC_ZIGGY, FACE_ANGRY, FACE_POS_BOTTOM_RC_FACEOUTW);
-  message_Talk(' You know it\'s true!');
-  CallCommon(CORO_MESSAGE_CLOSE_WAIT_FUNC);
-  message_SetFace(ACTOR_PLAYER_MARU, FACE_STUNNED, FACE_POS_BOTTOM_RC_FACEOUTW);
-  message_Talk(' U-uh... we\'ll just go...');
-  CallCommon(CORO_MESSAGE_CLOSE_WAIT_FUNC);
-  JumpCommon(CORO_END_TALK);
-]]
-
---[[
-def 0 {
-    ExecuteCommon<actor ACTOR_TALK_MAIN>(CORO_LIVES_ACTING_NORMAL, 0);
-    ExecuteCommon<actor ACTOR_TALK_SUB>(CORO_LIVES_ACTING_NORMAL, 0);
-    Move2PositionMark<actor ACTOR_PLAYER>(1, Position<'m0', 57, 54>);
-    Move2PositionMark<actor ACTOR_ATTENDANT1>(1, Position<'m1', 52.5, 54>);
-    Turn2Direction<actor ACTOR_PLAYER>(6, 10, DIR_UP);
-    Turn2Direction<actor ACTOR_ATTENDANT1>(6, 10, DIR_UP);
-    message_SetFace(ACTOR_NPC_BEEL, FACE_NORMAL, FACE_POS_STANDARD);
-    message_Talk('''
-         I'm concerned for them, but as long as 
-        they're fine, then I am.
-    ''');
-    CallCommon(CORO_MESSAGE_CLOSE_WAIT_FUNC);
-    message_SetFace(ACTOR_NPC_FURIE, FACE_HAPPY, FACE_POS_STANDARD);
-    message_Talk('''
-         Of course, dear, that was never a 
-        problem.
-    ''');
-    message_SetFace(ACTOR_NPC_FURIE, FACE_WORRIED, FACE_POS_STANDARD);
-    message_Talk(' I\'m more attentive to those friends of theirs.');
-    message_SetFace(ACTOR_NPC_FURIE, FACE_WORRIED, FACE_POS_STANDARD);
-    message_Talk(' What if...[K] they\'re bad...?');
-    CallCommon(CORO_MESSAGE_CLOSE_WAIT_FUNC);
-    Turn2DirectionLives<actor ACTOR_NPC_BEEL>(4, 10, ACTOR_PLAYER);
-    Turn2DirectionLives<actor ACTOR_PLAYER>(4, 10, ACTOR_NPC_BEEL);
-    Wait(45);
-    message_SetFace(ACTOR_NPC_BEEL, FACE_NORMAL, FACE_POS_STANDARD);
-    message_Talk(' Hm.');
-    CallCommon(CORO_MESSAGE_CLOSE_WAIT_FUNC);
-    Wait(45);
-    Turn2DirectionLives<actor ACTOR_NPC_BEEL>(4, 10, ACTOR_NPC_FURIE);
-    message_SetFace(ACTOR_NPC_BEEL, FACE_NORMAL, FACE_POS_STANDARD);
-    message_Talk(' They\'ll be fine.');
-    CallCommon(CORO_MESSAGE_CLOSE_WAIT_FUNC);
-    message_SetFace(ACTOR_PLAYER_MARU, FACE_HAPPY, FACE_POS_STANDARD);
-    message_Talk(' (Heeh...!)');
-    CallCommon(CORO_MESSAGE_CLOSE_WAIT_FUNC);
-    JumpCommon(CORO_END_TALK);
-]]
-
 
 return TarroTownEast_ch2
 

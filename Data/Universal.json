@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.8.0",
+"Version": "0.8.9.0",
 "Object": {
 "$type": "PMDC.Data.UniversalActiveEffect, PMDC",
 "ZoneSteps": [
@@ -669,6 +669,18 @@
 "Value": {
 "$type": "PMDC.Dungeon.ReactivateItemsEvent, PMDC"
 }
+},
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
+"Script": "DungeonDialogue",
+"ArgTable": "{}"
+}
 }
 ],
 "OnTurnStarts": [
@@ -708,6 +720,35 @@
 "$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
 "Script": "SlumberPollen",
 "ArgTable": "{}"
+}
+},
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "PMDC.Dungeon.NaturalPercentRegenEvent, PMDC",
+"RegenPercent": 12,
+"RegenPercentCombat": 0,
+"StarvePercent": -50
+}
+},
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "PMDC.Dungeon.NaturalHungerEvent, PMDC",
+"LeaderHungerRate": 80,
+"PartyHungerRate": 10,
+"GuestsHungerRate": 1,
+"EnemyHungerRate": 1,
+"AllyHungerRate": 5,
+"Denominator": 1000
 }
 }
 ],
@@ -814,7 +855,21 @@
 ]
 },
 "Value": {
-"$type": "PMDC.Dungeon.PreItemEvent, PMDC"
+"$type": "PMDC.Dungeon.PreItemEvent, PMDC",
+"UseMsgs": {
+"Eat": {
+"Key": "MSG_USE_EAT"
+},
+"Drink": {
+"Key": "MSG_USE_DRINK"
+},
+"Learn": {
+"Key": "MSG_USE_OPERATE"
+},
+"Use": {
+"Key": "MSG_USE"
+}
+}
 }
 },
 {

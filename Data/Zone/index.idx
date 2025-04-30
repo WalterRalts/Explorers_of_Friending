@@ -1,37 +1,48 @@
 ﻿{
-"Version": "0.8.8.0",
+"Version": "0.8.9.0",
 "Object": {
 "$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[RogueEssence.Data.EntrySummary, RogueEssence]], System.Private.CoreLib",
-"tarro_town_outside": {
+"deep_tarro_forest": {
 "$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
-"ExpPercent": 100,
-"Level": 5,
+"ExpPercent": 25,
+"Level": 10,
 "LevelCap": false,
 "KeepSkills": false,
 "TeamRestrict": false,
-"TeamSize": -1,
+"TeamSize": 5,
 "MoneyRestrict": false,
 "BagRestrict": -1,
 "KeepTreasure": false,
 "BagSize": -1,
 "Rescues": 0,
-"CountedFloors": 0,
+"CountedFloors": 15,
 "Rogue": 0,
 "Grounds": [
-"TarroTownOutside",
-"TarroTownEast",
-"MaruHome",
-"TarroTownWest",
-"TarroTownEast_ch2",
-"TarroTownEast_ch2end",
-"TarroTownEast_ch3",
-"SennaHome",
-"CupShuffle",
-"MaruHomeFood"
+"DeepForestBreak"
 ],
-"Maps": [],
+"Maps": [
+[
+0,
+1,
+2,
+3,
+4,
+5,
+6
+],
+[
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+],
 "Name": {
-"DefaultText": "Tarro Town Outskirts",
+"DefaultText": "Deep Tarro Forest",
 "LocalTexts": {}
 },
 "Released": true,
@@ -40,7 +51,7 @@
 },
 "tarro_forest": {
 "$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
-"ExpPercent": 70,
+"ExpPercent": 40,
 "Level": 5,
 "LevelCap": false,
 "KeepSkills": false,
@@ -113,47 +124,36 @@
 "Comment": "",
 "SortOrder": 0
 },
-"deep_tarro_forest": {
+"tarro_town_outside": {
 "$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
-"ExpPercent": 25,
-"Level": 10,
+"ExpPercent": 100,
+"Level": 5,
 "LevelCap": false,
 "KeepSkills": false,
 "TeamRestrict": false,
-"TeamSize": 5,
+"TeamSize": -1,
 "MoneyRestrict": false,
 "BagRestrict": -1,
 "KeepTreasure": false,
 "BagSize": -1,
 "Rescues": 0,
-"CountedFloors": 15,
+"CountedFloors": 0,
 "Rogue": 0,
 "Grounds": [
-"DeepForestBreak"
+"TarroTownOutside",
+"TarroTownEast",
+"MaruHome",
+"TarroTownWest",
+"TarroTownEast_ch2",
+"TarroTownEast_ch2end",
+"TarroTownEast_ch3",
+"SennaHome",
+"CupShuffle",
+"MaruHomeFood"
 ],
-"Maps": [
-[
-0,
-1,
-2,
-3,
-4,
-5,
-6
-],
-[
-0,
-1,
-2,
-3,
-4,
-5,
-6,
-7
-]
-],
+"Maps": [],
 "Name": {
-"DefaultText": "Deep Tarro Forest",
+"DefaultText": "Tarro Town Outskirts",
 "LocalTexts": {}
 },
 "Released": true,
@@ -162,8 +162,8 @@
 },
 "tarro_tree_hollows": {
 "$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
-"ExpPercent": 50,
-"Level": -1,
+"ExpPercent": 40,
+"Level": 7,
 "LevelCap": false,
 "KeepSkills": false,
 "TeamRestrict": false,
@@ -230,6 +230,47 @@
 "LocalTexts": {}
 },
 "Released": false,
+"Comment": "",
+"SortOrder": 0
+},
+"entoh_town": {
+"$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
+"ExpPercent": 20,
+"Level": -1,
+"LevelCap": false,
+"KeepSkills": false,
+"TeamRestrict": false,
+"TeamSize": -1,
+"MoneyRestrict": false,
+"BagRestrict": -1,
+"KeepTreasure": false,
+"BagSize": -1,
+"Rescues": 0,
+"CountedFloors": 0,
+"Rogue": 0,
+"Grounds": [
+"RexioHome",
+"EntohTownNorth",
+"EntohTownCenter",
+"EntohTownDelivery"
+],
+"Maps": [
+[
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+],
+"Name": {
+"DefaultText": "Entoh Town",
+"LocalTexts": {}
+},
+"Released": true,
 "Comment": "",
 "SortOrder": 0
 }

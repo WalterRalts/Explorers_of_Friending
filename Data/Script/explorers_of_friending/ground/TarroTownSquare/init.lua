@@ -6,6 +6,7 @@
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
 require 'explorers_of_friending.ground.TarroTownSquare.cutscene'
+require 'explorers_of_friending.partner'
 
 -- Package name
 local TarroTownSquare = {}
@@ -16,14 +17,14 @@ local TarroTownSquare = {}
 ---TarroTownSquare.Init(map)
 --Engine callback function
 function TarroTownSquare.Init(map)
-  
+
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
   local partner = CH('Teammate1')
   local munch = CH('Munch')
-  local lax = CH("Lax")
   local ziggy = CH("Ziggy")
-  
+  local lax = CH("Lax")
+  GROUND:CharSetAnim(lax, "Sleep", true)
   partner.CollisionDisabled = true
   
   if SV.tarro_town.PieChapter == 5 then
@@ -58,7 +59,7 @@ end
 ---TarroTownSquare.Enter(map)
 --Engine callback function
 function TarroTownSquare.Enter(map)
-
+  
   GAME:FadeIn(20)
 
 end
@@ -73,63 +74,7 @@ end
 ---TarroTownSquare.Update(map)
 --Engine callback function
 function TarroTownSquare.Update(map)
-  local lax = CH("Lax")
-  local sleepy_lax = false
-  if sleepy_lax == false then
-    GROUND:CharSetAnim(lax, "Sleep", true)
-    sleepy_lax = true
-  end
-  
-  local maru = CH("PLAYER")
-  local azura = CH('Teammate1')
-
-  if GAME:IsKeyDown(66) then
-    if SV.tarro_town.PieChapter == 6 then
-      if quiz_available then
-        UI:SetSpeaker(azura)
-        UI:SetSpeakerEmotion("Worried")
-        UI:WaitShowDialogue("The town isn't that big, right?")
-
-        UI:SetSpeaker(maru)
-        GROUND:CharTurnToCharAnimated(maru, azura, 4)
-        UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("You getting worried, Azura?")
-        UI:WaitShowDialogue("I could answer all the questions if you want me to.")
-
-        UI:SetSpeaker(azura)
-        UI:SetSpeakerEmotion("Surprised")
-        UI:WaitShowDialogue("Huh?! [pause=45]N[emote=Angry]o! Don't you dare!")
-      else
-        UI:SetSpeaker(azura)
-        GROUND:CharTurnToCharAnimated(maru, azura, 4)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("Let's go meet up with the others!")
-        UI:WaitShowDialogue("They might know more about town!")
-
-        UI:SetSpeaker(maru)
-        UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("Yep.")
-      end
-    elseif SV.tarro_town.PieChapter == 7 then
-      UI:SetSpeaker(azura)
-      GROUND:CharTurnToCharAnimated(maru, azura, 4)
-      UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowDialogue("Wonder why no one else is noticing...")
-
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowDialogue("So do I, but...")
-    else
-      UI:SetSpeaker(azura)
-      GROUND:CharTurnToCharAnimated(maru, azura, 4)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("Yeah, town!")
-
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("Whoo, town!")  
-    end
-  end
+  Partner()
 end
 
 ---TarroTownSquare.GameSave(map)
@@ -419,10 +364,13 @@ function TarroTownSquare.Puchi_Action()
       UI:SetSpeaker(ziggy)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("Alrighty, then.[pause=50] Report in with your recent activities!")
+      GROUND:CharTurnToCharAnimated(senna, puchi, 4)
+      GROUND:CharTurnToCharAnimated(ziggy, puchi, 4)
       UI:SetSpeaker(puchi)
       UI:SetSpeakerEmotion("Determined")
       UI:WaitShowDialogue("Sleeping...")
   
+      GROUND:CharTurnToCharAnimated(ziggy, senna, 4)
       UI:SetSpeaker(senna)
       UI:SetSpeakerEmotion("Pain")
       UI:WaitShowDialogue("Hiding...")
@@ -435,6 +383,8 @@ function TarroTownSquare.Puchi_Action()
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("Ye.")
   
+      COMMON.CharExclaim("Ziggy")
+      COMMON.FaceEachother("Ziggy", "PLAYER")
       UI:SetSpeaker(ziggy)
       UI:SetSpeakerEmotion("Inspired")
       UI:WaitShowDialogue("You guys went exploring!?")
@@ -445,6 +395,7 @@ function TarroTownSquare.Puchi_Action()
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("A-[pause=20]as long as I'm not dragged along.")
   
+      COMMON.FaceEachother("Puchi", "PLAYER")
       UI:SetSpeaker(puchi)
       UI:SetSpeakerEmotion("Worried")
       UI:WaitShowDialogue("Where did you two explore?")
@@ -469,6 +420,7 @@ function TarroTownSquare.Puchi_Action()
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("Does exploring town count, too?")
   
+      COMMON.FaceEachother("Puchi", "Teammate1")
       UI:SetSpeaker(puchi)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("You've...[pause=35] n[emote=Worried]ever been here?")
@@ -716,8 +668,7 @@ function TarroTownSquare.Minus_Action()
         UI:SetSpeakerEmotion("Angry")
         UI:WaitShowDialogue("This question is lame!")
         GAME:WaitFrames(30)
-        GROUND:CharTurnToCharAnimated(plus, minus, 2)
-        GROUND:CharTurnToCharAnimated(minus, plus, 2)
+        COMMON.FaceEachother("Plus", "Minus")
         GAME:WaitFrames(30)
         UI:SetSpeaker(plus)
         UI:SetSpeakerEmotion("Stunned")

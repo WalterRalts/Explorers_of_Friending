@@ -15,6 +15,7 @@ local TarroTownTreeBreak = {}
 ---TarroTownTreeBreak.Init(map)
 --Engine callback function
 function TarroTownTreeBreak.Init(map)
+  DUNsection = 1
   SleepingPuchi = false
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
@@ -254,11 +255,11 @@ function TarroTownTreeBreak.Ziggy_Action(obj, activator)
   UI:SetSpeakerEmotion("Sigh")
   UI:WaitShowDialogue("[color=#01FE10]This Big Tree[color] has so much history with everyone in the town...")
   UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("I couldn't imagine losing it... [pause=25]and all the people that love it.")
+  UI:WaitShowDialogue("I couldn't imagine losing it... [pause=25]and all my friends that love it.")
 
   GROUND:CharAnimateTurn(ziggy, Direction.Left, 4, false)
   UI:SetSpeakerEmotion("Sad")
-  UI:WaitShowDialogue("My mom was[pause=10] born in here... [speed=0.75][pause=25]and [emote=Teary-Eyed]all the people that...")
+  UI:WaitShowDialogue("My mom was[pause=10] born in here... [speed=0.75][pause=25]and [emote=Teary-Eyed]everyone that...")
 
   for i = 1, 2, 1 do
     GROUND:CharSetEmote(ziggy, "sweating", 1)
@@ -273,7 +274,7 @@ function TarroTownTreeBreak.Ziggy_Action(obj, activator)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("But you know what,[pause=11] I think we can do it,[pause=25][emote=Joyous] and we probably won't stop trying until the tree is saved!")
   UI:SetSpeakerEmotion("Joyous")
-  UI:WaitShowDialogue("Plus,[pause=11] exploring with you guys is fun![pause=35] You guys are the best!")
+  UI:WaitShowDialogue("Add[pause=11] exploring with you guys is fun![pause=35] You guys are the best!")
 end
 
 function TarroTownTreeBreak.Storage_Action(obj, activator)

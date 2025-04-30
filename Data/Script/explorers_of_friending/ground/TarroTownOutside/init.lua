@@ -6,6 +6,7 @@
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
 require 'explorers_of_friending.ground.TarroTownOutside.cutscene'
+require 'explorers_of_friending.partner'
 
 -- Package name
 local TarroTownOutside = {}
@@ -17,8 +18,9 @@ local TarroTownOutside = {}
 --Engine callback function
 function TarroTownOutside.Init(map)
   GAME:SetCanSwitch(false)
-  RogueEssence.Dungeon.ExplorerTeam.MAX_TEAM_SLOTS = 5
-  
+  if SV.tarro_town.PieChapter >= 5 then
+    GROUND:Hide("Puchi")
+  end
   if GAME:GetPlayerPartyCount() == 1 then
     local mon_id = RogueEssence.Dungeon.MonsterID("azurill", 0, "normal", Gender.Female)
 
@@ -40,15 +42,11 @@ function TarroTownOutside.Init(map)
   Outside.CloudWatch()
   if outside_enter == 1 then
     GROUND:TeleportTo(partner, 478, 379, Direction.Left, 0)
-    GAME:FadeIn(20)
-  else
-    GAME:FadeIn(20)
+  elseif outside_enter == 2 then
+    GROUND:TeleportTo(partner, 53, 379, Direction.Right, 0)
   end
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   partner.CollisionDisabled = true
-  if SV.tarro_town.PieChapter >= 5 then
-    GROUND:Hide("Puchi")
-  end
 
   if (wager_up ~= 0 and cup_total_points ~= 0) and (wager_up ~= nil and cup_total_points ~= nil) then
     TarroTownOutside.Reward()
@@ -62,7 +60,8 @@ end
 --Engine callback function
 function TarroTownOutside.Enter(map)
     
-  
+  GAME:FadeIn(20)
+
 end
 
 
@@ -76,76 +75,7 @@ end
 ---TarroTownOutside.Update(map)
 --Engine callback function
 function TarroTownOutside.Update(map)  
-  local maru = CH("PLAYER")
-  local azura = CH('Teammate1')
-  local puchi = CH('Puchi')
-
-  if GAME:IsKeyDown(66) then
-    print("Partner")
-  end
-  if GAME:IsKeyDown(66) then
-    if SV.tarro_town.PieChapter < 2 then
-      UI:SetSpeaker(azura)
-      GROUND:CharTurnToCharAnimated(maru, azura, 4)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("Let's go home and get some pie!")
-
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowDialogue("Gee, not like it's going anywhere.")
-
-      UI:SetSpeaker(azura)
-      UI:SetSpeakerEmotion("Sad")
-      UI:WaitShowDialogue("But what if it gets c[speed=0.7]oooo[speed=1.0]ld?!")
-      
-      GROUND:CharTurnToCharAnimated(puchi, maru, 4)
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowDialogue("Don't think it would get cold that fast...")
-      
-      GROUND:CharTurnToCharAnimated(maru, puchi, 4)
-      GROUND:CharTurnToCharAnimated(azura, puchi, 4)
-      UI:SetSpeaker(puchi)
-      UI:SetSpeakerEmotion("Inspired")
-      UI:WaitShowDialogue("You guys are getting pie?!")
-
-      UI:SetSpeaker(azura)
-      UI:SetSpeakerEmotion("Angry")
-      UI:WaitShowDialogue("Not enough for you!")
-    elseif SV.tarro_town.PieChapter >= 2 and SV.tarro_town.PieChapter < 4 then
-      if SV.tarro_town.PieChapter == 2.1 then
-        UI:SetSpeaker(azura)
-        GROUND:CharTurnToCharAnimated(maru, azura, 4)
-        UI:SetSpeakerEmotion("Angry")
-        UI:WaitShowDialogue("That fail made me mad...!")
-      elseif SV.tarro_town.PieChapter == 2.2 then
-        UI:SetSpeaker(azura)
-        GROUND:CharTurnToCharAnimated(maru, azura, 4)
-        UI:SetSpeakerEmotion("Angry")
-        UI:WaitShowDialogue("Ugh, dumb bat!")
-      end
-      UI:SetSpeaker(azura)
-      GROUND:CharTurnToCharAnimated(maru, azura, 4)
-      UI:SetSpeakerEmotion("Determined")
-      UI:WaitShowDialogue("What are we doing here?!")
-      UI:WaitShowDialogue("We need the apple before it gets late!")
-    elseif SV.tarro_town.PieChapter == 4 then
-      UI:SetSpeaker(azura)
-      GROUND:CharTurnToCharAnimated(maru, azura, 4)
-      UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowDialogue("I'd love to watch clouds more,[pause=15] but can we get pie first?")
-      UI:WaitShowDialogue("The Big Apple might spoil!")
-    else
-      UI:SetSpeaker(azura)
-      GROUND:CharTurnToCharAnimated(maru, azura, 4)
-      UI:SetSpeakerEmotion("Inspired")
-      UI:WaitShowDialogue("Pretty clouds...!")
-
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("Cloud watching would be fun, wouldn't it?")
-    end
-  end
+  Partner()
 end
 
 ---TarroTownOutside.GameSave(map)
@@ -345,7 +275,6 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:WaitShowDialogue("Puchi!")
 
     UI:SetSpeaker(puchi)
-    UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Hello, Azura.[pause=35] Hello, Maru.")
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("[speed=0.2]...s[speed=1.0]trange,[pause=0] I'd expect a bunch of crumbs on your face by now...")
@@ -356,7 +285,6 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:WaitShowDialogue("[speed=0.2]...")
 
     UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Sad")
     UI:WaitShowDialogue("Yeah...[pause=41] mom ran [emote=Worried]out of big apples.")
 
     UI:SetSpeaker(puchi)
@@ -372,7 +300,8 @@ function TarroTownOutside.Puchi_Action(obj, activator)
       COMMON.CharExclaim("Teammate1")
     end
 
-    UI:WaitShowDialogue("[speed=0.1]...![speed=1.0][pause=30] W[script=0][emote=Surprised]ait![pause=40] T[emote=Inspired]hat must mean that you have a Big Apple!", azura_gasp())
+    COMMON.CharQuestion("Teammate1")
+    UI:WaitShowDialogue("[speed=0.1]...![speed=1.0][pause=30] W[emote=Surprised]a[script=0]it![pause=40] T[emote=Inspired]hat must mean that you have a Big Apple!", azura_gasp())
     UI:SetSpeakerEmotion("Joyous")
     UI:WaitShowDialogue("Gimme, gimme, gimme!")
 

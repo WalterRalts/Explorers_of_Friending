@@ -172,9 +172,5 @@ COMMON.PERSONALITY[37] = { -- escort
   PINCH = {200},
   WAIT = {190}
 }
-COMMON.PERSONALITY[37] = { -- escort
-  FULL = {820},
-  HALF = {200},
-  PINCH = {200},
-  WAIT = {190}
+COMMON.PERSONALITY[38] = { -- blank
 }

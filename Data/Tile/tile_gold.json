@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.8.0",
+"Version": "0.8.9.0",
 "Object": {
 "$type": "RogueEssence.Data.TileData, RogueEssence",
 "Name": {
@@ -57,21 +57,6 @@
 "Items": [
 {
 "Spawn": {
-"IsMoney": false,
-"Cursed": false,
-"Value": "loot_nugget",
-"HiddenValue": "",
-"Amount": 0,
-"Price": 0,
-"TileLoc": {
-"X": 0,
-"Y": 0
-}
-},
-"Rate": 1
-},
-{
-"Spawn": {
 "IsMoney": true,
 "Cursed": false,
 "Value": "",
@@ -83,7 +68,22 @@
 "Y": 0
 }
 },
-"Rate": 100
+"Rate": 500
+},
+{
+"Spawn": {
+"IsMoney": true,
+"Cursed": false,
+"Value": "",
+"HiddenValue": "",
+"Amount": 3,
+"Price": 0,
+"TileLoc": {
+"X": 0,
+"Y": 0
+}
+},
+"Rate": 425
 },
 {
 "Spawn": {
@@ -98,7 +98,7 @@
 "Y": 0
 }
 },
-"Rate": 150
+"Rate": 350
 },
 {
 "Spawn": {
@@ -113,7 +113,37 @@
 "Y": 0
 }
 },
-"Rate": 80
+"Rate": 250
+},
+{
+"Spawn": {
+"IsMoney": true,
+"Cursed": false,
+"Value": "",
+"HiddenValue": "",
+"Amount": 20,
+"Price": 0,
+"TileLoc": {
+"X": 0,
+"Y": 0
+}
+},
+"Rate": 150
+},
+{
+"Spawn": {
+"IsMoney": true,
+"Cursed": false,
+"Value": "",
+"HiddenValue": "",
+"Amount": 30,
+"Price": 0,
+"TileLoc": {
+"X": 0,
+"Y": 0
+}
+},
+"Rate": 75
 },
 {
 "Spawn": {
@@ -143,11 +173,26 @@
 "Y": 0
 }
 },
-"Rate": 5
+"Rate": 3
+},
+{
+"Spawn": {
+"IsMoney": false,
+"Cursed": false,
+"Value": "loot_nugget",
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0,
+"TileLoc": {
+"X": 0,
+"Y": 0
+}
+},
+"Rate": 1
 }
 ],
 "MinAmount": 3,
-"MaxAmount": 10,
+"MaxAmount": 15,
 "MaxRangeWidth": 3,
 "MaxRangeHeight": 3
 }

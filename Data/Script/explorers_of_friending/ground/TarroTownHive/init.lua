@@ -5,6 +5,7 @@
 ]]--
 -- Commonly included lua functions and data
 require 'origin.common'
+require 'explorers_of_friending.partner'
 
 -- Package name
 local TarroTownHive = {}
@@ -40,77 +41,7 @@ end
 ---TarroTownHive.Update(map)
 --Engine callback function
 function TarroTownHive.Update(map)
-  local maru = CH("PLAYER")
-  local azura = CH('Teammate1')
-  
-  if GAME:IsKeyDown(66) then
-    print("Partner")
-    
-  end
-  if GAME:IsKeyDown(66) then
-    COMMON.FaceEachother("PLAYER", "Teammate1")
-    if SV.tarro_town.PieChapter == 6 then
-      UI:SetSpeaker(azura)
-      UI:SetSpeakerEmotion("Inspired")
-      UI:WaitShowDialogue("Whoa,[pause=20] the hives are huge. I bet Ms. Mayor lives here.")
-
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("Makes you wonder what all the buzz is about.")
-
-      UI:SetSpeaker(azura)
-      UI:SetSpeakerEmotion("Stunned")
-      UI:WaitShowDialogue("...you're starting to starting to sound like dad.")
-
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowDialogue(".[pause=60].[pause=60][emote=Worried].[pause=60] ...[emote=Stunned]oh no.")
-    else
-      UI:SetSpeaker(azura)
-      UI:SetSpeakerEmotion("Inspired")
-      UI:WaitShowDialogue("The smell of honey is so good...!")
-      UI:WaitShowDialogue("We should get some, please please please!")
-      
-      pouch_money = GAME:GetPlayerMoney()
-      if pouch_money == 0 then
-        UI:SetSpeaker(maru)
-        UI:SetSpeakerEmotion("Stunned")
-        UI:WaitShowDialogue("I would if we had anything to buy it with.")
-
-        UI:SetSpeaker(azura)
-        UI:SetSpeakerEmotion("Stunned")
-        UI:WaitShowDialogue("Huh, where moneys go?")
-
-        UI:SetSpeaker(maru)
-        UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("Let's just come back later.")
-      elseif pouch_money < 100 then
-        UI:SetSpeaker(maru)
-        UI:SetSpeakerEmotion("Sad")
-        UI:WaitShowDialogue("I don't think we can afford it...")
-
-        UI:SetSpeaker(azura)
-        UI:SetSpeakerEmotion("Sad")
-        UI:WaitShowDialogue("Awww...")
-      elseif pouch_money < 200 then
-        UI:SetSpeaker(maru)
-        UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("We could buy one, but I think it'd be better to save up...")
-
-        UI:SetSpeaker(azura)
-        UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("Maybe... but the honey smells so good...")
-      else
-        UI:SetSpeaker(maru)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("We could buy one, sure")
-
-        UI:SetSpeaker(azura)
-        UI:SetSpeakerEmotion("Joyous")
-        UI:WaitShowDialogue("Yippee!")
-      end
-    end
-  end
+  Partner()
 end
 
 ---TarroTownHive.GameSave(map)
@@ -188,6 +119,55 @@ function TarroTownHive.TTSquare_HiveExit_Touch(obj, activator)
     GAME:EnterGroundMap("TarroTownSquare", "TTSquare_WestEnter")
   end
   
+end
+
+function TarroTownHive.Sir_Lick_Action(obj, activator)
+  local lick = CH("Sir_Lick")
+  local gulp = CH("Sir_Gulp")
+  local peck = CH("Sir_Peck")
+
+  UI:SetSpeaker(peck)
+  UI:SetSpeakerEmotion("Angry")
+  UI:WaitShowDialogue("Hungry!!")
+
+  UI:SetSpeaker(gulp)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("[speed=0.75]Oh bother. This was a bad idea.")
+
+  UI:SetSpeaker(peck)
+  UI:SetSpeakerEmotion("Angry")
+  UI:WaitShowDialogue("Where's the food?!")
+  UI:SetSpeakerEmotion("Determined")
+  UI:WaitShowDialogue("[speed=0.6]My hunger must be s[emote=Angry]atiated!!")
+
+  UI:SetSpeaker(lick)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("But I'm the one, [emote=Normal]pbllt![pause=45] [emote=Angry]I'm the one paying for this, pbllt!")
+
+  UI:SetSpeaker(peck)
+  UI:SetSpeakerEmotion("Angry")
+  UI:WaitShowDialogue("I do not caaaaare! Fooooooooood!!")
+end
+
+function TarroTownHive.Sir_Gulp_Action(obj, activator)
+  TarroTownHive.Sir_Lick_Action()
+end
+
+function TarroTownHive.Sir_Peck_Action(obj, activator)
+  TarroTownHive.Sir_Lick_Action()
+end
+
+--Entrances
+function TarroTownHive.MayorEntrance_Touch(obj, activator)
+  local maru = CH('PLAYER')
+
+  if SV.tarro_town.DarknessChapter > 0 then
+    
+  else
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("(Probably better stuff to do then bothering the mayor for no reason...)")
+  end
 end
 
 return TarroTownHive

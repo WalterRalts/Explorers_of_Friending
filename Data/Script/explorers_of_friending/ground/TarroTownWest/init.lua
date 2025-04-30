@@ -127,10 +127,11 @@ end
 
 function TarroTownWest.TarroTown_Entrance_Touch()
   GAME:FadeOut(false, 35)
-  GAME:EnterGroundMap("tarro_town", "TarroTownSquare", "TTSquare_EastEnter")
+  GAME:EnterGroundMap("tarro_town", "TarroTownSquare_ch3", "TTSquare_SouthWestEnter")
 end
 
 function TarroTownWest.TarroTownOutside_Entrance_Touch()
+  outside_enter = 2
   GAME:FadeOut(false, 20)
   GAME:EnterGroundMap("TarroTownOutside", "TTOutside_EEnter")
 end

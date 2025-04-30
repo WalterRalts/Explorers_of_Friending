@@ -178,7 +178,6 @@ function TarroTownBigTree.TarroThingCut(map)
   end)
   local coro8 = TASK:BranchCoroutine(function() 
     GAME:MoveCamera(0, 0, 180, true)
-    
   end)
   TASK:JoinCoroutines({coro3, coro4, coro5, coro6, coro7, coro8})
   
@@ -200,7 +199,18 @@ function TarroTownBigTree.TarroThingCut(map)
   COMMON.FaceEachother("Teammate4", "Teammate2")
   UI:SetSpeaker(senna)
   UI:SetSpeakerEmotion("Surprised")
-  UI:WaitShowDialogue("H-[pause=10]huh...?![pause=25] We have to-[pause=30].[emote=Pain]..[pause=35]![br] Let's have the grown-ups deal with it.")
+  
+
+  local cor1 = TASK:BranchCoroutine(function() 
+    UI:WaitShowDialogue("H-[pause=10]huh...?![pause=25] We have to-[pause=30].[emote=Pain]..[pause=35]?!")
+    UI:WaitShowDialogue("Let's have the grown-ups deal with it!")
+    end)
+  local cor2 = TASK:BranchCoroutine(function()
+    COMMON.CharExclaim("Teammate4")
+    GAME:WaitFrames(15)
+    GROUND:AnimateToPosition(senna, "Walk", Dir8.Up, senna.Position.X, senna.Position.Y + 15, 1, 2, 0)
+    end)
+  TASK:JoinCoroutines({cor1, cor2})
 
   
   UI:SetSpeaker(ziggy)
@@ -218,6 +228,7 @@ function TarroTownBigTree.TarroThingCut(map)
 
   local function angyzig()
     COMMON.CharAngry("Teammate4")
+    COMMON.CharHop("Teammate4")
   end
 
   SV.tarro_tree_hollows.tree_entered = true
@@ -230,6 +241,7 @@ function TarroTownBigTree.TarroThingCut(map)
   UI:SetSpeakerEmotion("Teary-Eyed")
   UI:WaitShowDialogue("...")
 
+  GROUND:AnimateToPosition(ziggy, "Walk", Dir8.Down, senna.Position.X, senna.Position.Y - 25, 5, 2, 0)
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Determined")
   UI:WaitShowDialogue("Give us a strong face, Senna!")

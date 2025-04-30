@@ -16,3 +16,4 @@ require 'origin.services.upgrade_tools'
 require 'origin.services.menu_tools'
 
 math.randomseed(os.time())
+RogueEssence.Dungeon.ExplorerTeam.MAX_TEAM_SLOTS = 5

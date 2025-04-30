@@ -64,7 +64,8 @@ end
 function TheField.First()
   local maru = CH("PLAYER")
   local azura = CH("Teammate1")
-  local zoomer = CH("Zoomer")  
+  local zoomer = CH("Zoomer")
+  local smear = CH("Smear") 
   GAME:CutsceneMode(true)
   local coro3 = TASK:BranchCoroutine(function() 
     GROUND:MoveInDirection(maru, Dir8.Up, 40, false, 2)
@@ -88,7 +89,7 @@ function TheField.First()
   Zoommove = true
   GROUND:MoveInDirection(zoomer, Dir8.Up, 60, false, 4)
   
-  GROUND:TeleportTo(zoomer, smear.Position.X - 300, smear.Position.Y, Dir8.DownRight, 2)
+  GROUND:TeleportTo(zoomer, smear.Position.X - 200, smear.Position.Y, Dir8.DownRight, 2)
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("Let's go.")
@@ -100,7 +101,6 @@ end
 -------------------------------
 function TheField.SceneEnd_Touch(obj, activator)
   local maru = CH("PLAYER")
-  local smear = CH("Smear")
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("Um... we're here about the letter...")
@@ -109,6 +109,42 @@ function TheField.SceneEnd_Touch(obj, activator)
 
   UI:ResetSpeaker()
   UI:WaitShowDialogue("And to you two,[pause=65] I say:[pause=45] \"Welcome!\"")
+  --Begin replacement
+  --Save Maru and Azura's stats
+  SV.guilders.tarro_town.bluetail_stats = GAME:GetPlayerPartyTable()
+  --Replace them with Rexio
+  GAME:RemovePlayerTeam(0)
+  GAME:RemovePlayerTeam(0)
+  local mon_id = RogueEssence.Dungeon.MonsterID("riolu", 0, "normal", Gender.Male)
+
+  local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 5, "", 0)
+  p.IsFounder = true
+  p.IsPartner = true
+  p.Nickname = "Rexio"
+
+  _DATA.Save.ActiveTeam.Players:Add(p)
+  SV.guilders.tarro_town.bluetail_storage = {}
+  --remove bag and storage items and put them in a temporary table
+  GAME:DepositAll()
+  --[[local storage = _DATA.Save.ActiveTeam.Storage
+  local count = storage.Keys.Count
+  for i = count - 1, 0, -1 do
+    print(storage.Keys[i])
+    local slot = {id = storage.Keys[i], count = storage.Values[i], hidden = ""} --checks ID, the amount of said item, and any hidden value.
+    table.insert(SV.guilders.tarro_town.bluetail_storage, slot) --puts it into a storage slot in the table variable.
+    storage.Remove(storage.Keys[i]) --removes it from storage
+  end]]--
+  local box_storage = _DATA.Save.ActiveTeam.BoxStorage
+  local box_count = box_storage.Count
+  if box_count > 1 then
+    for i = box_count - 1, 0, -1 do
+      local slot = {id = box_storage[i].ID, count = 1, hidden_value = box_storage[i].HiddenValue}
+      table.insert(SV.guilders.tarro_town.bluetail_storage, slot)
+      box_storage.RemoveAt(i)
+    end
+  end
+
+  GAME:EnterGroundMap("entoh_town", "RexioHome", "RexioStart")
 end
 
 return TheField

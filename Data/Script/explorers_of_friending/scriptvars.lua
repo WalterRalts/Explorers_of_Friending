@@ -87,6 +87,7 @@ SV.magnagate =
 -----------------------------------------------
 --- Tarro Town
 --- Locations
+
 SV.tarro_town = 
 {
   PieChapter = -1,
@@ -120,10 +121,44 @@ SV.tarro_tree_hollows =
   sprout_money_give = false,
   stairs_unlocked = false,
   entering_party = 0,
-  AmasDefeat = false,
-  cooking_tutorial_done = 1
+  AmasDefeat = false
 }
 
+--- Entoh Town
+--- Locations
+
+SV.entoh_town = 
+{
+  HelperChapter = -1,
+  AdventureChapter = -1,
+  spent_dungpoints = 0,
+  bag_size = 3,
+}
+--- Dungeons
+
+--- Guild 
+--- Locations
+
+SV.guilders = 
+{
+  tarro_town = 
+  {
+    bluetail_stats = 0,
+    bluetail_storage = {}
+  }
+}
+--- Dungeons
+
+
 ----------------------------------------------
---- Minigames
+--- Minigames and others
 ----------------------------------------------
+
+SV.buzzers_store = 
+{
+  plain_seed = 
+  {
+    count = 10,
+    price = 5
+  }
+}

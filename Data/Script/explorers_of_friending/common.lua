@@ -757,7 +757,7 @@ function COMMON.DungeonInteract(chara, target, action_cancel, turn_cancel)
   -- TODO: create a charstate for being unable to talk and have talk-interfering statuses cause it
   if COMMON.CanTalk(target) then
     
-    local ratio = target.HP * 100 // target.MaxHP
+    --[[local ratio = target.HP * 100 // target.MaxHP
     
     local mon = _DATA:GetMonster(target.BaseForm.Species)
     local form = mon.Forms[target.BaseForm.Form]
@@ -846,7 +846,7 @@ function COMMON.DungeonInteract(chara, target, action_cancel, turn_cancel)
   
     UI:WaitShowDialogue(STRINGS:Format(chosen_quote))
   
-    target.CharDir = oldDir
+    target.CharDir = oldDir]]--
   else
   
     UI:ResetSpeaker()
@@ -1360,63 +1360,6 @@ function COMMON.EndDayCycle()
   COMMON.UpdateDayEndVars()
 end
 
---[[function PartnerSays()
-  if GAME:IsKeyDown(66) then
-    print("Partner")
-    local talk_area = GAME:GetCurrentGround().Name
-    if talk_area == "TarroTownSquare" then
-      if SV.tarro_town.PieChapter == 1 then
-        UI:SetSpeaker(azura)
-        GROUND:CharTurnToCharAnimated(maru, azura, 4)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("Pie! [pause=20]Pie! [pause=20]Pie! [pause=20]Pie!")
-  
-        UI:SetSpeaker(maru)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("Yeah yeah, I got it.")
-      elseif SV.tarro_town.PieChapter < 3 then
-        UI:SetSpeaker(azura)
-        GROUND:CharTurnToCharAnimated(maru, azura, 4)
-        UI:SetSpeakerEmotion("Determined")
-        UI:WaitShowDialogue("Even if it's scary in there...")
-        UI:WaitShowDialogue("...we have to get the apple!")
-        UI:SetSpeakerEmotion("Shouting")
-        UI:WaitShowDialogue("I want my pie!")
-  
-        UI:SetSpeaker(maru)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("We got this, I'm sure.")
-      else
-        UI:SetSpeaker(maru)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("Home sweet home.")
-  
-        UI:SetSpeaker(azura)
-        GROUND:CharTurnToCharAnimated(maru, azura, 4)
-        UI:SetSpeakerEmotion("Worried")
-        UI:WaitShowDialogue("Did we we even do anything?")
-  
-        UI:SetSpeaker(maru)
-        UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("Probably not.")
-      end
-    else
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowDialogue("This place looks interesting.")
-  
-      UI:SetSpeaker(azura)
-      GROUND:CharTurnToCharAnimated(maru, azura, 4)
-      UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowDialogue("Where are we?")
-  
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowDialogue("...good[emote=Worried] question.")
-    end
-  end
-end]]
-
 function COMMON.CharSweatdrop(char)
   local sweater = CH(char)
   GROUND:CharSetEmote(sweater, "sweatdrop", 1)
@@ -1442,6 +1385,18 @@ function COMMON.CharExclaim(char)
   SOUND:PlaySE("Battle/EVT_Emote_Exclaim")
 end
 
+function COMMON.CharQuestion(char)
+  local question = CH(char)
+  GROUND:CharSetEmote(question, "question", 1)
+  SOUND:PlaySE("Battle/EVT_Emote_Confused")
+end
+
+function COMMON.CharQuestion2(char)
+  local question = CH(char)
+  GROUND:CharSetEmote(question, "question", 2)
+  SOUND:PlaySE("Battle/EVT_Emote_Confused_2")
+end
+
 function COMMON.CharDistance(char1, char2)
   local char1x = CH(char1).Position.X
   local char1y = CH(char1).Position.Y
@@ -1449,4 +1404,17 @@ function COMMON.CharDistance(char1, char2)
   local char2y = CH(char2).Position.Y
   local distance = math.sqrt(((char2x - char1x) ^ 2) + ((char2y - char1y) ^ 2))
   return distance
+end
+
+function COMMON.CharHop(char)
+  GROUND:AnimateToPosition(CH(char), "Idle", CH(char).Direction, CH(char).Position.X, CH(char).Position.Y, 0.5, 2, 7)
+  GROUND:AnimateToPosition(CH(char), "Idle", CH(char).Direction, CH(char).Position.X, CH(char).Position.Y, 0.5, 2, 0)
+  GROUND:AnimateToPosition(CH(char), "Idle", CH(char).Direction, CH(char).Position.X, CH(char).Position.Y, 0.5, 2, 7)
+  GROUND:AnimateToPosition(CH(char), "Idle", CH(char).Direction, CH(char).Position.X, CH(char).Position.Y, 0.5, 2, 0)
+end
+
+function COMMON.CharSweating(char)
+  local sweating = CH(char)
+  GROUND:CharSetEmote(sweating, "sweating", 2)
+  SOUND:PlaySE("Battle/EVT_Emote_Sweating")
 end

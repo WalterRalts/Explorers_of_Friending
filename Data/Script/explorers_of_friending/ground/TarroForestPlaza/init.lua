@@ -5,6 +5,7 @@
 ]]--
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
+require 'explorers_of_friending.partner'
 
 -- Package name
 local TarroForestPlaza = {}
@@ -43,36 +44,7 @@ end
 ---TarroForestPlaza.Update(map)
 --Engine callback function
 function TarroForestPlaza.Update(map)
-
-  local maru = CH("PLAYER")
-  local azura = CH('Teammate1')
-
-  if GAME:IsKeyDown(66) then
-    print("Partner")
-  end
-  if GAME:IsKeyDown(66) then
-    UI:SetSpeaker(azura)
-    GROUND:CharTurnToCharAnimated(maru, azura, 4)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("[speed=0.04]...h[speed=0.6][emote=Worried]mmm.")
-
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("What's up?")
-
-    UI:SetSpeaker(azura)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Well...[pause=0] it's just kinda weird.")
-    UI:WaitShowDialogue("They just wanna leave the place they were born in.")
-
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Well, yeah. [pause=35]There isn't much to do in here.")
-      
-    UI:SetSpeaker(azura)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("I guess so. [pause=30]I'd miss this place if I were them, though.")
-  end
+  Partner()
 end
 
 ---TarroForestPlaza.GameSave(map)

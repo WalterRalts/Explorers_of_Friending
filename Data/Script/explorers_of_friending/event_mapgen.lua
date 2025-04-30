@@ -520,4 +520,19 @@ function FLOOR_GEN_SCRIPT.SleepingCalderaRevisit(map, args)
   
 end
 
+function FLOOR_GEN_SCRIPT.EntohThicketWall(map, args)
+  for x = 0, map.Width - 2, 1 do
+    for y = 0, map.Height - 2, 1 do
+      local point = RogueElements.Loc(x, y)
+      WallTileChance = map.Rand:Next(1 + (4 * DUNGEON:DungeonCurrentFloor()), 100)
+      if not map:GetTile(point):TileEquivalent(map.RoomTerrain) then
+        if WallTileChance >= 99 then
+          map:TrySetTile(point, map.WallTerrain)
+        elseif WallTileChance >= 90 then
+          map:TrySetTile(point, RogueEssence.Dungeon.Tile("water"))
+        end
+			end
+    end
+  end
+end
 

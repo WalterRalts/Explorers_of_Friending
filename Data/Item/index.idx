@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.8.0",
+"Version": "0.8.9.0",
 "Object": {
 "$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[RogueEssence.Data.EntrySummary, RogueEssence]], System.Private.CoreLib",
 "berry_oran": {
@@ -8,14 +8,17 @@
 "UsageType": 4,
 "States": [
 {
-"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
+"assembly": "PMDC, Version=0.8.9.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.EdibleState"
 },
 {
-"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
+"assembly": "PMDC, Version=0.8.9.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.BerryState"
 }
 ],
+"MaxStack": 0,
+"CannotDrop": false,
+"BagEffect": false,
 "Name": {
 "DefaultText": "Oran Berry",
 "LocalTexts": {
@@ -41,14 +44,17 @@
 "UsageType": 4,
 "States": [
 {
-"assembly": "PMDC, Version=0.8.5.0, Culture=neutral, PublicKeyToken=null",
+"assembly": "PMDC, Version=0.8.9.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.EdibleState"
 },
 {
-"assembly": "PMDC, Version=0.8.5.0, Culture=neutral, PublicKeyToken=null",
+"assembly": "PMDC, Version=0.8.9.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.FoodState"
 }
 ],
+"MaxStack": 0,
+"CannotDrop": false,
+"BagEffect": false,
 "Name": {
 "DefaultText": "Big Apple",
 "LocalTexts": {
@@ -73,10 +79,13 @@
 "UsageType": 1,
 "States": [
 {
-"assembly": "PMDC, Version=0.8.5.0, Culture=neutral, PublicKeyToken=null",
+"assembly": "PMDC, Version=0.8.9.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.OrbState"
 }
 ],
+"MaxStack": 0,
+"CannotDrop": false,
+"BagEffect": false,
 "Name": {
 "DefaultText": "All Protect Orb",
 "LocalTexts": {
@@ -97,14 +106,17 @@
 "UsageType": 4,
 "States": [
 {
-"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
+"assembly": "PMDC, Version=0.8.9.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.EdibleState"
 },
 {
-"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
+"assembly": "PMDC, Version=0.8.9.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.SeedState"
 }
 ],
+"MaxStack": 0,
+"CannotDrop": false,
+"BagEffect": false,
 "Name": {
 "DefaultText": "Plain Seed",
 "LocalTexts": {
@@ -128,10 +140,13 @@
 "UsageType": 4,
 "States": [
 {
-"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
+"assembly": "PMDC, Version=0.8.9.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.EdibleState"
 }
 ],
+"MaxStack": 4,
+"CannotDrop": false,
+"BagEffect": false,
 "Name": {
 "DefaultText": "Crunchy Leaf",
 "LocalTexts": {}
@@ -140,23 +155,47 @@
 "Comment": "",
 "SortOrder": 7
 },
-"packed_honey": {
+"crunchy_oran": {
 "$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
-"Icon": 7,
+"Icon": 10,
 "UsageType": 4,
 "States": [
 {
-"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
+"assembly": "PMDC, Version=0.8.9.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.EdibleState"
 }
 ],
+"MaxStack": 1,
+"CannotDrop": false,
+"BagEffect": false,
 "Name": {
-"DefaultText": "Packed Honey",
+"DefaultText": "Crunchy Oran Salad",
 "LocalTexts": {}
 },
 "Released": true,
 "Comment": "",
-"SortOrder": 4
+"SortOrder": 0
+},
+"crunchy_salad": {
+"$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
+"Icon": 10,
+"UsageType": 4,
+"States": [
+{
+"assembly": "PMDC, Version=0.8.9.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.EdibleState"
+}
+],
+"MaxStack": 0,
+"CannotDrop": false,
+"BagEffect": false,
+"Name": {
+"DefaultText": "Crunchy Salad",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 0
 },
 "key_tree": {
 "$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
@@ -164,10 +203,13 @@
 "UsageType": 1,
 "States": [
 {
-"assembly": "PMDC, Version=0.8.7.0, Culture=neutral, PublicKeyToken=null",
+"assembly": "PMDC, Version=0.8.9.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.UtilityState"
 }
 ],
+"MaxStack": 3,
+"CannotDrop": false,
+"BagEffect": false,
 "Name": {
 "DefaultText": "Key",
 "LocalTexts": {
@@ -184,47 +226,35 @@
 "Comment": "",
 "SortOrder": 13
 },
-"crunchy_salad": {
+"packed_honey": {
 "$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
-"Icon": 10,
+"Icon": 7,
 "UsageType": 4,
 "States": [
 {
-"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
+"assembly": "PMDC, Version=0.8.9.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.EdibleState"
 }
 ],
+"MaxStack": 0,
+"CannotDrop": false,
+"BagEffect": false,
 "Name": {
-"DefaultText": "Crunchy Salad",
+"DefaultText": "Packed Honey",
 "LocalTexts": {}
 },
 "Released": true,
 "Comment": "",
-"SortOrder": 0
-},
-"tarro_wheat": {
-"$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
-"Icon": 5,
-"UsageType": 4,
-"States": [
-{
-"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
-"type": "PMDC.Dungeon.EdibleState"
-}
-],
-"Name": {
-"DefaultText": "Tarro Wheat",
-"LocalTexts": {}
-},
-"Released": true,
-"Comment": "",
-"SortOrder": 7
+"SortOrder": 4
 },
 "tarro_bread": {
 "$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
 "Icon": -1,
 "UsageType": 4,
 "States": [],
+"MaxStack": 4,
+"CannotDrop": false,
+"BagEffect": false,
 "Name": {
 "DefaultText": "Tarro Bread",
 "LocalTexts": {}
@@ -233,18 +263,63 @@
 "Comment": "",
 "SortOrder": 7
 },
-"crunchy_oran": {
+"tarro_wheat": {
 "$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
-"Icon": 10,
-"UsageType": 0,
+"Icon": 5,
+"UsageType": 4,
 "States": [
 {
-"assembly": "PMDC, Version=0.8.8.0, Culture=neutral, PublicKeyToken=null",
+"assembly": "PMDC, Version=0.8.9.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.EdibleState"
 }
 ],
+"MaxStack": 5,
+"CannotDrop": false,
+"BagEffect": false,
 "Name": {
-"DefaultText": "Crunchy Oran Salad",
+"DefaultText": "Tarro Wheat",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 7
+},
+"berry_kebab": {
+"$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
+"Icon": 10,
+"UsageType": 4,
+"States": [
+{
+"assembly": "PMDC, Version=0.8.9.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.EdibleState"
+}
+],
+"MaxStack": 3,
+"CannotDrop": false,
+"BagEffect": false,
+"Name": {
+"DefaultText": "Berry Kebab",
+"LocalTexts": {}
+},
+"Released": false,
+"Comment": "",
+"SortOrder": 0
+},
+"crunchy_apple": {
+"$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
+"Icon": 10,
+"UsageType": 4,
+"States": [
+{
+"assembly": "PMDC, Version=0.8.9.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.EdibleState"
+}
+],
+"MaxStack": 1,
+"CannotDrop": false,
+"BagEffect": false,
+"Name": {
+"DefaultText": "Crunchy Apple Salad",
 "LocalTexts": {}
 },
 "Released": true,

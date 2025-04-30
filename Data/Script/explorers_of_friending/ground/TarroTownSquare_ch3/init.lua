@@ -5,7 +5,8 @@
 ]]--
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
-
+require 'explorers_of_friending.menu.buzzers_shop'
+require 'explorers_of_friending.partner'
 
 -- Package name
 local TarroTownSquare_ch3 = {}
@@ -28,8 +29,9 @@ function TarroTownSquare_ch3.Init(map)
   if outside_enter == 4 then
     GROUND:TeleportTo(partner, 405, 230, Direction.Down, 0)
   end
-  
+  local lax = CH("Lax")
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
+  GROUND:CharSetAnim(lax, "Sleep", true)
 end
 
 ---TarroTownSquare_ch3.Enter(map)
@@ -49,38 +51,8 @@ end
 
 ---TarroTownSquare_ch3.Update(map)
 --Engine callback function
-function TarroTownSquare_ch3.Update(map)
-  local lax = CH("Lax")
-  local sleepy_lax = false
-  if sleepy_lax == false then
-    GROUND:CharSetAnim(lax, "Sleep", true)
-    sleepy_lax = true
-  end
-  
-  local maru = CH("PLAYER")
-  local azura = CH('Teammate1')
-
-  if GAME:IsKeyDown(66) then
-    if SV.tarro_town.DarknessChapter == 1 then
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("Now's probably a great time to go through the Big Tree.") 
-
-      UI:SetSpeaker(azura)
-      GROUND:CharTurnToCharAnimated(maru, azura, 4)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("Oh yeah, let's go in there!")
-    else
-      UI:SetSpeaker(azura)
-      GROUND:CharTurnToCharAnimated(maru, azura, 4)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("Yeah, town!")
-
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("Whoo, town!")  
-    end
-  end
+function TarroTownSquare_ch3.Update(map)  
+  Partner()
 end
 
 ---TarroTownSquare_ch3.GameSave(map)
@@ -169,6 +141,11 @@ function TarroTownSquare_ch3.BuzzStore_Action(obj, activator)
   UI:WaitShowDialogue("Sorry, buzzas.")
   UI:SetSpeakerEmotion("Pain")
   UI:WaitShowDialogue("Can't open the store up yet,[pause=35] setting it up perfectly iz harder then it lookz, buzz.")
+  local menu = BuzzerShopMenu:new()
+  UI:SetCustomMenu(menu.menu)
+  UI:WaitForChoice()
+
+  
   --[[UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Welcome, welcome, buzz!")
   UI:SetSpeakerEmotion("Happy")

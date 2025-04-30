@@ -62,62 +62,115 @@ end
 -------------------------------
 -- Entities Callbacks
 -------------------------------
+
+local ktalk = 0
+
 function SennaHome.Senna_Action(obj, activator)
   local maru = CH("PLAYER")
   local azura = CH('Teammate1')
   local senna = CH("Senna")
   local ziggy = CH("Ziggy")
 
-  UI:SetSpeaker(senna)
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("I don't know if my brain could handle it...")
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("You saw how I was in that dungeon.")
+  if ktalk == 0 then
+    UI:SetSpeaker(senna)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("I don't know if my brain could handle it...")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("You saw how I was in that dungeon.")
 
-  UI:SetSpeaker(ziggy)
-  UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("Pfffffft[pause=25], you'll be fiiiiiine!")
+    UI:SetSpeaker(ziggy)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Pfffffft[pause=25], you'll be fiiiiiine!")
 
-  UI:SetSpeaker(senna)
-  UI:SetSpeakerEmotion("Sigh")
-  UI:WaitShowDialogue("Mmm,[pause=40] s[emote=Stunned]ome other time, m-maybe?")
+    UI:SetSpeaker(senna)
+    UI:SetSpeakerEmotion("Sigh")
+    UI:WaitShowDialogue("Mmm,[pause=40] s[emote=Stunned]ome other time, m-maybe?")
 
-  GAME:WaitFrames(10)
-  COMMON.FaceEachother("Ziggy", "Teammate1")
-  
-  GAME:WaitFrames(10)
-  COMMON.FaceEachother("Senna", "PLAYER")
+    GAME:WaitFrames(10)
+    COMMON.FaceEachother("Ziggy", "Teammate1")
+    
+    GAME:WaitFrames(10)
+    COMMON.FaceEachother("Senna", "PLAYER")
 
-  UI:SetSpeaker(ziggy)
-  UI:SetSpeakerEmotion("Joyous")
-  UI:WaitShowDialogue("AZU!")
+    UI:SetSpeaker(ziggy)
+    UI:SetSpeakerEmotion("Joyous")
+    UI:WaitShowDialogue("AZU!")
 
-  UI:SetSpeaker(azura)
-  UI:SetSpeakerEmotion("Joyous")
-  UI:WaitShowDialogue("ZIG!")
+    UI:SetSpeaker(azura)
+    UI:SetSpeakerEmotion("Joyous")
+    UI:WaitShowDialogue("ZIG!")
 
-  UI:SetSpeaker(senna)
-  UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("Hey, Maru. Azura. Been a while since you've visited.")
-  UI:WaitShowDialogue("Ziggy and I were talking about more dungeons...")
+    UI:SetSpeaker(senna)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Hey, Maru. Azura. Been a while since you've visited.")
+    UI:WaitShowDialogue("Ziggy and I were talking about more dungeons...")
 
-  COMMON.FaceEachother("Ziggy", "Senna")
+    COMMON.FaceEachother("Ziggy", "Senna")
 
-  UI:SetSpeaker(ziggy)
-  UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("Yeah! Senna's got great at battling!")
+    UI:SetSpeaker(ziggy)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Yeah! Senna's got great at battling!")
 
-  UI:SetSpeaker(maru)
-  UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("That is true.")
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("That is true.")
 
-  UI:SetSpeaker(senna)
-  UI:SetSpeakerEmotion("Sigh")
-  UI:WaitShowDialogue("I would love to, but I'm [emote=Worried]still worried about fainting in there...")
+    UI:SetSpeaker(senna)
+    UI:SetSpeakerEmotion("Sigh")
+    UI:WaitShowDialogue("I would love to, but I'm [emote=Worried]still worried I'd slip up...")
+    ktalk = 1
+  else
+    COMMON.FaceEachother("Senna", "PLAYER")
+    UI:SetSpeaker(senna)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("I'd be happy to go with you guys.")
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("But me?[pause=20] Alone?[pause=32] N[emote=Normal]o way...")
+  end
 end
 
 function SennaHome.Ziggy_Action(obj, activator)
-  SennaHome.Senna_Action()
+  
+  local azura = CH('Teammate1')
+  local ziggy = CH("Ziggy")
+
+  if ktalk == 0 then
+    SennaHome.Senna_Action()
+  elseif ktalk == 1 then
+    COMMON.FaceEachother("Ziggy", "Teammate1")
+    UI:SetSpeaker(ziggy)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Azu Azu Azu! Guess what!")
+
+    UI:SetSpeaker(azura)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Uh-huh?")
+
+    GAME:GivePlayerItem("food_apple")
+    SOUND:PlayFanfare("Fanfare/Item")
+    UI:ResetSpeaker()
+    UI:WaitShowDialogue("Ziggy gives Azura an apple...?")
+
+    COMMON.CharHop("Ziggy")
+    UI:SetSpeaker(ziggy)
+    UI:SetSpeakerEmotion("Joyous")
+    UI:WaitShowDialogue("Yippee!")
+
+    COMMON.CharHop("Teammate1")
+    UI:SetSpeaker(azura)
+    UI:SetSpeakerEmotion("Joyous")
+    UI:WaitShowDialogue("Yippee!")
+    ktalk = 2
+  else
+    UI:SetSpeaker(ziggy)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Azu!")
+
+    UI:SetSpeaker(azura)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Zig!")
+  end
+  
 end
 
 function SennaHome.Beel_Action(obj, activator)

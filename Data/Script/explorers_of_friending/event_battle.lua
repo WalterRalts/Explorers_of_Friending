@@ -731,20 +731,44 @@ function BATTLE_SCRIPT.PuchiInteract(owner, ownerChar, context, args)
         UI:SetSpeakerEmotion("Determined")
         UI:WaitShowDialogue("I should've gotten more sleep before this.")
       else
-        if say_choice == 1 then
-          UI:SetSpeaker(context.Target)
-          UI:SetSpeakerEmotion("Happy")
-          UI:WaitShowDialogue("This should be easy, just stay alert!")
-          UI:SetSpeakerEmotion("Pain")
-          UI:WaitShowDialogue("...more than me, at least.")
-        elseif say_choice == 2 then
-          UI:SetSpeaker(context.Target)
-          UI:SetSpeakerEmotion("Worried")
-          UI:WaitShowDialogue("The faster we do this, the quicker I can sleep...")
-        elseif say_choice <= 4 then
-          UI:SetSpeaker(context.Target)
-          UI:SetSpeakerEmotion("Normal")
-          UI:WaitShowDialogue("Maybe this can help me wake up a bit...")
+        if context.User.BaseForm.Species == "zigzagoon" then
+          if say_choice == 1 then
+            UI:SetSpeaker(context.Target)
+            UI:SetSpeakerEmotion("Determined")
+            UI:WaitShowDialogue("...when this is over, Ziggy, you owe[emote=Angry] me so much!")
+
+            UI:SetSpeaker(context.User)
+            UI:SetSpeakerEmotion("Pain")
+            UI:WaitShowDialogue("Meep!")
+          elseif say_choice == 2 then
+            UI:SetSpeaker(context.Target)
+            UI:SetSpeakerEmotion("Worried")
+            UI:WaitShowDialogue("Couldn't you have just let me sleep?")
+            
+            UI:SetSpeaker(context.User)
+            UI:SetSpeakerEmotion("Normal")
+            UI:WaitShowDialogue("No, not really, this was too important.")
+          elseif say_choice <= 4 then
+            UI:SetSpeaker(context.Target)
+            UI:SetSpeakerEmotion("Normal")
+            UI:WaitShowDialogue("Maybe this can help me wake up a bit...")
+          end
+        else
+          if say_choice == 1 then
+            UI:SetSpeaker(context.Target)
+            UI:SetSpeakerEmotion("Happy")
+            UI:WaitShowDialogue("This should be easy, just stay alert!")
+            UI:SetSpeakerEmotion("Pain")
+            UI:WaitShowDialogue("...more than me, at least.")
+          elseif say_choice == 2 then
+            UI:SetSpeaker(context.Target)
+            UI:SetSpeakerEmotion("Worried")
+            UI:WaitShowDialogue("The faster we do this, the quicker I can sleep...")
+          elseif say_choice <= 4 then
+            UI:SetSpeaker(context.Target)
+            UI:SetSpeakerEmotion("Normal")
+            UI:WaitShowDialogue("Maybe this can help me wake up a bit...")
+          end
         end
       end
     end
@@ -769,7 +793,7 @@ function BATTLE_SCRIPT.PuchiInteract(owner, ownerChar, context, args)
           UI:SetSpeakerEmotion("Determined")
           UI:WaitShowDialogue("So many of them![pause=35] Stay up,[pause=15] Puchi,[pause=25] stay awake!")
           UI:SetSpeakerEmotion("Pain")
-          UI:WaitShowTimedDialogue("[speed=1.5]Don't yawn[pause=15] don't yawn[pause=15] don't yawn[pause=15] don't yawn[pause=15]...!!", 30)
+          UI:WaitShowTimedDialogue("[speed=1.5]Don't yawn[pause=15] don't yawn[pause=15] don't yawn[pause=15] don't yawn...!!", 15)
         elseif say_choice == 2 then
           UI:SetSpeaker(context.Target)
           UI:SetSpeakerEmotion("Worried")
@@ -796,6 +820,9 @@ function BATTLE_SCRIPT.SennaInteract(owner, ownerChar, context, args)
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
   
+  local target = context.Target
+  local user = context.User
+  
   UI:SetSpeaker(context.Target)
   local ratio = context.Target.HP * 100 // context.Target.MaxHP
   local say_choice = math.random(3)
@@ -816,8 +843,23 @@ function BATTLE_SCRIPT.SennaInteract(owner, ownerChar, context, args)
       
     else
       if say_choice == 1 then
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("I'll do my best, I think.")
+        if user.BaseForm.Species == "zigzagoon" then
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("Have fun in front, Ziggy.")
+
+          UI:SetSpeaker(user)
+          UI:SetSpeakerEmotion("Joyous")
+          UI:WaitShowDialogue("I will![pause=35] WHOO!")
+        elseif user.BaseForm.Species == "marill" then
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("Right behind you, Maru.")
+        else
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("I'll do my best, I think.")
+        end
       elseif say_choice == 2 then
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("I-[pause=15]I guess the tree still doesn't accept random guests...")
@@ -1211,10 +1253,10 @@ function BATTLE_SCRIPT.ZoomerInteract(owner, ownerChar, context, args)
     else
       if say_choice == 1 then
         UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("We got this, right, I'm sure we do. This is gonna be fun!")
+        UI:WaitShowDialogue("Hah!")
       elseif say_choice == 2 then
         UI:SetSpeakerEmotion("Determined")
-        UI:WaitShowDialogue("Whatever these things are doesn't matter! Let's go let's go let's go!!")
+        UI:WaitShowDialogue("Keep it going, keep it going!")
       elseif say_choice <= 4 then
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("I should be impressed, but I can't be when YOU TWO BEAT ME UP FOR SOME PIE!")
@@ -1324,7 +1366,7 @@ function BATTLE_SCRIPT.AzuraInteract(owner, ownerChar, context, args)
             UI:SetSpeaker(target)
             UI:SetSpeakerEmotion("Joyous")
             UI:WaitShowDialogue("ZIG!")
-          elseif user.BaseForm.Species == "puchi" then
+          elseif user.BaseForm.Species == "poochyena" then
             UI:SetSpeaker(target)
             UI:SetSpeakerEmotion("Worried")
             UI:WaitShowDialogue("Puchi? [pause=30]Are you okay?")
@@ -1349,7 +1391,7 @@ function BATTLE_SCRIPT.AzuraInteract(owner, ownerChar, context, args)
               UI:SetSpeaker(user)
               UI:SetSpeakerEmotion("Pain")
               UI:WaitShowDialogue("I wonder why...")
-            elseif user_ratio < 100 then
+            elseif user_ratio <= 100 then
               UI:SetSpeaker(user)
               UI:SetSpeakerEmotion("Happy")
               UI:WaitShowDialogue("I'm fine, thanks for worrying.")
@@ -1634,6 +1676,8 @@ function BATTLE_SCRIPT.MaruInteract(owner, ownerChar, context, args)
         UI:SetSpeaker(target)
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("It's normal to get lost around here...")
+        UI:SetSpeakerEmotion("Worried")
+        UI:WaitShowDialogue("...that's what I've heard, at least.")
       else
         if say_choice == 1 then
           UI:SetSpeaker(target)

@@ -27,6 +27,13 @@ function tarro_tree_hollows.EnterSegment(zone, rescuing, segmentID, mapID)
   if segmentID == 1 then
     SV.tarro_tree_hollows.sprout_money_give = false
   end
+  if segmentID == 0 then
+    DUNsection = 0
+  elseif segmentID == 1 then
+    DUNsection = 1
+  else
+    DUNsection = 2
+  end
 end
 
 ---tarro_tree_hollows.ExitSegment(zone, result, rescue, segmentID, mapID)
@@ -36,7 +43,7 @@ function tarro_tree_hollows.ExitSegment(zone, result, rescue, segmentID, mapID)
     tarro_tree_fail = true
     GAME:SetTeamLeaderIndex(0)
     if segmentID == 0 then
-      COMMON.EndDungeonDay(result, "tarro_town", -1, 1, 0)
+      COMMON.EndDungeonDay(result, "tarro_town", -1, 2, 0)
     elseif segmentID == 1 then
       SV.tarro_tree_hollows.entering_party = GAME:GetPlayerPartyTable()
       GAME:RemovePlayerTeam(2)

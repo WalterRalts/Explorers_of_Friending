@@ -15,7 +15,7 @@ local deep_tarro_forest = {}
 ---deep_tarro_forest.Init(zone)
 --Engine callback function
 function deep_tarro_forest.Init(zone)
-
+    DUN_failure = false
 
 end
 

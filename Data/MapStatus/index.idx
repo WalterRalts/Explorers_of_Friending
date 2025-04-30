@@ -1,13 +1,13 @@
 ﻿{
-"Version": "0.8.8.0",
+"Version": "0.8.9.0",
 "Object": {
 "$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[RogueEssence.Data.EntrySummary, RogueEssence]], System.Private.CoreLib",
-"thunderstorm": {
+"bag_limit": {
 "Name": {
-"DefaultText": "",
+"DefaultText": "Bag Limit",
 "LocalTexts": {}
 },
-"Released": false,
+"Released": true,
 "Comment": "",
 "SortOrder": 0
 },
@@ -20,12 +20,12 @@
 "Comment": "",
 "SortOrder": 0
 },
-"bag_limit": {
+"thunderstorm": {
 "Name": {
-"DefaultText": "Bag Limit",
+"DefaultText": "",
 "LocalTexts": {}
 },
-"Released": true,
+"Released": false,
 "Comment": "",
 "SortOrder": 0
 }

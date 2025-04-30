@@ -65,10 +65,10 @@ end
 -- Entities Callbacks
 -------------------------------
 function TarroTownBigTree_ch3.TreeHallow_Entrance_Touch(obj, activator)
-  COMMON.UnlockWithFanfare("tarro_tree_hollows", false)
+  --[[COMMON.UnlockWithFanfare("tarro_tree_hollows", false)
   local dungeon_entrances = {"tarro_tree_hollows"}
   local ground_entrances = {}
-  COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances)
+  COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances)]]--
 end
 
 function TarroTownBigTree_ch3.InfoSign_Action(obj, activator)
@@ -89,6 +89,7 @@ end
 
 function TarroTownBigTree_ch3.Tree_Exit_Touch(obj, activator)
   outside_enter = 4
+  GAME:FadeOut(false, 20)
   GAME:EnterGroundMap("tarro_town", "TarroTownSquare_ch3", "TarroTree_Exit")
 end
 
@@ -102,6 +103,18 @@ function TarroTownBigTree_ch3.Hollian_Action(obj, activator)
   UI:WaitShowDialogue("It's been done as word of an explosion went around from the kids.")
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("Don't know why we're listening to them[pause=35], [emote=Normal]but the issue is being investigated..")
+end
+
+function TarroTownBigTree_ch3.Storage_Action(obj, activator)
+  COMMON:ShowTeamStorageMenu()
+end
+
+function TarroTownBigTree_ch3.Archia_Action(obj, activator)
+  local archia = CH("Archia")
+
+  UI:SetSpeaker(archia)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Gosh, they sure are taking a while on that second floor...")
 end
 
 return TarroTownBigTree_ch3

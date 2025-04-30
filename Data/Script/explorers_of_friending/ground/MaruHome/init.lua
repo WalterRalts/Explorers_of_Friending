@@ -6,6 +6,7 @@
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
 require 'explorers_of_friending.ground.MaruHome.cutscene'
+require 'explorers_of_friending.partner'
 
 -- Package name
 local MaruHome = {}
@@ -43,7 +44,7 @@ function MaruHome.Init(map)
       SV.tarro_town.DarknessChapter = 1
     end
     COMMON.CreateWalkArea("Amazuru", 195, 225, 72, 72)
-  elseif SV.tarro_town.DarknessChapter == 1 then -- after mail and cooking
+  elseif SV.tarro_town.DarknessChapter >= 1 then -- after mail and cooking
     GROUND:Hide("Arama")
     GROUND:Hide("Amazuru")
   end
@@ -73,51 +74,8 @@ end
 --Engine callback function
 function MaruHome.Update(map)
 
-  local maru = CH("PLAYER")
-  local azura = CH('Teammate1')
+  Partner()
 
-  if GAME:IsKeyDown(66) then
-    print("Partner")
-  end
-  if GAME:IsKeyDown(66) then
-    if SV.tarro_town.PieChapter == 2 then
-      UI:SetSpeaker(azura)
-      GROUND:CharTurnToCharAnimated(maru, azura, 4)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("Let's go find that big apple!")
-
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowDialogue("That's the new plan.")
-    elseif SV.tarro_town.PieChapter == 5 then
-      UI:SetSpeaker(azura)
-      GROUND:CharTurnToCharAnimated(maru, azura, 4)
-      UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowDialogue("Gotta stop them now... I guess.")
-    elseif SV.tarro_town.DarknessChapter == 1 then
-      UI:SetSpeaker(azura)      
-      UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowDialogue("So... what now...?")
-      COMMON.FaceEachother("Teammate1", "PLAYER")
-
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowDialogue("I guess we could try visiting town. [pause=25]Maybe Puchi's mom isn't mad anymore.")
-
-      UI:SetSpeaker(azura)      
-      UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowDialogue("Maybe go into the dungeon?")
-
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("I don't see why not.")
-    else
-      UI:SetSpeaker(azura)
-      GROUND:CharTurnToCharAnimated(maru, azura, 4)
-      UI:SetSpeakerEmotion("Inspired")
-      UI:WaitShowDialogue("Yay! Home!")
-    end
-  end
 end
 
 ---MaruHome.GameSave(map)
@@ -138,25 +96,8 @@ end
 -------------------------------
 -- Entities Callbacks
 -------------------------------
-function MaruHome.MaruOven_Action(obj, activator)
-  local maru = CH("PLAYER")
 
-  if SV.tarro_town.DarknessChapter == 1 then
-    if oven_perms_given == true then
-      GAME:EnterGroundMap("MaruHomeFood", "Marker")
-    else
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowDialogue("This is what mom uses to cook with...")
-
-      UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowDialogue("Though[pause=25], I should probably ask her for permission to use it while she's away...")
-      oven_perms_given = false
-      oven_perms_need = true
-    end
-  end
-end
-
+-- Characters --
 function MaruHome.Arama_Action(obj, activator)
   local maru = CH("PLAYER")
   local arama = CH("Arama")
@@ -188,8 +129,8 @@ function MaruHome.Amazuru_Action(obj, activator)
 
   if SV.tarro_town.PieChapter < 5 then
     UI:SetSpeaker(amazuru)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Honestly, you two will be fine in there.")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("You two will be fine in there.")
     UI:WaitShowDialogue("Just try not to[pause=30] b[emote=Happy]ug[pause=30] t[emote=Normal]he locals.")
 
     GAME:WaitFrames(30)
@@ -217,6 +158,7 @@ function MaruHome.Amazuru_Action(obj, activator)
   
 end
 
+-- Enters --
 function MaruHome.MaruHome_BasementEntrance_Touch(obj, activator)
   local maru = CH("PLAYER")
   local azura = CH("Teammate1")
@@ -265,7 +207,6 @@ function MaruHome.MaruHome_BasementEntrance_Touch(obj, activator)
       UI:WaitShowDialogue("Okay!")
       oven_perms_given = true
     end
-    
   end
 end
 
@@ -290,6 +231,7 @@ function MaruHome.MaruHomeExit_Touch(obj, activator)
   end
 end
 
+-- Objects --
 function MaruHome.Maru_BedSave_Touch(obj, activator)
   local maru = CH("PLAYER")
   UI:ResetSpeaker()
@@ -320,7 +262,28 @@ function MaruHome.WaterHole_Action(obj, activator)
 
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("Water hole. 9/10. Not enough water.")
+  UI:WaitShowDialogue("Water hole. 8/10. Not enough water.")
+end
+
+function MaruHome.MaruOven_Action(obj, activator)
+  local maru = CH("PLAYER")
+
+  if SV.tarro_town.DarknessChapter == 1 then
+    if oven_perms_given == true then
+      GAME:EnterGroundMap("MaruHomeFood", "Marker")
+    else
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("This is what mom uses to cook with...")
+
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("Though[pause=25], I should probably ask her for permission to use it while she's away...")
+      oven_perms_given = false
+      oven_perms_need = true
+    end
+  elseif SV.tarro_town.DarknessChapter > 1 then
+    GAME:EnterGroundMap("MaruHomeFood", "Marker")
+  end
 end
 
 return MaruHome

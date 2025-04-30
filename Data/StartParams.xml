@@ -155,8 +155,8 @@
     <StartTeam>Team Traitor</StartTeam>
   </StartTeams>
   <StartLevel>5</StartLevel>
-  <MaxLevel>100</MaxLevel>
-  <StartPersonality>-1</StartPersonality>
+  <MaxLevel>105</MaxLevel>
+  <StartPersonality>38</StartPersonality>
   <DefaultZone>debug_zone</DefaultZone>
   <DefaultRank>none</DefaultRank>
   <DefaultSkin>normal</DefaultSkin>

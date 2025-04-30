@@ -5,6 +5,7 @@
 ]]--
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
+require 'explorers_of_friending.partner'
 
 -- Package name
 local TarroForestPassage = {}
@@ -168,7 +169,7 @@ function TarroForestPassage.Darkness()
     GROUND:CharTurnToCharAnimated(maru, arama, 8)
     end)
   local coro004 = TASK:BranchCoroutine(function()
-    GAME:WaitFrames(20)
+    GAME:WaitFrames(10)
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Surprised")
     UI:WaitShowTimedDialogue("Huh?![pause=15] Hey![pause=15] Y[emote=Angry]ou're pushing,[pause=45] m[emote=Shouting]ama!", 40)
@@ -184,6 +185,8 @@ function TarroForestPassage.Darkness()
   
   TASK:JoinCoroutines({coro001, coro002, coro003, coro004})
 
+  GROUND:CharTurnToCharAnimated(arama, maru, 8)
+  GROUND:CharTurnToCharAnimated(azura, maru, 8)
   UI:SetSpeaker(arama)
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("Almost forgot...!")
@@ -191,8 +194,6 @@ function TarroForestPassage.Darkness()
   UI:ResetSpeaker()
   UI:WaitShowDialogue("Arama gives Maru a treasure bag!")
   
-  GROUND:CharTurnToCharAnimated(arama, maru, 8)
-  GROUND:CharTurnToCharAnimated(azura, maru, 8)
   SV.tarro_town.bag_size = 30
   UI:SetSpeaker(azura)
   UI:SetSpeakerEmotion("Inspired")
@@ -260,10 +261,12 @@ function TarroForestPassage.Darkness()
   UI:SetSpeaker(amazuru)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("...and they're in good hands.")
-  
-  GAME:FadeOut(false, 240)
-  COMMON.UnlockWithFanfare("deep_tarro_forest", false)
+  SV.tarro_town.DarknessChapter = 2
+
+  GAME:SetCanSwitch(true)
   GAME:CutsceneMode(false)
+  GAME:FadeOut(false, 240)
+  COMMON.UnlockWithFanfare("deep_tarro_forest", false)  
   GAME:EnterZone("deep_tarro_forest", 0, 0, 0)
 end
 
@@ -277,21 +280,9 @@ end
 ---TarroForestPassage.Update(map)
 --Engine callback function
 function TarroForestPassage.Update(map)
-  local maru = CH("PLAYER")
-  local azura = CH('Teammate1')
-
-  if GAME:IsKeyDown(66) then
-    print("Partner")
-  end
-  if GAME:IsKeyDown(66) then
-    UI:SetSpeaker(azura)
-    GROUND:CharTurnToCharAnimated(maru, azura, 4)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("That wasn't so scary, actually.")
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Kinda wanna go back home now, though...")
-  end
   
+  Partner()
+
 end
 
 ---TarroForestPassage.GameSave(map)
@@ -342,7 +333,7 @@ function TarroForestPassage.Cherry_Action(obj, activator)
   UI:SetSpeaker(cherry)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("...yeah, no,[pause=46] but I'm glad you made it.")
-  UI:WaitShowDialogue("The sun here is absolutely divine. [pause=30]G[emote=Happy]et a [speed=0.7]feeeeel.")
+  UI:WaitShowDialogue("The sun here is absolutely divine. [pause=30]G[emote=Happy]et a [speed=0.6]feeeeel.")
 end
 
 function TarroForestPassage.TFPassage_DungeonExit_Touch(obj, activator)
@@ -474,9 +465,16 @@ end
 function TarroForestPassage.TF_DeepForestEnter_Touch(obj, activator)
   local maru = CH("PLAYER")
 
-  UI:SetSpeaker(maru)
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("(...maybe later...)")
+  if SV.tarro_town.DarknessChapter == 2 then
+    local dungeon_entrances = {"deep_tarro_forest"}
+    local ground_entrances = {}
+    COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances)
+  else
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("(...maybe later...)")
+  end
+  
 end
 
 function TarroForestPassage.AppleTree_Action(obj, activator)

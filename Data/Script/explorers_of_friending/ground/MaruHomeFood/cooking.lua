@@ -15,10 +15,10 @@ local function ingr_quip(player, item)
     elseif item == "tarro_bread" then
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("Our local fluffy bread. I probably don't need the oven to make something with this...")
-    elseif item == "stick" then
+    elseif item == "ammo_stick" then
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("Look at da stick. Not sticky at all.")
-    elseif item == "path_wand" then
+    elseif item == "wand_path" then
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("This wand opens new paths![pause=40] L[emote=Happy]iterally!")
     elseif item == "food_apple" then
@@ -46,7 +46,7 @@ local function ingredients_list()
     item_name = {}
 
     for i = 0, GAME:GetPlayerBagCount() - 1, 1 do
-        item_name[i] = GAME:GetPlayerBagItem(i).ID
+        item_name[i] = GAME:GetPlayerBagItem(i):GetDisplayName()
     end
     item_name[100] = "Exit"
 
@@ -69,12 +69,14 @@ local function ingredients_list()
     else
         Ingredient_chosen = UI:ChoiceResult()
         print(Ingredient_chosen)
+        Ingredient_ID = GAME:GetPlayerBagItem(Ingredient_chosen).ID
+
         Ingredient_name = item_name[Ingredient_chosen]
         GAME:TakePlayerBagItem(Ingredient_chosen)
-        print(Ingredient_name .. " has been removed from slot " .. Ingredient_chosen + 1)
+        print(Ingredient_name .. ", also known as " .. Ingredient_ID .. " has been removed from slot " .. Ingredient_chosen + 1)
     end
     
-    return Ingredient_name
+    return Ingredient_ID
 end
     
 
@@ -124,7 +126,7 @@ function Cooking(player, partner, location)
             UI:SetSpeakerEmotion("Normal")
             UI:WaitShowDialogue("Other recipes can be made with this oven and other ovens with different stuff.")
             UI:SetSpeakerEmotion("Dizzy")
-            UI:WaitShowDialogue("Trying to remember all of them is really brain-hurty, though.[pause=30] I [emote=Worried] remember putting an empty journal somewhere, but...")
+            UI:WaitShowDialogue("Trying to remember all of them is really brain-hurty, though.[pause=30][scroll] I[emote=Worried] remember putting an empty journal somewhere, but...")
 
             UI:SetSpeaker(maru)
             UI:SetSpeakerEmotion("Normal")

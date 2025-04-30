@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.8.0",
+"Version": "0.8.9.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -15804,7 +15804,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -15813,7 +15813,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -16355,7 +16355,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -16924,7 +16924,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -17493,7 +17493,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -18062,7 +18062,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -18631,7 +18631,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -18640,7 +18640,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -18649,7 +18649,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -18676,7 +18676,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -19200,7 +19200,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -19209,7 +19209,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -19218,7 +19218,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -19245,7 +19245,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -19769,7 +19769,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -19778,7 +19778,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -19787,7 +19787,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -19805,7 +19805,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -20925,7 +20925,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -20934,7 +20934,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -55174,8 +55174,8 @@
 },
 {
 "MapLoc": {
-"X": 382,
-"Y": 394
+"X": 384,
+"Y": 393
 },
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
@@ -55341,7 +55341,7 @@
 "Direction": 0,
 "IsInteracting": false,
 "AIEnabled": true,
-"EntName": "NewObject",
+"EntName": "Archia",
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -55354,14 +55354,14 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Archia",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
-"Species": "missingno",
+"Species": "ambipom",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 2
 },
 "Level": 1,
 "EXP": 0,
@@ -55434,7 +55434,7 @@
 }
 },
 {
-"Direction": 0,
+"Direction": 7,
 "IsInteracting": false,
 "AIEnabled": true,
 "EntName": "NewObject_1",
@@ -55446,7 +55446,7 @@
 "Y": 272
 },
 "serializationHeight": 0,
-"serializationDir": 0,
+"serializationDir": 7,
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
@@ -55629,7 +55629,7 @@
 "Direction": 2,
 "IsInteracting": false,
 "AIEnabled": true,
-"EntName": "NewObject_3",
+"EntName": "Hopsa",
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -56690,8 +56690,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 532,
-"Y": 247
+"X": 539,
+"Y": 245
 },
 "serializationHeight": 0,
 "serializationDir": 1,
@@ -56771,8 +56771,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 532,
-"Y": 247,
+"X": 533,
+"Y": 246,
 "Width": 16,
 "Height": 16
 }
@@ -56816,8 +56816,8 @@
 "Y": 0
 },
 "Collider": {
-"X": 536,
-"Y": 224,
+"X": 537,
+"Y": 223,
 "Width": 36,
 "Height": 30
 }
@@ -56993,6 +56993,92 @@
 "Width": 36,
 "Height": 30
 }
+},
+{
+"EntName": "Storage",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 1,
+"ObjectAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "Storage",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"Passable": false,
+"CurrentAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"AnimTime": {
+"Ticks": 0
+},
+"Cycles": 0,
+"DrawOffset": {
+"X": 0,
+"Y": 0
+},
+"Collider": {
+"X": 403,
+"Y": 219,
+"Width": 30,
+"Height": 33
+}
+},
+{
+"EntName": "Tent",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 1,
+"ObjectAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"Passable": false,
+"CurrentAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"AnimTime": {
+"Ticks": 0
+},
+"Cycles": 0,
+"DrawOffset": {
+"X": 0,
+"Y": 0
+},
+"Collider": {
+"X": 217,
+"Y": 376,
+"Width": 39,
+"Height": 23
+}
 }
 ],
 "Spawners": [
@@ -57071,7 +57157,7 @@
 "ScriptVars": null
 },
 "EntName": "TEAMMATE_1",
-"Direction": 0,
+"Direction": 4,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -57159,7 +57245,7 @@
 "ScriptVars": null
 },
 "EntName": "TEAMMATE_2",
-"Direction": 0,
+"Direction": 4,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -57247,7 +57333,7 @@
 "ScriptVars": null
 },
 "EntName": "TEAMMATE_3",
-"Direction": 0,
+"Direction": 4,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -57335,7 +57421,7 @@
 "ScriptVars": null
 },
 "EntName": "TEAMMATE_4",
-"Direction": 0,
+"Direction": 4,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -57352,14 +57438,14 @@
 "Markers": [
 {
 "EntName": "Tree_Enter",
-"Direction": 0,
+"Direction": 4,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
 "X": 305,
-"Y": 447,
+"Y": 446,
 "Width": 16,
 "Height": 16
 }

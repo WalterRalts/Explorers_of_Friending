@@ -65,6 +65,6 @@
     <value>Look at you two, ready to march on.[br] I hope you're prepped up,[pause=30] t[emote=Stunned]his dungeon isn't easy, ya know?</value>
   </data>
   <data name="TARRO_NPC_0003" xml:space="preserve">
-    <value>Are you two exploring, too? Doesn't look like you guys are a rescue team,[pause=25] but you[emote=Happy] have fun, regardless.[br]...oh, and don't forget to [emote=Inspired]use your nose.</value>
+    <value>Are you two exploring, too? Doesn't look like you guys are a rescue team,[pause=25] but you[emote=Happy] have fun, regardless.[br]...oh,[pause=40] and don't forget to [emote=Inspired]use your nose.</value>
   </data>
 </root>

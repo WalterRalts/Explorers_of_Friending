@@ -28,8 +28,8 @@ function SINGLE_CHAR_SCRIPT.SlumberPollen(owner, ownerChar, context, args)
 		local sleep = RogueEssence.Dungeon.StatusEffect("sleep")
 		local turns = _DATA.Save.TotalTurns
 		if turns % 60 == 0 and turns > 5 then
-			local sleep_chance = math.random(5)
-			if sleep_chance == 5 then
+			local sleep_chance = math.random(20)
+			if sleep_chance == 20 then
 				local sleep_roll = false
 				if SV.tarro_town.puchi_tired and puchi:GetStatusEffect("sleep") == nil and sleep_roll == false then
 					PrintInfo("Sleepy time!")
@@ -61,7 +61,6 @@ function SINGLE_CHAR_SCRIPT.BagCount(owner, ownerChar, context, args)
 	local bag_limit = SV.tarro_town.bag_size
 	
 	if item_count == bag_limit then
-		print("many items!")
 		if bag_warn == false then
 			GAME:WaitFrames(25)
 			_DUNGEON:LogMsg("Your inventory is full. Any picked up items will be removed!")
@@ -1493,4 +1492,133 @@ function SINGLE_CHAR_SCRIPT.AllyDeathCheck(owner, ownerChar, context, args)
 	end
 end
 
+function SINGLE_CHAR_SCRIPT.TarroTutorial(owner, ownerChar, context, args) --Thank you, Halcyon script.
+	if context.User == nil then return else print(context.User) end
+	if context.User == GAME:GetPlayerPartyMember(0) then --this check is needed so that the script runs only once, otherwise it'll run for each entity in the map. 
+	  GAME:QueueLeaderEvent(function() SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args) end)--
+	  print(context.User)
+	end
+  end
 
+function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
+	local maru = GAME:GetPlayerPartyMember(0)
+	local azura = GAME:GetPlayerPartyMember(1)
+	local area_name = DUNGEON:DungeonDisplayName()
+	local floor_no = DUNGEON:DungeonCurrentFloor()
+	if area_name == "Tarro Forest" then
+		if floor_no == 0 then
+			if DUNsection == 1 then
+			else
+				UI:SetSpeaker(maru)
+				UI:SetSpeakerEmotion("Normal")
+				UI:WaitShowDialogue("Okay, so we need to find some stairs.")
+
+				UI:SetSpeaker(azura)
+				UI:SetSpeakerEmotion("Worried")
+				UI:WaitShowDialogue("Stairs?[pause=30] Where stairs?")
+
+				UI:SetSpeaker(maru)
+				UI:SetSpeakerEmotion("Happy")
+				UI:WaitShowDialogue("I dunno, but we won't find them just sitting here.")
+				UI:SetSpeakerEmotion("Normal")
+				UI:WaitShowDialogue("Let's use the arrow keys to walk, and hold A to use a move.")
+
+				UI:SetSpeaker(azura)
+				UI:SetSpeakerEmotion("Worried")
+				UI:WaitShowDialogue("...[pause=50]h[emote=Stunned]uh...?")
+			end
+		elseif floor_no == 1 then
+			UI:SetSpeaker(maru)
+			UI:SetSpeakerEmotion("Normal")
+			UI:WaitShowDialogue("Pretty simple stuff, right?")
+
+			UI:SetSpeaker(azura)
+			UI:SetSpeakerEmotion("Happy")
+			UI:WaitShowDialogue("Yeah! Big Apple!")
+
+			UI:SetSpeaker(maru)
+			UI:SetSpeakerEmotion("Happy")
+			UI:WaitShowDialogue("Now let's see if we can't find any items around.")
+			UI:SetSpeakerEmotion("Normal")
+			UI:WaitShowDialogue("Once we do, we can press W to open the bag.")
+		end
+	elseif area_name == "Tarro Tree Hallows" then
+		local senna = GAME:GetPlayerPartyMember(2)
+		local puchi = GAME:GetPlayerPartyMember(3)
+		local ziggy = GAME:GetPlayerPartyMember(4)
+		if DUNsection == 0 then
+			if floor_no == 0 then
+				UI:SetSpeaker(puchi)
+				UI:SetSpeakerEmotion("Dizzy")
+				UI:WaitShowDialogue("Guys... I'm not making it, I'm way too tired...")
+	
+				UI:SetSpeaker(azura)
+				UI:SetSpeakerEmotion("Worried")
+				UI:WaitShowDialogue("Uh oh...")
+	
+				UI:SetSpeaker(senna)
+				UI:SetSpeakerEmotion("Teary-Eyed")
+				UI:WaitShowDialogue("I-I... this is... this is a d-dungeon...??")
+				UI:SetSpeakerEmotion("Pain")
+				UI:WaitShowDialogue("It's huge...!")
+	
+				UI:SetSpeaker(ziggy)
+				UI:SetSpeakerEmotion("Determined")
+				UI:WaitShowDialogue("Guuuuuuys!")
+			elseif floor_no == 3 then
+				UI:SetSpeaker(maru)
+				UI:SetSpeakerEmotion("Normal")
+				UI:WaitShowDialogue("I think I'm getting tired of being in front...")
+	
+				UI:SetSpeaker(ziggy)
+				UI:SetSpeakerEmotion("Happy")
+				UI:WaitShowDialogue("LEMME LEMME LEMME LEMME!")
+	
+				UI:SetSpeaker(maru)
+				UI:SetSpeakerEmotion("Happy")
+				UI:WaitShowDialogue("Mkaaaay, I'll just [emote=Normal]switch up using the number keys: 1, 2, 3, and 4.")
+
+				GAME:WaitFrames(60)
+	
+				UI:SetSpeaker(ziggy)
+				UI:SetSpeakerEmotion("Worried")
+				UI:WaitShowDialogue("Azu, what is he talking about?")
+	
+				UI:SetSpeaker(azura)
+				UI:SetSpeakerEmotion("Worried")
+				UI:WaitShowDialogue("I don't know...")
+			end
+		elseif DUNsection == 1 then
+			if floor_no == 0 then
+				UI:SetSpeaker(puchi)
+				UI:SetSpeakerEmotion("Stunned")
+				UI:WaitShowDialogue("...is this place getting bigger?!")
+
+				UI:SetSpeaker(senna)
+				UI:SetSpeakerEmotion("Worried")
+				UI:WaitShowDialogue("Now I'm getting tired...")
+
+				UI:SetSpeaker(ziggy)
+				UI:SetSpeakerEmotion("Worried")
+				UI:WaitShowDialogue("Guys,[pause=20] come on![pause=20] Big Tree![pause=20] Let's go![pause=20]")
+
+				UI:SetSpeaker(maru)
+				UI:SetSpeakerEmotion("Worried")
+				UI:WaitShowDialogue("To be fair, you never told us about why it's so important...")
+
+				UI:SetSpeaker(ziggy)
+				UI:SetSpeakerEmotion("Sad")
+				UI:WaitShowDialogue("...momma said that this tree is more alive than all the other trees...")
+				UI:SetSpeakerEmotion("Worried")
+				UI:WaitShowDialogue("Every time she was hurt, this tree seemed to be with her...")
+
+				UI:SetSpeaker(senna)
+				UI:SetSpeakerEmotion("Worried")
+				UI:WaitShowDialogue("I s-still don't believe it but...")
+				UI:SetSpeakerEmotion("Determined")
+				UI:WaitShowDialogue("We'll fight for her if this tree is her friend.")
+			end
+		elseif DUNsection == 2 then
+		end
+	end
+end

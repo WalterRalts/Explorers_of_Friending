@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.8.0",
+"Version": "0.8.9.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -78884,7 +78884,7 @@
 "Direction": 6,
 "IsInteracting": false,
 "AIEnabled": true,
-"EntName": "Sir Peck",
+"EntName": "Sir_Peck",
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -79066,8 +79066,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 696,
-"Y": 396,
+"X": 691,
+"Y": 392,
 "Width": 16,
 "Height": 16
 }
@@ -79163,7 +79163,7 @@
 "CollisionDisabled": false,
 "Collider": {
 "X": 749,
-"Y": 431,
+"Y": 407,
 "Width": 16,
 "Height": 16
 }
@@ -79451,7 +79451,7 @@
 "CollisionDisabled": false,
 "Collider": {
 "X": 101,
-"Y": 409,
+"Y": 407,
 "Width": 16,
 "Height": 16
 }
@@ -80035,12 +80035,12 @@
 ],
 "GroundObjects": [
 {
-"EntName": "NewObject",
+"EntName": "MayorEntrance",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
