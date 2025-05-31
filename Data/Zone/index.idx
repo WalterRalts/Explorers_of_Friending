@@ -235,11 +235,11 @@
 },
 "entoh_town": {
 "$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
-"ExpPercent": 20,
+"ExpPercent": 50,
 "Level": -1,
 "LevelCap": false,
 "KeepSkills": false,
-"TeamRestrict": false,
+"TeamRestrict": true,
 "TeamSize": -1,
 "MoneyRestrict": false,
 "BagRestrict": -1,

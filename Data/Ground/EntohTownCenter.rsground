@@ -60322,12 +60322,12 @@
 }
 },
 {
-"EntName": "NewObject",
+"EntName": "Apartments_Enter",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",

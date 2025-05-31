@@ -9,11 +9,11 @@
 "Released": true,
 "Comment": "",
 "NoEXP": false,
-"ExpPercent": 20,
+"ExpPercent": 50,
 "Level": -1,
 "LevelCap": false,
 "KeepSkills": false,
-"TeamRestrict": false,
+"TeamRestrict": true,
 "TeamSize": -1,
 "MoneyRestrict": false,
 "BagRestrict": -1,
@@ -31,6 +31,21 @@
 "Item": {
 "$type": "RogueEssence.LevelGen.RoomFloorGen, RogueEssence",
 "GenSteps": [
+{
+"Key": {
+"str": [
+-7
+]
+},
+"Value": {
+"$type": "PMDC.LevelGen.MapDataStep`1[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence]], PMDC",
+"Music": "Castaway Cave.ogg",
+"TimeLimit": 10000,
+"TileSight": 1,
+"CharSight": 0,
+"ClampCamera": true
+}
+},
 {
 "Key": {
 "str": [
@@ -206,6 +221,74 @@
 ],
 "Filters": []
 }
+},
+{
+"Key": {
+"str": [
+6
+]
+},
+"Value": {
+"$type": "RogueElements.DueSpawnStep`3[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence],[RogueEssence.LevelGen.MoneySpawn, RogueEssence],[RogueEssence.LevelGen.MapGenEntrance, RogueEssence]], RogueElements",
+"SuccessPercent": 50,
+"IncludeHalls": false,
+"Filters": [],
+"Spawn": {
+"$type": "RogueEssence.LevelGen.MoneyDivSpawner`1[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence]], RogueEssence",
+"DivAmount": {
+"Min": 1,
+"Max": 9
+}
+}
+}
+},
+{
+"Key": {
+"str": [
+6,
+1
+]
+},
+"Value": {
+"$type": "RogueElements.DueSpawnStep`3[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence],[RogueEssence.Dungeon.InvItem, RogueEssence],[RogueEssence.LevelGen.MapGenEntrance, RogueEssence]], RogueElements",
+"SuccessPercent": 50,
+"IncludeHalls": false,
+"Filters": [],
+"Spawn": {
+"$type": "RogueElements.ContextSpawner`2[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence],[RogueEssence.Dungeon.InvItem, RogueEssence]], RogueElements",
+"Amount": {
+"Min": 3,
+"Max": 11
+}
+}
+}
+},
+{
+"Key": {
+"str": [
+6,
+2
+]
+},
+"Value": {
+"$type": "RogueEssence.LevelGen.PlaceRandomMobsStep`1[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence]], RogueEssence",
+"Filters": [
+{
+"$type": "PMDC.LevelGen.RoomFilterConnectivity, PMDC",
+"Connection": 1
+}
+],
+"IncludeHalls": false,
+"Spawn": {
+"$type": "RogueEssence.LevelGen.TeamContextSpawner`1[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence]], RogueEssence",
+"Amount": {
+"Min": 1,
+"Max": 5
+}
+},
+"Ally": false,
+"ClumpFactor": 25
+}
 }
 ],
 "Comment": ""
@@ -301,8 +384,7 @@
 "$type": "RogueEssence.LevelGen.ItemSectionedZoneStep, RogueEssence",
 "Priority": {
 "str": [
-4,
-1
+0
 ]
 },
 "Spawns": {
@@ -360,8 +442,8 @@
 "$type": "RogueEssence.LevelGen.RangeStepZoneStep, RogueEssence",
 "StepPriority": {
 "str": [
-4,
-1
+1,
+2
 ]
 },
 "Spawns": {
@@ -376,8 +458,8 @@
 },
 "Respawn": {
 "$type": "PMDC.Dungeon.RespawnFromEligibleEvent, PMDC",
-"MaxFoes": 50,
-"RespawnTime": 20
+"MaxFoes": 30,
+"RespawnTime": 30
 },
 "MaxFoes": 0,
 "RespawnTime": 0
@@ -430,6 +512,33 @@
 "Spawn": {
 "Spawn": {
 "BaseForm": {
+"Species": "glameow",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 1,
+"Max": 6
+},
+"SpecifiedSkills": [],
+"Intrinsic": "",
+"Tactic": "wander_dumb",
+"SpawnConditions": [],
+"SpawnFeatures": []
+},
+"Role": 0
+},
+"Rate": 10,
+"Range": {
+"Min": 0,
+"Max": 8
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
 "Species": "igglybuff",
 "Form": 0,
 "Skin": "",
@@ -441,6 +550,33 @@
 },
 "SpecifiedSkills": [],
 "Intrinsic": "",
+"Tactic": "wander_dumb_itemless",
+"SpawnConditions": [],
+"SpawnFeatures": []
+},
+"Role": 0
+},
+"Rate": 20,
+"Range": {
+"Min": 0,
+"Max": 8
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
+"Species": "wooper",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 1,
+"Max": 8
+},
+"SpecifiedSkills": [],
+"Intrinsic": "unaware",
 "Tactic": "wander_normal",
 "SpawnConditions": [],
 "SpawnFeatures": []
@@ -449,8 +585,102 @@
 },
 "Rate": 10,
 "Range": {
+"Min": 2,
+"Max": 8
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
+"Species": "bonsly",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 4,
+"Max": 7
+},
+"SpecifiedSkills": [],
+"Intrinsic": "",
+"Tactic": "wait_attack",
+"SpawnConditions": [],
+"SpawnFeatures": [
+{
+"$type": "PMDC.LevelGen.MobSpawnItem, PMDC",
+"Items": [
+{
+"Spawn": {
+"ID": "ammo_geo_pebble",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 2,
+"Price": 0
+},
+"Rate": 10
+},
+{
+"Spawn": {
+"ID": "berry_oran",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0
+},
+"Rate": 2
+}
+],
+"MapStartOnly": false,
+"Chance": {
+"Numerator": 1,
+"Denominator": 3
+}
+},
+{
+"$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+}
+]
+},
+"Role": 0
+},
+"Rate": 15,
+"Range": {
 "Min": 0,
-"Max": 10
+"Max": 8
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
+"Species": "lotad",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 2,
+"Max": 7
+},
+"SpecifiedSkills": [
+"absorb"
+],
+"Intrinsic": "",
+"Tactic": "wander_normal",
+"SpawnConditions": [],
+"SpawnFeatures": [
+{
+"$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+}
+]
+},
+"Role": 0
+},
+"Rate": 10,
+"Range": {
+"Min": 2,
+"Max": 8
 }
 },
 {
@@ -464,11 +694,11 @@
 },
 "Level": {
 "Min": 1,
-"Max": 8
+"Max": 7
 },
 "SpecifiedSkills": [],
 "Intrinsic": "",
-"Tactic": "wander_normal",
+"Tactic": "patrol",
 "SpawnConditions": [],
 "SpawnFeatures": []
 },
@@ -477,14 +707,14 @@
 "Rate": 10,
 "Range": {
 "Min": 0,
-"Max": 10
+"Max": 8
 }
 }
 ],
 "TeamSizes": [
 {
 "Spawn": 1,
-"Rate": 45,
+"Rate": 60,
 "Range": {
 "Min": 0,
 "Max": 7
@@ -500,7 +730,7 @@
 },
 {
 "Spawn": 3,
-"Rate": 15,
+"Rate": 25,
 "Range": {
 "Min": 2,
 "Max": 7
@@ -516,6 +746,23 @@
 }
 ],
 "SpecificSpawns": []
+},
+{
+"$type": "RogueEssence.LevelGen.MoneySpawnZoneStep, RogueEssence",
+"Priority": {
+"str": [
+1
+]
+},
+"StartAmount": {
+"Min": 3,
+"Max": 31
+},
+"AddAmount": {
+"Min": 3,
+"Max": 31
+},
+"ModStates": []
 }
 ],
 "IsRelevant": false,

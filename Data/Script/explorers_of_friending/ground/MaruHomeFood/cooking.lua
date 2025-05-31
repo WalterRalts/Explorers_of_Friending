@@ -198,5 +198,5 @@ function Cooking(player, partner, location)
     end
     ::end_cooking::
     GAME:FadeOut(false, 30)
-    GAME:EnterGroundMap("MaruHome", "MaruHome_MainEnter")
+    GAME:EnterGroundMap("MaruHome", "CookingExit")
 end

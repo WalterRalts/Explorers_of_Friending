@@ -16,21 +16,35 @@ local entoh_town = {}
 --Engine callback function
 function entoh_town.Init(zone)
 
-
+    
 end
 
 ---entoh_town.EnterSegment(zone, rescuing, segmentID, mapID)
 --Engine callback function
 function entoh_town.EnterSegment(zone, rescuing, segmentID, mapID)
-
-
+    
 end
 
 ---entoh_town.ExitSegment(zone, result, rescue, segmentID, mapID)
 --Engine callback function
 function entoh_town.ExitSegment(zone, result, rescue, segmentID, mapID)
-
-
+    if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
+        
+        SV.entoh_town.thicket.result = DUNGEON:DungeonCurrentFloor()
+        if result == RogueEssence.Data.GameProgress.ResultType.Escaped then 
+            SV.entoh_town.thicket.result = SV.entoh_town.thicket.result + 0.1
+        elseif result == RogueEssence.Data.GameProgress.ResultType.GaveUp then
+            SV.entoh_town.thicket.result = SV.entoh_town.thicket.result + 0.2
+        end
+        print(SV.entoh_town.thicket.result)
+        SV.rent_number = 0
+        
+        print("Get out!")
+        COMMON.EndDungeonDay(result, "entoh_town", -1, 1, 2)
+    else
+        COMMON.EndDungeonDay(result, "entoh_town", -1, 1, 2)
+        SV.entoh_town.thicket.result = 8.3
+    end
 end
 
 ---entoh_town.Rescued(zone, name, mail)

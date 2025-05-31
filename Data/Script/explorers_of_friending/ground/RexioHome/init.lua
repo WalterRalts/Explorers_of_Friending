@@ -17,8 +17,10 @@ local RexioHome = {}
 --Engine callback function
 function RexioHome.Init(map)
 
-  if SV.entoh_town.AdventureChapter == -1 then
+  if SV.entoh_town.HelperChapter == -1 then
     Aurm.Feeling()
+  elseif SV.entoh_town.package_received == true then
+    Aurm.Home()
   end
   
 end
@@ -80,6 +82,27 @@ function RexioHome.Poster_Action(obj, activator)
   UI:WaitShowDialogue("(This poster of dad is 10 times cooler with me on it.)")
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("(We have to get another one, our walls are lacking.)")
+end
+
+function RexioHome.Luke_Action(obj, activator)
+  local rexio = CH("PLAYER")
+  local luke = CH("Luke")
+  COMMON.FaceEachother("Luke", "PLAYER")
+  UI:SetSpeaker(luke)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Go on, Rexio. [pause=30]Don't [emote=Happy]let me stop you.")
+
+  UI:SetSpeaker(rexio)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Feel free to, actually.")
+
+  UI:SetSpeaker(luke)
+  UI:SetSpeakerEmotion("Determined")
+  UI:WaitShowDialogue("Rexio.")
+
+  UI:SetSpeaker(rexio)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("Kidding, kidding.")
 end
 
 return RexioHome

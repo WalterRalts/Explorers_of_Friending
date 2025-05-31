@@ -33,6 +33,13 @@ end
 function tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
   if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
     print("Get out!")
+    dungeon_oof = 0
+    
+    if segmentID == 0 then
+      SV.tarro_town.PieChapter = 2.1
+    else
+      SV.tarro_town.PieChapter = 2.2
+    end
     
     COMMON.EndDungeonDay(result, "tarro_town_outside", -1, 1, 2)
   else

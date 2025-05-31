@@ -17,8 +17,12 @@ local EntohTownNorth = {}
 --Engine callback function
 function EntohTownNorth.Init(map)
 
-  if SV.entoh_town.HelperChapter == -1 then
+  if SV.entoh_town.HelperChapter == 0 then
     Entoh.PanchChallenge()
+  elseif SV.entoh_town.thicket.result > -1 then
+    if SV.entoh_town.HelperChapter == 1 then
+      Entoh.Resulting()
+    end
   end
   
 end

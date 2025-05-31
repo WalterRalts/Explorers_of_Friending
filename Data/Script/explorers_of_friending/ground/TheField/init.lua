@@ -5,6 +5,7 @@
 ]]--
 -- Commonly included lua functions and data
 require 'origin.common'
+require 'explorers_of_friending.partner'
 
 -- Package name
 local TheField = {}
@@ -43,7 +44,7 @@ end
 ---TheField.Update(map)
 --Engine callback function
 function TheField.Update(map)
-  
+  Partner()
 end
 
 ---TheField.GameSave(map)

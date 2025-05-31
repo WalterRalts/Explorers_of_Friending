@@ -60,12 +60,13 @@ end
 -- Entities Callbacks
 -------------------------------
 local bug_talk = 0
-local wurp = CH("Wurp")
-local dewey = CH("Dewey")
-local pari = CH("Pari")
-local snow = CH("Snow")
-local rexio = CH("PLAYER")
+
 function EntohTownCenter.Wurp_Action(obj, activator)
+  local wurp = CH("Wurp")
+  local dewey = CH("Dewey")
+  local pari = CH("Pari")
+  local snow = CH("Snow")
+  local rexio = CH("PLAYER")
   if bug_talk == 0 then
     UI:SetSpeaker(wurp)
     UI:SetSpeakerEmotion("Determined")
@@ -138,6 +139,8 @@ function EntohTownCenter.Wurp_Action(obj, activator)
 end
 
 function EntohTownCenter.Dewey_Action(obj, activator)
+  local dewey = CH("Dewey")
+  local rexio = CH("PLAYER")
   if bug_talk == 0 then
     EntohTownCenter.Wurp_Action()
   else
@@ -149,6 +152,9 @@ function EntohTownCenter.Dewey_Action(obj, activator)
 end
 
 function EntohTownCenter.Snow_Action(obj, activator)
+  local wurp = CH("Wurp")
+  local snow = CH("Snow")
+  local rexio = CH("PLAYER")
   if bug_talk == 0 then
     EntohTownCenter.Wurp_Action()
   else
@@ -164,6 +170,8 @@ function EntohTownCenter.Snow_Action(obj, activator)
 end
 
 function EntohTownCenter.Pari_Action(obj, activator)
+  local pari = CH("Pari")
+  local rexio = CH("PLAYER")
   if bug_talk == 0 then
     EntohTownCenter.Wurp_Action()
   else
@@ -200,7 +208,16 @@ function EntohTownCenter.Gran_Action(obj, activator)
 end
 
 function EntohTownCenter.Tidy_Action(obj, activator)
-  
+  local tidy = CH("Tidy")
+  UI:SetSpeaker(tidy)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("Stay clean, Rexxy!")
+end
+
+function EntohTownCenter.Apartments_Enter_Touch(obj, activator)
+  print("Exiting?")
+  GAME:FadeOut(false, 10)
+  GAME:EnterGroundMap("RexioHome", "RexioHomeWay")
 end
 
 return EntohTownCenter

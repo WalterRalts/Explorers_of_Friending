@@ -44,13 +44,19 @@ function MaruHome.Init(map)
       SV.tarro_town.DarknessChapter = 1
     end
     COMMON.CreateWalkArea("Amazuru", 195, 225, 72, 72)
+    
   elseif SV.tarro_town.DarknessChapter >= 1 then -- after mail and cooking
     GROUND:Hide("Arama")
     GROUND:Hide("Amazuru")
   end
-  GAME:FadeIn(20)
+
+  if outside_enter == 2 then
+    GROUND:TeleportTo(partner, 273, 176, Direction.Down, 0)
+  end
+  
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   GAME:CutsceneMode(false)
+  GAME:FadeIn(20)
 end
 
 ---MaruHome.Enter(map)

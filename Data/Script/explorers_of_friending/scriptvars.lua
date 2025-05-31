@@ -129,10 +129,16 @@ SV.tarro_tree_hollows =
 
 SV.entoh_town = 
 {
+  revisit = false,
   HelperChapter = -1,
   AdventureChapter = -1,
   spent_dungpoints = 0,
+  package_received = false,
   bag_size = 3,
+  thicket = 
+  {
+    result = -1
+  }
 }
 --- Dungeons
 
@@ -145,6 +151,10 @@ SV.guilders =
   {
     bluetail_stats = 0,
     bluetail_storage = {}
+  },
+  entoh_town = 
+  {
+    scan_level = 1
   }
 }
 --- Dungeons
@@ -162,3 +172,6 @@ SV.buzzers_store =
     price = 5
   }
 }
+
+--Dungeon generation
+SV.rent_number = 0

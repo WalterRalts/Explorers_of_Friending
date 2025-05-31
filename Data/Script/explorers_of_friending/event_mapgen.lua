@@ -520,19 +520,32 @@ function FLOOR_GEN_SCRIPT.SleepingCalderaRevisit(map, args)
   
 end
 
-function FLOOR_GEN_SCRIPT.EntohThicketWall(map, args)
+
+function FLOOR_GEN_SCRIPT.EntohThicketWall(map, args) --randomly change the inner walls of the dungeon into water or floor
+  local Entoh_chance = SV.rent_number
   for x = 0, map.Width - 2, 1 do
     for y = 0, map.Height - 2, 1 do
+      --print(Entoh_chance)
       local point = RogueElements.Loc(x, y)
-      WallTileChance = map.Rand:Next(1 + (4 * DUNGEON:DungeonCurrentFloor()), 100)
+      local floorno_mult = 100
+      WallTileChance = map.Rand:Next(1, 100)
+      WaterTileChance = map.Rand:Next(1, 100)
+      
       if not map:GetTile(point):TileEquivalent(map.RoomTerrain) then
-        if WallTileChance >= 99 then
-          map:TrySetTile(point, map.WallTerrain)
-        elseif WallTileChance >= 90 then
+        if WallTileChance >= floorno_mult - (1 + (8 * Entoh_chance)) then
+          Entoh_chance = Entoh_chance - 2
+          map:TrySetTile(point, map.RoomTerrain)
+          --print("Turned (" .. x .. ", " .. y .. ") into floor.")
+        elseif WaterTileChance >= floorno_mult - (10 + Entoh_chance) then
+          Entoh_chance = Entoh_chance - 2
           map:TrySetTile(point, RogueEssence.Dungeon.Tile("water"))
+          --print("Turned (" .. x .. ", " .. y .. ") into water.")
+        else
+          Entoh_chance = Entoh_chance + 1
         end
 			end
     end
   end
+  SV.rent_number = Entoh_chance
 end
 

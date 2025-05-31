@@ -10,6 +10,15 @@
 "Released": false,
 "Comment": "",
 "SortOrder": 0
+},
+"aura_sense": {
+"Name": {
+"DefaultText": "Aura Sense",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 0
 }
 }
 }

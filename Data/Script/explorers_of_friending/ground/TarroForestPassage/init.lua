@@ -296,8 +296,6 @@ end
 --Engine callback function
 function TarroForestPassage.GameLoad(map)
 
-  GAME:FadeIn(20)
-
 end
 
 -------------------------------

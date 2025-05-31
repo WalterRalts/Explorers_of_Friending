@@ -20,6 +20,7 @@ function TarroTownSquare.Init(map)
 
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
+  local getic = CH('Getica')
   local partner = CH('Teammate1')
   local munch = CH('Munch')
   local ziggy = CH("Ziggy")
@@ -52,6 +53,9 @@ function TarroTownSquare.Init(map)
       GROUND:Hide("Senna")
       GROUND:Hide("Puchi")
     end
+  end
+  if plus_minus ~= nil then
+    GROUND:TeleportTo(getic, 1685, 220, Direction.Down, 0)
   end
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
 end

@@ -512,7 +512,20 @@
 }
 ],
 "BeforeTryActions": [],
-"BeforeActions": [],
+"BeforeActions": [
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.BattleScriptEvent, RogueEssence",
+"Script": "RexioFocuser",
+"ArgTable": "{}"
+}
+}
+],
 "OnActions": [
 {
 "Key": {
@@ -673,12 +686,12 @@
 {
 "Key": {
 "str": [
-0
+1
 ]
 },
 "Value": {
 "$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
-"Script": "DungeonDialogue",
+"Script": "DungeonTalker",
 "ArgTable": "{}"
 }
 }
@@ -749,6 +762,18 @@
 "EnemyHungerRate": 1,
 "AllyHungerRate": 5,
 "Denominator": 1000
+}
+},
+{
+"Key": {
+"str": [
+1
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
+"Script": "RexioFocus",
+"ArgTable": "{}"
 }
 }
 ],
@@ -846,6 +871,18 @@
 },
 "Value": {
 "$type": "PMDC.Dungeon.PreSkillEvent, PMDC"
+}
+},
+{
+"Key": {
+"str": [
+-10
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.BattleScriptEvent, RogueEssence",
+"Script": "RexioScan",
+"ArgTable": "{}"
 }
 },
 {

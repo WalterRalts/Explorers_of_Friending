@@ -5,7 +5,7 @@
 ]]--
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
-
+require 'explorers_of_friending.partner'
 -- Package name
 local TarroTownEast_ch2 = {}
 
@@ -15,7 +15,10 @@ local TarroTownEast_ch2 = {}
 ---TarroTownEast_ch2.Init(map)
 --Engine callback function
 function TarroTownEast_ch2.Init(map)
-  
+  local puchi = CH('Puchi')
+  GROUND:CharSetEmote(puchi, "Sleep", 0)
+  GROUND:CharSetAnim(puchi, "Sleep", true)
+
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
   local partner = CH('Teammate1')
@@ -59,39 +62,9 @@ end
 ---TarroTownEast_ch2.Update(map)
 --Engine callback function
 function TarroTownEast_ch2.Update(map)
-  local maru = CH("PLAYER")
-  local azura = CH('Teammate1')
-  local puchi = CH('Puchi')
-  if GAME:IsKeyDown(66) then
-    print("Partner")
-  end
-  if GAME:IsKeyDown(66) then
-    if SV.tarro_town.PieChapter == 5 then
-      UI:SetSpeaker(azura)
-      GROUND:CharTurnToCharAnimated(maru, azura, 4)
-      UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowDialogue("Those two.[pause=65] What are they fighting about now?")
-    else
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("Home sweet home.")
+  
+  Partner()
 
-      UI:SetSpeaker(azura)
-      GROUND:CharTurnToCharAnimated(maru, azura, 4)
-      UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowDialogue("Did we even do anything?")
-
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowDialogue("Probably not.")
-    end
-  end
-
-  if SleepingPuchi == false then
-    GROUND:CharSetEmote(puchi, "Sleep", 0)
-    GROUND:CharSetAnim(puchi, "Sleep", true)
-    SleepingPuchi = true
-  end
 end
 
 ---TarroTownEast_ch2.GameSave(map)

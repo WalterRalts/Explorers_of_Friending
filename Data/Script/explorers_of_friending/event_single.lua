@@ -1492,20 +1492,20 @@ function SINGLE_CHAR_SCRIPT.AllyDeathCheck(owner, ownerChar, context, args)
 	end
 end
 
-function SINGLE_CHAR_SCRIPT.TarroTutorial(owner, ownerChar, context, args) --Thank you, Halcyon script.
+function SINGLE_CHAR_SCRIPT.DungeonTalker(owner, ownerChar, context, args) --Thank you, Halcyon scripters.
 	if context.User == nil then return else print(context.User) end
 	if context.User == GAME:GetPlayerPartyMember(0) then --this check is needed so that the script runs only once, otherwise it'll run for each entity in the map. 
-	  GAME:QueueLeaderEvent(function() SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args) end)--
+	  GAME:QueueLeaderEvent(function() SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args) end)
 	  print(context.User)
 	end
-  end
+end
 
 function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 	local maru = GAME:GetPlayerPartyMember(0)
 	local azura = GAME:GetPlayerPartyMember(1)
 	local area_name = DUNGEON:DungeonDisplayName()
 	local floor_no = DUNGEON:DungeonCurrentFloor()
-	if area_name == "Tarro Forest" then
+	if area_name == "Tarro Forest" and SV.tarro_town.PieChapter < 4 then
 		if floor_no == 0 then
 			if DUNsection == 1 then
 			else
@@ -1542,7 +1542,7 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 			UI:SetSpeakerEmotion("Normal")
 			UI:WaitShowDialogue("Once we do, we can press W to open the bag.")
 		end
-	elseif area_name == "Tarro Tree Hallows" then
+	elseif area_name == "Tarro Tree Hallows" and SV.tarro_town.PieChapter < 8 then
 		local senna = GAME:GetPlayerPartyMember(2)
 		local puchi = GAME:GetPlayerPartyMember(3)
 		local ziggy = GAME:GetPlayerPartyMember(4)
@@ -1620,5 +1620,40 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 			end
 		elseif DUNsection == 2 then
 		end
+	elseif area_name == "Entoh Town" then
+		print("You are here!")
+		local rexio = GAME:GetPlayerPartyMember(0)
+		if floor_no == 0 then
+			UI:SetSpeaker(rexio)
+			UI:SetSpeakerEmotion("Worried")
+			UI:WaitShowDialogue("I guess now would be a good time to practice my aura.")
+			UI:WaitShowDialogue("That way Dad would be less angry about me not getting his package, haha.")
+			UI:SetSpeakerEmotion("Normal")
+			UI:WaitShowDialogue("It's a pretty open space. This'll be easy.")
+
+			UI:ResetSpeaker()
+			UI:WaitShowDialogue("While playling as Rexio, use the B key to sense items within 10 tiles")
+		end
 	end
+end
+
+function SINGLE_CHAR_SCRIPT.RexioFocuser(owner, ownerChar, context, args) --Thank you, Halcyon scripters.
+	if context.User == nil then return else end
+	if context.User == GAME:GetPlayerPartyMember(0) then --this check is needed so that the script runs only once, otherwise it'll run for each entity in the map. 
+	  GAME:QueueLeaderEvent(function() SINGLE_CHAR_SCRIPT.RexioFocus(owner, ownerChar, context, args) end)
+	  print(context.User)
+	end
+end
+
+function SINGLE_CHAR_SCRIPT.RexioFocus(owner, ownerChar, context, args)
+	local rexio = GAME:GetPlayerPartyMember(0)
+  	--[[if rexio.Name == "Rexio" then
+		if COMMON.CanTalk(context.User) then
+			local aura = RogueEssence.Dungeon.StatusEffect("aura_sense")
+			aura:LoadFromData()
+			TASK:WaitTask(context.User:AddStatusEffect(nil, aura, false))
+		else
+			TASK:WaitTask(context.User:RemoveStatusEffect(nil, aura, false))
+		end
+  	end]]
 end

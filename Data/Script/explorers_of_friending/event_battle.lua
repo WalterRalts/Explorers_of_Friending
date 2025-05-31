@@ -1710,3 +1710,4 @@ function BATTLE_SCRIPT.MaruInteract(owner, ownerChar, context, args)
     end
   end  
 end
+

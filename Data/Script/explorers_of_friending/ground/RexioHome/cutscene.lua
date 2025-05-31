@@ -107,7 +107,81 @@ function Aurm.Feeling()
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue("Uugghhhhhhh!")
+    
+    local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("RexioInteract")
+        _DATA.Save.ActiveTeam.Players[0].ActionEvents:Add(talk_evt)
+        
+    SV.guilders.entoh_town.scan_level = 1
+    SV.entoh_town.HelperChapter = 0
+    GAME:CutsceneMode(false)
+    GAME:MoveCamera(0, 0, 0, true)
+end
 
+function Aurm.Home()
+    local rexio = CH("PLAYER")
+    local luke = CH("Luke")
+    GAME:CutsceneMode(true)
+    GAME:FadeIn(50)
+    local coro01 = TASK:BranchCoroutine(function()
+        UI:SetSpeaker(luke)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Welcome back, buddy.")
+
+        UI:SetSpeaker(rexio)
+        UI:SetSpeakerEmotion("Determined")
+        UI:WaitShowDialogue("Yeah, yeah, I got the package.")
+
+        UI:SetSpeaker(luke)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("Good, because it's actually for you.")
+        end)	
+    local coro02 = TASK:BranchCoroutine(function()
+        GAME:WaitFrames(150)
+        GAME:MoveCamera(229, 248, 1, false)
+        GROUND:MoveToMarker(rexio, MRKR("RexioStart"), false, 4)
+        GAME:WaitFrames(10)
+        GROUND:Unhide("Package")
+        SOUND:PlaySE("Battle/EVT_CH02_Item_Place")
+        end)
+    
+    TASK:JoinCoroutines({coro01, coro02})
+    
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Inspired")
+    UI:WaitShowDialogue("Really?!")
+
+    UI:SetSpeaker(luke)
+    UI:WaitShowDialogue("But...")
+
+    COMMON.CharSweatdrop("Rexio")
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("But...?")
+
+    UI:SetSpeaker(luke)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("You gotta be able to get the key first.")
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Key?!")
+
+    UI:SetSpeaker(luke)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("You need to practice somehow.")
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("...you know what,[pause=60] I[emote=Determined]'ll find them!")
+    GROUND:CharSetAnim(CH("PLAYER"), "Pose", false)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Challenge accepted!")
+
+    UI:SetSpeaker(luke)
+    UI:SetSpeakerEmotion("Joyous")
+    UI:WaitShowDialogue("That's my boy!")
+
+    SV.entoh_town.HelperChapter = 3
     GAME:CutsceneMode(false)
     GAME:MoveCamera(0, 0, 0, true)
 end

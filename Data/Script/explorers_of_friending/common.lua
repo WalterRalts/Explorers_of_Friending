@@ -18,6 +18,8 @@ Serpent = require 'lib.serpent'
 -- Console Writing
 ----------------------------------------------------------
 
+RogueEssence.Dungeon.ExplorerTeam.MAX_TEAM_SLOTS = 5
+
 --Prints to console!
 function PrintInfo(text)
   if DiagManager then 

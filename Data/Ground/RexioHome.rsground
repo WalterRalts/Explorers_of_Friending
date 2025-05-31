@@ -25677,15 +25677,15 @@
 }
 },
 {
-"EntName": "NewObject",
+"EntName": "Package",
 "Direction": 0,
-"EntEnabled": true,
+"EntEnabled": false,
 "EntOrder": 0,
 "InteractOrder": 0,
 "triggerType": 0,
 "ObjectAnim": {
-"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
-"AnimIndex": "",
+"$type": "RogueEssence.Content.ItemAnimData, RogueEssence",
+"AnimIndex": "Box_Blue",
 "FrameTime": 1,
 "StartFrame": -1,
 "EndFrame": -1,
@@ -25713,8 +25713,8 @@
 "Y": 0
 },
 "Collider": {
-"X": 256,
-"Y": 184,
+"X": 168,
+"Y": 175,
 "Width": 16,
 "Height": 16
 }
@@ -25730,15 +25730,15 @@
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 197,
-"Y": 174,
+"X": 196,
+"Y": 175,
 "Width": 16,
 "Height": 16
 }
 },
 {
 "EntName": "RexioHomeWay",
-"Direction": 1,
+"Direction": 4,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,

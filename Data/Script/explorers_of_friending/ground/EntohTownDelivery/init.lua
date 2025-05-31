@@ -5,6 +5,7 @@
 ]]--
 -- Commonly included lua functions and data
 require 'origin.common'
+require 'explorers_of_friending.ground.EntohTownDelivery.cutscene'
 
 -- Package name
 local EntohTownDelivery = {}
@@ -17,6 +18,10 @@ local EntohTownDelivery = {}
 function EntohTownDelivery.Init(map)
   local down = CH("Down")
   GROUND:CharSetAnim(down, "Sleep", true)
+  if SV.entoh_town.HelperChapter > 1 then
+    GROUND:Hide("Bucks")
+    GROUND:Hide("Ponya")
+  end
 end
 
 ---EntohTownDelivery.Enter(map)
@@ -62,6 +67,130 @@ end
 function EntohTownDelivery.Entoh_DeliSouthEnter_Touch(obj, activator)
   GAME:FadeOut(false, 10)
   GAME:EnterGroundMap("EntohTownNorth", "EnterMark_NNorth")
+end
+
+function EntohTownDelivery.Down_Action(obj, activator)
+  local rexio = CH("PLAYER")
+  UI:SetSpeaker(rexio)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("(The dragon sleeps. I probably shouldn't wake her...)")
+end
+
+function EntohTownDelivery.Dragon_CutsceneStart_Touch(obj, activator)
+  if SV.entoh_town.HelperChapter == 1 then
+    Entoh.Dragon()
+  end
+end
+
+function EntohTownDelivery.Chucky_Action(obj, activator)
+  local dragon = CH("Dragon")
+  local chucky = CH("Chucky")
+  local rexio = CH("PLAYER")
+  local time = math.random(3)
+  COMMON.FaceEachother("PLAYER", "Chucky")
+  if time < 3 then
+    UI:SetSpeaker(chucky)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("I'm just here to cut stamps, bro.[pause=25] I[emote=Happy] don't need to deal with any of this.")
+    
+    COMMON.FaceEachother("Dragon", "Chucky")
+    UI:SetSpeaker(dragon)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Chucky...[pause=30][speed=0.7] help a monster out.")
+
+    UI:SetSpeaker(chucky)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("What would I do? Not like I'm in charge of the boxes, bruh.")
+  else
+    UI:SetSpeaker(chucky)
+    UI:SetSpeakerEmotion("Sigh")
+    UI:WaitShowDialogue("Rex.[pause=30] My guy.[pause=30] If you're lookin' for some letter or somethin',[pause=15] Dragon's to your left.")
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("Y-yeah, I knew that.")
+  end
+  
+end
+
+function EntohTownDelivery.Mud_Action(obj, activator)
+  local mud = CH("Mud")
+  local ponia = CH("Ponia")
+  UI:SetSpeaker(mud)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Yer momma's crazy, Pon...")
+
+  UI:SetSpeaker(ponia)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("It's, like, totally expected of her at this point.")
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("She told me like, it's,[pause=25] like... uh,[emote=Stunned][pause=35] basically[pause=30] how she grew up...")
+
+  UI:SetSpeaker(mud)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Ain't no way ma would catch me with that attitude...")
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("Least she's nice, gave me a whole pie slice...")
+  UI:WaitShowDialogue("Was mighty delicious...")
+end
+
+function EntohTownDelivery.Ponia_Action(obj, activator)
+  EntohTownDelivery.Mud_Action()
+end
+
+function EntohTownDelivery.Dragon_Action(obj, activator)
+  local dragon = CH("Dragon")
+  local rexio = CH("PLAYER")
+  COMMON.FaceEachother("PLAYER", "Dragon")
+  if SV.entoh_town.HelperChapter == 3 then
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Mr. Dragon, have you seen a key anywhere? One for a blue box?")
+
+    UI:SetSpeaker(dragon)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("I don't think so...")
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Sigh")
+    UI:WaitShowDialogue("...thank you, Mr. Dragon.")
+  else
+    if SV.entoh_town.package_received == false then
+      UI:SetSpeaker(dragon)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("[speed=0.05]...[pause=20][speed=1.0]o[emote=Surprised]h![pause=15] My bad, Rexio, I forgot your dad ordered somethin'...")
+
+      GROUND:CharAnimateTurn(dragon, Direction.Up, 2, true)
+      GAME:WaitFrames(18)
+      GROUND:CharSetAnim(dragon, "Walk", false)
+      GROUND:Hide("Dragon")
+      GAME:WaitFrames(110)
+      COMMON.FaceEachother("PLAYER", "Dragon")
+      GAME:WaitFrames(15)
+      GROUND:Unhide("Dragon")
+      GROUND:CharSetAnim(dragon, "Walk", false)
+      GAME:WaitFrames(15)
+
+      UI:SetSpeaker(dragon)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("There ya go, buddy.")
+
+      UI:SetSpeaker(rexio)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Thank you, Mr. Dragon.")
+      SV.entoh_town.package_received = true
+    else
+      UI:SetSpeaker(dragon)
+      UI:SetSpeakerEmotion("Pain")
+      UI:WaitShowDialogue("I wish I knew[pause=20] whatever's goin' on out there...")
+      UI:SetSpeakerEmotion("Sad")
+      UI:WaitShowDialogue("Local's the only thing's still going smooth.")
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("What am I gonna do...?")
+    end
+  end
+  
+  
 end
 
 return EntohTownDelivery

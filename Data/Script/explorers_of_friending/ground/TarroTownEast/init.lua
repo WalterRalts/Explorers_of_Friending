@@ -18,19 +18,24 @@ local TarroTownEast = {}
 function TarroTownEast.Init(map)
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
+
   local partner = CH('Teammate1')
   local azura = CH("Teammate1")
   local tango = CH("Tango")
+
   GROUND:Hide("MrSeed")
+
   if outside_enter == 1 and SV.tarro_town.PieChapter <= 2 then
     GROUND:TeleportTo(partner, 355, 401, Direction.Down, 0)
     GAME:FadeIn(20)
-  elseif dungeon_oof ~= 1 and SV.tarro_town.PieChapter ~= 4 then
+  elseif SV.tarro_town.PieChapter ~= 4 then
+    if dungeon_oof ~= 1 then
       if SV.tarro_town.PieChapter == 2.1 then
         TarroTownEast.TarroForrestFailed()
       elseif SV.tarro_town.PieChapter == 2.2 then
         TarroTownEast.TarroForrestFailed()
       end
+    end  
   elseif SV.tarro_town.PieChapter == 4 then
     GROUND:TeleportTo(tango, 476, 279, Direction.UpLeft, 0)
     GROUND:Unhide("MrSeed")
@@ -38,6 +43,7 @@ function TarroTownEast.Init(map)
       GROUND:TeleportTo(azura, 244, 96, Direction.Down, 0)
     end
   end
+  
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   partner.CollisionDisabled = true
 end
@@ -629,6 +635,79 @@ function TarroTownEast.Bluetail_Mailbox_Action(obj, activator)
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("(Nothin'.)")
+end
+
+function TarroTownEast.Budeg_Action(obj, activator)
+  local budeg = CH("Budeg")
+
+  UI:SetSpeaker(budeg)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Zzt, welcome to dev mode. Bzzt, I am made to skip scenes and jump bewteen characters.")
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Krzzt, I really hope this get to the right person...")
+  
+  local password = "Aa1Bb2;345devdebug"
+  UI:NameMenu("Please enter the password.", "Password", 200, "Catbug")
+  UI:WaitForChoice() 
+  print(tostring(UI:ChoiceResult()))
+  if not UI:ChoiceResult() == tostring(password) then
+    UI:SetSpeakerEmotion("Pain")
+    UI:WaitShowDialogue("Wrong!")
+  else
+    UI:SetSpeakerEmotion("Happy")
+    local choices = {("Rexio"),
+          ("???")}
+      UI:BeginChoiceMenu("Please choose a character for dev work.", choices, 1, 2)
+      UI:WaitForChoice()
+      result = UI:ChoiceResult()
+    if result == 1 then
+      UI:SetSpeaker(budeg)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Zzt, changing to Rexio")
+      GAME:FadeOut(false, 60)
+      --Begin replacement
+      --Save Maru and Azura's stats
+      SV.guilders.tarro_town.bluetail_stats = GAME:GetPlayerPartyTable()
+      --Replace them with Rexio
+      GAME:RemovePlayerTeam(0)
+      GAME:RemovePlayerTeam(0)
+      local mon_id = RogueEssence.Dungeon.MonsterID("riolu", 0, "normal", Gender.Male)
+
+      local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 7, "", 0)
+      p.IsFounder = true
+      p.IsPartner = true
+      p.Nickname = "Rexio"
+
+      _DATA.Save.ActiveTeam.Players:Add(p)
+      SV.guilders.tarro_town.bluetail_storage = {}
+      --remove bag and storage items and put them in a temporary table
+      GAME:DepositAll()
+      --[[local storage = _DATA.Save.ActiveTeam.Storage
+      local count = storage.Keys.Count
+      for i = count - 1, 0, -1 do
+        print(storage.Keys[i])
+        local slot = {id = storage.Keys[i], count = storage.Values[i], hidden = ""} --checks ID, the amount of said item, and any hidden value.
+        table.insert(SV.guilders.tarro_town.bluetail_storage, slot) --puts it into a storage slot in the table variable.
+        storage.Remove(storage.Keys[i]) --removes it from storage
+      end]]--
+      local box_storage = _DATA.Save.ActiveTeam.BoxStorage
+      local box_count = box_storage.Count
+      if box_count > 1 then
+        for i = box_count - 1, 0, -1 do
+          local slot = {id = box_storage[i].ID, count = 1, hidden_value = box_storage[i].HiddenValue}
+          table.insert(SV.guilders.tarro_town.bluetail_storage, slot)
+          box_storage.RemoveAt(i)
+        end
+      end
+
+      GAME:EnterGroundMap("entoh_town", "RexioHome", "RexioStart")
+    else
+      UI:SetSpeaker(budeg)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Zzt, have a good day.")
+    end
+  end
+  
 end
 
 return TarroTownEast

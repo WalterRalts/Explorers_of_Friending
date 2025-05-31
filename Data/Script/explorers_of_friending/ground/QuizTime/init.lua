@@ -25,28 +25,33 @@ function QuizTime.Init(map)
   GAME:FadeIn(5)
   GAME:WaitFrames(10)
   outside_enter = 1
-  UI:SetSpeaker(maru)
-  UI:SetSpeakerEmotion("Surprised")
-  UI:WaitShowDialogue("Whoa!")
+  if not quiz_done == 1 then
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Surprised")
+    UI:WaitShowDialogue("Whoa!")
 
-  UI:SetSpeaker(puchi)
-  UI:SetSpeakerEmotion("Pain")
-  UI:WaitShowDialogue("[speed=0.6]Ack...[pause=30] too[emote=Dizzy] bright...!")
+    UI:SetSpeaker(puchi)
+    UI:SetSpeakerEmotion("Pain")
+    UI:WaitShowDialogue("[speed=0.6]Ack...[pause=30] too[emote=Dizzy] bright...!")
 
-  GROUND:CharTurnToCharAnimated(senna, ziggy, 4)
-  UI:SetSpeaker(senna)
-  UI:SetSpeakerEmotion("Surprised")
-  UI:WaitShowDialogue("Z-[pause=30]ziggy...! H[emote=Stunned]ow did you...?!")
+    GROUND:CharTurnToCharAnimated(senna, ziggy, 4)
+    UI:SetSpeaker(senna)
+    UI:SetSpeakerEmotion("Surprised")
+    UI:WaitShowDialogue("Z-[pause=30]ziggy...! H[emote=Stunned]ow did you...?!")
+  end
+  
   
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("First question!")
-
-  GROUND:CharTurnToCharAnimated(senna, puchi, 4)
-  UI:SetSpeaker(senna)
-  UI:SetSpeakerEmotion("Sigh")
-  UI:WaitShowDialogue("[speed=0.7]Hm...")
-
+    
+  if not quiz_done == 1 then
+    GROUND:CharTurnToCharAnimated(senna, puchi, 4)
+    UI:SetSpeaker(senna)
+    UI:SetSpeakerEmotion("Sigh")
+    UI:WaitShowDialogue("[speed=0.7]Hm...")
+  end
+  
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("What color are the Tarro town flowers?")
