@@ -49,7 +49,7 @@ function Outside.CloudWatch()
 
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Inspired")
-    COMMON.CharExclaim("Azura")
+    COMMON.CharExclaim("Teammate1")
     UI:WaitShowDialogue("Gasp![pause=25] P[emote=Joyous]ie[pause=15] pie[pause=15] pie[pause=15] pie!")
     COMMON.CharHop("Teammate1")
     UI:SetSpeakerEmotion("Happy")

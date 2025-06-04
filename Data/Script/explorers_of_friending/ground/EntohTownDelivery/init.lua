@@ -22,6 +22,9 @@ function EntohTownDelivery.Init(map)
     GROUND:Hide("Bucks")
     GROUND:Hide("Ponya")
   end
+  if KeyGet == true then
+    GROUND:Hide("PackageKey")
+  end
 end
 
 ---EntohTownDelivery.Enter(map)
@@ -88,29 +91,58 @@ function EntohTownDelivery.Chucky_Action(obj, activator)
   local rexio = CH("PLAYER")
   local time = math.random(3)
   COMMON.FaceEachother("PLAYER", "Chucky")
-  if time < 3 then
-    UI:SetSpeaker(chucky)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("I'm just here to cut stamps, bro.[pause=25] I[emote=Happy] don't need to deal with any of this.")
-    
-    COMMON.FaceEachother("Dragon", "Chucky")
-    UI:SetSpeaker(dragon)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Chucky...[pause=30][speed=0.7] help a monster out.")
+  if SV.entoh_town.HelperChapter == 3 then
+    if not KeyGet then
+      SandInteract = true
+      UI:SetSpeaker(rexio)
+      UI:SetSpeakerEmotion("Stunned")
+      UI:WaitShowDialogue("Have you seen a key around, Chucks?")
 
-    UI:SetSpeaker(chucky)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("What would I do? Not like I'm in charge of the boxes, bruh.")
+      GROUND:CharAnimateTurn(chucky, Direction.Down, 4, false)
+      UI:SetSpeaker(chucky)
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("Yeah, right there, under that one tree.")
+
+      GROUND:CharAnimateTurn(rexio, Direction.Down, 4, false)
+      UI:SetSpeaker(rexio)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Huh...[pause=30] didn't see it there...")
+    else
+      UI:SetSpeaker(chucky)
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("Your dad told me not to tell you where the key was...")
+      if SandInteract then
+        UI:SetSpeakerEmotion("Stunned")
+        UI:WaitShowDialogue("Frankly, I'm surprised you had to ask me...")
+      else
+        UI:SetSpeakerEmotion("Worried")
+        UI:WaitShowDialogue("Quite frankly, that was a pretty bad hiding spot.")
+      end
+    end
   else
-    UI:SetSpeaker(chucky)
-    UI:SetSpeakerEmotion("Sigh")
-    UI:WaitShowDialogue("Rex.[pause=30] My guy.[pause=30] If you're lookin' for some letter or somethin',[pause=15] Dragon's to your left.")
+    if time < 3 then
+      UI:SetSpeaker(chucky)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("I'm just here to cut stamps, bro.[pause=25] I[emote=Happy] don't need to deal with any of this.")
+      
+      COMMON.FaceEachother("Dragon", "Chucky")
+      UI:SetSpeaker(dragon)
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("Chucky...[pause=30][speed=0.7] help a monster out.")
 
-    UI:SetSpeaker(rexio)
-    UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("Y-yeah, I knew that.")
+      UI:SetSpeaker(chucky)
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("What would I do? Not like I'm in charge of the boxes, bruh.")
+    else
+      UI:SetSpeaker(chucky)
+      UI:SetSpeakerEmotion("Sigh")
+      UI:WaitShowDialogue("Rex.[pause=30] My guy.[pause=30] If you're lookin' for some letter or somethin',[pause=15] Dragon's to your left.")
+
+      UI:SetSpeaker(rexio)
+      UI:SetSpeakerEmotion("Stunned")
+      UI:WaitShowDialogue("Y-yeah, I knew that.")
+    end
   end
-  
 end
 
 function EntohTownDelivery.Mud_Action(obj, activator)
@@ -129,9 +161,6 @@ function EntohTownDelivery.Mud_Action(obj, activator)
   UI:SetSpeaker(mud)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("Ain't no way ma would catch me with that attitude...")
-  UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("Least she's nice, gave me a whole pie slice...")
-  UI:WaitShowDialogue("Was mighty delicious...")
 end
 
 function EntohTownDelivery.Ponia_Action(obj, activator)
@@ -143,17 +172,44 @@ function EntohTownDelivery.Dragon_Action(obj, activator)
   local rexio = CH("PLAYER")
   COMMON.FaceEachother("PLAYER", "Dragon")
   if SV.entoh_town.HelperChapter == 3 then
-    UI:SetSpeaker(rexio)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Mr. Dragon, have you seen a key anywhere? One for a blue box?")
+    if not KeyGet then
+      DragInteract = true
+      UI:SetSpeaker(rexio)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Mr. Dragon, have you seen a key anywhere? One for a blue box?")
 
-    UI:SetSpeaker(dragon)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("I don't think so...")
+      UI:SetSpeaker(dragon)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("I don't think so...")
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Chucky might know.")
 
-    UI:SetSpeaker(rexio)
-    UI:SetSpeakerEmotion("Sigh")
-    UI:WaitShowDialogue("...thank you, Mr. Dragon.")
+      UI:SetSpeaker(rexio)
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("...thank you, Mr. Dragon.")
+    else
+      if DragInteract then
+        UI:SetSpeaker(dragon)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("Ya see what I did there?[pause=50] Making you take a few extra steps?")
+
+        UI:SetSpeaker(rexio)
+        UI:SetSpeakerEmotion("Worried")
+        UI:WaitShowDialogue("Not really...?")
+
+        UI:SetSpeaker(dragon)
+        UI:SetSpeakerEmotion("Stunned")
+        UI:WaitShowDialogue("Ah.[pause=45] M[emote=Worried]m.")
+      else
+        UI:SetSpeaker(dragon)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Nice job finding that key, little guy.")
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("That aura sensing of yours seems pretty useful;[pause=50] t[emote=Happy]each me sometime, why don't ya?")
+      end
+      
+    end
+    
   else
     if SV.entoh_town.package_received == false then
       UI:SetSpeaker(dragon)
@@ -189,8 +245,38 @@ function EntohTownDelivery.Dragon_Action(obj, activator)
       UI:WaitShowDialogue("What am I gonna do...?")
     end
   end
-  
-  
+end
+
+function EntohTownDelivery.PackageKey_Action(obj, activator)
+  local rexio = CH("PLAYER")
+  if SV.entoh_town.HelperChapter < 3 then
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Huh, a key?")
+
+    GROUND:CharAnimateTurn(rexio, Direction.Left, 6, false)
+    GAME:WaitFrames(80)
+    GROUND:CharAnimateTurn(rexio, Direction.Right, 6, true)
+    GAME:WaitFrames(80)
+    GROUND:CharAnimateTurn(rexio, Direction.Down, 2, true)
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Mine!")
+    GROUND:Hide("PackageKey")
+    KeyGet = true
+  elseif SV.entoh_town.HelperChapter == 3 then
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Joyous")
+    UI:WaitShowDialogue("Aha! Key!")
+    GROUND:CharWaitAnim(rexio, "Pose")
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Yoink!")
+    GROUND:Hide("PackageKey")
+    KeyGet = true
+  end
 end
 
 return EntohTownDelivery

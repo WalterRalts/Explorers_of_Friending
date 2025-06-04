@@ -77,5 +77,30 @@ function EntohTownNorth.Enoth_DeliveryNEnter_Touch(obj, activator)
   GAME:EnterGroundMap("EntohTownDelivery", "EnterMark_DSouth")
 end
 
+function EntohTownNorth.Panch_Action(obj, activator)
+  local panch = CH("Panch")
+  local rexio = CH("PLAYER")
+  if SV.entoh_town.HelperChapter < 3 then
+    if SV.entoh_town.thicket.result > 0 then
+      UI:SetSpeaker(panch)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Even if you sucked, you still did it! Hooray!")
+    else
+    end
+  else
+    UI:SetSpeaker(panch)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Wow, more chores?")
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Nah, gotta find a key.")
+
+    UI:SetSpeaker(panch)
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("Booooooring!")
+  end
+end
+
 return EntohTownNorth
 

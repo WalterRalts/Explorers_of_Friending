@@ -1496,7 +1496,6 @@ function SINGLE_CHAR_SCRIPT.DungeonTalker(owner, ownerChar, context, args) --Tha
 	if context.User == nil then return else print(context.User) end
 	if context.User == GAME:GetPlayerPartyMember(0) then --this check is needed so that the script runs only once, otherwise it'll run for each entity in the map. 
 	  GAME:QueueLeaderEvent(function() SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args) end)
-	  print(context.User)
 	end
 end
 
@@ -1635,25 +1634,4 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 			UI:WaitShowDialogue("While playling as Rexio, use the B key to sense items within 10 tiles")
 		end
 	end
-end
-
-function SINGLE_CHAR_SCRIPT.RexioFocuser(owner, ownerChar, context, args) --Thank you, Halcyon scripters.
-	if context.User == nil then return else end
-	if context.User == GAME:GetPlayerPartyMember(0) then --this check is needed so that the script runs only once, otherwise it'll run for each entity in the map. 
-	  GAME:QueueLeaderEvent(function() SINGLE_CHAR_SCRIPT.RexioFocus(owner, ownerChar, context, args) end)
-	  print(context.User)
-	end
-end
-
-function SINGLE_CHAR_SCRIPT.RexioFocus(owner, ownerChar, context, args)
-	local rexio = GAME:GetPlayerPartyMember(0)
-  	--[[if rexio.Name == "Rexio" then
-		if COMMON.CanTalk(context.User) then
-			local aura = RogueEssence.Dungeon.StatusEffect("aura_sense")
-			aura:LoadFromData()
-			TASK:WaitTask(context.User:AddStatusEffect(nil, aura, false))
-		else
-			TASK:WaitTask(context.User:RemoveStatusEffect(nil, aura, false))
-		end
-  	end]]
 end

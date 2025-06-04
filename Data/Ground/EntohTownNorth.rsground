@@ -59524,7 +59524,7 @@
 "Markers": [
 {
 "EntName": "EnterMark_South",
-"Direction": 0,
+"Direction": 4,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,

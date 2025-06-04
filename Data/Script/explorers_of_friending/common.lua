@@ -1420,3 +1420,8 @@ function COMMON.CharSweating(char)
   GROUND:CharSetEmote(sweating, "sweating", 2)
   SOUND:PlaySE("Battle/EVT_Emote_Sweating")
 end
+
+function COMMON.SetCharAndEmotion(char, emote)
+  UI:SetSpeaker(char)
+  UI:SetSpeakerEmotion(emote)
+end

@@ -10,10 +10,8 @@ end
 function RexioScan:Scan()
   --menu check
   if GAME:GetCurrentDungeon() == nil then
-    print("Not in a dungeon.")
   else
     local leader = GAME:GetPlayerPartyMember(GAME:GetTeamLeaderIndex())
-    local g_leader = CH("PLAYER")
     if GAME:IsKeyDown(66) and leader.Name == "Rexio" and rfocus_cooldown <= 0 then
       rfocus_cooldown = 100
       --services are coroutines, apparently
@@ -66,11 +64,10 @@ function RexioScan:Scan()
             GAME:CutsceneMode(false)
           end
         elseif GAME:GetPlayerPartyCount() == 1 then
-          if SV.entoh_town.HelperChapter == 3 then
+          if SV.entoh_town.HelperChapter == 3 and not KeyGet == true then
             GAME:CutsceneMode(true)
             GAME:WaitFrames(15)
             SOUND:PlaySE("Battle/_UNK_DUN_Charge")
-            GROUND:CharWaitAnim(g_leader, "DeepBreath")
             local area_name = GAME:GetCurrentGround().AssetName
             if area_name == "EntohTownDelivery" then
               UI:SetSpeaker(leader)

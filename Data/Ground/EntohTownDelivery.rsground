@@ -62779,7 +62779,7 @@
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 1,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ItemAnimData, RogueEssence",
 "AnimIndex": "Key_Brown",
@@ -62810,8 +62810,8 @@
 "Y": 0
 },
 "Collider": {
-"X": 503,
-"Y": 370,
+"X": 436,
+"Y": 330,
 "Width": 16,
 "Height": 16
 }

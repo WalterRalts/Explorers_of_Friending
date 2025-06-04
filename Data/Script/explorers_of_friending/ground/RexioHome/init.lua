@@ -19,8 +19,14 @@ function RexioHome.Init(map)
 
   if SV.entoh_town.HelperChapter == -1 then
     Aurm.Feeling()
-  elseif SV.entoh_town.package_received == true then
+  elseif SV.entoh_town.package_received == true and SV.entoh_town.HelperChapter == 2 then
     Aurm.Home()
+  elseif KeyGet then
+    Aurm.OpenIt()
+  end
+
+  if SV.entoh_town.HelperChapter == 3 then
+    GROUND:Unhide("Package")
   end
   
 end
@@ -49,6 +55,10 @@ end
 --Engine callback function
 function RexioHome.Update(map)
 
+  if GAME:GetPlayerEquippedItem(0).ID == "held_power_band" and SV.entoh_town.HelperChapter == 4 then
+    Aurm.Fashion()
+    SV.entoh_town.HelperChapter = 5
+  end
 
 end
 
@@ -87,22 +97,35 @@ end
 function RexioHome.Luke_Action(obj, activator)
   local rexio = CH("PLAYER")
   local luke = CH("Luke")
-  COMMON.FaceEachother("Luke", "PLAYER")
-  UI:SetSpeaker(luke)
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("Go on, Rexio. [pause=30]Don't [emote=Happy]let me stop you.")
+  if SV.entoh_town.HelperChapter < 3 then
+    COMMON.FaceEachother("Luke", "PLAYER")
+    UI:SetSpeaker(luke)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Go on, Rexio. [pause=30]Don't [emote=Happy]let me stop you.")
 
-  UI:SetSpeaker(rexio)
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("Feel free to, actually.")
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Feel free to, actually.")
 
-  UI:SetSpeaker(luke)
-  UI:SetSpeakerEmotion("Determined")
-  UI:WaitShowDialogue("Rexio.")
+    UI:SetSpeaker(luke)
+    UI:SetSpeakerEmotion("Determined")
+    UI:WaitShowDialogue("Rexio.")
 
-  UI:SetSpeaker(rexio)
-  UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("Kidding, kidding.")
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Kidding, kidding.")
+  else
+    UI:SetSpeaker(luke)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("If you're asking for a hint, then I can't really help.")
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("I, uh, forgot where I put the key.")
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("Wow.")
+  end
+  
 end
 
 return RexioHome
