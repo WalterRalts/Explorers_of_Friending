@@ -64,6 +64,10 @@ end
 -------------------------------
 -- Entities Callbacks
 -------------------------------
+local vile = 0
+local chat = 0
+local slip_notice = 0
+
 function TarroTownBigTree_ch3.TreeHallow_Entrance_Touch(obj, activator)
   --[[COMMON.UnlockWithFanfare("tarro_tree_hollows", false)
   local dungeon_entrances = {"tarro_tree_hollows"}
@@ -76,15 +80,44 @@ function TarroTownBigTree_ch3.InfoSign_Action(obj, activator)
   UI:WaitShowDialogue("Today's news!:")
   UI:WaitShowDialogue("The mayor is looking for more recruits to carry her honey around.")
   UI:WaitShowDialogue("Payment will be done bihourly by Queen herself.")
-  UI:WaitShowDialogue("All help is welcome! Please apply at the hive west of town!")
+  GROUND:CharTurnToChar(CH("PurpKek"), CH("PLAYER"))
+  UI:WaitShowDialogue("All help is welcome! Ask the one at the counter for a slip to apply at the hive west of town!")
+  GROUND:CharAnimateTurn(CH("PurpKek"), Direction.DownRight, 4, false)
+  slip_notice = 1
 end
 
 function TarroTownBigTree_ch3.Tree_2ndFloorEntrance_Touch(obj, activator)
-  
+  local maru = CH('PLAYER')
+  COMMON.SetCharAndEmotion(maru, "Stunned")
+  UI:WaitShowDialogue("(That is a crowd and a half.)")
+  UI:WaitShowDialogue("(...I'll come back later.)")
 end
 
 function TarroTownBigTree_ch3.PurpKek_Counter_Action(obj, activator)
+  local kek = CH('PurpKek')
 
+  if slip_notice == 1 then
+    UI:SetSpeaker(kek)
+    UI:SetSpeakerEmotion("Happy")
+    UI:ChoiceMenuYesNo("I assume you're here for the Queen's post, yes?", false)
+    UI:WaitForChoice()
+    local result = UI:ChoiceResult()
+    if result then
+      GAME:GroundSave()
+      UI:WaitShowDialogue("Game saved!")
+    else
+      UI:SetSpeaker(kek)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Ah, yes yes. Well, in that case...")
+      slip_notice = 0
+    end
+  end
+
+  UI:SetSpeaker(kek)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("I unfortunately don't have any stock at the moment.")
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Ever since that whole explosion rumor from you and every other child, I haven't gotten any goodies to sell...")
 end
 
 function TarroTownBigTree_ch3.Tree_Exit_Touch(obj, activator)
@@ -95,14 +128,25 @@ end
 
 function TarroTownBigTree_ch3.Hollian_Action(obj, activator)
   local holly = CH("Hollian")
+  
 
-  UI:SetSpeaker(holly)
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("Sorry, the dungeon is only authorized to those equal to or higher than rescue teams.")
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("It's been done as word of an explosion went around from the kids.")
-  UI:SetSpeakerEmotion("Stunned")
-  UI:WaitShowDialogue("Don't know why we're listening to them[pause=35], [emote=Normal]but the issue is being investigated..")
+  if vile == 0 then
+    UI:SetSpeaker(holly)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Sorry, the dungeon is only authorized to those equal to or higher than rescue teams.")
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("It's been done as word of an explosion went around from the kids.")
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("Don't know why we're listening to them[pause=35], [emote=Normal]but the issue is being investigated.")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Given you wanna go to the top of the tree, then you're gonna have to wait.")
+    vile = vile + 1
+  else
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Wait, aren't you two are locals? You heard the explosion.[pause=40] You should probably tell the mayor when she's less busy.")
+  end
+  
+  
 end
 
 function TarroTownBigTree_ch3.Storage_Action(obj, activator)
@@ -115,6 +159,37 @@ function TarroTownBigTree_ch3.Archia_Action(obj, activator)
   UI:SetSpeaker(archia)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("Gosh, they sure are taking a while on that second floor...")
+end
+
+function TarroTownBigTree_ch3.RequestSign_Action(obj, activator)
+  local maru = CH('PLAYER')
+  COMMON.SetCharAndEmotion(maru, "Worried")
+  UI:WaitShowDialogue("(Whoa! That's a lot of requests!)")
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("(Guess all the guilds and rescue teams are busy with something bigger...)")
+end
+
+function TarroTownBigTree_ch3.Tent_Action(obj, activator)
+  local maru = CH('PLAYER')
+  COMMON.SetCharAndEmotion(maru, "Normal")
+  UI:WaitShowDialogue("(This tent looks like it's for someone else...)")
+end
+
+function TarroTownBigTree_ch3.Dean_Action(obj, activator)
+  local dean = CH('Dean')
+  
+  if chat == 0 then
+    COMMON.SetCharAndEmotion(dean, "Happy")
+    UI:WaitShowDialogue("I love this tree so much![pause=15] The smell is so good!")
+    chat = chat + 1
+  elseif chat == 1 then
+    COMMON.SetCharAndEmotion(dean, "Worried")
+    UI:WaitShowDialogue("I bet it looks better, too, but I can't see all that well.")
+    chat = chat + 1
+  else
+    COMMON.SetCharAndEmotion(dean, "Normal")
+    UI:WaitShowDialogue("I should ask my ma to live here instead.[pause=20] I heard they're adding homes in the tree.")
+  end
 end
 
 return TarroTownBigTree_ch3

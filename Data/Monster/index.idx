@@ -7,10 +7,10 @@
 "Forms": [
 {
 "Name": {
-"DefaultText": "",
+"DefaultText": "Black",
 "LocalTexts": {}
 },
-"Released": false,
+"Released": true,
 "Temporary": false
 }
 ],
@@ -18,7 +18,7 @@
 "DefaultText": "Ama Plain",
 "LocalTexts": {}
 },
-"Released": false,
+"Released": true,
 "Comment": "",
 "SortOrder": 0
 }

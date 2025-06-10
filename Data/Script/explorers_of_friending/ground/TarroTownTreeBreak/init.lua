@@ -326,22 +326,11 @@ function TarroTownTreeBreak.TarroTreeHollows_Continue_Touch(obj, activator)
   UI:WaitForChoice()
   result = UI:ChoiceResult()
   if result == 1 then
-    --Keep Maru and Azura in the front
-    --Add back the other members
-    local total = 1
-    local playeridx = GAME:GetTeamLeaderIndex()
-    for i, p in ipairs(SV.tarro_tree_hollows.entering_party) do
-      if i ~= (playeridx + 1) and i ~= (playeridx + 2) then --Indices in lua tables begin at 1
-        GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
-        --GROUND:GiveCharIdleChatter(chara)
-        total = total + 1
-        print(total)
-      end
-    end
     _DATA.Save.ActiveTeam.Players[2]:RefreshTraits()
     _DATA.Save.ActiveTeam.Players[3]:RefreshTraits()
     _DATA.Save.ActiveTeam.Players[4]:RefreshTraits()
     GAME:FadeOut(false, 20)
+    COMMON:RespawnAllies()
     GAME:ContinueDungeon("tarro_tree_hollows", 1, 0, 0)
   else
     UI:SetSpeaker(maru)

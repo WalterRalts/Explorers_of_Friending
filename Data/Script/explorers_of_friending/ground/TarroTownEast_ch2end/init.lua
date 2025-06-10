@@ -98,7 +98,7 @@ function TarroTownEast_ch2end.WentWhere()
 
   local coro11 = TASK:BranchCoroutine(function()
     UI:SetSpeakerEmotion("Determined")
-    UI:WaitShowDialogue("Furie,[pause=20] I know that you're glad for your kid,[pause=20] but you shouldn't let Ziggian keep running off like that!")
+    UI:WaitShowDialogue("Furie,[pause=15] I know that you're glad for your kid,[pause=20] but you shouldn't let Ziggian keep running off like that!")
     end)	
   local coro21 = TASK:BranchCoroutine(function() 
     GAME:WaitFrames(45)
@@ -108,6 +108,7 @@ function TarroTownEast_ch2end.WentWhere()
 
   TASK:JoinCoroutines({coro11, coro21})
   
+  COMMON.CharSweating("Ziggy")
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("Mrs. Bluetail, please[emote=Pain] don't call me that...")
@@ -119,18 +120,25 @@ function TarroTownEast_ch2end.WentWhere()
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("We heard a thing explode!")
+  
+  local function Boom()
+    COMMON.CharHop("Azura")
+  end
 
   UI:SetSpeaker(azura)
   UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("It was all like,[pause=30] B[emote=Shouting]OOM!")
+  UI:WaitShowDialogue("It was all like,[script=0] B[emote=Shouting]OOM!", {Boom})
 
   UI:SetSpeaker(senna)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("We went in the [color=#01FE10]Big Tree[color] and th-there was a thing!")
 
+  local function Mleh()
+    GROUND:CharSetAnim(azura, "Walk", true)
+  end
   UI:SetSpeaker(azura)
   UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("It was all like,[pause=30][emote=Dizzy] mlehhhhhhh!")
+  UI:WaitShowDialogue("It was all like,[pause=30][script=0][emote=Dizzy] mlehhhhhhh!", {Mleh})
 
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Determined")
@@ -139,9 +147,11 @@ function TarroTownEast_ch2end.WentWhere()
   UI:SetSpeakerEmotion("Angry")
   UI:WaitShowDialogue("We had to fight them!")
 
+  COMMON.CharQuestion("Beel")
   UI:SetSpeaker(furie)
   UI:SetSpeakerEmotion("Surprised")
   UI:WaitShowDialogue("T-[color=#01FE10]Tarro Tree[color]!")
+  GROUND:CharSetAnim(azura, "None", true)
 
   UI:SetSpeaker(beel)
   UI:SetSpeakerEmotion("Normal")

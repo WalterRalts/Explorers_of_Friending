@@ -6,7 +6,7 @@
 "DefaultText": "Ama Plain",
 "LocalTexts": {}
 },
-"Released": false,
+"Released": true,
 "Comment": "",
 "Title": {
 "DefaultText": "???",
@@ -22,7 +22,7 @@
 "Forms": [
 {
 "$type": "PMDC.Data.MonsterFormData, PMDC",
-"Released": false,
+"Released": true,
 "Generation": 0,
 "GenderlessWeight": 2,
 "MaleWeight": 2,
@@ -43,7 +43,7 @@
 "SharedSkills": [],
 "SecretSkills": [],
 "FormName": {
-"DefaultText": "",
+"DefaultText": "Black",
 "LocalTexts": {}
 },
 "Temporary": false,
@@ -53,7 +53,24 @@
 "Intrinsic1": "adaptability",
 "Intrinsic2": "arena_trap",
 "Intrinsic3": "bulletproof",
-"LevelSkills": []
+"LevelSkills": [
+{
+"Level": 1,
+"Skill": "rock_smash"
+},
+{
+"Level": 1,
+"Skill": "surf"
+},
+{
+"Level": 1,
+"Skill": "fly"
+},
+{
+"Level": 1,
+"Skill": "cut"
+}
+]
 }
 ]
 }

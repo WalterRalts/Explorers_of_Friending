@@ -68,7 +68,6 @@ function TarroTownEast.Update(map)
   if SV.tarro_town.PieChapter == 0 then
     SV.tarro_town.PieChapter = 1
   end
-
   Partner()
 end
 
@@ -212,7 +211,7 @@ function TarroTownEast.Ziggy_Action(obj, activator)
     GROUND:MoveToPosition(maru, 460, 422, false, 8)
     GROUND:MoveToPosition(azura, 460, 400, false, 8)
     GROUND:CharTurnToCharAnimated(maru, ziggy, 8)
-    GROUND:CharAnimateTurn(azura, Direction.Right, 7, true)
+    COMMON.FaceEachother("Teammate1", "Ziggy")
     if senna_check_ziggy == 1 then
       UI:SetSpeaker(azura)
       UI:SetSpeakerEmotion("Happy")

@@ -313,7 +313,7 @@ function Aurm.OpenIt()
     UI:WaitShowDialogue("Did you grab someone else's package again?")
     
     UI:SetSpeaker(luke)
-    UI:SetSpeakerEmotion("Normal")
+    UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowTimedDialogue("No, I could've sworn I...", 10)
 
     UI:SetSpeaker(rexio)
@@ -341,6 +341,8 @@ function Aurm.OpenIt()
 end
 
 function Aurm.Fashion()
+    local rexio = CH("PLAYER")
+    local luke = CH("Luke")
     COMMON.CharExclaim("PLAYER")
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Surprised")
@@ -355,6 +357,8 @@ function Aurm.Fashion()
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("...stronger.")
 
+    COMMON.FaceEachother("PLAYER", "Luke")
+
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("...I guess there's nothing wrong with that.")
@@ -362,7 +366,7 @@ function Aurm.Fashion()
     GROUND:CharSetAnim(rexio, "RearUp", true)
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Heh, I'll keep it. Not like I need it, but thanks, pops.")
+    UI:WaitShowDialogue("Heh, I'll keep it.[pause=30] Not like I need it, but thanks, pops.")
     
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Worried")
@@ -370,15 +374,18 @@ function Aurm.Fashion()
 
     GROUND:CharWaitAnim(rexio, "RearUp", false)
     COMMON.CharQuestion("PLAYER")
+    GAME:WaitFrames(30)
     COMMON.SetCharAndEmotion(rexio, "Worried")
     UI:WaitShowDialogue("...something up?")
 
     UI:SetSpeaker(luke)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("That color.[pause=0] It sucks on you.")
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("That color.[pause=0][emote=Happy] It sucks on you.")
 
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Bruuuuuuuh.")
+    SV.entoh_town.HelperChapter = 5
     GAME:FadeOut(false, 50)
+    GAME:EnterGroundMap("RexioHome_ch2", "RexioStart2")
 end

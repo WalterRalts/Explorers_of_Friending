@@ -81,7 +81,18 @@ end
 -- Entities Callbacks
 -------------------------------
 function RexioHome.ApartmentEnter_Touch(obj, activator)
-  GAME:EnterGroundMap("EntohTownCenter", "HomeMarker")
+  if SV.entoh_town.HelperChapter == 4 then
+    local rexio = CH("PLAYER")
+    local luke = CH("Luke")
+
+    UI:SetSpeaker(luke)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Rexio.[pause=30] Where are you going?")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("At least let me see how you look in the band.")
+  else
+    GAME:EnterGroundMap("EntohTownCenter", "HomeMarker")
+  end
 end
 
 function RexioHome.Poster_Action(obj, activator)
@@ -125,7 +136,22 @@ function RexioHome.Luke_Action(obj, activator)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("Wow.")
   end
-  
+end
+
+function RexioHome.FlowerPot_Action(obj, activator)
+  local rexio = CH("PLAYER")
+
+  UI:SetSpeaker(rexio)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("(Mom picked these flowers before she left. Said they were made for me.)")
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("(These are just flowers I can get from outside, though.)")
+
+  GROUND:CharSetAnim(rexio, "None", true)
+  GAME:WaitFrames(95)
+  COMMON.CharSweatdrop("PLAYER")
+  UI:SetSpeakerEmotion("Sad")
+  UI:WaitShowDialogue("(I hope she's doing okay...)")
 end
 
 return RexioHome

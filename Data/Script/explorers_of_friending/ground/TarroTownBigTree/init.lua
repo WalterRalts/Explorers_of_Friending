@@ -177,7 +177,7 @@ function TarroTownBigTree.TarroThingCut(map)
     GROUND:MoveToPosition(senna, 302, 398, false, 8)
   end)
   local coro8 = TASK:BranchCoroutine(function() 
-    GAME:MoveCamera(0, 0, 180, true)
+    GAME:MoveCamera(0, 0, 30, true)
   end)
   TASK:JoinCoroutines({coro3, coro4, coro5, coro6, coro7, coro8})
   
@@ -374,12 +374,13 @@ function TarroTownBigTree.InfoSign_Action(obj, activator)
 
   UI:SetSpeaker(senna)
   UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("Weird, the sign is usually updated.")
+  UI:WaitShowDialogue("Weird, the sign is usually full of stuff...")
 
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Determined")
   UI:WaitShowDialogue("That thing probably has something to do with this!")
 
+  COMMON.CharHop("Teammate1")
   UI:SetSpeaker(azura)
   UI:SetSpeakerEmotion("Determined")
   UI:WaitShowDialogue("Let's get after it!")
@@ -422,7 +423,7 @@ function TarroTownBigTree.Tree_Exit_Touch(obj, activator)
 
     UI:SetSpeaker(ziggy)
     UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("We'll wait here for you two to get stuff.")
+    UI:WaitShowDialogue("We'll wait here for you two!")
 
     UI:SetSpeaker(puchi)
     UI:SetSpeakerEmotion("Worried")

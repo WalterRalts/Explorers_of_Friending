@@ -162,7 +162,7 @@
 },
 "tarro_tree_hollows": {
 "$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
-"ExpPercent": 40,
+"ExpPercent": 35,
 "Level": 7,
 "LevelCap": false,
 "KeepSkills": false,
@@ -252,8 +252,35 @@
 "RexioHome",
 "EntohTownNorth",
 "EntohTownCenter",
-"EntohTownDelivery"
+"EntohTownDelivery",
+"RexioHome_ch2",
+"EntohTownCenter_ch2"
 ],
+"Maps": [],
+"Name": {
+"DefaultText": "Entoh Town",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 0
+},
+"entoh_thicket": {
+"$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
+"ExpPercent": 50,
+"Level": -1,
+"LevelCap": false,
+"KeepSkills": false,
+"TeamRestrict": false,
+"TeamSize": -1,
+"MoneyRestrict": false,
+"BagRestrict": -1,
+"KeepTreasure": false,
+"BagSize": -1,
+"Rescues": 0,
+"CountedFloors": 0,
+"Rogue": 0,
+"Grounds": [],
 "Maps": [
 [
 0,
@@ -267,7 +294,7 @@
 ]
 ],
 "Name": {
-"DefaultText": "Entoh Town",
+"DefaultText": "Entoh Thicket",
 "LocalTexts": {}
 },
 "Released": true,

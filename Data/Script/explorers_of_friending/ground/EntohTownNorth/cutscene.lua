@@ -209,8 +209,8 @@ function Entoh.PanchChallenge()
         local coro2 = TASK:BranchCoroutine(function()
             GROUND:AnimateToPosition(rexio, "Walk", Dir8.Up, rexio.Position.X, rexio.Position.Y - 30, 0.5, 1, 0)
         end)
-        COMMON.UnlockWithFanfare("entoh_town", false)
-        GAME:EnterZone("entoh_town", 0, 0, 0)
+        COMMON.UnlockWithFanfare("entoh_thicket", false)
+        GAME:EnterZone("entoh_thicket", 0, 0, 0)
         TASK:JoinCoroutines({coro1, coro2})
     end
 end

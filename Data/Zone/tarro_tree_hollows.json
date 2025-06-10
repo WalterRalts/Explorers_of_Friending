@@ -9,7 +9,7 @@
 "Released": true,
 "Comment": "",
 "NoEXP": false,
-"ExpPercent": 40,
+"ExpPercent": 35,
 "Level": 7,
 "LevelCap": false,
 "KeepSkills": false,
@@ -3094,7 +3094,7 @@
 },
 "Level": {
 "Min": 1,
-"Max": 10
+"Max": 7
 },
 "SpecifiedSkills": [
 "absorb",
@@ -3161,8 +3161,8 @@
 "Gender": -1
 },
 "Level": {
-"Min": 2,
-"Max": 10
+"Min": 3,
+"Max": 8
 },
 "SpecifiedSkills": [],
 "Intrinsic": "",
@@ -3230,7 +3230,7 @@
 },
 "Level": {
 "Min": 3,
-"Max": 7
+"Max": 5
 },
 "SpecifiedSkills": [
 "cut",
@@ -3258,6 +3258,33 @@
 "Spawn": {
 "Spawn": {
 "BaseForm": {
+"Species": "lotad",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 2,
+"Max": 6
+},
+"SpecifiedSkills": [],
+"Intrinsic": "",
+"Tactic": "wander_normal",
+"SpawnConditions": [],
+"SpawnFeatures": []
+},
+"Role": 0
+},
+"Rate": 50,
+"Range": {
+"Min": 3,
+"Max": 7
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
 "Species": "phantump",
 "Form": 0,
 "Skin": "",
@@ -3265,7 +3292,7 @@
 },
 "Level": {
 "Min": 3,
-"Max": 7
+"Max": 6
 },
 "SpecifiedSkills": [
 "cut",
@@ -3290,7 +3317,7 @@
 },
 "Rate": 100,
 "Range": {
-"Min": 2,
+"Min": 4,
 "Max": 7
 }
 }
@@ -3298,7 +3325,7 @@
 "TeamSizes": [
 {
 "Spawn": 1,
-"Rate": 45,
+"Rate": 50,
 "Range": {
 "Min": 0,
 "Max": 7
@@ -3306,7 +3333,7 @@
 },
 {
 "Spawn": 2,
-"Rate": 30,
+"Rate": 35,
 "Range": {
 "Min": 1,
 "Max": 7
@@ -3934,6 +3961,22 @@
 "Owner": 0,
 "TileStates": []
 }
+},
+{
+"Loc": {
+"X": 0,
+"Y": 0
+},
+"Tile": {
+"TileLoc": {
+"X": 0,
+"Y": 0
+},
+"ID": "stairs_go_down",
+"Revealed": true,
+"Owner": 0,
+"TileStates": []
+}
 }
 ],
 "Filters": [
@@ -4122,10 +4165,10 @@
 },
 "Value": {
 "$type": "RogueElements.InitGridPlanStep`1[[RogueEssence.LevelGen.MapGenContext, RogueEssence]], RogueElements",
-"CellWidth": 5,
-"CellHeight": 5,
-"CellX": 8,
-"CellY": 8,
+"CellWidth": 7,
+"CellHeight": 7,
+"CellX": 7,
+"CellY": 7,
 "CellWall": 7,
 "Wrap": false
 }
@@ -4357,9 +4400,48 @@
 "Y": 0
 },
 "Dir": 0
+},
+{
+"Loc": {
+"X": 0,
+"Y": 0
+},
+"Dir": 4
 }
 ],
 "Exits": [
+{
+"Loc": {
+"X": 0,
+"Y": 0
+},
+"Tile": {
+"TileLoc": {
+"X": 0,
+"Y": 0
+},
+"ID": "stairs_go_down",
+"Revealed": true,
+"Owner": 0,
+"TileStates": []
+}
+},
+{
+"Loc": {
+"X": 0,
+"Y": 0
+},
+"Tile": {
+"TileLoc": {
+"X": 0,
+"Y": 0
+},
+"ID": "stairs_go_down",
+"Revealed": true,
+"Owner": 0,
+"TileStates": []
+}
+},
 {
 "Loc": {
 "X": 0,
@@ -4798,6 +4880,13 @@
 "Y": 0
 },
 "Dir": 0
+},
+{
+"Loc": {
+"X": 0,
+"Y": 0
+},
+"Dir": 2
 }
 ],
 "Exits": [
@@ -5179,7 +5268,7 @@
 },
 "Role": 0
 },
-"Rate": 10,
+"Rate": 15,
 "Range": {
 "Min": 1,
 "Max": 3
@@ -5205,6 +5294,39 @@
 ],
 "Intrinsic": "",
 "Tactic": "wander_dumb",
+"SpawnConditions": [],
+"SpawnFeatures": [
+{
+"$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+}
+]
+},
+"Role": 0
+},
+"Rate": 5,
+"Range": {
+"Min": 0,
+"Max": 3
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
+"Species": "lotad",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 1,
+"Max": 6
+},
+"SpecifiedSkills": [
+"rain_dance"
+],
+"Intrinsic": "swift_swim",
+"Tactic": "wander_normal",
 "SpawnConditions": [],
 "SpawnFeatures": [
 {

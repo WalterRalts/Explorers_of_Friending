@@ -9662,7 +9662,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -9671,7 +9671,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -10042,7 +10042,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -10051,7 +10051,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -10422,7 +10422,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -10431,7 +10431,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -10793,7 +10793,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -10802,7 +10802,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -10811,7 +10811,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -11996,7 +11996,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -25513,13 +25513,56 @@
 "Width": 39,
 "Height": 60
 }
+},
+{
+"EntName": "FlowerPot",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 1,
+"ObjectAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"Passable": false,
+"CurrentAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"AnimTime": {
+"Ticks": 0
+},
+"Cycles": 0,
+"DrawOffset": {
+"X": 0,
+"Y": 0
+},
+"Collider": {
+"X": 199,
+"Y": 105,
+"Width": 30,
+"Height": 33
+}
 }
 ],
 "Spawners": [],
 "Markers": [
 {
 "EntName": "RexioStart2",
-"Direction": 4,
+"Direction": 1,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -25527,6 +25570,48 @@
 "Collider": {
 "X": 304,
 "Y": 136,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "look1",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 232,
+"Y": 229,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "look2",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 123,
+"Y": 248,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "RexioHomeWay",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 208,
+"Y": 286,
 "Width": 16,
 "Height": 16
 }

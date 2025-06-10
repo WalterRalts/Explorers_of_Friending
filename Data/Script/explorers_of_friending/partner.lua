@@ -341,6 +341,13 @@ function Partner()
                 UI:SetSpeakerEmotion("Happy")
                 UI:WaitShowDialogue("Whoo, town!")  
             end
+        elseif area_name == "TarroTownBigTree_ch3" then
+            if SV.tarro_town.DarknessChapter == 1 then
+                UI:SetSpeaker(azura)
+                GROUND:CharTurnToCharAnimated(maru, azura, 4)
+                UI:SetSpeakerEmotion("Normal")
+                UI:WaitShowDialogue("...what's with the crowd up there?")
+            end
         elseif area_name == "TheField" then
             UI:SetSpeaker(azura)
             UI:SetSpeakerEmotion("Worried")

@@ -9653,7 +9653,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -9662,7 +9662,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -9671,7 +9671,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -10033,7 +10033,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -10042,7 +10042,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -10051,7 +10051,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -10413,7 +10413,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -10422,7 +10422,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -10431,7 +10431,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -10793,7 +10793,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -10802,7 +10802,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -10811,7 +10811,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -25717,6 +25717,49 @@
 "Y": 175,
 "Width": 16,
 "Height": 16
+}
+},
+{
+"EntName": "FlowerPot",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 1,
+"ObjectAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"Passable": false,
+"CurrentAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"AnimTime": {
+"Ticks": 0
+},
+"Cycles": 0,
+"DrawOffset": {
+"X": 0,
+"Y": 0
+},
+"Collider": {
+"X": 198,
+"Y": 105,
+"Width": 31,
+"Height": 33
 }
 }
 ],
