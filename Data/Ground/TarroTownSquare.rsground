@@ -125585,7 +125585,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -187920,6 +187920,76 @@
 "Collider": {
 "X": 107,
 "Y": 458,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "moving5",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 1348,
+"Y": 219,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "moving3",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 1660,
+"Y": 220,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "moving4",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 1348,
+"Y": 268,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "moving1",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 1637,
+"Y": 268,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "moving2",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 1637,
+"Y": 257,
 "Width": 16,
 "Height": 16
 }

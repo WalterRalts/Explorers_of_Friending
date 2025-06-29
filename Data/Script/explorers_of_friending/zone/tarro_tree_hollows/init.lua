@@ -27,13 +27,6 @@ function tarro_tree_hollows.EnterSegment(zone, rescuing, segmentID, mapID)
   if segmentID == 1 then
     SV.tarro_tree_hollows.sprout_money_give = false
   end
-  if segmentID == 0 then
-    DUNsection = 0
-  elseif segmentID == 1 then
-    DUNsection = 1
-  else
-    DUNsection = 2
-  end
 end
 
 ---tarro_tree_hollows.ExitSegment(zone, result, rescue, segmentID, mapID)
@@ -68,6 +61,7 @@ function tarro_tree_hollows.ExitSegment(zone, result, rescue, segmentID, mapID)
       end
     else
       if segmentID == 0 then
+        DUNsection = 1
         GAME:EnterZone("tarro_tree_hollows", -1, 0, 0)
       else
         SV.tarro_tree_hollows.dungpoints = SV.tarro_tree_hollows.dungpoints + 100

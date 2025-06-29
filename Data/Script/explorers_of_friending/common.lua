@@ -346,11 +346,11 @@ function COMMON.GiftItemFull(player, receive_item, fanfare, force_storage)
   UI:SetCenter(true)
   if not force_storage and GAME:GetPlayerBagCount() + GAME:GetPlayerEquippedCount() < GAME:GetPlayerBagLimit() then
     --give to inventory
-	UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("DLG_RECEIVE_ITEM"):ToLocal(), player:GetDisplayName(), receive_item:GetDisplayName()))
+	UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("DLG_RECEIVE_ITEM"):ToLocal(), player:GetDisplayName(), _DATA:GetItem(receive_item):GetColoredName()))
 	GAME:GivePlayerItem(receive_item)
   else
     --give to storage
-	UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("DLG_RECEIVE_ITEM_STORAGE"):ToLocal(), player:GetDisplayName(), receive_item:GetDisplayName()))
+	UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("DLG_RECEIVE_ITEM_STORAGE"):ToLocal(), player:GetDisplayName(), _DATA:GetItem(receive_item):GetDisplayName()))
 	GAME:GivePlayerStorageItem(receive_item)
   end
   UI:ImportSpeakerSettings(orig_settings)
@@ -1419,6 +1419,12 @@ function COMMON.CharSweating(char)
   local sweating = CH(char)
   GROUND:CharSetEmote(sweating, "sweating", 2)
   SOUND:PlaySE("Battle/EVT_Emote_Sweating")
+end
+
+function COMMON.CharRealize(char)
+  local real = CH(char)
+  GROUND:CharSetEmote(real, "notice", 2)
+  SOUND:PlaySE("Battle/EVT_Emote_Exclaim_Surprised")
 end
 
 function COMMON.SetCharAndEmotion(char, emote)

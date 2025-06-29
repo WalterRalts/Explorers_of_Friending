@@ -98,6 +98,9 @@ SV.tarro_town =
   cooking_tutorial_done = 1
 }
 --- Dungeons
+
+SV.dungeon_tutorial = 0
+
 SV.tarro_forest = 
 {
   ZoomerDefeated = false,
@@ -138,7 +141,8 @@ SV.entoh_town =
   thicket = 
   {
     result = -1
-  }
+  },
+  firstfind = 0 -- 1 is for Flow, 2 is for Tidy
 }
 --- Dungeons
 
@@ -155,7 +159,8 @@ SV.guilders =
   entoh_town = 
   {
     scan_level = 1
-  }
+  },
+  fielded_two = false
 }
 --- Dungeons
 
@@ -172,6 +177,8 @@ SV.buzzers_store =
     price = 5
   }
 }
+
+SV.GroundTutorial = 0
 
 --Dungeon generation
 SV.rent_number = 0

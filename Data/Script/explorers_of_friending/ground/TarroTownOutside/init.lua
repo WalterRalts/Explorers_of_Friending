@@ -137,7 +137,15 @@ end
 function TarroTownOutside.TTOutside_WExit_Touch(obj, activator)
   outside_enter = 0
   GAME:FadeOut(false, 20)
-  if SV.tarro_town.PieChapter < 5 then
+  if SV.tarro_town.PieChapter < 5 then    
+    if SV.GroundTutorial == 0 then
+      SOUND:PlayFanfare("Fanfare/Note")
+      UI:ResetSpeaker()
+			UI:WaitShowDialogue("Sometimes, you may get lost on your adventure.[pause=10] Or maybe you just need to talk to someone.")
+      UI:WaitShowDialogue("If you press [B] on your keyboard,[pause=10] you can talk to whoever is in your second slot.")
+      UI:WaitShowDialogue("There's currently no button for this on a controller,[pause=10] please be patient as the game continues to be patched.")
+      SV.GroundTutorial = SV.GroundTutorial + 1
+    end
     GAME:EnterGroundMap("TarroTownEast", "TTEast_WEnter")
   elseif SV.tarro_town.PieChapter < 10 then
     GAME:EnterGroundMap("TarroTownEast_ch2", "TTEast_WEnter")

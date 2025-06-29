@@ -112,7 +112,7 @@ function Aurm.Feeling()
         _DATA.Save.ActiveTeam.Players[0].ActionEvents:Add(talk_evt)
         
     SV.guilders.entoh_town.scan_level = 1
-    SV.entoh_town.HelperChapter = 0
+    SV.entoh_town.HelperChapter = 0.1
     GAME:CutsceneMode(false)
     GAME:MoveCamera(0, 0, 0, true)
 end
@@ -173,23 +173,28 @@ function Aurm.Home()
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("Ah shucks. Oh well.")
 
+        SOUND:PlayBattleSE("_UNK_EVT_043")
         GROUND:Hide("Package")
+        GAME:WaitFrames(40)
         SOUND:PlayFanfare("Fanfare/Item")
         UI:ResetSpeaker()
         UI:WaitShowDialogue("It's a Power Band!")
         
+        GAME:WaitFrames(70)
         UI:SetSpeaker(luke)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("...well?")
 
+        GAME:WaitFrames(10)
         COMMON.CharSweatdrop("PLAYER")
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("...what is it?")
-
+        
+        COMMON.CharExclaim("Luke")
         UI:SetSpeaker(luke)
-        UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("It's... uh...")
+        COMMON.CharSweatdrop("Luke")
         UI:SetSpeakerEmotion("Pain")
         UI:WaitShowDialogue("(That's not my order...)")
 
@@ -198,7 +203,7 @@ function Aurm.Home()
         UI:WaitShowDialogue("Did you grab someone else's package again?")
         
         UI:SetSpeaker(luke)
-        UI:SetSpeakerEmotion("Normal")
+        UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowTimedDialogue("No, I could've sworn I...", 10)
 
         UI:SetSpeaker(rexio)
@@ -222,6 +227,7 @@ function Aurm.Home()
 
         GAME:GivePlayerItem("held_power_band")
         GAME:CutsceneMode(false)
+        GAME:MoveCamera(0, 0, 0, true)
     else
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Surprised")

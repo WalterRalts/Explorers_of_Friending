@@ -23,6 +23,9 @@ function TarroTownSquare_ch3.Init(map)
   local partner = CH('Teammate1')
   partner.CollisionDisabled = true
   
+  if outside_enter == 1 then
+    GROUND:TeleportTo(partner, 1750, 458, Direction.Left, 0)
+  end
   if outside_enter == 3 then
     GROUND:TeleportTo(partner, 30, 254, Direction.Right, 0)
   end
@@ -265,6 +268,68 @@ end
 function TarroTownSquare_ch3.BigTree_Entrance_Touch(obj, activator)
   GAME:FadeOut(false, 20)
   GAME:EnterGroundMap("TarroTownBigTree_ch3", "Tree_Enter")
+end
+
+function TarroTownSquare_ch3.Munch_Action(obj, activator)
+  local munch = CH("Munch")
+
+  if munch_accept then
+    
+  else
+    UI:SetSpeaker(munch)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Ugh... what to do...?")
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Oh, hey![pause=30] I'm Munch and I got a deal.")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Me and pops are goin' 'round the world on a trip...")
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("...but he falls 'sleep right 'fore we gets anywhere cool.")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Might as well grub while'm here.")
+    UI:WaitShowDialogue("Simple start... like, hm...")
+    UI:SetSpeakerEmotion("Special2")
+    UI:WaitShowDialogue("One of those crunchy salads.[pause=30] Yeah,[emote=Happy] could get of a good bite from that.")
+    munch_accept = true
+  end
+  local slot = GAME:FindPlayerItem("crunchy_salad", true, true) 
+
+  if slot:IsValid() then
+    UI:SetSpeaker(munch)
+    UI:SetSpeakerEmotion("Inspired")
+    UI:WaitShowDialogue("Oooh, what is this smell that I'm pickin' up!")
+    UI:SetSpeakerEmotion("Special2")
+    UI:WaitShowDialogue("The beaut'ful smell of the leaves of Tarro, please give me that delicacy you hold!")
+    UI:ChoiceMenuYesNo("Give?", false)
+    UI:WaitForChoice()
+    local result = UI:ChoiceResult()
+    if result then
+      GAME:TakePlayerBagItem(slot.Slot, false)
+      GAME:WaitFrames(20)
+      GROUND:CharSetAnim(munch, "Eat", true)
+      GAME:WaitFrames(40)
+      GROUND:CharSetAnim(munch, "Pose", false)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Not bad, not bad.[pause=30] Though, dumb of me to expect anythin' offa buncha leaves.")
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Lemme give ya somethin' in return.")
+      GAME:AddToPlayerMoney(500)
+      SOUND:PlaySE("Battle/DUN_Money")
+      UI:ResetSpeaker()
+      UI:WaitShowDialogue("Munch gives Maru 500 Poke.")
+    else
+      UI:SetSpeakerEmotion("Angry")
+      UI:WaitShowDialogue("Tch.")
+      UI:SetSpeakerEmotion("Sad")
+      UI:WaitShowDialogue("Fine,[pause=30] but[emote=Worried] when ya change your mind,[pause=20] come back, will ya?")
+    end
+  else
+    UI:SetSpeaker(munch)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Just get a buncha leaves and make yous a salad.")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Too hungry to show you, though.")
+  end
 end
 
 return TarroTownSquare_ch3

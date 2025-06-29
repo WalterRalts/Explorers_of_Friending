@@ -235,6 +235,7 @@ end
 function TarroTownEast_ch3.TarroForestEntrance_Touch(obj, activator)
 
   local maru = CH("PLAYER")
+  outside_enter = 0
   
   if SV.tarro_town.PieChapter >= 10 then
     local dungeon_entrances = {"tarro_forest"}
@@ -344,6 +345,7 @@ function TarroTownEast_ch3.MaruMail_Action(obj, activator)
 end
 
 function TarroTownEast_ch3.TTEast_NExit_Touch(obj, activator)
+  outside_enter = 1
   GAME:FadeOut(false, 20)
   GAME:EnterGroundMap("tarro_town", "TarroTownSquare_ch3", "TTSquare_EastEnter")
 end

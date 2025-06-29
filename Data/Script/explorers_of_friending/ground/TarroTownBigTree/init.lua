@@ -355,6 +355,7 @@ end
 -- Entities Callbacks
 -------------------------------
 function TarroTownBigTree.TreeHallow_Entrance_Touch(obj, activator)
+  DUNsection = 0
   COMMON.UnlockWithFanfare("tarro_tree_hollows", false)
   local dungeon_entrances = {"tarro_tree_hollows"}
   local ground_entrances = {}

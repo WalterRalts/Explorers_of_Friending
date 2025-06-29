@@ -33,7 +33,7 @@ function TarroForestPassage.Init(map)
     SV.tarro_town.PieChapter = 3
   end
 
-  if SV.tarro_town.PieChapter >= 5 then -- after dungeon completion
+  if SV.tarro_town.PieChapter >= 4 then -- after dungeon completion
     GROUND:Hide("Cherry")
     GROUND:Hide("BigApple")
   end
@@ -201,13 +201,15 @@ function TarroForestPassage.Darkness()
 
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Stunned")
-  UI:WaitShowTimedDialogue("I'm so confused...")
+  UI:WaitShowTimedDialogue("I'm so confused... why can't you just go with us?")
 
   UI:SetSpeaker(arama)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("This is something you two have to do alone!")
   UI:SetSpeakerEmotion("Joyous")
   UI:WaitShowDialogue("Off you two go! Have a wonderful trip!")
 
-  UI:SetSpeaker(maru)
+  UI:SetSpeaker(azura)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("Wait... we're going?")
 
@@ -226,8 +228,6 @@ function TarroForestPassage.Darkness()
   SOUND:PlayBGM("None", true, 120)
   GAME:MoveCameraToChara(0, 0, 0, arama)
   GROUND:TeleportTo(amazuru, 80, 500, Direction.Up, 0)
-
-  
   
   local coro00001 = TASK:BranchCoroutine(function()
     GAME:MoveCamera(0, 500, 240, false)
@@ -476,6 +476,7 @@ function TarroForestPassage.TF_DeepForestEnter_Touch(obj, activator)
 end
 
 function TarroForestPassage.AppleTree_Action(obj, activator)
+  local apple_give = 0
   UI:ResetSpeaker()
   local choices = {("Yes!"),
     ("No!")}
@@ -483,6 +484,8 @@ function TarroForestPassage.AppleTree_Action(obj, activator)
   UI:WaitForChoice()
   result = UI:ChoiceResult()
   if result == 1 then
+    apple_give = math.random(100)
+    print(apple_give)
     GROUND:CharSetAnim(CH("PLAYER"), "Attack", false)
     SOUND:PlaySE("Battle/DUN_Tackle")
     GAME:WaitFrames(4)
@@ -490,26 +493,22 @@ function TarroForestPassage.AppleTree_Action(obj, activator)
 
     GAME:WaitFrames(90)
 
-    local apple_give = math.random(100)
-    if apple_give >= 55 and SV.tarro_town.apple_tree_get == false then
+    if apple_give >= 50 and SV.tarro_forest.apple_tree_get == false then
       SOUND:PlaySE("Battle/EVT_CH02_Item_Place")
-      SV.tarro_town.apple_tree_get = true
-      
-      if apple_give >= 95 then
+      if apple_give >= 85 then
         UI:WaitShowDialogue("Maru got an apple.[pause=60] It's huge!")
         GAME:GivePlayerItem("food_apple_big")
       else
         UI:WaitShowDialogue("Maru got an apple.")
         GAME:GivePlayerItem("food_apple")
       end
-    elseif SV.tarro_town.apple_tree_get == true then
+      SV.tarro_forest.apple_tree_get = true
+    elseif SV.tarro_forest.apple_tree_get == true then
       UI:WaitShowDialogue("Looks like the tree is empty...")
     else
       UI:WaitShowDialogue("Nope.")
     end
   end
-  
-  
 end
 
 return TarroForestPassage

@@ -512,20 +512,7 @@
 }
 ],
 "BeforeTryActions": [],
-"BeforeActions": [
-{
-"Key": {
-"str": [
-0
-]
-},
-"Value": {
-"$type": "RogueEssence.Dungeon.BattleScriptEvent, RogueEssence",
-"Script": "RexioFocuser",
-"ArgTable": "{}"
-}
-}
-],
+"BeforeActions": [],
 "OnActions": [
 {
 "Key": {
@@ -682,25 +669,13 @@
 "Value": {
 "$type": "PMDC.Dungeon.ReactivateItemsEvent, PMDC"
 }
-},
-{
-"Key": {
-"str": [
-1
-]
-},
-"Value": {
-"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
-"Script": "DungeonTalker",
-"ArgTable": "{}"
-}
 }
 ],
 "OnTurnStarts": [
 {
 "Key": {
 "str": [
-0
+-3
 ]
 },
 "Value": {

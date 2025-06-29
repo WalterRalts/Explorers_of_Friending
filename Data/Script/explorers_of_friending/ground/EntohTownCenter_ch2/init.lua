@@ -6,6 +6,7 @@
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
 require 'explorers_of_friending.ground.EntohTownCenter_ch2.cutscene'
+require 'explorers_of_friending.partner'
 
 -- Package name
 local EntohTownCenter_ch2 = {}
@@ -19,6 +20,21 @@ function EntohTownCenter_ch2.Init(map)
   if SV.entoh_town.HelperChapter == 5 then
     Center.Feeling()
     SV.entoh_town.HelperChapter = 6
+  end
+
+  COMMON.RespawnAllies()
+  
+  if SV.entoh_town.HelperChapter == 7 then
+    local partner = CH('Teammate1')
+    local partner2 = CH('Teammate2')
+    AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
+    AI:SetCharacterAI(partner2, "origin.ai.ground_partner", CH('Teammate1'), partner2.Position)
+    partner.CollisionDisabled = true
+    partner2.CollisionDisabled = true
+  else
+    local partner = CH('Teammate1')
+    AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
+    partner.CollisionDisabled = true
   end
 end
 
@@ -39,7 +55,7 @@ end
 --Engine callback function
 function EntohTownCenter_ch2.Update(map)
 
-
+  Partner()
 end
 
 ---EntohTownCenter_ch2.GameSave(map)
@@ -63,7 +79,7 @@ function EntohTownCenter_ch2.WaterHole_Action(obj, activator)
   local rexio = CH("PLAYER")
   UI:SetSpeaker(rexio)
   UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("(...splash? ...splash hole? It's a splash and a hafl?)")
+  UI:WaitShowDialogue("(...splash? ...splash hole? It's a splash and a half?)")
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("(No, now's not the time!)")
 end
@@ -75,17 +91,18 @@ function EntohTownCenter_ch2.Apartments_Enter_Touch(obj, activator)
 end
 
 function EntohTownCenter_ch2.Entoh_EastEnter_Touch(obj, activator)
-  local timb = CH("Worker")
-  UI:SetSpeaker(timb)
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("Services being done! You cannot pass through!")
+  GAME:FadeOut(false, 20)
+  GAME:EnterGroundMap("EntohTownEast", "Entrance")
 end
 
 function EntohTownCenter_ch2.Entoh_SouthEnter_Touch(obj, activator)
-  local timb = CH("Worker2")
-  UI:SetSpeaker(timb)
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("Services being done! You cannot pass through!")
+  GAME:FadeOut(false, 20)
+  GAME:EnterGroundMap("EntohTownSouth", "EnterMark_North")
+end
+
+function EntohTownCenter_ch2.Entoh_NorthEnter_Touch(obj, activator)
+  GAME:FadeOut(false, 10)
+  GAME:EnterGroundMap("EntohTownNorth_ch2", "EnterMark_South")
 end
 
 return EntohTownCenter_ch2

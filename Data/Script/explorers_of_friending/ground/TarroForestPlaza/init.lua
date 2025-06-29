@@ -130,7 +130,7 @@ function TarroForestPlaza.Caterpie_Action(obj, activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Good good!")
     UI:SetSpeakerEmotion("Determined")
-    UI:WaitShowDialogue("Now all of you bugs will learn about manners!")
+    UI:WaitShowDialogue("Now, you bugs will learn manners!")
 
     COMMON.FaceEachother("PLAYER", "Caterpie")
     UI:SetSpeaker(bug1)
@@ -152,6 +152,35 @@ function TarroForestPlaza.Caterpie_Action(obj, activator)
   
 end
 
+function TarroForestPlaza.Butterfree_Action(obj, activator)
+  COMMON.FaceEachother("PLAYER", "Butterfree")
 
+  local butterboss = CH("Butterfree")
+  UI:SetSpeaker(butterboss)
+  UI:SetSpeakerEmotion("Determined")
+  UI:WaitShowDialogue("Bug business! Out of the way!")
+end
+
+function TarroForestPlaza.Metapod_Action(obj, activator)
+  TarroForestPlaza.Butterfree_Action()
+end
+
+function TarroForestPlaza.Kakuna_Action(obj, activator)
+  TarroForestPlaza.Butterfree_Action()
+end
+
+function TarroForestPlaza.Caterpie_1_Action(obj, activator)
+  TarroForestPlaza.Butterfree_Action()
+end
+
+function TarroForestPlaza.Weedle_Action(obj, activator)
+  local bug5 = CH("Weedle")
+
+  UI:SetSpeaker(bug5)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("...this class is so boring.")
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Can't I just leave?[pause=20] I just wanna leave.")
+end
 return TarroForestPlaza
 

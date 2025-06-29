@@ -100,7 +100,7 @@
 },
 "Absentee": false,
 "ChargeBoost": 0,
-"HP": 20,
+"HP": 30,
 "HPRemainder": 0,
 "Fullness": 100,
 "FullnessRemainder": 0,
@@ -198,12 +198,12 @@
 },
 "Level": 6,
 "EXP": 0,
-"MaxHPBonus": 0,
+"MaxHPBonus": 14,
 "AtkBonus": -3,
 "DefBonus": -3,
 "MAtkBonus": -3,
 "MDefBonus": -3,
-"SpeedBonus": 0,
+"SpeedBonus": 1,
 "BaseSkills": [
 {
 "SkillNum": "",

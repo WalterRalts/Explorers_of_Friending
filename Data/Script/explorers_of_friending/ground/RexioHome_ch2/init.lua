@@ -59,6 +59,7 @@ end
 -- Entities Callbacks
 -------------------------------
 function RexioHome_ch2.ApartmentEnter_Touch(obj, activator)
+  GAME:FadeOut(false, 10)
   GAME:EnterGroundMap("EntohTownCenter_ch2", "HomeMarker")
 end
 

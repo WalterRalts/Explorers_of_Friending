@@ -15,8 +15,7 @@ local entoh_town = {}
 ---entoh_town.Init(zone)
 --Engine callback function
 function entoh_town.Init(zone)
-
-    
+    Endsouthboss = false
 end
 
 ---entoh_town.EnterSegment(zone, rescuing, segmentID, mapID)
@@ -28,7 +27,7 @@ end
 ---entoh_town.ExitSegment(zone, result, rescue, segmentID, mapID)
 --Engine callback function
 function entoh_town.ExitSegment(zone, result, rescue, segmentID, mapID)
-    
+    GAME:EnterZone("entoh_town", -1, 9, 0)
 end
 
 ---entoh_town.Rescued(zone, name, mail)

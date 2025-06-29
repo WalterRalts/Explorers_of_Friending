@@ -7,7 +7,7 @@
 "LocalTexts": {}
 },
 "Released": true,
-"Comment": "",
+"Comment": "Maru and Azura's initiation.",
 "NoEXP": false,
 "ExpPercent": 25,
 "Level": 10,
@@ -321,8 +321,8 @@
 },
 "Value": {
 "$type": "RogueElements.PerlinWaterStep`1[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence]], RogueElements",
-"OrderComplexity": 2,
-"OrderSoftness": 1,
+"OrderComplexity": 4,
+"OrderSoftness": 2,
 "WaterPercent": {
 "Min": 10,
 "Max": 21
@@ -711,8 +711,8 @@
 },
 "Value": {
 "$type": "RogueElements.PerlinWaterStep`1[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence]], RogueElements",
-"OrderComplexity": 2,
-"OrderSoftness": 1,
+"OrderComplexity": 4,
+"OrderSoftness": 2,
 "WaterPercent": {
 "Min": 10,
 "Max": 21

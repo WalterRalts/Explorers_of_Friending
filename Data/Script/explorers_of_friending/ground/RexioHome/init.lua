@@ -91,7 +91,8 @@ function RexioHome.ApartmentEnter_Touch(obj, activator)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("At least let me see how you look in the band.")
   else
-    GAME:EnterGroundMap("EntohTownCenter", "HomeMarker")
+    GAME:FadeOut(false, 20)
+    GAME:EnterGroundMap("ApartmentRooms", "RexioExit")
   end
 end
 
@@ -108,8 +109,8 @@ end
 function RexioHome.Luke_Action(obj, activator)
   local rexio = CH("PLAYER")
   local luke = CH("Luke")
+  COMMON.FaceEachother("Luke", "PLAYER")
   if SV.entoh_town.HelperChapter < 3 then
-    COMMON.FaceEachother("Luke", "PLAYER")
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Go on, Rexio. [pause=30]Don't [emote=Happy]let me stop you.")
@@ -125,7 +126,7 @@ function RexioHome.Luke_Action(obj, activator)
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Kidding, kidding.")
-  else
+  elseif SV.entoh_town.HelperChapter == 3 then
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("If you're asking for a hint, then I can't really help.")
@@ -135,6 +136,10 @@ function RexioHome.Luke_Action(obj, activator)
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("Wow.")
+  else
+    UI:SetSpeaker(luke)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("You just have to put the band on.")
   end
 end
 

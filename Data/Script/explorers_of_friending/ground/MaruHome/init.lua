@@ -219,6 +219,29 @@ end
 function MaruHome.MaruHomeExit_Touch(obj, activator)
   print("Exiting?")
   outside_enter = 1
+  if SV.GroundTutorial == 1 then
+    local amazuru = CH("Amazuru")
+    local maru = CH("PLAYER")
+    UI:SetSpeaker(amazuru)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Hang on there, bud!")
+
+    GROUND:MoveToPosition(amazuru, maru.Position.X, maru.Position.Y - 24, false, 6)
+    COMMON.FaceEachother("PLAYER", "Amazuru")
+    COMMON.GiftItem(CH("PLAYER"), "berry_oran")
+
+    UI:SetSpeaker(amazuru)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("That berry in your bag will come in handy later.")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Hold onto it when you get into a pinch.")
+
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Thank you, dad!")
+    GROUND:CharAnimateTurn(maru, Dir8.Down, 3, true)
+    SV.GroundTutorial = 2
+  end
   if SV.tarro_town.PieChapter >= 2 and SV.tarro_town.PieChapter <= 4 then
     print("Exiting?")
     GAME:FadeOut(false, 20)

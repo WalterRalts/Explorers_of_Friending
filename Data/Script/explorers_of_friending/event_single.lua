@@ -93,7 +93,6 @@ function SINGLE_CHAR_SCRIPT.CastawayCaveAltMusic(owner, ownerChar, context, args
   SOUND:PlayBGM(_ZONE.CurrentMap.Music, true)
 end
 
-
 function SINGLE_CHAR_SCRIPT.CastawayCaveAltEnemies(owner, ownerChar, context, args)
   if context.User ~= nil then
     return
@@ -107,8 +106,6 @@ function SINGLE_CHAR_SCRIPT.CastawayCaveAltEnemies(owner, ownerChar, context, ar
 	PMDC.Dungeon.RespawnFromEligibleEvent.Respawn()
   end
 end
-
-
 
 function SINGLE_CHAR_SCRIPT.SleepingCalderaAltData(owner, ownerChar, context, args)
   if context.User ~= nil then
@@ -445,7 +442,6 @@ function SINGLE_CHAR_SCRIPT.DestinationFloor(owner, ownerChar, context, args)
   UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("DLG_MISSION_DESTINATION"):ToLocal()))
 end
 
-
 function SINGLE_CHAR_SCRIPT.SidequestOutlawFloor(owner, ownerChar, context, args)
   if context.User ~= nil then
     return
@@ -514,8 +510,6 @@ function SINGLE_CHAR_SCRIPT.OutlawClearCheck(owner, ownerChar, context, args)
 	TASK:WaitTask(_DUNGEON:RemoveMapStatus(checkClearStatus))
   end
 end
-
-
 
 function SINGLE_CHAR_SCRIPT.ShowTileName(owner, ownerChar, context, args)
 
@@ -1520,7 +1514,7 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 				UI:SetSpeakerEmotion("Happy")
 				UI:WaitShowDialogue("I dunno, but we won't find them just sitting here.")
 				UI:SetSpeakerEmotion("Normal")
-				UI:WaitShowDialogue("Let's use the arrow keys to walk, and hold A to use a move.")
+				UI:WaitShowDialogue("Let's use the arrow keys to walk, and hold " .. STRINGS:LocalKeyString(4) .. " to use a move.")
 
 				UI:SetSpeaker(azura)
 				UI:SetSpeakerEmotion("Worried")
@@ -1539,7 +1533,7 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 			UI:SetSpeakerEmotion("Happy")
 			UI:WaitShowDialogue("Now let's see if we can't find any items around.")
 			UI:SetSpeakerEmotion("Normal")
-			UI:WaitShowDialogue("Once we do, we can press W to open the bag.")
+			UI:WaitShowDialogue("Once we do, we can press " .. STRINGS:LocalKeyString(12) .. " to open the bag.")
 		end
 	elseif area_name == "Tarro Tree Hallows" and SV.tarro_town.PieChapter < 8 then
 		local senna = GAME:GetPlayerPartyMember(2)
@@ -1618,8 +1612,19 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 				UI:WaitShowDialogue("We'll fight for her if this tree is her friend.")
 			end
 		elseif DUNsection == 2 then
+			UI:SetSpeaker(senna)
+			UI:SetSpeakerEmotion("Worried")
+			UI:WaitShowDialogue("W-what's the plan, guys?")
+
+			UI:SetSpeaker(ziggy)
+			UI:SetSpeakerEmotion("Angry")
+			UI:WaitShowDialogue("Chaaaaaaaaaaarge!")
+
+			UI:SetSpeaker(maru)
+			UI:SetSpeakerEmotion("Worried")
+			UI:WaitShowDialogue("Um... maybe we shouldn't do that...")
 		end
-	elseif area_name == "Entoh Town" then
+	elseif area_name == "Entoh Thicket" then
 		print("You are here!")
 		local rexio = GAME:GetPlayerPartyMember(0)
 		if floor_no == 0 then
@@ -1634,4 +1639,115 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 			UI:WaitShowDialogue("While playling as Rexio, use the B key to sense items within 10 tiles")
 		end
 	end
+end
+
+---
+-- Reimplementation of Audino's C# event for BeginBattleEvent.
+-- This will allow us to inject custom function code before ending a battle 
+-- (such as clearing existing lava flows when a boss fight ends).
+-- @tparam GameEventOwner owner
+-- @tparam Character ownerChar
+-- @tparam SingleCharContext context
+-- @tparam table args Table of format {CustomClearEvent="NameOfFunctionThatRunsOnClear", [other arguments to said script]}
+function SINGLE_CHAR_SCRIPT.LuaBeginBattleEvent(owner, ownerChar, context, args)
+	local MapCheckState = luanet.import_type('RogueEssence.Dungeon.MapCheckState')
+	local SingleCharScriptEvent = luanet.import_type('RogueEssence.Dungeon.SingleCharScriptEvent')
+	
+	local map_clear_idx = 'map_clear_check'
+
+	if context.User ~= nil then return end
+	--if a custom clear event is not given, use the default one.
+	if args.CustomClearEvent == nil then args.CustomClearEvent = 'LuaCheckBossClearEvent' end
+	
+	--Turn on Team Mode if allowed when the boss fight starts.
+	if _DUNGEON:CanUseTeamMode() then
+		_DUNGEON:SetTeamMode(true)
+	end
+	
+	local clear_status = RogueEssence.Dungeon.MapStatus(map_clear_idx)
+	clear_status:LoadFromData()
+	
+	local check = clear_status.StatusStates:GetWithDefault(luanet.ctype(MapCheckState))
+	--The 2nd argument in the function below needs a string that represents a lua table of the arguments to pass. Serpent.line will convert the lua table to a string representing it for us.
+	--We only NEED to pass args, as owner, ownerchar, and context are automatically passed in when the check event is called
+	check.CheckEvents:Add(SingleCharScriptEvent(args.CustomClearEvent, Serpent.line(args)))
+	--check.CheckEvents:Add(LuaCheckBossClearEvent(owner, ownerChar, context, args))
+	
+	TASK:WaitTask(_DUNGEON:AddMapStatus(clear_status))
+end
+
+--Import Serpent library.
+Serpent = require 'lib.serpent'
+
+---
+-- Reimplementation of the basic CheckBossClearEvent. 
+-- Call something different from LuaBeginBattleEvent or edit this accordingly if you 
+-- want a different wincon for your map or special effects/anims on win.
+-- @tparam GameEventOwner owner
+-- @tparam Character ownerChar Not used by this function.
+-- @tparam SingleCharContext context Not used by this function.
+-- @tparam table args Table of caller-defined arguments. Not used by this function.
+function SINGLE_CHAR_SCRIPT.CheckRightTileEvent(owner, ownerChar, context, args)
+	local MapCheckState = luanet.import_type('RogueEssence.Dungeon.MapCheckState')
+	local SingleCharScriptEvent = luanet.import_type('RogueEssence.Dungeon.SingleCharScriptEvent')
+	
+	---
+	-- Sequence that runs when map is over. Fade out, cut the music, etc.
+	-- @usage Coroutine
+	function end_sequence()
+		_GAME:BGM("", true)
+		
+		SOUND:PlayBattleSE('EVT_Battle_Transition')
+		TASK:WaitTask(_GAME:FadeOut(true))
+		 
+		_DUNGEON:ResetTurns()
+		
+		-- restore all and remove all map status
+		local statuses_to_remove = {}
+		for i = 0, _ZONE.CurrentMap.Status.Keys.Count - 1, 1 do
+			statuses_to_remove[i] = _ZONE.CurrentMap.Status.Keys[i]
+		end
+		
+		for i = 0, #statuses_to_remove - 1, 1 do
+			TASK:WaitTask(_DUNGEON:RemoveMapStatus(statuses_to_remove[i], false))
+		end 
+		
+		-- heal everyone in the party
+		for i = 0, GAME:GetPlayerPartyCount() - 1, 1 do
+			_DATA.Save.ActiveTeam.Players[i]:FullRestore()
+		end
+		
+		TASK:WaitTask(_GAME:EndSegment(RogueEssence.Data.GameProgress.ResultType.Cleared))
+	end
+
+	-- For each enemy team, check each chara in that team. 
+	-- If any are still alive, then fail this check and return early.
+	if not Endsouthboss then
+		return
+	end
+	
+	
+	-- Everyone's dead, clear the scene.
+	local checks = owner.StatusStates:GetWithDefault(luanet.ctype(MapCheckState))
+	
+	-- The call originally for this was to remove(this), which isn't in lua. 
+	-- So we need to find the LuaCheckBossClearEvent and remove that (remove ourself)
+	for i = 0, checks.CheckEvents.Count - 1, 1 do
+		if LUA_ENGINE:TypeOf(checks.CheckEvents[i]) == luanet.ctype(SingleCharScriptEvent) then
+			if checks.CheckEvents[i].Script == args.CustomClearEvent then
+				checks.CheckEvents:Remove(checks.CheckEvents[i])
+			end
+		end
+	end
+	
+	if _DATA.CurrentReplay == nil then
+		TASK:WaitTask(end_sequence())
+	else 
+		TASK:WaitTask(_GAME:EndSegment(RogueEssence.Data.GameProgress.ResultType.Cleared))
+	end
+	
+end
+
+function SINGLE_CHAR_SCRIPT.TileCheck()
+	Endsouthboss = true
 end

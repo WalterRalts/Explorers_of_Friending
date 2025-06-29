@@ -4,9 +4,8 @@ Center = {}
 
 function Center.Feeling()
     local rexio = CH("PLAYER")
-
     GAME:CutsceneMode(true)
-
+    GAME:FadeIn(30)
     COMMON.CharExclaim("PLAYER")
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Surprised")

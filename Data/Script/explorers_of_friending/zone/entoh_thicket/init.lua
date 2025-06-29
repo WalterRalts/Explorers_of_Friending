@@ -29,8 +29,7 @@ end
 ---entoh_thicket.ExitSegment(zone, result, rescue, segmentID, mapID)
 --Engine callback function
 function entoh_thicket.ExitSegment(zone, result, rescue, segmentID, mapID)
-if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
-        
+    if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
         SV.entoh_town.thicket.result = DUNGEON:DungeonCurrentFloor()
         if result == RogueEssence.Data.GameProgress.ResultType.Escaped then 
             SV.entoh_town.thicket.result = SV.entoh_town.thicket.result + 0.1

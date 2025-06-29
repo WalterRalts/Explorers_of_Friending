@@ -4,9 +4,8 @@
     "\\Data",
     "\\Data\\Script",
     "\\Data\\Script\\explorers_of_friending",
-    "\\Data\\Script\\explorers_of_friending\\menu",
-    "\\Data\\Script\\explorers_of_friending\\zone"
+    "\\Data\\Script\\explorers_of_friending\\services"
   ],
-  "SelectedNode": "\\Data\\Script\\explorers_of_friending\\menu\\buzzers_shop.lua",
+  "SelectedNode": "\\Data\\Script\\explorers_of_friending\\partner.lua",
   "PreviewInSolutionExplorer": false
 }

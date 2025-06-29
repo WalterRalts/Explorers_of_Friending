@@ -1711,3 +1711,57 @@ function BATTLE_SCRIPT.MaruInteract(owner, ownerChar, context, args)
   end  
 end
 
+function BATTLE_SCRIPT.FlowInteract(owner, ownerChar, context, args)
+  context.CancelState.Cancel = true
+  DUNGEON:CharTurnToChar(context.Target, context.User)
+  local target = context.Target
+  local user = context.User
+  -- TODO: create a charstate for being unable to talk and have talk-interfering statuses cause it
+  if COMMON.CanTalk(target) then
+    local ratio = target.HP * 100 // target.MaxHP
+    local current_dungeon = DUNGEON:DungeonDisplayName()
+    local say_choice = math.random(3)
+    
+    if say_choice == 3 then
+      UI:SetSpeaker(target)
+      UI:SetSpeakerEmotion("Pain")
+      UI:WaitShowDialogue("Why this town, of all of towns?")
+    elseif say_choice == 2 then
+      UI:SetSpeaker(target)
+      UI:SetSpeakerEmotion("Determined")
+      UI:WaitShowDialogue("We'll find you, mama!")
+    else
+      UI:SetSpeaker(target)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Just have to feel the flowers. Not too hard, yes?")
+    end
+  end
+end
+
+function BATTLE_SCRIPT.FlowInteract(owner, ownerChar, context, args)
+  context.CancelState.Cancel = true
+  DUNGEON:CharTurnToChar(context.Target, context.User)
+  local target = context.Target
+  local user = context.User
+  -- TODO: create a charstate for being unable to talk and have talk-interfering statuses cause it
+  if COMMON.CanTalk(target) then
+    local ratio = target.HP * 100 // target.MaxHP
+    local current_dungeon = DUNGEON:DungeonDisplayName()
+    local say_choice = math.random(3)
+    
+    if say_choice == 3 then
+      UI:SetSpeaker(target)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Keep things fresh! Keep things clean!")
+    elseif say_choice == 2 then
+      UI:SetSpeaker(target)
+      UI:SetSpeakerEmotion("Determined")
+      UI:WaitShowDialogue("Moving forward, I'll cover our tracks.")
+    else
+      UI:SetSpeaker(target)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("We're doing great, guys!")
+    end
+  end
+end
+

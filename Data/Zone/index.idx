@@ -46,7 +46,7 @@
 "LocalTexts": {}
 },
 "Released": true,
-"Comment": "",
+"Comment": "Maru and Azura's initiation.",
 "SortOrder": 0
 },
 "tarro_forest": {
@@ -89,7 +89,7 @@
 }
 },
 "Released": true,
-"Comment": "",
+"Comment": "Chapter 0 - Maru and Azura's first dungeon",
 "SortOrder": 0
 },
 "tarro_town": {
@@ -203,7 +203,7 @@
 "LocalTexts": {}
 },
 "Released": true,
-"Comment": "",
+"Comment": "The Friend Circle's first dungeon. Maybe the only one.",
 "SortOrder": 0
 },
 "the_field": {
@@ -250,25 +250,34 @@
 "Rogue": 0,
 "Grounds": [
 "RexioHome",
-"EntohTownNorth",
+"ApartmentRooms",
 "EntohTownCenter",
+"EntohTownNorth",
 "EntohTownDelivery",
 "RexioHome_ch2",
-"EntohTownCenter_ch2"
+"EntohTownCenter_ch2",
+"EntohTownNorth_ch2",
+"EntohTownSouth",
+"EntohTownEast",
+"EntohTownSouth_ch2"
 ],
-"Maps": [],
+"Maps": [
+[
+0
+]
+],
 "Name": {
 "DefaultText": "Entoh Town",
 "LocalTexts": {}
 },
 "Released": true,
-"Comment": "",
+"Comment": "Rexio's Home",
 "SortOrder": 0
 },
 "entoh_thicket": {
 "$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
-"ExpPercent": 50,
-"Level": -1,
+"ExpPercent": 40,
+"Level": 6,
 "LevelCap": false,
 "KeepSkills": false,
 "TeamRestrict": false,
@@ -298,7 +307,7 @@
 "LocalTexts": {}
 },
 "Released": true,
-"Comment": "",
+"Comment": "Chapter 3 - Rexio's first dungeon",
 "SortOrder": 0
 }
 }

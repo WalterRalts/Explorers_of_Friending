@@ -100,281 +100,6 @@
 },
 "Absentee": false,
 "ChargeBoost": 0,
-"HP": 33,
-"HPRemainder": 0,
-"Fullness": 100,
-"FullnessRemainder": 0,
-"MaxFullness": 100,
-"StatusEffects": {},
-"MissChain": 0,
-"EXPMarked": false,
-"Tactic": {
-"Name": {
-"DefaultText": "Stick Together",
-"LocalTexts": {
-"fr": "Suivre le meneur",
-"fr-ca": "Rester ensemble",
-"de": "Zusammen bleiben",
-"es": "Vayamos juntos",
-"pt": "Fiquem Juntos",
-"it": "Restiamo uniti",
-"ko": "함께 가자",
-"zh-hans": "一起走吧"
-}
-},
-"Released": false,
-"Comment": "",
-"ID": "stick_together",
-"Assignable": true,
-"Plans": [
-{
-"$type": "PMDC.Dungeon.PrepareWithLeaderPlan, PMDC",
-"AttackPattern": 4,
-"IQ": 413,
-"RestrictedMobilityTypes": 0,
-"RestrictMobilityPassable": false,
-"AttackRange": 0,
-"StatusRange": 0,
-"SelfStatusRange": 0,
-"AbandonRangeOnHit": true
-},
-{
-"$type": "PMDC.Dungeon.AttackFoesPlan, PMDC",
-"AttackPattern": 4,
-"PositionPattern": 2,
-"IQ": 413,
-"RestrictedMobilityTypes": 0,
-"RestrictMobilityPassable": false,
-"AttackRange": 0,
-"StatusRange": 0,
-"SelfStatusRange": 0,
-"AbandonRangeOnHit": true
-},
-{
-"$type": "PMDC.Dungeon.FindItemPlan, PMDC",
-"IncludeMoney": true,
-"IQ": 413,
-"RestrictedMobilityTypes": 0,
-"RestrictMobilityPassable": false,
-"AttackRange": 0,
-"StatusRange": 0,
-"SelfStatusRange": 0,
-"AbandonRangeOnHit": false
-},
-{
-"$type": "PMDC.Dungeon.ExplorePlan, PMDC",
-"IQ": 413,
-"RestrictedMobilityTypes": 0,
-"RestrictMobilityPassable": false,
-"AttackRange": 0,
-"StatusRange": 0,
-"SelfStatusRange": 0,
-"AbandonRangeOnHit": false
-},
-{
-"$type": "PMDC.Dungeon.WaitPlan, PMDC",
-"IQ": 413,
-"RestrictedMobilityTypes": 0,
-"RestrictMobilityPassable": false,
-"AttackRange": 0,
-"StatusRange": 0,
-"SelfStatusRange": 0,
-"AbandonRangeOnHit": false
-}
-]
-},
-"Mobility": 0,
-"CantWalk": false,
-"ItemDisabled": false,
-"IntrinsicDisabled": false,
-"CanRemoveStuck": false,
-"StopItemAtHit": false,
-"MovesScrambled": false,
-"ChargeSaver": false,
-"WaitToAttack": false,
-"CantInteract": false,
-"EnemyOfFriend": false,
-"AttackFriend": false,
-"TileSight": -1,
-"CharSight": -1,
-"Unidentifiable": false,
-"Unlocatable": false,
-"SeeAllChars": false,
-"SeeItems": false,
-"SeeWallItems": false,
-"SeeTraps": false,
-"CharStates": [],
-"BackRef": {
-"Assembly": false,
-"Index": -1
-},
-"Nickname": "???",
-"OriginalUUID": "",
-"OriginalTeam": "",
-"BaseForm": {
-"Species": "amaplain",
-"Form": 0,
-"Skin": "normal",
-"Gender": 0
-},
-"Level": 10,
-"EXP": 0,
-"MaxHPBonus": 10,
-"AtkBonus": -2,
-"DefBonus": 1,
-"MAtkBonus": -2,
-"MDefBonus": 1,
-"SpeedBonus": 3,
-"BaseSkills": [
-{
-"SkillNum": "cut",
-"Charges": 16,
-"CanForget": true
-},
-{
-"SkillNum": "rock_smash",
-"Charges": 25,
-"CanForget": true
-},
-{
-"SkillNum": "fly",
-"Charges": 16,
-"CanForget": true
-},
-{
-"SkillNum": "surf",
-"Charges": 9,
-"CanForget": true
-}
-],
-"BaseIntrinsics": [
-"adaptability"
-],
-"FormIntrinsicSlot": 0,
-"Relearnables": {},
-"Discriminator": 0,
-"MetAt": "",
-"MetLoc": {
-"ID": "",
-"StructID": {
-"Segment": -1,
-"ID": -1
-},
-"EntryPoint": -1
-},
-"DefeatAt": "",
-"DefeatLoc": {
-"ID": "",
-"StructID": {
-"Segment": -1,
-"ID": -1
-},
-"EntryPoint": -1
-},
-"IsFounder": false,
-"IsPartner": false,
-"NameLocked": false,
-"IsFavorite": false,
-"Unrecruitable": false,
-"ActionEvents": [],
-"ScriptVars": null
-}
-],
-"Guests": [],
-"inventory": [],
-"Name": "",
-"LeaderIndex": 0,
-"FoeConflict": false
-},
-{
-"$type": "RogueEssence.Dungeon.MonsterTeam, RogueEssence",
-"Players": [
-{
-"Element1": "normal",
-"Element2": "none",
-"TurnWait": 0,
-"TiersUsed": 0,
-"TurnUsed": false,
-"movementSpeed": 0,
-"dead": false,
-"serializationLoc": {
-"X": 10,
-"Y": 2
-},
-"serializationDir": 1,
-"ProxyName": "",
-"ProxySprite": {
-"Species": "",
-"Form": -1,
-"Skin": "",
-"Gender": -1
-},
-"CurrentForm": {
-"Species": "amaplain",
-"Form": 0,
-"Skin": "normal",
-"Gender": 0
-},
-"ProxyAtk": -1,
-"ProxyDef": -1,
-"ProxyMAtk": -1,
-"ProxyMDef": -1,
-"ProxySpeed": -1,
-"Skills": [
-{
-"Element": {
-"SkillNum": "cut",
-"Charges": 16,
-"Enabled": true,
-"Sealed": false
-},
-"BackRef": 0
-},
-{
-"Element": {
-"SkillNum": "rock_smash",
-"Charges": 25,
-"Enabled": true,
-"Sealed": false
-},
-"BackRef": 1
-},
-{
-"Element": {
-"SkillNum": "fly",
-"Charges": 16,
-"Enabled": true,
-"Sealed": false
-},
-"BackRef": 2
-},
-{
-"Element": {
-"SkillNum": "surf",
-"Charges": 9,
-"Enabled": true,
-"Sealed": false
-},
-"BackRef": 3
-}
-],
-"Intrinsics": [
-{
-"Element": {
-"ID": "adaptability"
-},
-"BackRef": 0
-}
-],
-"EquippedItem": {
-"ID": "",
-"Cursed": false,
-"HiddenValue": "",
-"Amount": 0,
-"Price": 0
-},
-"Absentee": false,
-"ChargeBoost": 0,
 "HP": 27,
 "HPRemainder": 0,
 "Fullness": 100,
@@ -573,10 +298,10 @@
 "movementSpeed": 0,
 "dead": false,
 "serializationLoc": {
-"X": 13,
-"Y": 8
+"X": 10,
+"Y": 2
 },
-"serializationDir": 2,
+"serializationDir": 1,
 "ProxyName": "",
 "ProxySprite": {
 "Species": "",
@@ -650,7 +375,7 @@
 },
 "Absentee": false,
 "ChargeBoost": 0,
-"HP": 29,
+"HP": 23,
 "HPRemainder": 0,
 "Fullness": 100,
 "FullnessRemainder": 0,
@@ -767,7 +492,282 @@
 "Skin": "normal",
 "Gender": 0
 },
-"Level": 7,
+"Level": 3,
+"EXP": 0,
+"MaxHPBonus": 10,
+"AtkBonus": -2,
+"DefBonus": 1,
+"MAtkBonus": -2,
+"MDefBonus": 1,
+"SpeedBonus": 3,
+"BaseSkills": [
+{
+"SkillNum": "cut",
+"Charges": 16,
+"CanForget": true
+},
+{
+"SkillNum": "rock_smash",
+"Charges": 25,
+"CanForget": true
+},
+{
+"SkillNum": "fly",
+"Charges": 16,
+"CanForget": true
+},
+{
+"SkillNum": "surf",
+"Charges": 9,
+"CanForget": true
+}
+],
+"BaseIntrinsics": [
+"adaptability"
+],
+"FormIntrinsicSlot": 0,
+"Relearnables": {},
+"Discriminator": 0,
+"MetAt": "",
+"MetLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"DefeatAt": "",
+"DefeatLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"IsFounder": false,
+"IsPartner": false,
+"NameLocked": false,
+"IsFavorite": false,
+"Unrecruitable": false,
+"ActionEvents": [],
+"ScriptVars": null
+}
+],
+"Guests": [],
+"inventory": [],
+"Name": "",
+"LeaderIndex": 0,
+"FoeConflict": false
+},
+{
+"$type": "RogueEssence.Dungeon.MonsterTeam, RogueEssence",
+"Players": [
+{
+"Element1": "normal",
+"Element2": "none",
+"TurnWait": 0,
+"TiersUsed": 0,
+"TurnUsed": false,
+"movementSpeed": 0,
+"dead": false,
+"serializationLoc": {
+"X": 13,
+"Y": 8
+},
+"serializationDir": 2,
+"ProxyName": "",
+"ProxySprite": {
+"Species": "",
+"Form": -1,
+"Skin": "",
+"Gender": -1
+},
+"CurrentForm": {
+"Species": "amaplain",
+"Form": 0,
+"Skin": "normal",
+"Gender": 0
+},
+"ProxyAtk": -1,
+"ProxyDef": -1,
+"ProxyMAtk": -1,
+"ProxyMDef": -1,
+"ProxySpeed": -1,
+"Skills": [
+{
+"Element": {
+"SkillNum": "cut",
+"Charges": 16,
+"Enabled": true,
+"Sealed": false
+},
+"BackRef": 0
+},
+{
+"Element": {
+"SkillNum": "rock_smash",
+"Charges": 25,
+"Enabled": true,
+"Sealed": false
+},
+"BackRef": 1
+},
+{
+"Element": {
+"SkillNum": "fly",
+"Charges": 16,
+"Enabled": true,
+"Sealed": false
+},
+"BackRef": 2
+},
+{
+"Element": {
+"SkillNum": "surf",
+"Charges": 9,
+"Enabled": true,
+"Sealed": false
+},
+"BackRef": 3
+}
+],
+"Intrinsics": [
+{
+"Element": {
+"ID": "adaptability"
+},
+"BackRef": 0
+}
+],
+"EquippedItem": {
+"ID": "",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0
+},
+"Absentee": false,
+"ChargeBoost": 0,
+"HP": 23,
+"HPRemainder": 0,
+"Fullness": 100,
+"FullnessRemainder": 0,
+"MaxFullness": 100,
+"StatusEffects": {},
+"MissChain": 0,
+"EXPMarked": false,
+"Tactic": {
+"Name": {
+"DefaultText": "Stick Together",
+"LocalTexts": {
+"fr": "Suivre le meneur",
+"fr-ca": "Rester ensemble",
+"de": "Zusammen bleiben",
+"es": "Vayamos juntos",
+"pt": "Fiquem Juntos",
+"it": "Restiamo uniti",
+"ko": "함께 가자",
+"zh-hans": "一起走吧"
+}
+},
+"Released": false,
+"Comment": "",
+"ID": "stick_together",
+"Assignable": true,
+"Plans": [
+{
+"$type": "PMDC.Dungeon.PrepareWithLeaderPlan, PMDC",
+"AttackPattern": 4,
+"IQ": 413,
+"RestrictedMobilityTypes": 0,
+"RestrictMobilityPassable": false,
+"AttackRange": 0,
+"StatusRange": 0,
+"SelfStatusRange": 0,
+"AbandonRangeOnHit": true
+},
+{
+"$type": "PMDC.Dungeon.AttackFoesPlan, PMDC",
+"AttackPattern": 4,
+"PositionPattern": 2,
+"IQ": 413,
+"RestrictedMobilityTypes": 0,
+"RestrictMobilityPassable": false,
+"AttackRange": 0,
+"StatusRange": 0,
+"SelfStatusRange": 0,
+"AbandonRangeOnHit": true
+},
+{
+"$type": "PMDC.Dungeon.FindItemPlan, PMDC",
+"IncludeMoney": true,
+"IQ": 413,
+"RestrictedMobilityTypes": 0,
+"RestrictMobilityPassable": false,
+"AttackRange": 0,
+"StatusRange": 0,
+"SelfStatusRange": 0,
+"AbandonRangeOnHit": false
+},
+{
+"$type": "PMDC.Dungeon.ExplorePlan, PMDC",
+"IQ": 413,
+"RestrictedMobilityTypes": 0,
+"RestrictMobilityPassable": false,
+"AttackRange": 0,
+"StatusRange": 0,
+"SelfStatusRange": 0,
+"AbandonRangeOnHit": false
+},
+{
+"$type": "PMDC.Dungeon.WaitPlan, PMDC",
+"IQ": 413,
+"RestrictedMobilityTypes": 0,
+"RestrictMobilityPassable": false,
+"AttackRange": 0,
+"StatusRange": 0,
+"SelfStatusRange": 0,
+"AbandonRangeOnHit": false
+}
+]
+},
+"Mobility": 0,
+"CantWalk": false,
+"ItemDisabled": false,
+"IntrinsicDisabled": false,
+"CanRemoveStuck": false,
+"StopItemAtHit": false,
+"MovesScrambled": false,
+"ChargeSaver": false,
+"WaitToAttack": false,
+"CantInteract": false,
+"EnemyOfFriend": false,
+"AttackFriend": false,
+"TileSight": -1,
+"CharSight": -1,
+"Unidentifiable": false,
+"Unlocatable": false,
+"SeeAllChars": false,
+"SeeItems": false,
+"SeeWallItems": false,
+"SeeTraps": false,
+"CharStates": [],
+"BackRef": {
+"Assembly": false,
+"Index": -1
+},
+"Nickname": "???",
+"OriginalUUID": "",
+"OriginalTeam": "",
+"BaseForm": {
+"Species": "amaplain",
+"Form": 0,
+"Skin": "normal",
+"Gender": 0
+},
+"Level": 3,
 "EXP": 0,
 "MaxHPBonus": 10,
 "AtkBonus": -2,
@@ -925,7 +925,7 @@
 },
 "Absentee": false,
 "ChargeBoost": 0,
-"HP": 30,
+"HP": 23,
 "HPRemainder": 0,
 "Fullness": 100,
 "FullnessRemainder": 0,
@@ -1042,7 +1042,7 @@
 "Skin": "normal",
 "Gender": 0
 },
-"Level": 8,
+"Level": 3,
 "EXP": 0,
 "MaxHPBonus": 10,
 "AtkBonus": -2,
@@ -1475,7 +1475,7 @@
 },
 "Absentee": false,
 "ChargeBoost": 0,
-"HP": 27,
+"HP": 23,
 "HPRemainder": 0,
 "Fullness": 100,
 "FullnessRemainder": 0,
@@ -1592,7 +1592,7 @@
 "Skin": "normal",
 "Gender": 0
 },
-"Level": 6,
+"Level": 3,
 "EXP": 0,
 "MaxHPBonus": 10,
 "AtkBonus": -2,
@@ -1678,17 +1678,7 @@
 "Music": "Enraged Caldera.ogg",
 "TileSight": 0,
 "CharSight": 0,
-"Status": {
-"sunny": {
-"ID": "sunny",
-"StatusStates": [],
-"Emitter": {
-"$type": "RogueEssence.Content.EmptySwitchOffEmitter, RogueEssence",
-"LocHeight": 0
-},
-"Hidden": false
-}
-},
+"Status": {},
 "MapEffect": {
 "UniversalStates": [],
 "BeforeTryActions": [],
@@ -1769,22 +1759,7 @@
 }
 ],
 "OnTurnStarts": [],
-"OnTurnEnds": [
-{
-"Key": {
-"str": [
-0
-]
-},
-"Value": {
-"$type": "PMDC.Dungeon.FractionHealEvent, PMDC",
-"HPFraction": 10,
-"Message": {
-"Key": "MSG_REGEN"
-}
-}
-}
-],
+"OnTurnEnds": [],
 "OnMapTurnEnds": [],
 "OnWalks": [],
 "OnDeaths": [],

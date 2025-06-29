@@ -14,9 +14,14 @@ local EntohTownCenter = {}
 -------------------------------
 ---EntohTownCenter.Init(map)
 --Engine callback function
+local flow_talk = 0
 function EntohTownCenter.Init(map)
 
   COMMON.CreateWalkArea("Tidy", 200, 300, 48, 48)
+  GROUND:CharSetAnim(CH("Flow"), "Sleep", true)
+  if flow_talk == 1 then
+    GROUND:CharSetAnim(CH("Flow"), "Idle", true)
+  end
 end
 
 ---EntohTownCenter.Enter(map)
@@ -60,6 +65,7 @@ end
 -- Entities Callbacks
 -------------------------------
 local bug_talk = 0
+
 
 function EntohTownCenter.Wurp_Action(obj, activator)
   local wurp = CH("Wurp")
@@ -242,7 +248,7 @@ end
 function EntohTownCenter.Apartments_Enter_Touch(obj, activator)
   print("Exiting?")
   GAME:FadeOut(false, 10)
-  GAME:EnterGroundMap("RexioHome", "RexioHomeWay")
+  GAME:EnterGroundMap("ApartmentRooms", "exit_3")
 end
 
 function EntohTownCenter.Entoh_EastEnter_Touch(obj, activator)
@@ -257,6 +263,41 @@ function EntohTownCenter.Entoh_SouthEnter_Touch(obj, activator)
   UI:SetSpeaker(timb)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("Services being done! You cannot pass through!")
+end
+
+function EntohTownCenter.Flow_Action(obj, activator)
+  local flow = CH("Flow")
+  local rexio = CH("PLAYER")
+  COMMON.FaceEachother("Flow", "PLAYER")
+  if flow_talk == 0 then
+    UI:SetSpeaker(flow)
+    UI:SetSpeakerEmotion("Sigh")
+    UI:WaitShowDialogue("[speed=0.6]So light...[pause=30] so little...[pause=30] flow with the air like the flowers do...")
+    
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("...")
+
+    UI:SetSpeaker(flow)
+    UI:SetSpeakerEmotion("Sigh")
+    UI:WaitShowTimedDialogue("...[pause=65][speed=0.6] ...[pause=65] ...", 70)
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowTimedDialogue("Meep.", 15)
+    
+    GROUND:CharSetAnim(CH("Flow"), "Charge", true)
+    UI:SetSpeaker(flow)
+    UI:SetSpeakerEmotion("Angry")
+    UI:WaitShowDialogue("Rexio! Stop ruining my concentration!")
+    flow_talk = 1
+    GROUND:CharSetAnim(CH("Flow"), "Idle", true)
+  else
+    UI:SetSpeaker(flow)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Now I have to start all over...")
+  end
+  
 end
 
 return EntohTownCenter

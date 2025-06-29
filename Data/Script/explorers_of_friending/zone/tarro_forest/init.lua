@@ -36,12 +36,22 @@ function tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
     dungeon_oof = 0
     
     if segmentID == 0 then
-      SV.tarro_town.PieChapter = 2.1
+      if SV.tarro_town.PieChapter > 3 then
+      else
+        SV.tarro_town.PieChapter = 2.1
+      end
     else
       SV.tarro_town.PieChapter = 2.2
     end
     
-    COMMON.EndDungeonDay(result, "tarro_town_outside", -1, 1, 2)
+    if SV.tarro_town.PieChapter > 9 then
+      COMMON.EndDungeonDay(result, "tarro_town_outside", -1, 6, 2)
+    elseif SV.tarro_town.PieChapter > 4 then
+      COMMON.EndDungeonDay(result, "tarro_town_outside", -1, 4, 2)
+    else
+      SV.tarro_town.PieChapter = 2.1
+      COMMON.EndDungeonDay(result, "tarro_town_outside", -1, 1, 2)
+    end
   else
     if SV.tarro_forest.ZoomerDefeated == false then
       if segmentID == 0 then
@@ -55,7 +65,7 @@ function tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
       if segmentID == 0 then
         COMMON.EndDungeonDay(result, "tarro_forest", -1, 1, 0)
         SV.tarro_forest.dungpoints = SV.tarro_forest.dungpoints + 50
-        SV.tarro_town.apple_tree_get = false
+        SV.tarro_forest.apple_tree_get = false
       end
     end
   end

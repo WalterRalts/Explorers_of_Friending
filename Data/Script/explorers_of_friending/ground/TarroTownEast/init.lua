@@ -18,7 +18,6 @@ local TarroTownEast = {}
 function TarroTownEast.Init(map)
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
-
   local partner = CH('Teammate1')
   local azura = CH("Teammate1")
   local tango = CH("Tango")
@@ -202,6 +201,7 @@ function TarroTownEast.TarroForestEntrance_Touch(obj, activator)
   end
 end
 
+Ziggy_talk = 0
 function TarroTownEast.Ziggy_Action(obj, activator)
   local maru = CH("PLAYER")
   local azura = CH('Teammate1')
@@ -210,7 +210,7 @@ function TarroTownEast.Ziggy_Action(obj, activator)
     AI:DisableCharacterAI(azura)
     GROUND:MoveToPosition(maru, 460, 422, false, 8)
     GROUND:MoveToPosition(azura, 460, 400, false, 8)
-    GROUND:CharTurnToCharAnimated(maru, ziggy, 8)
+    GROUND:CharTurnToCharAnimated(maru, ziggy, 4)
     COMMON.FaceEachother("Teammate1", "Ziggy")
     if senna_check_ziggy == 1 then
       UI:SetSpeaker(azura)
@@ -231,39 +231,49 @@ function TarroTownEast.Ziggy_Action(obj, activator)
       UI:WaitShowDialogue("Yep yep! Just guarding and stuff!")
       senna_check_ziggy = 0
     else
-      UI:SetSpeaker(azura)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("ZIG!")
-      
-      UI:SetSpeaker(ziggy)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("AZU!")
+      if Ziggy_talk == 0 then
+        UI:SetSpeaker(azura)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("ZIG!")
+        
+        UI:SetSpeaker(ziggy)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("AZU!")
 
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowDialogue("What are you doing in front of your house?")
+        UI:SetSpeaker(maru)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("What are you doing in front of your house?")
 
-      UI:SetSpeaker(ziggy)
-      UI:WaitShowTimedDialogue("[speed=0.8]Okay, [pause=20]so I woke up this morning and \nthere was a surprising lack of Oran berries!", 25)
-      UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowTimedDialogue("[speed=1.2]So, I asked my mom what happened to \nthem and she said that I probably ate them all and forgot.", 35)
-      UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowTimedDialogue("I couldn't ask my dad because he was \nbusy with whatever he was busy with...", 30)
-      UI:WaitShowTimedDialogue("...but he didn't look like he was doing \nanything...", 30)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowTimedDialogue("...and he turned around all startled with \na strange amount of berry juice around his face.", 20)
-      UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowTimedDialogue("[speed=1.9]The juice also matched the color of the berries and my dad really likes Oran berries...", 20)
-      UI:WaitShowTimedDialogue("...so I'm pretty sure he's the one who \nate all of them.", 20);
-      UI:SetSpeakerEmotion("Angry")
-      UI:WaitShowDialogue("[speed=2.2]But JUST[pause=25] IN[pause=25] CASE[pause=25], whoever decides to steal our berries will FACE[pause=25] MY[pause=25] ZIGGY[pause=25] POWERRRRRRRRR!");
-      UI:SetSpeakerEmotion("Sigh")
-      UI:WaitShowDialogue("[speed=1.0]Phew... [pause=50]...[emote=Normal]somethin' like that.");
+        UI:SetSpeaker(ziggy)
+        UI:WaitShowTimedDialogue("[speed=0.8]Okay, [pause=20]so I woke up this morning and \nthere was a surprising lack of Oran berries!", 25)
+        UI:SetSpeakerEmotion("Worried")
+        UI:WaitShowTimedDialogue("[speed=1.2]So, I asked my mom what happened to \nthem and she said that I probably ate them all and forgot.", 35)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowTimedDialogue("I couldn't ask my dad because he was \nbusy with whatever he was busy with...", 30)
+        UI:WaitShowTimedDialogue("...but he didn't look like he was doing \nanything...", 30)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowTimedDialogue("...and he turned around all startled with \na strange amount of berry juice around his face.", 20)
+        UI:SetSpeakerEmotion("Worried")
+        UI:WaitShowTimedDialogue("[speed=1.9]The juice also matched the color of the berries and my dad really likes Oran berries...", 20)
+        UI:WaitShowTimedDialogue("...so I'm pretty sure he's the one who \nate all of them.", 20);
+        UI:SetSpeakerEmotion("Angry")
+        UI:WaitShowDialogue("[speed=2.2]But JUST[pause=25] IN[pause=25] CASE[pause=25], whoever decides to steal our berries will FACE[pause=25] MY[pause=25] ZIGGY[pause=25] POWERRRRRRRRR!");
+        UI:SetSpeakerEmotion("Sigh")
+        UI:WaitShowDialogue("[speed=1.0]Phew... [pause=50]...[emote=Normal]somethin' like that.");
 
-      UI:SetSpeaker(maru)
-      UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowDialogue("Understandable, have a nice guarding.")
+        UI:SetSpeaker(maru)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("Understandable, have a nice guarding.")
+        Ziggy_talk = 1
+      else
+        UI:SetSpeaker(ziggy)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("It's not a lot, but it's honest work.")
 
+        UI:SetSpeaker(maru)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("If you say so.")
+      end
       AI:EnableCharacterAI(azura)
     end
   else
@@ -272,8 +282,16 @@ function TarroTownEast.Ziggy_Action(obj, activator)
     UI:WaitShowDialogue("ZIG!")
     
     UI:SetSpeaker(ziggy)
+    UI:SetSpeakerEmotion("Sad")
+    UI:WaitShowDialogue("Azuuuuu![pause=25] When can I get a piece of pie?!")
+
+    UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("AZU!")
+    UI:WaitShowDialogue("Well it's made for us, Ziggy.[pause=15] She won't have enough for you now...")
+
+    UI:SetSpeaker(ziggy)
+    UI:SetSpeakerEmotion("Teary-Eyed")
+    UI:WaitShowDialogue("Azuuuuuuuuuu!")
   end
   AI:EnableCharacterAI(azura)
 end
@@ -648,8 +666,8 @@ function TarroTownEast.Budeg_Action(obj, activator)
   local password = "Aa1Bb2;345devdebug"
   UI:NameMenu("Please enter the password.", "Password", 200, "Catbug")
   UI:WaitForChoice() 
-  print(tostring(UI:ChoiceResult()))
-  if not UI:ChoiceResult() == tostring(password) then
+  print(UI:ChoiceResult())
+  if not UI:ChoiceResult() == password then
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue("Wrong!")
   else

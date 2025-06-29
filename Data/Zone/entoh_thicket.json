@@ -7,10 +7,10 @@
 "LocalTexts": {}
 },
 "Released": true,
-"Comment": "",
+"Comment": "Chapter 3 - Rexio's first dungeon",
 "NoEXP": false,
-"ExpPercent": 50,
-"Level": -1,
+"ExpPercent": 40,
+"Level": 6,
 "LevelCap": false,
 "KeepSkills": false,
 "TeamRestrict": false,
@@ -174,18 +174,6 @@
 {
 "Key": {
 "str": [
--3
-]
-},
-"Value": {
-"$type": "RogueEssence.LevelGen.ScriptGenStep`1[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence]], RogueEssence",
-"Script": "EntohThicketWall",
-"ArgTable": "{}"
-}
-},
-{
-"Key": {
-"str": [
 -2
 ]
 },
@@ -220,6 +208,104 @@
 }
 ],
 "Filters": []
+}
+},
+{
+"Key": {
+"str": [
+-1
+]
+},
+"Value": {
+"$type": "RogueEssence.LevelGen.ScriptGenStep`1[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence]], RogueEssence",
+"Script": "EntohThicketWall",
+"ArgTable": "{}"
+}
+},
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "RogueElements.DropDiagonalBlockStep`1[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence]], RogueElements",
+"Terrain": {
+"$type": "RogueEssence.Dungeon.Tile, RogueEssence",
+"Data": {
+"ID": "floor",
+"TileTex": {
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 0,
+"Y": 0
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+}
+}
+},
+{
+"Key": {
+"str": [
+6
+]
+},
+"Value": {
+"$type": "RogueEssence.LevelGen.MapEffectStep`1[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence]], RogueEssence",
+"Effect": {
+"UniversalStates": [],
+"BeforeTryActions": [],
+"BeforeActions": [],
+"OnActions": [],
+"BeforeExplosions": [],
+"BeforeHits": [],
+"OnHits": [],
+"OnHitTiles": [],
+"AfterActions": [],
+"ElementEffects": [],
+"OnEquips": [],
+"OnPickups": [],
+"BeforeStatusAdds": [],
+"OnStatusAdds": [],
+"OnStatusRemoves": [],
+"OnMapStatusAdds": [],
+"OnMapStatusRemoves": [],
+"OnMapStarts": [
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
+"Script": "DungeonTalker",
+"ArgTable": "{}"
+}
+}
+],
+"OnTurnStarts": [],
+"OnTurnEnds": [],
+"OnMapTurnEnds": [],
+"OnWalks": [],
+"OnDeaths": [],
+"OnRefresh": [],
+"OnMapRefresh": [],
+"ModifyHPs": [],
+"RestoreHPs": [],
+"InitActionData": []
+}
 }
 },
 {
@@ -466,7 +552,7 @@
 },
 "Range": {
 "Min": 0,
-"Max": 10
+"Max": 8
 }
 }
 ]
@@ -694,7 +780,34 @@
 },
 "Level": {
 "Min": 1,
-"Max": 7
+"Max": 8
+},
+"SpecifiedSkills": [],
+"Intrinsic": "",
+"Tactic": "wander_normal",
+"SpawnConditions": [],
+"SpawnFeatures": []
+},
+"Role": 0
+},
+"Rate": 10,
+"Range": {
+"Min": 4,
+"Max": 8
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
+"Species": "aipom",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 1,
+"Max": 5
 },
 "SpecifiedSkills": [],
 "Intrinsic": "",
@@ -714,15 +827,15 @@
 "TeamSizes": [
 {
 "Spawn": 1,
-"Rate": 60,
+"Rate": 250,
 "Range": {
 "Min": 0,
-"Max": 7
+"Max": 8
 }
 },
 {
 "Spawn": 2,
-"Rate": 30,
+"Rate": 20,
 "Range": {
 "Min": 1,
 "Max": 7
@@ -730,7 +843,7 @@
 },
 {
 "Spawn": 3,
-"Rate": 25,
+"Rate": 4,
 "Range": {
 "Min": 2,
 "Max": 7
@@ -738,7 +851,7 @@
 },
 {
 "Spawn": 4,
-"Rate": 5,
+"Rate": 1,
 "Range": {
 "Min": 3,
 "Max": 7

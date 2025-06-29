@@ -30,6 +30,9 @@ function TarroTownTreeBreak.Init(map)
     Cute_talk = false
     TarroTownTreeBreak.BreakTime()
   end
+  if SV.tarro_town.PieChapter == 9 then
+    SV.tarro_town.PieChapter = 8
+  end
 end
 
 ---TarroTownTreeBreak.Enter(map)
@@ -351,7 +354,7 @@ function TarroTownTreeBreak.TarroTreeHollows_End_Touch(obj, activator)
   UI:WaitForChoice()
   result = UI:ChoiceResult()
   if result == 1 then
-    if SV.tarro_town.PieChapter == 8 then
+    if SV.tarro_town.PieChapter == 8 or 9 then
       UI:SetSpeaker(ziggy)
       UI:SetSpeakerEmotion("Angry")
       UI:WaitShowDialogue("OI![pause=35] Don't give up on me, Mar! Let's go let's go let's go!")

@@ -7,7 +7,7 @@
 "LocalTexts": {}
 },
 "Released": true,
-"Comment": "",
+"Comment": "Rexio's Home",
 "NoEXP": false,
 "ExpPercent": 50,
 "Level": -1,
@@ -22,14 +22,60 @@
 "Persistent": false,
 "Rescues": 0,
 "Rogue": 0,
-"Segments": [],
+"Segments": [
+{
+"$type": "RogueEssence.LevelGen.LayeredSegment, RogueEssence",
+"Floors": [
+{
+"$type": "RogueEssence.LevelGen.LoadGen, RogueEssence",
+"GenSteps": [
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "RogueEssence.LevelGen.MappedRoomStep`1[[RogueEssence.LevelGen.MapLoadContext, RogueEssence]], RogueEssence",
+"MapID": "EntohSouthBoss"
+}
+},
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "PMDC.LevelGen.MapTitleDropStep`1[[RogueEssence.LevelGen.MapLoadContext, RogueEssence]], PMDC",
+"DropPriority": {
+"str": [
+-15
+]
+}
+}
+}
+],
+"Comment": ""
+}
+],
+"ZoneSteps": [],
+"IsRelevant": false,
+"Comment": ""
+}
+],
 "GroundMaps": [
 "RexioHome",
-"EntohTownNorth",
+"ApartmentRooms",
 "EntohTownCenter",
+"EntohTownNorth",
 "EntohTownDelivery",
 "RexioHome_ch2",
-"EntohTownCenter_ch2"
+"EntohTownCenter_ch2",
+"EntohTownNorth_ch2",
+"EntohTownSouth",
+"EntohTownEast",
+"EntohTownSouth_ch2"
 ]
 }
 }

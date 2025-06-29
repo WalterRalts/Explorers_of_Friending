@@ -26955,8 +26955,8 @@
 "triggerType": 0,
 "EntityCallbacks": [],
 "Collider": {
-"X": 234,
-"Y": 402,
+"X": 232,
+"Y": 418,
 "Width": 16,
 "Height": 16
 }
@@ -27043,8 +27043,8 @@
 "triggerType": 0,
 "EntityCallbacks": [],
 "Collider": {
-"X": 261,
-"Y": 402,
+"X": 256,
+"Y": 417,
 "Width": 16,
 "Height": 16
 }
@@ -27131,8 +27131,8 @@
 "triggerType": 0,
 "EntityCallbacks": [],
 "Collider": {
-"X": 288,
-"Y": 402,
+"X": 280,
+"Y": 416,
 "Width": 16,
 "Height": 16
 }
