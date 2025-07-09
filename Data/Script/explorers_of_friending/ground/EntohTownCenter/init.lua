@@ -22,6 +22,13 @@ function EntohTownCenter.Init(map)
   if flow_talk == 1 then
     GROUND:CharSetAnim(CH("Flow"), "Idle", true)
   end
+  if SV.entoh_town.AdventureChapter > 0 then
+    GROUND:Hide("Tidy")
+    GROUND:Hide("Flow")
+    GROUND:Hide("Wurp")
+    GROUND:Hide("Snow")
+    GROUND:TeleportTo(CH("Worker"), 576, 176, Dir8.Down, 0)
+  end
 end
 
 ---EntohTownCenter.Enter(map)
@@ -203,13 +210,22 @@ end
 function EntohTownCenter.Pari_Action(obj, activator)
   local pari = CH("Pari")
   local rexio = CH("PLAYER")
-  if bug_talk == 0 then
-    EntohTownCenter.Wurp_Action()
+  if SV.entoh_town.AdventureChapter > 0 then
+      UI:SetSpeaker(pari)
+      UI:SetSpeakerEmotion("Determined")
+      UI:WaitShowDialogue("Monsieur Rexi, to where is Wurpy going without taking moui!")
+      UI:SetSpeakerEmotion("Angry")
+      UI:WaitShowDialogue("How are we to become leader mondial without chef d'équipe!")
+
   else
-    GROUND:CharTurnToCharAnimated(pari, rexio, 4)
-    UI:SetSpeaker(pari)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Do not get in our way, Monsieur Rexi. Ze world will be ours!")
+    if bug_talk == 0 then
+      EntohTownCenter.Wurp_Action()
+    else
+      GROUND:CharTurnToCharAnimated(pari, rexio, 4)
+      UI:SetSpeaker(pari)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Do not get in our way, Monsieur Rexi. Ze world will be ours!")
+    end
   end
 end
 
@@ -268,7 +284,7 @@ end
 function EntohTownCenter.Flow_Action(obj, activator)
   local flow = CH("Flow")
   local rexio = CH("PLAYER")
-  COMMON.FaceEachother("Flow", "PLAYER")
+  
   if flow_talk == 0 then
     UI:SetSpeaker(flow)
     UI:SetSpeakerEmotion("Sigh")
@@ -286,6 +302,7 @@ function EntohTownCenter.Flow_Action(obj, activator)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowTimedDialogue("Meep.", 15)
     
+    COMMON.FaceEachother("Flow", "PLAYER")
     GROUND:CharSetAnim(CH("Flow"), "Charge", true)
     UI:SetSpeaker(flow)
     UI:SetSpeakerEmotion("Angry")
@@ -293,11 +310,30 @@ function EntohTownCenter.Flow_Action(obj, activator)
     flow_talk = 1
     GROUND:CharSetAnim(CH("Flow"), "Idle", true)
   else
+    COMMON.FaceEachother("Flow", "PLAYER")
     UI:SetSpeaker(flow)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("Now I have to start all over...")
   end
   
+end
+
+function EntohTownCenter.Sign_Action(obj, activator)
+  local wurp = CH("Wurp")
+  local snow = CH("Snow")
+  local rexio = CH("PLAYER")
+  if bug_talk == 0 then
+    EntohTownCenter.Wurp_Action()
+  else
+    GROUND:CharTurnToCharAnimated(snow, rexio, 4)
+    UI:SetSpeaker(snow)
+    UI:SetSpeakerEmotion("Sad")
+    UI:WaitShowDialogue("D-don't mind him, Rexio.")
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("E-ever since he beat some... goopy thing in a dungeon, he's been...")
+    GROUND:CharTurnToCharAnimated(snow, wurp, 4)
+    UI:WaitShowDialogue("...acting strange.")
+  end
 end
 
 return EntohTownCenter

@@ -1738,7 +1738,7 @@ function BATTLE_SCRIPT.FlowInteract(owner, ownerChar, context, args)
   end
 end
 
-function BATTLE_SCRIPT.FlowInteract(owner, ownerChar, context, args)
+function BATTLE_SCRIPT.TidyInteract(owner, ownerChar, context, args)
   context.CancelState.Cancel = true
   DUNGEON:CharTurnToChar(context.Target, context.User)
   local target = context.Target
@@ -1761,6 +1761,62 @@ function BATTLE_SCRIPT.FlowInteract(owner, ownerChar, context, args)
       UI:SetSpeaker(target)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("We're doing great, guys!")
+    end
+  end
+end
+
+function BATTLE_SCRIPT.WurpInteract(owner, ownerChar, context, args)
+  context.CancelState.Cancel = true
+  DUNGEON:CharTurnToChar(context.Target, context.User)
+  local target = context.Target
+  local user = context.User
+  -- TODO: create a charstate for being unable to talk and have talk-interfering statuses cause it
+  if COMMON.CanTalk(target) then
+    local ratio = target.HP * 100 // target.MaxHP
+    local current_dungeon = DUNGEON:DungeonDisplayName()
+    local say_choice = math.random(3)
+    
+    if say_choice == 3 then
+      UI:SetSpeaker(target)
+      UI:SetSpeakerEmotion("Determined")
+      UI:WaitShowDialogue("Stwiiiing shot!")
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Pwactice is always good!")
+    elseif say_choice == 2 then
+      UI:SetSpeaker(target)
+      UI:SetSpeakerEmotion("Determined")
+      UI:WaitShowDialogue("")
+    else
+      UI:SetSpeaker(target)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("We're doing great, guys!")
+    end
+  end
+end
+
+function BATTLE_SCRIPT.SnowInteract(owner, ownerChar, context, args)
+  context.CancelState.Cancel = true
+  DUNGEON:CharTurnToChar(context.Target, context.User)
+  local target = context.Target
+  local user = context.User
+  -- TODO: create a charstate for being unable to talk and have talk-interfering statuses cause it
+  if COMMON.CanTalk(target) then
+    local ratio = target.HP * 100 // target.MaxHP
+    local current_dungeon = DUNGEON:DungeonDisplayName()
+    local say_choice = math.random(3)
+    
+    if say_choice == 3 then
+      UI:SetSpeaker(target)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("I-I'll help...")
+    elseif say_choice == 2 then
+      UI:SetSpeaker(target)
+      UI:SetSpeakerEmotion("Determined")
+      UI:WaitShowDialogue("W-we have to keep moving forward...")
+    else
+      UI:SetSpeaker(target)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("I w-wonder what's up with the world today...")
     end
   end
 end

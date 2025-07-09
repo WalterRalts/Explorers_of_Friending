@@ -23,3 +23,27 @@ function Center.Feeling()
 
     GAME:CutsceneMode(false)
 end
+
+function Center.AnotherFeeling()
+    local rexio = CH("PLAYER")
+    local coro01 = TASK:BranchCoroutine(function()
+        GROUND:AnimateToPosition(rexio, "Walk", Dir8.Up, rexio.Position.X, rexio.Position.Y - 245, 0.4, 1, 0)
+        end)	
+    local coro02 = TASK:BranchCoroutine(function()
+        UI:SetSpeaker(rexio)
+        UI:SetSpeakerEmotion("Sad")
+        UI:WaitShowTimedDialogue("...", 120)
+        end)
+    local coro03 = TASK:BranchCoroutine(function() 
+        GAME:FadeIn(180)
+        end)
+    TASK:JoinCoroutines({coro01, coro02, coro03})
+
+    GAME:WaitFrames(90)
+    GROUND:CharAnimateTurn(rexio, Direction.Left, 6, false)
+    GAME:WaitFrames(90)
+    GROUND:CharAnimateTurn(rexio, Direction.Right, 6, false)
+    GAME:WaitFrames(120)
+    UI:SetSpeakerEmotion("Sad")
+    UI:WaitShowDialogue("(I should just...[pause=40] go home.)")
+end

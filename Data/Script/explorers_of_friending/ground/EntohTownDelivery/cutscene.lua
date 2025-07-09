@@ -111,7 +111,7 @@ function Entoh.Dragon()
                 COMMON.CharHop("Bucks")
             end
             local function buckchase()
-                GROUND:arker(bucks, MRKR("BucksExit"), true, 4)
+                GROUND:MoveToMarker(bucks, MRKR("BucksExit"), true, 4)
                 GROUND:MoveToMarker(bucks, MRKR("PonyaExit2"), true, 4)
                 GROUND:Hide("Bucks")
             end

@@ -395,3 +395,217 @@ function Aurm.Fashion()
     GAME:FadeOut(false, 50)
     GAME:EnterGroundMap("RexioHome_ch2", "RexioStart2")
 end
+
+function Aurm.Unfeel()
+    local rexio = CH("PLAYER")
+    local luke = CH("Luke")
+    GAME:CutsceneMode(true)
+    GAME:FadeIn(20)
+    COMMON.FaceEachother("PLAYER", "Luke")
+    COMMON.CharRealize("PLAYER")
+    
+    UI:SetSpeaker(luke)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowTimedDialogue("Oh hey, welcome back again, buddy!", 30)
+
+    local coro01 = TASK:BranchCoroutine(function()
+        GAME:WaitFrames(190)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Buddy...?[pause=30] ...hello???")
+        end)	
+    local coro02 = TASK:BranchCoroutine(function()
+        GAME:MoveCamera(229, 248, 1, false)
+        GROUND:MoveToMarker(rexio, MRKR("RexioStart"), false, 1)
+        GAME:WaitFrames(10)
+        COMMON.FaceEachother("PLAYER", "Luke")
+        end)
+    TASK:JoinCoroutines({coro01, coro02})
+    
+    GAME:WaitFrames(70)
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("...are you real?")
+    
+    COMMON.CharSweatdrop("Luke")
+    UI:SetSpeaker(luke)
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("Did you eat too many berries again?")
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Where were you anyway?")
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Angry")
+    UI:WaitShowDialogue("You were gone! I should be asking you! Were you not concerned?!")
+    
+    UI:SetSpeaker(luke)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Kid, I was here the whole time,[pause=20] and I'm definitely sure this time.")
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("I thought you were out with your friends without telling me again. You're usually out for longer, too.")
+
+    local coro2 = TASK:BranchCoroutine(function()
+        UI:SetSpeaker(rexio)
+        UI:SetSpeakerEmotion("Determined")
+        UI:WaitShowDialogue("Tch... whatever, man...")
+        end)	
+    local coro1 = TASK:BranchCoroutine(function()
+        GROUND:MoveToPosition(rexio, rexio.Position.X, rexio.Position.Y - 35, false, 2)
+        end)
+    TASK:JoinCoroutines({coro1, coro2})
+
+    GROUND:CharTurnToChar(luke, rexio)
+    GAME:WaitFrames(95)
+    UI:SetSpeaker(luke)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("...you still miss her,[pause=10] don't you...")
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Sad")
+    UI:WaitShowDialogue("N-no... I...")
+
+    UI:SetSpeaker(luke)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("...she'll be back.[pause=60] I promise.")
+
+    GAME:WaitFrames(55)
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Sad")
+    UI:WaitShowDialogue("I didn't know where I went.[pause=40] Or even where everyone else went...")
+
+    local coro2 = TASK:BranchCoroutine(function()
+        UI:SetSpeaker(rexio)
+        UI:SetSpeakerEmotion("Determined")
+        UI:WaitShowDialogue("I didn't like it![pause=25] Why did it feel so awful?!")
+        end)	
+    local coro1 = TASK:BranchCoroutine(function()
+        GROUND:MoveToMarker(rexio, MRKR("RexioStart"), false, 4)
+        COMMON.FaceEachother("Luke", "PLAYER")
+        end)
+    TASK:JoinCoroutines({coro1, coro2})
+
+    GAME:WaitFrames(50)
+    UI:SetSpeaker(luke)
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("What?[pause=30] Emotions?")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("I'd say that your aura is growing and making them a little stronger.")
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Determined")
+    UI:WaitShowDialogue("Bruuuuuuuuuuuuh, I don't want it anymore![pause=20] Aura is dumb!")
+
+    UI:SetSpeaker(luke)
+    UI:SetSpeakerEmotion("Surprised")
+    UI:WaitShowDialogue("Wha-[pause=30] Rexio! No!!")
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Angry")
+    UI:WaitShowTimedDialogue("It's just so")
+
+    GROUND:CharSetAnim(rexio, "Sleep", true)
+    GAME:WaitFrames(120)
+
+    UI:SetSpeaker(luke)
+    UI:SetSpeakerEmotion("Determined")
+    UI:WaitShowTimedDialogue("([speed=0.1]...[emote=Sigh][speed=1.0]Rexio...)", 70)
+    GROUND:CharAnimateTurnTo(luke, Dir8.Down, 3)
+    UI:WaitShowTimedDialogue("(I guess it's pretty late.[pause=55] Guess I'll check in with Dragon...)", 70)
+
+    GROUND:MoveToPosition(luke, 142, 226, false, 2)
+    GROUND:MoveToPosition(luke, 208, 289, false, 2)
+    GROUND:CharAnimateTurnTo(luke, Dir8.Down, 3)
+    GAME:WaitFrames(15)
+    GROUND:Hide("Luke")
+
+    --Next Chapter
+
+    SV.entoh_town.AdventureChapter = 1
+    SV.entoh_town.HelperChapter = 10
+    GAME:FadeOut(false, 90)
+
+    GAME:CutsceneMode(true)
+    local rexio = CH("PLAYER")
+    GROUND:CharSetAnim(rexio, "EventSleep", true)
+    GAME:FadeIn(180)
+    UI:WaitShowTitle("Chapter 5:\nAnew", 120)
+    GAME:WaitFrames(30)
+    UI:WaitHideTitle(120)
+    GROUND:CharWaitAnim(rexio, "EventSleep", true)
+    GROUND:CharSetAnim(rexio, "Laying", true)
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Pain")
+    UI:WaitShowDialogue("Hic!")
+    
+    GROUND:CharWaitAnim(rexio, "Wake", true)
+    GROUND:CharSetAnim(rexio, "Idle", true)
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowTimedDialogue("Good morning, old g")
+    COMMON.CharRealize("PLAYER")
+    GAME:WaitFrames(30)
+
+    COMMON.CharAngry("PLAYER")
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Angry")
+    UI:WaitShowTimedDialogue("[speed=0.7]Oh you have got to be kidding me")
+
+    local coro2 = TASK:BranchCoroutine(function()
+        SOUND:PlayBattleSE("DUN_Aura_Sphere_2")
+        GAME:WaitFrames(10)
+
+        local result_emitter = RogueEssence.Content.SingleEmitter(RogueEssence.Content.AnimData("Blast_Seed", 3))
+        result_emitter.LocHeight = 6
+
+        local sphere = RogueEssence.Content.MoveToEmitter()
+        sphere.MoveTime = 30
+        sphere.Anim = RogueEssence.Content.AnimData("Aura_Sphere", 3)
+        sphere.ResultAnim = result_emitter
+        sphere.OffsetStart = RogueElements.Loc(rexio.Position.X + 24, 400)
+        sphere.OffsetEnd = RogueElements.Loc(rexio.Position.X + 24, 150)
+        sphere.LingerStart = 0
+        sphere.LingerEnd = 5
+        GROUND:PlayVFX(sphere, 0, 0)
+        GAME:WaitFrames(40)
+        SOUND:PlayBattleSE("DUN_Explosion")
+        GAME:WaitFrames(10)
+        SOUND:PlayBattleSE("DUN_Self-Destruct")
+        end)	
+    local coro1 = TASK:BranchCoroutine(function()
+        GAME:WaitFrames(5)
+
+        UI:SetSpeaker(rexio)
+        UI:SetSpeakerEmotion("Surprised")
+        UI:WaitShowTimedDialogue("Wah!", 5)
+        GROUND:MoveToMarker(rexio, MRKR("RexioStart"), false, 4)
+        COMMON.FaceEachother("Luke", "PLAYER")
+        GROUND:AnimateToPosition(rexio, "Walk", Dir8.Up, rexio.Position.X + 30, rexio.Position.Y, 5, 6, 0)
+        end)
+    TASK:JoinCoroutines({coro1, coro2})
+
+    GROUND:Unhide("Luke")
+    COMMON.FaceEachother("PLAYER", "Luke")
+    GAME:WaitFrames(60)
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Surprised")
+    UI:WaitShowDialogue("D-dad, when did you...?[pause=30] W[emote=Stunned]hy did you?????")
+    UI:SetSpeakerEmotion("Angry")
+    UI:WaitShowDialogue("We don't even HAVE A DOOR, DAD!!")
+
+    UI:SetSpeaker(luke)
+    UI:SetSpeakerEmotion("Angry")
+    UI:WaitShowDialogue("Rexio, we're going! I'll get your friends!")
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Surprised")
+    UI:WaitShowDialogue("Wh-... where?!")
+
+    GAME:WaitFrames(30)
+    GROUND:CharAnimateTurnTo(luke, Dir8.Down, 10)
+    COMMON.CharSweatdrop("Luke")
+    UI:SetSpeaker(luke)
+    UI:SetSpeakerEmotion("Angry")
+    UI:WaitShowDialogue("No idea, but it's important! Come ooooooon!")
+    GROUND:Hide("Luke")
+    GAME:CutsceneMode(false)
+end

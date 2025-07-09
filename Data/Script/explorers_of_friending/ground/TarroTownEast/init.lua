@@ -670,14 +670,33 @@ function TarroTownEast.Budeg_Action(obj, activator)
   if not UI:ChoiceResult() == password then
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue("Wrong!")
+    UI:SetSpeaker(budeg)
+    UI:SetSpeakerEmotion("Happ")
+    UI:WaitShowDialogue("Zzt, welcome to dev mode. Bzzt, I am made to skip scenes and jump bewteen characters.")
   else
     UI:SetSpeakerEmotion("Happy")
-    local choices = {("Rexio"),
-          ("???")}
+    local choices = {("Maru and Azura"),
+      ("Rexio"),
+      ("???")}
       UI:BeginChoiceMenu("Please choose a character for dev work.", choices, 1, 2)
       UI:WaitForChoice()
       result = UI:ChoiceResult()
     if result == 1 then
+      UI:SetSpeakerEmotion("Happy")
+      local choices = {("Fight!"),
+        ("Darkness")}
+        UI:BeginChoiceMenu("Please choose a chapter for dev work.", choices, 1, 2)
+        UI:WaitForChoice()
+        result = UI:ChoiceResult()
+      if result == 1 then
+        SV.tarro_town.PieChapter = 4
+        GAME:EnterGroundMap("tarro_town_outside", "MaruHome", "MaruHome_MainEnter")
+      else
+        SV.tarro_town.PieChapter = 10
+        GAME:EnterGroundMap("tarro_town_outside", "MaruHome", "MaruHome_MainEnter")
+      end
+      
+    elseif result == 2 then
       UI:SetSpeaker(budeg)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("Zzt, changing to Rexio")

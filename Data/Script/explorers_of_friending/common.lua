@@ -1427,6 +1427,12 @@ function COMMON.CharRealize(char)
   SOUND:PlaySE("Battle/EVT_Emote_Exclaim_Surprised")
 end
 
+function COMMON.CharRealizeHeavy(char)
+  local real = CH(char)
+  GROUND:CharSetEmote(real, "notice", 2)
+  SOUND:PlaySE("Battle/EVT_Emote_Shock_Bad")
+end
+
 function COMMON.SetCharAndEmotion(char, emote)
   UI:SetSpeaker(char)
   UI:SetSpeakerEmotion(emote)

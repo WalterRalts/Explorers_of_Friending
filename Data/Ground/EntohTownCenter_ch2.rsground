@@ -59859,6 +59859,20 @@
 "Width": 16,
 "Height": 16
 }
+},
+{
+"EntName": "EnterMark_South",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 100,
+"Y": 460,
+"Width": 16,
+"Height": 16
+}
 }
 ]
 }

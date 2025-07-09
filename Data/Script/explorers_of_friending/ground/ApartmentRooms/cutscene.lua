@@ -44,7 +44,7 @@ function Apart.TidyIntro()
     for i = 1, 5, 1 do
         SOUND:PlaySE("Battle/DUN_Tail_Whip")
         GROUND:CharSetAnim(tidy, "Rotate", false)
-        GAME:WaitFrames(15)
+        GAME:WaitFrames(18)
     end
     GAME:WaitFrames(10)
     SOUND:PlaySE("Battle/EVT_Minigame_Correct")
@@ -87,7 +87,7 @@ function Apart.TidyIntro()
     for i = 1, 2, 1 do
         SOUND:PlaySE("Battle/DUN_Tail_Whip")
         GROUND:CharSetAnim(tidy, "Rotate", false)
-        GAME:WaitFrames(15)
+        GAME:WaitFrames(18)
     end
     GAME:WaitFrames(30)
     SOUND:PlaySE("Battle/EVT_Minigame_Wrong")

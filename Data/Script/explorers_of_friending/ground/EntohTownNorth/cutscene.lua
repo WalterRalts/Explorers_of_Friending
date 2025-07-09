@@ -3,6 +3,7 @@ require 'explorers_of_friending.common'
 Entoh = {}
 
 function Entoh.PanchChallenge()
+    Todungeonscene = true
     local panch = CH("Panch")
     local rexio = CH("PLAYER")
     local asd = TASK:BranchCoroutine(function() 

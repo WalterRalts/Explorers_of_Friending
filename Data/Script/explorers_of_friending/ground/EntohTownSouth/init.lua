@@ -16,16 +16,16 @@ local EntohTownSouth = {}
 ---EntohTownSouth.Init(map)
 --Engine callback function
 function EntohTownSouth.Init(map)
-
   South.BossBegin()
 end
 
 ---EntohTownSouth.Enter(map)
 --Engine callback function
 function EntohTownSouth.Enter(map)
-
-  GAME:FadeIn(20)
-
+  if not Todungeonscene then
+    GAME:FadeIn(20)
+  else
+  end
 end
 
 ---EntohTownSouth.Exit(map)
@@ -56,11 +56,6 @@ function EntohTownSouth.GameLoad(map)
   GAME:FadeIn(20)
 
 end
-
--------------------------------
--- Entities Callbacks
--------------------------------
-
 
 return EntohTownSouth
 

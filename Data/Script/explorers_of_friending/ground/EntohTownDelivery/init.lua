@@ -256,9 +256,9 @@ function EntohTownDelivery.PackageKey_Action(obj, activator)
 
     GROUND:CharAnimateTurn(rexio, Direction.Left, 6, false)
     GAME:WaitFrames(80)
-    GROUND:CharAnimateTurn(rexio, Direction.Right, 6, true)
+    GROUND:CharAnimateTurnTo(rexio, Direction.Right, 6, true)
     GAME:WaitFrames(80)
-    GROUND:CharAnimateTurn(rexio, Direction.Down, 2, true)
+    GROUND:CharAnimateTurnTo(rexio, Direction.Down, 2)
 
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Happy")

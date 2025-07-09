@@ -13,7 +13,7 @@ function Entoh2.TheFlow()
     _DATA.Save.ActiveTeam.Players:Add(p1)
 
     local talk_npc = RogueEssence.Dungeon.BattleScriptEvent("FlowInteract")
-        _DATA.Save.ActiveTeam.Players[1].ActionEvents:Add(talk_npc)
+        _DATA.Save.ActiveTeam.Players[GAME:GetPlayerPartyCount() - 1].ActionEvents:Add(talk_npc)
 
     COMMON.RespawnAllies()
     if SV.entoh_town.firstfind == 2 then

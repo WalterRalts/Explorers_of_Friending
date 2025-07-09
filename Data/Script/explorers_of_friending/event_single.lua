@@ -1638,6 +1638,14 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 			UI:ResetSpeaker()
 			UI:WaitShowDialogue("While playling as Rexio, use the B key to sense items within 10 tiles")
 		end
+	elseif area_name == "Entoh Town" then
+		print("You are here!")
+		local rexio = GAME:GetPlayerPartyMember(0)
+		UI:SetSpeaker(rexio)
+		UI:SetSpeakerEmotion("Worried")
+		UI:WaitShowDialogue("Mm... the usual exit is blocked now...")
+		UI:SetSpeakerEmotion("Determined")
+		UI:WaitShowDialogue("Where else can we get out...?")
 	end
 end
 

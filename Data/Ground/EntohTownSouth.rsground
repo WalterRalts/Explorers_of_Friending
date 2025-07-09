@@ -58252,8 +58252,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 181,
-"Y": 195
+"X": 174,
+"Y": 186
 },
 "serializationHeight": 0,
 "serializationDir": 7,
@@ -58333,8 +58333,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 184,
-"Y": 197,
+"X": 178,
+"Y": 184,
 "Width": 16,
 "Height": 16
 }
@@ -58637,7 +58637,7 @@
 "InteractOrder": 0,
 "serializationLoc": {
 "X": 78,
-"Y": 267
+"Y": 264
 },
 "serializationHeight": 0,
 "serializationDir": 6,
@@ -58924,8 +58924,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 255,
-"Y": 271
+"X": 254,
+"Y": 266
 },
 "serializationHeight": 0,
 "serializationDir": 2,
@@ -59005,8 +59005,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 255,
-"Y": 271,
+"X": 254,
+"Y": 266,
 "Width": 16,
 "Height": 16
 }
@@ -59050,8 +59050,8 @@
 "Y": 0
 },
 "Collider": {
-"X": 86,
-"Y": 12,
+"X": 80,
+"Y": 32,
 "Width": 16,
 "Height": 16
 }
@@ -59140,8 +59140,8 @@
 "triggerType": 0,
 "EntityCallbacks": [],
 "Collider": {
-"X": 75,
-"Y": 7,
+"X": 80,
+"Y": 59,
 "Width": 16,
 "Height": 16
 }
@@ -59228,8 +59228,8 @@
 "triggerType": 0,
 "EntityCallbacks": [],
 "Collider": {
-"X": 95,
-"Y": 24,
+"X": 103,
+"Y": 32,
 "Width": 16,
 "Height": 16
 }
@@ -59244,8 +59244,8 @@
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 100,
-"Y": 4,
+"X": 103,
+"Y": 59,
 "Width": 16,
 "Height": 16
 }
@@ -59265,57 +59265,43 @@
 }
 },
 {
-"EntName": "move1",
+"EntName": "move_1",
 "Direction": 4,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 120,
-"Y": 144,
+"X": 124,
+"Y": 143,
 "Width": 16,
 "Height": 16
 }
 },
 {
-"EntName": "move2",
+"EntName": "move_2",
 "Direction": 4,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 120,
-"Y": 4,
+"X": 125,
+"Y": 17,
 "Width": 16,
 "Height": 16
 }
 },
 {
-"EntName": "move3",
+"EntName": "move_3",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 184,
-"Y": 197,
-"Width": 16,
-"Height": 16
-}
-},
-{
-"EntName": "fall1",
-"Direction": 0,
-"EntEnabled": true,
-"EntOrder": 0,
-"InteractOrder": 0,
-"triggerType": 0,
-"Collider": {
-"X": 86,
-"Y": 210,
+"X": 181,
+"Y": 193,
 "Width": 16,
 "Height": 16
 }

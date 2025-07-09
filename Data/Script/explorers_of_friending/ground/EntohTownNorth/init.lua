@@ -31,8 +31,11 @@ end
 --Engine callback function
 function EntohTownNorth.Enter(map)
 
-  GAME:FadeIn(20)
-
+  if not Todungeonscene then
+    GAME:FadeIn(20)
+  else
+    Todungeonscene = false
+  end
 end
 
 ---EntohTownNorth.Exit(map)

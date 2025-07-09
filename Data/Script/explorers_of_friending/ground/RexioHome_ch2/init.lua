@@ -18,7 +18,6 @@ local RexioHome_ch2 = {}
 function RexioHome_ch2.Init(map)
 
   if SV.entoh_town.HelperChapter < 6 then
-    Checked_Places = 0
     Aurm.AFeeling()
   end
 end
@@ -60,7 +59,7 @@ end
 -------------------------------
 function RexioHome_ch2.ApartmentEnter_Touch(obj, activator)
   GAME:FadeOut(false, 10)
-  GAME:EnterGroundMap("EntohTownCenter_ch2", "HomeMarker")
+  GAME:EnterGroundMap("ApartmentRooms_ch2", "RexioExit")
 end
 
 function RexioHome_ch2.Poster_Action(obj, activator)
@@ -85,6 +84,7 @@ function RexioHome_ch2.FlowerPot_Action(obj, activator)
   COMMON.CharHop("PLAYER")
   UI:SetSpeakerEmotion("Determined")
   UI:WaitShowDialogue("(I'll take good care of them, mom.)")
+  GROUND:CharSetAnim(rexio, "Idle", true)
 end
 
 return RexioHome_ch2

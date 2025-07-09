@@ -23,6 +23,12 @@ function RexioHome.Init(map)
     Aurm.Home()
   elseif KeyGet then
     Aurm.OpenIt()
+  elseif SV.entoh_town.HelperChapter == 9 then
+    Aurm.Unfeel()
+  end
+
+  if SV.entoh_town.AdventureChapter > 0 then
+    GROUND:Hide("Luke")
   end
 
   if SV.entoh_town.HelperChapter == 3 then
@@ -152,10 +158,11 @@ function RexioHome.FlowerPot_Action(obj, activator)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("(These are just flowers I can get from outside, though.)")
 
-  GROUND:CharSetAnim(rexio, "None", true)
+  --GROUND:CharSetAnim(rexio, "None", true)
   GAME:WaitFrames(95)
   COMMON.CharSweatdrop("PLAYER")
   UI:SetSpeakerEmotion("Sad")
+  GROUND:CharSetAnim(rexio, "", true)
   UI:WaitShowDialogue("(I hope she's doing okay...)")
 end
 

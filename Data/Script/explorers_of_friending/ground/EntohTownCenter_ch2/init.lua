@@ -20,6 +20,9 @@ function EntohTownCenter_ch2.Init(map)
   if SV.entoh_town.HelperChapter == 5 then
     Center.Feeling()
     SV.entoh_town.HelperChapter = 6
+  elseif SV.entoh_town.HelperChapter == 8 then
+    Center.AnotherFeeling()
+    SV.entoh_town.HelperChapter = 9
   end
 
   COMMON.RespawnAllies()
@@ -79,30 +82,53 @@ function EntohTownCenter_ch2.WaterHole_Action(obj, activator)
   local rexio = CH("PLAYER")
   UI:SetSpeaker(rexio)
   UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("(...splash? ...splash hole? It's a splash and a half?)")
-  UI:SetSpeakerEmotion("Stunned")
-  UI:WaitShowDialogue("(No, now's not the time!)")
+  UI:WaitShowDialogue("(...nope... nothing...)")
 end
 
 function EntohTownCenter_ch2.Apartments_Enter_Touch(obj, activator)
   print("Exiting?")
   GAME:FadeOut(false, 10)
-  GAME:EnterGroundMap("RexioHome_ch2", "RexioHomeWay")
+  GAME:EnterGroundMap("ApartmentRooms_ch2", "exit_3")
 end
 
 function EntohTownCenter_ch2.Entoh_EastEnter_Touch(obj, activator)
-  GAME:FadeOut(false, 20)
-  GAME:EnterGroundMap("EntohTownEast", "Entrance")
+  if SV.entoh_town.HelperChapter >= 9 then
+    local rexio = CH("PLAYER")
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("(...not now...)")
+  else
+    GAME:FadeOut(false, 20)
+    GAME:EnterGroundMap("EntohTownEast", "Entrance")
+  end
 end
 
 function EntohTownCenter_ch2.Entoh_SouthEnter_Touch(obj, activator)
-  GAME:FadeOut(false, 20)
-  GAME:EnterGroundMap("EntohTownSouth", "EnterMark_North")
+  if SV.entoh_town.HelperChapter >= 9 then
+    local rexio = CH("PLAYER")
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("(No one knew where dad was...)")
+    UI:SetSpeakerEmotion("Sad")
+    UI:WaitShowDialogue("(Probably no point in going back.)")
+  else
+    GAME:FadeOut(false, 20)
+    GAME:EnterGroundMap("EntohTownSouth", "EnterMark_North")
+  end
+  
 end
 
 function EntohTownCenter_ch2.Entoh_NorthEnter_Touch(obj, activator)
-  GAME:FadeOut(false, 10)
-  GAME:EnterGroundMap("EntohTownNorth_ch2", "EnterMark_South")
+  if SV.entoh_town.HelperChapter >= 9 then
+    local rexio = CH("PLAYER")
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("(...not now...)")
+  else
+    GAME:FadeOut(false, 10)
+    GAME:EnterGroundMap("EntohTownNorth_ch2", "EnterMark_South")
+  end
+  
 end
 
 return EntohTownCenter_ch2

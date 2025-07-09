@@ -16,8 +16,11 @@ local EntohTownSouth_ch2 = {}
 ---EntohTownSouth_ch2.Init(map)
 --Engine callback function
 function EntohTownSouth_ch2.Init(map)
-
-  South.BossBegin()
+  if SV.entoh_town.HelperChapter == 6 then
+    South_ch2.GoingIn()
+  elseif SV.entoh_town.HelperChapter == 7 then
+    South_ch2.GoingInFull()
+  end
 end
 
 ---EntohTownSouth_ch2.Enter(map)
@@ -61,6 +64,49 @@ end
 -- Entities Callbacks
 -------------------------------
 
+--Characters
+
+local pietalk = 0
+function EntohTownSouth_ch2.Pie_Action(obj, activator)
+  local pie = CH('Pie')
+  if pietalk == 0 then
+    COMMON.SetCharAndEmotion(pie, "Worried")
+    UI:WaitShowDialogue("[speed=0.6]Weird,[pause=20] I feel like I've been summoned here but there's no other apple around...")
+    pietalk = 1
+  else
+    COMMON.SetCharAndEmotion(pie, "Normal")
+    UI:WaitShowDialogue("[speed=0.6]Maybe it's just my imagination...")
+  end
+end
+
+function EntohTownSouth_ch2.Moonoo_Action(obj, activator)
+  local mono = CH("Moonoo")
+  
+  COMMON.SetCharAndEmotion(mono, "Stunned")
+  UI:WaitShowDialogue("What going on?~[pause=30] Why is everyone seemingly appearing out of nowhere...?~")
+  UI:WaitShowDialogue("Am I still dreaming?")
+end
+
+--Entities
+
+function EntohTownSouth_ch2.Storage_Action(obj, activator)
+  COMMON:ShowTeamStorageMenu()
+end
+
+function EntohTownSouth_ch2.MissionBoard_Action(obj, activator)
+  local rexio = CH('PLAYER')
+  COMMON.SetCharAndEmotion(rexio, "Worried")
+  UI:WaitShowDialogue("(...geez, the rescue teams are slacking.)")
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("(Maybe they need me on their team, haha.)")
+end
+
+--Exits
+
+function EntohTownSouth_ch2.EntohSouth_NExit_Touch(obj, activator)
+  SV.entoh_town.HelperChapter = 8
+  GAME:EnterGroundMap("EntohTownCenter_ch2", "EnterMark_South")
+end
 
 return EntohTownSouth_ch2
 
