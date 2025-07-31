@@ -16,14 +16,17 @@ local TheField = {}
 ---TheField.Init(map)
 --Engine callback function
 function TheField.Init(map)
-  COMMON.RespawnAllies()
-  if SV.tarro_town.DarknessChapter == 3 then
+  if SV.entoh_town.AdventureChapter >= 3 then
+    GAME:RemovePlayerTeam(1)
+    TheField.Second()
+  elseif SV.tarro_town.DarknessChapter == 3 then
+    COMMON.RespawnAllies()
     TheField.First()
+    MapStrings = STRINGS.MapStrings
+    local partner = CH('Teammate1')  
+    AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
+    partner.CollisionDisabled = true
   end
-  MapStrings = STRINGS.MapStrings
-  local partner = CH('Teammate1')  
-  AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
-  partner.CollisionDisabled = true
 end
 
 ---TheField.Enter(map)
@@ -97,55 +100,98 @@ function TheField.First()
   GAME:CutsceneMode(false)
 end
 
+function TheField.Second()
+  local rexio = CH("PLAYER")
+  local zoomer = CH("Zoomer")
+  local smear = CH("Smear")
+  
+  GAME:CutsceneMode(true)
+  local coro3 = TASK:BranchCoroutine(function() 
+    GROUND:MoveInDirection(maru, Dir8.Up, 40, false, 2)
+    end)	
+  local coro4 = TASK:BranchCoroutine(function() 
+    GROUND:MoveInDirection(zoomer, Dir8.Up, 30, false, 2)
+    UI:SetSpeaker(zoomer)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Alright, I'm done helping you, too.")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Oi! Boss! They're here!")
+    end)
+  local coro6 = TASK:BranchCoroutine(function()
+    GAME:FadeIn(50)
+    end)
+  TASK:JoinCoroutines({coro3, coro4, coro6})
+  GROUND:MoveInDirection(zoomer, Dir8.Up, 60, false, 4)
+  
+  GROUND:TeleportTo(zoomer, smear.Position.X - 200, smear.Position.Y, Dir8.DownRight, 2)
+  GAME:CutsceneMode(false)
+end
+
 -------------------------------
 -- Entities Callbacks
 -------------------------------
 function TheField.SceneEnd_Touch(obj, activator)
-  local maru = CH("PLAYER")
-  UI:SetSpeaker(maru)
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("Um... we're here about the letter...")
-
-  GAME:FadeOut(false, 90)
-
-  UI:ResetSpeaker()
-  UI:WaitShowDialogue("And to you two,[pause=65] I say:[pause=45] \"Welcome!\"")
-  --Begin replacement
-  --Save Maru and Azura's stats
-  SV.guilders.tarro_town.bluetail_stats = GAME:GetPlayerPartyTable()
-  --Replace them with Rexio
-  GAME:RemovePlayerTeam(0)
-  GAME:RemovePlayerTeam(0)
-  local mon_id = RogueEssence.Dungeon.MonsterID("riolu", 0, "normal", Gender.Male)
-
-  local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 5, "", 0)
-  p.IsFounder = true
-  p.IsPartner = true
-  p.Nickname = "Rexio"
-
-  _DATA.Save.ActiveTeam.Players:Add(p)
-  SV.guilders.tarro_town.bluetail_storage = {}
-  --remove bag and storage items and put them in a temporary table
-  GAME:DepositAll()
-  --[[local storage = _DATA.Save.ActiveTeam.Storage
-  local count = storage.Keys.Count
-  for i = count - 1, 0, -1 do
-    print(storage.Keys[i])
-    local slot = {id = storage.Keys[i], count = storage.Values[i], hidden = ""} --checks ID, the amount of said item, and any hidden value.
-    table.insert(SV.guilders.tarro_town.bluetail_storage, slot) --puts it into a storage slot in the table variable.
-    storage.Remove(storage.Keys[i]) --removes it from storage
-  end]]--
-  local box_storage = _DATA.Save.ActiveTeam.BoxStorage
-  local box_count = box_storage.Count
-  if box_count > 1 then
-    for i = box_count - 1, 0, -1 do
-      local slot = {id = box_storage[i].ID, count = 1, hidden_value = box_storage[i].HiddenValue}
-      table.insert(SV.guilders.tarro_town.bluetail_storage, slot)
-      box_storage.RemoveAt(i)
+  if SV.entoh_town.AdventureChapter >= 3 then
+    for _, slot in ipairs(SV.guilders.tarro_town.bluetail_storage) do
+      GAME:GivePlayerStorageItem(slot.id, slot.count, false, slot.hidden)
     end
-  end
+    GAME:EnterGroundMap("guild_field", "GuildField", "Start")
+    GAME:FadeOut(false, 30)
+  elseif SV.tarro_town.DarknessChapter == 3 then
+    local maru = CH("PLAYER")
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Um... we're here about the letter...")
 
-  GAME:EnterGroundMap("entoh_town", "RexioHome", "RexioStart")
+    GAME:FadeOut(false, 90)
+
+    UI:ResetSpeaker()
+    UI:WaitShowDialogue("And to you two,[pause=65] I say:[pause=45] \"Welcome!\"")
+    --Begin replacement
+    --Save Maru and Azura's stats
+    SV.guilders.tarro_town.bluetail_stats = GAME:GetPlayerPartyTable()
+    --Replace them with Rexio
+    GAME:RemovePlayerTeam(0)
+    GAME:RemovePlayerTeam(0)
+    local mon_id = RogueEssence.Dungeon.MonsterID("riolu", 0, "normal", Gender.Male)
+
+    local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 5, "", 0)
+    p.IsFounder = true
+    p.IsPartner = true
+    p.Nickname = "Rexio"
+
+    _DATA.Save.ActiveTeam.Players:Add(p)
+    SV.guilders.tarro_town.bluetail_storage = {}
+    --remove bag and storage items and put them in a temporary table
+    GAME:DepositAll()
+    local storage = _DATA.Save.ActiveTeam.Storage
+    local count = storage.Keys.Count
+    for i = count - 1, 0, 1 do
+      print(storage.Keys[i])
+      local slot = {id = storage.Keys[i], count = storage.Values[i], hidden = ""} --checks ID, the amount of said item, and any hidden value.
+      table.insert(SV.guilders.tarro_town.bluetail_storage, slot) --puts it into a storage slot in the table variable.
+      storage.Remove(storage.Keys[i]) --removes it from storage
+    end
+    local box_storage = _DATA.Save.ActiveTeam.BoxStorage
+    local box_count = box_storage.Count
+    if box_count > 1 then
+      for i = box_count - 1, 0, 1 do
+        local slot = {id = box_storage[i].ID, count = 1, hidden_value = box_storage[i].HiddenValue}
+        table.insert(SV.guilders.tarro_town.bluetail_storage, slot)
+        box_storage.RemoveAt(i)
+      end
+    end
+    SOUND:PlayBGM("HeroesOf", true)
+    UI:WaitShowVoiceOver("It was strange.[pause=50] Ever since the creature slipped away from this world...", -1)
+    UI:WaitShowVoiceOver("...nothing ever really happens.", -1)
+    UI:WaitShowVoiceOver("Though it's not completely free of worry,[pause=19] as a balanced world should be...", -1)
+    UI:WaitShowVoiceOver("...some felt like something was missing.", -1)
+    SOUND:StopBGM()
+    UI:WaitShowVoiceOver("Some want the chaos back.", -1)
+
+    GAME:EnterGroundMap("entoh_town", "RexioHome", "RexioStart")
+  end
+  UI:WaitShowVoiceOver("The next day...", -1)
 end
 
 return TheField

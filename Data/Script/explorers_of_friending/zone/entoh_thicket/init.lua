@@ -40,12 +40,13 @@ function entoh_thicket.ExitSegment(zone, result, rescue, segmentID, mapID)
         SV.rent_number = 0
         
         print("Get out!")
+        SV.entoh_thicket.dungpoints = SV.entoh_thicket.dungpoints + (10 * SV.entoh_town.thicket.result)
         COMMON.EndDungeonDay(result, "entoh_town", -1, 3, 2)
     else
-        COMMON.EndDungeonDay(result, "entoh_town", -1, 3, 2)
         SV.entoh_town.thicket.result = 8.3
+        SV.entoh_thicket.dungpoints = SV.entoh_thicket.dungpoints + 120
+        COMMON.EndDungeonDay(result, "entoh_town", -1, 3, 2)
     end
-
 end
 
 ---entoh_thicket.Rescued(zone, name, mail)

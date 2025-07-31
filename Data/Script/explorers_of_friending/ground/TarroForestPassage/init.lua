@@ -6,6 +6,7 @@
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
 require 'explorers_of_friending.partner'
+require 'explorers_of_friending.ground.TarroForestPassage.cutscene'
 
 -- Package name
 local TarroForestPassage = {}
@@ -39,12 +40,9 @@ function TarroForestPassage.Init(map)
   end
 
   if SV.tarro_town.DarknessChapter == 1 then
-    TarroForestPassage.Darkness()
+    Dark.Darkness()
   end
-  
 end
-
-
 
 ---TarroForestPassage.Enter(map)
 --Engine callback function

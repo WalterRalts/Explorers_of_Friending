@@ -1459,176 +1459,7 @@ function BATTLE_SCRIPT.AzuraInteract(owner, ownerChar, context, args)
         UI:WaitShowDialogue("Let's go! Can't wait!")
       end
     end
-  end  
-    --[[local running_pool = {table.unpack(pool)}
-    local valid_quote = false
-    local chosen_quote = ""
-    
-    while not valid_quote and #running_pool > 0 do
-      valid_quote = true
-      local chosen_idx = math.random(1, #running_pool)
-  	  local chosen_pool_idx = running_pool[chosen_idx]
-      chosen_quote = RogueEssence.StringKey(string.format(key, chosen_pool_idx)):ToLocal()
-  	
-      chosen_quote = string.gsub(chosen_quote, "%[player%]", chara:GetDisplayName(true))
-      chosen_quote = string.gsub(chosen_quote, "%[myname%]", target:GetDisplayName(true))
-      
-      if string.find(chosen_quote, "%[move%]") then
-        local moves = {}
-  	    for move_idx = 0, 3 do
-  	      if target.BaseSkills[move_idx].SkillNum ~= "" then
-  	        table.insert(moves, target.BaseSkills[move_idx].SkillNum)
-  	      end
-  	    end
-  	    if #moves > 0 then
-  	      local chosen_move = _DATA:GetSkill(moves[math.random(1, #moves)])
-  	      chosen_quote = string.gsub(chosen_quote, "%[move%]", chosen_move:GetIconName())
-  	    else
-  	      valid_quote = false
-  	    end
-      end
-      
-      if string.find(chosen_quote, "%[kind%]") then
-  	    if GAME:GetCurrentFloor().TeamSpawns.CanPick then
-          local team_spawn = GAME:GetCurrentFloor().TeamSpawns:Pick(GAME.Rand)
-  	      local chosen_list = team_spawn:ChooseSpawns(GAME.Rand)
-  	      if chosen_list.Count > 0 then
-  	        local chosen_mob = chosen_list[math.random(0, chosen_list.Count-1)]
-  	        local mon = _DATA:GetMonster(chosen_mob.BaseForm.Species)
-            chosen_quote = string.gsub(chosen_quote, "%[kind%]", mon:GetColoredName())
-  	      else
-  	        valid_quote = false
-  	      end
-  	    else
-  	      valid_quote = false
-  	    end
-      end
-      
-      if string.find(chosen_quote, "%[item%]") then
-        if GAME:GetCurrentFloor().ItemSpawns.CanPick then
-          local item = GAME:GetCurrentFloor().ItemSpawns:Pick(GAME.Rand)
-          chosen_quote = string.gsub(chosen_quote, "%[item%]", item:GetDisplayName())
-  	    else
-  	      valid_quote = false
-  	    end
-      end
-  	
-  	  if not valid_quote then
-  	    table.remove(running_pool, chosen_idx)
-  	    chosen_quote = ""
-  	  end
-    end
-	
-	local oldDir = target.CharDir
-    DUNGEON:CharTurnToChar(target, chara)
-  
-    UI:WaitShowDialogue(STRINGS:Format(chosen_quote))
-  
-    target.CharDir = oldDir
-  else
-  
-    UI:ResetSpeaker()
-	
-	  local chosen_quote = RogueEssence.StringKey("TALK_CANT"):ToLocal()
-    chosen_quote = string.gsub(chosen_quote, "%[myname%]", target:GetDisplayName(true))
-	
-    UI:WaitShowDialogue(chosen_quote)
-  
-  end--]]
-  
-  --characters can comment on:
-
-  --flavour for the dungeon (talk about the area and its lore)
-  --being able to evolve
-  --nearly reaching the end of the dungeon
-  --being hungry
-  --out of PP
-  --being able to recruit someone
-  --tutorial tips
-  ---gaining EXP while in assembly
-  ---apricorns
-  ---sleeping pokemon
-  --commenting on how long they've been on the team
-  ---I know we just met, but...
-  ---We've been together for over 10 floors now, don't leave me now!
-  --beginning a fight "do you think we can take them?"
-  --upon recruitment "explore the world, you say?  I'm in!" "yay, friends!" "fine, I'll come with you.  just don't slow me down" "oh my... you smell heavenly.  can I come with you?"
-  --"you look tasty- I mean X, can I come with you?", "Team X, huh?  I like the sound of that!", "you lot seem smart/wise, I think you have what it takes to reach the top."
-  --when/after someone faints "X isn't with us anymore... but we have to keep going."
-  --"if you faint as the leader, I'll gladly take your place."
-  --specific personalities for mechanical creatures
-  --specific personalities for childish creatures
-  --verbal tics (chirp/tweet, meow, woof/arf, squeak, pika)
-  --third-person dialogue
-  --burned "ow, ow ,ow!  hot, hot!, hot!"
-  --paralyzed "I can't feel my legs..." (check body type for this)
-  --when there's only 2 members left, and no means to summon more recruits "we're the only ones left." "come on!  we can't give up!"
-  --"I wonder what [fainted mon] would've done..."
-  --lore on the legendary guildmasters
-  ---
-  --the rise of recent disasters- mystery dungeons
-  --the guildmaster's treasures?
-  --a challenge that no one has passed yet; people stopped bothering
-  --but as the disasters appear, the pokemon begin to search for a leader
-  --At low HP: "X's resolve is being tested..."
-  --isn't my fur just luxurious? (vain personality)
-  --first priority is for phrases that occur at each break point
-  --would you like to hear a song? (if knows sing, round, or perish song)
-  --"so it's just us now, huh?" (two pokemon, one or more has fainted)
-  --We're going to be okay, right?  Tell me we're going to be okay.
-  --Hey... if I don't make it out of here, tell (assembly mon) I love her.
-  --talk about how one of their moves is a type, and it will be super-effective on an enemy found on the floor
-  --rumors spread of a treasure in a dangerous location
-  ----actually a trap; an ambush spot
-  --My body wasn't ready for this...
-  --Hey, what is it like to have arms?
-  --That Red apricorn you have there.  We can use it to recruit a Fire-type Pokemon.
-  --Let's find a strong Fire-type Pokemon to give that Red Apricorn to.
-  --That Oran Berry we just picked up should help us in a pinch.
-  --Those Mankeys are fighting-type Pokemon.  We should hit them with Flying type moves!
-  --So why are you in this exploration? [Treasure][Meet Pokemon][Guildmaster][I dunno]
-  --To set foot in this dungeon... you're either very brave, or foolhardy.
-  --I've gotta hand it to you. Not many Exploration teams make it this far.
-  --Too bad I don't have any hands.
-  --You know what's weird?  We've been talking all this time and those (visible Pokemon) over there haven't made a single step towards us.  Do you think they're just that polite?
-  --I don't like the look that (enemy pokemon) is giving me...
-  --But enough talk, we need to get to the next floor.
-  --But enough talk, we've got a situation here! (if multiple enemies are in sight)
-  --Anyways, we need to keep moving.
-  --Finally!  The stairs! (cheer when the stairs come into view, and load this dialogue up in time)
-  --sleep
-  --"Zzz...[pause=0] another five minutes please..."
-  --"Zzz...[pause=10] Zzz..."
-  --decoy
-  --"...What?"
-  --"...What's a \"decoy\"?"
-  --"Do I look like I know what a \"decoy\" is?"
-  --"Hey Einstein, I'm on your side!"
-  --"Is there something on my face?"
-
-  --evolve
-  --"Hey, I think I'm ready to evolve now!"
-  --"Hey, I think I can evolve into a {0} now!"
-  --"I sense something... getting ready to evolve now"
-  --"Did you know?  I'm ready to evolve now!"
-  --"What should I evolve into?  Any ideas?"
-  --"Oh, I just can't wait till I evolve!"
-  --"I'm getting excited just thinking about it!"
-  --"I swear to god when I evolve, I am going to kill you all!"
-
-  --"Let's make it all the way to the end!"
-  --"I wanna be...[pause=0]\nthe very best..."
-  --"You teach me, and I'll teach you."
-  --"I'll rescue you and if I do you gotta rescue me."
-  --"Who should we recruit next?"
-  --"Some apricorns can only recruit certain types of Pokémon.[pause=0] You know that, yes?"
-  --"Rumor has it that whoever reaches the summit will be given the title of Guildmaster."
-  --"So why do they call you the {0} Pokémon?", DataManager.Instance.GetMonster(character.BaseForm.Species).Title.ToLocal()
-
-  --"Press {0} if you want me to lead the team.", (ii + 1).ToString()
-  --"press 1 if you feel bad for [fainted mon]"
-
-  
+  end
 end
 
 function BATTLE_SCRIPT.MaruInteract(owner, ownerChar, context, args)
@@ -1722,18 +1553,42 @@ function BATTLE_SCRIPT.FlowInteract(owner, ownerChar, context, args)
     local current_dungeon = DUNGEON:DungeonDisplayName()
     local say_choice = math.random(3)
     
-    if say_choice == 3 then
-      UI:SetSpeaker(target)
-      UI:SetSpeakerEmotion("Pain")
-      UI:WaitShowDialogue("Why this town, of all of towns?")
-    elseif say_choice == 2 then
-      UI:SetSpeaker(target)
-      UI:SetSpeakerEmotion("Determined")
-      UI:WaitShowDialogue("We'll find you, mama!")
+    if current_dungeon == "Dreaded Depths" then
+      if say_choice == 3 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Worried")
+        UI:WaitShowDialogue("Don't worry about the grime.[pause=15] My flower is good at dealing with that.")
+      elseif say_choice == 2 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("...the winds here aren't too strong.[pause=10] If[emote=Happy] I fall, one of you will have to carry me.")
+      else
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Just have to feel the flowers. Not too hard, yes?")
+
+        UI:SetSpeaker(user)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("Where are they, though...?")
+
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Stunned")
+        UI:WaitShowDialogue("Ah... um...")
+      end
     else
-      UI:SetSpeaker(target)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("Just have to feel the flowers. Not too hard, yes?")
+      if say_choice == 3 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Pain")
+        UI:WaitShowDialogue("Why this town, of all of towns?")
+      elseif say_choice == 2 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Determined")
+        UI:WaitShowDialogue("We'll find you, mama!")
+      else
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Just have to feel the flowers. Not too hard, yes?")
+      end
     end
   end
 end
@@ -1742,25 +1597,42 @@ function BATTLE_SCRIPT.TidyInteract(owner, ownerChar, context, args)
   context.CancelState.Cancel = true
   DUNGEON:CharTurnToChar(context.Target, context.User)
   local target = context.Target
-  local user = context.User
+  local user = context.
+  i
   -- TODO: create a charstate for being unable to talk and have talk-interfering statuses cause it
   if COMMON.CanTalk(target) then
     local ratio = target.HP * 100 // target.MaxHP
     local current_dungeon = DUNGEON:DungeonDisplayName()
     local say_choice = math.random(3)
     
-    if say_choice == 3 then
-      UI:SetSpeaker(target)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("Keep things fresh! Keep things clean!")
-    elseif say_choice == 2 then
-      UI:SetSpeaker(target)
-      UI:SetSpeakerEmotion("Determined")
-      UI:WaitShowDialogue("Moving forward, I'll cover our tracks.")
+    if current_dungeon == "Dreaded Depths" then
+      if say_choice == 3 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Dizzy")
+        UI:WaitShowDialogue("THIS PLACE IS SO DIRTY GET ME OUUUUUT!")
+      elseif say_choice == 2 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Determined")
+        UI:WaitShowDialogue("I'll... need to take, like... 30 baths...")
+      else
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Angry")
+        UI:WaitShowDialogue("GET US OUT![pause=10] PRONTO!")
+      end
     else
-      UI:SetSpeaker(target)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("We're doing great, guys!")
+      if say_choice == 3 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Keep things fresh! Keep things clean!")
+      elseif say_choice == 2 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Determined")
+        UI:WaitShowDialogue("Moving forward, I'll cover our tracks.")
+      else
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("We're doing great, guys!")
+      end
     end
   end
 end
@@ -1770,26 +1642,90 @@ function BATTLE_SCRIPT.WurpInteract(owner, ownerChar, context, args)
   DUNGEON:CharTurnToChar(context.Target, context.User)
   local target = context.Target
   local user = context.User
+  local mon_define = _DATA.Save.ActiveTeam.Players[4]
   -- TODO: create a charstate for being unable to talk and have talk-interfering statuses cause it
   if COMMON.CanTalk(target) then
     local ratio = target.HP * 100 // target.MaxHP
     local current_dungeon = DUNGEON:DungeonDisplayName()
     local say_choice = math.random(3)
     
-    if say_choice == 3 then
-      UI:SetSpeaker(target)
-      UI:SetSpeakerEmotion("Determined")
-      UI:WaitShowDialogue("Stwiiiing shot!")
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("Pwactice is always good!")
-    elseif say_choice == 2 then
-      UI:SetSpeaker(target)
-      UI:SetSpeakerEmotion("Determined")
-      UI:WaitShowDialogue("")
+    if current_dungeon == "Dreaded Depths" then
+      if say_choice == 3 then
+        if context.User.BaseForm.Species == "riolu" then
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Determined")
+          UI:WaitShowDialogue("I'll help you thwew, Wexio!")
+          UI:SetSpeakerEmotion("Worried")
+          UI:WaitShowDialogue("Even such a mowtal wike you needs my assistance!")
+          
+          UI:SetSpeaker(mon_define)
+          UI:SetSpeakerEmotion("Sad")
+          UI:WaitShowDialogue("Wurp...")
+
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("I'm kidding, hehe.")
+        elseif context.User.BaseForm.Species == "minccino" then
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Stunned")
+          UI:WaitShowDialogue("Mint, you wook wike you'we gonna expwode...")
+          
+          UI:SetSpeaker(mon_define)
+          UI:SetSpeakerEmotion("Stunned")
+          UI:WaitShowDialogue("She, u-uh... i-isn't a fan of... dirty.")
+
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("Wew, yeah, but...")
+
+          UI:SetSpeaker(user)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowTimedDialogue("How about we just NOT talk about it,[pause=20] good?[pause=20] Good.[pause=20] G[emote=Angry]ood!", 45)
+        else
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Normal")
+          UI:WaitShowDialogue("Gonna be hard to aim in this darkness...")
+        end
+      elseif say_choice == 2 then
+        if context.User.BaseForm.Species == "riolu" then
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Worried")
+          UI:WaitShowDialogue("You weally wemind me of youw dad, Wexio...")
+
+          UI:SetSpeaker(user)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("...'cuz I'm cool?")
+
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Normal")
+          UI:WaitShowDialogue("'Cuz ya weird.")
+        else
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Normal")
+          UI:WaitShowDialogue("Gonna be hard to aim in this darkness...")
+        end
+        
+      else
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Pain")
+        UI:WaitShowDialogue("Dawk pwace... can't see...")
+      end
     else
-      UI:SetSpeaker(target)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("We're doing great, guys!")
+      if say_choice == 3 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Determined")
+        UI:WaitShowDialogue("Stwiiiing shot!")
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Pwactice is always good!")
+      elseif say_choice == 2 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Determined")
+        UI:WaitShowDialogue("Push thwew, I'll get 'em!")
+      else
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("We're doing great, guys!")
+      end
     end
   end
 end
@@ -1804,19 +1740,67 @@ function BATTLE_SCRIPT.SnowInteract(owner, ownerChar, context, args)
     local ratio = target.HP * 100 // target.MaxHP
     local current_dungeon = DUNGEON:DungeonDisplayName()
     local say_choice = math.random(3)
-    
-    if say_choice == 3 then
-      UI:SetSpeaker(target)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("I-I'll help...")
-    elseif say_choice == 2 then
-      UI:SetSpeaker(target)
-      UI:SetSpeakerEmotion("Determined")
-      UI:WaitShowDialogue("W-we have to keep moving forward...")
+
+    if current_dungeon == "Dreaded Depths" then
+      if say_choice == 3 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("I... n-never been in a dungeon with th-this big of a team...")
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("I-I'm glad it's this... t-this team.")
+      elseif say_choice == 2 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("J-just gotta go.")
+      else
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Sad")
+        UI:WaitShowDialogue("...feels desolate here...")
+      end
     else
-      UI:SetSpeaker(target)
-      UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowDialogue("I w-wonder what's up with the world today...")
+      if say_choice == 3 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("I-I'll help...")
+      elseif say_choice == 2 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Determined")
+        UI:WaitShowDialogue("W-we have to keep moving forward...")
+      else
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("I w-wonder what's up with the world today...")
+      
+      end
+    end
+  end
+end
+
+function BATTLE_SCRIPT.RexioInteract(owner, ownerChar, context, args)
+  context.CancelState.Cancel = true
+  DUNGEON:CharTurnToChar(context.Target, context.User)
+  local target = context.Target
+  local user = context.User
+  -- TODO: create a charstate for being unable to talk and have talk-interfering statuses cause it
+  if COMMON.CanTalk(target) then
+    local ratio = target.HP * 100 // target.MaxHP
+    local current_dungeon = DUNGEON:DungeonDisplayName()
+    local say_choice = math.random(3)
+
+    if current_dungeon == "Dreaded Depths" then
+      if say_choice == 3 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("I'll try to sense things out.")
+      elseif say_choice == 2 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Worried")
+        UI:WaitShowDialogue("...ugh,[pause=20] I feel like this would've been so easy with dad here.")
+      else
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Try to keep up.")
+      end
     end
   end
 end

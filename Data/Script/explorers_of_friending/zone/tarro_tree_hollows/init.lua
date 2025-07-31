@@ -17,7 +17,7 @@ local tarro_tree_hollows = {}
 ---tarro_tree_hollows.Init(zone)
 --Engine callback function
 function tarro_tree_hollows.Init(zone)
-  SV.tarro_town.bag_size = 10
+  SV.bag_size = 10
   tarro_tree_fail = false
 end
 

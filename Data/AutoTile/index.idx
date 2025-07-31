@@ -10,6 +10,33 @@
 "Released": true,
 "Comment": "",
 "SortOrder": 0
+},
+"tt_big_tree_floor": {
+"Name": {
+"DefaultText": "TT Big Tree Floor",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 0
+},
+"tt_big_tree_secondary": {
+"Name": {
+"DefaultText": "TT Big Tree Secondary",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 0
+},
+"tt_big_tree_wall": {
+"Name": {
+"DefaultText": "TT Big Tree Wall",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 0
 }
 }
 }

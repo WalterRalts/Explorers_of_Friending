@@ -31,6 +31,8 @@ function East.TidyUp()
             COMMON.CharRealize("Teammate2")
 
             GROUND:CharSetAnim(CH("Teammate2"), "Trip", true)
+            GROUND:CharSetAction(tidy, RogueEssence.Ground.PoseGroundAction(tidy.Position, tidy.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Trip")))
+            
         end)	
         local cor2 = TASK:BranchCoroutine(function()
             GAME:FadeIn(80)
@@ -97,7 +99,7 @@ function East.TidyUp()
             GROUND:MoveToPosition(tidy, rexio.Position.X + 50, rexio.Position.Y, true, 12)
             COMMON.CharRealize("Teammate1")
 
-            GROUND:CharSetAnim(CH("Teammate1"), "Trip", true)
+            GROUND:CharSetAction(tidy, RogueEssence.Ground.PoseGroundAction(tidy.Position, tidy.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Trip")))
         end)	
         local cor2 = TASK:BranchCoroutine(function()
             GAME:FadeIn(50)

@@ -406,7 +406,7 @@ function Partner()
 
                             UI:SetSpeaker(rexio)
                             UI:SetSpeakerEmotion("Normal")
-                            UI:WaitShowDialogue("...try to take your mind off of the grim, Tides.")                            
+                            UI:WaitShowDialogue("...try to take your mind off of the grime, Tides.")                            
                         else
                             if FlowRexTalk == 0 then
                                 UI:SetSpeaker(flow)
@@ -511,6 +511,87 @@ function Partner()
                     UI:SetSpeaker(flow)
                     UI:SetSpeakerEmotion("Happy")
                     UI:WaitShowDialogue("My bestie![pause=40] She's somewhere...")
+                elseif area_name == "EntohTownEast_ch2" then
+                    local rexio = CH("PLAYER")
+                    local flow = CH('Teammate1')
+                    local tidy = CH('Teammate2')
+                    local wurp = CH('Teammate3')
+                    local snow = CH('Teammate4')
+                    local talk = math.random(3)
+
+                    if talk == 1 then
+                        UI:SetSpeaker(tidy)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("W-wait...! We... we have to go that way?!")
+
+                        UI:SetSpeaker(snow)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowTimedDialogue("W-what wrong with...")
+
+                        UI:SetSpeaker(tidy)
+                        UI:SetSpeakerEmotion("Dizzy")
+                        UI:WaitShowDialogue("Aaaaaaaaaa! [pause=30]Noooooooooo! It's so gross over there!")
+
+                        UI:SetSpeaker(flow)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("Tidy.[pause=30] Flower.")
+
+                        UI:SetSpeaker(tidy)
+                        UI:SetSpeakerEmotion("Pain")
+                        UI:WaitShowDialogue("Y-yeah... thank you...")
+                    elseif talk == 2 then
+                        UI:SetSpeaker(wurp)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("I won't wie, I feewike my couwage just defwated wike a bawoon...")
+
+                        UI:SetSpeaker(snow)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("M-maybe if...[pause=30] mm-, n-no, never mind.")
+
+                        UI:SetSpeaker(wurp)
+                        UI:SetSpeakerEmotion("Sad")
+                        UI:WaitShowDialogue("No, Snow, I get it...")
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("I just... I fewt wike I was saving the wowld after defeating that... thing...")
+
+                        UI:SetSpeaker(snow)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("R-rexio...[br] When w-we're done with this... adventure thing,[pause=0] w-will you come back...?")
+
+                        UI:SetSpeaker(tidy)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("Aren't we going with him?")
+
+                        UI:SetSpeaker(snow)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("M-mom doesn't...[pause=25] want me too f-far out there yet, s-so...")
+
+                        UI:SetSpeaker(rexio)
+                        UI:SetSpeakerEmotion("Happy")
+                        UI:WaitShowDialogue("I'll be back. Don't worry about it.")
+                    elseif talk == 3 then
+                        UI:SetSpeaker(flow)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("Hopefully there are some more flowers over there.")
+                        UI:SetSpeakerEmotion("Normal")
+                        UI:WaitShowDialogue("This one's all wilty and stuff.")
+
+                        UI:SetSpeaker(snow)
+                        UI:SetSpeakerEmotion("Happy")
+                        UI:WaitShowDialogue("D-dewey can... help you...!")
+
+                        UI:SetSpeaker(flow)
+                        UI:SetSpeakerEmotion("Happy")
+                        UI:WaitShowDialogue("Oh, I forgot he was studying plants!")
+
+                        UI:SetSpeaker(snow)
+                        UI:SetSpeakerEmotion("Happy")
+                        UI:WaitShowDialogue("Mhm! H-he can bring it back to it's... uh... not-wilty form!")
+
+                        UI:SetSpeaker(flow)
+                        UI:SetSpeakerEmotion("Normal")
+                        UI:WaitShowDialogue("I'll ask him when we're done with the trip.")
+                    end
                 end
             end
         end

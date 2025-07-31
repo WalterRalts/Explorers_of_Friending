@@ -32,7 +32,7 @@ function MaruHome.Init(map)
     GROUND:Hide("Arama")
     GROUND:TeleportTo(CH("Amazuru"), 229, 248, Direction.DownRight, 0)
     if SV.tarro_town.PieChapter == 10 then
-      UI:WaitShowTitle("Chapter 2:\nMysteries", 120)
+      UI:WaitShowTitle("Prologue A-2:\nMysteries", 120)
       GAME:WaitFrames(30)
       UI:WaitHideTitle(120)
       Bluetails.MailTime()

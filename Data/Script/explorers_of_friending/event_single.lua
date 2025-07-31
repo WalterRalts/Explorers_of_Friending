@@ -22,7 +22,7 @@ end
 
 function SINGLE_CHAR_SCRIPT.SlumberPollen(owner, ownerChar, context, args)
 	--only check if puchi is in the team
-	if GAME:GetPlayerPartyCount() > 4 then
+	if GAME:GetPlayerPartyCount() > 4 and GAME:GetPlayerPartyMember(3).BaseForm.Species == "poochyena" then
 		local puchi = GAME:GetPlayerPartyMember(3)
 		UI:SetSpeaker(puchi)
 		local sleep = RogueEssence.Dungeon.StatusEffect("sleep")
@@ -58,7 +58,7 @@ end
 bag_warn = false
 function SINGLE_CHAR_SCRIPT.BagCount(owner, ownerChar, context, args)
 	local item_count = GAME:GetPlayerBagCount()
-	local bag_limit = SV.tarro_town.bag_size
+	local bag_limit = SV.bag_size
 	
 	if item_count == bag_limit then
 		if bag_warn == false then
@@ -72,9 +72,9 @@ function SINGLE_CHAR_SCRIPT.BagCount(owner, ownerChar, context, args)
 
 	if item_count > bag_limit then
 		print("too many items!")
-		local extra_item = GAME:GetPlayerBagItem(SV.tarro_town.bag_size)
+		local extra_item = GAME:GetPlayerBagItem(SV.bag_size)
 		GAME:GivePlayerStorageItem(extra_item)
-		GAME:TakePlayerBagItem(SV.tarro_town.bag_size, true)
+		GAME:TakePlayerBagItem(SV.bag_size, true)
 		GAME:WaitFrames(25)
 		_DUNGEON:LogMsg("But no one can carry anymore, so it was thrown away somewhere!")
 	end

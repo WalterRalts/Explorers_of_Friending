@@ -22,7 +22,6 @@ function EntohTownCenter_ch2.Init(map)
     SV.entoh_town.HelperChapter = 6
   elseif SV.entoh_town.HelperChapter == 8 then
     Center.AnotherFeeling()
-    SV.entoh_town.HelperChapter = 9
   end
 
   COMMON.RespawnAllies()

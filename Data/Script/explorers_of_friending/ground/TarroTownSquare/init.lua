@@ -843,8 +843,7 @@ function TarroTownSquare.Teddums_Action(obj, activator)
         UI:SetSpeakerEmotion("Worried")
         UI:WaitShowDialogue("Ziggy never mentioned anything about the hive...")
 
-        GROUND:CharTurnToCharAnimated(azura, maru, 3)
-        GROUND:CharTurnToCharAnimated(maru, azura, 3)
+        COMMON.FaceEachother("PLAYER", "Teammate1")
 
         UI:SetSpeaker(azura)
         UI:SetSpeakerEmotion("Normal")

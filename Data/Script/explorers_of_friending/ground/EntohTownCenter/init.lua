@@ -28,6 +28,7 @@ function EntohTownCenter.Init(map)
     GROUND:Hide("Wurp")
     GROUND:Hide("Snow")
     GROUND:TeleportTo(CH("Worker"), 576, 176, Dir8.Down, 0)
+    GROUND:Unhide("Sign")
   end
 end
 
@@ -179,13 +180,22 @@ end
 function EntohTownCenter.Dewey_Action(obj, activator)
   local dewey = CH("Dewey")
   local rexio = CH("PLAYER")
-  if bug_talk == 0 then
-    EntohTownCenter.Wurp_Action()
-  else
-    GROUND:CharTurnToCharAnimated(dewey, rexio, 4)
+  if SV.entoh_town.AdventureChapter > 0 then
+    COMMON.FaceEachother("Dewey", "PLAYER")
     UI:SetSpeaker(dewey)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Nice seeing you, Rexio.")
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Hey, Rexio.[pause=20] When you see Wurp, let him know that he still owes me, like, 50 Poke.")
+    UI:SetSpeakerEmotion("Pain")
+    UI:WaitShowDialogue("He got saved by your dad whisking him away...")
+  else
+    if bug_talk == 0 then
+      EntohTownCenter.Wurp_Action()
+    else
+      GROUND:CharTurnToCharAnimated(dewey, rexio, 4)
+      UI:SetSpeaker(dewey)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Nice seeing you, Rexio.")
+    end
   end
 end
 
@@ -211,11 +221,12 @@ function EntohTownCenter.Pari_Action(obj, activator)
   local pari = CH("Pari")
   local rexio = CH("PLAYER")
   if SV.entoh_town.AdventureChapter > 0 then
-      UI:SetSpeaker(pari)
-      UI:SetSpeakerEmotion("Determined")
-      UI:WaitShowDialogue("Monsieur Rexi, to where is Wurpy going without taking moui!")
-      UI:SetSpeakerEmotion("Angry")
-      UI:WaitShowDialogue("How are we to become leader mondial without chef d'équipe!")
+    COMMON.FaceEachother("Pari", "PLAYER")
+    UI:SetSpeaker(pari)
+    UI:SetSpeakerEmotion("Determined")
+    UI:WaitShowDialogue("Monsieur Rexi, to where is Wurpy going without taking moui!")
+    UI:SetSpeakerEmotion("Angry")
+    UI:WaitShowDialogue("How are we to become leader mondial without chef d'équipe!")
 
   else
     if bug_talk == 0 then
@@ -243,7 +254,7 @@ function EntohTownCenter.WaterHole_Action(obj, activator)
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("(Every time I look at this water hole, I want to say something funny about it.)")
   UI:SetSpeakerEmotion("Pain")
-  UI:WaitShowDialogue("(But I just can't up with anything...)")
+  UI:WaitShowDialogue("(But I just can't come up with anything...)")
 end
 
 function EntohTownCenter.Gran_Action(obj, activator)
@@ -269,9 +280,15 @@ end
 
 function EntohTownCenter.Entoh_EastEnter_Touch(obj, activator)
   local timb = CH("Worker")
-  UI:SetSpeaker(timb)
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("Services being done! You cannot pass through!")
+  if SV.entoh_town.AdventureChapter > 0 then
+    GAME:FadeOut(false, 20)
+    GAME:EnterGroundMap("EntohTownEast_ch2", "Entrance_2")
+  else
+    UI:SetSpeaker(timb)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Services being done! You cannot pass through!")
+  end
+  
 end
 
 function EntohTownCenter.Entoh_SouthEnter_Touch(obj, activator)
@@ -319,20 +336,45 @@ function EntohTownCenter.Flow_Action(obj, activator)
 end
 
 function EntohTownCenter.Sign_Action(obj, activator)
-  local wurp = CH("Wurp")
-  local snow = CH("Snow")
-  local rexio = CH("PLAYER")
-  if bug_talk == 0 then
-    EntohTownCenter.Wurp_Action()
+  if sign_tutorial ~= 1 then
+    UI:SetAutoFinish(true)
+    UI:WaitShowDialogue("You can get dungeon points by doing certain things in a certain group of dungeons.")
+    UI:WaitShowDialogue("Some dungeons, including this one, will only require completion. Other dungeons may require certain items to be turned in, or Pokemon to find.")
+    UI:WaitShowDialogue("Getting enough dungeon experience will unlock things that will help you on your future journeys, so be sure to complete as many of these as you can.")
+    sign_tutorial = 1
+  end
+
+  UI:SetAutoFinish(false)
+  print(SV.entoh_thicket.dungpoints)
+  print(SV.dreaded_depths.dungpoints)
+  print(GAME:DungeonUnlocked("entoh_thicket"))
+  print(GAME:DungeonUnlocked("dreaded_depths"))
+
+  entoh_dungeonpoints = SV.dreaded_depths.dungpoints + SV.entoh_thicket.dungpoints
+  if SV.deep_tarro_forest.dungpoints > 0 and SV.tarro_tree_hollows.dungpoints > 0 then
+    UI:WaitShowDialogue("You currently have " ..tarro_dungeonpoints.. " dungeon points with the Tarro dungeons.")
+    --set up some sort of shop behind Worker_1.
   else
-    GROUND:CharTurnToCharAnimated(snow, rexio, 4)
-    UI:SetSpeaker(snow)
-    UI:SetSpeakerEmotion("Sad")
-    UI:WaitShowDialogue("D-don't mind him, Rexio.")
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("E-ever since he beat some... goopy thing in a dungeon, he's been...")
-    GROUND:CharTurnToCharAnimated(snow, wurp, 4)
-    UI:WaitShowDialogue("...acting strange.")
+    UI:WaitShowDialogue("You haven't explored all of the dungeons needed for this group.")
+    UI:WaitShowDialogue("Recheck the sign after you find all of the Entoh dungeons:")
+    if SV.dreaded_depths.dungpoints == 0 then
+      if GAME:DungeonUnlocked("dreaded_depths") == false then
+        UI:WaitShowDialogue("An undiscovered dungeon still needs to be explored.")
+      else
+        UI:WaitShowDialogue("The Dreaded Depths still needs to be explored.")
+      end
+    end
+    UI:WaitShowDialogue("You currently have " ..tarro_dungeonpoints.. " dungeon points with the Tarro dungeons.")
+  end
+end
+
+function EntohTownCenter.Worker_Action(obj, activator)
+  local timba = CH("Worker")
+
+  if SV.entoh_town.AdventureChapter > 0 then
+    UI:SetSpeaker(timba)
+    UI:SetSpeakerEmotion("Pain")
+    UI:WaitShowDialogue("Thank goodness work on the East is over...")
   end
 end
 

@@ -88,7 +88,7 @@ function Entoh.Dragon()
             UI:SetSpeakerEmotion("Worried")
             COMMON.FaceEachother("Bucks", "Dragon")
             GROUND:CharTurnToCharAnimated(chucky, bucks, 3)
-            UI:WaitShowDialogue("You have got to figure this out.[br] Those boxes have pretty important things that need to go to important people.")
+            UI:WaitShowDialogue("You have got to figure this out.[br]Those boxes have pretty important things that need to go to important people.")
 
             UI:SetSpeaker(dragon)
             UI:SetSpeakerEmotion("Worried")

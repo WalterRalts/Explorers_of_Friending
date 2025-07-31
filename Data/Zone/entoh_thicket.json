@@ -663,11 +663,11 @@
 },
 "SpecifiedSkills": [],
 "Intrinsic": "unaware",
-"Tactic": "wander_normal",
+"Tactic": "item_finder",
 "SpawnConditions": [],
 "SpawnFeatures": []
 },
-"Role": 0
+"Role": 3
 },
 "Rate": 10,
 "Range": {
@@ -753,7 +753,7 @@
 "absorb"
 ],
 "Intrinsic": "",
-"Tactic": "wander_normal",
+"Tactic": "patrol",
 "SpawnConditions": [],
 "SpawnFeatures": [
 {

@@ -94,12 +94,13 @@ SV.tarro_town =
   DarknessChapter = 0,
   spent_dungpoints = 0,
   puchi_tired = true,
-  bag_size = 5,
+  
   cooking_tutorial_done = 1
 }
 --- Dungeons
 
 SV.dungeon_tutorial = 0
+SV.bag_size = 5
 
 SV.tarro_forest = 
 {
@@ -127,6 +128,18 @@ SV.tarro_tree_hollows =
   AmasDefeat = false
 }
 
+SV.entoh_thicket = 
+{
+  revisit = false,
+  dungpoints = 0,
+}
+
+SV.dreaded_depths = 
+{
+  revisit = false,
+  dungpoints = 0,
+}
+
 --- Entoh Town
 --- Locations
 
@@ -144,16 +157,14 @@ SV.entoh_town =
   },
   firstfind = 0 -- 1 is for Flow, 2 is for Tidy
 }
---- Dungeons
 
---- Guild 
---- Locations
+--- Guild
 
 SV.guilders = 
 {
   tarro_town = 
   {
-    bluetail_stats = 0,
+    bluetail_stats = {},
     bluetail_storage = {}
   },
   entoh_town = 
@@ -162,8 +173,12 @@ SV.guilders =
   },
   fielded_two = false
 }
---- Dungeons
 
+SV.guild = 
+{
+  day = 0,
+  event = 0
+}
 
 ----------------------------------------------
 --- Minigames and others

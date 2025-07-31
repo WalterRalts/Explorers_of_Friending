@@ -6,6 +6,7 @@
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
 require 'explorers_of_friending.ground.EntohTownEast_ch2.cutscene'
+require 'explorers_of_friending.partner'
 
 -- Package name
 local EntohTownEast_ch2 = {}
@@ -16,7 +17,9 @@ local EntohTownEast_ch2 = {}
 ---EntohTownEast_ch2.Init(map)
 --Engine callback function
 function EntohTownEast_ch2.Init(map)
-  
+  if SV.entoh_town.AdventureChapter >= 2 then
+    GROUND:Hide("Luke")
+  end
 end
 
 ---EntohTownEast_ch2.Enter(map)
@@ -37,7 +40,7 @@ end
 ---EntohTownEast_ch2.Update(map)
 --Engine callback function
 function EntohTownEast_ch2.Update(map)
-
+  Partner()
 
 end
 
@@ -61,7 +64,37 @@ end
 -------------------------------
 
 function EntohTownEast_ch2.Entoh_CenterEnter_Touch(obj, activator)
-  GAME:EnterGroundMap("EntohTownCenter_ch2", "EasternMarker")
+  SV.entoh_town.AdventureChapter = 2
+  GAME:EnterGroundMap("EntohTownCenter", "EasternMarker")
+end
+
+function EntohTownEast_ch2.LukeTalk_Touch(obj, activator)
+  if SV.entoh_town.AdventureChapter == 1.1 then
+    Rexio.Luke()
+  elseif SV.entoh_town.AdventureChapter == 2 then
+    GROUND:Hide("Wurp")
+    GROUND:Hide("Snow")
+    GROUND:Hide("Tidy")
+    GROUND:Hide("Flow")
+    COMMON.RespawnAllies()
+    local flow = CH('Teammate1')
+    local tidy = CH('Teammate2')
+    local wurp = CH('Teammate3')
+    local snow = CH('Teammate4')
+    local rexio = CH("PLAYER")
+    AI:SetCharacterAI(flow, "origin.ai.ground_partner", rexio, flow.Position)
+    AI:SetCharacterAI(tidy, "origin.ai.ground_partner", flow, tidy.Position)
+    AI:SetCharacterAI(wurp, "origin.ai.ground_partner", tidy, wurp.Position)
+    AI:SetCharacterAI(snow, "origin.ai.ground_partner", wurp, snow.Position)
+    SV.entoh_town.AdventureChapter = 2.1
+  end
+end
+
+function EntohTownEast_ch2.EntohDeep_Touch(obj, activator)
+  COMMON.UnlockWithFanfare("dreaded_depths", false)
+  local dungeon_entrances = {"dreaded_depths"}
+  local ground_entrances = {}
+  COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances)
 end
 
 return EntohTownEast_ch2

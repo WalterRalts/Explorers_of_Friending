@@ -1,4 +1,6 @@
-function TarroForestPassage.Darkness()
+Dark = {}
+
+function Dark.Darkness()
   local maru = CH("PLAYER")
   local azura = CH('Teammate1')
   local arama = CH("Arama")
@@ -138,7 +140,7 @@ function TarroForestPassage.Darkness()
   UI:ResetSpeaker()
   UI:WaitShowDialogue("Arama gives Maru a treasure bag!")
   
-  SV.tarro_town.bag_size = 30
+  SV.bag_size = 30
   UI:SetSpeaker(azura)
   UI:SetSpeakerEmotion("Inspired")
   UI:WaitShowDialogue("Woah![pause=50] Cool bag...!")

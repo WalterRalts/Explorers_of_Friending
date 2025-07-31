@@ -25,6 +25,7 @@ function Center.Feeling()
 end
 
 function Center.AnotherFeeling()
+    SV.entoh_town.HelperChapter = 9
     local rexio = CH("PLAYER")
     local coro01 = TASK:BranchCoroutine(function()
         GROUND:AnimateToPosition(rexio, "Walk", Dir8.Up, rexio.Position.X, rexio.Position.Y - 245, 0.4, 1, 0)

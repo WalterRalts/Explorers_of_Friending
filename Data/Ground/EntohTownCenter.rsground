@@ -60672,6 +60672,20 @@
 "Width": 16,
 "Height": 16
 }
+},
+{
+"EntName": "EasternMarker",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 578,
+"Y": 219,
+"Width": 16,
+"Height": 16
+}
 }
 ]
 }

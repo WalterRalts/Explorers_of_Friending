@@ -222,7 +222,8 @@
 "CountedFloors": 0,
 "Rogue": 0,
 "Grounds": [
-"TheField"
+"TheField",
+"GuildField"
 ],
 "Maps": [],
 "Name": {
@@ -260,7 +261,8 @@
 "EntohTownNorth_ch2",
 "EntohTownSouth",
 "EntohTownEast",
-"EntohTownSouth_ch2"
+"EntohTownSouth_ch2",
+"EntohTownEast_ch2"
 ],
 "Maps": [
 [
@@ -309,6 +311,127 @@
 },
 "Released": true,
 "Comment": "Chapter 3 - Rexio's first dungeon",
+"SortOrder": 0
+},
+"dreaded_depths": {
+"$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
+"ExpPercent": 40,
+"Level": 9,
+"LevelCap": false,
+"KeepSkills": false,
+"TeamRestrict": false,
+"TeamSize": -1,
+"MoneyRestrict": false,
+"BagRestrict": -1,
+"KeepTreasure": false,
+"BagSize": -1,
+"Rescues": 0,
+"CountedFloors": 0,
+"Rogue": 0,
+"Grounds": [],
+"Maps": [
+[
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+],
+"Name": {
+"DefaultText": "Dreaded Depths",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "Rexio's transfer dungeon A",
+"SortOrder": 0
+},
+"swamp_town": {
+"$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
+"ExpPercent": 40,
+"Level": 10,
+"LevelCap": false,
+"KeepSkills": false,
+"TeamRestrict": false,
+"TeamSize": -1,
+"MoneyRestrict": false,
+"BagRestrict": -1,
+"KeepTreasure": false,
+"BagSize": -1,
+"Rescues": 0,
+"CountedFloors": 0,
+"Rogue": 0,
+"Grounds": [
+"SwampTown"
+],
+"Maps": [],
+"Name": {
+"DefaultText": "Swamp Town",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 0
+},
+"swamp_line": {
+"$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
+"ExpPercent": 100,
+"Level": -1,
+"LevelCap": false,
+"KeepSkills": false,
+"TeamRestrict": false,
+"TeamSize": -1,
+"MoneyRestrict": false,
+"BagRestrict": -1,
+"KeepTreasure": false,
+"BagSize": -1,
+"Rescues": 0,
+"CountedFloors": 0,
+"Rogue": 0,
+"Grounds": [],
+"Maps": [
+[
+0,
+1,
+2
+]
+],
+"Name": {
+"DefaultText": "Swamp Line",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 0
+},
+"guild_field": {
+"$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
+"ExpPercent": 50,
+"Level": -1,
+"LevelCap": false,
+"KeepSkills": false,
+"TeamRestrict": false,
+"TeamSize": -1,
+"MoneyRestrict": false,
+"BagRestrict": -1,
+"KeepTreasure": false,
+"BagSize": -1,
+"Rescues": 0,
+"CountedFloors": 0,
+"Rogue": 0,
+"Grounds": [
+"GuildField"
+],
+"Maps": [],
+"Name": {
+"DefaultText": "Guild Field",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "",
 "SortOrder": 0
 }
 }

@@ -254,9 +254,9 @@ function EntohTownDelivery.PackageKey_Action(obj, activator)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Huh, a key?")
 
-    GROUND:CharAnimateTurn(rexio, Direction.Left, 6, false)
+    GROUND:CharAnimateTurnTo(rexio, Direction.Left, 6)
     GAME:WaitFrames(80)
-    GROUND:CharAnimateTurnTo(rexio, Direction.Right, 6, true)
+    GROUND:CharAnimateTurnTo(rexio, Direction.Right, 6)
     GAME:WaitFrames(80)
     GROUND:CharAnimateTurnTo(rexio, Direction.Down, 2)
 

@@ -21,7 +21,7 @@ function RexioHome.Init(map)
     Aurm.Feeling()
   elseif SV.entoh_town.package_received == true and SV.entoh_town.HelperChapter == 2 then
     Aurm.Home()
-  elseif KeyGet then
+  elseif KeyGet and SV.entoh_town.HelperChapter == 3 then
     Aurm.OpenIt()
   elseif SV.entoh_town.HelperChapter == 9 then
     Aurm.Unfeel()

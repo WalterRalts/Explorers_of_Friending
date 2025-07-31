@@ -5272,9 +5272,9 @@
 {
 "Item": {
 "$type": "RogueEssence.LevelGen.MapTextureStep`1[[RogueEssence.LevelGen.MapGenContext, RogueEssence]], RogueEssence",
-"GroundTileset": "apple_woods_floor",
-"BlockTileset": "apple_woods_wall",
-"WaterTileset": "apple_woods_secondary",
+"GroundTileset": "tt_big_tree_floor",
+"BlockTileset": "tt_big_tree_wall",
+"WaterTileset": "tt_big_tree_secondary",
 "LayeredGround": false,
 "IndependentGround": false,
 "GroundElement": "bug"

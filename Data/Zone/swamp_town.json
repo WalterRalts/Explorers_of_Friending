@@ -1,0 +1,30 @@
+﻿{
+"Version": "0.8.9.0",
+"Object": {
+"$type": "RogueEssence.Data.ZoneData, RogueEssence",
+"Name": {
+"DefaultText": "Swamp Town",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "",
+"NoEXP": false,
+"ExpPercent": 40,
+"Level": 10,
+"LevelCap": false,
+"KeepSkills": false,
+"TeamRestrict": false,
+"TeamSize": -1,
+"MoneyRestrict": false,
+"BagRestrict": -1,
+"KeepTreasure": false,
+"BagSize": -1,
+"Persistent": false,
+"Rescues": 0,
+"Rogue": 0,
+"Segments": [],
+"GroundMaps": [
+"SwampTown"
+]
+}
+}

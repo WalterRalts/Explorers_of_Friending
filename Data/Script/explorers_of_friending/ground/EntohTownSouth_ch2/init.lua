@@ -84,9 +84,50 @@ function EntohTownSouth_ch2.Moonoo_Action(obj, activator)
   
   COMMON.SetCharAndEmotion(mono, "Stunned")
   UI:WaitShowDialogue("What going on?~[pause=30] Why is everyone seemingly appearing out of nowhere...?~")
-  UI:WaitShowDialogue("Am I still dreaming?")
+  UI:WaitShowDialogue("Am I still dreaming?~")
 end
 
+function EntohTownSouth_ch2.Snow_Action(obj, activator)
+  local snow = CH("Snow")
+  
+  COMMON.SetCharAndEmotion(snow, "Happy")
+  UI:WaitShowDialogue("M-mama says that she's making some frost snacks l-later to help me g-get my mind off of this...")
+  UI:ChoiceMenuYesNo("Sh-should I give some to you later, m-maybe?", false)
+  UI:WaitForChoice()
+
+  if result then
+    SV.entoh_town.snowtreat = true
+    UI:WaitShowDialogue("O-okay... got it...")
+  else
+    SV.entoh_town.snowtreat = true
+    UI:WaitShowDialogue("Okay... m-more for me.")
+  end
+end
+
+function EntohTownSouth_ch2.Frost_Action(obj, activator)
+  local frost = CH("Frost")
+  local rexio = CH("PLAYER")
+  local snow = CH("Snow")
+  
+  COMMON.SetCharAndEmotion(frost, "Normal")
+  UI:WaitShowDialogue("...")
+
+  COMMON.SetCharAndEmotion(rexio, "Normal")
+  UI:WaitShowDialogue("...")
+
+  COMMON.SetCharAndEmotion(frost, "Happy")
+  UI:WaitShowDialogue("H-... hello...")
+
+  COMMON.SetCharAndEmotion(rexio, "Normal")
+  UI:WaitShowDialogue("Heyo.")
+
+  COMMON.FaceEachother("Frost", "Snow")
+  GAME:WaitFrames(20)
+  COMMON.CharHop("Frost")
+  GAME:WaitFrames(30)
+  COMMON.SetCharAndEmotion(snow, "Normal")
+  UI:WaitShowDialogue("M-mom... I know, he's a g-good friend. You d-don't... need to remind me...")
+end
 --Entities
 
 function EntohTownSouth_ch2.Storage_Action(obj, activator)

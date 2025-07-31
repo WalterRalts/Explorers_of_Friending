@@ -116,7 +116,7 @@ function ApartmentRooms_ch2.EmptyEnter_Touch(obj, activator)
       UI:WaitShowDialogue("(Oh wooooooooow. Very interesting stuff in there.)")
       rex_talk = 1
     else
-      GROUND:CharAnimateTurnTo(rexio, Dir8.Down,3)
+      GROUND:CharAnimateTurnTo(rexio, Dir8.Down, 3)
       COMMON.CharAngry("PLAYER")
       UI:SetSpeaker(rexio)
       UI:SetSpeakerEmotion("Happy")

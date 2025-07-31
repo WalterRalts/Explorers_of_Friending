@@ -277,7 +277,7 @@ function TarroTownTreeBreak.Ziggy_Action(obj, activator)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("But you know what,[pause=11] I think we can do it,[pause=25][emote=Joyous] and we probably won't stop trying until the tree is saved!")
   UI:SetSpeakerEmotion("Joyous")
-  UI:WaitShowDialogue("Add[pause=11] exploring with you guys is fun![pause=35] You guys are the best!")
+  UI:WaitShowDialogue("And[pause=11] exploring with you guys is fun![pause=35] You guys are the best!")
 end
 
 function TarroTownTreeBreak.Storage_Action(obj, activator)

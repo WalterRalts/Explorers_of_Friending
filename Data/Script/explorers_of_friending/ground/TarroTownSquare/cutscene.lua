@@ -58,7 +58,15 @@ function Square.FightFightFight()
 
     UI:SetSpeaker(plus)
     UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowDialogue("What does that even mean?!")
+    UI:WaitShowDialogue("Wrong!")
+
+    UI:SetSpeaker(minus)
+    UI:SetSpeakerEmotion("Angry")
+    UI:WaitShowDialogue("I know you are but what am I?!")
+
+    UI:SetSpeaker(plus)
+    UI:SetSpeakerEmotion("Angry")
+    UI:WaitShowDialogue("You can't just do that[pause=30], that's CHEATING!")
     end)
 
   TASK:JoinCoroutines({coro1, coro2})

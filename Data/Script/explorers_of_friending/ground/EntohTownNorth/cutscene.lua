@@ -413,7 +413,7 @@ function Entoh.Resulting()
         local cor2 = TASK:BranchCoroutine(function()
             UI:SetSpeaker(rexio)
             UI:SetSpeakerEmotion("Pain")
-            UI:WaitShowDialogue("I'm kinda wanna go back.")
+            UI:WaitShowDialogue("I kinda wanna go back.")
         end)
         TASK:JoinCoroutines({cor1, cor2})
 
@@ -444,11 +444,11 @@ function Entoh.Resulting()
 
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("Use it to get back on your feet, buddyyyyyyyyy.")
+        UI:WaitShowDialogue("Nice job, buddy.")
 
         UI:SetSpeaker(rexio)
-        UI:SetSpeakerEmotion("Sad")
-        UI:WaitShowDialogue("Whatever...")
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("Mhm")
     elseif SV.entoh_town.thicket.result == 8 then
         GROUND:TeleportTo(rexio, MRKR("m2").Position.X, MRKR("m2").Position.Y, Dir8.Right, 0)
         GROUND:CharSetAnim(rexio, "Idle", true)
@@ -492,7 +492,7 @@ function Entoh.Resulting()
 
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Joyous")
-        UI:WaitShowDialogue("YIPPEE!")
+        UI:WaitShowDialogue("Hahaaa!")
     else
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Stunned")

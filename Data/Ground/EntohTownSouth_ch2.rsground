@@ -58620,7 +58620,7 @@
 "Direction": 1,
 "IsInteracting": false,
 "AIEnabled": true,
-"EntName": "Moonoo_1",
+"EntName": "Frost",
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -58633,7 +58633,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "Moonoo",
+"Nickname": "Frost",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -58706,8 +58706,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 124,
-"Y": 196,
+"X": 196,
+"Y": 172,
 "Width": 16,
 "Height": 16
 }

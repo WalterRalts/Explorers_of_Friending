@@ -70,7 +70,7 @@ function South.BossBegin()
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Surprised")
         UI:WaitShowDialogue("Ah! Someone else!")
-        GROUND:MoveToPosition(rexio, rexio.Position.X - 45, wurp.Position.Y, false, 2)
+        GROUND:MoveToPosition(rexio, wurp.Position.X - 45, wurp.Position.Y, false, 2)
         
         COMMON.FaceEachother("PLAYER", "Wurp")
         COMMON.CharHop("PLAYER")

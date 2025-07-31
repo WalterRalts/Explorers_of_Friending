@@ -689,10 +689,10 @@ function TarroTownEast.Budeg_Action(obj, activator)
         UI:WaitForChoice()
         result = UI:ChoiceResult()
       if result == 1 then
-        SV.tarro_town.PieChapter = 4
+        SV.tarro_town.PieChapter = 4 --PieChapter 4 is the intro to town
         GAME:EnterGroundMap("tarro_town_outside", "MaruHome", "MaruHome_MainEnter")
       else
-        SV.tarro_town.PieChapter = 10
+        SV.tarro_town.PieChapter = 10 --PieChapter 10 switches to deep tarro
         GAME:EnterGroundMap("tarro_town_outside", "MaruHome", "MaruHome_MainEnter")
       end
       

@@ -356,8 +356,9 @@ function Bluetails.AfterPieTime()
     GAME:WaitFrames(60)
     GROUND:Unhide("Arama")
     GROUND:TeleportTo(arama, 180, 225, Direction.DownLeft, 0)
+    UI:WaitShowVoiceOver("The next day...", -1)
   
-    UI:WaitShowTitle("Chapter 1:\nExplosive", 180)
+    UI:WaitShowTitle("Prologue A-2:\nExplosive", 180)
     GAME:WaitFrames(30)
   
     local coro01 = TASK:BranchCoroutine(function() 
