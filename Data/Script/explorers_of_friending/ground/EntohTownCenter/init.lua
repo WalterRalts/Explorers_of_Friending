@@ -226,7 +226,7 @@ function EntohTownCenter.Pari_Action(obj, activator)
     UI:SetSpeakerEmotion("Determined")
     UI:WaitShowDialogue("Monsieur Rexi, to where is Wurpy going without taking moui!")
     UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowDialogue("How are we to become leader mondial without chef d'équipe!")
+    UI:WaitShowDialogue("How are we to become leader mondial without Monsieur?!")
 
   else
     if bug_talk == 0 then
@@ -336,6 +336,7 @@ function EntohTownCenter.Flow_Action(obj, activator)
 end
 
 function EntohTownCenter.Sign_Action(obj, activator)
+  UI:ResetSpeaker()
   if sign_tutorial ~= 1 then
     UI:SetAutoFinish(true)
     UI:WaitShowDialogue("You can get dungeon points by doing certain things in a certain group of dungeons.")

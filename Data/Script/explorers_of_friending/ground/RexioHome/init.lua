@@ -24,7 +24,7 @@ function RexioHome.Init(map)
   elseif KeyGet and SV.entoh_town.HelperChapter == 3 then
     Aurm.OpenIt()
   elseif SV.entoh_town.HelperChapter == 9 then
-    Aurm.Unfeel()
+    Aurm.LukeWarm()
   end
 
   if SV.entoh_town.AdventureChapter > 0 then

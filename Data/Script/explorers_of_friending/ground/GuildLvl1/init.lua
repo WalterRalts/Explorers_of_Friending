@@ -18,6 +18,8 @@ local GuildLvl1 = {}
 function GuildLvl1.Init(map)
   if SV.guild.day == 0 then
     Tent.Day0()
+  elseif SV.guild.day == 1 then
+    Tent.Day1()
   end
 end
 
@@ -64,11 +66,47 @@ end
 local azutalk = 0
 local rextalk = 0
 function GuildLvl1.GuildExit1_Touch(obj, activator)
-  
+  if SV.guild.day == 0 then
+    local maru = CH("PLAYER")
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("(There's really nothing to do out there,[pause=25] I'll just stay in here for now.)")
+  end
 end
 
 function GuildLvl1.MarTouch_Touch(obj, activator)
-  
+  local maru = CH("PLAYER")
+  if SV.guild.day == 0 then
+    UI:ResetSpeaker()
+    UI:ChoiceMenuYesNo("Would you like to rest and get ready for tomorrow?", false)
+    UI:WaitForChoice()
+    local result = UI:ChoiceResult()
+    if result then
+      GAME:GroundSave()
+      UI:WaitShowDialogue("Game saved!")
+      GAME:FadeOut(false, 60)
+      SV.guild.day = SV.guild.day + 1
+    else
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("(Might be missing something.)")
+    end
+  elseif SV.guild.time > 0 then
+    UI:ResetSpeaker()
+    UI:ChoiceMenuYesNo("Would you like to rest for tomorrow?", false)
+    UI:WaitForChoice()
+    local result = UI:ChoiceResult()
+    if result then
+      GAME:GroundSave()
+      UI:WaitShowDialogue("Game saved!")
+      GAME:FadeOut(false, 60)
+      SV.guild.day = SV.guild.day + 1
+    else
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("(Might be missing something.)")
+    end
+  end
 end
 
 function GuildLvl1.WaterBed_Action(obj, activator)
@@ -121,64 +159,70 @@ function GuildLvl1.Teammate2_Action(obj, activator)
   local rexio = CH("Teammate2")
   local sadness = false
 
-  if rextalk == 0 then
-    rextalk = rextalk + 1
-    COMMON.SetCharAndEmotion(rexio, "Sad")
-    UI:WaitShowDialogue("Lame... lame...")
-
-    COMMON.SetCharAndEmotion(maru, "Worried")
-    UI:WaitShowDialogue("I think it's pretty cool.")
-
-    COMMON.SetCharAndEmotion(rexio, "Worried")
-    UI:WaitShowDialogue("Yeah?[pause=30] Well I think it feels lame,[pause=35] so it's lame.")
-
-    COMMON.SetCharAndEmotion(maru, "Stunned")
-    UI:WaitShowDialogue("Yeesh.")
-  elseif rextalk == 1 then
-    rextalk = rextalk + 1
-    COMMON.SetCharAndEmotion(rexio, "Worried")
-    UI:WaitShowDialogue("I don't get it,[pause=20] you two don't seem like you miss home in the slightest.")
-
-    COMMON.SetCharAndEmotion(azura, "Normal")
-    UI:WaitShowDialogue("Mr. Smear said we'd be able to go back home soon.")
-
-    COMMON.SetCharAndEmotion(rexio, "Worried")
-    UI:WaitShowDialogue("He also said we would get soft pillows.")
-    GROUND:CharSetAnim(azura, "None", true)
-    GAME:WaitFrames(90)
-    local coro12 = TASK:BranchCoroutine(function()
-      GROUND:CharTurnToChar(maru, azura)
-      repeat
-        GROUND:TeleportTo(azura, azura.Position.X, azura.Position.Y - 1, Direction.Left, 0)
-        GAME:WaitFrames(2)
-        GROUND:TeleportTo(azura, azura.Position.X, azura.Position.Y + 1, Direction.Left, 0)
-        GAME:WaitFrames(2)
-      until sadness == true
-      end)
-    local coro11 = TASK:BranchCoroutine(function()
-      COMMON.SetCharAndEmotion(azura, "Teary-Eyed")
-      UI:WaitShowDialogue("[speed=0.4]W-wait... but...")
-
-      COMMON.SetCharAndEmotion(maru, "Surprised")
-      UI:WaitShowDialogue("Azura, no no no!")
-
+  if SV.guild.day == 0 then
+    if rextalk == 0 then
+      rextalk = rextalk + 1
       COMMON.SetCharAndEmotion(rexio, "Sad")
-      UI:WaitShowDialogue("Tch.")
-      sadness = true
-      GROUND:CharSetAnim(azura, "Idle", true)
-      end)
-    TASK:JoinCoroutines({coro11, coro12})
+      UI:WaitShowDialogue("Lame... lame...")
+
+      COMMON.SetCharAndEmotion(maru, "Worried")
+      UI:WaitShowDialogue("I think it's pretty cool.")
+
+      COMMON.SetCharAndEmotion(rexio, "Worried")
+      UI:WaitShowDialogue("Yeah?[pause=30] Well I think it feels lame,[pause=35] so it's lame.")
+
+      COMMON.SetCharAndEmotion(maru, "Stunned")
+      UI:WaitShowDialogue("Yeesh.")
+    elseif rextalk == 1 then
+      rextalk = rextalk + 1
+      COMMON.SetCharAndEmotion(rexio, "Worried")
+      UI:WaitShowDialogue("I don't get it,[pause=20] you two don't seem like you miss home in the slightest.")
+
+      COMMON.SetCharAndEmotion(azura, "Normal")
+      UI:WaitShowDialogue("Mr. Smear said we'd be able to go back home soon.")
+
+      COMMON.SetCharAndEmotion(rexio, "Worried")
+      UI:WaitShowDialogue("He also said we would get soft pillows.")
+      GROUND:CharSetAnim(azura, "None", true)
+      GAME:WaitFrames(90)
+      local coro12 = TASK:BranchCoroutine(function()
+        GROUND:CharTurnToChar(maru, azura)
+        repeat
+          GROUND:TeleportTo(azura, azura.Position.X, azura.Position.Y - 1, Direction.Left, 0)
+          GAME:WaitFrames(2)
+          GROUND:TeleportTo(azura, azura.Position.X, azura.Position.Y + 1, Direction.Left, 0)
+          GAME:WaitFrames(2)
+        until sadness == true
+        end)
+      local coro11 = TASK:BranchCoroutine(function()
+        COMMON.SetCharAndEmotion(azura, "Teary-Eyed")
+        UI:WaitShowDialogue("[speed=0.4]W-wait... but...")
+
+        COMMON.SetCharAndEmotion(maru, "Surprised")
+        UI:WaitShowDialogue("Azura, no no no!")
+
+        COMMON.SetCharAndEmotion(rexio, "Sad")
+        UI:WaitShowDialogue("Tch.")
+        sadness = true
+        GROUND:CharSetAnim(azura, "Idle", true)
+        end)
+      TASK:JoinCoroutines({coro11, coro12})
+    else
+      COMMON.SetCharAndEmotion(rexio, "Worried")
+      UI:WaitShowDialogue("...I wanna go home...")
+
+      GROUND:CharTurnToChar(maru, azura)
+      COMMON.SetCharAndEmotion(azura, "Teary-Eyed")
+      UI:WaitShowDialogue("Mama...")
+
+      COMMON.SetCharAndEmotion(maru, "Stunned")
+      UI:WaitShowDialogue("...I guess it's heavy in here now.")
+    end
   else
-    COMMON.SetCharAndEmotion(rexio, "Worried")
-    UI:WaitShowDialogue("...I wanna go home...")
-
-    GROUND:CharTurnToChar(maru, azura)
-    COMMON.SetCharAndEmotion(azura, "Teary-Eyed")
-    UI:WaitShowDialogue("Mama...")
-
-    COMMON.SetCharAndEmotion(maru, "Stunned")
-    UI:WaitShowDialogue("...I guess it's heavy in here now.")
+    COMMON.SetCharAndEmotion(rexio, "Normal")
+    UI:WaitShowDialogue("I'm glad I got to swing a few punches.")
   end
+  
 end
 
 return GuildLvl1

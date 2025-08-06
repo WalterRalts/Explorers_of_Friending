@@ -126,9 +126,9 @@ function ZoomerBoss.PreBattle()
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("Would you like to tell us where, voice \ncoming from nowhere?")
   
-  GAME:WaitFrames(100)
+  GAME:WaitFrames(40)
   COMMON.FaceEachother("PLAYER", "Azura")
-  
+  GAME:WaitFrames(60)
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Stunned")
   COMMON.CharSweatdrop("PLAYER")

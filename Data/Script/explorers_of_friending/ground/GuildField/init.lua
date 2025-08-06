@@ -26,9 +26,6 @@ end
 ---GuildField.Enter(map)
 --Engine callback function
 function GuildField.Enter(map)
-
-  GAME:FadeIn(20)
-
 end
 
 ---GuildField.Exit(map)

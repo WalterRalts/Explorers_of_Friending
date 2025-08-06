@@ -191,7 +191,6 @@ function TheField.SceneEnd_Touch(obj, activator)
 
     GAME:EnterGroundMap("entoh_town", "RexioHome", "RexioStart")
   end
-  UI:WaitShowVoiceOver("The next day...", -1)
 end
 
 return TheField

@@ -396,7 +396,7 @@ function Aurm.Fashion()
     GAME:EnterGroundMap("RexioHome_ch2", "RexioStart2")
 end
 
-function Aurm.Unfeel()
+function Aurm.LukeWarm()
     local rexio = CH("PLAYER")
     local luke = CH("Luke")
     GAME:CutsceneMode(true)

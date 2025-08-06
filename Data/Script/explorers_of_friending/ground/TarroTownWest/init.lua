@@ -18,6 +18,9 @@ function TarroTownWest.Init(map)
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
   local partner = CH('Teammate1')
+  if outside_enter == 1 then
+    GROUND:TeleportTo(partner, 85, 30, Direction.Down, 0)
+  end
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   partner.CollisionDisabled = true
 

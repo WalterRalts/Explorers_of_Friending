@@ -335,6 +335,7 @@ function Square.FightFightFight()
 end
 
 function Square.AfterQuiz()
+  quiz_available = false
   local partner = CH('Teammate1')
   local maru = CH("PLAYER")
   local azura = CH('Teammate1')
@@ -381,7 +382,7 @@ function Square.AfterQuiz()
   UI:SetSpeakerEmotion("Angry")
   UI:WaitShowDialogue("That would take too long! [emote=Determined] Someone else would've heard it by now, c'mon! We can help!")
 
-  GROUND:MoveToPosition(ziggy, 444, 322, false, 2)
+  GROUND:MoveToPosition(ziggy, 444, 322, false, 9)
   local coro1 = TASK:BranchCoroutine(function() 
     GROUND:MoveToMarker(ziggy, MRKR("jump"), false, 6)
     end)

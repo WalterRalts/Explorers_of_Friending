@@ -24,7 +24,8 @@
 "Rogue": 0,
 "Segments": [],
 "GroundMaps": [
-"GuildField"
+"GuildField",
+"GuildLvl1"
 ]
 }
 }

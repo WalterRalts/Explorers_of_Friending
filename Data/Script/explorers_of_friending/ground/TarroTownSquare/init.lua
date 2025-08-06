@@ -31,6 +31,7 @@ function TarroTownSquare.Init(map)
   if SV.tarro_town.PieChapter == 5 then
     Square.FightFightFight()
   end
+  
   if quiz_done == 1 and outside_enter == 1 then
     GROUND:TeleportTo(partner, 504, 378, Direction.Left, 0)
   end
@@ -42,12 +43,12 @@ function TarroTownSquare.Init(map)
   end
   if SV.tarro_town.PieChapter >= 7 then
     ziggy.CollisionDisabled = true
-    if SV.tarro_tree_hollows.tree_entered == false then
+    if SV.tarro_tree_hollows.tree_entered == false and quiz_available == true then
       Square.AfterQuiz()
     end
     SOUND:PlayBGM("None", false, 0)
-    GROUND:TeleportTo(munch, 455, 210, Direction.Down, 2)
-    GROUND:TeleportTo(lax, 390, 210, Direction.Left, 2)
+    GROUND:TeleportTo(munch, 455, 210, Direction.Down, 0)
+    GROUND:TeleportTo(lax, 390, 210, Direction.Left, 0)
     GROUND:Hide("Ziggy")
     if SV.tarro_tree_hollows.tree_entered == true then
       GROUND:Hide("Senna")
@@ -827,17 +828,24 @@ function TarroTownSquare.Teddums_Action(obj, activator)
     local azura = CH('Teammate1')
     local ted = CH("Teddums")
 
-    UI:SetSpeaker(ted)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Looks like Mr. Kecleon is busy...")
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Luckily there's sweet store in the Hive.")
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("It's just in that direction.", {GROUND:CharAnimateTurn(maru, Direction.Left, 4, true), GROUND:CharAnimateTurn(ted, Direction.Left, 4, true), GROUND:CharAnimateTurn(azura, Direction.Left, 4, false)})
-    GROUND:CharTurnToCharAnimated(ted, maru, 3)
-    GROUND:CharTurnToCharAnimated(maru, ted, 3)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Just gotta ask all nice and they'll give you the most delicious honey.")
+    if SV.tarro_town.PieChapter == 7 then
+      UI:SetSpeaker(ted)
+      UI:SetSpeakerEmotion("Stunned")
+      UI:WaitShowDialogue("Ooooooooooo, something done did a boom...")
+    else
+      UI:SetSpeaker(ted)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Looks like Mr. Kecleon is busy...")
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Luckily there's sweet store in the Hive.")
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("It's just in that direction.", {GROUND:CharAnimateTurn(maru, Direction.Left, 4, true), GROUND:CharAnimateTurn(ted, Direction.Left, 4, true), GROUND:CharAnimateTurn(azura, Direction.Left, 4, false)})
+      GROUND:CharTurnToCharAnimated(ted, maru, 3)
+      GROUND:CharTurnToCharAnimated(maru, ted, 3)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Just gotta ask all nice and they'll give you the most delicious honey.")
+    end
+   
     if quiz_available == true then
         UI:SetSpeaker(azura)
         UI:SetSpeakerEmotion("Worried")
@@ -1004,6 +1012,10 @@ function TarroTownSquare.BigTree_Entrance_Touch(obj, activator)
   end
   GAME:FadeOut(false, 20)
   GAME:EnterGroundMap("TarroTownBigTree", "Tree_Enter")
+end
+
+function TarroTownSquare.TarroTownWest_Entrance_Touch(obj, activator)
+  GAME:EnterGroundMap("tarro_town", "TarroTownWest", "TarroTownNorth_Enter")
 end
 
 return TarroTownSquare

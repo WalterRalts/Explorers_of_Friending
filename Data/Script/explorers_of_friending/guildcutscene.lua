@@ -1,9 +1,9 @@
 Guild = {}
-Tent = {}
+Tent = {} --guild lvl1
 
 function Guild.Day0()
     GROUND:Hide("PLAYER")
-    GAME:MoveCamera(MRKR("MainCam").Position.X, MRKR("MainCam").Position.Y, 0, false)
+    GAME:MoveCamera(1000, 640, 30, false)
     GAME:FadeIn(30)
     local maru = CH("Maru")
     local azura = CH("Azura")
@@ -104,9 +104,9 @@ function Guild.Day0()
                 local distract = math.random(5)
                 GAME:WaitFrames(30)
                 if distract == 5 then
-                    GROUND:CharTurnToChar(smear, rexio, 4)
+                    GROUND:CharTurnToChar(smear, rexio)
                     GAME:WaitFrames(20)
-                    GROUND:CharTurnToChar(smear, maru, 4)
+                    GROUND:CharTurnToChar(smear, maru)
                 else
                     GAME:WaitFrames(20)
                 end
@@ -121,7 +121,9 @@ function Guild.Day0()
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowTimedDialogue("Ah yes,[pause=10] my introduction.[pause=20] I am Smear,[pause=15] that is what many friends have called me.", 100)
         UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowTimedDialogue("With my elementary deduction skills,[pause=10] and previously working with your parents, I have sent Zoomer to your locations to test your skills.", 100)
+        smear.Data.Nickname = "Smear"
+        UI:WaitShowTimedDialogue("With my elementary deduction skills,[pause=10] and previously working with your parents...", 100) 
+        UI:WaitShowTimedDialogue("I have sent Zoomer to your locations to test your skills.", 100)
         UI:SetSpeakerEmotion("Worried")
         UI:WaitShowTimedDialogue("Of course,[pause=10] I am fully aware that you have been pulled away from your homes a little earlier than wanted...", 100)
 
@@ -161,11 +163,11 @@ function Guild.Day0()
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("...wha...?")
     
-    GROUND:CharAnimateTurnTo(maru, azura, 4)
-    GROUND:CharAnimateTurnTo(rexio, azura, 4)
+    GROUND:CharTurnToCharAnimated(maru, azura, 4)
+    GROUND:CharTurnToCharAnimated(rexio, azura, 4)
     local function mario()
         COMMON.CharSweatdrop("Maru")
-        GROUND:CharAnimateTurnTo(maru, rexio, 4)
+        GROUND:CharTurnToCharAnimated(maru, rexio, 4)
     end
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
@@ -187,6 +189,8 @@ function Guild.Day0()
     UI:SetSpeaker(smear)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("The rest of the details is what I shall give to you tomorrow.")
+    GROUND:CharTurnToCharAnimated(maru, smear, 4)
+    GROUND:CharTurnToCharAnimated(rexio, smear, 4)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Now that you are all hastily familiar with eachother, let me show you around the psuedoguild.")
 
@@ -242,6 +246,7 @@ function Guild.Day0()
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("I cannot give you a mission[pause=0], we are not a guild.")
     COMMON.CharAngry("Rexio")
+    GAME:WaitFrames(35)
     UI:WaitShowDialogue("While I appreciate your enthuiasm, I cannot in good conscious let three children outside during sunset.")
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("To bed you shall go. And when you awaken, we will talk about your dungeoning skills.")
@@ -268,8 +273,10 @@ function Guild.Day0()
         UI:WaitShowDialogue("...")
         GROUND:MoveToMarker(rexio, MRKR("m1"), false, 1)
         GROUND:Hide("Rexio")
+        GAME:FadeOut(false, 60)
     end)
     TASK:JoinCoroutines({coro011, coro012})
+    GAME:EnterGroundMap("guild_field", "GuildLvl1", "GuildEnter1")
 end
 
 function Tent.Day0()
@@ -308,6 +315,7 @@ function Tent.Day0()
     local maru = CH("PLAYER")
     local azura = CH("Teammate1")
     local rexio = CH("Teammate2")
+    UI:SetBounds(10, 16, 300, 50)
 
     COMMON.SetCharAndEmotion(maru, "Normal")
     UI:WaitShowDialogue("I guess this isn't so bad.")
@@ -329,7 +337,7 @@ function Tent.Day0()
         UI:WaitShowDialogue("Where are the pillows?")
 
         COMMON.SetCharAndEmotion(maru, "Stunned")
-        UI:WaitShowDialogue("...he forgot the pillows...")
+        UI:WaitShowDialogue("...not here, apparently")
     end)
     local c2 = TASK:BranchCoroutine(function()
         GAME:WaitFrames(20)
@@ -355,4 +363,12 @@ function Tent.Day0()
     COMMON.CharSweatdrop("Teammate1")
     COMMON.SetCharAndEmotion(maru, "Normal")
     UI:WaitShowDialogue("Alrighty.")
+end
+
+function Tent.Day1()
+  UI:WaitShowVoiceOver("The next day...", -1)
+end
+
+function Tent.FreeDay()
+    
 end

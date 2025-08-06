@@ -423,7 +423,8 @@
 "CountedFloors": 0,
 "Rogue": 0,
 "Grounds": [
-"GuildField"
+"GuildField",
+"GuildLvl1"
 ],
 "Maps": [],
 "Name": {

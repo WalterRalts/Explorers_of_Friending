@@ -64,6 +64,14 @@ end
 -- Entities Callbacks
 -------------------------------
 
+local rextalk = {
+  bugs = false,
+  frost = false,
+  panda = false,
+  moms = false,
+  moon = false
+}
+
 --Characters
 
 local pietalk = 0
@@ -81,52 +89,85 @@ end
 
 function EntohTownSouth_ch2.Moonoo_Action(obj, activator)
   local mono = CH("Moonoo")
+  if rextalk.moon == false then
+    COMMON.SetCharAndEmotion(mono, "Normal")
+    UI:WaitShowDialogue("No, I haven't seen a Lucario with your exact same hairstyle...~")
+    UI:WaitShowDialogue("Sorry, friend...~")
+    rextalk.moon = true
+  else
+    COMMON.SetCharAndEmotion(mono, "Stunned")
+    UI:WaitShowDialogue("What going on?~[pause=30] Why is everyone seemingly appearing out of nowhere...?~")
+    UI:WaitShowDialogue("Am I still dreaming?~")
+  end
   
-  COMMON.SetCharAndEmotion(mono, "Stunned")
-  UI:WaitShowDialogue("What going on?~[pause=30] Why is everyone seemingly appearing out of nowhere...?~")
-  UI:WaitShowDialogue("Am I still dreaming?~")
 end
 
 function EntohTownSouth_ch2.Snow_Action(obj, activator)
   local snow = CH("Snow")
-  
-  COMMON.SetCharAndEmotion(snow, "Happy")
-  UI:WaitShowDialogue("M-mama says that she's making some frost snacks l-later to help me g-get my mind off of this...")
-  UI:ChoiceMenuYesNo("Sh-should I give some to you later, m-maybe?", false)
-  UI:WaitForChoice()
-
-  if result then
-    SV.entoh_town.snowtreat = true
-    UI:WaitShowDialogue("O-okay... got it...")
+  if rextalk.frost == false then
+    COMMON.SetCharAndEmotion(snow, "Happy")
+    UI:WaitShowDialogue("H-huh...? Your dad?")
+    UI:WaitShowDialogue("S-sorry, Rexio, but I haven't r-really l-looked...")
+    rextalk.frost = true
   else
-    SV.entoh_town.snowtreat = true
-    UI:WaitShowDialogue("Okay... m-more for me.")
+    COMMON.SetCharAndEmotion(snow, "Happy")
+    UI:WaitShowDialogue("M-mama says that she's making some frost snacks l-later to help me g-get my mind off of... this...")
+    UI:ChoiceMenuYesNo("Sh-should I give some to you later, m-maybe?", false)
+    UI:WaitForChoice()
+
+    if result then
+      SV.entoh_town.snowtreat = true
+      UI:WaitShowDialogue("O-okay... got it...")
+    else
+      SV.entoh_town.snowtreat = true
+      UI:WaitShowDialogue("Okay... m-more for me.")
+    end
   end
+  
 end
 
 function EntohTownSouth_ch2.Frost_Action(obj, activator)
   local frost = CH("Frost")
   local rexio = CH("PLAYER")
   local snow = CH("Snow")
-  
-  COMMON.SetCharAndEmotion(frost, "Normal")
-  UI:WaitShowDialogue("...")
 
-  COMMON.SetCharAndEmotion(rexio, "Normal")
-  UI:WaitShowDialogue("...")
+  if rextalk.frost == false then
+    COMMON.SetCharAndEmotion(rexio, "Normal")
+    UI:WaitShowDialogue("Hey, Ms. Flake. Have you seen my dad around?")
 
-  COMMON.SetCharAndEmotion(frost, "Happy")
-  UI:WaitShowDialogue("H-... hello...")
+    COMMON.SetCharAndEmotion(frost, "Worried")
+    UI:WaitShowDialogue("[speed=0.25]...")
+    rextalk.frost = true
 
-  COMMON.SetCharAndEmotion(rexio, "Normal")
-  UI:WaitShowDialogue("Heyo.")
+    COMMON.FaceEachother("Frost", "Snow")
+    GAME:WaitFrames(20)
+    COMMON.CharHop("Frost")
+    GAME:WaitFrames(30)
+    COMMON.SetCharAndEmotion(snow, "Worried")
+    UI:WaitShowDialogue("S-she says s-she hasn't...")
 
-  COMMON.FaceEachother("Frost", "Snow")
-  GAME:WaitFrames(20)
-  COMMON.CharHop("Frost")
-  GAME:WaitFrames(30)
-  COMMON.SetCharAndEmotion(snow, "Normal")
-  UI:WaitShowDialogue("M-mom... I know, he's a g-good friend. You d-don't... need to remind me...")
+    COMMON.SetCharAndEmotion(frost, "Pain")
+    UI:WaitShowDialogue("S-sorry...!")
+  else
+    COMMON.SetCharAndEmotion(frost, "Normal")
+    UI:WaitShowDialogue("...")
+
+    COMMON.SetCharAndEmotion(rexio, "Normal")
+    UI:WaitShowDialogue("...")
+
+    COMMON.SetCharAndEmotion(frost, "Happy")
+    UI:WaitShowDialogue("H-... hello...")
+
+    COMMON.SetCharAndEmotion(rexio, "Normal")
+    UI:WaitShowDialogue("Heyo.")
+
+    COMMON.FaceEachother("Frost", "Snow")
+    GAME:WaitFrames(20)
+    COMMON.CharHop("Frost")
+    GAME:WaitFrames(30)
+    COMMON.SetCharAndEmotion(snow, "Normal")
+    UI:WaitShowDialogue("M-mom... I know, he's a g-good friend.[pause=30] You d-don't...[pause=25][emote=Happy] need to remind me...")
+  end
 end
 --Entities
 

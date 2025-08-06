@@ -493039,7 +493039,7 @@
 "triggerType": 0,
 "Collider": {
 "X": 1000,
-"Y": 640,
+"Y": 639,
 "Width": 16,
 "Height": 16
 }

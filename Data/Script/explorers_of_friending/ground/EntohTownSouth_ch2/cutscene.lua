@@ -15,6 +15,9 @@ function South_ch2.GoingIn()
 
     GAME:FadeIn(50)
     
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Dizzy")
+    UI:WaitShowDialogue("Looks like everyone is here but my dad... maybe I should ask around.")
 end
 
 function South_ch2.GoingInFull()

@@ -176,6 +176,7 @@ SV.guilders =
 
 SV.guild = 
 {
+  time = 0,
   day = 0,
   event = 0
 }

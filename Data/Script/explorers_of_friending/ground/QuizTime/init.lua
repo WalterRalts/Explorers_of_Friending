@@ -132,7 +132,7 @@ function QuizTime.Init(map)
     
             UI:SetSpeaker(puchi)
             UI:SetSpeakerEmotion("Worried")
-            UI:WaitShowDialogue("Even then, they'd still fight about it...")
+            UI:WaitShowDialogue("Sounds like, even then, they'd still fight about it...")
     
             UI:SetSpeaker(azura)
             UI:SetSpeakerEmotion("Stunned")
@@ -192,6 +192,10 @@ function QuizTime.Init(map)
             UI:SetSpeakerEmotion("Happy")
             UI:WaitShowDialogue("Ooh, yeah yeah! [emote=Normal]Just tell me what Pokemon shape it is.")
 
+            UI:SetSpeaker(senna)
+            UI:SetSpeakerEmotion("Happy")
+            UI:WaitShowDialogue("Azura, you can have this one.")
+
             UI:SetSpeaker(azura)
             UI:SetSpeakerEmotion("Worried")
             local choices = {("Togekiss!"),
@@ -221,7 +225,7 @@ function QuizTime.Init(map)
                 UI:SetSpeaker(ziggy)
                 UI:SetSpeakerEmotion("Normal")
                 UI:WaitShowDialogue("Speaking of,[pause=45] there are plenty of things to do in Tarro Town.")
-                UI:WaitShowDialogue("You can do some cool stuff here,[pause=15] but the stores[emote=Inspired] are the best part about this place.")
+                UI:WaitShowDialogue("You can do some cool stuff here,[pause=15] but the stores[emote=Inspired] are the coolest!")
                 UI:WaitShowDialogue("So, how many stores are there in town if we aren't counting the ones in the [color=#01FE10]Tarro Tree[color]!")
                 UI:SetSpeaker(maru)
                 UI:SetSpeakerEmotion("Worried")
@@ -233,6 +237,7 @@ function QuizTime.Init(map)
                 UI:WaitForChoice()
                 result = UI:ChoiceResult()
                 if result == 1 then
+                    quiz_available = false
                     quiz_done = 2
                     UI:SetSpeaker(ziggy)
                     UI:SetSpeakerEmotion("Happy")
@@ -259,11 +264,12 @@ function QuizTime.Init(map)
                     SOUND:PlayBGM("None", true, 30)
                     GAME:EnterGroundMap("TarroTownSquare", "Quiz_Fail")
                 elseif result == 2 then
+                    quiz_available = false
                     quiz_done = 2
                     UI:SetSpeaker(ziggy)
                     UI:SetSpeakerEmotion("Happy")
                     UI:WaitShowDialogue("Hahahaha!")
-                    UI:WaitShowDialogue("I'm such a prankster, you guys got it wr-[pause=100]! W[emote=Worried]ait, you said three? Darn, you're right.")
+                    UI:WaitShowDialogue("I'm such a prankster, you guys got it wr[pause=50]-! W[emote=Worried]ait, you said three? Darn, you're right.")
 
                     UI:SetSpeaker(senna)
                     UI:SetSpeakerEmotion("Worried")
@@ -348,6 +354,7 @@ function QuizTime.Init(map)
             UI:SetSpeakerEmotion("Happy")
             UI:WaitShowDialogue("Nope, that was last week![pause=30] Haha!")
     
+            COMMON.FaceEachother("Ziggy", "Puchi")
             UI:SetSpeaker(puchi)
             UI:SetSpeakerEmotion("Determined")
             UI:WaitShowDialogue("How come I wasn't woken up for that one?")
@@ -356,10 +363,13 @@ function QuizTime.Init(map)
             UI:SetSpeakerEmotion("Stunned")
             UI:WaitShowDialogue("Uh, well... i-it... uh...")
     
+            COMMON.CharAngry("Puchi")
+            COMMON.CharRealize("Ziggy")
             UI:SetSpeaker(puchi)
             UI:SetSpeakerEmotion("Angry")
             UI:WaitShowDialogue("Grrrrr...!")
-    
+
+            GROUND:CharAnimateTurnTo(ziggy, Dir8.Down, 9)
             UI:SetSpeaker(ziggy)
             UI:SetSpeakerEmotion("Pain")
             UI:WaitShowDialogue("Eep!")

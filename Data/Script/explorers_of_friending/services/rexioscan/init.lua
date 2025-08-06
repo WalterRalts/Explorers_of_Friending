@@ -106,7 +106,7 @@ function RexioScan:ExitDungeon()
   in_dungeon = false
 end
 
-function BaseService:Subscribe(med)
+function RexioScan:Subscribe(med)
   med:Subscribe("RexioScan", EngineServiceEvents.Update, function() self:Scan() end)
   med:Subscribe("RexioScan", EngineServiceEvents.DungeonModeBegin, function() self:EnterDungeon() end)
   med:Subscribe("RexioScan", EngineServiceEvents.DungeonModeEnd, function() self:ExitDungeon() end)
