@@ -25,6 +25,7 @@
 "Segments": [],
 "GroundMaps": [
 "GuildField",
+"GuildFieldMain",
 "GuildLvl1"
 ]
 }

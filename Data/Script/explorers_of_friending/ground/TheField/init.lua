@@ -132,9 +132,6 @@ end
 -------------------------------
 function TheField.SceneEnd_Touch(obj, activator)
   if SV.entoh_town.AdventureChapter >= 3 then
-    for _, slot in ipairs(SV.guilders.tarro_town.bluetail_storage) do
-      GAME:GivePlayerStorageItem(slot.id, slot.count, false, slot.hidden)
-    end
     GAME:EnterGroundMap("guild_field", "GuildField", "Start")
     GAME:FadeOut(false, 30)
   elseif SV.tarro_town.DarknessChapter == 3 then
@@ -161,26 +158,16 @@ function TheField.SceneEnd_Touch(obj, activator)
     p.Nickname = "Rexio"
 
     _DATA.Save.ActiveTeam.Players:Add(p)
-    SV.guilders.tarro_town.bluetail_storage = {}
-    --remove bag and storage items and put them in a temporary table
+    local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("RexioInteract")
+        _DATA.Save.ActiveTeam.Players[0].ActionEvents:Add(talk_evt)
     GAME:DepositAll()
-    local storage = _DATA.Save.ActiveTeam.Storage
-    local count = storage.Keys.Count
-    for i = count - 1, 0, 1 do
-      print(storage.Keys[i])
-      local slot = {id = storage.Keys[i], count = storage.Values[i], hidden = ""} --checks ID, the amount of said item, and any hidden value.
-      table.insert(SV.guilders.tarro_town.bluetail_storage, slot) --puts it into a storage slot in the table variable.
-      storage.Remove(storage.Keys[i]) --removes it from storage
-    end
-    local box_storage = _DATA.Save.ActiveTeam.BoxStorage
-    local box_count = box_storage.Count
-    if box_count > 1 then
-      for i = box_count - 1, 0, 1 do
-        local slot = {id = box_storage[i].ID, count = 1, hidden_value = box_storage[i].HiddenValue}
-        table.insert(SV.guilders.tarro_town.bluetail_storage, slot)
-        box_storage.RemoveAt(i)
-      end
-    end
+    
+    --[[
+
+    -- Best to just remove storage from Rexio's chapter.
+    
+    ]]--
+
     SOUND:PlayBGM("HeroesOf", true)
     UI:WaitShowVoiceOver("It was strange.[pause=50] Ever since the creature slipped away from this world...", -1)
     UI:WaitShowVoiceOver("...nothing ever really happens.", -1)

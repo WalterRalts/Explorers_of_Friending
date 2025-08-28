@@ -3152,6 +3152,51 @@
 {
 "$type": "RogueEssence.LevelGen.RangeStepZoneStep, RogueEssence",
 "StepPriority": {
+"str": [
+3,
+2
+]
+},
+"Spawns": {
+"nodes": [
+{
+"Item": {
+"$type": "RogueElements.EraseIsolatedStep`1[[RogueElements.IFloorPlanGenContext, RogueElements]], RogueElements",
+"Terrain": {
+"$type": "RogueEssence.Dungeon.Tile, RogueEssence",
+"Data": {
+"ID": "water",
+"TileTex": {
+"AutoTileset": "",
+"Associates": [],
+"Layers": [],
+"NeighborCode": -1
+},
+"StableTex": false
+},
+"Effect": {
+"TileLoc": {
+"X": 0,
+"Y": 0
+},
+"ID": "",
+"Revealed": false,
+"Owner": 0,
+"TileStates": []
+}
+}
+},
+"Range": {
+"Min": 0,
+"Max": 7
+}
+}
+]
+}
+},
+{
+"$type": "RogueEssence.LevelGen.RangeStepZoneStep, RogueEssence",
+"StepPriority": {
 "str": null
 },
 "Spawns": {
@@ -3174,7 +3219,7 @@
 },
 "Range": {
 "Min": 0,
-"Max": 5
+"Max": 7
 }
 }
 ]

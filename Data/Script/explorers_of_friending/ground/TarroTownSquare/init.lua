@@ -29,6 +29,7 @@ function TarroTownSquare.Init(map)
   partner.CollisionDisabled = true
   
   if SV.tarro_town.PieChapter == 5 then
+    quiz_done = 0
     Square.FightFightFight()
   end
   
@@ -41,10 +42,11 @@ function TarroTownSquare.Init(map)
   if outside_enter == 4 then
     GROUND:TeleportTo(partner, 405, 230, Direction.Down, 0)
   end
-  if SV.tarro_town.PieChapter >= 7 then
+  if SV.tarro_town.PieChapter >= 7 and quiz_done >= 2 then
     ziggy.CollisionDisabled = true
-    if SV.tarro_tree_hollows.tree_entered == false and quiz_available == true then
+    if SV.tarro_tree_hollows.tree_entered == false and quiz_done == 2 then
       Square.AfterQuiz()
+      quiz_done = 3
     end
     SOUND:PlayBGM("None", false, 0)
     GROUND:TeleportTo(munch, 455, 210, Direction.Down, 0)
@@ -1015,7 +1017,8 @@ function TarroTownSquare.BigTree_Entrance_Touch(obj, activator)
 end
 
 function TarroTownSquare.TarroTownWest_Entrance_Touch(obj, activator)
-  GAME:EnterGroundMap("tarro_town", "TarroTownWest", "TarroTownNorth_Enter")
+  GAME:FadeOut(false, 30)
+  GAME:EnterGroundMap("TarroTownWest", "TarroTownNorth_Enter")
 end
 
 return TarroTownSquare

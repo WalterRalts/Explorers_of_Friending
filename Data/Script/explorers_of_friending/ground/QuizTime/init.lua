@@ -40,7 +40,6 @@ function QuizTime.Init(map)
     UI:WaitShowDialogue("Z-[pause=30]ziggy...! H[emote=Stunned]ow did you...?!")
   end
   
-  
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("First question!")

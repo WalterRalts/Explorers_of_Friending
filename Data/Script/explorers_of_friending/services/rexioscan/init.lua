@@ -39,8 +39,8 @@ function RexioScan:Scan()
                   local scany = rexy + 10 - y
                   item_ref = _ZONE.CurrentMap:GetItem(RogueElements.Loc(scanx, scany))
                   if item_ref > -1 then
-                    print("Rexio, at (" .. rexx .. ", " .. rexy .. ") scanned a tile: (" .. scanx .. ", " .. scany .. ").")
-                    print("There is an item here! It's the " .. _ZONE.CurrentMap.Items[item_ref]:GetDungeonName() .. ".")
+                    PrintInfo("Rexio, at (" .. rexx .. ", " .. rexy .. ") scanned a tile: (" .. scanx .. ", " .. scany .. ").")
+                    PrintInfo("There is an item here! It's the " .. _ZONE.CurrentMap.Items[item_ref]:GetDungeonName() .. ".")
                     iircount = iircount + 1
                   end
                 end

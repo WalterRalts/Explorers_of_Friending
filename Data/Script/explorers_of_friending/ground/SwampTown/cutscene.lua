@@ -29,7 +29,7 @@ function SwampUp.TransferA()
         GAME:WaitFrames(20)
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("...look like we made it!")
+        UI:WaitShowDialogue("...looks like we made it!")
         end)
     TASK:JoinCoroutines({coro01, coro02})
 
@@ -167,8 +167,10 @@ function SwampUp.TransferB()
     UI:WaitShowDialogue("Awaaaaaay from the doorway!")
     SOUND:StopBGM()
     GROUND:AnimateToPosition(rexio, "Walk", Dir8.Up, zoomer.Position.X, rexio.Position.Y + 20, 1, 1, 0)
+    GAME:WaitFrames(40)
     GROUND:Unhide("Zoomer")
     
+    GAME:WaitFrames(40)
     UI:SetSpeaker(zoomer)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("(Tch... another kid.)")
@@ -221,6 +223,8 @@ function SwampUp.TransferB()
     UI:SetSpeaker(snow)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Y-yes, sir...!")
+    snow.CollisionDisabled = true
+    wurp.CollisionDisabled = true
     
     local coro01 = TASK:BranchCoroutine(function()
         GAME:WaitFrames(55)

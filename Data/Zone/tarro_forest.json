@@ -2239,7 +2239,7 @@
 },
 "Level": {
 "Min": 1,
-"Max": 5
+"Max": 3
 },
 "SpecifiedSkills": [
 "bug_bite",
@@ -2295,15 +2295,46 @@
 "Min": 3,
 "Max": 5
 }
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
+"Species": "bellsprout",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 1,
+"Max": 3
+},
+"SpecifiedSkills": [],
+"Intrinsic": "",
+"Tactic": "wander_normal",
+"SpawnConditions": [],
+"SpawnFeatures": [
+{
+"$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+}
+]
+},
+"Role": 0
+},
+"Rate": 10,
+"Range": {
+"Min": 0,
+"Max": 5
+}
 }
 ],
 "TeamSizes": [
 {
 "Spawn": 1,
-"Rate": 20,
+"Rate": 40,
 "Range": {
 "Min": 0,
-"Max": 4
+"Max": 5
 }
 },
 {
@@ -2311,23 +2342,7 @@
 "Rate": 10,
 "Range": {
 "Min": 1,
-"Max": 4
-}
-},
-{
-"Spawn": 3,
-"Rate": 5,
-"Range": {
-"Min": 3,
 "Max": 5
-}
-},
-{
-"Spawn": 4,
-"Rate": 2,
-"Range": {
-"Min": 0,
-"Max": 1
 }
 }
 ],
@@ -2583,6 +2598,44 @@
 }
 },
 "ModStates": []
+},
+{
+"$type": "RogueEssence.LevelGen.RangeStepZoneStep, RogueEssence",
+"StepPriority": {
+"str": [
+2
+]
+},
+"Spawns": {
+"nodes": [
+{
+"Item": {
+"$type": "RogueEssence.AddTunnelStep`1[[RogueElements.IFloorPlanGenContext, RogueElements]], RogueEssence",
+"TurnLength": {
+"Min": 0,
+"Max": 11
+},
+"MaxLength": {
+"Min": 0,
+"Max": 21
+},
+"AllowDeadEnd": false,
+"TraverseFloor": true,
+"Halls": {
+"Min": 1,
+"Max": 6
+},
+"Brush": {
+"$type": "RogueElements.DefaultHallBrush, RogueElements"
+}
+},
+"Range": {
+"Min": 0,
+"Max": 5
+}
+}
+]
+}
 }
 ],
 "IsRelevant": true,

@@ -276,26 +276,26 @@ function Guild.Day0()
         GAME:FadeOut(false, 60)
     end)
     TASK:JoinCoroutines({coro011, coro012})
-    GAME:EnterGroundMap("guild_field", "GuildLvl1", "GuildEnter1")
+    GAME:EnterGroundMap("GuildLvl1", "GuildEnter1")
 end
 
 function Tent.Day0()
     local moverex = GAME:GetPlayerPartyTable()
-
-    function printTable(t, indent)
+    GAME:SetCanSwitch(false)
+    function PrintTable(t, indent)
       indent = indent or 0
       for key, value in pairs(t) do
         local formatting = string.rep("  ", indent) .. tostring(key) .. ": "
         if type(value) == "table" then
           print(formatting)
-          printTable(value, indent + 1)
+          PrintTable(value, indent + 1)
         else
           print(formatting .. tostring(value))
         end
       end
     end
-    printTable(SV.guilders.tarro_town.bluetail_stats)
-    printTable(moverex)
+    PrintTable(SV.guilders.tarro_town.bluetail_stats)
+    PrintTable(moverex)
     
     SOUND:PlayFanfare("Fanfare/Note")
     UI:ResetSpeaker()
@@ -310,6 +310,12 @@ function Tent.Day0()
         GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
       end
     end
+    local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("AzuraInteract")
+          _DATA.Save.ActiveTeam.Players[1].ActionEvents:Add(talk_evt)
+    local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("MaruInteract")
+          _DATA.Save.ActiveTeam.Players[0].ActionEvents:Add(talk_evt)
+    local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("RexioInteract")
+          _DATA.Save.ActiveTeam.Players[2].ActionEvents:Add(talk_evt)
     COMMON.RespawnAllies()
     GAME:FadeIn(40)
     local maru = CH("PLAYER")
@@ -337,7 +343,7 @@ function Tent.Day0()
         UI:WaitShowDialogue("Where are the pillows?")
 
         COMMON.SetCharAndEmotion(maru, "Stunned")
-        UI:WaitShowDialogue("...not here, apparently")
+        UI:WaitShowDialogue("...not here, apparently.")
     end)
     local c2 = TASK:BranchCoroutine(function()
         GAME:WaitFrames(20)
@@ -366,7 +372,208 @@ function Tent.Day0()
 end
 
 function Tent.Day1()
-  UI:WaitShowVoiceOver("The next day...", -1)
+    local maru = CH("PLAYER")
+    local azura = CH("Teammate1")
+    local rexio = CH("Teammate2")
+    maru.CollisionDisabled = true
+    GAME:CutsceneMode(true)
+    local cor11 = TASK:BranchCoroutine(function()
+        GROUND:TeleportTo(maru, 258, 183, Dir8.DownRight, 0)
+        SOUND:PlayBGM("Awakening.ogg", false)
+        GROUND:CharSetAnim(maru, "Sleep", true)
+        GROUND:CharSetAnim(azura, "Sleep", true)
+        GROUND:CharSetAnim(rexio, "Sleep", true)
+    end)	
+    local cor22 = TASK:BranchCoroutine(function()
+        UI:WaitShowVoiceOver("[speed=0.6]The next day...", 150)
+        GAME:FadeIn(125)
+    end)
+    TASK:JoinCoroutines({cor11, cor22})
+
+    SOUND:PlayBGM("Aftermath 2.ogg", false)
+    UI:SetBounds(10, 16, 300, 50)
+
+    local cor1 = TASK:BranchCoroutine(function()
+        GAME:WaitFrames(120)
+        GROUND:CharWaitAnim(rexio, "Wake")
+        GROUND:CharSetAnim(rexio, "Idle", false)
+    end)	
+    local cor2 = TASK:BranchCoroutine(function()
+        GROUND:CharWaitAnim(maru, "Wake")
+        GROUND:CharSetAnim(maru, "Idle", false)
+
+        COMMON.SetCharAndEmotion(maru, "Normal")
+        UI:WaitShowDialogue("...almost forgot we were still here.")
+
+        COMMON.FaceEachother("PLAYER", "Teammate1")
+        COMMON.SetCharAndEmotion(azura, "Happy")
+        UI:WaitShowDialogue("Time for adventure!")
+    end)
+    local cor3 = TASK:BranchCoroutine(function()
+        GAME:WaitFrames(10)
+        GROUND:CharWaitAnim(azura, "Wake")
+        GROUND:CharSetAnim(azura, "Idle", false)
+    end)
+    TASK:JoinCoroutines({cor1, cor2, cor3})
+
+    COMMON.SetCharAndEmotion(rexio, "Worried")
+    UI:WaitShowDialogue("...hmm,[pause=40] I have a weird feeling about this...")
+
+    GROUND:MoveToPosition(maru, 215, 230, false, 1)
+    GAME:CutsceneMode(false)
+    maru.CollisionDisabled = false
+end
+
+function Guild.Day1()
+    local maru = CH("PLAYER")
+    local azura = CH("Teammate1")
+    local rexio = CH("Teammate2")
+    local zoomer = CH("Zoomer")
+    local smear = CH("Smear")
+    rexio.CollisionDisabled = true
+    COMMON.TeleportToMarker(maru, "m1", Dir8.DownLeft)
+    COMMON.TeleportToMarker(azura, "m1", Dir8.DownLeft)
+    COMMON.TeleportToMarker(rexio, "m1", Dir8.DownLeft)
+    GROUND:Hide("PLAYER")
+    GROUND:Hide("Teammate1")
+    GROUND:Hide("Teammate2")
+    GAME:MoveCamera(1000, 640, 1, false)
+    GAME:FadeIn(70)
+
+    local coro011 = TASK:BranchCoroutine(function()
+        GROUND:Unhide("PLAYER")
+        GAME:WaitFrames(20)
+        GROUND:MoveToMarker(maru, MRKR("Start"), false, 1)
+        COMMON.FaceEachother("PLAYER", "Smear")
+
+        GAME:WaitFrames(20)
+        UI:SetSpeaker(smear)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Ah, yes, the Bluetails are awakened from their slumber, I see.")
+
+        UI:SetSpeaker(maru)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("Yep.")
+    end)
+    local coro012 = TASK:BranchCoroutine(function()
+        GAME:WaitFrames(95)
+        GROUND:Unhide("Teammate1")
+        GAME:WaitFrames(20)
+        GROUND:MoveToPosition(azura, 1029, 654, false, 1)
+    end)
+    TASK:JoinCoroutines({coro011, coro012})
+
+    UI:SetSpeaker(smear)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("There is an announcement for the three of you to hear before I allow you to go on your mission.")
+
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Mkay.")
+
+    local coro0011 = TASK:BranchCoroutine(function()
+        GROUND:CharTurnToCharAnimated(azura, smear, 2)
+        GROUND:Unhide("Teammate2")
+        GAME:WaitFrames(20)
+        GROUND:MoveToPosition(rexio, 971, 654, false, 1)
+    end)
+    local coro0012 = TASK:BranchCoroutine(function()
+        UI:SetSpeaker(smear)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Ah, and the third of you all appears a little later, but is still on time.")
+        UI:WaitShowDialogue("That is an amazing first start from the three of you.")
+
+        GROUND:CharTurnToCharAnimated(rexio, smear, 2)
+        UI:SetSpeaker(rexio)
+        UI:SetSpeakerEmotion("Worried")
+        UI:WaitShowDialogue("You forgot the pillows.")
+
+        UI:SetSpeaker(smear)
+        UI:SetSpeakerEmotion("Worried")
+        UI:WaitShowDialogue("Ah, yes, that, um, uh...[pause=0] that is something I will talk about later.")
+    end)
+    TASK:JoinCoroutines({coro0011, coro0012})
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Sigh")
+    UI:WaitShowDialogue("...")
+
+    UI:SetSpeaker(smear)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Essentially speaking, against the clear disappointment I was given yesterday, I'll have to give you three a mission.")
+
+    local rexihap = true
+    local coro1 = TASK:BranchCoroutine(function()
+        local function turnto()
+            GROUND:CharTurnToCharAnimated(maru, rexio, 2)
+            GROUND:CharTurnToCharAnimated(azura, rexio, 2)
+            GROUND:CharTurnToCharAnimated(smear, rexio, 2)
+            GROUND:CharTurnToCharAnimated(zoomer, rexio, 2)
+        end
+        
+        UI:SetSpeaker(rexio)
+        UI:SetSpeakerEmotion("Inspired")
+        UI:WaitShowDialogue("Gasp! [script=0][pause=20]Y[emote=Joyous]eeeeeeeeeeeeeeeeeeeeeeeeeees!!!", {turnto})
+        UI:SetSpeaker(maru)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("What's the mission, boss?")
+        GROUND:CharTurnToCharAnimated(maru, smear, 2)
+        GROUND:CharTurnToCharAnimated(azura, smear, 2)
+        GROUND:CharTurnToCharAnimated(smear, maru, 2)
+
+        UI:SetSpeaker(smear)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("We are running low on apples.")
+        UI:WaitShowDialogue("We would usually get them from Applin Town, but they seem to be late on their delivery.")
+        rexihap = false
+    end)
+    local coro2 = TASK:BranchCoroutine(function()
+        while rexihap == true do
+            local celebrate = math.random(3)
+            if celebrate == 3 then
+                COMMON.CharHop("Teammate2")
+            elseif celebrate == 2 then
+                GROUND:CharWaitAnim(rexio, "Walk")
+            else
+                GROUND:CharWaitAnim(rexio, "Pose")
+            end
+        end
+    end)
+    TASK:JoinCoroutines({coro1, coro2})
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Teary-Eyed")
+    UI:WaitShowDialogue("[speed=0.6]I...[pause=50] I knew it.[pause=40] It's a quest... to fetch stuff...")
+
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Ooo, we have experience with finding apples in dungeons specifically for some reason.")
+
+    UI:SetSpeaker(azura)
+    UI:SetSpeakerEmotion("Joyous")
+    UI:WaitShowDialogue("Pie, yeah!!")
+    UI:SetSpeakerEmotion("Sad")
+    UI:WaitShowDialogue("...oh, we're missing the pie...")
+
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("To be fair, we're missing a lot of things...")
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Sigh")
+    UI:WaitShowDialogue("...okay...[pause=30] okay.")
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Where is it?")
+
+    UI:SetSpeaker(smear)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("It is to the left of the hill behind me.[pause=20] Simple?[pause=40]")
+    UI:WaitShowDialogue("Yes,[pause=30] there are a few stale apples littered along the correct path, so you cannot get lost.")
+
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Yes, boss!")
+    GAME:MoveCamera(0, 0, 0, true)
 end
 
 function Tent.FreeDay()

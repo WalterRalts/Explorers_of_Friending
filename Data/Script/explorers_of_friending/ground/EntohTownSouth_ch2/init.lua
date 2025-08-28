@@ -66,9 +66,10 @@ end
 
 local rextalk = {
   bugs = false,
-  frost = false,
-  panda = false,
-  moms = false,
+  frostS = false,
+  frostL = false,
+  panda = true,
+  moms = true,
   moon = false
 }
 
@@ -104,7 +105,7 @@ end
 
 function EntohTownSouth_ch2.Snow_Action(obj, activator)
   local snow = CH("Snow")
-  if rextalk.frost == false then
+  if rextalk.frostS == false then
     COMMON.SetCharAndEmotion(snow, "Happy")
     UI:WaitShowDialogue("H-huh...? Your dad?")
     UI:WaitShowDialogue("S-sorry, Rexio, but I haven't r-really l-looked...")
@@ -114,12 +115,13 @@ function EntohTownSouth_ch2.Snow_Action(obj, activator)
     UI:WaitShowDialogue("M-mama says that she's making some frost snacks l-later to help me g-get my mind off of... this...")
     UI:ChoiceMenuYesNo("Sh-should I give some to you later, m-maybe?", false)
     UI:WaitForChoice()
+    local result = UI:ChoiceResult()
 
     if result then
       SV.entoh_town.snowtreat = true
       UI:WaitShowDialogue("O-okay... got it...")
     else
-      SV.entoh_town.snowtreat = true
+      SV.entoh_town.snowtreat = false
       UI:WaitShowDialogue("Okay... m-more for me.")
     end
   end
@@ -131,13 +133,14 @@ function EntohTownSouth_ch2.Frost_Action(obj, activator)
   local rexio = CH("PLAYER")
   local snow = CH("Snow")
 
-  if rextalk.frost == false then
+  COMMON.FaceEachother("Frost", "PLAYER")
+  if rextalk.frostL == false then
     COMMON.SetCharAndEmotion(rexio, "Normal")
     UI:WaitShowDialogue("Hey, Ms. Flake. Have you seen my dad around?")
 
     COMMON.SetCharAndEmotion(frost, "Worried")
     UI:WaitShowDialogue("[speed=0.25]...")
-    rextalk.frost = true
+    rextalk.frostL = true
 
     COMMON.FaceEachother("Frost", "Snow")
     GAME:WaitFrames(20)

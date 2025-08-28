@@ -5,13 +5,18 @@ function SINGLE_CHAR_SCRIPT.Test(owner, ownerChar, context, args)
 end
 
 function SINGLE_CHAR_SCRIPT.AzuNotLeader(owner, ownerChar, context, args)
-	wholeads = GAME:GetTeamLeaderIndex()
-	local maru = GAME:GetPlayerPartyMember(wholeads - 1) --Maru should be in the first slot
-	if GAME:GetPlayerPartyMember(wholeads).BaseForm.Species == "azurill" then
-		UI:SetSpeaker(maru)
-        UI:SetSpeakerEmotion("Worried")
-        UI:WaitShowDialogue("Sorry, Azura. As an older brother, I can't let you lead.[pause=35] Let[emote=Happy] someone else lead instead.")
-
+	local wholeads = GAME:GetTeamLeaderIndex()
+	local player = GAME:GetPlayerPartyMember(wholeads - 1)
+	if GAME:GetPlayerPartyMember(wholeads).BaseForm.Species == "azurill" and GAME:GetPlayerPartyMember(wholeads).Name == "Azura" then
+		if player.Name == "Maru" then
+			UI:SetSpeaker(player)
+        	UI:SetSpeakerEmotion("Worried")
+        	UI:WaitShowDialogue("Sorry, Azura. As an older brother, I can't let you lead.[pause=35] Let[emote=Happy] someone else lead instead.")
+		elseif player.Name == "Rexio" then
+			UI:SetSpeaker(player)
+        	UI:SetSpeakerEmotion("Normal")
+        	UI:WaitShowDialogue("Sorry, 'Zura. I respect Maru too much to put ya in danger like that.[pause=35] Back[emote=Happy] you go.")
+		end
 		if GAME:GetPlayerPartyCount() > 2 then
 			GAME:SetTeamLeaderIndex(2)
 		else
@@ -1451,7 +1456,7 @@ function SINGLE_CHAR_SCRIPT.AllyDeathCheck(owner, ownerChar, context, args)
 				guest = GAME:GetPlayerGuestMember(j)
 				if not guest.Dead then --dont beam out whoever died
 					--delay between beam outs
-					GAME:WaitFrames(60)
+					GAME:WaitFrames(30)
 					TASK:WaitTask(_DUNGEON:ProcessBattleFX(guest, guest, _DATA.SendHomeFX))
 					guest.Dead = true
 				end
@@ -1471,7 +1476,7 @@ function SINGLE_CHAR_SCRIPT.AllyDeathCheck(owner, ownerChar, context, args)
 				if not player.Dead then  -- dont beam out whoever died
 					TASK:WaitTask(_DUNGEON:ProcessBattleFX(player, player, _DATA.SendHomeFX))
 					player.Dead = true
-					GAME:WaitFrames(60)
+					GAME:WaitFrames(30)
 				end
 			end
 			for j = 0, guest_count - 1, 1 do --beam everyone else out
@@ -1479,7 +1484,7 @@ function SINGLE_CHAR_SCRIPT.AllyDeathCheck(owner, ownerChar, context, args)
 				if not guest.Dead then -- dont beam out whoever died
 					TASK:WaitTask(_DUNGEON:ProcessBattleFX(guest, guest, _DATA.SendHomeFX))
 					guest.Dead = true
-					GAME:WaitFrames(60)
+					GAME:WaitFrames(30)
 				end
 			end
 		end
@@ -1758,4 +1763,27 @@ end
 
 function SINGLE_CHAR_SCRIPT.TileCheck()
 	Endsouthboss = true
+end
+
+local apple = 0
+
+function SINGLE_CHAR_SCRIPT.AddApple(owner, ownerChar, context, args)
+	if context.User ~= nil then
+    	return
+  	end
+	local map = _ZONE.CurrentMap
+	local placex = map.Rand:Next(0, map.Width)
+	local placey = map.Rand:Next(0, map.Height)
+	local loc = RogueElements.Loc(placex, placey)
+	if apple >= 25 then
+		SOUND:PlaySE("Battle/EVT_CH02_Item_Place")
+		_DUNGEON:LogMsg("An apple fell somewhere.")
+		local new_item = RogueEssence.Dungeon.MapItem("food_apple")
+		new_item.TileLoc = loc
+		map.Items:Add(new_item)
+		apple = -1
+	else
+		apple = apple + 1
+		print(apple)
+	end
 end

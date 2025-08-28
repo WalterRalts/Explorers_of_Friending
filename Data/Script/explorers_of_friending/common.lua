@@ -1410,9 +1410,9 @@ end
 
 function COMMON.CharHop(char)
   GROUND:AnimateToPosition(CH(char), "Idle", CH(char).Direction, CH(char).Position.X, CH(char).Position.Y, 0.5, 2, 7)
-  GROUND:AnimateToPosition(CH(char), "Idle", CH(char).Direction, CH(char).Position.X, CH(char).Position.Y, 0.5, 2, 0)
+  GROUND:AnimateToPosition(CH(char), "Idle", CH(char).Direction, CH(char).Position.X, CH(char).Position.Y, 0.5, 3, 0)
   GROUND:AnimateToPosition(CH(char), "Idle", CH(char).Direction, CH(char).Position.X, CH(char).Position.Y, 0.5, 2, 7)
-  GROUND:AnimateToPosition(CH(char), "Idle", CH(char).Direction, CH(char).Position.X, CH(char).Position.Y, 0.5, 2, 0)
+  GROUND:AnimateToPosition(CH(char), "Idle", CH(char).Direction, CH(char).Position.X, CH(char).Position.Y, 0.5, 3, 0)
 end
 
 function COMMON.CharSweating(char)
@@ -1436,4 +1436,40 @@ end
 function COMMON.SetCharAndEmotion(char, emote)
   UI:SetSpeaker(char)
   UI:SetSpeakerEmotion(emote)
+end
+
+function COMMON.TeleportToMarker(char, marker, dir)
+  GROUND:TeleportTo(char, MRKR(marker).Position.X, MRKR(marker).Position.Y, dir, 0)
+end
+
+function COMMON.SaveStorage()
+  --remove bag and storage items and put them in a temporary table
+  SV.guilders.tarro_town.bluetail_storage = {}
+  local storage = _DATA.Save.ActiveTeam.Storage
+  local count = storage.Keys.Count
+  if count > 0 then
+    for i = count - 1, 0, -1 do
+      print(i)
+      local slot = {id = storage.Keys[i], count = storage.Values[i], hidden = ""}
+      table.insert(SV.guilders.tarro_town.bluetail_storage, slot)
+      print(slot.id)
+      print(slot.count)
+      print(slot.hidden)
+      storage:Remove(storage.Keys[i])
+    end
+  end
+  
+  local box_storage = _DATA.Save.ActiveTeam.BoxStorage
+  local box_count = box_storage.Count
+  if box_count > 0 then
+    for i = box_count - 1, 0, -1 do
+      print(i)
+      local slot = {id = box_storage[i].ID, count = 1, hidden_value = box_storage[i].HiddenValue}
+      table.insert(SV.guilders.tarro_town.bluetail_storage, slot)
+      print(slot.id)
+      print(slot.count)
+      print(slot.hidden_value)
+      box_storage:RemoveAt(i)
+    end
+  end
 end

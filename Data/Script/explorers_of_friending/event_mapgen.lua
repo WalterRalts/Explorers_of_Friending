@@ -535,11 +535,9 @@ function FLOOR_GEN_SCRIPT.EntohThicketWall(map, args) --randomly change the inne
         if WallTileChance >= floorno_mult - (1 + (8 * Entoh_chance)) then
           Entoh_chance = Entoh_chance - 2
           map:TrySetTile(point, map.RoomTerrain)
-          --print("Turned (" .. x .. ", " .. y .. ") into floor.")
         elseif WaterTileChance >= floorno_mult - (10 + Entoh_chance) then
           Entoh_chance = Entoh_chance - 2
           map:TrySetTile(point, RogueEssence.Dungeon.Tile("water"))
-          --print("Turned (" .. x .. ", " .. y .. ") into water.")
         else
           Entoh_chance = Entoh_chance + 1
         end

@@ -11,7 +11,7 @@ function Entoh.Dragon()
     local ponia = CH("Ponia")
     local chucky = CH("Chucky")
     GAME:CutsceneMode(true)
-    if SV.entoh_town.thicket.result == 9 and SV.entoh_town.HelperChapter >= 1 then
+    if (SV.entoh_town.thicket.result == 9 or SV.entoh_town.thicket.result == -1) and SV.entoh_town.HelperChapter >= 1 then
         COMMON.FaceEachother("Dragon", "Ponya")
         UI:SetSpeaker(ponya)
         UI:SetSpeakerEmotion("Angry")

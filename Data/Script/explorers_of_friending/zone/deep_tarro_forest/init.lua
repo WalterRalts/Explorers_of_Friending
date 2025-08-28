@@ -28,9 +28,7 @@ end
 ---deep_tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
 --Engine callback function
 function deep_tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
-    print("Hello!")
     if SV.deep_tarro_forest.revisit == false then --first time
-        print("Get out!")
         GAME:SetTeamLeaderIndex(0)
         if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
             DUN_failure = true
@@ -40,7 +38,6 @@ function deep_tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
                 COMMON.EndDungeonDay(result, "deep_tarro_forest", -1, 1, 0)
             end
         else
-            print("test")
             if segmentID == 0 then
                 GAME:EnterZone("deep_tarro_forest", -1, 0, 0)
             else
@@ -52,7 +49,6 @@ function deep_tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
             end
         end
     else --if you've been here
-        print("On the grind!")
         GAME:SetTeamLeaderIndex(0)
         if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
             if segmentID == 0 then

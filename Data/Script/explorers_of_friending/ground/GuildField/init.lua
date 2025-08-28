@@ -19,7 +19,8 @@ local GuildField = {}
 function GuildField.Init(map)
   if SV.guild.day == 0 then
     Guild.Day0()
-  else
+  elseif SV.guild.day == 1 then
+    Guild.Day1()
   end
 end
 

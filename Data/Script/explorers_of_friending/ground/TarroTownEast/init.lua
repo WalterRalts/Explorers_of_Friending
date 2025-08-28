@@ -521,7 +521,7 @@ function TarroTownEast.Senna_Action(obj, activator)
 
       UI:SetSpeaker(senna)
       UI:SetSpeakerEmotion("Normal")
-      UI:WaitShowTImedDialogue("True...")
+      UI:WaitShowTimedDialogue("True...")
     end
 
     UI:SetSpeaker(azura)
@@ -663,21 +663,22 @@ function TarroTownEast.Budeg_Action(obj, activator)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("Krzzt, I really hope this get to the right person...")
   
-  local password = "Aa1Bb2;345devdebug"
+  local password = "Aa1Bb2devdebug;345"
   UI:NameMenu("Please enter the password.", "Password", 200, "Catbug")
-  UI:WaitForChoice() 
-  print(UI:ChoiceResult())
-  if not UI:ChoiceResult() == password then
+  UI:WaitForChoice()
+  if UI:ChoiceResult() ~= password then
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue("Wrong!")
     UI:SetSpeaker(budeg)
-    UI:SetSpeakerEmotion("Happ")
-    UI:WaitShowDialogue("Zzt, welcome to dev mode. Bzzt, I am made to skip scenes and jump bewteen characters.")
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Have a nice day!")
   else
+    ::question::
     UI:SetSpeakerEmotion("Happy")
     local choices = {("Maru and Azura"),
       ("Rexio"),
-      ("???")}
+      ("Guild"),
+      ("Cancel")}
       UI:BeginChoiceMenu("Please choose a character for dev work.", choices, 1, 2)
       UI:WaitForChoice()
       result = UI:ChoiceResult()
@@ -715,35 +716,55 @@ function TarroTownEast.Budeg_Action(obj, activator)
       p.Nickname = "Rexio"
 
       _DATA.Save.ActiveTeam.Players:Add(p)
-      SV.guilders.tarro_town.bluetail_storage = {}
-      --remove bag and storage items and put them in a temporary table
+      local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("RexioInteract")
+        _DATA.Save.ActiveTeam.Players[0].ActionEvents:Add(talk_evt)
       GAME:DepositAll()
-      --[[local storage = _DATA.Save.ActiveTeam.Storage
-      local count = storage.Keys.Count
-      for i = count - 1, 0, -1 do
-        print(storage.Keys[i])
-        local slot = {id = storage.Keys[i], count = storage.Values[i], hidden = ""} --checks ID, the amount of said item, and any hidden value.
-        table.insert(SV.guilders.tarro_town.bluetail_storage, slot) --puts it into a storage slot in the table variable.
-        storage.Remove(storage.Keys[i]) --removes it from storage
-      end]]--
-      local box_storage = _DATA.Save.ActiveTeam.BoxStorage
-      local box_count = box_storage.Count
-      if box_count > 1 then
-        for i = box_count - 1, 0, -1 do
-          local slot = {id = box_storage[i].ID, count = 1, hidden_value = box_storage[i].HiddenValue}
-          table.insert(SV.guilders.tarro_town.bluetail_storage, slot)
-          box_storage.RemoveAt(i)
-        end
-      end
-
+      --COMMON.SaveStorage()
+      
       GAME:EnterGroundMap("entoh_town", "RexioHome", "RexioStart")
+    elseif result == 3 then
+
+      UI:SetSpeaker(budeg)
+      UI:SetSpeakerEmotion("Stunned")
+      UI:WaitShowDialogue("You may be a little underleveled for this part of the story...!")
+      UI:ChoiceMenuYesNo("Are you sure?", false)
+      UI:WaitForChoice()
+      local result = UI:ChoiceResult()
+      
+      if result then
+        GAME:FadeOut(false, 60)
+        --Begin replacement
+        --Save Maru and Azura's stats
+        SV.guilders.tarro_town.bluetail_stats = GAME:GetPlayerPartyTable()
+        --Replace them with Rexio
+        GAME:RemovePlayerTeam(0)
+        GAME:RemovePlayerTeam(0)
+        local mon_id = RogueEssence.Dungeon.MonsterID("riolu", 0, "normal", Gender.Male)
+
+        local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 7, "", 0)
+        p.IsFounder = true
+        p.IsPartner = true
+        p.Nickname = "Rexio"
+
+        _DATA.Save.ActiveTeam.Players:Add(p)
+        local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("RexioInteract")
+        _DATA.Save.ActiveTeam.Players[0].ActionEvents:Add(talk_evt)
+        GAME:DepositAll()
+        SV.tarro_town.DarknessChapter = 3
+        SV.entoh_town.AdventureChapter = 3
+        SV.tarro_town.PieChapter = 12
+        SV.entoh_town.HelperChapter = 10
+
+        GAME:EnterGroundMap("the_field", "TheField", "MainEntrance_1")
+      else
+        goto question
+      end
     else
       UI:SetSpeaker(budeg)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("Zzt, have a good day.")
     end
   end
-  
 end
 
 return TarroTownEast

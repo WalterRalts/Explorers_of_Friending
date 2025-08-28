@@ -110,17 +110,6 @@ function TarroTownHive.HoneyShop_Action(obj, activator)
     end
 end
 
-function TarroTownHive.TTSquare_HiveExit_Touch(obj, activator)
-  GAME:FadeOut(false, 20)
-  outside_enter = 3
-  if SV.tarro_town.PieChapter >= 10 then
-    GAME:EnterGroundMap("TarroTownSquare_ch3", "TTSquare_WestEnter")
-  else
-    GAME:EnterGroundMap("TarroTownSquare", "TTSquare_WestEnter")
-  end
-  
-end
-
 function TarroTownHive.Sir_Lick_Action(obj, activator)
   local lick = CH("Sir_Lick")
   local gulp = CH("Sir_Gulp")
@@ -157,6 +146,24 @@ function TarroTownHive.Sir_Peck_Action(obj, activator)
   TarroTownHive.Sir_Lick_Action()
 end
 
+function TarroTownHive.Geoff_Action(obj, activator)
+  UI:SetSpeaker(CH("Geoff"))
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Food here... acceptable.[pause=20] I give it 9 of 10,[pause=25] much better food at island.")
+end
+
+function TarroTownHive.Ratio_Action(obj, activator)
+  UI:SetSpeaker(CH("Ratio"))
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("Chomped and devoured,[pause=25] waiting for my seconds!")
+end
+
+function TarroTownHive.Nyast_Action(obj, activator)
+  UI:SetSpeaker(CH("Nyast"))
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("I am not a fan of these priceees.[pause=40] If I were on the island, I'd probably, like, scratch their faceees...")
+end
+
 --Entrances
 function TarroTownHive.MayorEntrance_Touch(obj, activator)
   local maru = CH('PLAYER')
@@ -167,6 +174,16 @@ function TarroTownHive.MayorEntrance_Touch(obj, activator)
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("(Probably better stuff to do then bothering the mayor for no reason...)")
+  end
+end
+
+function TarroTownHive.TTSquare_HiveExit_Touch(obj, activator)
+  GAME:FadeOut(false, 20)
+  outside_enter = 3
+  if SV.tarro_town.PieChapter >= 10 then
+    GAME:EnterGroundMap("TarroTownSquare_ch3", "TTSquare_WestEnter")
+  else
+    GAME:EnterGroundMap("TarroTownSquare", "TTSquare_WestEnter")
   end
 end
 

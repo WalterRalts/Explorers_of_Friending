@@ -316,7 +316,7 @@ function TarroTownSquare_ch3.Munch_Action(obj, activator)
       GAME:AddToPlayerMoney(100)
       SOUND:PlaySE("Battle/DUN_Money")
       UI:ResetSpeaker()
-      UI:WaitShowDialogue("Munch gives Maru 500 Poke.")
+      UI:WaitShowDialogue("Munch gives Maru 100 Poke.")
     else
       UI:SetSpeakerEmotion("Angry")
       UI:WaitShowDialogue("Tch.")

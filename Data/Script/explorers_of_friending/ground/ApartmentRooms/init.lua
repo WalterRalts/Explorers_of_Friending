@@ -142,21 +142,6 @@ function ApartmentRooms.EmptyEnter_Touch(obj, activator)
   end
 end
 
-function ApartmentRooms.EmptyEnter_0_Touch(obj, activator)
-  local rexio = CH("PLAYER")
-
-  if rex_talk == 0 then
-    UI:SetSpeaker(rexio)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("(Oh wooooooooow. Very interesting stuff in there.)")
-    rex_talk = 1
-  else
-    UI:SetSpeaker(rexio)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("(If my sarcasm wasn't obvious...)")
-  end
-end
-
 function ApartmentRooms.MouseTalk_Touch(obj, activator)
   local mouse = CH("Mouse")
   local rexio = CH("PLAYER")
@@ -177,9 +162,25 @@ function ApartmentRooms.MouseTalk_Touch(obj, activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Passing on a message.[pause=10] \"Tell Rexio, \'go east\'\".")
     
-    SV.entoh_town.AdventureChapter = 1.1
-  else
-    
+    SV.entoh_town.AdventureChapter = 1.1    
+  end
+end
+
+function ApartmentRooms.Mampha_Action(obj, activator)
+  local mampha = CH("Mampha")
+  local rexio = CH("PLAYER")
+  if SV.entoh_town.AdventureChapter < 5 then
+    UI:SetSpeaker(mampha)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Rexio wehh!")
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Mrs. Slash.")
+
+    UI:SetSpeaker(mampha)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Live well,[pause=30] and don't do anything dumb wehhhh.")
   end
 end
 

@@ -147,7 +147,7 @@ function Square.FightFightFight()
     UI:SetSpeaker(senna)
     UI:SetSpeakerEmotion("Worried")
     GROUND:CharTurnToCharAnimated(azura, senna, 3)
-    UI:WaitShowDialogue("...[pause=20] .[emote=Determined]..")
+    UI:WaitShowDialogue("...[pause=40] .[emote=Determined]..")
     
     UI:SetSpeakerEmotion("Determined")
     GROUND:CharTurnToCharAnimated(ziggy, senna, 3)
@@ -283,8 +283,8 @@ function Square.FightFightFight()
     UI:WaitShowDialogue("Looks like they're going towards the [color=#01FE10]Big Tree[color].")
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("I'll go with them,[pause=40] meet you guys there.");
-    GROUND:MoveToPosition(senna, 1600, 220, false, 2)
-    GROUND:MoveToPosition(senna, 1000, 269, false, 4)
+    GROUND:MoveToPosition(senna, 1600, 250, false, 2)
+    GROUND:MoveToPosition(senna, 1000, 250, false, 4)
     end)
 
   TASK:JoinCoroutines({coro0008, coro0009})
@@ -328,6 +328,8 @@ function Square.FightFightFight()
     end)
   
   TASK:JoinCoroutines({coro16, coro17})
+
+  SOUND:PlayBGM("Tropical Path.ogg", true)
 
   GAME:MoveCamera(0, 0, 1, true)
   GAME:CutsceneMode(false)

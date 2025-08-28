@@ -45,7 +45,7 @@ function South.BossBegin()
 
     GROUND:MoveToMarker(wurp, MRKR("move_1"), false, 2)
     GROUND:MoveToMarker(wurp, MRKR("move_2"), false, 2)
-    GROUND:TeleportTo(wurp, MRKR("move_3").Position.X, MRKR("move_3").Position.Y, Dir8.Up, 0)
+    COMMON.TeleportToMarker(wurp, "move_3", Dir8.Up)
 
     SOUND:PlayBattleSE("DUN_Pound")
     SOUND:StopBGM()
@@ -415,6 +415,7 @@ function South.BossBegin()
         local rexio = CH("PLAYER")        
         if SV.entoh_town.HelperChapter < 7 then --Flow was not
             GROUND:MoveToPosition(tidy, 145, 164, true, 6)
+            GROUND:MoveToPosition(rexio, wurp.Position.X - 45, wurp.Position.Y, false, 2)
             UI:SetSpeaker(rexio)
             UI:SetSpeakerEmotion("Surprised")
             UI:WaitShowDialogue("Ah! Someone else!")

@@ -708,11 +708,6 @@ function BATTLE_SCRIPT.PuchiInteract(owner, ownerChar, context, args)
   DUNGEON:CharTurnToChar(context.Target, context.User)
   UI:SetSpeaker(context.Target)
   
-  local oldDir = context.Target.CharDir
-  DUNGEON:CharTurnToChar(context.Target, context.User)
-  
-  UI:SetSpeaker(context.Target)
-  
   local ratio = context.Target.HP * 100 // context.Target.MaxHP
   local say_choice = math.random(4)
   if SV.tarro_town.PieChapter == 7 or SV.tarro_town.PieChapter == 8 then
@@ -814,12 +809,7 @@ function BATTLE_SCRIPT.SennaInteract(owner, ownerChar, context, args)
   context.CancelState.Cancel = true
   local tbl = LTBL(context.Target)
   local oldDir = context.Target.CharDir
-  DUNGEON:CharTurnToChar(context.Target, context.User)
-  UI:SetSpeaker(context.Target)
-  
-  local oldDir = context.Target.CharDir
-  DUNGEON:CharTurnToChar(context.Target, context.User)
-  
+  DUNGEON:CharTurnToChar(context.Target, context.User)  
   local target = context.Target
   local user = context.User
   
@@ -911,11 +901,6 @@ function BATTLE_SCRIPT.ZiggyInteract(owner, ownerChar, context, args)
   local tbl = LTBL(context.Target)
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
-  UI:SetSpeaker(context.Target)
-  
-  local oldDir = context.Target.CharDir
-  DUNGEON:CharTurnToChar(context.Target, context.User)
-  
   UI:SetSpeaker(context.Target)
   
   local ratio = context.Target.HP * 100 // context.Target.MaxHP
@@ -1668,7 +1653,7 @@ function BATTLE_SCRIPT.WurpInteract(owner, ownerChar, context, args)
         elseif context.User.BaseForm.Species == "minccino" then
           UI:SetSpeaker(target)
           UI:SetSpeakerEmotion("Stunned")
-          UI:WaitShowDialogue("Mint, you wook wike you'we gonna expwode...")
+          UI:WaitShowDialogue("Tidy, you wook wike you'we gonna expwode...")
           
           UI:SetSpeaker(mon_define)
           UI:SetSpeakerEmotion("Stunned")
@@ -1687,7 +1672,7 @@ function BATTLE_SCRIPT.WurpInteract(owner, ownerChar, context, args)
           UI:WaitShowDialogue("Gonna be hard to aim in this darkness...")
         end
       elseif say_choice == 2 then
-        if context.User.BaseForm.Species == "riolu" then
+        if user.BaseForm.Species == "riolu" then
           UI:SetSpeaker(target)
           UI:SetSpeakerEmotion("Worried")
           UI:WaitShowDialogue("You weally wemind me of youw dad, Wexio...")
@@ -1796,6 +1781,58 @@ function BATTLE_SCRIPT.RexioInteract(owner, ownerChar, context, args)
         UI:SetSpeaker(target)
         UI:SetSpeakerEmotion("Worried")
         UI:WaitShowDialogue("...ugh,[pause=20] I feel like this would've been so easy with dad here.")
+      else
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Try to keep up.")
+      end
+    elseif current_dungeon == "Apple Forest" then
+      if say_choice == 3 then
+        if user.Name == "Maru" then
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Normal")
+          UI:WaitShowDialogue("Hey,[pause=40] Maru, yeah?")
+
+          UI:SetSpeaker(user)
+          UI:SetSpeakerEmotion("Normal")
+          UI:WaitShowDialogue("Mhm?")
+
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Normal")
+          UI:WaitShowDialogue("Don't get in my way,[pause=30] I got this.")
+
+          UI:SetSpeaker(user)
+          UI:SetSpeakerEmotion("Worried")
+          UI:WaitShowDialogue("Sure, I think.")
+        else
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Worried")
+          UI:WaitShowDialogue("...a strange feeling of apples again.[pause=30] Geez, I can't get away from apples.")
+        end
+        
+      elseif say_choice == 2 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Worried")
+        UI:WaitShowDialogue("I'd sense things, but there are apples everywhere...")
+
+        if user.Name == "Maru" and SV.apple_forest.revisit == false then
+          UI:SetSpeaker(user)
+          UI:SetSpeakerEmotion("Normal")
+          UI:WaitShowDialogue("Sense?")
+
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Normal")
+          UI:WaitShowDialogue("Yeah,[pause=40] I'm just cool enough to feel the aura of stuff or whatever.")
+          
+          local mon_define = _DATA.Save.ActiveTeam.Players[1]
+          UI:SetSpeaker(mon_define)
+          UI:SetSpeakerEmotion("Inspired")
+          UI:WaitShowDialogue("Cooooooool...!")
+
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("Heh. Yeah, I am.")
+        end
       else
         UI:SetSpeaker(target)
         UI:SetSpeakerEmotion("Happy")

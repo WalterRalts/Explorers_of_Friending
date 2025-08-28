@@ -181,11 +181,11 @@ function MaruHome.MaruHome_BasementEntrance_Touch(obj, activator)
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("(Probably not the time...)")
-  elseif SV.tarro_town.PieChapter >= 12 then
+  elseif SV.tarro_town.PieChapter >= 10 then
     if oven_perms_need == false then
       UI:SetSpeaker(maru)
       UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowDialogue("[speed=0.2]Hm...[pause=30] [speed=1.0]n[emote=Happy]ah.")
+      UI:WaitShowDialogue("[speed=0.2]Hm...[pause=30] [speed=1.0]n[emote=Happy]ah.[pause=30] The[emote=Happy] only thing down there is Mom and Dad's bed.")
     elseif oven_perms_need == nil then
       UI:SetSpeaker(azura)
       UI:SetSpeakerEmotion("Worried")

@@ -107,9 +107,6 @@ function Aurm.Feeling()
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue("Uugghhhhhhh!")
-    
-    local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("RexioInteract")
-        _DATA.Save.ActiveTeam.Players[0].ActionEvents:Add(talk_evt)
         
     SV.guilders.entoh_town.scan_level = 1
     SV.entoh_town.HelperChapter = 0.1
@@ -356,7 +353,7 @@ function Aurm.Fashion()
     
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("What, what?!")
+    UI:WaitShowDialogue("You feel...?")
 
     GAME:WaitFrames(70)
     UI:SetSpeaker(rexio)
@@ -396,7 +393,9 @@ function Aurm.Fashion()
     GAME:EnterGroundMap("RexioHome_ch2", "RexioStart2")
 end
 
-function Aurm.LukeWarm()
+Aurm2 = {}
+
+function Aurm2.LukeWarm()
     local rexio = CH("PLAYER")
     local luke = CH("Luke")
     GAME:CutsceneMode(true)

@@ -102,7 +102,7 @@ SV.tarro_town =
 SV.dungeon_tutorial = 0
 SV.bag_size = 5
 
-SV.tarro_forest = 
+SV.tarro_forest =
 {
   ZoomerDefeated = false,
   revisit = false,
@@ -111,7 +111,7 @@ SV.tarro_forest =
   apple_tree_get = false
 }
 
-SV.deep_tarro_forest = 
+SV.deep_tarro_forest =
 {
   revisit = false,
   dungpoints = 0,
@@ -136,6 +136,13 @@ SV.entoh_thicket =
 
 SV.dreaded_depths = 
 {
+  revisit = false,
+  dungpoints = 0,
+}
+
+SV.apple_forest = 
+{
+  apple = 0,
   revisit = false,
   dungpoints = 0,
 }
@@ -178,7 +185,13 @@ SV.guild =
 {
   time = 0,
   day = 0,
-  event = 0
+  event = 0,
+  dungeons = {
+    "apple_forest"
+  },
+  areas = {
+    ""
+  }
 }
 
 ----------------------------------------------
