@@ -310,12 +310,6 @@ function Tent.Day0()
         GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
       end
     end
-    local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("AzuraInteract")
-          _DATA.Save.ActiveTeam.Players[1].ActionEvents:Add(talk_evt)
-    local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("MaruInteract")
-          _DATA.Save.ActiveTeam.Players[0].ActionEvents:Add(talk_evt)
-    local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("RexioInteract")
-          _DATA.Save.ActiveTeam.Players[2].ActionEvents:Add(talk_evt)
     COMMON.RespawnAllies()
     GAME:FadeIn(40)
     local maru = CH("PLAYER")
@@ -375,7 +369,7 @@ function Tent.Day1()
     local maru = CH("PLAYER")
     local azura = CH("Teammate1")
     local rexio = CH("Teammate2")
-    maru.CollisionDisabled = true
+    azura.CollisionDisabled = true
     GAME:CutsceneMode(true)
     local cor11 = TASK:BranchCoroutine(function()
         GROUND:TeleportTo(maru, 258, 183, Dir8.DownRight, 0)
@@ -422,6 +416,8 @@ function Tent.Day1()
     GROUND:MoveToPosition(maru, 215, 230, false, 1)
     GAME:CutsceneMode(false)
     maru.CollisionDisabled = false
+    Intro1 = true
+    GAME:SetCanSwitch(true)
 end
 
 function Guild.Day1()
@@ -430,10 +426,14 @@ function Guild.Day1()
     local rexio = CH("Teammate2")
     local zoomer = CH("Zoomer")
     local smear = CH("Smear")
+
     rexio.CollisionDisabled = true
+    azura.CollisionDisabled = true
+
     COMMON.TeleportToMarker(maru, "m1", Dir8.DownLeft)
     COMMON.TeleportToMarker(azura, "m1", Dir8.DownLeft)
     COMMON.TeleportToMarker(rexio, "m1", Dir8.DownLeft)
+
     GROUND:Hide("PLAYER")
     GROUND:Hide("Teammate1")
     GROUND:Hide("Teammate2")
@@ -445,6 +445,7 @@ function Guild.Day1()
         GAME:WaitFrames(20)
         GROUND:MoveToMarker(maru, MRKR("Start"), false, 1)
         COMMON.FaceEachother("PLAYER", "Smear")
+        GROUND:CharTurnToCharAnimated(azura, smear, 2)
 
         GAME:WaitFrames(20)
         UI:SetSpeaker(smear)
@@ -500,7 +501,7 @@ function Guild.Day1()
 
     UI:SetSpeaker(smear)
     UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Essentially speaking, against the clear disappointment I was given yesterday, I'll have to give you three a mission.")
+    UI:WaitShowDialogue("Essentially, against the clear disappointment I was given yesterday, I'll have to give you three a mission.")
 
     local rexihap = true
     local coro1 = TASK:BranchCoroutine(function()
@@ -516,8 +517,8 @@ function Guild.Day1()
         UI:WaitShowDialogue("Gasp! [script=0][pause=20]Y[emote=Joyous]eeeeeeeeeeeeeeeeeeeeeeeeeees!!!", {turnto})
         UI:SetSpeaker(maru)
         UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("What's the mission, boss?")
         GROUND:CharTurnToCharAnimated(maru, smear, 2)
+        UI:WaitShowDialogue("What's the mission, boss?")
         GROUND:CharTurnToCharAnimated(azura, smear, 2)
         GROUND:CharTurnToCharAnimated(smear, maru, 2)
 

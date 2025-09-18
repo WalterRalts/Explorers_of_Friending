@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[RogueEssence.Data.EntrySummary, RogueEssence]], System.Private.CoreLib",
 "deep_tarro_forest": {
@@ -438,7 +438,7 @@
 },
 "apple_forest": {
 "$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
-"ExpPercent": 100,
+"ExpPercent": 25,
 "Level": -1,
 "LevelCap": false,
 "KeepSkills": false,
@@ -451,7 +451,10 @@
 "Rescues": 0,
 "CountedFloors": 12,
 "Rogue": 0,
-"Grounds": [],
+"Grounds": [
+"AppleTown",
+"AppleTownConcert"
+],
 "Maps": [
 [
 0,

@@ -1,22 +1,20 @@
 function Partner()
     local area_name = GAME:GetCurrentGround().AssetName
-    local maru = CH("PLAYER")
-    local azura = CH('Teammate1')
-    local puchi = CH('Puchi')
-    local rexio = CH("PLAYER")
-    local flow = CH('Teammate1')
-    local tidy = CH('Teammate2')
-    if SV.entoh_town.firstfind == 1 then
-        flow = CH('Teammate1')
-        tidy = CH('Teammate2')
-    elseif SV.entoh_town.firstfind == 2 then
-        flow = CH('Teammate2')
-        tidy = CH('Teammate1')
-    end
-    
-    
     if GAME:GetPlayerPartyCount() > 1 then
         if not SV.guilders.fielded_two then
+            local maru = CH("PLAYER")
+            local azura = CH('Teammate1')
+            local puchi = CH('Puchi')
+            local rexio = CH("PLAYER")
+            local flow = CH('Teammate1')
+            local tidy = CH('Teammate2')
+            if SV.entoh_town.firstfind == 1 then
+                flow = CH('Teammate1')
+                tidy = CH('Teammate2')
+            elseif SV.entoh_town.firstfind == 2 then
+                flow = CH('Teammate2')
+                tidy = CH('Teammate1')
+            end
             if GAME:IsKeyDown(66) then
                 print("Partner")
                 COMMON.FaceEachother("PLAYER", "Teammate1")
@@ -288,7 +286,7 @@ function Partner()
                 
                         UI:SetSpeaker(azura)
                         UI:SetSpeakerEmotion("Stunned")
-                        UI:WaitShowDialogue("...you're starting to starting to sound like dad.")
+                        UI:WaitShowDialogue("...you're starting to sound like dad.")
                 
                         UI:SetSpeaker(maru)
                         UI:SetSpeakerEmotion("Normal")
@@ -503,94 +501,94 @@ function Partner()
                         UI:SetSpeakerEmotion("Pain")
                         UI:WaitShowDialogue("...")
                     end
-                elseif area_name == "EntohTownCenter_ch2" then
-                    UI:SetSpeaker(flow)
-                    UI:SetSpeakerEmotion("Worried")
-                    UI:WaitShowDialogue("Tidy?[pause=20] Oh yeah, the nice gal in town?")
+                end
+            end
+        else
+            if GAME:IsKeyDown(66) then
+                local leader = CH("PLAYER")
+                local second = CH('Teammate1')
+                local third = CH('Teammate2')
+                local talk = math.random(5)
+                COMMON.FaceEachother("PLAYER", "Teammate1")
+                local play = GAME:GetCharacterNickname(GAME:GetPlayerPartyMember(GAME:GetTeamLeaderIndex()))
+                if area_name == "GuildFieldMain" then
+                    if play == "Maru" then
+                        if talk == 1 then
+                            UI:SetSpeaker(leader)
+                            UI:SetSpeakerEmotion("Normal")
+                            UI:WaitShowDialogue("This'll be fun.")
 
-                    UI:SetSpeaker(flow)
-                    UI:SetSpeakerEmotion("Happy")
-                    UI:WaitShowDialogue("My bestie![pause=40] She's somewhere...")
-                elseif area_name == "EntohTownEast_ch2" then
-                    local rexio = CH("PLAYER")
-                    local flow = CH('Teammate1')
-                    local tidy = CH('Teammate2')
-                    local wurp = CH('Teammate3')
-                    local snow = CH('Teammate4')
-                    local talk = math.random(3)
+                            UI:SetSpeaker(second)
+                            UI:SetSpeakerEmotion("Joyous")
+                            UI:WaitShowDialogue("Apple hunting![pause=60] ...without the [emote=Worried]pie.")
 
-                    if talk == 1 then
-                        UI:SetSpeaker(tidy)
-                        UI:SetSpeakerEmotion("Worried")
-                        UI:WaitShowDialogue("W-wait...! We... we have to go that way?!")
+                            UI:SetSpeaker(leader)
+                            UI:SetSpeakerEmotion("Normal")
+                            UI:WaitShowDialogue("We should know how to make one by now.")
 
-                        UI:SetSpeaker(snow)
-                        UI:SetSpeakerEmotion("Worried")
-                        UI:WaitShowTimedDialogue("W-what wrong with...")
+                            UI:SetSpeaker(second)
+                            UI:SetSpeakerEmotion("Sad")
+                            UI:WaitShowDialogue("It won't be the same...")
 
-                        UI:SetSpeaker(tidy)
-                        UI:SetSpeakerEmotion("Dizzy")
-                        UI:WaitShowDialogue("Aaaaaaaaaa! [pause=30]Noooooooooo! It's so gross over there!")
+                            UI:SetSpeaker(third)
+                            UI:SetSpeakerEmotion("Normal")
+                            UI:WaitShowDialogue("You two do all the work.[pause=40] I[emote=Happy]'ll eat me some pie.")
 
-                        UI:SetSpeaker(flow)
-                        UI:SetSpeakerEmotion("Worried")
-                        UI:WaitShowDialogue("Tidy.[pause=30] Flower.")
+                            UI:SetSpeaker(second)
+                            UI:SetSpeakerEmotion("Determined")
+                            UI:WaitShowDialogue("Nuh-uh...")
+                        elseif talk == 2 then
+                            UI:SetSpeaker(third)
+                            UI:SetSpeakerEmotion("Normal")
+                            UI:WaitShowDialogue("You would think there'd be something here with all this empty space...")
 
-                        UI:SetSpeaker(tidy)
-                        UI:SetSpeakerEmotion("Pain")
-                        UI:WaitShowDialogue("Y-yeah... thank you...")
-                    elseif talk == 2 then
-                        UI:SetSpeaker(wurp)
-                        UI:SetSpeakerEmotion("Worried")
-                        UI:WaitShowDialogue("I won't wie, I feewike my couwage just defwated wike a bawoon...")
+                            UI:SetSpeaker(leader)
+                            UI:SetSpeakerEmotion("Normal")
+                            UI:WaitShowDialogue("Maybe it's one of those open roof guilds.")
 
-                        UI:SetSpeaker(snow)
-                        UI:SetSpeakerEmotion("Worried")
-                        UI:WaitShowDialogue("M-maybe if...[pause=30] mm-, n-no, never mind.")
+                            UI:SetSpeaker(second)
+                            UI:SetSpeakerEmotion("Stunned")
+                            UI:WaitShowDialogue("This is a big roof...")
+                        elseif talk == 3 then
+                            UI:SetSpeaker(second)
+                            UI:SetSpeakerEmotion("Happy")
+                            UI:WaitShowDialogue("Let's get some apples!")
+                        elseif talk == 4 then
+                            UI:SetSpeaker(third)
+                            UI:SetSpeakerEmotion("Stunned")
+                            UI:WaitShowDialogue("Fetch quest, by the way.")
+                        elseif talk == 5 then
+                            UI:SetSpeaker(second)
+                            UI:SetSpeakerEmotion("Joyous")
+                            UI:WaitShowDialogue("Apple tiiiiime!")
+                        end
+                    elseif play == "Azura" then
+                        if talk == 1 then
+                            UI:SetSpeaker(second)
+                            UI:SetSpeakerEmotion("Happy")
+                            UI:WaitShowDialogue("Apple time.")
 
-                        UI:SetSpeaker(wurp)
-                        UI:SetSpeakerEmotion("Sad")
-                        UI:WaitShowDialogue("No, Snow, I get it...")
-                        UI:SetSpeakerEmotion("Worried")
-                        UI:WaitShowDialogue("I just... I fewt wike I was saving the wowld after defeating that... thing...")
+                            UI:SetSpeaker(leader)
+                            UI:SetSpeakerEmotion("Joyous")
+                            UI:WaitShowDialogue("Yippee!")
 
-                        UI:SetSpeaker(snow)
-                        UI:SetSpeakerEmotion("Worried")
-                        UI:WaitShowDialogue("R-rexio...[br] When w-we're done with this... adventure thing,[pause=0] w-will you come back...?")
-
-                        UI:SetSpeaker(tidy)
-                        UI:SetSpeakerEmotion("Worried")
-                        UI:WaitShowDialogue("Aren't we going with him?")
-
-                        UI:SetSpeaker(snow)
-                        UI:SetSpeakerEmotion("Worried")
-                        UI:WaitShowDialogue("M-mom doesn't...[pause=25] want me too f-far out there yet, s-so...")
-
-                        UI:SetSpeaker(rexio)
-                        UI:SetSpeakerEmotion("Happy")
-                        UI:WaitShowDialogue("I'll be back. Don't worry about it.")
-                    elseif talk == 3 then
-                        UI:SetSpeaker(flow)
-                        UI:SetSpeakerEmotion("Worried")
-                        UI:WaitShowDialogue("Hopefully there are some more flowers over there.")
-                        UI:SetSpeakerEmotion("Normal")
-                        UI:WaitShowDialogue("This one's all wilty and stuff.")
-
-                        UI:SetSpeaker(snow)
-                        UI:SetSpeakerEmotion("Happy")
-                        UI:WaitShowDialogue("D-dewey can... help you...!")
-
-                        UI:SetSpeaker(flow)
-                        UI:SetSpeakerEmotion("Happy")
-                        UI:WaitShowDialogue("Oh, I forgot he was studying plants!")
-
-                        UI:SetSpeaker(snow)
-                        UI:SetSpeakerEmotion("Happy")
-                        UI:WaitShowDialogue("Mhm! H-he can bring it back to it's... uh... not-wilty form!")
-
-                        UI:SetSpeaker(flow)
-                        UI:SetSpeakerEmotion("Normal")
-                        UI:WaitShowDialogue("I'll ask him when we're done with the trip.")
+                            UI:SetSpeaker(third)
+                            UI:SetSpeakerEmotion("Worried")
+                            UI:WaitShowDialogue("...right.")
+                        elseif talk == 2 then
+                            
+                        elseif talk == 3 then
+                            
+                        elseif talk == 4 then
+                            UI:SetSpeaker(third)
+                            UI:SetSpeakerEmotion("Stunned")
+                            UI:WaitShowDialogue("Fetch quest, by the way.")
+                        elseif talk == 5 then
+                            UI:SetSpeaker(second)
+                            UI:SetSpeakerEmotion("Normal")
+                            UI:WaitShowDialogue("Hopefully we get enough apples, don't feel like doing too much today.")
+                        end
+                    elseif play == "Rexio" then
                     end
                 end
             end

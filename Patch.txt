@@ -1,30 +1,22 @@
 - Allocated more dialogue.
-- Fixed an issue that stopped most cutscenes from playing.
-- Bedug has a newer teleport.
-- Removed unused files.
-- Fixed an issue that breaks the game when one character's story is over.
-- Reduced the amount of time between beam outs when a dungeon is failed.
-- Quickened hopping animation.
-- The mod will no longer overwrite the number of members you can have in the base game.
+- Moved the camera to the center of certain cutscenes
+- Fixed an issue that gave the team double dungeon talks.
 
-Tarro Town
-- Fixed the conditions needed to complete the quiz.
-- Removed a wall that didn't exist.
+MINIGAMES
 
-Entoh Town
-- Changed the conditions needed to finish Panch's challenge.
+- Cup Shuffle
+
+-- Fixed an issue where the ball would be in the incorrect position based on cup number.
+-- You can no longer read logs for the answer.
 
 DUNGEONS
 
-- Tarro Forest
+- Apple Forest
 
--- Decreased the overall level of the bugs that spawn in the dungeon
--- Added tunnels
--- Teams of numbers greater than 2 will no longer spawn
--- Added Bellsprout
+-- Exists
 
 - Deep Tarro Forest
 
--- Decreased the chance of naturally spawned Gold Tiles 
--- Added tunnels
-
+-- Increased the chance of naturally spawned Explosion tiles on higher floors
+-- Added Nickit
+-- Added Music

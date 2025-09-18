@@ -30,7 +30,7 @@ function Apart.TidyIntro()
 
     UI:SetSpeaker(tidy)
     UI:SetSpeakerEmotion("Surprised")
-    UI:WaitShowDialogue("Ah! You're [emote=Worried]all dusty again...!")
+    UI:WaitShowDialogue("Ah! You're [emote=Worried]all dusty again...![pause=45] Eugh...")
 
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Normal")
@@ -38,7 +38,7 @@ function Apart.TidyIntro()
 
     UI:SetSpeaker(tidy)
     UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("Can't you just...?[pause=50][scroll]W[emote=Sigh]ell,[pause=10] let's just get you clean[emote=Normal].")
+    UI:WaitShowDialogue("Can't you just...?[pause=70] W[emote=Sigh]ell,[pause=10] let's just get you clean[emote=Normal].")
     GROUND:MoveToPosition(tidy, rexio.Position.X, rexio.Position.Y - 15, false, 2)
     SOUND:StopBGM()
     for i = 1, 5, 1 do
@@ -114,7 +114,7 @@ function Apart.TidyIntro()
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Cya.")
 
-    GROUND:MoveToMarker(tidy, MRKR("exit_3"), false, 8)
+    GROUND:MoveToMarker(tidy, MRKR("exit_3"), false, 6)
     GROUND:Hide("Tidy")
     GAME:CutsceneMode(false)
     SV.entoh_town.HelperChapter = 0

@@ -106,10 +106,11 @@ end
 function EntohTownSouth_ch2.Snow_Action(obj, activator)
   local snow = CH("Snow")
   if rextalk.frostS == false then
-    COMMON.SetCharAndEmotion(snow, "Happy")
+    COMMON.SetCharAndEmotion(snow, "Normal")
     UI:WaitShowDialogue("H-huh...? Your dad?")
+    COMMON.SetCharAndEmotion(snow, "Worried")
     UI:WaitShowDialogue("S-sorry, Rexio, but I haven't r-really l-looked...")
-    rextalk.frost = true
+    rextalk.frostS = true
   else
     COMMON.SetCharAndEmotion(snow, "Happy")
     UI:WaitShowDialogue("M-mama says that she's making some frost snacks l-later to help me g-get my mind off of... this...")

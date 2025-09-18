@@ -70,48 +70,43 @@ sand_talk = 0
 rex_talk = 0
 function ApartmentRooms.Mouse_Action(obj, activator)
   COMMON.FaceEachother("PLAYER", "Mouse")
-  local mouse = CH("Mouse")
-  local rexio = CH("PLAYER")
   if SV.entoh_town.AdventureChapter > 1 then
     if sand_talk == 0 then
-      UI:SetSpeaker(mouse)
+      UI:SetSpeaker(obj)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("Tidy went with him.[pause=10] Not me.[pause=10] Seemed too suspicious.")
       sand_talk = 1
     else
-      UI:SetSpeaker(mouse)
+      UI:SetSpeaker(obj)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("Are you going anywhere?[pause=10] It doesn't really matter.[pause=10] But I'll miss ya.[pause=10] That's what I think.")
 
-      UI:SetSpeaker(rexio)
+      UI:SetSpeaker(activator)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("It's not like I'm leaving.[pause=20] I'll be back, I'm sure.")
 
-      UI:SetSpeaker(mouse)
+      UI:SetSpeaker(obj)
       UI:SetSpeakerEmotion("Determined")
       UI:WaitShowDialogue("The vibes say otherwise.")
     end
   else
     if sand_talk == 0 then
-      UI:SetSpeaker(mouse)
+      UI:SetSpeaker(obj)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("Hey, Rexio.[pause=10] Hope you're well.[pause=10]")
       UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowDialogue("Me?[pause=10] Maybe Tidy hates me.[pause=10] I'm not all clean.[pause=10]")
+      UI:WaitShowDialogue("Me?[pause=10] Maybe Tidy dislikes me.[pause=10] I'm not all clean.[pause=10]")
       UI:SetSpeakerEmotion("Sad")
       UI:WaitShowDialogue("But even then...[pause=10] I'm just more organized.[pause=10] Even more than Tidy.[pause=10]")
       UI:SetSpeakerEmotion("Pain")
       UI:WaitShowDialogue("I hope we're friends.[pause=10] She never shows it.[pause=10] Like, ever.[pause=10]")
       sand_talk = 1
     else
-      UI:SetSpeaker(mouse)
+      UI:SetSpeaker(obj)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("Guess it doesn't matter.[pause=10] I have other friends...[pause=10]")
     end
   end
-  
-  
-  
 end
 
 -- EnterFunc
@@ -122,39 +117,34 @@ function ApartmentRooms.ApartExit_Touch(obj, activator)
 end
 
 function ApartmentRooms.RexioHome_Enter_Touch(obj, activator)
-  print("Exiting?")
   GAME:FadeOut(false, 10)
   GAME:EnterGroundMap("RexioHome", "RexioHomeWay")
 end
 
 function ApartmentRooms.EmptyEnter_Touch(obj, activator)
-  local rexio = CH("PLAYER")
-
   if rex_talk == 0 then
-    UI:SetSpeaker(rexio)
+    UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("(Oh wooooooooow. Very interesting stuff in there.)")
     rex_talk = 1
   else
-    UI:SetSpeaker(rexio)
+    UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("(If my sarcasm wasn't obvious...)")
   end
 end
 
 function ApartmentRooms.MouseTalk_Touch(obj, activator)
-  local mouse = CH("Mouse")
-  local rexio = CH("PLAYER")
   if SV.entoh_town.AdventureChapter == 1 then
-    UI:SetSpeaker(mouse)
+    UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Hey, Rexio.[pause=10] Got a sec?")
 
-    UI:SetSpeaker(rexio)
+    UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Wassup, Mousy boi?")
 
-    UI:SetSpeaker(mouse)
+    UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("Ew.[pause=10] [emote=Pain]Don't call me that.[pause=10] Ever.")
     UI:SetSpeakerEmotion("Normal")
@@ -167,18 +157,17 @@ function ApartmentRooms.MouseTalk_Touch(obj, activator)
 end
 
 function ApartmentRooms.Mampha_Action(obj, activator)
-  local mampha = CH("Mampha")
   local rexio = CH("PLAYER")
   if SV.entoh_town.AdventureChapter < 5 then
-    UI:SetSpeaker(mampha)
+    UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Rexio wehh!")
 
-    UI:SetSpeaker(rexio)
+    UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Mrs. Slash.")
 
-    UI:SetSpeaker(mampha)
+    UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Live well,[pause=30] and don't do anything dumb wehhhh.")
   end

@@ -39,6 +39,8 @@ function DeepForestBreak.ZoomUp(map)
   local maru = CH("Maru")
   local azura = CH("Azura")
   local zoomer = CH("Zoomer")
+
+  GAME:MoveCamera(172, 52, 5, false)
   
   local coro11 = TASK:BranchCoroutine(function() 
     GROUND:Hide("PLAYER")

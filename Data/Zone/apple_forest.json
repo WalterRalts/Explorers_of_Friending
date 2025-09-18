@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Data.ZoneData, RogueEssence",
 "Name": {
@@ -9,7 +9,7 @@
 "Released": true,
 "Comment": "",
 "NoEXP": false,
-"ExpPercent": 100,
+"ExpPercent": 25,
 "Level": -1,
 "LevelCap": false,
 "KeepSkills": false,
@@ -8169,7 +8169,30 @@
 "WaterTileset": "apple_woods_secondary",
 "LayeredGround": false,
 "IndependentGround": false,
-"GroundElement": "grass"
+"GroundElement": "grass",
+"Background": {
+"$type": "RogueEssence.Dungeon.MapBG, RogueEssence",
+"MapLoc": {
+"X": 0,
+"Y": 0
+},
+"BGAnim": {
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"BGMovement": {
+"X": 0,
+"Y": 0
+},
+"Parallax": "0, 0",
+"RepeatX": false,
+"RepeatY": false
+}
 },
 "Range": {
 "Min": 0,
@@ -8399,7 +8422,51 @@
 },
 "Role": 0
 },
-"Rate": 40,
+"Rate": 5,
+"Range": {
+"Min": 0,
+"Max": 12
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
+"Species": "smoliv",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 3,
+"Max": 7
+},
+"SpecifiedSkills": [
+"protect",
+"charm",
+"endure"
+],
+"Intrinsic": "",
+"Tactic": "retreater",
+"SpawnConditions": [],
+"SpawnFeatures": [
+{
+"$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+},
+{
+"$type": "PMDC.LevelGen.MobSpawnBoost, PMDC",
+"MaxHPBonus": -3,
+"AtkBonus": -3,
+"DefBonus": -3,
+"SpAtkBonus": -3,
+"SpDefBonus": -3,
+"SpeedBonus": -3
+}
+]
+},
+"Role": 0
+},
+"Rate": 45,
 "Range": {
 "Min": 0,
 "Max": 12
@@ -8422,7 +8489,7 @@
 "flash"
 ],
 "Intrinsic": "",
-"Tactic": "retreater",
+"Tactic": "wander_dumb_itemless",
 "SpawnConditions": [],
 "SpawnFeatures": [
 {
@@ -8455,7 +8522,7 @@
 "flash"
 ],
 "Intrinsic": "",
-"Tactic": "retreater",
+"Tactic": "wander_dumb_itemless",
 "SpawnConditions": [],
 "SpawnFeatures": [
 {
@@ -8966,6 +9033,9 @@
 "Comment": ""
 }
 ],
-"GroundMaps": []
+"GroundMaps": [
+"AppleTown",
+"AppleTownConcert"
+]
 }
 }

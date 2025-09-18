@@ -74,6 +74,7 @@ function Rexio.Luke()
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Sad")
     UI:WaitShowDialogue("Yes, Rexio.[pause=30] I'm [emote=Teary-Eyed]sure you will.")
+    GROUND:CharAnimateTurnTo(luke, Dir8.Left, 3)
 
     GAME:WaitFrames(90)
     SOUND:StopBGM()

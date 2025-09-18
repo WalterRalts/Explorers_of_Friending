@@ -297,7 +297,7 @@ function TarroTownTreeBreak.Storage_Action(obj, activator)
   elseif senna_curious == 3 then
     UI:SetSpeaker(senna)
     UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Did you double check?[pause=65] J[emote=Happy]ust kidding...~")
+    UI:WaitShowDialogue("Did you double check?[pause=65] J[emote=Happy]ust kidding~!")
   else
     UI:SetSpeaker(senna)
     UI:SetSpeakerEmotion("Worried")

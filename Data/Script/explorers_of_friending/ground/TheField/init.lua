@@ -27,6 +27,7 @@ function TheField.Init(map)
     AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
     partner.CollisionDisabled = true
   end
+  SV.bag_size = 999
 end
 
 ---TheField.Enter(map)
@@ -135,8 +136,7 @@ function TheField.SceneEnd_Touch(obj, activator)
     GAME:EnterGroundMap("guild_field", "GuildField", "Start")
     GAME:FadeOut(false, 30)
   elseif SV.tarro_town.DarknessChapter == 3 then
-    local maru = CH("PLAYER")
-    UI:SetSpeaker(maru)
+    UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("Um... we're here about the letter...")
 

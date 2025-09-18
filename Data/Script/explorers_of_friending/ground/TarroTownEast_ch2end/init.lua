@@ -150,7 +150,7 @@ function TarroTownEast_ch2end.WentWhere()
   COMMON.CharQuestion("Beel")
   UI:SetSpeaker(furie)
   UI:SetSpeakerEmotion("Surprised")
-  UI:WaitShowDialogue("T-[color=#01FE10]Tarro Tree[color]!")
+  UI:WaitShowDialogue("T-[color=#01FE10]Tarro Tree[color]?!")
   GROUND:CharSetAnim(azura, "None", true)
 
   UI:SetSpeaker(beel)

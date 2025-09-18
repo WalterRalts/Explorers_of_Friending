@@ -43,14 +43,12 @@ end
 ---GuildLvl1.Update(map)
 --Engine callback function
 function GuildLvl1.Update(map)
-
-
+  Partner()
 end
 
 ---GuildLvl1.GameSave(map)
 --Engine callback function
 function GuildLvl1.GameSave(map)
-
 
 end
 
@@ -109,9 +107,9 @@ function GuildLvl1.MarTouch_Touch(obj, activator)
       GAME:GroundSave()
       UI:WaitShowDialogue("Game saved!")
       GAME:FadeOut(false, 60)
+      rextalk = 0
       SV.guild.day = SV.guild.day + 1
       SV.guild.time = 0
-      rextalk = 0
     else
       UI:SetSpeaker(maru)
       UI:SetSpeakerEmotion("Normal")
@@ -169,8 +167,8 @@ function GuildLvl1.Teammate1_Action(obj, activator)
       COMMON.SetCharAndEmotion(maru, "Stunned")
       UI:WaitShowDialogue("...uh... adventure?")
 
-      COMMON.SetCharAndEmotion(azura, "Sad")
-      UI:WaitShowDialogue("...yay...")
+      COMMON.SetCharAndEmotion(azura, "Worried")
+      UI:WaitShowDialogue("...yay, I think.")
     else
       COMMON.SetCharAndEmotion(azura, "Worried")
       UI:WaitShowDialogue("I still don't get it.")
