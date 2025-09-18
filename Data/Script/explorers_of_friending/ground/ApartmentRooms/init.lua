@@ -135,8 +135,9 @@ function ApartmentRooms.EmptyEnter_Touch(obj, activator)
 end
 
 function ApartmentRooms.MouseTalk_Touch(obj, activator)
+  local mouse = CH("Mouse")
   if SV.entoh_town.AdventureChapter == 1 then
-    UI:SetSpeaker(obj)
+    UI:SetSpeaker(mouse)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Hey, Rexio.[pause=10] Got a sec?")
 
@@ -144,15 +145,15 @@ function ApartmentRooms.MouseTalk_Touch(obj, activator)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Wassup, Mousy boi?")
 
-    UI:SetSpeaker(obj)
+    UI:SetSpeaker(mouse)
     UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("Ew.[pause=10] [emote=Pain]Don't call me that.[pause=10] Ever.")
+    UI:WaitShowDialogue("Ew.[pause=50] [emote=Pain]Don't call me that.[pause=10] Ever.")
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Anyway, about your dad.[pause=10] He ran past.[pause=10] ...like really ran.")
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Passing on a message.[pause=10] \"Tell Rexio, \'go east\'\".")
     
-    SV.entoh_town.AdventureChapter = 1.1    
+    SV.entoh_town.AdventureChapter = 1.1
   end
 end
 
