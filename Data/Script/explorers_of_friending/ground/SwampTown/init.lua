@@ -16,15 +16,12 @@ local SwampTown = {}
 ---SwampTown.Init(map)
 --Engine callback function
 function SwampTown.Init(map)
-  local rexio = CH("PLAYER")
   local wurp = CH("Wurp")
   local snow = CH("Snow")
   local tidy = CH("Tidy")
-  local flow = CH("Flow")
   if SV.entoh_town.AdventureChapter < 3 then
     SV.entoh_town.AdventureChapter = 3
     SwampUp.TransferA()
-    
   else
     GROUND:Unhide("Tidy")
     GROUND:Unhide("Flow")
@@ -111,8 +108,8 @@ function SwampTown.Poli_Action(obj, activator)
 end
 
 function SwampTown.Snow_Action(obj, activator)
-  COMMON.FaceEachother("PLAYER", "Snow")
-  UI:SetSpeaker(CH("Snow"))
+  COMMON.FaceEachother(activator, obj)
+  UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("I-... I don't get it...")
 end
@@ -120,7 +117,7 @@ end
 function SwampTown.Marshal_Action(obj, activator)
   local rexio = CH("PLAYER")
   local marsh = CH("Marshal")
-  COMMON.FaceEachother("PLAYER", "Marshal")
+  COMMON.FaceEachother(activator, obj)
 
   if right_house == -1 then 
     UI:SetSpeaker(marsh)
@@ -194,6 +191,18 @@ function SwampTown.Marshal_Action(obj, activator)
   end
 end
 
+function SwampTown.Skip_Action(obj, activator)
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("Welcome to the humble swamp!")
+end
+
+function SwampTown.Shwamp_Action(obj, activator)
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("...who are you?")
+end
+
 function SwampTown.Tidy_Action(obj, activator)
   UI:SetSpeaker(CH("Tidy"))
   UI:SetSpeakerEmotion("Dizzy")
@@ -228,7 +237,7 @@ function SwampTown.LHouse_Touch(obj, activator)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("Ooooiiiiii!")
 
-    COMMON.FaceEachother("PLAYER", "Marshal")
+    COMMON.FaceEachother(activator, marsh)
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("What?")
@@ -243,7 +252,7 @@ function SwampTown.LHouse_Touch(obj, activator)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowTimedDialogue("Hold on...", 50)
 
-    COMMON.FaceEachother("PLAYER", "Marshal")
+    COMMON.FaceEachother(activator, marsh)
     UI:SetSpeaker(marsh)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Nah, ya fine.")
@@ -253,7 +262,7 @@ function SwampTown.LHouse_Touch(obj, activator)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowTimedDialogue("Aw no! It's terrible!", 90)
 
-    COMMON.FaceEachother("PLAYER", "Marshal")
+    COMMON.FaceEachother(activator, marsh)
     GAME:WaitFrames(40)
     UI:SetSpeaker(marsh)
     UI:SetSpeakerEmotion("Normal")
@@ -268,7 +277,7 @@ function SwampTown.LHouse_Touch(obj, activator)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("A-actually, just... come back to me, mate.")
 
-    COMMON.FaceEachother("PLAYER", "Marshal")
+    COMMON.FaceEachother(activator, marsh)
     right_house = 5.1
   elseif right_house == 6 then
     SwampUp.TransferB()
@@ -283,7 +292,7 @@ function SwampTown.RHouse_Touch(obj, activator)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("Ooooiiiiii!")
 
-    COMMON.FaceEachother("PLAYER", "Marshal")
+    COMMON.FaceEachother(activator, marsh)
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("What?")
@@ -298,7 +307,7 @@ function SwampTown.RHouse_Touch(obj, activator)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("...aw, actually, mate.")
 
-    COMMON.FaceEachother("PLAYER", "Marshal")
+    COMMON.FaceEachother(activator, marsh)
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("What now?")
@@ -312,7 +321,7 @@ function SwampTown.RHouse_Touch(obj, activator)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Left.")
 
-    COMMON.FaceEachother("PLAYER", "Marshal")
+    COMMON.FaceEachother(activator, marsh)
     GAME:WaitFrames(90)
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Sigh")

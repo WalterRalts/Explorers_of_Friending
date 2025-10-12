@@ -110,7 +110,7 @@ function EntohTownCenter.Wurp_Action(obj, activator)
     
     GROUND:CharTurnToCharAnimated(dewey, rexio, 4)
     GROUND:CharTurnToCharAnimated(pari, rexio, 4)
-    COMMON.FaceEachother("Wurp", "PLAYER")
+    COMMON.FaceEachother(wurp, activator)
     UI:SetSpeakerEmotion("Determined")
     UI:WaitShowDialogue("What awe youuuuuuuuu doing here?")
 
@@ -181,7 +181,7 @@ function EntohTownCenter.Dewey_Action(obj, activator)
   local dewey = CH("Dewey")
   local rexio = CH("PLAYER")
   if SV.entoh_town.AdventureChapter > 0 then
-    COMMON.FaceEachother("Dewey", "PLAYER")
+    COMMON.FaceEachother(dewey, activator)
     UI:SetSpeaker(dewey)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("Hey, Rexio.[pause=20] When you see Wurp, let him know that he still owes me, like, 50 Poke.")
@@ -218,11 +218,9 @@ function EntohTownCenter.Snow_Action(obj, activator)
 end
 
 function EntohTownCenter.Pari_Action(obj, activator)
-  local pari = CH("Pari")
-  local rexio = CH("PLAYER")
   if SV.entoh_town.AdventureChapter > 0 then
-    COMMON.FaceEachother("Pari", "PLAYER")
-    UI:SetSpeaker(pari)
+    COMMON.FaceEachother(obj, activator)
+    UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Determined")
     UI:WaitShowDialogue("Monsieur Rexi, to where is Wurpy going without taking moui!")
     UI:SetSpeakerEmotion("Angry")
@@ -232,8 +230,8 @@ function EntohTownCenter.Pari_Action(obj, activator)
     if bug_talk == 0 then
       EntohTownCenter.Wurp_Action()
     else
-      GROUND:CharTurnToCharAnimated(pari, rexio, 4)
-      UI:SetSpeaker(pari)
+      GROUND:CharTurnToCharAnimated(obj, activator, 4)
+      UI:SetSpeaker(obj)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("Do not get in our way, Monsieur Rexi. Ze world will be ours!")
     end
@@ -247,8 +245,7 @@ function EntohTownCenter.Entoh_NorthEnter_Touch(obj, activator)
 end
 
 function EntohTownCenter.WaterHole_Action(obj, activator)
-  local rexio = CH("PLAYER")
-  UI:SetSpeaker(rexio)
+  UI:SetSpeaker(activator)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("(It's weird...)")
   UI:SetSpeakerEmotion("Stunned")
@@ -319,15 +316,15 @@ function EntohTownCenter.Flow_Action(obj, activator)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowTimedDialogue("Meep.", 15)
     
-    COMMON.FaceEachother("Flow", "PLAYER")
+    COMMON.FaceEachother(flow, activator)
     GROUND:CharSetAnim(CH("Flow"), "Charge", true)
     UI:SetSpeaker(flow)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("Rexio! Stop ruining my concentration!")
     flow_talk = 1
-    GROUND:CharSetAnim(CH("Flow"), "Idle", true)
+    GROUND:CharSetAnim(flow, "Idle", true)
   else
-    COMMON.FaceEachother("Flow", "PLAYER")
+    COMMON.FaceEachother(flow, activator)
     UI:SetSpeaker(flow)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("Now I have to start all over...")
@@ -376,6 +373,42 @@ function EntohTownCenter.Worker_Action(obj, activator)
     UI:SetSpeaker(timba)
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue("Thank goodness work on the East is over...")
+  end
+end
+
+function EntohTownCenter.FlowerShop_Action(obj, activator)
+  local flower = CH("Flowerson")
+  UI:SetSpeaker(flower)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("The flowers here are not aligning correctly.")
+
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("The store's not open yet, is it?")
+
+  UI:SetSpeaker(flower)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("Uh, no.[pause=30] It[emote=Normal] is not.")
+end
+
+function EntohTownCenter.Flowerson_Action(obj, activator)
+  local talk = math.random(3)
+  if talk == 1 then
+    UI:SetSpeaker(obj)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Rexio, my dear.[pause=30] May the flowers guide you as much as your aura does.")
+  elseif talk == 2 then
+    UI:SetSpeaker(obj)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Your mother loved these flowers.[pause=70] O[emote=Surprised]h,[pause=30] uh, [emote=Happy] I hope you can enjoy them as well.")
+  elseif talk == 1 then
+    UI:SetSpeaker(obj)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("If you do well with your aura lesson, may you assist Flow with her concentration?")
+    
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("No problem!")
   end
 end
 

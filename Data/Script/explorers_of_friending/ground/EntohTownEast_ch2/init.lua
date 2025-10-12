@@ -6,7 +6,6 @@
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
 require 'explorers_of_friending.ground.EntohTownEast_ch2.cutscene'
-require 'explorers_of_friending.partner'
 
 -- Package name
 local EntohTownEast_ch2 = {}

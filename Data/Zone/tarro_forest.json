@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Data.ZoneData, RogueEssence",
 "Name": {
@@ -11,7 +11,7 @@
 "Released": true,
 "Comment": "Chapter 0 - Maru and Azura's first dungeon",
 "NoEXP": false,
-"ExpPercent": 40,
+"ExpPercent": 35,
 "Level": 5,
 "LevelCap": false,
 "KeepSkills": false,
@@ -1998,7 +1998,30 @@
 "WaterTileset": "apple_woods_secondary",
 "LayeredGround": false,
 "IndependentGround": false,
-"GroundElement": "bug"
+"GroundElement": "bug",
+"Background": {
+"$type": "RogueEssence.Dungeon.MapBG, RogueEssence",
+"MapLoc": {
+"X": 0,
+"Y": 0
+},
+"BGAnim": {
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"BGMovement": {
+"X": 0,
+"Y": 0
+},
+"Parallax": "0, 0",
+"RepeatX": false,
+"RepeatY": false
+}
 },
 "Range": {
 "Min": 0,
@@ -2047,7 +2070,7 @@
 },
 "Rate": 20,
 "Range": {
-"Min": 1,
+"Min": 0,
 "Max": 5
 }
 }
@@ -2198,6 +2221,37 @@
 "Spawn": {
 "Spawn": {
 "BaseForm": {
+"Species": "skitty",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 1,
+"Max": 5
+},
+"SpecifiedSkills": [],
+"Intrinsic": "",
+"Tactic": "wander_normal",
+"SpawnConditions": [],
+"SpawnFeatures": [
+{
+"$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+}
+]
+},
+"Role": 0
+},
+"Rate": 10,
+"Range": {
+"Min": 0,
+"Max": 5
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
 "Species": "metapod",
 "Form": 0,
 "Skin": "",
@@ -2290,7 +2344,7 @@
 },
 "Role": 0
 },
-"Rate": 5,
+"Rate": 10,
 "Range": {
 "Min": 3,
 "Max": 5
@@ -2316,14 +2370,23 @@
 "SpawnFeatures": [
 {
 "$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+},
+{
+"$type": "PMDC.LevelGen.MobSpawnBoost, PMDC",
+"MaxHPBonus": 0,
+"AtkBonus": -4,
+"DefBonus": 0,
+"SpAtkBonus": -4,
+"SpDefBonus": 0,
+"SpeedBonus": 0
 }
 ]
 },
 "Role": 0
 },
-"Rate": 10,
+"Rate": 3,
 "Range": {
-"Min": 0,
+"Min": 2,
 "Max": 5
 }
 }
@@ -2331,7 +2394,7 @@
 "TeamSizes": [
 {
 "Spawn": 1,
-"Rate": 40,
+"Rate": 45,
 "Range": {
 "Min": 0,
 "Max": 5
@@ -2339,7 +2402,7 @@
 },
 {
 "Spawn": 2,
-"Rate": 10,
+"Rate": 5,
 "Range": {
 "Min": 1,
 "Max": 5
@@ -2527,11 +2590,11 @@
 },
 "StartAmount": {
 "Min": 5,
-"Max": 31
+"Max": 26
 },
 "AddAmount": {
-"Min": 10,
-"Max": 21
+"Min": 5,
+"Max": 16
 },
 "ModStates": []
 },

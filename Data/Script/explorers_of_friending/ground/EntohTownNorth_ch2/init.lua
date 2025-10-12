@@ -6,7 +6,6 @@
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
 require 'explorers_of_friending.ground.EntohTownNorth_ch2.cutscene'
-require 'explorers_of_friending.partner'
 
 -- Package name
 local EntohTownNorth_ch2 = {}
@@ -81,8 +80,9 @@ function EntohTownNorth_ch2.Entoh_SouthNExit_Touch(obj, activator)
 end
 
 function EntohTownNorth_ch2.Enoth_DeliveryNEnter_Touch(obj, activator)
-  GAME:FadeOut(false, 10)
-  GAME:EnterGroundMap("EntohTownDelivery_ch2", "EnterMark_DSouth")
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("(Looks like Chucky got away somehow.)")
 end
 
 return EntohTownNorth_ch2

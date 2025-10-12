@@ -147,9 +147,6 @@ SV.apple_forest =
   dungpoints = 0,
 }
 
---- Entoh Town
---- Locations
-
 SV.entoh_town = 
 {
   revisit = false,
@@ -162,7 +159,14 @@ SV.entoh_town =
   {
     result = -1
   },
+  flowfirst = true,
+  tidyfirst = true,
   firstfind = 0 -- 1 is for Flow, 2 is for Tidy
+}
+
+SV.apple_town = 
+{
+  visited = false
 }
 
 --- Guild

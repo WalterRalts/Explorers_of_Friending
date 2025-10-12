@@ -8,16 +8,16 @@ function Partner()
             local rexio = CH("PLAYER")
             local flow = CH('Teammate1')
             local tidy = CH('Teammate2')
-            if SV.entoh_town.firstfind == 1 then
+            if SV.entoh_town.flowfirst then
                 flow = CH('Teammate1')
                 tidy = CH('Teammate2')
-            elseif SV.entoh_town.firstfind == 2 then
+            elseif SV.entoh_town.flowfirst then
                 flow = CH('Teammate2')
                 tidy = CH('Teammate1')
             end
             if GAME:IsKeyDown(66) then
                 print("Partner")
-                COMMON.FaceEachother("PLAYER", "Teammate1")
+                COMMON.FaceEachother(CH("PLAYER"), CH("Teammate1"))
 
                 if area_name == "TarroTownOutside" then
                     if SV.tarro_town.PieChapter < 2 then
@@ -193,7 +193,7 @@ function Partner()
                         UI:SetSpeaker(azura)      
                         UI:SetSpeakerEmotion("Worried")
                         UI:WaitShowDialogue("So... what now...?")
-                        COMMON.FaceEachother("Teammate1", "PLAYER")
+                        COMMON.FaceEachother(CH("PLAYER"), CH("Teammate1"))
                 
                         UI:SetSpeaker(maru)
                         UI:SetSpeakerEmotion("Normal")
@@ -238,7 +238,8 @@ function Partner()
                     
                             UI:SetSpeaker(maru)
                             UI:SetSpeakerEmotion("Normal")
-                            UI:WaitShowDialogue("You getting worried, Azura?")
+                            UI:WaitShowDialogue("You getting worried, Azu?")
+                            UI:SetSpeakerEmotion("Happy")
                             UI:WaitShowDialogue("I could answer all the questions if you want me to.")
                     
                             UI:SetSpeaker(azura)
@@ -509,7 +510,7 @@ function Partner()
                 local second = CH('Teammate1')
                 local third = CH('Teammate2')
                 local talk = math.random(5)
-                COMMON.FaceEachother("PLAYER", "Teammate1")
+                COMMON.FaceEachother(CH("PLAYER"), CH("Teammate1"))
                 local play = GAME:GetCharacterNickname(GAME:GetPlayerPartyMember(GAME:GetTeamLeaderIndex()))
                 if area_name == "GuildFieldMain" then
                     if play == "Maru" then
@@ -576,6 +577,40 @@ function Partner()
                             UI:SetSpeakerEmotion("Worried")
                             UI:WaitShowDialogue("...right.")
                         elseif talk == 2 then
+                            UI:SetSpeaker(second)
+                            UI:SetSpeakerEmotion("Happy")
+                            UI:WaitShowDialogue("Make sure to stick by me, Azura.")
+
+                            UI:SetSpeaker(leader)
+                            UI:SetSpeakerEmotion("Happy")
+                            UI:WaitShowDialogue("Okaaaay.")
+                        elseif talk == 3 then
+                            UI:SetSpeaker(third)
+                            UI:SetSpeakerEmotion("Stunned")
+                            UI:WaitShowDialogue("...I still have regrets,[pause=30] but at least I get to do something...")
+                        elseif talk == 4 then
+                            UI:SetSpeaker(third)
+                            UI:SetSpeakerEmotion("Stunned")
+                            UI:WaitShowDialogue("Fetch quest, by the way.")
+                        elseif talk == 5 then
+                            UI:SetSpeaker(second)
+                            UI:SetSpeakerEmotion("Normal")
+                            UI:WaitShowDialogue("Hopefully we get enough apples, don't feel like doing too much today.")
+                        end
+                    elseif play == "Rexio" then
+                        if talk == 1 then
+                            UI:SetSpeaker(second)
+                            UI:SetSpeakerEmotion("Happy")
+                            UI:WaitShowDialogue("Apple time.")
+
+                            UI:SetSpeaker(leader)
+                            UI:SetSpeakerEmotion("Joyous")
+                            UI:WaitShowDialogue("Yippee!")
+
+                            UI:SetSpeaker(third)
+                            UI:SetSpeakerEmotion("Worried")
+                            UI:WaitShowDialogue("...right.")
+                        elseif talk == 2 then
                             
                         elseif talk == 3 then
                             
@@ -588,7 +623,51 @@ function Partner()
                             UI:SetSpeakerEmotion("Normal")
                             UI:WaitShowDialogue("Hopefully we get enough apples, don't feel like doing too much today.")
                         end
-                    elseif play == "Rexio" then
+                    end
+                elseif area_name == "AppleTownMayor_pt2" then
+                    GROUND:CharTurnToCharAnimated(second, CH("Bullet"), 2)
+                    GROUND:CharTurnToCharAnimated(leader, CH("Tanker"), 2)
+                    GROUND:CharTurnToCharAnimated(third, CH("Bullet"), 2)
+                    UI:SetSpeaker(second)
+                    UI:SetSpeakerEmotion("Worried")
+                    UI:WaitShowDialogue("...that's the...[pause=25] the officers?!")
+
+                    UI:SetSpeaker(leader)
+                    UI:SetSpeakerEmotion("Stunned")
+                    UI:WaitShowDialogue("What did we miss...?")
+
+                    UI:SetSpeaker(third)
+                    UI:SetSpeakerEmotion("Worried")
+                    UI:WaitShowDialogue("I knew it.[pause=30] Something is going on.")
+
+                    UI:SetSpeaker(second)
+                    UI:SetSpeakerEmotion("Stunned")
+                    UI:WaitShowDialogue("Scary...")
+
+                    UI:SetSpeaker(leader)
+                    UI:SetSpeakerEmotion("Determined")
+                    UI:WaitShowDialogue("Let's keep our guard up.")
+                elseif area_name == "AppleTown_pt2" then
+                    UI:SetSpeaker(third)
+                    UI:SetSpeakerEmotion("Stunned")
+                    UI:WaitShowDialogue("The Magnet forces.")
+
+                    UI:SetSpeaker(leader)
+                    UI:SetSpeakerEmotion("Normal")
+                    UI:WaitShowDialogue("Let's tell them what happened.")
+                else
+                    if talk == 1 then
+                        UI:SetSpeaker(leader)
+                        UI:SetSpeakerEmotion("Normal")
+                        UI:WaitShowDialogue("Let's go.")
+                    elseif talk == 2 then
+                        UI:SetSpeaker(second)
+                        UI:SetSpeakerEmotion("Happy")
+                        UI:WaitShowDialogue("Whoo!")
+                    elseif talk == 3 then
+                        UI:SetSpeaker(third)
+                        UI:SetSpeakerEmotion("Normal")
+                        UI:WaitShowDialogue("Ready to go wherever.")
                     end
                 end
             end

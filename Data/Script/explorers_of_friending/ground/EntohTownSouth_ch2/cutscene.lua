@@ -1,8 +1,9 @@
-require 'origin.common'
+require 'explorers_of_friending.common'
 
 South_ch2 = {}
 
 function South_ch2.GoingIn()
+    GAME:SetTeamLeaderIndex(0)
     GAME:RemovePlayerTeam(1)
     GAME:RemovePlayerTeam(1)
     GAME:RemovePlayerTeam(1)
@@ -21,9 +22,14 @@ function South_ch2.GoingIn()
 end
 
 function South_ch2.GoingInFull()
+    GAME:SetTeamLeaderIndex(0)
     local rexio = CH("PLAYER")
     local flow = CH("Teammate1")
     local tidy = CH("Teammate2")
+    GAME:RemovePlayerTeam(1)
+    GAME:RemovePlayerTeam(1)
+    GAME:RemovePlayerTeam(1)
+    GAME:RemovePlayerTeam(1)
 
     COMMON:RespawnAllies()
     UI:SetSpeaker(rexio)

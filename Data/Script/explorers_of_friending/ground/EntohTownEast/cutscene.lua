@@ -79,14 +79,15 @@ function East.TidyUp()
         UI:WaitShowDialogue("I would love to keep reuniting,[pause=0] not really, but...")
         UI:WaitShowDialogue("We should probably get going.")
 
-
         UI:SetSpeaker(tidy)
         UI:SetSpeakerEmotion("Stunned")
         AI:SetCharacterAI(flow, "origin.ai.ground_partner", CH('PLAYER'), flow.Position)
         AI:SetCharacterAI(tidy, "origin.ai.ground_partner", flow, tidy.Position)
         tidy.CollisionDisabled = true
         UI:WaitShowDialogue("Yeah? Alrighty.[pause=40][emote=Normal] Let's go.")
-    else
+        SV.entoh_town.firstfind = 3
+    elseif SV.entoh_town.firstfind < 3 then
+        SV.entoh_town.firstfind = 2
         local tidy = CH("Teammate1")
         local rexio = CH("PLAYER")
         local cor1 = TASK:BranchCoroutine(function()
@@ -151,7 +152,7 @@ function East.TidyUp()
 
         UI:SetSpeaker(tidy)
         UI:SetSpeakerEmotion("Stunned")
-        GROUND:AnimateInDirection(tidy, "Walk", Dir8.Left, Dir8.Right, 10, 3, 2)
+        GROUND:AnimateInDirection(tidy, "Walk", Dir8.Left, Dir8.Right, 15, 3, 1)
         AI:SetCharacterAI(tidy, "origin.ai.ground_partner", CH('PLAYER'), tidy.Position)
         tidy.CollisionDisabled = true
         GAME:WaitFrames(15)

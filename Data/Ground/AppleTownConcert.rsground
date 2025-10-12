@@ -64900,7 +64900,7 @@
 "Direction": 1,
 "IsInteracting": false,
 "AIEnabled": true,
-"EntName": "The Rai",
+"EntName": "TheRai",
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -65001,8 +65001,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 157,
-"Y": 166
+"X": 152,
+"Y": 168
 },
 "serializationHeight": 0,
 "serializationDir": 5,
@@ -65082,8 +65082,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 157,
-"Y": 166,
+"X": 152,
+"Y": 168,
 "Width": 16,
 "Height": 16
 }

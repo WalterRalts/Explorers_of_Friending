@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -15037,7 +15037,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -186120,7 +186120,7 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 126,
+"X": 129,
 "Y": 216
 },
 "serializationHeight": 0,
@@ -186201,7 +186201,7 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 126,
+"X": 129,
 "Y": 216,
 "Width": 16,
 "Height": 16
@@ -186585,8 +186585,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 884,
-"Y": 126,
+"X": 1208,
+"Y": 210,
 "Width": 16,
 "Height": 16
 }
@@ -187405,12 +187405,12 @@
 }
 },
 {
-"EntName": "NewObject",
+"EntName": "WingmonHouse",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -187577,7 +187577,7 @@
 }
 },
 {
-"EntName": "NewObject_5",
+"EntName": "TarroTownWest_Entrance",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
@@ -187746,6 +187746,49 @@
 "Y": 480,
 "Width": 144,
 "Height": 24
+}
+},
+{
+"EntName": "Store",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 1,
+"ObjectAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"Passable": false,
+"CurrentAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"AnimTime": {
+"Ticks": 0
+},
+"Cycles": 0,
+"DrawOffset": {
+"X": 0,
+"Y": 0
+},
+"Collider": {
+"X": 144,
+"Y": 201,
+"Width": 72,
+"Height": 17
 }
 }
 ],
@@ -187990,6 +188033,34 @@
 "Collider": {
 "X": 1637,
 "Y": 257,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "jump_1",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 436,
+"Y": 268,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "jump",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 436,
+"Y": 315,
 "Width": 16,
 "Height": 16
 }

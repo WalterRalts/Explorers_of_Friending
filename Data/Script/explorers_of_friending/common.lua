@@ -3,6 +3,7 @@
     A collection of frequently used functions and values!
 ]]--
 require 'explorers_of_friending.common_gen'
+require 'explorers_of_friending.partner'
 
 ----------------------------------------
 -- Lib Definitions
@@ -1375,10 +1376,8 @@ function COMMON.CharAngry(char)
 end
 
 function COMMON.FaceEachother(char1, char2)
-  local face1 = CH(char1)
-  local face2 = CH(char2)
-  GROUND:CharTurnToCharAnimated(face1, face2, 2)
-  GROUND:CharTurnToCharAnimated(face2, face1, 2)
+  GROUND:CharTurnToCharAnimated(char1, char2, 2)
+  GROUND:CharTurnToCharAnimated(char2, char1, 2)
 end
 
 function COMMON.CharExclaim(char)

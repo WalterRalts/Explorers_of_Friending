@@ -1467,7 +1467,7 @@
 "Y": 0
 }
 },
-"Rate": 1000
+"Rate": 200
 },
 {
 "Spawn": {
@@ -1497,7 +1497,7 @@
 "Y": 0
 }
 },
-"Rate": 125
+"Rate": 5
 },
 {
 "Spawn": {
@@ -1512,7 +1512,7 @@
 "Y": 0
 }
 },
-"Rate": 750
+"Rate": 200
 },
 {
 "Spawn": {
@@ -1527,7 +1527,7 @@
 "Y": 0
 }
 },
-"Rate": 250
+"Rate": 100
 },
 {
 "Spawn": {
@@ -1542,7 +1542,7 @@
 "Y": 0
 }
 },
-"Rate": 1
+"Rate": 5
 },
 {
 "Spawn": {
@@ -1557,7 +1557,7 @@
 "Y": 0
 }
 },
-"Rate": 10
+"Rate": 100
 },
 {
 "Spawn": {
@@ -1572,7 +1572,7 @@
 "Y": 0
 }
 },
-"Rate": 500
+"Rate": 300
 },
 {
 "Spawn": {
@@ -1602,7 +1602,7 @@
 "Y": 0
 }
 },
-"Rate": 250
+"Rate": 200
 },
 {
 "Spawn": {
@@ -1617,7 +1617,7 @@
 "Y": 0
 }
 },
-"Rate": 1000
+"Rate": 550
 },
 {
 "Spawn": {
@@ -1632,7 +1632,7 @@
 "Y": 0
 }
 },
-"Rate": 2000
+"Rate": 200
 },
 {
 "Spawn": {
@@ -1640,14 +1640,14 @@
 "Cursed": false,
 "Value": "crunchy_leaf",
 "HiddenValue": "",
-"Amount": 2,
+"Amount": 1,
 "Price": 0,
 "TileLoc": {
 "X": 0,
 "Y": 0
 }
 },
-"Rate": 1500
+"Rate": 200
 }
 ],
 "SpawnAmount": 3
@@ -1689,13 +1689,13 @@
 "SpawnConditions": [],
 "SpawnFeatures": []
 },
-"Rate": 24
+"Rate": 19
 },
 {
 "Spawn": {
 "BaseForm": {
 "Species": "appletun",
-"Form": -1,
+"Form": 0,
 "Skin": "",
 "Gender": -1
 },
@@ -1733,11 +1733,11 @@
 "Rate": 1
 }
 ],
-"SpawnAmount": 1
+"SpawnAmount": 2
 },
 "HallLength": {
 "Min": 5,
-"Max": 21
+"Max": 26
 },
 "GenericRooms": [
 {
@@ -3498,7 +3498,7 @@
 "Y": 0
 }
 },
-"Rate": 1000
+"Rate": 200
 },
 {
 "Spawn": {
@@ -3528,7 +3528,7 @@
 "Y": 0
 }
 },
-"Rate": 125
+"Rate": 5
 },
 {
 "Spawn": {
@@ -3543,7 +3543,7 @@
 "Y": 0
 }
 },
-"Rate": 750
+"Rate": 200
 },
 {
 "Spawn": {
@@ -3558,7 +3558,7 @@
 "Y": 0
 }
 },
-"Rate": 250
+"Rate": 100
 },
 {
 "Spawn": {
@@ -3573,7 +3573,7 @@
 "Y": 0
 }
 },
-"Rate": 1
+"Rate": 5
 },
 {
 "Spawn": {
@@ -3588,7 +3588,7 @@
 "Y": 0
 }
 },
-"Rate": 10
+"Rate": 100
 },
 {
 "Spawn": {
@@ -3603,7 +3603,7 @@
 "Y": 0
 }
 },
-"Rate": 500
+"Rate": 300
 },
 {
 "Spawn": {
@@ -3633,7 +3633,7 @@
 "Y": 0
 }
 },
-"Rate": 250
+"Rate": 200
 },
 {
 "Spawn": {
@@ -3648,7 +3648,7 @@
 "Y": 0
 }
 },
-"Rate": 1000
+"Rate": 550
 },
 {
 "Spawn": {
@@ -3663,7 +3663,7 @@
 "Y": 0
 }
 },
-"Rate": 2000
+"Rate": 200
 },
 {
 "Spawn": {
@@ -3671,14 +3671,14 @@
 "Cursed": false,
 "Value": "crunchy_leaf",
 "HiddenValue": "",
-"Amount": 2,
+"Amount": 1,
 "Price": 0,
 "TileLoc": {
 "X": 0,
 "Y": 0
 }
 },
-"Rate": 1500
+"Rate": 200
 }
 ],
 "SpawnAmount": 3
@@ -3720,13 +3720,13 @@
 "SpawnConditions": [],
 "SpawnFeatures": []
 },
-"Rate": 24
+"Rate": 19
 },
 {
 "Spawn": {
 "BaseForm": {
 "Species": "appletun",
-"Form": -1,
+"Form": 0,
 "Skin": "",
 "Gender": -1
 },
@@ -3764,11 +3764,11 @@
 "Rate": 1
 }
 ],
-"SpawnAmount": 1
+"SpawnAmount": 2
 },
 "HallLength": {
 "Min": 5,
-"Max": 21
+"Max": 26
 },
 "GenericRooms": [
 {
@@ -5529,7 +5529,7 @@
 "Y": 0
 }
 },
-"Rate": 1000
+"Rate": 200
 },
 {
 "Spawn": {
@@ -5559,7 +5559,7 @@
 "Y": 0
 }
 },
-"Rate": 125
+"Rate": 5
 },
 {
 "Spawn": {
@@ -5574,7 +5574,7 @@
 "Y": 0
 }
 },
-"Rate": 750
+"Rate": 200
 },
 {
 "Spawn": {
@@ -5589,7 +5589,7 @@
 "Y": 0
 }
 },
-"Rate": 250
+"Rate": 100
 },
 {
 "Spawn": {
@@ -5604,7 +5604,7 @@
 "Y": 0
 }
 },
-"Rate": 1
+"Rate": 5
 },
 {
 "Spawn": {
@@ -5619,7 +5619,7 @@
 "Y": 0
 }
 },
-"Rate": 10
+"Rate": 100
 },
 {
 "Spawn": {
@@ -5634,7 +5634,7 @@
 "Y": 0
 }
 },
-"Rate": 500
+"Rate": 300
 },
 {
 "Spawn": {
@@ -5664,7 +5664,7 @@
 "Y": 0
 }
 },
-"Rate": 250
+"Rate": 200
 },
 {
 "Spawn": {
@@ -5679,7 +5679,7 @@
 "Y": 0
 }
 },
-"Rate": 1000
+"Rate": 550
 },
 {
 "Spawn": {
@@ -5694,7 +5694,7 @@
 "Y": 0
 }
 },
-"Rate": 2000
+"Rate": 200
 },
 {
 "Spawn": {
@@ -5702,14 +5702,14 @@
 "Cursed": false,
 "Value": "crunchy_leaf",
 "HiddenValue": "",
-"Amount": 2,
+"Amount": 1,
 "Price": 0,
 "TileLoc": {
 "X": 0,
 "Y": 0
 }
 },
-"Rate": 1500
+"Rate": 200
 }
 ],
 "SpawnAmount": 3
@@ -5751,13 +5751,13 @@
 "SpawnConditions": [],
 "SpawnFeatures": []
 },
-"Rate": 24
+"Rate": 19
 },
 {
 "Spawn": {
 "BaseForm": {
 "Species": "appletun",
-"Form": -1,
+"Form": 0,
 "Skin": "",
 "Gender": -1
 },
@@ -5795,11 +5795,11 @@
 "Rate": 1
 }
 ],
-"SpawnAmount": 1
+"SpawnAmount": 2
 },
 "HallLength": {
 "Min": 5,
-"Max": 21
+"Max": 26
 },
 "GenericRooms": [
 {
@@ -7560,7 +7560,7 @@
 "Y": 0
 }
 },
-"Rate": 1000
+"Rate": 200
 },
 {
 "Spawn": {
@@ -7590,7 +7590,7 @@
 "Y": 0
 }
 },
-"Rate": 125
+"Rate": 5
 },
 {
 "Spawn": {
@@ -7605,7 +7605,7 @@
 "Y": 0
 }
 },
-"Rate": 750
+"Rate": 200
 },
 {
 "Spawn": {
@@ -7620,7 +7620,7 @@
 "Y": 0
 }
 },
-"Rate": 250
+"Rate": 100
 },
 {
 "Spawn": {
@@ -7635,7 +7635,7 @@
 "Y": 0
 }
 },
-"Rate": 1
+"Rate": 5
 },
 {
 "Spawn": {
@@ -7650,7 +7650,7 @@
 "Y": 0
 }
 },
-"Rate": 10
+"Rate": 100
 },
 {
 "Spawn": {
@@ -7665,7 +7665,7 @@
 "Y": 0
 }
 },
-"Rate": 500
+"Rate": 300
 },
 {
 "Spawn": {
@@ -7695,7 +7695,7 @@
 "Y": 0
 }
 },
-"Rate": 250
+"Rate": 200
 },
 {
 "Spawn": {
@@ -7710,7 +7710,7 @@
 "Y": 0
 }
 },
-"Rate": 1000
+"Rate": 550
 },
 {
 "Spawn": {
@@ -7725,7 +7725,7 @@
 "Y": 0
 }
 },
-"Rate": 2000
+"Rate": 200
 },
 {
 "Spawn": {
@@ -7733,14 +7733,14 @@
 "Cursed": false,
 "Value": "crunchy_leaf",
 "HiddenValue": "",
-"Amount": 2,
+"Amount": 1,
 "Price": 0,
 "TileLoc": {
 "X": 0,
 "Y": 0
 }
 },
-"Rate": 1500
+"Rate": 200
 }
 ],
 "SpawnAmount": 3
@@ -7782,13 +7782,13 @@
 "SpawnConditions": [],
 "SpawnFeatures": []
 },
-"Rate": 24
+"Rate": 19
 },
 {
 "Spawn": {
 "BaseForm": {
 "Species": "appletun",
-"Form": -1,
+"Form": 0,
 "Skin": "",
 "Gender": -1
 },
@@ -7826,11 +7826,11 @@
 "Rate": 1
 }
 ],
-"SpawnAmount": 1
+"SpawnAmount": 2
 },
 "HallLength": {
 "Min": 5,
-"Max": 21
+"Max": 26
 },
 "GenericRooms": [
 {
@@ -9031,11 +9031,43 @@
 ],
 "IsRelevant": true,
 "Comment": ""
+},
+{
+"$type": "RogueEssence.LevelGen.LayeredSegment, RogueEssence",
+"Floors": [
+{
+"$type": "RogueEssence.LevelGen.LoadGen, RogueEssence",
+"GenSteps": [
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "RogueEssence.LevelGen.MappedRoomStep`1[[RogueEssence.LevelGen.MapLoadContext, RogueEssence]], RogueEssence",
+"MapID": "MayorRoom"
+}
+}
+],
+"Comment": ""
+}
+],
+"ZoneSteps": [],
+"IsRelevant": false,
+"Comment": ""
 }
 ],
 "GroundMaps": [
 "AppleTown",
-"AppleTownConcert"
+"AppleTownConcert",
+"AppleTownMayor",
+"AppleMayor",
+"MayorRoom",
+"AppleMayor_pt2",
+"AppleTownMayor_pt2",
+"AppleTown_pt2",
+"AppleTownConcert_pt2"
 ]
 }
 }

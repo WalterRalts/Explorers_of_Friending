@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -8949,7 +8949,7 @@
 }
 ],
 "AssetName": "QuizTime",
-"Music": "B25. Trickster Woods.ogg",
+"Music": "",
 "EdgeView": 1,
 "NoSwitching": false,
 "ViewCenter": null,
@@ -8980,8 +8980,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 98,
-"Y": 121
+"X": 99,
+"Y": 126
 },
 "serializationHeight": 0,
 "serializationDir": 5,
@@ -8995,7 +8995,7 @@
 "Species": "zigzagoon",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 1
 },
 "Level": 1,
 "EXP": 0,
@@ -9061,8 +9061,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 98,
-"Y": 117,
+"X": 99,
+"Y": 126,
 "Width": 16,
 "Height": 16
 }
@@ -9077,7 +9077,7 @@
 "InteractOrder": 0,
 "serializationLoc": {
 "X": 151,
-"Y": 122
+"Y": 125
 },
 "serializationHeight": 0,
 "serializationDir": 3,
@@ -9091,7 +9091,7 @@
 "Species": "sentret",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 2
 },
 "Level": 1,
 "EXP": 0,
@@ -9157,8 +9157,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 146,
-"Y": 118,
+"X": 151,
+"Y": 125,
 "Width": 16,
 "Height": 16
 }
@@ -9172,8 +9172,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 125,
-"Y": 40
+"X": 124,
+"Y": 39
 },
 "serializationHeight": 0,
 "serializationDir": 0,
@@ -9187,7 +9187,7 @@
 "Species": "poochyena",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 1
 },
 "Level": 1,
 "EXP": 0,
@@ -9253,8 +9253,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 121,
-"Y": 43,
+"X": 124,
+"Y": 39,
 "Width": 16,
 "Height": 16
 }
@@ -9268,8 +9268,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 77,
-"Y": 76
+"X": 71,
+"Y": 77
 },
 "serializationHeight": 0,
 "serializationDir": 6,
@@ -9283,7 +9283,7 @@
 "Species": "marill",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 1
 },
 "Level": 1,
 "EXP": 0,
@@ -9349,8 +9349,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 77,
-"Y": 76,
+"X": 71,
+"Y": 77,
 "Width": 16,
 "Height": 16
 }
@@ -9364,8 +9364,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 168,
-"Y": 75
+"X": 179,
+"Y": 77
 },
 "serializationHeight": 0,
 "serializationDir": 2,
@@ -9379,7 +9379,7 @@
 "Species": "azurill",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 2
 },
 "Level": 1,
 "EXP": 0,
@@ -9445,8 +9445,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 166,
-"Y": 75,
+"X": 179,
+"Y": 77,
 "Width": 16,
 "Height": 16
 }

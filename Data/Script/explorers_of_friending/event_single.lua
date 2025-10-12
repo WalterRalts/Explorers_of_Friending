@@ -25,40 +25,7 @@ function SINGLE_CHAR_SCRIPT.AzuNotLeader(owner, ownerChar, context, args)
 	end
 end
 
-function SINGLE_CHAR_SCRIPT.SlumberPollen(owner, ownerChar, context, args)
-	--only check if puchi is in the team
-	if GAME:GetPlayerPartyCount() > 4 and GAME:GetPlayerPartyMember(3).BaseForm.Species == "poochyena" then
-		local puchi = GAME:GetPlayerPartyMember(3)
-		UI:SetSpeaker(puchi)
-		local sleep = RogueEssence.Dungeon.StatusEffect("sleep")
-		local turns = _DATA.Save.TotalTurns
-		if turns % 60 == 0 and turns > 5 then
-			local sleep_chance = math.random(20)
-			if sleep_chance == 20 then
-				local sleep_roll = false
-				if SV.tarro_town.puchi_tired and puchi:GetStatusEffect("sleep") == nil and sleep_roll == false then
-					PrintInfo("Sleepy time!")
-					local say_choice = math.random(3)
-					if say_choice == 1 then
-						UI:SetSpeakerEmotion("Pain")
-						UI:WaitShowDialogue("Nope... rest time...!")
-					elseif say_choice == 2 then
-						UI:SetSpeakerEmotion("Dizzy")
-						UI:WaitShowDialogue("Fluffy clouds...!")
-					elseif say_choice == 3 then
-						UI:SetSpeakerEmotion("Stunned")
-						UI:WaitShowDialogue("Need...[pause=65][emote=Pain] energy...")
-					end
-					sleep:LoadFromData()
-					TASK:WaitTask(puchi:AddStatusEffect(nil, sleep, false))
-					sleep_roll = true
-				end
-			else
-				PrintInfo("Sleep roll failed!")
-			end
-		end
-	end
-end
+
 
 bag_warn = false
 function SINGLE_CHAR_SCRIPT.BagCount(owner, ownerChar, context, args)
@@ -1540,7 +1507,7 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 			UI:SetSpeakerEmotion("Normal")
 			UI:WaitShowDialogue("Once we do, we can press " .. STRINGS:LocalKeyString(12) .. " to open the bag.")
 		end
-	elseif area_name == "Tarro Tree Hallows" and SV.tarro_town.PieChapter < 8 then
+	elseif area_name == "Tarro Tree Hallows" and SV.tarro_town.PieChapter <= 9 then
 		local senna = GAME:GetPlayerPartyMember(2)
 		local puchi = GAME:GetPlayerPartyMember(3)
 		local ziggy = GAME:GetPlayerPartyMember(4)
@@ -1563,7 +1530,7 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 				UI:SetSpeaker(ziggy)
 				UI:SetSpeakerEmotion("Determined")
 				UI:WaitShowDialogue("Guuuuuuys!")
-			elseif floor_no == 3 then
+			elseif floor_no == 2 then
 				UI:SetSpeaker(maru)
 				UI:SetSpeakerEmotion("Normal")
 				UI:WaitShowDialogue("I think I'm getting tired of being in front...")
@@ -1585,6 +1552,22 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 				UI:SetSpeaker(azura)
 				UI:SetSpeakerEmotion("Worried")
 				UI:WaitShowDialogue("I don't know...")
+			elseif floor_no == 3 then
+				UI:SetSpeaker(maru)
+				UI:SetSpeakerEmotion("Normal")
+				UI:WaitShowDialogue("Puchi is pretty strong, maybe he can go in front and get all the dungeon monsters out of the way.")
+	
+				UI:SetSpeaker(ziggy)
+				UI:SetSpeakerEmotion("Happy")
+				UI:WaitShowDialogue("Yeah! Let's change tactics team!")
+	
+				UI:SetSpeaker(puchi)
+				UI:SetSpeakerEmotion("Pain")
+				UI:WaitShowDialogue("(I'm so tired.)")
+	
+				UI:SetSpeaker(maru)
+				UI:SetSpeakerEmotion("Normal")
+				UI:WaitShowDialogue("I'll consider opening the menu and choosing Tactics.")
 			end
 		elseif DUNsection == 1 then
 			if floor_no == 0 then
@@ -1630,7 +1613,6 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 			UI:WaitShowDialogue("Um... maybe we shouldn't do that...")
 		end
 	elseif area_name == "Entoh Thicket" then
-		print("You are here!")
 		local rexio = GAME:GetPlayerPartyMember(0)
 		if floor_no == 0 then
 			UI:SetSpeaker(rexio)
@@ -1644,13 +1626,41 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 			UI:WaitShowDialogue("While playling as Rexio, use the B key to sense items within 10 tiles")
 		end
 	elseif area_name == "Entoh Town" then
-		print("You are here!")
 		local rexio = GAME:GetPlayerPartyMember(0)
 		UI:SetSpeaker(rexio)
 		UI:SetSpeakerEmotion("Worried")
 		UI:WaitShowDialogue("Mm... the usual exit is blocked now...")
 		UI:SetSpeakerEmotion("Determined")
 		UI:WaitShowDialogue("Where else can we get out...?")
+	elseif area_name == "Apple Forest" then
+		if floor_no == 2 then
+			local leader = GAME:GetPlayerPartyMember(0)
+			local second = GAME:GetPlayerPartyMember(1)
+			local third = GAME:GetPlayerPartyMember(2)
+			UI:SetSpeaker(leader)
+			UI:SetSpeakerEmotion("Normal")
+			UI:WaitShowDialogue("There are a lot of switches here.")
+
+			UI:SetSpeaker(second)
+			UI:SetSpeakerEmotion("Stunned")
+			UI:WaitShowDialogue("And a lot of walls.")
+
+			UI:SetSpeaker(third)
+			UI:SetSpeakerEmotion("Happy")
+			UI:WaitShowDialogue("Let's just flip all of them.")
+
+			UI:SetSpeaker(leader)
+			UI:SetSpeakerEmotion("Normal")
+			UI:WaitShowDialogue("What if it's a trap...?")
+
+			UI:SetSpeaker(third)
+			UI:SetSpeakerEmotion("Worried")
+			UI:WaitShowDialogue("[speed=0.1]...[pause=75][speed=1.0]f[emote=Normal]lip 'em.")
+
+			UI:SetSpeaker(second)
+			UI:SetSpeakerEmotion("Joyous")
+			UI:WaitShowDialogue("Yeah, flip flip flip!")
+		end
 	end
 end
 
@@ -1785,5 +1795,40 @@ function SINGLE_CHAR_SCRIPT.AddApple(owner, ownerChar, context, args)
 	else
 		apple = apple + 1
 		print(apple)
+	end
+end
+
+function SINGLE_CHAR_SCRIPT.SlumberPollen(owner, ownerChar, context, args)
+	--only check if puchi is in the team
+	if GAME:GetPlayerPartyCount() > 4 and GAME:GetPlayerPartyMember(3).BaseForm.Species == "poochyena" then
+		local puchi = GAME:GetPlayerPartyMember(3)
+		UI:SetSpeaker(puchi)
+		local sleep = RogueEssence.Dungeon.StatusEffect("sleep")
+		local turns = _DATA.Save.TotalTurns
+		if turns % 60 == 0 and turns > 5 then
+			local sleep_chance = math.random(20)
+			if sleep_chance == 20 then
+				local sleep_roll = false
+				if SV.tarro_town.puchi_tired and puchi:GetStatusEffect("sleep") == nil and sleep_roll == false then
+					PrintInfo("Sleepy time!")
+					local say_choice = math.random(3)
+					if say_choice == 1 then
+						UI:SetSpeakerEmotion("Pain")
+						UI:WaitShowDialogue("Nope... rest time...!")
+					elseif say_choice == 2 then
+						UI:SetSpeakerEmotion("Dizzy")
+						UI:WaitShowDialogue("Fluffy clouds...!")
+					elseif say_choice == 3 then
+						UI:SetSpeakerEmotion("Stunned")
+						UI:WaitShowDialogue("Need...[pause=65][emote=Pain] energy...")
+					end
+					sleep:LoadFromData()
+					TASK:WaitTask(puchi:AddStatusEffect(nil, sleep, false))
+					sleep_roll = true
+				end
+			else
+				PrintInfo("Sleep roll failed!")
+			end
+		end
 	end
 end

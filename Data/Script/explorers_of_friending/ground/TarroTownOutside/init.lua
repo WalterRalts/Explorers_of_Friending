@@ -6,7 +6,6 @@
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
 require 'explorers_of_friending.ground.TarroTownOutside.cutscene'
-require 'explorers_of_friending.partner'
 
 -- Package name
 local TarroTownOutside = {}
@@ -50,9 +49,7 @@ function TarroTownOutside.Init(map)
 
   if (wager_up ~= 0 and cup_total_points ~= 0) and (wager_up ~= nil and cup_total_points ~= nil) then
     TarroTownOutside.Reward()
-  end
-
-  
+  end  
   GAME:CutsceneMode(false)
 end
 
@@ -193,27 +190,23 @@ function TarroTownOutside.TTOutside_EExit_Touch(obj, activator)
 end
 
 function TarroTownOutside.Puchi_Action(obj, activator)
-  local maru = CH("PLAYER")
   local azura = CH('Teammate1')
-  local puchi = CH('Puchi')
-  
   if SV.tarro_town.PieChapter == 0 then  
-    GROUND:CharTurnToCharAnimated(maru, puchi, 4)
-    GROUND:CharTurnToCharAnimated(azura, puchi, 4)
-    GROUND:CharTurnToCharAnimated(puchi, maru, 4)
-    UI:SetSpeaker(maru)
+    COMMON.FaceEachother(obj, activator)
+    GROUND:CharTurnToCharAnimated(azura, obj, 4)
+    UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Puchiiii!")
 
-    UI:SetSpeaker(puchi)
+    UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Yo.")
 
-    UI:SetSpeaker(maru)
+    UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("What are you doing out here?")
 
-    UI:SetSpeaker(puchi)
+    UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Not much...")
     UI:WaitShowDialogue("...mostly waiting on my mom to calm down again.")
@@ -222,31 +215,30 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("Again...?")
 
-    UI:SetSpeaker(puchi)
+    UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue("Yeah... it's not my day.[pause=35] Broke[emote=Worried] my favorite toy, too...")
     UI:SetSpeakerEmotion("Happy")
-    GROUND:CharAnimateTurn(puchi, Direction.Up, 4, false)
+    GROUND:CharAnimateTurn(obj, Direction.Up, 4, false)
     UI:WaitShowDialogue("The clouds are calming me down though, so puffy today.")
-  elseif SV.tarro_town.PieChapter == 1 then 
-    GROUND:CharTurnToCharAnimated(maru, puchi, 4)
-    GROUND:CharTurnToCharAnimated(azura, puchi, 4)
-    GROUND:CharTurnToCharAnimated(puchi, maru, 4)
-    UI:SetSpeaker(maru)
+  elseif SV.tarro_town.PieChapter == 1 then
+    COMMON.FaceEachother(obj, activator)
+    GROUND:CharTurnToCharAnimated(azura, obj, 4)
+    UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Puchi!")
 
-    UI:SetSpeaker(puchi)
+    UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("W-wha... you ate all your pie already?!")
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("At least ask for seconds, haha!")
 
-    UI:SetSpeaker(maru)
+    UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("No, actually,[pause=43] we did not.")
 
-    UI:SetSpeaker(puchi)
+    UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Special3")
     UI:WaitShowDialogue("...[pause=61]then why are you here?")
 
@@ -254,16 +246,16 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeakerEmotion("Determined")
     UI:WaitShowDialogue("Yeah, why are we here?")
 
-    GROUND:CharTurnToCharAnimated(maru, azura, 4)
+    GROUND:CharTurnToCharAnimated(activator, azura, 4)
     GAME:WaitFrames(45)
-    GROUND:CharTurnToCharAnimated(maru, puchi, 4)
+    GROUND:CharTurnToCharAnimated(activator, obj, 4)
     GAME:WaitFrames(45)
-    GROUND:CharTurnToCharAnimated(maru, azura, 4)
+    GROUND:CharTurnToCharAnimated(activator, azura, 4)
     GAME:WaitFrames(25)
-    GROUND:CharTurnToCharAnimated(maru, puchi, 4)
+    GROUND:CharTurnToCharAnimated(activator, obj, 4)
     GAME:WaitFrames(100)
 
-    UI:SetSpeaker(maru)
+    UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Special0")
     UI:WaitShowDialogue("I dunno.")
 
@@ -271,7 +263,7 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("Maru!")
 
-    UI:SetSpeaker(maru)
+    UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Fine, fine, we're going now.")
   elseif SV.tarro_town.PieChapter < 3 then
@@ -282,7 +274,7 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Puchi!")
 
-    UI:SetSpeaker(puchi)
+    UI:SetSpeaker(obj)
     UI:WaitShowDialogue("Hello, Azura.[pause=35] Hello, Maru.")
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("[speed=0.2]...s[speed=1.0]trange,[pause=0] I'd expect a bunch of crumbs on your face by now...")
@@ -295,7 +287,7 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeaker(maru)
     UI:WaitShowDialogue("Yeah...[pause=41] mom ran [emote=Worried]out of big apples.")
 
-    UI:SetSpeaker(puchi)
+    UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Oh,[pause=25] so you have to get more,[pause=25] I'm assuming.")
     GROUND:CharTurnToCharAnimated(maru, puchi, 4)
@@ -309,11 +301,11 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     end
 
     COMMON.CharQuestion("Teammate1")
-    UI:WaitShowDialogue("[speed=0.1]...![speed=1.0][pause=30] W[emote=Surprised]a[script=0]it![pause=40] T[emote=Inspired]hat must mean that you have a Big Apple!", azura_gasp())
+    UI:WaitShowDialogue("[speed=0.1]...![speed=1.0][pause=30] W[emote=Surprised]a[script=0]it![pause=40] T[emote=Inspired]hat must mean that you have a Big Apple!", {azura_gasp})
     UI:SetSpeakerEmotion("Joyous")
     UI:WaitShowDialogue("Gimme, gimme, gimme!")
 
-    UI:SetSpeaker(puchi)
+    UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("[speed=0.2]Mmmmmmmmm,[speed=1.0][pause=25] about that...")
     UI:WaitShowDialogue("[pause=45]...I ate it.")
@@ -324,7 +316,7 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("...")
 
-    UI:SetSpeaker(puchi)
+    UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("It was delicious.")
   elseif SV.tarro_town.PieChapter <= 5 then
@@ -335,12 +327,12 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Puchi!")
 
-    UI:SetSpeaker(puchi)
+    UI:SetSpeaker(obj)
     GROUND:CharTurnToCharAnimated(puchi, maru, 4)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("[speed=0.2]...")
 
-    UI:SetSpeaker(puchi)
+    UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("If my nose isn't acting up, I smell Big Apple.")
     UI:SetSpeakerEmotion("Happy")
@@ -350,7 +342,7 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeakerEmotion("Joyous")
     UI:WaitShowDialogue("Pie[pause=20] pie[pause=20] pie[pause=20] pie!")
 
-    UI:SetSpeaker(puchi)
+    UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowTimedDialogue("Share???", 20)
 
@@ -358,11 +350,10 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("No.")
 
-    UI:SetSpeaker(puchi)
+    UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue("Heck.")
   end
-  
 end
 
 function TarroTownOutside.CupShuffle_Action(obj, activator)

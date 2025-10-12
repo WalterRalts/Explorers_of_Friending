@@ -21,7 +21,6 @@ function TarroTownBigTree_ch3.Init(map)
   local partner = CH('Teammate1')
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   partner.CollisionDisabled = true
-
 end
 
 ---TarroTownBigTree_ch3.Enter(map)
@@ -73,6 +72,21 @@ function TarroTownBigTree_ch3.TreeHallow_Entrance_Touch(obj, activator)
   local dungeon_entrances = {"tarro_tree_hollows"}
   local ground_entrances = {}
   COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances)]]--
+end
+
+function TarroTownBigTree_ch3.Sloo_Action(obj, activator)
+  COMMON.SetCharAndEmotion(obj, "Worried")
+  UI:WaitShowDialogue("[speed=0.3]I... forgot why I'm here.")
+end
+
+function TarroTownBigTree_ch3.Bungo_Action(obj, activator)
+  COMMON.SetCharAndEmotion(obj, "Happy")
+  UI:WaitShowDialogue("I am master of the sea!")
+end
+
+function TarroTownBigTree_ch3.Hopsa_Action(obj, activator)
+  COMMON.SetCharAndEmotion(obj, "Happy")
+  UI:WaitShowDialogue("I can kick things to the moon!")
 end
 
 function TarroTownBigTree_ch3.InfoSign_Action(obj, activator)
@@ -128,8 +142,6 @@ end
 
 function TarroTownBigTree_ch3.Hollian_Action(obj, activator)
   local holly = CH("Hollian")
-  
-
   if vile == 0 then
     UI:SetSpeaker(holly)
     UI:SetSpeakerEmotion("Normal")
@@ -145,8 +157,6 @@ function TarroTownBigTree_ch3.Hollian_Action(obj, activator)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("Wait, aren't you two are locals? You heard the explosion.[pause=40] You should probably tell the mayor when she's less busy.")
   end
-  
-  
 end
 
 function TarroTownBigTree_ch3.Storage_Action(obj, activator)
@@ -179,15 +189,15 @@ function TarroTownBigTree_ch3.Dean_Action(obj, activator)
   local dean = CH('Dean')
   
   if chat == 0 then
-    COMMON.SetCharAndEmotion(dean, "Happy")
+    COMMON.SetCharAndEmotion(obj, "Happy")
     UI:WaitShowDialogue("I love this tree so much![pause=15] The smell is so good!")
     chat = chat + 1
   elseif chat == 1 then
-    COMMON.SetCharAndEmotion(dean, "Worried")
+    COMMON.SetCharAndEmotion(obj, "Worried")
     UI:WaitShowDialogue("I bet it looks better, too, but I can't see all that well.")
     chat = chat + 1
   else
-    COMMON.SetCharAndEmotion(dean, "Normal")
+    COMMON.SetCharAndEmotion(obj, "Normal")
     UI:WaitShowDialogue("I should ask my ma to live here instead.[pause=20] I heard they're adding homes in the tree.")
   end
 end

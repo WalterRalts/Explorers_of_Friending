@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -59284,7 +59284,56 @@
 "Name": "New Deco",
 "Layer": 0,
 "Visible": true,
-"Anims": []
+"Anims": [
+{
+"MapLoc": {
+"X": 120,
+"Y": 0
+},
+"ObjectAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "Block_Blank",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": 0,
+"Alpha": 255,
+"AnimFlip": 0
+}
+},
+{
+"MapLoc": {
+"X": 96,
+"Y": 0
+},
+"ObjectAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "Block_Blank",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": 0,
+"Alpha": 255,
+"AnimFlip": 0
+}
+},
+{
+"MapLoc": {
+"X": 72,
+"Y": 0
+},
+"ObjectAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "Block_Blank",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": 0,
+"Alpha": 255,
+"AnimFlip": 0
+}
+}
+]
 }
 ],
 "Entities": [
@@ -59516,7 +59565,7 @@
 "X": 72,
 "Y": 0,
 "Width": 72,
-"Height": 24
+"Height": 26
 }
 }
 ],

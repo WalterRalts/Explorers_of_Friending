@@ -6,7 +6,6 @@
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
 require 'explorers_of_friending.ground.MaruHome.cutscene'
-require 'explorers_of_friending.partner'
 
 -- Package name
 local MaruHome = {}
@@ -227,7 +226,7 @@ function MaruHome.MaruHomeExit_Touch(obj, activator)
     UI:WaitShowDialogue("Hang on there, bud!")
 
     GROUND:MoveToPosition(amazuru, maru.Position.X, maru.Position.Y - 24, false, 6)
-    COMMON.FaceEachother("PLAYER", "Amazuru")
+    COMMON.FaceEachother(maru, amazuru)
     COMMON.GiftItem(CH("PLAYER"), "berry_oran")
 
     UI:SetSpeaker(amazuru)

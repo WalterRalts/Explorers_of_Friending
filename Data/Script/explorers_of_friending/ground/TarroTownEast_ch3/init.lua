@@ -5,7 +5,7 @@
 ]]--
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
-require 'origin.common'
+require 'explorers_of_friending.common'
 
 -- Package name
 local TarroTownEast_ch3 = {}
@@ -273,7 +273,7 @@ function TarroTownEast_ch3.Arama_Action(obj, activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("I can make enough for everyone, I'm sure!")
 
-    COMMON.FaceEachother("PLAYER", "Teammate1")
+    COMMON.FaceEachother(maru, azura)
     GAME:WaitFrames(22)
     COMMON.CharSweatdrop("PLAYER")
     GAME:WaitFrames(12)
@@ -308,6 +308,10 @@ function TarroTownEast_ch3.Arama_Action(obj, activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Pfft,[pause=20] you're such a noodle.")  
   end
+end
+
+function TarroTownEast_ch3.Furie_Action(obj, activator)
+  TarroTownEast_ch3.Arama_Action()
 end
 
 function TarroTownEast_ch3.MaruMail_Action(obj, activator)

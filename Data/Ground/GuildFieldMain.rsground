@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.10.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -492880,7 +492880,7 @@
 "triggerType": 0,
 "Collider": {
 "X": 1000,
-"Y": 639,
+"Y": 638,
 "Width": 16,
 "Height": 16
 }
@@ -492895,6 +492895,20 @@
 "Collider": {
 "X": 1066,
 "Y": 644,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "Start2",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 52,
+"Y": 36,
 "Width": 16,
 "Height": 16
 }

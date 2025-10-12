@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -55442,7 +55442,7 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 60,
+"X": 59,
 "Y": 272
 },
 "serializationHeight": 0,
@@ -55649,7 +55649,7 @@
 "Species": "scorbunny",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 2
 },
 "Level": 1,
 "EXP": 0,

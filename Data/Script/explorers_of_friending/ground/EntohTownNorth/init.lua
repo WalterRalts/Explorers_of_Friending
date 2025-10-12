@@ -16,7 +16,7 @@ local EntohTownNorth = {}
 ---EntohTownNorth.Init(map)
 --Engine callback function
 function EntohTownNorth.Init(map)
-
+  Todungeonscene = false
   if SV.entoh_town.HelperChapter == 0 then
     Entoh.PanchChallenge()
   elseif SV.entoh_town.thicket.result > -1 then
@@ -24,7 +24,6 @@ function EntohTownNorth.Init(map)
       Entoh.Resulting()
     end
   end
-  
 end
 
 ---EntohTownNorth.Enter(map)
@@ -83,6 +82,7 @@ end
 function EntohTownNorth.Panch_Action(obj, activator)
   local panch = CH("Panch")
   local rexio = CH("PLAYER")
+  COMMON.FaceEachother(obj, activator)
   if SV.entoh_town.HelperChapter < 3 then
     if SV.entoh_town.thicket.result == -1 then
       UI:SetSpeaker(panch)
@@ -97,6 +97,24 @@ function EntohTownNorth.Panch_Action(obj, activator)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("Even if you sucked, you still did it! Hooray!")
     end
+  elseif SV.entoh_town.AdventureChapter > 0 then
+    if SV.entoh_town.thicket.result == -1 then
+      UI:SetSpeaker(panch)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Heh, so maybe you are brave enough to go places.")
+
+      UI:SetSpeaker(rexio)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Who told you I was leaving?")
+
+      UI:SetSpeaker(panch)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Dewey did.")
+    else
+      UI:SetSpeaker(panch)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Yo, Rexiooooo!")
+    end
   else
     UI:SetSpeaker(panch)
     UI:SetSpeakerEmotion("Happy")
@@ -106,6 +124,7 @@ function EntohTownNorth.Panch_Action(obj, activator)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Nah, gotta find a key.")
 
+    COMMON.CharSweatdrop("Panch")
     UI:SetSpeaker(panch)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("Booooooring!")

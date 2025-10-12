@@ -19,7 +19,7 @@ function Entoh.PanchChallenge()
 
     local coro01 = TASK:BranchCoroutine(function() 
         GROUND:MoveToPosition(rexio, panch.Position.X - 40, panch.Position.Y, true, 4)
-        COMMON.FaceEachother("Panch", "PLAYER")
+        COMMON.FaceEachother(panch, rexio)
         end)	
     local coro02 = TASK:BranchCoroutine(function() 
         UI:SetSpeaker(rexio)

@@ -23,8 +23,6 @@ function EntohTownEast.Init(map)
       SV.entoh_town.firstfind = 2
     end
   else
-    GROUND:Hide("Chucky")
-
     COMMON.RespawnAllies()
     local partner = CH("Teammate1")
     if outside_enter == 1 then

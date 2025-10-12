@@ -6,7 +6,6 @@
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
 require 'explorers_of_friending.menu.buzzers_shop'
-require 'explorers_of_friending.partner'
 
 -- Package name
 local TarroTownSquare_ch3 = {}
@@ -91,15 +90,13 @@ function TarroTownSquare_ch3.Lax_Action(obj, activator)
 end
 
 function TarroTownSquare_ch3.Getic_Action(obj, activator)
-  local getic = CH("Getic")
-
-  COMMON.FaceEachother("Getic", "PLAYER")
-  UI:SetSpeaker(getic)
+  COMMON.FaceEachother(obj, activator)
+  UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("Gonna let you know, Maru.")
   UI:SetSpeakerEmotion("Pain")
   UI:WaitShowDialogue("You get older, and everything becomes pins and needles.")
-  GROUND:CharAnimateTurn(getic, Direction.DownRight, 4, false)
+  GROUND:CharAnimateTurn(obj, Direction.DownRight, 4, false)
 end
 
 function TarroTownSquare_ch3.Buzzer_Action(obj, activator)
@@ -200,7 +197,7 @@ function TarroTownSquare_ch3.Gepii_Action(obj, activator)
     local gepii = CH("Gepii")
     local getic = CH("Getic")
     local gekis = CH("Gekis")
-    gepii_dialogue = math.random(1, 4)
+    gepii_dialogue = math.random(4)
     if gepii_dialogue == 1 then
         UI:SetSpeaker(gepii)
         UI:SetSpeakerEmotion("Normal")
@@ -240,7 +237,7 @@ function TarroTownSquare_ch3.Gepii_Action(obj, activator)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("More!")
     elseif gepii_dialogue == 4 then
-        COMMON.FaceEachother("PLAYER", "Gepii")
+        COMMON.FaceEachother(activator, obj)
         UI:SetSpeaker(gepii)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("Oh hey, Mars![pause=25] Welcome to town!")
@@ -255,6 +252,10 @@ function TarroTownSquare_ch3.TTown_HiveEntrance_Touch(obj, activator)
   GAME:FadeOut(false, 20)
   outside_enter = 2
   GAME:EnterGroundMap("TarroTownHive", "TTSquare_HiveEnter")
+end
+
+function TarroTownSquare_ch3.TarroWest_Touch(obj, activator)
+  GAME:EnterGroundMap("TarroTownWest", "North")
 end
 
 function TarroTownSquare_ch3.PlumiHouse_Entrance_Touch(obj, activator)

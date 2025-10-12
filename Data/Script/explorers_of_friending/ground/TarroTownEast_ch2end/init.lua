@@ -173,7 +173,7 @@ function TarroTownEast_ch2end.WentWhere()
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Big adventurers, leveling up in the world.")
 
-  COMMON.FaceEachother("Arama", "Furie")
+  COMMON.FaceEachother(arama, furie)
   UI:SetSpeaker(arama)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("Furie, you have to control your child!")
@@ -189,7 +189,7 @@ function TarroTownEast_ch2end.WentWhere()
 
   GROUND:CharTurnToCharAnimated(beel, arama, 4)
 
-  COMMON.FaceEachother("Arama", "Amazuru")
+  COMMON.FaceEachother(arama, amazuru)
   COMMON.CharAngry("Arama")
   UI:SetSpeaker(arama)
   UI:SetSpeakerEmotion("Angry")

@@ -68924,7 +68924,7 @@
 }
 },
 {
-"EntName": "ConcertEnter",
+"EntName": "Enter",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
@@ -68933,6 +68933,20 @@
 "Collider": {
 "X": 26,
 "Y": 340,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "Enter2",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 538,
+"Y": 344,
 "Width": 16,
 "Height": 16
 }

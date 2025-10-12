@@ -1582,8 +1582,8 @@ function BATTLE_SCRIPT.TidyInteract(owner, ownerChar, context, args)
   context.CancelState.Cancel = true
   DUNGEON:CharTurnToChar(context.Target, context.User)
   local target = context.Target
-  local user = context.
-  i
+  local user = context.User
+  
   -- TODO: create a charstate for being unable to talk and have talk-interfering statuses cause it
   if COMMON.CanTalk(target) then
     local ratio = target.HP * 100 // target.MaxHP
@@ -1592,9 +1592,27 @@ function BATTLE_SCRIPT.TidyInteract(owner, ownerChar, context, args)
     
     if current_dungeon == "Dreaded Depths" then
       if say_choice == 3 then
-        UI:SetSpeaker(target)
-        UI:SetSpeakerEmotion("Dizzy")
-        UI:WaitShowDialogue("THIS PLACE IS SO DIRTY GET ME OUUUUUT!")
+        if user.Name == "Flow" then
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Crying")
+          UI:WaitShowDialogue("FLOOOOOOOOOOW!")
+
+          UI:SetSpeaker(user)
+          UI:SetSpeakerEmotion("Worried")
+          UI:WaitShowDialogue("Yeah yeah,[pause=20] I know,[pause=40] just keep close to my flower and you'll be fine.")
+
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Teary-Eyed")
+          UI:WaitShowDialogue("Flooooow...")
+
+          UI:SetSpeaker(user)
+          UI:SetSpeakerEmotion("Worried")
+          UI:WaitShowDialogue("I gotcha.")
+        else
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Dizzy")
+          UI:WaitShowDialogue("THIS PLACE IS SO DIRTY GET ME OUUUUUT!")
+        end        
       elseif say_choice == 2 then
         UI:SetSpeaker(target)
         UI:SetSpeakerEmotion("Determined")

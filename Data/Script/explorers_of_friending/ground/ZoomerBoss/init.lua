@@ -89,7 +89,7 @@ function ZoomerBoss.PreBattle()
   
   TASK:JoinCoroutines({coro1, coro2})
   
-  COMMON.FaceEachother("PLAYER", "Azura")
+  COMMON.FaceEachother(maru, azura)
   UI:WaitShowDialogue("Maybe we're in the wrong place...?") 
 
   UI:SetSpeaker(azura)
@@ -127,7 +127,7 @@ function ZoomerBoss.PreBattle()
   UI:WaitShowDialogue("Would you like to tell us where, voice \ncoming from nowhere?")
   
   GAME:WaitFrames(40)
-  COMMON.FaceEachother("PLAYER", "Azura")
+  COMMON.FaceEachother(maru, azura)
   GAME:WaitFrames(60)
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Stunned")
@@ -235,7 +235,7 @@ function ZoomerBoss.PostBattle()
   UI:SetSpeakerEmotion("Pain")
   UI:WaitShowDialogue("I[pause=45] am[pause=10] so[pause=15] sorry.")
 
-  COMMON.FaceEachother("PLAYER", "Azura")
+  COMMON.FaceEachother(maru, azura)
   UI:SetSpeaker(azura)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("He'll just have to deal with it.")

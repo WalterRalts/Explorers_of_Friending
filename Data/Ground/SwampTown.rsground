@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -57853,7 +57853,7 @@
 }
 ],
 "AssetName": "SwampTown",
-"Music": "Depleted Basin.ogg",
+"Music": "Muddy Valley.ogg",
 "EdgeView": 1,
 "NoSwitching": false,
 "ViewCenter": null,

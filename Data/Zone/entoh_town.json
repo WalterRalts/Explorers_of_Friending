@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Data.ZoneData, RogueEssence",
 "Name": {
@@ -130,7 +130,8 @@
 "EntohTownSouth",
 "EntohTownEast",
 "EntohTownSouth_ch2",
-"EntohTownEast_ch2"
+"EntohTownEast_ch2",
+"DragonDelivery"
 ]
 }
 }

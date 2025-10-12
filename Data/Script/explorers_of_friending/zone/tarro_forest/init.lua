@@ -21,11 +21,7 @@ end
 ---tarro_forest.EnterSegment(zone, rescuing, segmentID, mapID)
 --Engine callback function
 function tarro_forest.EnterSegment(zone, rescuing, segmentID, mapID)
-  if segmentID == 0 then
-    DUNsection = 0
-  elseif segmentID == 1 then
-    DUNsection = 1
-  end
+
 end
 
 ---tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
@@ -74,7 +70,6 @@ end
 ---tarro_forest.Rescued(zone, name, mail)
 --Engine callback function
 function tarro_forest.Rescued(zone, name, mail)
-
 
 end
 

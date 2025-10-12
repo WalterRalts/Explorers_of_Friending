@@ -84,12 +84,9 @@ function Rexio.Luke()
 
     GAME:MoveCamera(0, 0, 100, true)
     GROUND:Hide("Luke")
-    GROUND:Hide("Wurp")
-    GROUND:Hide("Snow")
-    GROUND:Hide("Tidy")
-    GROUND:Hide("Flow")
 
     --Flow
+    GROUND:Hide("Flow")
     local mon_id1 = RogueEssence.Dungeon.MonsterID("flabebe", 0, "normal", Gender.Female)
   
     local p1 = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id1, 6, "flower_veil", 0)
@@ -103,6 +100,7 @@ function Rexio.Luke()
         _DATA.Save.ActiveTeam.Players[1].ActionEvents:Add(talk_npc)
     
     --Tidy
+    GROUND:Hide("Tidy")
     local mon_id2 = RogueEssence.Dungeon.MonsterID("minccino", 0, "normal", Gender.Female)
     
     local p2 = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id2, 8, "", 0)
@@ -116,6 +114,7 @@ function Rexio.Luke()
         _DATA.Save.ActiveTeam.Players[2].ActionEvents:Add(talk_npc)
 
     --Wurp
+    GROUND:Hide("Wurp")
     local mon_id3 = RogueEssence.Dungeon.MonsterID("wurmple", 0, "normal", Gender.Male)
   
     local p3 = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id3, 7, "", 0)
@@ -129,6 +128,7 @@ function Rexio.Luke()
         _DATA.Save.ActiveTeam.Players[3].ActionEvents:Add(talk_npc)
 
     --Snow
+    GROUND:Hide("Snow")
     local mon_id4 = RogueEssence.Dungeon.MonsterID("snom", 0, "normal", Gender.Female)
   
     local p4 = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id4, 9, "", 0)

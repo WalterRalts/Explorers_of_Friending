@@ -5,7 +5,6 @@
 ]]--
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
-require 'explorers_of_friending.partner'
 -- Package name
 local TarroTownEast_ch2 = {}
 
@@ -158,7 +157,7 @@ function TarroTownEast_ch2.Sunny_Action(obj, activator)
 
     GROUND:CharSetAnim(sunny, "Idle", true)
     COMMON.CharAngry("Sunny")
-    COMMON.FaceEachother("Sunny", "Tango")
+    COMMON.FaceEachother(sunny, tango)
     UI:SetSpeaker(sunny)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("Tango, shush!")

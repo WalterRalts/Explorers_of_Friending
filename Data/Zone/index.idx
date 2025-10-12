@@ -15,7 +15,7 @@
 "KeepTreasure": false,
 "BagSize": -1,
 "Rescues": 0,
-"CountedFloors": 15,
+"CountedFloors": 13,
 "Rogue": 0,
 "Grounds": [
 "DeepForestBreak"
@@ -27,8 +27,7 @@
 2,
 3,
 4,
-5,
-6
+5
 ],
 [
 0,
@@ -37,8 +36,7 @@
 3,
 4,
 5,
-6,
-7
+6
 ]
 ],
 "Name": {
@@ -51,7 +49,7 @@
 },
 "tarro_forest": {
 "$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
-"ExpPercent": 40,
+"ExpPercent": 35,
 "Level": 5,
 "LevelCap": false,
 "KeepSkills": false,
@@ -162,7 +160,7 @@
 },
 "tarro_tree_hollows": {
 "$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
-"ExpPercent": 35,
+"ExpPercent": 40,
 "Level": 7,
 "LevelCap": false,
 "KeepSkills": false,
@@ -262,7 +260,8 @@
 "EntohTownSouth",
 "EntohTownEast",
 "EntohTownSouth_ch2",
-"EntohTownEast_ch2"
+"EntohTownEast_ch2",
+"DragonDelivery"
 ],
 "Maps": [
 [
@@ -378,7 +377,7 @@
 },
 "swamp_line": {
 "$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
-"ExpPercent": 100,
+"ExpPercent": 40,
 "Level": -1,
 "LevelCap": false,
 "KeepSkills": false,
@@ -396,7 +395,8 @@
 [
 0,
 1,
-2
+2,
+3
 ]
 ],
 "Name": {
@@ -453,7 +453,14 @@
 "Rogue": 0,
 "Grounds": [
 "AppleTown",
-"AppleTownConcert"
+"AppleTownConcert",
+"AppleTownMayor",
+"AppleMayor",
+"MayorRoom",
+"AppleMayor_pt2",
+"AppleTownMayor_pt2",
+"AppleTown_pt2",
+"AppleTownConcert_pt2"
 ],
 "Maps": [
 [
@@ -469,6 +476,9 @@
 9,
 10,
 11
+],
+[
+0
 ]
 ],
 "Name": {

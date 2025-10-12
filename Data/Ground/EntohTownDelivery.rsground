@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -62688,12 +62688,12 @@
 }
 },
 {
-"EntName": "Marker_2",
+"EntName": "DragonDelivery",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -62899,6 +62899,20 @@
 "Collider": {
 "X": 364,
 "Y": 303,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "DragonExit",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 364,
+"Y": 282,
 "Width": 16,
 "Height": 16
 }

@@ -5,6 +5,7 @@ function Apple.Tour()
     local maru = CH("PLAYER")
     local azura = CH("Teammate1")
     local rexio = CH("Teammate2")
+    UI:WaitShowTitle("Chapter 1: Appling Away", 180)
 
     GROUND:TeleportTo(azura, maru.Position.X - 34, maru.Position.Y, Dir8.Up, 0)
     GROUND:TeleportTo(rexio, maru.Position.X + 34, maru.Position.Y, Dir8.Up, 0)
@@ -13,18 +14,19 @@ function Apple.Tour()
         COMMON.CharExclaim("Teammate1")
         GAME:WaitFrames(15)
         COMMON.CharHop("Teammate1")
-        COMMON.SetCharAndEmotion(azura, "Shouting")
+        COMMON.SetCharAndEmotion(azura, "Surprised")
         
         local the1 = TASK:BranchCoroutine(function() 
-            COMMON.CharRealizeHeavy("Teammate2")
+            COMMON.CharRealize("Teammate2")
             GROUND:CharTurnToChar(rexio, azura)
             end)
         local the2 = TASK:BranchCoroutine(function()
             GAME:WaitFrames(10)
-            COMMON.CharRealizeHeavy("PLAYER")
+            COMMON.CharRealize("PLAYER")
             GROUND:CharTurnToChar(maru, azura)
             end)
         local the3 = TASK:BranchCoroutine(function()
+            UI:WaitHideTitle(60)
             UI:WaitShowDialogue("AAAAAAAAAAAAAAAAAAAAAAAAAA!!!!")
             end)
         TASK:JoinCoroutines({the1, the2, the3})
@@ -56,7 +58,7 @@ function Apple.Tour()
 
     local the01 = TASK:BranchCoroutine(function()
         GAME:MoveCamera(0, 0, 60, true)
-        COMMON.FaceEachother("PLAYER", "Teammate2")
+        COMMON.FaceEachother(maru, rexio)
         GROUND:AnimateToPosition(azura, "Walk", Dir8.Up, 247, 348, 2, 1, 0)
         end)
     local the02 = TASK:BranchCoroutine(function()
@@ -99,7 +101,8 @@ function Apple.Tour()
     SV.guild.areas[1] = {
         Flag = true,
         Zone = "apple_forest",
-        ID = 1,
+        ID = 0,
         Entry = 0
     }
+    SV.apple_town.visited = true
 end

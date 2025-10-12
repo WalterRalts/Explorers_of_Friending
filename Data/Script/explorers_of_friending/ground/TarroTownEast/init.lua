@@ -5,7 +5,6 @@
 ]]--
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
-require 'explorers_of_friending.partner'
 
 -- Package name
 local TarroTownEast = {}
@@ -211,7 +210,7 @@ function TarroTownEast.Ziggy_Action(obj, activator)
     GROUND:MoveToPosition(maru, 460, 422, false, 8)
     GROUND:MoveToPosition(azura, 460, 400, false, 8)
     GROUND:CharTurnToCharAnimated(maru, ziggy, 4)
-    COMMON.FaceEachother("Teammate1", "Ziggy")
+    COMMON.FaceEachother(azura, ziggy)
     if senna_check_ziggy == 1 then
       UI:SetSpeaker(azura)
       UI:SetSpeakerEmotion("Happy")

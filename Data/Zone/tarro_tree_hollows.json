@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Data.ZoneData, RogueEssence",
 "Name": {
@@ -9,7 +9,7 @@
 "Released": true,
 "Comment": "The Friend Circle's first dungeon. Maybe the only one.",
 "NoEXP": false,
-"ExpPercent": 35,
+"ExpPercent": 40,
 "Level": 7,
 "LevelCap": false,
 "KeepSkills": false,
@@ -1250,6 +1250,59 @@
 "Min": 1,
 "Max": 5
 }
+}
+}
+},
+{
+"Key": {
+"str": [
+6
+]
+},
+"Value": {
+"$type": "RogueEssence.LevelGen.MapEffectStep`1[[RogueEssence.LevelGen.MapGenContext, RogueEssence]], RogueEssence",
+"Effect": {
+"UniversalStates": [],
+"BeforeTryActions": [],
+"BeforeActions": [],
+"OnActions": [],
+"BeforeExplosions": [],
+"BeforeHits": [],
+"OnHits": [],
+"OnHitTiles": [],
+"AfterActions": [],
+"ElementEffects": [],
+"OnEquips": [],
+"OnPickups": [],
+"BeforeStatusAdds": [],
+"OnStatusAdds": [],
+"OnStatusRemoves": [],
+"OnMapStatusAdds": [],
+"OnMapStatusRemoves": [],
+"OnMapStarts": [
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
+"Script": "DungeonTalker",
+"ArgTable": "{}"
+}
+}
+],
+"OnTurnStarts": [],
+"OnTurnEnds": [],
+"OnMapTurnEnds": [],
+"OnWalks": [],
+"OnDeaths": [],
+"OnRefresh": [],
+"OnMapRefresh": [],
+"ModifyHPs": [],
+"RestoreHPs": [],
+"InitActionData": []
 }
 }
 },
@@ -3072,12 +3125,35 @@
 {
 "Item": {
 "$type": "RogueEssence.LevelGen.MapTextureStep`1[[RogueEssence.LevelGen.MapGenContext, RogueEssence]], RogueEssence",
-"GroundTileset": "apple_woods_floor",
-"BlockTileset": "apple_woods_wall",
-"WaterTileset": "apple_woods_secondary",
+"GroundTileset": "forest_area_floor",
+"BlockTileset": "forest_area_wall",
+"WaterTileset": "forest_area_secondary",
 "LayeredGround": false,
 "IndependentGround": false,
-"GroundElement": "bug"
+"GroundElement": "bug",
+"Background": {
+"$type": "RogueEssence.Dungeon.MapBG, RogueEssence",
+"MapLoc": {
+"X": 0,
+"Y": 0
+},
+"BGAnim": {
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"BGMovement": {
+"X": 0,
+"Y": 0
+},
+"Parallax": "0, 0",
+"RepeatX": false,
+"RepeatY": false
+}
 },
 "Range": {
 "Min": 0,
@@ -3119,14 +3195,14 @@
 "X": 0,
 "Y": 0
 },
-"ID": "trap_warp",
+"ID": "trap_poison",
 "Revealed": false,
 "Owner": 0,
 "TileStates": []
 },
-"Rate": 5,
+"Rate": 10,
 "Range": {
-"Min": 2,
+"Min": 0,
 "Max": 7
 }
 },
@@ -3143,7 +3219,7 @@
 },
 "Rate": 20,
 "Range": {
-"Min": 1,
+"Min": 0,
 "Max": 7
 }
 }
@@ -3245,7 +3321,7 @@
 },
 "Level": {
 "Min": 1,
-"Max": 7
+"Max": 5
 },
 "SpecifiedSkills": [
 "absorb",
@@ -3279,7 +3355,7 @@
 },
 "Level": {
 "Min": 1,
-"Max": 8
+"Max": 7
 },
 "SpecifiedSkills": [
 "protect",
@@ -3476,7 +3552,7 @@
 "TeamSizes": [
 {
 "Spawn": 1,
-"Rate": 50,
+"Rate": 1000,
 "Range": {
 "Min": 0,
 "Max": 7
@@ -3484,7 +3560,7 @@
 },
 {
 "Spawn": 2,
-"Rate": 35,
+"Rate": 250,
 "Range": {
 "Min": 1,
 "Max": 7
@@ -3492,7 +3568,7 @@
 },
 {
 "Spawn": 3,
-"Rate": 15,
+"Rate": 50,
 "Range": {
 "Min": 2,
 "Max": 7
@@ -3500,7 +3576,7 @@
 },
 {
 "Spawn": 4,
-"Rate": 5,
+"Rate": 25,
 "Range": {
 "Min": 3,
 "Max": 7
@@ -3809,6 +3885,45 @@
 }
 },
 "ModStates": []
+},
+{
+"$type": "RogueEssence.LevelGen.RangeStepZoneStep, RogueEssence",
+"StepPriority": {
+"str": [
+2,
+1
+]
+},
+"Spawns": {
+"nodes": [
+{
+"Item": {
+"$type": "RogueEssence.AddTunnelStep`1[[RogueElements.IFloorPlanGenContext, RogueElements]], RogueEssence",
+"TurnLength": {
+"Min": 5,
+"Max": 11
+},
+"MaxLength": {
+"Min": 5,
+"Max": 21
+},
+"AllowDeadEnd": false,
+"TraverseFloor": true,
+"Halls": {
+"Min": 2,
+"Max": 11
+},
+"Brush": {
+"$type": "RogueElements.DefaultHallBrush, RogueElements"
+}
+},
+"Range": {
+"Min": 0,
+"Max": 7
+}
+}
+]
+}
 }
 ],
 "IsRelevant": true,
@@ -5267,8 +5382,8 @@
 "Spawn": {
 "$type": "RogueElements.ContextSpawner`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.InvItem, RogueEssence]], RogueElements",
 "Amount": {
-"Min": 20,
-"Max": 51
+"Min": 0,
+"Max": 8
 }
 }
 }
@@ -5322,7 +5437,30 @@
 "WaterTileset": "tt_big_tree_secondary",
 "LayeredGround": false,
 "IndependentGround": false,
-"GroundElement": "bug"
+"GroundElement": "bug",
+"Background": {
+"$type": "RogueEssence.Dungeon.MapBG, RogueEssence",
+"MapLoc": {
+"X": 0,
+"Y": 0
+},
+"BGAnim": {
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"BGMovement": {
+"X": 0,
+"Y": 0
+},
+"Parallax": "0, 0",
+"RepeatX": false,
+"RepeatY": false
+}
 },
 "Range": {
 "Min": 0,

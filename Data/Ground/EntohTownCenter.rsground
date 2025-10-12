@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -17050,21 +17050,12 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
-},
-{
-"Bounds": {
-"X": 232,
-"Y": 480,
-"Width": 8,
-"Height": 8
-},
 "Tags": 0
 },
 {
 "Bounds": {
 "X": 232,
-"Y": 488,
+"Y": 480,
 "Width": 8,
 "Height": 8
 },
@@ -17073,6 +17064,15 @@
 {
 "Bounds": {
 "X": 232,
+"Y": 488,
+"Width": 8,
+"Height": 8
+},
+"Tags": 0
+},
+{
+"Bounds": {
+"X": 232,
 "Y": 496,
 "Width": 8,
 "Height": 8
@@ -17619,7 +17619,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -18188,21 +18188,12 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
-},
-{
-"Bounds": {
-"X": 248,
-"Y": 480,
-"Width": 8,
-"Height": 8
-},
 "Tags": 0
 },
 {
 "Bounds": {
 "X": 248,
-"Y": 488,
+"Y": 480,
 "Width": 8,
 "Height": 8
 },
@@ -18211,6 +18202,15 @@
 {
 "Bounds": {
 "X": 248,
+"Y": 488,
+"Width": 8,
+"Height": 8
+},
+"Tags": 0
+},
+{
+"Bounds": {
+"X": 248,
 "Y": 496,
 "Width": 8,
 "Height": 8
@@ -18757,7 +18757,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -19326,21 +19326,12 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
-},
-{
-"Bounds": {
-"X": 264,
-"Y": 480,
-"Width": 8,
-"Height": 8
-},
 "Tags": 0
 },
 {
 "Bounds": {
 "X": 264,
-"Y": 488,
+"Y": 480,
 "Width": 8,
 "Height": 8
 },
@@ -19349,6 +19340,15 @@
 {
 "Bounds": {
 "X": 264,
+"Y": 488,
+"Width": 8,
+"Height": 8
+},
+"Tags": 0
+},
+{
+"Bounds": {
+"X": 264,
 "Y": 496,
 "Width": 8,
 "Height": 8
@@ -19895,7 +19895,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -20464,21 +20464,12 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
-},
-{
-"Bounds": {
-"X": 280,
-"Y": 480,
-"Width": 8,
-"Height": 8
-},
 "Tags": 0
 },
 {
 "Bounds": {
 "X": 280,
-"Y": 488,
+"Y": 480,
 "Width": 8,
 "Height": 8
 },
@@ -20487,6 +20478,15 @@
 {
 "Bounds": {
 "X": 280,
+"Y": 488,
+"Width": 8,
+"Height": 8
+},
+"Tags": 0
+},
+{
+"Bounds": {
+"X": 280,
 "Y": 496,
 "Width": 8,
 "Height": 8
@@ -21033,7 +21033,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -21602,21 +21602,12 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
-},
-{
-"Bounds": {
-"X": 296,
-"Y": 480,
-"Width": 8,
-"Height": 8
-},
 "Tags": 0
 },
 {
 "Bounds": {
 "X": 296,
-"Y": 488,
+"Y": 480,
 "Width": 8,
 "Height": 8
 },
@@ -21625,6 +21616,15 @@
 {
 "Bounds": {
 "X": 296,
+"Y": 488,
+"Width": 8,
+"Height": 8
+},
+"Tags": 0
+},
+{
+"Bounds": {
+"X": 296,
 "Y": 496,
 "Width": 8,
 "Height": 8
@@ -22171,7 +22171,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -22740,7 +22740,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -23309,7 +23309,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -23878,7 +23878,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -60015,7 +60015,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Flow",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -60098,20 +60098,20 @@
 "Direction": 0,
 "IsInteracting": false,
 "AIEnabled": true,
-"EntName": "NewObject_1",
+"EntName": "Flowerson",
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
 "X": 274,
-"Y": 438
+"Y": 437
 },
 "serializationHeight": 0,
 "serializationDir": 0,
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Mrs. Flowerson",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -60185,7 +60185,7 @@
 "CollisionDisabled": false,
 "Collider": {
 "X": 274,
-"Y": 438,
+"Y": 437,
 "Width": 16,
 "Height": 16
 }
@@ -60640,6 +60640,49 @@
 "Y": 342,
 "Width": 26,
 "Height": 31
+}
+},
+{
+"EntName": "FlowerShop",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 1,
+"ObjectAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"Passable": false,
+"CurrentAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"AnimTime": {
+"Ticks": 0
+},
+"Cycles": 0,
+"DrawOffset": {
+"X": 0,
+"Y": 0
+},
+"Collider": {
+"X": 232,
+"Y": 448,
+"Width": 104,
+"Height": 32
 }
 }
 ],

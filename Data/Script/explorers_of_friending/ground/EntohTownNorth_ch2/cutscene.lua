@@ -63,7 +63,7 @@ function Entoh2.TheFlow()
         end)
         TASK:JoinCoroutines({cor1, cor2})
 
-        COMMON.FaceEachother("Teammate1", "Teammate2")
+        COMMON.FaceEachother(tidy, flow)
         UI:SetSpeaker(tidy)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("Flow, what's going on?")
@@ -94,18 +94,21 @@ function Entoh2.TheFlow()
         GROUND:Hide("Chucky")
         GROUND:CharAnimateTurn(flow, Direction.Right, 8, false)
 
+
         UI:SetSpeaker(flow)
         UI:SetSpeakerEmotion("Angry")
         UI:WaitShowDialogue("CHUCKYYYYYYYYY!!")
         
-        AI:SetCharacterAI(flow, "origin.ai.ground_partner", CH('Teammate1'), flow.Position)
+        AI:SetCharacterAI(tidy, "origin.ai.ground_partner", CH('PLAYER'), tidy.Position)
+        AI:SetCharacterAI(flow, "origin.ai.ground_partner", tidy, flow.Position)
         flow.CollisionDisabled = true
 
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("We should go.")
+        SV.entoh_town.firstfind = 3
         GAME:MoveCamera(0, 0, 0, true)
-    else
+    elseif SV.entoh_town.firstfind < 3 then
         local flow = CH("Teammate1")
         local chucky = CH("Chucky")
         local rexio = CH("PLAYER")
@@ -177,7 +180,7 @@ function Entoh2.TheFlow()
         UI:SetSpeaker(flow)
         UI:SetSpeakerEmotion("Worried")
         UI:WaitShowDialogue("Just... hurry it up a little.[pause=35] Mother's probably worried sick...")
-        COMMON.FaceEachother("Rexio", "Chucky")
+        COMMON.FaceEachother(rexio, chucky)
         GAME:MoveCamera(0, 0, 0, true)
     end
 end

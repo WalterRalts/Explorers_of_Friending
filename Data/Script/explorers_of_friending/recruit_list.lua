@@ -1,4 +1,4 @@
-require 'origin.common'
+require 'explorers_of_friending.common'
 
 RECRUIT_LIST = {}
 --[[

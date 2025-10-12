@@ -1,4 +1,4 @@
-require 'origin.common'
+require 'explorers_of_friending.common'
 
 
 function ZONE_GEN_SCRIPT.Test(zoneContext, context, queue, seed, args)

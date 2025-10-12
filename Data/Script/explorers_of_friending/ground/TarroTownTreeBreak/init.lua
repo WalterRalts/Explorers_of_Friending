@@ -15,6 +15,7 @@ local TarroTownTreeBreak = {}
 ---TarroTownTreeBreak.Init(map)
 --Engine callback function
 function TarroTownTreeBreak.Init(map)
+  GAME:SetCanSwitch(false)
   DUNsection = 1
   SleepingPuchi = false
   MapStrings = STRINGS.MapStrings
@@ -27,8 +28,12 @@ function TarroTownTreeBreak.Init(map)
     GROUND:Hide("Senna")
     GROUND:Hide("Ziggy")
   else
-    Cute_talk = false
-    TarroTownTreeBreak.BreakTime()
+    if DUN_failure == false then
+      Cute_talk = false
+      TarroTownTreeBreak.BreakTime()
+    else
+      TarroTownTreeBreak.OopsTime()
+    end
   end
   if SV.tarro_town.PieChapter == 9 then
     SV.tarro_town.PieChapter = 8
@@ -87,6 +92,19 @@ function TarroTownTreeBreak.BreakTime()
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Looks like it's break time!")
+end
+
+function TarroTownTreeBreak.OopsTime()
+  local azura = CH('Teammate1')
+  local maru = CH('PLAYER')
+
+  UI:SetSpeaker(azura)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("Huh... that wasn't good...")
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Looks like it's time to try again!")
 end
 -------------------------------
 -- Entities Callbacks
@@ -166,7 +184,6 @@ function TarroTownTreeBreak.Cute_Action(obj, activator)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("Oh? Not today? Oh well,[pause=35] s[emote=Happy]afe travels, then!")
     end
-
 end
 
 function TarroTownTreeBreak.Sproutious_Action(obj, activator)
@@ -180,7 +197,7 @@ function TarroTownTreeBreak.Sproutious_Action(obj, activator)
     UI:WaitShowDialogue("For this honey is the most delectable delicacy that my buds of taste hast ever layest against.")
     UI:SetSpeakerEmotion("Sad")
     UI:WaitShowDialogue("Alas, I haveth not sufficient Poke more on my person to consume more of these well crafted jars...")
-    COMMON.FaceEachother("Sproutious", "PLAYER")
+    COMMON.FaceEachother(obj, activator)
     UI:SetSpeakerEmotion("Surprised")
     GAME:WaitFrames(25)
     COMMON.CharExclaim("Sproutious")
@@ -221,7 +238,7 @@ function TarroTownTreeBreak.Senna_Action(obj, activator)
   local maru = CH("PLAYER")
   local azura = CH("Teammate1")
   local senna = CH('Senna')
-  COMMON.FaceEachother("PLAYER", "Senna")
+  COMMON.FaceEachother(activator, obj)
   UI:SetSpeaker(senna)
   UI:SetSpeakerEmotion("Sigh")
   UI:WaitShowDialogue("Phew. What a relief.")
@@ -246,7 +263,7 @@ function TarroTownTreeBreak.Senna_Action(obj, activator)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("I've seen these things all over the place.")
   UI:WaitShowDialogue("I think dad said we could use it to store things, but...")
-  COMMON.FaceEachother("PLAYER", "Senna")
+  COMMON.FaceEachother(obj, activator)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("...you know I don't get involved with dungeon stuff,[pause=25] h[emote=Happy]ehe.")
 end
@@ -273,7 +290,7 @@ function TarroTownTreeBreak.Ziggy_Action(obj, activator)
   end
 
   GAME:WaitFrames(15)
-  COMMON.FaceEachother("Ziggy", "PLAYER")
+  COMMON.FaceEachother(ziggy, activator)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("But you know what,[pause=11] I think we can do it,[pause=25][emote=Joyous] and we probably won't stop trying until the tree is saved!")
   UI:SetSpeakerEmotion("Joyous")
@@ -285,7 +302,7 @@ function TarroTownTreeBreak.Storage_Action(obj, activator)
   GROUND:CharAnimateTurn(senna, Direction.UpLeft, 4, false)
   COMMON:ShowTeamStorageMenu()
   
-  local senna_curious = math.random(1, 4)
+  local senna_curious = math.random(4)
   if senna_curious == 1 then
     UI:SetSpeaker(senna)
     UI:SetSpeakerEmotion("Worried")
@@ -309,7 +326,7 @@ function TarroTownTreeBreak.LockedStairs_Action(obj, activator)
   if SV.tarro_tree_hollows.stairs_unlocked == false then
     UI:ResetSpeaker()
     UI:WaitShowDialogue("The way seems locked...")
-    if GAME:FindPlayerItem("key_tree", true, true) >= 0 then
+    if GAME:FindPlayerItem("key_tree", true, true) then
       SV.tarro_tree_hollows.stairs_unlocked = true
     else
       UI:WaitShowDialogue("There's a strange keyhole over the cover.")
@@ -329,12 +346,17 @@ function TarroTownTreeBreak.TarroTreeHollows_Continue_Touch(obj, activator)
   UI:WaitForChoice()
   result = UI:ChoiceResult()
   if result == 1 then
+    GAME:SetCanSwitch(true)
     _DATA.Save.ActiveTeam.Players[2]:RefreshTraits()
     _DATA.Save.ActiveTeam.Players[3]:RefreshTraits()
     _DATA.Save.ActiveTeam.Players[4]:RefreshTraits()
     GAME:FadeOut(false, 20)
     COMMON:RespawnAllies()
-    GAME:ContinueDungeon("tarro_tree_hollows", 1, 0, 0)
+    if DUN_failure then
+      GAME:EnterDungeon("tarro_tree_hollows", 1, 0, 0, RogueEssence.Data.GameProgress.DungeonStakes.Risk, true, false)
+    else
+      GAME:ContinueDungeon("tarro_tree_hollows", 1, 0, 0)
+    end
   else
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Worried")

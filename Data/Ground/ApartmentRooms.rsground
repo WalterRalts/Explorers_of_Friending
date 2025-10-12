@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -5021,7 +5021,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -5030,7 +5030,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -5039,7 +5039,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -5392,7 +5392,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -5401,7 +5401,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -5410,7 +5410,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -5419,7 +5419,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -25517,8 +25517,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": -27,
-"Y": 376,
+"X": 302,
+"Y": 108,
 "Width": 16,
 "Height": 16
 }
@@ -25540,7 +25540,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "Tidy",
+"Nickname": "Mouse",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -25710,7 +25710,7 @@
 "CollisionDisabled": false,
 "Collider": {
 "X": 103,
-"Y": 87,
+"Y": 88,
 "Width": 16,
 "Height": 16
 }
@@ -25718,12 +25718,12 @@
 ],
 "GroundObjects": [
 {
-"EntName": "NewObject",
+"EntName": "EncleenHouse",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -25754,7 +25754,7 @@
 "Y": 0
 },
 "Collider": {
-"X": 332,
+"X": 333,
 "Y": 88,
 "Width": 24,
 "Height": 48
@@ -25804,12 +25804,12 @@
 }
 },
 {
-"EntName": "PanchHomeEnter",
+"EntName": "PanchHome",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -25852,7 +25852,7 @@
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -25895,7 +25895,7 @@
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -25976,12 +25976,12 @@
 }
 },
 {
-"EntName": "NewObject_6",
+"EntName": "Upper_Floor",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",

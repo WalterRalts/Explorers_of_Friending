@@ -6,7 +6,6 @@
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
 require 'explorers_of_friending.ground.EntohTownCenter_ch2.cutscene'
-require 'explorers_of_friending.partner'
 
 -- Package name
 local EntohTownCenter_ch2 = {}
@@ -21,6 +20,10 @@ function EntohTownCenter_ch2.Init(map)
     Center.Feeling()
     SV.entoh_town.HelperChapter = 6
   elseif SV.entoh_town.HelperChapter == 8 then
+    GAME:RemovePlayerTeam(1)
+    GAME:RemovePlayerTeam(1)
+    GAME:RemovePlayerTeam(1)
+    GAME:RemovePlayerTeam(1)
     Center.AnotherFeeling()
   end
 

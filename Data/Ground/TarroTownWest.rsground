@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -55824,7 +55824,7 @@
 }
 },
 {
-"EntName": "NewObject",
+"EntName": "North",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
@@ -55832,7 +55832,7 @@
 "triggerType": 0,
 "Collider": {
 "X": 113,
-"Y": 30,
+"Y": 32,
 "Width": 16,
 "Height": 16
 }

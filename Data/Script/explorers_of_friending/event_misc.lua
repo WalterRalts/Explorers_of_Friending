@@ -1,4 +1,4 @@
-require 'origin.common'
+require 'explorers_of_friending.common'
 
 function STATUS_SCRIPT.Test(owner, ownerChar, context, args)
   PrintInfo("Test")

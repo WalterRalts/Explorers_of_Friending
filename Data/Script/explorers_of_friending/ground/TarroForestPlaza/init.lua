@@ -5,7 +5,6 @@
 ]]--
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
-require 'explorers_of_friending.partner'
 
 -- Package name
 local TarroForestPlaza = {}
@@ -97,17 +96,17 @@ function TarroForestPlaza.Caterpie_Action(obj, activator)
     UI:SetSpeakerEmotion("Determined")
     UI:WaitShowDialogue("Now, before I let you all off on your own!")
     UI:WaitShowDialogue("Each one of ye needs a name!")
-    COMMON.FaceEachother("Butterfree", "Weedle")
+    COMMON.FaceEachother(butterboss, bug5)
     GAME:WaitFrames(35)
-    COMMON.FaceEachother("Butterfree", "Caterpie")
+    COMMON.FaceEachother(butterboss, bug1)
     UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("You![pause=25] Little one![pause=0] Gimme a name for yourself!")
+    UI:WaitShowDialogue("You![pause=25] Little one![pause=0] Name yourself!")
 
     UI:SetSpeaker(bug1)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("[speed=0.6]U-uh... uh...!")
     bug1.Data.Nickname = "Uh..."
-    COMMON.FaceEachother("PLAYER", "Caterpie")
+    COMMON.FaceEachother(activator, bug1)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("H-help.")
 
@@ -116,7 +115,7 @@ function TarroForestPlaza.Caterpie_Action(obj, activator)
     print(UI:ChoiceResult())
     SV.tarro_forest.caterpie_name = UI:ChoiceResult()
 
-    COMMON.FaceEachother("Butterfree", "Caterpie")
+    COMMON.FaceEachother(butterboss, bug1)
     UI:SetSpeaker(bug1)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("[speed=0.6]Thank you...!")
@@ -132,30 +131,30 @@ function TarroForestPlaza.Caterpie_Action(obj, activator)
     UI:SetSpeakerEmotion("Determined")
     UI:WaitShowDialogue("Now, you bugs will learn manners!")
 
-    COMMON.FaceEachother("PLAYER", "Caterpie")
+    COMMON.FaceEachother(activator, bug1)
     UI:SetSpeaker(bug1)
     UI:SetSpeakerEmotion("Inspired")
     UI:WaitShowDialogue("Thank you...!")
 
-    COMMON.FaceEachother("Butterfree", "Caterpie")
-    COMMON.FaceEachother("Butterfree", "Caterpie_1")
+    COMMON.FaceEachother(butterboss, bug1)
+    COMMON.FaceEachother(butterboss, bug3)
   else
     bug1.Data.Nickname = SV.tarro_forest.caterpie_name
-    COMMON.FaceEachother("PLAYER", "Caterpie")
+    COMMON.FaceEachother(activator, bug1)
     UI:SetSpeaker(bug1)
     UI:SetSpeakerEmotion("Inspired")
     UI:WaitShowDialogue("Thank you...!")
 
-    COMMON.FaceEachother("Butterfree", "Caterpie")
-    COMMON.FaceEachother("Butterfree", "Caterpie_1")
+    COMMON.FaceEachother(butterboss, bug1)
+    COMMON.FaceEachother(butterboss, bug3)
   end
   
 end
 
 function TarroForestPlaza.Butterfree_Action(obj, activator)
-  COMMON.FaceEachother("PLAYER", "Butterfree")
-
   local butterboss = CH("Butterfree")
+
+  COMMON.FaceEachother(activator, butterboss)
   UI:SetSpeaker(butterboss)
   UI:SetSpeakerEmotion("Determined")
   UI:WaitShowDialogue("Bug business! Out of the way!")
