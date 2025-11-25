@@ -85,6 +85,7 @@ SV.magnagate =
 -----------------------------------------------
 -- Level Specific Defaults
 -----------------------------------------------
+
 --- Tarro Town
 --- Locations
 
@@ -97,10 +98,8 @@ SV.tarro_town =
   
   cooking_tutorial_done = 1
 }
---- Dungeons
 
-SV.dungeon_tutorial = 0
-SV.bag_size = 5
+--- Dungeons
 
 SV.tarro_forest =
 {
@@ -149,13 +148,13 @@ SV.apple_forest =
 
 SV.entoh_town = 
 {
-  revisit = false,
+  panchdialogue = 0,
   HelperChapter = -1,
   AdventureChapter = -1,
   spent_dungpoints = 0,
   package_received = false,
   bag_size = 3,
-  thicket = 
+  thicket =
   {
     result = -1
   },
@@ -164,9 +163,17 @@ SV.entoh_town =
   firstfind = 0 -- 1 is for Flow, 2 is for Tidy
 }
 
-SV.apple_town = 
+SV.apple_town =
 {
-  visited = false
+  visited = false,
+  teamed = nil
+}
+
+SV.hertz_town =
+{
+  visited = false,
+  solvedNW = true,
+  desert_scene = true
 }
 
 --- Guild
@@ -180,6 +187,7 @@ SV.guilders =
   },
   entoh_town = 
   {
+    aurm_stats = {},
     scan_level = 1
   },
   fielded_two = false
@@ -191,10 +199,20 @@ SV.guild =
   day = 0,
   event = 0,
   dungeons = {
-    "apple_forest"
+    west = {
+      "apple_forest"
+    },
+    east = {
+      ""
+    }
   },
   areas = {
-    ""
+    west = {
+      ""
+    },
+    east = {
+      ""
+    }
   }
 }
 
@@ -202,16 +220,28 @@ SV.guild =
 --- Minigames and others
 ----------------------------------------------
 
-SV.buzzers_store = 
+-- Secret Items
+
+SV.item =
 {
-  plain_seed = 
+  entoh = false,
+  tarro = false,
+  applin = false
+}
+
+--Custom Stores
+
+SV.buzzers_store =
+{
+  plain_seed =
   {
     count = 10,
     price = 5
   }
 }
 
-SV.GroundTutorial = 0
-
---Dungeon generation
+--Dungeon Stuff
 SV.rent_number = 0
+SV.dungeon_tutorial = 0
+SV.bag_size = 5
+SV.GroundTutorial = 0

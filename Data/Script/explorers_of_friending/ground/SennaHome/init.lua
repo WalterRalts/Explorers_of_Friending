@@ -223,7 +223,7 @@ end
 
 function SennaHome.SennaHome_Exit_Touch(obj, activator)
   print("Exiting?")
-  outside_enter = 3
+  OutEnter = 3
   GAME:FadeOut(false, 20)
   GAME:EnterGroundMap("TarroTownEast_ch3", "TTEast_SennaHomeEnter")
 end

@@ -19,6 +19,9 @@ function EntohTownEast_ch2.Init(map)
   if SV.entoh_town.AdventureChapter >= 2 then
     GROUND:Hide("Luke")
   end
+  if SV.item.entoh == true then
+    GROUND:Hide("Item")
+  end
 end
 
 ---EntohTownEast_ch2.Enter(map)
@@ -40,7 +43,6 @@ end
 --Engine callback function
 function EntohTownEast_ch2.Update(map)
   Partner()
-
 end
 
 ---EntohTownEast_ch2.GameSave(map)
@@ -94,6 +96,70 @@ function EntohTownEast_ch2.EntohDeep_Touch(obj, activator)
   local dungeon_entrances = {"dreaded_depths"}
   local ground_entrances = {}
   COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances)
+  local flow = CH('Teammate1')
+  local tidy = CH('Teammate2')
+  COMMON.SetCharAndEmotion(tidy, "Worried")
+  UI:WaitShowDialogue("...wait,[emote=Surprised] WAIT, WE'RE GOING THIS WAY?!?!")
+
+  COMMON.SetCharAndEmotion(flow, "Worried")
+  UI:WaitShowDialogue("Tidy, come on, we aren't doing your germophobe thing![pause=30] We're helping Rexio!")
+end
+
+function EntohTownEast_ch2.Wurp_Action(obj, activator)
+  COMMON.FaceEachother(obj, activator)
+  COMMON.SetCharAndEmotion(obj, "Worried")
+  UI:WaitShowDialogue("Um, Wexio, why is youw dad just standing thewe...?")
+end
+
+function EntohTownEast_ch2.Tidy_Action(obj, activator)
+  COMMON.FaceEachother(obj, activator)
+  COMMON.SetCharAndEmotion(obj, "Worried")
+  UI:WaitShowDialogue("What was this for, Rexio?")
+
+  COMMON.SetCharAndEmotion(activator, "Normal")
+  UI:WaitShowDialogue("I dunno,[pause=30] this is new to me.")
+end
+
+function EntohTownEast_ch2.Flow_Action(obj, activator)
+  COMMON.SetCharAndEmotion(obj, "Happy")
+  UI:WaitShowDialogue("My flower is ready.")
+end
+
+function EntohTownEast_ch2.Snow_Action(obj, activator)
+  COMMON.FaceEachother(obj, activator)
+  COMMON.SetCharAndEmotion(obj, "Worried")
+  UI:WaitShowDialogue("H-hey, don't... don't tell Tidy w-where we're going...")
+
+  COMMON.SetCharAndEmotion(activator, "Normal")
+  UI:WaitShowDialogue("Is it bad?")
+
+  GROUND:CharAnimateTurnTo(obj, Dir8.Right, 3)
+  GROUND:CharAnimateTurnTo(activator, Dir8.Right, 3)
+  COMMON.SetCharAndEmotion(obj, "Worried")
+  UI:WaitShowDialogue("I-if we're going th-that way, we're going to a m-murky town.")
+  COMMON.FaceEachother(obj, activator)
+  UI:WaitShowDialogue("Momma said th-that Tidy's mom w-would have a h-heart attack if she s-saw...")
+  COMMON.CharSweatdrop("Snow")
+  UI:WaitShowDialogue("Imagine wh-what would happen to Tidy...")
+end
+
+function EntohTownEast_ch2.Item_Touch(obj, activator)
+  local item
+  local choice = math.random(3)
+  if choice == 3 then
+    item = "berry_kebab"
+  elseif choice then
+    item = "berry_sitrus"
+  else
+    item = "packed_honey"
+  end
+  COMMON.GiftItem(activator, item)
+
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("(Great!)")
+  GROUND:Hide("Item")
+  SV.item.entoh = true
 end
 
 return EntohTownEast_ch2

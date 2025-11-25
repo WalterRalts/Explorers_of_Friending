@@ -58316,7 +58316,7 @@
 "Species": "minccino",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 2
 },
 "Level": 1,
 "EXP": 0,
@@ -58412,7 +58412,7 @@
 "Species": "flabebe",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 2
 },
 "Level": 1,
 "EXP": 0,
@@ -58604,7 +58604,7 @@
 "Species": "wurmple",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 2
 },
 "Level": 1,
 "EXP": 0,
@@ -58700,7 +58700,7 @@
 "Species": "snom",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 2
 },
 "Level": 1,
 "EXP": 0,
@@ -58885,7 +58885,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Zoomer",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {

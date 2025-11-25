@@ -19,6 +19,8 @@ function AppleMayor_pt2.Init(map)
     COMMON.RespawnAllies()
     AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
     AI:SetCharacterAI(CH("Teammate2"), "origin.ai.ground_partner", CH("Teammate1"), CH("Teammate2").Position)
+    CH("Teammate1").CollisionDisabled = true
+    CH("Teammate2").CollisionDisabled = true
   end
 end
 
@@ -40,7 +42,6 @@ end
 ---AppleMayor_pt2.Update(map)
 --Engine callback function
 function AppleMayor_pt2.Update(map)
-
 
 end
 
@@ -65,6 +66,56 @@ end
 
 function AppleMayor_pt2.MayorExit_Touch(obj, activator)
   GAME:EnterGroundMap("AppleTownMayor_pt2", "Enter")
+end
+
+function AppleMayor_pt2.Counter_Action(obj, activator)
+  UI:SetSpeaker(GAME:GetPlayerPartyMember(0))
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Hello?[pause=35] Room service?")
+
+  UI:SetSpeaker(GAME:GetPlayerPartyMember(2))
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("...what...?")
+end
+
+function AppleMayor_pt2.MayorBack_Touch(obj, activator)
+  UI:SetSpeaker(GAME:GetPlayerPartyMember(2))
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("Bluetail, I promise you there aren't any apples in there.")
+end
+
+local cut
+function AppleMayor_pt2.Cut_Touch(obj, activator)
+  local maru = GAME:GetPlayerPartyMember(0)
+  local azura = GAME:GetPlayerPartyMember(1)
+  local rexio = GAME:GetPlayerPartyMember(2)
+ 
+  if cut == nil then
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("...[pause=35]was that really it?")
+
+    UI:SetSpeaker(azura)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("...huh?")
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Are we really just about to leave with[pause=30], no treasure or anything...?")
+
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowTimedDialogue("I heard about a golden apple from someon")
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Let's go find one!")
+
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("...")
+    cut = true
+  end
 end
 
 return AppleMayor_pt2

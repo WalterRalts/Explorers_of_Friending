@@ -34,13 +34,13 @@ function TarroTownSquare.Init(map)
     Square.FightFightFight()
   end
   
-  if quiz_done == 1 and outside_enter == 1 then
+  if quiz_done == 1 and OutEnter == 1 then
     GROUND:TeleportTo(partner, 504, 378, Direction.Left, 0)
   end
-  if outside_enter == 3 then
+  if OutEnter == 3 then
     GROUND:TeleportTo(partner, 30, 254, Direction.Right, 0)
   end
-  if outside_enter == 4 then
+  if OutEnter == 4 then
     GROUND:TeleportTo(partner, 405, 230, Direction.Down, 0)
   end
   if SV.tarro_town.PieChapter >= 7 and quiz_done >= 2 then
@@ -203,7 +203,7 @@ end
 
 function TarroTownSquare.TTown_SouthExit_Touch(obj, activator)
   GAME:FadeOut(false, 20)
-  outside_enter = 2
+  OutEnter = 2
   GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch2", "TTSquare_TownExit")
 end
 
@@ -974,7 +974,7 @@ end
 
 function TarroTownSquare.TTown_HiveEntrance_Touch(obj, activator)
   GAME:FadeOut(false, 20)
-  outside_enter = 2
+  OutEnter = 2
   GAME:EnterGroundMap("TarroTownHive", "TTSquare_HiveEnter")
 end
 
@@ -992,7 +992,7 @@ function TarroTownSquare.Happy_Action(obj, activator)
   local maru = CH("PLAYER")
   local azura = CH('Teammate1')
   local doc = CH("Dr_Chance")
-  happy_dialogue = math.random(1, 2)
+  happy_dialogue = math.random(2)
   if happy_dialogue == 1 then
     UI:SetSpeaker(happy)
     UI:SetSpeakerEmotion("Worried")
@@ -1004,7 +1004,7 @@ function TarroTownSquare.Happy_Action(obj, activator)
 
     UI:SetSpeaker(happy)
     UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("That's a weird thing to not notice...")
+    UI:WaitShowDialogue("That's a weird thing to not notice.")
   elseif happy_dialogue == 2 then
     UI:SetSpeaker(happy)
     UI:SetSpeakerEmotion("Sigh")

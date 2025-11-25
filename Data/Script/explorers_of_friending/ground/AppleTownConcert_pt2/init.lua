@@ -18,7 +18,7 @@ function AppleTownConcert_pt2.Init(map)
   COMMON.RespawnAllies()
   CH("Teammate1").CollisionDisabled = true
   CH("Teammate2").CollisionDisabled = true
-  outside_enter = 1
+  OutEnter = 1
   AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
   AI:SetCharacterAI(CH("Teammate2"), "origin.ai.ground_partner", CH("Teammate1"), CH("Teammate2").Position)
 end
@@ -65,7 +65,7 @@ end
 
 function AppleTownConcert_pt2.Fleet_Action(obj, activator)
   COMMON.SetCharAndEmotion(obj, "Worried")
-  UI:WaitShowDialogue("Sorry, if you were expecting a show, then it's not happening. Can't find Rairai anywhere...")
+  UI:WaitShowDialogue("Sorry, if you were expecting a show show, then it's not happening. Can't find Rairai anywhere...")
 end
 
 function AppleTownConcert_pt2.AppleTown_Back_Touch(obj, activator)

@@ -68,8 +68,10 @@ local rextalk = {
   bugs = false,
   frostS = false,
   frostL = false,
-  panda = true,
-  moms = true,
+  pandaS = false,
+  pandaL = false,
+  momC = false,
+  momF = false,
   moon = false
 }
 
@@ -88,6 +90,20 @@ function EntohTownSouth_ch2.Pie_Action(obj, activator)
   end
 end
 
+function EntohTownSouth_ch2.Panch_Action(obj, activator)
+  COMMON.FaceEachother(obj, activator)
+  if rextalk.moon == false then
+    COMMON.SetCharAndEmotion(obj, "Worried")
+    UI:WaitShowDialogue("Your dad?")
+    COMMON.SetCharAndEmotion(obj, "Happy")
+    UI:WaitShowDialogue("I haven't seen him,[pause=20] but you got that aura thing.[pause=40] You'll find him.")
+    rextalk.moon = true
+  else
+    COMMON.SetCharAndEmotion(obj, "Happy")
+    UI:WaitShowDialogue("Rexioooooo, my guuuuuuy.")
+  end
+end
+
 function EntohTownSouth_ch2.Moonoo_Action(obj, activator)
   local mono = CH("Moonoo")
   if rextalk.moon == false then
@@ -97,7 +113,7 @@ function EntohTownSouth_ch2.Moonoo_Action(obj, activator)
     rextalk.moon = true
   else
     COMMON.SetCharAndEmotion(mono, "Stunned")
-    UI:WaitShowDialogue("What going on?~[pause=30] Why is everyone seemingly appearing out of nowhere...?~")
+    UI:WaitShowDialogue("What's going on?~[pause=30] Why is everyone seemingly appearing out of nowhere...?~")
     UI:WaitShowDialogue("Am I still dreaming?~")
   end
   
@@ -113,7 +129,7 @@ function EntohTownSouth_ch2.Snow_Action(obj, activator)
     rextalk.frostS = true
   else
     COMMON.SetCharAndEmotion(snow, "Happy")
-    UI:WaitShowDialogue("M-mama says that she's making some frost snacks l-later to help me g-get my mind off of... this...")
+    UI:WaitShowDialogue("M-mama says that she's making some frost snacks l-later to help me g-get my mind off of... whatever th-that was...")
     UI:ChoiceMenuYesNo("Sh-should I give some to you later, m-maybe?", false)
     UI:WaitForChoice()
     local result = UI:ChoiceResult()
@@ -126,7 +142,23 @@ function EntohTownSouth_ch2.Snow_Action(obj, activator)
       UI:WaitShowDialogue("Okay... m-more for me.")
     end
   end
-  
+end
+
+function EntohTownSouth_ch2.Champ_Action(obj, activator)
+  COMMON.FaceEachother(obj, activator)
+  if rextalk.pandaL == false then
+    COMMON.SetCharAndEmotion(obj, "Joyous")
+    UI:WaitShowDialogue("Ha![pause=40] [emote=Happy]Your dad manage to forget where he is again?!")
+    COMMON.SetCharAndEmotion(obj, "Happy")
+    UI:WaitShowDialogue("This is why he needs me as his rival![pause=40] Maybe he's off training to try and beat me!")
+    rextalk.pandaL = true
+  else
+    COMMON.SetCharAndEmotion(obj, "Happy")
+    UI:WaitShowDialogue("Ay, Rexio![pause=40] Tell your pa that he sucks.")
+
+    COMMON.SetCharAndEmotion(activator, "Stunned")
+    UI:WaitShowDialogue("...uh,[pause=45] okay.")
+  end
 end
 
 function EntohTownSouth_ch2.Frost_Action(obj, activator)
@@ -134,9 +166,9 @@ function EntohTownSouth_ch2.Frost_Action(obj, activator)
   local rexio = CH("PLAYER")
   local snow = CH("Snow")
 
-  COMMON.FaceEachother(frost, rexio)
+  COMMON.FaceEachother(frost, activator)
   if rextalk.frostL == false then
-    COMMON.SetCharAndEmotion(rexio, "Normal")
+    COMMON.SetCharAndEmotion(activator, "Normal")
     UI:WaitShowDialogue("Hey, Ms. Flake. Have you seen my dad around?")
 
     COMMON.SetCharAndEmotion(frost, "Worried")
@@ -148,7 +180,9 @@ function EntohTownSouth_ch2.Frost_Action(obj, activator)
     COMMON.CharHop("Frost")
     GAME:WaitFrames(30)
     COMMON.SetCharAndEmotion(snow, "Worried")
+    COMMON.FaceEachother(snow, activator)
     UI:WaitShowDialogue("S-she says s-she hasn't...")
+    COMMON.FaceEachother(frost, activator)
 
     COMMON.SetCharAndEmotion(frost, "Pain")
     UI:WaitShowDialogue("S-sorry...!")
@@ -173,6 +207,7 @@ function EntohTownSouth_ch2.Frost_Action(obj, activator)
     UI:WaitShowDialogue("M-mom... I know, he's a g-good friend.[pause=30] You d-don't...[pause=25][emote=Happy] need to remind me...")
   end
 end
+
 --Entities
 
 function EntohTownSouth_ch2.Storage_Action(obj, activator)
@@ -182,7 +217,7 @@ end
 function EntohTownSouth_ch2.MissionBoard_Action(obj, activator)
   local rexio = CH('PLAYER')
   COMMON.SetCharAndEmotion(rexio, "Worried")
-  UI:WaitShowDialogue("(...geez, the rescue teams are slacking.)")
+  UI:WaitShowDialogue("(Geez, the rescue teams are slacking big time.)")
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("(Maybe they need me on their team, haha.)")
 end

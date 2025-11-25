@@ -1,6 +1,7 @@
 SwampUp = {}
 
 function SwampUp.TransferA()
+    GAME:CutsceneMode(true)
     GROUND:Hide("PLAYER")
     local rexio = CH("PLAYER")
     local wurp = CH("Wurp")
@@ -13,7 +14,7 @@ function SwampUp.TransferA()
     local coro01 = TASK:BranchCoroutine(function()
         local c1 = TASK:BranchCoroutine(function()
             GAME:FadeIn(50)
-            end)	
+            end)
         local c2 = TASK:BranchCoroutine(function()
             GAME:WaitFrames(25)
             GROUND:Unhide("PLAYER")
@@ -24,7 +25,7 @@ function SwampUp.TransferA()
             end)
 
         TASK:JoinCoroutines({c1, c2})
-        end)	
+        end)
     local coro02 = TASK:BranchCoroutine(function()
         GAME:WaitFrames(20)
         UI:SetSpeaker(rexio)
@@ -44,9 +45,9 @@ function SwampUp.TransferA()
 
     UI:ResetSpeaker()
     local q1 = TASK:BranchCoroutine(function()
-        UI:WaitShowTimedDialogue("NONONONONONONONONONONONONONONONONONONO!", 20)
+        UI:WaitShowTimedDialogue("NONONONONONONONONONONONONONONONONONONO!", 30)
         UI:WaitShowTimedDialogue("NOOOOOOOOOOOOOOOO I DON'T WANT TO BE HERE STOP STOP STOP STOP STOP!", 20)
-        UI:WaitShowTimedDialogue("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!", 20)
+        UI:WaitShowTimedDialogue("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!", 30)
         UI:WaitShowTimedDialogue("FLOW PLEEEEEEEASE, HAVE MERCYYYYYYYYYY!!!", 20)
         UI:WaitShowTimedDialogue("I'LL HELP YOU CLEAN YOUR FLOWER BACK AT HOME, I SWEAR!!!", 20)
         end)	
@@ -55,7 +56,7 @@ function SwampUp.TransferA()
             COMMON.CharExclaim("PLAYER")
             GAME:WaitFrames(7)
             GROUND:CharAnimateTurnTo(rexio, Dir8.Down, 2)
-            end)	
+            end)
         local ac2 = TASK:BranchCoroutine(function()
             GAME:WaitFrames(9)
             COMMON.CharRealize("Wurp")
@@ -65,7 +66,6 @@ function SwampUp.TransferA()
             GROUND:CharAnimateTurnTo(wurp, Dir8.Down, 2)
             GAME:WaitFrames(3)
             end)
-
         TASK:JoinCoroutines({ac1, ac2})
         end)
     local q3 = TASK:BranchCoroutine(function()
@@ -80,13 +80,14 @@ function SwampUp.TransferA()
         end)
 
     TASK:JoinCoroutines({q1, q2, q3})
+
     local mover = true
     UI:SetSpeaker(flow)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("Tidy, come on! You've already been through the dungeon!")
 
     local lac1 = TASK:BranchCoroutine(function()
-        GAME:WaitFrames(50)
+        GAME:WaitFrames(35)
         GROUND:AnimateToPosition(flow, "Walk", Dir8.Left, flow.Position.X - 10, flow.Position.Y, 0.2, 6, 0)
         while mover == true do
             GROUND:CharSetEmote(flow, "sweating", 1)
@@ -96,8 +97,8 @@ function SwampUp.TransferA()
     local lac2 = TASK:BranchCoroutine(function()
         GROUND:AnimateToPosition(tidy, "Walk", Dir8.Left, tidy.Position.X - 10, tidy.Position.Y, 0.2, 6, 0)
         while mover == true do
-            GROUND:AnimateToPosition(tidy, "Walk", Dir8.Left, flow.Position.X + 10, tidy.Position.Y, 8, 120, 0)
-            GAME:WaitFrames(1)
+            GROUND:AnimateToPosition(tidy, "Walk", Dir8.Left, tidy.Position.X, tidy.Position.Y, 8, 120, 0)
+            GAME:WaitFrames(5)
         end
         end)
     local lac3 = TASK:BranchCoroutine(function()
@@ -108,10 +109,8 @@ function SwampUp.TransferA()
         COMMON.CharSweatdrop("Wurp")
         end)
     TASK:JoinCoroutines({lac1, lac2, lac3})
-    
-    GROUND:AnimateToPosition(tidy, "Walk", Dir8.Left, tidy.Position.X, tidy.Position.Y, 4, 120, 0)
-    GROUND:CharSetAnim(tidy, "None", false)
 
+    GROUND:CharSetAnim(tidy, "None", false)
     GAME:WaitFrames(70)
     GROUND:CharSetAction(tidy, RogueEssence.Ground.PoseGroundAction(tidy.Position, tidy.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Trip")))
     GAME:WaitFrames(70)
@@ -122,8 +121,6 @@ function SwampUp.TransferA()
 
     snow.CollisionDisabled = true
     wurp.CollisionDisabled = true
-    
-    
 
     local lac01 = TASK:BranchCoroutine(function()
         GROUND:MoveToMarker(snow, MRKR("m"), false, 3)
@@ -150,16 +147,16 @@ function SwampUp.TransferA()
     GAME:RemovePlayerTeam(1)
     GAME:RemovePlayerTeam(1)
     GAME:RemovePlayerTeam(1)
+    GAME:CutsceneMode(false)
 end
 
 
 
 function SwampUp.TransferB()
+    GAME:CutsceneMode(true)
     local rexio = CH("PLAYER")
     local wurp = CH("Wurp")
     local snow = CH("Snow")
-    local tidy = CH("Tidy")
-    local flow = CH("Flow")
     local zoomer = CH("Zoomer")
     local marsh = CH("Marshal")
 
@@ -189,8 +186,8 @@ function SwampUp.TransferB()
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Pssh, of course I was.")
     GROUND:CharAnimateTurnTo(rexio, Dir8.Down, 5)
-    GROUND:CharSetAnim(rexio, "Charge", true)
-    GROUND:CharSetAction(rexio, RogueEssence.Ground.PoseGroundAction(rexio.Position, rexio.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Charge")))
+    GROUND:CharSetAnim(rexio, "Pose", true)
+    GROUND:CharSetAction(rexio, RogueEssence.Ground.PoseGroundAction(rexio.Position, rexio.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Pose")))
 
     COMMON.FaceEachother(wurp, rexio)
     GROUND:CharSetAnim(rexio, "None", false)
@@ -277,10 +274,8 @@ function SwampUp.TransferB()
     p.Nickname = "Zoomer"
 
     _DATA.Save.ActiveTeam.Players:Add(p)
-    _DATA.Save.ActiveTeam.Players[2]:RefreshTraits()
+    _DATA.Save.ActiveTeam.Players[1]:RefreshTraits()
     local talk_npc = RogueEssence.Dungeon.BattleScriptEvent("ZoomerInteract")
-          _DATA.Save.ActiveTeam.Players[2].ActionEvents:Add(talk_npc)
-    COMMON.RespawnAllies()
-    AI:SetCharacterAI(zoomer, "origin.ai.ground_partner", CH("PLAYER"), zoomer.Position)
-    GROUND:Hide("Zoomer")    
+        _DATA.Save.ActiveTeam.Players[1].ActionEvents:Add(talk_npc)
+    GAME:CutsceneMode(false)
 end

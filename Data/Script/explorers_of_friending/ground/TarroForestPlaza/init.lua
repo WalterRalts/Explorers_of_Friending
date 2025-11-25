@@ -78,7 +78,7 @@ function TarroForestPlaza.Catering_Action(obj, activator)
 end
 
 function TarroForestPlaza.TFPlaza_Exit_Touch(obj, activator)
-  outside_enter = 1
+  OutEnter = 1
   GAME:FadeOut(false, 15)
   GAME:EnterGroundMap("TarroForestPassage", "TFPassage_PlazaExit")
 end
@@ -129,7 +129,7 @@ function TarroForestPlaza.Caterpie_Action(obj, activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Good good!")
     UI:SetSpeakerEmotion("Determined")
-    UI:WaitShowDialogue("Now, you bugs will learn manners!")
+    UI:WaitShowDialogue("Now a lesson in manners!")
 
     COMMON.FaceEachother(activator, bug1)
     UI:SetSpeaker(bug1)
@@ -148,7 +148,6 @@ function TarroForestPlaza.Caterpie_Action(obj, activator)
     COMMON.FaceEachother(butterboss, bug1)
     COMMON.FaceEachother(butterboss, bug3)
   end
-  
 end
 
 function TarroForestPlaza.Butterfree_Action(obj, activator)
@@ -181,5 +180,6 @@ function TarroForestPlaza.Weedle_Action(obj, activator)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("Can't I just leave?[pause=20] I just wanna leave.")
 end
+
 return TarroForestPlaza
 

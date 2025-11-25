@@ -18,7 +18,7 @@ function TarroTownWest.Init(map)
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
   local partner = CH('Teammate1')
-  if outside_enter == 1 then
+  if OutEnter == 1 then
     GROUND:TeleportTo(partner, 85, 30, Direction.Down, 0)
   end
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
@@ -134,20 +134,18 @@ function TarroTownWest.TarroTown_Entrance_Touch()
 end
 
 function TarroTownWest.TarroTownOutside_Entrance_Touch()
-  outside_enter = 2
+  OutEnter = 2
   GAME:FadeOut(false, 20)
   GAME:EnterGroundMap("TarroTownOutside", "TTOutside_EEnter")
 end
 
-function TarroTownWest.PlantationStorage_Entrance_Touch()
-  local maru = CH("PLAYER")
-  
+function TarroTownWest.PlantationStorage_Entrance_Touch(obj, activator)
   if sign_check == 1 then
-    UI:SetSpeaker(maru)
+    UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("I think it would be best if I didn't go in.")
   else
-    UI:SetSpeaker(maru)
+    UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("Maybe I should check the sign first...?")
   end
@@ -160,6 +158,42 @@ function TarroTownWest.PlantationStorage_Sign_Action()
   UI:WaitShowDialogue("These stairs lead to the plant-storage room. Do not touch any of the plants within the facility. Thank you.\n - Greenly Facility")
 
   UI:SetAutoFinish(false)
+end
+
+function TarroTownWest.Sign_Action(obj, activator)
+  UI:ResetSpeaker()
+  UI:SetAutoFinish(true)
+  UI:WaitShowDialogue("Tarro Town Outskirts ->\n Tarro Town Square ^")
+
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("(These signs are so convenient.)")
+end
+
+function TarroTownWest.Tsudosen_Action(obj, activator)
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Joyous")
+  UI:WaitShowDialogue("[color=#FFC663]I remember going on adventures![color] [pause=40][color=#AAAAA4]They were so cool!![color] [pause=40][color=#A52A2A]...and scary.[color]")
+end
+
+function TarroTownWest.GreenWork_Action(obj, activator)
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("...hmph.")
+
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("...?")
+end
+
+function TarroTownWest.Greenly_Entrance_Touch(obj, activator)
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("No.")
+
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("Okay.")
 end
 
 return TarroTownWest

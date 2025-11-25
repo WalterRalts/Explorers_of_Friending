@@ -51,7 +51,7 @@ function RexioScan:Scan()
                 UI:SetSpeakerEmotion("Inspired")
                 UI:WaitShowDialogue("Whoa, there's a bunch of stuff here!")
                 UI:SetSpeakerEmotion("Happy")
-                UI:WaitShowDialogue("At least " .. iircount .. " things, I think...")
+                UI:WaitShowDialogue("At least " .. iircount .. " things, I think!")
               elseif iircount > 0 then
                 UI:SetSpeaker(leader)
                 UI:SetSpeakerEmotion("Happy")
@@ -59,7 +59,7 @@ function RexioScan:Scan()
               else
                 UI:SetSpeaker(leader)
                 UI:SetSpeakerEmotion("Worried")
-                UI:WaitShowDialogue("Darn,[pause=30] can't sense anything here...")
+                UI:WaitShowDialogue("Darn,[pause=30] can't sense anything here.")
               end
               GAME:WaitFrames(10)
               GAME:CutsceneMode(false)
@@ -79,15 +79,15 @@ function RexioScan:Scan()
               else
                 UI:SetSpeaker(leader)
                 UI:SetSpeakerEmotion("Worried")
-                UI:WaitShowDialogue("No key here...")
+                UI:WaitShowDialogue("No key here.")
               end
               GAME:CutsceneMode(false)
             else
-              GAME:CutsceneMode(true)
+              --[[GAME:CutsceneMode(true)
               UI:SetSpeaker(leader)
               UI:SetSpeakerEmotion("Worried")
               UI:WaitShowDialogue("I can see everything here, no need to use aura now.")
-              GAME:CutsceneMode(false)
+              GAME:CutsceneMode(false)]]
             end
           end
         end)

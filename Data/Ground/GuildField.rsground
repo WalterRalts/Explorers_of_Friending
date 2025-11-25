@@ -492912,7 +492912,7 @@
 "ActionEvents": [],
 "ScriptVars": null
 },
-"EntName": "Teammate_1",
+"EntName": "TEAMMATE_1",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,

@@ -78,7 +78,7 @@ end
 
 function AppleTownConcert.TheRai_Action(obj, activator)
   COMMON.SetCharAndEmotion(obj, "Angry")
-  UI:WaitShowDialogue("I CANNOT PERFORM![pause=50] My mega stones are not here, therefore the show is postponed!")
+  UI:WaitShowDialogue("I CANNOT PERFORM![pause=50] My precious stones are not here, therefore the show is postponed!")
 end
 
 function AppleTownConcert.Fleet_Action(obj, activator)
@@ -89,6 +89,12 @@ end
 function AppleTownConcert.AppleTown_Back_Touch(obj, activator)
   GAME:FadeOut(false, 20)
   GAME:EnterGroundMap("AppleTown", "Enter")
+end
+
+function AppleTownConcert.Barnacle_Action(obj, activator)
+  COMMON.FaceEachother(obj, activator)
+  COMMON.SetCharAndEmotion(obj, "Normal")
+  UI:WaitShowDialogue("North of here are the oceans. Come visit if you want a splash.")
 end
 
 return AppleTownConcert

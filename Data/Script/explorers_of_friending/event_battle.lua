@@ -716,7 +716,7 @@ function BATTLE_SCRIPT.PuchiInteract(owner, ownerChar, context, args)
         if say_choice <= 3 then
           UI:SetSpeaker(context.Target)
           UI:SetSpeakerEmotion("Pain")
-          UI:WaitShowDialogue("[speed=0.4]Usually... not this difficult... too tired...")
+          UI:WaitShowDialogue("[speed=0.4]Usually... not this difficult... so tired...")
         elseif say_choice == 4 then
           UI:SetSpeakerEmotion("Teary-Eyed")
           UI:WaitShowDialogue("[speed=0.6]I'm sorry, [color=#01FE10]Big Tree[color]![pause=55] [emote=Pain]I'm just... too tired...!")
@@ -730,7 +730,7 @@ function BATTLE_SCRIPT.PuchiInteract(owner, ownerChar, context, args)
           if say_choice == 1 then
             UI:SetSpeaker(context.Target)
             UI:SetSpeakerEmotion("Determined")
-            UI:WaitShowDialogue("...when this is over, Ziggy, you owe[emote=Angry] me so much!")
+            UI:WaitShowDialogue("When this is over, Ziggy, you owe[emote=Angry] me so much!")
 
             UI:SetSpeaker(context.User)
             UI:SetSpeakerEmotion("Pain")
@@ -788,7 +788,7 @@ function BATTLE_SCRIPT.PuchiInteract(owner, ownerChar, context, args)
           UI:SetSpeakerEmotion("Determined")
           UI:WaitShowDialogue("So many of them![pause=35] Stay up,[pause=15] Puchi,[pause=25] stay awake!")
           UI:SetSpeakerEmotion("Pain")
-          UI:WaitShowTimedDialogue("[speed=1.5]Don't yawn[pause=15] don't yawn[pause=15] don't yawn[pause=15] don't yawn...!!", 15)
+          UI:WaitShowTimedDialogue("[speed=1.5]Don't yawn[pause=15] don't yawn[pause=15] don't yawn[pause=15] don't yawn!!", 15)
         elseif say_choice == 2 then
           UI:SetSpeaker(context.Target)
           UI:SetSpeakerEmotion("Worried")
@@ -852,11 +852,11 @@ function BATTLE_SCRIPT.SennaInteract(owner, ownerChar, context, args)
         end
       elseif say_choice == 2 then
         UI:SetSpeakerEmotion("Stunned")
-        UI:WaitShowDialogue("I-[pause=15]I guess the tree still doesn't accept random guests...")
+        UI:WaitShowDialogue("I-[pause=15]I guess the tree still doesn't accept random guests.")
         UI:WaitShowDialogue("Is it summoning more Pokemon or something?")
       elseif say_choice == 3 then
         UI:SetSpeakerEmotion("Worried")
-        UI:WaitShowDialogue("I wish I practiced before this.[pause=0] S[emote=Stunned]omething about that thing is still scaring me...")
+        UI:WaitShowDialogue("I wish I practiced before this.[pause=0] S[emote=Stunned]omething about fighting that thing is still scaring me...")
       end
     end
   elseif SV.tarro_town.PieChapter == 9 then
@@ -882,7 +882,7 @@ function BATTLE_SCRIPT.SennaInteract(owner, ownerChar, context, args)
         UI:WaitShowDialogue("I'll still do my best!")
       elseif say_choice == 2 then
         UI:SetSpeakerEmotion("Stunned")
-        UI:WaitShowDialogue("Th-[pause=15]this can't be the tree's summoning...")
+        UI:WaitShowDialogue("Th-[pause=15]this can't be the tree's defense...")
         UI:SetSpeakerEmotion("Worried")
         UI:WaitShowDialogue("It's helping us, what are these things?")
       elseif say_choice == 3 then
@@ -910,7 +910,7 @@ function BATTLE_SCRIPT.ZiggyInteract(owner, ownerChar, context, args)
       if ratio <= 25 then
         if say_choice <= 3 then
           UI:SetSpeakerEmotion("Stunned")
-          UI:WaitShowDialogue("Okay...[pause=40] maybe this isn't so fun[emote=Pain]...!")
+          UI:WaitShowDialogue("Okay,[pause=40] maybe this isn't so fun[emote=Pain]...!")
         elseif say_choice == 4 then
           UI:SetSpeakerEmotion("Teary-Eyed")
           UI:WaitShowDialogue("I'm sorry, [color=#01FE10]Tarro Tree[color]![pause=55] [emote=Pain]...maybe we can rescue you after...!")
@@ -954,7 +954,7 @@ function BATTLE_SCRIPT.ZiggyInteract(owner, ownerChar, context, args)
             DUNGEON:CharTurnToChar(context.Target, mon_define)
             DUNGEON:CharTurnToChar(mon_define, context.Target)
             UI:SetSpeakerEmotion("Stunned")
-            UI:WaitShowDialogue("Ziggy, I don't think that's our greatest concern right now...")
+            UI:WaitShowDialogue("Ziggy, I don't think that's our greatest concern right now.")
           end
         end
       end
@@ -965,11 +965,11 @@ function BATTLE_SCRIPT.ZiggyInteract(owner, ownerChar, context, args)
           UI:WaitShowDialogue("No...[pause=35] no, I can't fall! Not now!")
         elseif say_choice == 4 then
           UI:SetSpeakerEmotion("Teary-Eyed")
-          UI:WaitShowDialogue("[color=#01FE10]Tarro Tree[color]![pause=55] [emote=Pain]You are going to be freed from this!")
+          UI:WaitShowDialogue("[color=#01FE10]Tarro Tree[color]![pause=55] [emote=Pain]We will stop these things!")
         end
       elseif ratio <= 50 then
         UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("I like a challenge good...[pause=30] u[emote=Worried]h... wait...")
+        UI:WaitShowDialogue("I like a challenge good.[pause=30] Er, u[emote=Worried]h, wait...")
       else
         if say_choice == 1 then
           UI:SetSpeakerEmotion("Happy")
@@ -1064,7 +1064,7 @@ function BATTLE_SCRIPT.ZiggyInteract(owner, ownerChar, context, args)
             DUNGEON:CharTurnToChar(context.Target, mon_define)
             DUNGEON:CharTurnToChar(mon_define, context.Target)
             UI:SetSpeakerEmotion("Stunned")
-            UI:WaitShowDialogue("Ziggy, I don't think that's our greatest concern right now...")
+            UI:WaitShowDialogue("Ziggy, I don't think that's our greatest concern right now.")
           end
         end
       end
@@ -1126,7 +1126,7 @@ function BATTLE_SCRIPT.ZiggyInteract(owner, ownerChar, context, args)
       if ratio <= 25 then
         if say_choice <= 3 then
           UI:SetSpeakerEmotion("Stunned")
-          UI:WaitShowDialogue("Okay...[pause=40] maybe this isn't so fun[emote=Pain]...!")
+          UI:WaitShowDialogue("Okay,[pause=40] maybe this isn't so fun[emote=Pain]...!")
         elseif say_choice == 4 then
           UI:SetSpeakerEmotion("Teary-Eyed")
           UI:WaitShowDialogue("I'm sorry, [color=#01FE10]Tarro Tree[color]![pause=55] [emote=Pain]...maybe we can rescue you after...!")
@@ -1193,25 +1193,29 @@ function BATTLE_SCRIPT.ZoomerInteract(owner, ownerChar, context, args)
   
   local ratio = context.Target.HP * 100 // context.Target.MaxHP
   local say_choice = math.random(5)
-  if current_dungeon == "Deep Tarro Forest" then
+  if current_dungeon == "Deep Tarro Forest" or current_dungeon == "Swamp Line" then
     if ratio <= 25 then
       if say_choice <= 2 then
         UI:SetSpeakerEmotion("Pain")
-        UI:WaitShowDialogue("Stupid brats...! Putting me in trouble...!")
+        if current_dungeon == "Deep Tarro Forest" then
+          UI:WaitShowDialogue("Stupid brats...! Putting me in trouble...!")
+        else
+          UI:WaitShowDialogue("Stupid brat...! Putting me in trouble...!")
+        end
       elseif say_choice == 3 then
         UI:SetSpeakerEmotion("Dizzy")
-        UI:WaitShowDialogue("Maybe I should consider retirin'...")
+        UI:WaitShowDialogue("Maybe I should consider retirin'...?")
       elseif say_choice <= 5 then
         UI:SetSpeakerEmotion("Angry")
         UI:WaitShowDialogue("Can I get some help here?!")
       end
     elseif ratio <= 50 then
       UI:SetSpeakerEmotion("Pain")
-      UI:WaitShowDialogue("Just... keep pushin'...!")
+      UI:WaitShowDialogue("Just... keep pushin'!")
     else
       if say_choice == 1 then
         UI:SetSpeakerEmotion("Stunned")
-        UI:WaitShowDialogue("Yep, we're really doing this...")
+        UI:WaitShowDialogue("Yep, we're really doing this.")
       elseif say_choice == 2 then
         UI:SetSpeakerEmotion("Determined")
         UI:WaitShowDialogue("If I were leading, I'd get this done.")
@@ -1227,14 +1231,14 @@ function BATTLE_SCRIPT.ZoomerInteract(owner, ownerChar, context, args)
     if ratio <= 25 then
       if say_choice <= 3 then
         UI:SetSpeakerEmotion("Pain")
-        UI:WaitShowDialogue("No...[pause=35] no, I can't fall! Not now!")
+        UI:WaitShowDialogue("I hate dungeons!")
       elseif say_choice == 4 then
-        UI:SetSpeakerEmotion("Teary-Eyed")
-        UI:WaitShowDialogue("[color=#01FE10]Tarro Tree[color]![pause=55] [emote=Pain]You are going to be freed from this!")
+        UI:SetSpeakerEmotion("Pain")
+        UI:WaitShowDialogue("Perfect,[pause=15] great,[pause=15] wow,[pause=15] great,[pause=15] [emote=Angry]HEAL ME!")
       end
     elseif ratio <= 50 then
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("I like a challenge good...[pause=30] u[emote=Worried]h... wait...")
+      UI:SetSpeakerEmotion("Stunned")
+      UI:WaitShowDialogue("Hrmm.")
     else
       if say_choice == 1 then
         UI:SetSpeakerEmotion("Happy")
@@ -1288,7 +1292,7 @@ function BATTLE_SCRIPT.AzuraInteract(owner, ownerChar, context, args)
 
           UI:SetSpeaker(target)
           UI:SetSpeakerEmotion("Worried")
-          UI:WaitShowDialogue("We have to find it now...?")
+          UI:WaitShowDialogue("We have to find them now?")
           UI:WaitShowDialogue("[speed=0.05]...[speed=1.0][emote=Happy]the pie'll be worth it!")
         elseif say_choice == 3 then
           UI:SetSpeaker(target)
@@ -1381,7 +1385,6 @@ function BATTLE_SCRIPT.AzuraInteract(owner, ownerChar, context, args)
               UI:SetSpeakerEmotion("Happy")
               UI:WaitShowDialogue("I'm fine, thanks for worrying.")
             end
-            
           end
         elseif say_choice == 3 then
           UI:SetSpeaker(target)
@@ -1541,7 +1544,7 @@ function BATTLE_SCRIPT.FlowInteract(owner, ownerChar, context, args)
     if current_dungeon == "Dreaded Depths" then
       if say_choice == 3 then
         UI:SetSpeaker(target)
-        UI:SetSpeakerEmotion("Worried")
+        UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("Don't worry about the grime.[pause=15] My flower is good at dealing with that.")
       elseif say_choice == 2 then
         UI:SetSpeaker(target)
@@ -1552,13 +1555,15 @@ function BATTLE_SCRIPT.FlowInteract(owner, ownerChar, context, args)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("Just have to feel the flowers. Not too hard, yes?")
 
-        UI:SetSpeaker(user)
-        UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("Where are they, though...?")
+        if user.Name == "Rexio" then
+          UI:SetSpeaker(user)
+          UI:SetSpeakerEmotion("Normal")
+          UI:WaitShowDialogue("Where are they, though...?")
 
-        UI:SetSpeaker(target)
-        UI:SetSpeakerEmotion("Stunned")
-        UI:WaitShowDialogue("Ah... um...")
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Stunned")
+          UI:WaitShowDialogue("Ah... um...")
+        end
       end
     else
       if say_choice == 3 then
@@ -1645,7 +1650,7 @@ function BATTLE_SCRIPT.WurpInteract(owner, ownerChar, context, args)
   DUNGEON:CharTurnToChar(context.Target, context.User)
   local target = context.Target
   local user = context.User
-  local mon_define = _DATA.Save.ActiveTeam.Players[4]
+  local snow = _DATA.Save.ActiveTeam.Players[4]
   -- TODO: create a charstate for being unable to talk and have talk-interfering statuses cause it
   if COMMON.CanTalk(target) then
     local ratio = target.HP * 100 // target.MaxHP
@@ -1661,7 +1666,7 @@ function BATTLE_SCRIPT.WurpInteract(owner, ownerChar, context, args)
           UI:SetSpeakerEmotion("Worried")
           UI:WaitShowDialogue("Even such a mowtal wike you needs my assistance!")
           
-          UI:SetSpeaker(mon_define)
+          UI:SetSpeaker(snow)
           UI:SetSpeakerEmotion("Sad")
           UI:WaitShowDialogue("Wurp...")
 
@@ -1673,7 +1678,7 @@ function BATTLE_SCRIPT.WurpInteract(owner, ownerChar, context, args)
           UI:SetSpeakerEmotion("Stunned")
           UI:WaitShowDialogue("Tidy, you wook wike you'we gonna expwode...")
           
-          UI:SetSpeaker(mon_define)
+          UI:SetSpeaker(snow)
           UI:SetSpeakerEmotion("Stunned")
           UI:WaitShowDialogue("She, u-uh... i-isn't a fan of... dirty.")
 
@@ -1752,9 +1757,33 @@ function BATTLE_SCRIPT.SnowInteract(owner, ownerChar, context, args)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("I-I'm glad it's this... t-this team.")
       elseif say_choice == 2 then
-        UI:SetSpeaker(target)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("J-just gotta go.")
+        if user.BaseForm.Species == "wurmple" then
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Worried")
+          UI:WaitShowDialogue("H-hey, Wurp... w-why are you helping out?")
+
+          UI:SetSpeaker(user)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowTimedDialogue("I must,[pause=50] the mowtal that is Wexio needs a worwd weader to")
+
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Determined")
+          UI:WaitShowDialogue("W-Wurp...")
+
+          UI:SetSpeaker(user)
+          UI:SetSpeakerEmotion("Stunned")
+          UI:WaitShowDialogue("Yeesh...")
+          UI:SetSpeakerEmotion("Normal")
+          UI:WaitShowDialogue("Honestwy,[pause=40] I just wanna see whewe he's going.")
+
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("T-that's better.")
+        else
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("J-just gotta go.")
+        end
       else
         UI:SetSpeaker(target)
         UI:SetSpeakerEmotion("Sad")

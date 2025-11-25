@@ -61979,8 +61979,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 178,
-"Y": 403
+"X": 179,
+"Y": 410
 },
 "serializationHeight": 0,
 "serializationDir": 7,
@@ -61994,7 +61994,7 @@
 "Species": "dragonair",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 2
 },
 "Level": 1,
 "EXP": 0,
@@ -62061,7 +62061,7 @@
 "CollisionDisabled": false,
 "Collider": {
 "X": 178,
-"Y": 403,
+"Y": 402,
 "Width": 16,
 "Height": 16
 }
@@ -62090,7 +62090,7 @@
 "Species": "dragonite",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 1
 },
 "Level": 1,
 "EXP": 0,
@@ -62186,7 +62186,7 @@
 "Species": "ponyta",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 2
 },
 "Level": 1,
 "EXP": 0,
@@ -62282,7 +62282,7 @@
 "Species": "rapidash",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 2
 },
 "Level": 1,
 "EXP": 0,
@@ -62378,7 +62378,7 @@
 "Species": "mudbray",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 1
 },
 "Level": 1,
 "EXP": 0,
@@ -62474,7 +62474,7 @@
 "Species": "sawsbuck",
 "Form": 2,
 "Skin": "normal",
-"Gender": 0
+"Gender": 1
 },
 "Level": 1,
 "EXP": 0,
@@ -62570,7 +62570,7 @@
 "Species": "sandslash",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 1
 },
 "Level": 1,
 "EXP": 0,

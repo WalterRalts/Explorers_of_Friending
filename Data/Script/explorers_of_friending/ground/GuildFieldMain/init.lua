@@ -25,10 +25,18 @@ function GuildFieldMain.Init(map)
     Entry = 0
   }
   if SV.guild.day == 1 then
-    if Intro1 == true then
+    if IntroCutscene == true then
       Guild.Day1()
     end
-    Intro1 = false
+    IntroCutscene = false
+  elseif SV.guild.day == 2 then
+    if IntroCutscene == true then
+      Guild.Day2()
+    else
+      GROUND:Unhide("Kitkit")
+      COMMON.TeleportToMarker(CH("Kitkit"), "mKit_1", Dir8.DownLeft)
+    end
+    IntroCutscene = false
   end
   CH("Teammate1").CollisionDisabled = true
   CH("Teammate2").CollisionDisabled = true
@@ -74,12 +82,15 @@ end
 -- Entities Callbacks
 -------------------------------
 
+function GuildFieldMain.NorthEast_Touch(obj, activator)
+  DUNsection = 0
+  COMMON.ShowDestinationMenu(SV.guild.dungeons.east, SV.guild.areas.east)
+end
+
 function GuildFieldMain.NorthWest_Touch(obj, activator)
   DUNsection = 0
   COMMON.UnlockWithFanfare("apple_forest", false)
-  local dungeon_entrances = SV.guild.dungeons
-  local ground_entrances = SV.guild.areas
-  COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances)
+  COMMON.ShowDestinationMenu(SV.guild.dungeons.west, SV.guild.areas.west)
 end
 
 function GuildFieldMain.StaleApple_Action(obj, activator)
@@ -96,7 +107,7 @@ function GuildFieldMain.StaleApple_Action(obj, activator)
   else
     UI:SetSpeaker(leader)
     UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Could've made pie with these,[pause=15] what a waste...")
+    UI:WaitShowDialogue("Mama could've made pie with these,[pause=15] what a waste!")
 
     UI:SetSpeaker(second)
     UI:SetSpeakerEmotion("Happy")
@@ -152,7 +163,9 @@ end
 
 function GuildFieldMain.Smear_Action(obj, activator)
   if SV.guild.day == 1 and SV.guild.time == 100 then
+    GAME:SetTeamLeaderIndex(0)
     Guild.Day1Done()
+    GAME:EnterGroundMap("GuildLvl1", "GuildEnter1")
   else
     local leader = CH("PLAYER")
     local second = CH("Teammate1")
@@ -167,7 +180,7 @@ function GuildFieldMain.Smear_Action(obj, activator)
 
       UI:SetSpeaker(smear)
       UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowDialogue("Well, I uh... it does appear that those deliveries are also late...")
+      UI:WaitShowDialogue("Well, uhm... it does appear that those deliveries are also late...")
 
       UI:SetSpeaker(second)
       UI:SetSpeakerEmotion("Worried")
@@ -194,25 +207,22 @@ function GuildFieldMain.Smear_Action(obj, activator)
       UI:WaitShowDialogue("Do your best out there, Ms. Bluetail.")
     end
   end
-  
 end
 
 function GuildFieldMain.Zoomer_Action(obj, activator)
-  local zoomer = CH("Zoomer")
-
-  COMMON.FaceEachother(zoomer, obj)
+  COMMON.FaceEachother(obj, activator)
   if activator.Nickname == "Rexio" then
-    UI:SetSpeaker(zoomer)
+    UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Alright, kid. I don't care how good you think you are.")
   else
-    UI:SetSpeaker(zoomer)
+    UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("[speed=0.4]...you two.")
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("...whatever.")
   end
-  UI:WaitShowDialogue("Good adventurers prepare themselves! Use the storage box.")
+  UI:WaitShowDialogue("Good adventurers prepare themselves. Use the storage box.")
   UI:WaitShowDialogue("Since you guys are both a team, it should take whatever you guys had when you dungeoned before.")
   UI:SetSpeakerEmotion("Angry")
   UI:WaitShowDialogue("Now leave!")

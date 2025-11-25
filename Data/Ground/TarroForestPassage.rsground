@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -54958,7 +54958,7 @@
 "Direction": 4,
 "IsInteracting": false,
 "AIEnabled": true,
-"EntName": "Metapod_1",
+"EntName": "Meta1",
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -55054,7 +55054,7 @@
 "Direction": 4,
 "IsInteracting": false,
 "AIEnabled": true,
-"EntName": "Metapod_2",
+"EntName": "Meta2",
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -55140,7 +55140,7 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 459,
+"X": 460,
 "Y": 557,
 "Width": 16,
 "Height": 16
@@ -55150,7 +55150,7 @@
 "Direction": 4,
 "IsInteracting": false,
 "AIEnabled": true,
-"EntName": "Metapod_3",
+"EntName": "Meta3",
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,

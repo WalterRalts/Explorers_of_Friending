@@ -412,5 +412,132 @@ function EntohTownCenter.Flowerson_Action(obj, activator)
   end
 end
 
+function TarroTownEast.Budeg_Action(obj, activator)
+  local budeg = CH("Budeg")
+
+  UI:SetSpeaker(budeg)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("Zzt, this town is weird.[pause=30] A little too natural for me.")
+  UI:WaitShowDialogue("Flowers everywhere,[pause=60] stone buildings,[pause=60] and a Drampa telling stories like he's 300 years old.")
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("Very informative stories.")
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Zzt, welcome to dev mode. Bzzt, I am made to skip scenes and jump bewteen characters.")
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("Zzt, I'm a little broken here at the moment, krzzt...")
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("If you're testing the game out and have the password, I recommend not trying to use the Bluetail's teleports for now.")
+
+  local password = "Aa1Bb2devdebug;345"
+  UI:NameMenu("Please enter the password.", "Password", 200, "Catbug")
+  UI:WaitForChoice()
+  if UI:ChoiceResult() ~= password then
+    UI:SetSpeakerEmotion("Pain")
+    UI:WaitShowDialogue("Wrong!")
+    UI:SetSpeaker(budeg)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Have a nice day!")
+  else
+    ::question::
+    UI:SetSpeakerEmotion("Happy")
+    local choices = {("Maru and Azura"),
+      ("Rexio"),
+      ("Guild"),
+      ("Cancel")}
+      UI:BeginChoiceMenu("Please choose a character for dev work.", choices, 1, 2)
+      UI:WaitForChoice()
+      result = UI:ChoiceResult()
+    if result == 1 then
+      SV.guilders.entoh_town.aurm_stats = GAME:GetPlayerPartyTable()
+      UI:SetSpeakerEmotion("Happy")
+      choices = {
+        ("Begin!"),
+        ("Fight!"),
+        ("Darkness")
+      }
+        UI:BeginChoiceMenu("Please choose a chapter for dev work.", choices, 1, 2)
+        UI:WaitForChoice()
+        result = UI:ChoiceResult()
+      if result == 1 then
+        SV.tarro_town.PieChapter = -1 --PieChapter 4 is the intro to town
+        GAME:EnterGroundMap("tarro_town_outside", "MaruHome", "MaruHome_MainEnter")
+      elseif result == 2 then
+        SV.tarro_town.PieChapter = 4 --PieChapter 4 is the intro to town
+        GAME:EnterGroundMap("tarro_town_outside", "MaruHome", "MaruHome_MainEnter")
+      else
+        SV.tarro_town.PieChapter = 10 --PieChapter 10 switches to deep tarro
+        GAME:EnterGroundMap("tarro_town_outside", "MaruHome", "MaruHome_MainEnter")
+      end
+      
+    elseif result == 2 then
+      UI:SetSpeaker(budeg)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Zzt, changing to Rexio")
+      GAME:FadeOut(false, 60)
+      --Begin replacement
+      --Save Maru and Azura's stats
+      SV.guilders.tarro_town.bluetail_stats = GAME:GetPlayerPartyTable()
+      --Replace them with Rexio
+      GAME:RemovePlayerTeam(0)
+      GAME:RemovePlayerTeam(0)
+      local mon_id = RogueEssence.Dungeon.MonsterID("riolu", 0, "normal", Gender.Male)
+
+      local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 7, "", 0)
+      p.IsFounder = true
+      p.IsPartner = true
+      p.Nickname = "Rexio"
+
+      _DATA.Save.ActiveTeam.Players:Add(p)
+      local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("RexioInteract")
+        _DATA.Save.ActiveTeam.Players[0].ActionEvents:Add(talk_evt)
+      GAME:DepositAll()
+      --COMMON.SaveStorage()
+      
+      GAME:EnterGroundMap("entoh_town", "RexioHome", "RexioStart")
+    elseif result == 3 then
+
+      UI:SetSpeaker(budeg)
+      UI:SetSpeakerEmotion("Stunned")
+      UI:WaitShowDialogue("You may be a little underleveled for this part of the story...!")
+      UI:ChoiceMenuYesNo("Are you sure?", false)
+      UI:WaitForChoice()
+      local result = UI:ChoiceResult()
+      
+      if result then
+        GAME:FadeOut(false, 60)
+        --Begin replacement
+        --Save Maru and Azura's stats
+        SV.guilders.tarro_town.bluetail_stats = GAME:GetPlayerPartyTable()
+        --Replace them with Rexio
+        GAME:RemovePlayerTeam(0)
+        GAME:RemovePlayerTeam(0)
+        local mon_id = RogueEssence.Dungeon.MonsterID("riolu", 0, "normal", Gender.Male)
+
+        local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 7, "", 0)
+        p.IsFounder = true
+        p.IsPartner = true
+        p.Nickname = "Rexio"
+
+        _DATA.Save.ActiveTeam.Players:Add(p)
+        local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("RexioInteract")
+        _DATA.Save.ActiveTeam.Players[0].ActionEvents:Add(talk_evt)
+        GAME:DepositAll()
+        SV.tarro_town.DarknessChapter = 3
+        SV.entoh_town.AdventureChapter = 3
+        SV.tarro_town.PieChapter = 12
+        SV.entoh_town.HelperChapter = 10
+
+        GAME:EnterGroundMap("the_field", "TheField", "MainEntrance_1")
+      else
+        goto question
+      end
+    else
+      UI:SetSpeaker(budeg)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Zzt, have a good day.")
+    end
+  end
+end
+
 return EntohTownCenter
 

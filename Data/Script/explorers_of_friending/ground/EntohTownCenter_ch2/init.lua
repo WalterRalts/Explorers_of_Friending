@@ -32,6 +32,8 @@ function EntohTownCenter_ch2.Init(map)
   if SV.entoh_town.HelperChapter == 7 then
     local partner = CH('Teammate1')
     local partner2 = CH('Teammate2')
+    GROUND:TeleportTo(partner, CH('PLAYER').Position.X, CH('PLAYER').Position.Y - 24, Direction.Left, 0)
+    GROUND:TeleportTo(partner2, CH('PLAYER').Position.X, CH('PLAYER').Position.Y + 24, Direction.Left, 0)
     AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
     AI:SetCharacterAI(partner2, "origin.ai.ground_partner", CH('Teammate1'), partner2.Position)
     partner.CollisionDisabled = true
@@ -100,6 +102,7 @@ function EntohTownCenter_ch2.Entoh_EastEnter_Touch(obj, activator)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("(...not now...)")
   else
+    OutEnter = 1
     GAME:FadeOut(false, 20)
     GAME:EnterGroundMap("EntohTownEast", "Entrance")
   end
@@ -107,17 +110,24 @@ end
 
 function EntohTownCenter_ch2.Entoh_SouthEnter_Touch(obj, activator)
   if SV.entoh_town.HelperChapter >= 9 then
-    local rexio = CH("PLAYER")
-    UI:SetSpeaker(rexio)
+    UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("(No one knew where dad was...)")
     UI:SetSpeakerEmotion("Sad")
     UI:WaitShowDialogue("(Probably no point in going back.)")
   else
-    GAME:FadeOut(false, 20)
-    GAME:EnterGroundMap("EntohTownSouth", "EnterMark_North")
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("(I have this strange feeling that something's going on down there.)")
+    UI:SetSpeakerEmotion("Worried")
+    UI:ChoiceMenuYesNo("(Should I...?)", false)
+    UI:WaitForChoice()
+    local result = UI:ChoiceResult()
+    if result then
+      GAME:FadeOut(false, 20)
+      GAME:EnterGroundMap("EntohTownSouth", "EnterMark_North")
+    end
   end
-  
 end
 
 function EntohTownCenter_ch2.Entoh_NorthEnter_Touch(obj, activator)

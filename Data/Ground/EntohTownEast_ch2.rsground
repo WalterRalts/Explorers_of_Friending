@@ -10241,7 +10241,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -10567,7 +10567,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -10893,7 +10893,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -11219,7 +11219,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -11545,7 +11545,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -11871,7 +11871,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -12197,7 +12197,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -12523,7 +12523,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -12849,7 +12849,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -13175,7 +13175,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -13501,7 +13501,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -13827,7 +13827,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -14153,7 +14153,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -14479,7 +14479,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -36449,7 +36449,7 @@
 "Species": "minccino",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 2
 },
 "Level": 1,
 "EXP": 0,
@@ -36545,7 +36545,7 @@
 "Species": "flabebe",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 2
 },
 "Level": 1,
 "EXP": 0,
@@ -36634,7 +36634,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Luke",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -36707,8 +36707,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 458,
-"Y": 205,
+"X": 457,
+"Y": 206,
 "Width": 16,
 "Height": 16
 }
@@ -36737,7 +36737,7 @@
 "Species": "wurmple",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 1
 },
 "Level": 1,
 "EXP": 0,
@@ -36833,7 +36833,7 @@
 "Species": "snom",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 2
 },
 "Level": 1,
 "EXP": 0,
@@ -36989,7 +36989,7 @@
 "Collider": {
 "X": 0,
 "Y": 160,
-"Width": 24,
+"Width": 12,
 "Height": 80
 }
 },
@@ -37032,8 +37032,51 @@
 "Collider": {
 "X": 240,
 "Y": 0,
-"Width": 24,
+"Width": 6,
 "Height": 288
+}
+},
+{
+"EntName": "Item",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 2,
+"ObjectAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "ItemSparkle",
+"FrameTime": 6,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"Passable": false,
+"CurrentAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"AnimTime": {
+"Ticks": 0
+},
+"Cycles": 0,
+"DrawOffset": {
+"X": 0,
+"Y": 0
+},
+"Collider": {
+"X": 24,
+"Y": 24,
+"Width": 24,
+"Height": 24
 }
 }
 ],
@@ -37400,8 +37443,8 @@
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 31,
-"Y": 207,
+"X": 16,
+"Y": 196,
 "Width": 16,
 "Height": 16
 }

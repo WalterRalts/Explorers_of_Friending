@@ -20,7 +20,7 @@ function MaruHomeFood.Init(map)
 end
 
 function MaruHomeFood.CookingGameplay(map)
-  outside_enter = 2
+  OutEnter = 2
   Cooking(0, 0, 0)
 end
 

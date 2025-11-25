@@ -68036,7 +68036,7 @@
 "Direction": 7,
 "IsInteracting": false,
 "AIEnabled": true,
-"EntName": "Teammate2_4",
+"EntName": "ApplinC",
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -68132,7 +68132,7 @@
 "Direction": 3,
 "IsInteracting": false,
 "AIEnabled": true,
-"EntName": "Teammate2_5",
+"EntName": "ApplinD",
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -68151,7 +68151,7 @@
 "BaseForm": {
 "Species": "applin",
 "Form": 0,
-"Skin": "normal",
+"Skin": "shiny",
 "Gender": 0
 },
 "Level": 1,
@@ -68901,8 +68901,8 @@
 "triggerType": 0,
 "EntityCallbacks": [],
 "Collider": {
-"X": 514,
-"Y": 312,
+"X": 510,
+"Y": 313,
 "Width": 16,
 "Height": 16
 }

@@ -16,6 +16,8 @@ local AppleTownMayor_pt2 = {}
 --Engine callback function
 function AppleTownMayor_pt2.Init(map)
   COMMON.RespawnAllies()
+  GROUND:TeleportTo(CH("Teammate1"), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.DownRight, 0)
+  GROUND:TeleportTo(CH("Teammate2"), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.DownRight, 0)
   CH("Teammate1").CollisionDisabled = true
   CH("Teammate2").CollisionDisabled = true
   AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
@@ -69,6 +71,25 @@ end
 function AppleTownMayor_pt2.AppleTownEntrance_Touch(obj, activator)
   GAME:FadeOut(false, 20)
   GAME:EnterGroundMap("AppleTown_pt2", "Enter2")
+end
+
+function AppleTownMayor_pt2.Item_Touch(obj, activator)
+  local item
+  local choice = math.random(3)
+  if choice == 3 then
+    item = "berry_kebab"
+  elseif choice then
+    item = "berry_sitrus"
+  else
+    item = "packed_honey"
+  end
+  COMMON.GiftItem(activator, item)
+
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Inspired")
+  UI:WaitShowDialogue("(Woah, this is rare!)")
+  GROUND:Hide("Item")
+  Titem_found = true
 end
 
 --characters

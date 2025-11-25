@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -288,7 +288,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -297,7 +297,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -306,7 +306,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -44065,7 +44065,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -55077,8 +55077,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 487,
-"Y": 393,
+"X": 340,
+"Y": 99,
 "Width": 16,
 "Height": 16
 }
@@ -55173,7 +55173,7 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 439,
+"X": 435,
 "Y": 256,
 "Width": 16,
 "Height": 16
@@ -55269,8 +55269,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 484,
-"Y": 256,
+"X": 489,
+"Y": 257,
 "Width": 16,
 "Height": 16
 }
@@ -55395,7 +55395,7 @@
 "Species": "seedot",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 1
 },
 "Level": 1,
 "EXP": 0,
@@ -55572,8 +55572,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 166,
-"Y": 346
+"X": 169,
+"Y": 348
 },
 "serializationHeight": 0,
 "serializationDir": 7,
@@ -55587,7 +55587,7 @@
 "Species": "poochyena",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 1
 },
 "Level": 1,
 "EXP": 0,
@@ -55892,7 +55892,7 @@
 "Collider": {
 "X": 0,
 "Y": 401,
-"Width": 16,
+"Width": 8,
 "Height": 79
 }
 },
@@ -55976,8 +55976,8 @@
 "Y": 0
 },
 "Collider": {
-"X": 313,
-"Y": 383,
+"X": 312,
+"Y": 384,
 "Width": 34,
 "Height": 16
 }
@@ -56105,9 +56105,9 @@
 "Y": 0
 },
 "Collider": {
-"X": 48,
+"X": 51,
 "Y": 362,
-"Width": 48,
+"Width": 36,
 "Height": 37
 }
 }

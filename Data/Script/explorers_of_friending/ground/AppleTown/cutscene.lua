@@ -98,7 +98,7 @@ function Apple.Tour()
     COMMON.SetCharAndEmotion(maru, "Stunned")
     UI:WaitShowDialogue("[speed=0.5]...")
 
-    SV.guild.areas[1] = {
+    SV.guild.areas.west[1] = {
         Flag = true,
         Zone = "apple_forest",
         ID = 0,

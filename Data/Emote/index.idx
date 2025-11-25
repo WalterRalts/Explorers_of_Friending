@@ -1,0 +1,15 @@
+﻿{
+"Version": "0.8.11.0",
+"Object": {
+"$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[RogueEssence.Data.EntrySummary, RogueEssence]], System.Private.CoreLib",
+"minigame": {
+"Name": {
+"DefaultText": "Has Minigame",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "Use if an NPC has a minigame",
+"SortOrder": 0
+}
+}
+}

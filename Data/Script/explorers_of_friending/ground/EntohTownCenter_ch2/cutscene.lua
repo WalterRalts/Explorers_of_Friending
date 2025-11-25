@@ -15,11 +15,11 @@ function Center.Feeling()
     GROUND:CharAnimateTurn(rexio, Direction.Left, 1, false)
     COMMON.CharSweatdrop("PLAYER")
     UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("(...guess I have the place to myself for a while.)")
+    UI:WaitShowDialogue("(Guess I have the place to myself for a while.)")
 
     GROUND:CharAnimateTurn(rexio, Direction.Left, 8, false)
     UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowDialogue("(...the heck did everyone go?![pause=40] And without telling me!)")
+    UI:WaitShowDialogue("(The heck did everyone go?![pause=40] And without telling me!)")
 
     GAME:CutsceneMode(false)
 end

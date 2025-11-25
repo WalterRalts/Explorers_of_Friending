@@ -26,7 +26,7 @@ function EntohTownNorth_ch2.Init(map)
 
     COMMON.RespawnAllies()
     local partner = CH("Teammate1")
-    if outside_enter == 1 then
+    if OutEnter == 1 then
       GROUND:TeleportTo(partner, 120, 460, Direction.Up, 0)
     end
     AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)

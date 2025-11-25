@@ -161,7 +161,7 @@ function RexioHome.Luke_Action(obj, activator)
 end
 
 function RexioHome.FlowerPot_Action(obj, activator)
-  UI:SetSpeaker(obj)
+  UI:SetSpeaker(activator)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("(Mom picked these flowers before she left. Said they were made for me.)")
   UI:SetSpeakerEmotion("Normal")
@@ -174,7 +174,7 @@ function RexioHome.FlowerPot_Action(obj, activator)
 end
 
 function RexioHome.RexioCooking_Action(obj, activator)
-  UI:SetSpeaker(obj)
+  UI:SetSpeaker(activator)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("(This is dad's job right now.)")
 end

@@ -25429,12 +25429,12 @@
 "MapChars": [],
 "GroundObjects": [
 {
-"EntName": "NewObject",
+"EntName": "EncleenHouse",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -25465,7 +25465,7 @@
 "Y": 0
 },
 "Collider": {
-"X": 332,
+"X": 333,
 "Y": 88,
 "Width": 24,
 "Height": 48
@@ -25508,19 +25508,19 @@
 "Y": 0
 },
 "Collider": {
-"X": 236,
+"X": 240,
 "Y": 28,
 "Width": 72,
 "Height": 16
 }
 },
 {
-"EntName": "PanchHomeEnter",
+"EntName": "PanchHome",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -25558,12 +25558,12 @@
 }
 },
 {
-"EntName": "MouseHomeEnter",
+"EntName": "MouseHome",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -25687,12 +25687,12 @@
 }
 },
 {
-"EntName": "NewObject_6",
+"EntName": "Upper_Floor",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",

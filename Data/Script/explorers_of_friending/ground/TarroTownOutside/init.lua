@@ -10,6 +10,11 @@ require 'explorers_of_friending.ground.TarroTownOutside.cutscene'
 -- Package name
 local TarroTownOutside = {}
 
+local Coro = function()
+  GROUND:CharSetEmote(CH("Brasion"), "minigame", 1)
+  GAME:WaitFrames(96)
+end
+
 -------------------------------
 -- Map Callbacks
 -------------------------------
@@ -17,6 +22,7 @@ local TarroTownOutside = {}
 --Engine callback function
 function TarroTownOutside.Init(map)
   GAME:SetCanSwitch(false)
+  
   if SV.tarro_town.PieChapter >= 5 then
     GROUND:Hide("Puchi")
   end
@@ -39,9 +45,9 @@ function TarroTownOutside.Init(map)
   COMMON.RespawnAllies()
   local partner = CH('Teammate1')
   Outside.CloudWatch()
-  if outside_enter == 1 then
+  if OutEnter == 1 then
     GROUND:TeleportTo(partner, 478, 379, Direction.Left, 0)
-  elseif outside_enter == 2 then
+  elseif OutEnter == 2 then
     GROUND:TeleportTo(partner, 53, 379, Direction.Right, 0)
   end
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
@@ -73,6 +79,7 @@ end
 --Engine callback function
 function TarroTownOutside.Update(map)  
   Partner()
+  TASK:StartEntityTask(CH("Brasion"), Coro)
 end
 
 ---TarroTownOutside.GameSave(map)
@@ -131,8 +138,10 @@ end
 -------------------------------
 -- Entities Callbacks
 -------------------------------
+
+--- Entrances
 function TarroTownOutside.TTOutside_WExit_Touch(obj, activator)
-  outside_enter = 0
+  OutEnter = 0
   GAME:FadeOut(false, 20)
   if SV.tarro_town.PieChapter < 5 then    
     if SV.GroundTutorial == 0 then
@@ -189,6 +198,7 @@ function TarroTownOutside.TTOutside_EExit_Touch(obj, activator)
   end
 end
 
+--- Characters
 function TarroTownOutside.Puchi_Action(obj, activator)
   local azura = CH('Teammate1')
   if SV.tarro_town.PieChapter == 0 then  
@@ -267,9 +277,9 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Fine, fine, we're going now.")
   elseif SV.tarro_town.PieChapter < 3 then
-    GROUND:CharTurnToCharAnimated(maru, puchi, 4)
-    GROUND:CharTurnToCharAnimated(azura, puchi, 4)
-    GROUND:CharTurnToCharAnimated(puchi, maru, 4)
+    GROUND:CharTurnToCharAnimated(activator, obj, 4)
+    GROUND:CharTurnToCharAnimated(azura, obj, 4)
+    GROUND:CharTurnToCharAnimated(obj, activator, 4)
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Puchi!")
@@ -280,17 +290,17 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:WaitShowDialogue("[speed=0.2]...s[speed=1.0]trange,[pause=0] I'd expect a bunch of crumbs on your face by now...")
 
     UI:SetSpeaker(azura)
-    GROUND:CharTurnToCharAnimated(maru, azura, 4)
+    GROUND:CharTurnToCharAnimated(activator, azura, 4)
     UI:SetSpeakerEmotion("Sad")
     UI:WaitShowDialogue("[speed=0.2]...")
 
-    UI:SetSpeaker(maru)
+    UI:SetSpeaker(activator)
     UI:WaitShowDialogue("Yeah...[pause=41] mom ran [emote=Worried]out of big apples.")
 
     UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Oh,[pause=25] so you have to get more,[pause=25] I'm assuming.")
-    GROUND:CharTurnToCharAnimated(maru, puchi, 4)
+    GROUND:CharTurnToCharAnimated(activator, obj, 4)
     UI:WaitShowDialogue("I'd say to be careful, but...[pause=0] I[emote=Happy]'d say you'll both be fine.")
 
     UI:SetSpeaker(azura)
@@ -320,15 +330,15 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("It was delicious.")
   elseif SV.tarro_town.PieChapter <= 5 then
-    GROUND:CharTurnToCharAnimated(maru, puchi, 4)
-    GROUND:CharTurnToCharAnimated(azura, puchi, 4)
-    GROUND:CharTurnToCharAnimated(puchi, maru, 4)
-    UI:SetSpeaker(maru)
+    GROUND:CharTurnToCharAnimated(activator, obj, 4)
+    GROUND:CharTurnToCharAnimated(azura, obj, 4)
+    GROUND:CharTurnToCharAnimated(obj, activator, 4)
+    UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Puchi!")
 
     UI:SetSpeaker(obj)
-    GROUND:CharTurnToCharAnimated(puchi, maru, 4)
+    GROUND:CharTurnToCharAnimated(obj, activator, 4)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("[speed=0.2]...")
 
@@ -356,6 +366,32 @@ function TarroTownOutside.Puchi_Action(obj, activator)
   end
 end
 
+function TarroTownOutside.Oink_Action(obj, activator)
+  COMMON.FaceEachother(obj, activator)
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("I just wanted to hang out,[pause=30] didn't know about all the moving and stuff.")
+end
+
+function TarroTownOutside.Reeshi_Action(obj, activator)
+  COMMON.FaceEachother(obj, activator)
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("A lot of baaaaad Pokemon from the dungeons are turning good for better homes and stuff.")
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("But thaaaaaat also means we need more than a few houses as places to live.")
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("The noise from the building is super loud, baa...")
+end
+
+function TarroTownOutside.Roll_Action(obj, activator)
+  COMMON.FaceEachother(obj, activator)
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("Comin' outtaf th' Jugnion Distric' 'cuza all the monsters movin' in.[pause=0] It'sso calm here, an' me pa'n I can fin'lly get some walkin' in.")
+end
+
+--- Other
 function TarroTownOutside.CupShuffle_Action(obj, activator)
   local brasi = CH("Brasion")
   if GAME:GetPlayerMoney() < 25 then
@@ -379,6 +415,23 @@ function TarroTownOutside.CupShuffle_Action(obj, activator)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("Mkay.")
     end
+  end
+end
+
+function TarroTownOutside.CloudWatch_Touch(obj, activator)
+  local azura = CH('Teammate1')
+  if SV.tarro_town.PieChapter <= 5 then
+    UI:SetSpeaker(azura)
+    UI:SetSpeakerEmotion("Angry")
+    UI:WaitShowDialogue("Uhhhhh... hello?!?![pause=0] Piiiiiiieee????")
+
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Oh yeah.")
+  else
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("The clouds are still up there.[pause=30] ...maybe we'll watch them later.")
   end
 end
 

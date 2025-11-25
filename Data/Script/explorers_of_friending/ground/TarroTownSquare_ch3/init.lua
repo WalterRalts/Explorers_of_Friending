@@ -22,18 +22,22 @@ function TarroTownSquare_ch3.Init(map)
   local partner = CH('Teammate1')
   partner.CollisionDisabled = true
   
-  if outside_enter == 1 then
+  if OutEnter == 1 then
     GROUND:TeleportTo(partner, 1750, 458, Direction.Left, 0)
   end
-  if outside_enter == 3 then
+  if OutEnter == 3 then
     GROUND:TeleportTo(partner, 30, 254, Direction.Right, 0)
   end
-  if outside_enter == 4 then
+  if OutEnter == 4 then
     GROUND:TeleportTo(partner, 405, 230, Direction.Down, 0)
   end
   local lax = CH("Lax")
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   GROUND:CharSetAnim(lax, "Sleep", true)
+
+  if SV.item.tarro == true then
+    GROUND:Hide("Item")
+  end
 end
 
 ---TarroTownSquare_ch3.Enter(map)
@@ -86,7 +90,7 @@ function TarroTownSquare_ch3.Lax_Action(obj, activator)
   
   UI:SetSpeaker(munch)
   UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("Pops... getcha self up, would ya.")
+  UI:WaitShowDialogue("Pops,[pause=25] getcha self up, would ya.")
 end
 
 function TarroTownSquare_ch3.Getic_Action(obj, activator)
@@ -155,7 +159,7 @@ end
 
 function TarroTownSquare_ch3.TTown_SouthExit_Touch(obj, activator)
   GAME:FadeOut(false, 20)
-  outside_enter = 2
+  OutEnter = 2
   GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch3", "TTSquare_TownExit")
 end
 
@@ -219,7 +223,7 @@ function TarroTownSquare_ch3.Gepii_Action(obj, activator)
 
         UI:SetSpeaker(getic)
         UI:SetSpeakerEmotion("Stunned")
-        UI:WaitShowDialogue("We've only been waiting for five minutes...")
+        UI:WaitShowDialogue("We've only been waiting for five minutes.")
 
         UI:SetSpeaker(gepii)
         UI:SetSpeakerEmotion("Angry")
@@ -231,7 +235,7 @@ function TarroTownSquare_ch3.Gepii_Action(obj, activator)
         
         UI:SetSpeaker(gekis)
         UI:SetSpeakerEmotion("Stunned")
-        UI:WaitShowDialogue("Gepii, I bought you three whole jars last week.[pause=25] And you still haven't even opened one...")
+        UI:WaitShowDialogue("Gepii, I bought you three whole jars last week.[pause=25] And you still haven't even opened one.")
 
         UI:SetSpeaker(gepii)
         UI:SetSpeakerEmotion("Happy")
@@ -250,7 +254,7 @@ end
 
 function TarroTownSquare_ch3.TTown_HiveEntrance_Touch(obj, activator)
   GAME:FadeOut(false, 20)
-  outside_enter = 2
+  OutEnter = 2
   GAME:EnterGroundMap("TarroTownHive", "TTSquare_HiveEnter")
 end
 
@@ -275,11 +279,15 @@ function TarroTownSquare_ch3.Munch_Action(obj, activator)
   local munch = CH("Munch")
 
   if munch_accept then
-    
+    UI:SetSpeaker(munch)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Just get a buncha leaves and make yous a salad.")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Too hungry to show you, though.")
   else
     UI:SetSpeaker(munch)
     UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Ugh... what to do...?")
+    UI:WaitShowDialogue("Ugh, what to do...?")
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Oh, hey![pause=30] I'm Munch and I got a deal.")
     UI:SetSpeakerEmotion("Normal")
@@ -324,13 +332,26 @@ function TarroTownSquare_ch3.Munch_Action(obj, activator)
       UI:SetSpeakerEmotion("Sad")
       UI:WaitShowDialogue("Fine,[pause=30] but[emote=Worried] when ya change your mind,[pause=20] come back, will ya?")
     end
-  else
-    UI:SetSpeaker(munch)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Just get a buncha leaves and make yous a salad.")
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Too hungry to show you, though.")
   end
+end
+
+function TarroTownSquare_ch3.Item_Touch(obj, activator)
+  local item
+  local choice = math.random(3)
+  if choice == 3 then
+    item = "berry_kebab"
+  elseif choice then
+    item = "berry_sitrus"
+  else
+    item = "packed_honey"
+  end
+  COMMON.GiftItem(activator, item)
+
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Inspired")
+  UI:WaitShowDialogue("(Woah, this is rare!)")
+  GROUND:Hide("Item")
+  SV.item.tarro = true
 end
 
 return TarroTownSquare_ch3

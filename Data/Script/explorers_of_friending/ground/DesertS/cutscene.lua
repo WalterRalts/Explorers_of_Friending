@@ -1,0 +1,106 @@
+Desert = {}
+
+function Desert.KassyMeet()
+    SV.hertz_town.desert_scene = false
+    GAME:SetTeamLeaderIndex(0)
+    local azura = CH("Teammate1")
+    local rexio = CH("Teammate2")
+    local maru = CH("PLAYER")
+    local kassy = CH("Kassy")
+    local coro3 = TASK:BranchCoroutine(function() 
+        GROUND:AnimateToPosition(azura, "Walk", Dir8.Up, azura.Position.X, azura.Position.Y - 405, 0.7, 1, 0)
+        GROUND:CharTurnToChar(azura, maru)
+        end)
+    local coro4 = TASK:BranchCoroutine(function()
+        GROUND:AnimateToPosition(rexio, "Walk", Dir8.Up, rexio.Position.X, rexio.Position.Y - 375, 0.4, 1, 0)
+        end)
+    local coro5 = TASK:BranchCoroutine(function()
+        GAME:WaitFrames(25)
+        GROUND:AnimateToPosition(maru, "Walk", Dir8.Up, maru.Position.X, maru.Position.Y - 405, 0.5, 1, 0)
+        end)
+    local coro6 = TASK:BranchCoroutine(function()
+        local the1 = TASK:BranchCoroutine(function() 
+            UI:WaitShowTitle("Chapter 2: Sand", 120)
+            GAME:WaitFrames(100)
+            UI:WaitHideTitle(60)
+
+            COMMON.SetCharAndEmotion(rexio, "Pain")
+            UI:WaitShowDialogue("[pause=45][speed=0.4]...heat... sudden blast just... hit me...")
+
+            COMMON.SetCharAndEmotion(maru, "Normal")
+            UI:WaitShowDialogue("Does this count as training?")
+
+            COMMON.SetCharAndEmotion(rexio, "Pain")
+            UI:WaitShowDialogue("[speed=0.4]Sh-shut it, Bluetail...!")
+
+            COMMON.SetCharAndEmotion(maru, "Normal")
+            UI:WaitShowDialogue("Alrighty.")
+
+            COMMON.SetCharAndEmotion(azura, "Worried")
+            UI:WaitShowDialogue("Where could the treasure be?[pause=20] Ms. Kitkit never told us.")
+            end)
+        local the2 = TASK:BranchCoroutine(function()
+            GAME:WaitFrames(30)
+            GAME:FadeIn(90)
+            end)
+        TASK:JoinCoroutines({the1, the2})
+        end)
+    TASK:JoinCoroutines({coro3, coro4, coro5, coro6})
+
+    GROUND:AnimateToPosition(kassy, "Walk", Dir8.Down, maru.Position.X, maru.Position.Y - 60, 1.5, 3, 0)
+
+    COMMON.CharHappy("Kassy")
+    COMMON.CharHop("Kassy")
+    COMMON.SetCharAndEmotion(kassy, "Inspired")
+    UI:WaitShowDialogue("I overheard the word \"treasure\".")
+
+    COMMON.SetCharAndEmotion(rexio, "Dizzy")
+    UI:WaitShowDialogue("[speed=0.4]How convenient... ack...")
+
+    GROUND:CharAnimateTurnTo(kassy, Direction.Up, 4)
+    GROUND:CharSetAnim(kassy, "SpAttack", false)
+    GROUND:CharSetAction(kassy, RogueEssence.Ground.PoseGroundAction(kassy.Position, kassy.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("SpAttack")))
+    COMMON.SetCharAndEmotion(kassy, "Dizzy")
+    UI:WaitShowDialogue("The legendary treasure of the Hertz Sands!")
+    UI:WaitShowDialogue("I knew it was real, and it shall be mine!")
+
+    COMMON.CharSweatdrop("PLAYER")
+    COMMON.SetCharAndEmotion(maru, "Stunned")
+    UI:WaitShowDialogue("...")
+    GROUND:CharSetAnim(kassy, "Idle", false)
+    GROUND:CharAnimateTurnTo(kassy, Direction.Down, 4)
+
+    COMMON.SetCharAndEmotion(azura, "Happy")
+    UI:WaitShowDialogue("Lead the way!")
+
+    COMMON.SetCharAndEmotion(kassy, "Normal")
+    UI:WaitShowDialogue("I can't.[pause=50] The treasure is in town and town's locked up.")
+    UI:WaitShowDialogue("Need some password or whatever.")
+
+    COMMON.SetCharAndEmotion(rexio, "Dizzy")
+    UI:WaitShowDialogue("[speed=0.4]Alright, team...!")
+    GROUND:CharSetAnim(rexio, "Pose", true)
+    GROUND:CharSetAction(rexio, RogueEssence.Ground.PoseGroundAction(rexio.Position, rexio.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Pose")))
+    UI:WaitShowDialogue("[speed=0.4]Unlock... the town...!")
+    GAME:WaitFrames(190)
+
+    GROUND:CharAnimateTurnTo(kassy, Direction.Up, 4)
+    COMMON.SetCharAndEmotion(kassy, "Happy")
+    UI:WaitShowDialogue("I'll be waiting at the gate up North, you guys have fun!")
+
+    local the1 = TASK:BranchCoroutine(function()
+        GROUND:MoveToPosition(kassy, kassy.Position.X, kassy.Position.Y - 300, false, 1)
+        GROUND:Hide("Kassy")
+        end)
+    local the2 = TASK:BranchCoroutine(function()
+        GAME:WaitFrames(70)
+        COMMON.SetCharAndEmotion(maru, "Normal")
+        GROUND:CharTurnToChar(maru, rexio)
+        GAME:WaitFrames(40)
+        UI:WaitShowDialogue("Nice to see you enjoying yourself.")
+
+        COMMON.SetCharAndEmotion(rexio, "Dizzy")
+        UI:WaitShowDialogue("[speed=0.4]...yeeeaaaaah!")
+        end)
+    TASK:JoinCoroutines({the1, the2})
+end

@@ -66,6 +66,7 @@ end
 -------------------------------
 
 -- CharFunc
+
 sand_talk = 0
 rex_talk = 0
 function ApartmentRooms.Mouse_Action(obj, activator)
@@ -107,6 +108,20 @@ function ApartmentRooms.Mouse_Action(obj, activator)
       UI:WaitShowDialogue("Guess it doesn't matter.[pause=10] I have other friends...[pause=10]")
     end
   end
+end
+
+function ApartmentRooms.Mampha_Action(obj, activator)
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Rexio wehh!")
+
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Mrs. Slash.")
+
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("Live well,[pause=30] and don't do anything dumb wehhhh.")
 end
 
 -- EnterFunc
@@ -157,24 +172,10 @@ function ApartmentRooms.MouseTalk_Touch(obj, activator)
   end
 end
 
-function ApartmentRooms.Mampha_Action(obj, activator)
-  UI:SetSpeaker(obj)
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("Rexio wehh!")
-
-  UI:SetSpeaker(activator)
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("Mrs. Slash.")
-
-  UI:SetSpeaker(obj)
-  UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("Live well,[pause=30] and don't do anything dumb wehhhh.")
-end
-
 function ApartmentRooms.MouseHomeEnter_Touch(obj, activator)
   local mampha = CH("Mampha")
   COMMON.FaceEachother(mampha, activator)
-  if SV.entoh_town.AdventureChapter < 5 then
+  if SV.entoh_town.DarknessChapter == 0 then
     UI:SetSpeaker(mampha)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Rexio!")
@@ -221,7 +222,9 @@ function ApartmentRooms.PanchHome_Touch(obj, activator)
   UI:SetSpeaker(activator)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("...nah. His place looks absolutely trashed.")
-  UI:SetSpeakerEmotion("Normal")
+  GAME:WaitFrames(30)
+  COMMON.CharSweatdrop("PLAYER")
+  UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("...and bamboo'd.")
 end
 
@@ -239,6 +242,8 @@ function ApartmentRooms.Upper_Floor_Touch(obj, activator)
   UI:SetSpeaker(activator)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("(A worker outside said the second floor was a WIP.)")
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("(Heard that fun stuff was gonna be up there.)")
 end
 
 return ApartmentRooms

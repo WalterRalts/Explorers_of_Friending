@@ -23,7 +23,7 @@ function TarroTownEast.Init(map)
 
   GROUND:Hide("MrSeed")
 
-  if outside_enter == 1 and SV.tarro_town.PieChapter <= 2 then
+  if OutEnter == 1 and SV.tarro_town.PieChapter <= 2 then
     GROUND:TeleportTo(partner, 355, 401, Direction.Down, 0)
     GAME:FadeIn(20)
   elseif SV.tarro_town.PieChapter ~= 4 then
@@ -37,7 +37,7 @@ function TarroTownEast.Init(map)
   elseif SV.tarro_town.PieChapter == 4 then
     GROUND:TeleportTo(tango, 476, 279, Direction.UpLeft, 0)
     GROUND:Unhide("MrSeed")
-    if outside_enter == 4 then
+    if OutEnter == 4 then
       GROUND:TeleportTo(azura, 244, 96, Direction.Down, 0)
     end
   end
@@ -143,7 +143,7 @@ end
 -------------------------------
 
 function TarroTownEast.TTEast_WExit_Touch(obj, activator)
-  outside_enter = 1
+  OutEnter = 1
   GAME:FadeOut(false, 20)
   GAME:EnterGroundMap("TarroTownOutside", "TTOutside_WEnter")
 end
@@ -657,7 +657,12 @@ function TarroTownEast.Budeg_Action(obj, activator)
   local budeg = CH("Budeg")
 
   UI:SetSpeaker(budeg)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Zzrk, this town is a little boring,[pause=50] but it's not... [pause=30]zzzt,[pause=30] [emote=Stunned]bad???")
   UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("...almost as if it's the first town ever.")
+  UI:WaitShowDialogue("...")
+  UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Zzt, welcome to dev mode. Bzzt, I am made to skip scenes and jump bewteen characters.")
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("Krzzt, I really hope this get to the right person...")

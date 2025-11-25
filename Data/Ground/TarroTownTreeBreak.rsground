@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -25918,8 +25918,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 262,
-"Y": 123,
+"X": 263,
+"Y": 118,
 "Width": 16,
 "Height": 16
 }
@@ -26434,9 +26434,9 @@
 },
 "Collider": {
 "X": 168,
-"Y": 360,
+"Y": 372,
 "Width": 48,
-"Height": 24
+"Height": 12
 }
 },
 {
@@ -26479,7 +26479,7 @@
 "X": 168,
 "Y": 0,
 "Width": 48,
-"Height": 24
+"Height": 12
 }
 },
 {

@@ -160,7 +160,7 @@ function Entoh.PanchChallenge()
             UI:WaitShowDialogue("C'moooooon!")
             UI:SetSpeaker(rexio)
             UI:SetSpeakerEmotion("Worried")
-            local choices = {("Nope."),
+            choices = {("Nope."),
             ("Fine...")}
             UI:BeginChoiceMenu("Um...", choices, 1, 2)
             UI:WaitForChoice()
@@ -171,7 +171,7 @@ function Entoh.PanchChallenge()
                 UI:WaitShowDialogue("Do it!")
                 UI:SetSpeaker(rexio)
                 UI:SetSpeakerEmotion("Determined")
-                local choices = {("No!"),
+                choices = {("No!"),
                 ("...fine!")}
                 UI:BeginChoiceMenu("Dude!", choices, 1, 2)
                 UI:WaitForChoice()
@@ -526,6 +526,8 @@ function Entoh.Resulting()
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("oh ok")
+        
     end
+    SV.entoh_town.panchdialogue = SV.entoh_town.thicket.result
     SV.entoh_town.thicket.result = 9
 end

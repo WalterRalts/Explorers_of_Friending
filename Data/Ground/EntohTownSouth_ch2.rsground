@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -58256,7 +58256,7 @@
 "Species": "cinccino",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 2
 },
 "Level": 1,
 "EXP": 0,
@@ -58322,8 +58322,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 343,
-"Y": 143,
+"X": 352,
+"Y": 165,
 "Width": 16,
 "Height": 16
 }
@@ -58337,7 +58337,7 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 435,
+"X": 399,
 "Y": 165
 },
 "serializationHeight": 0,
@@ -58352,7 +58352,7 @@
 "Species": "florges",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 2
 },
 "Level": 1,
 "EXP": 0,
@@ -58418,8 +58418,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 440,
-"Y": 163,
+"X": 399,
+"Y": 165,
 "Width": 16,
 "Height": 16
 }
@@ -58448,7 +58448,7 @@
 "Species": "pangoro",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 1
 },
 "Level": 1,
 "EXP": 0,
@@ -58514,8 +58514,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 30,
-"Y": 462,
+"X": 224,
+"Y": 429,
 "Width": 16,
 "Height": 16
 }
@@ -58529,7 +58529,7 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 67,
+"X": 53,
 "Y": 94
 },
 "serializationHeight": 0,
@@ -58544,7 +58544,7 @@
 "Species": "munna",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 2
 },
 "Level": 1,
 "EXP": 0,
@@ -58610,8 +58610,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 67,
-"Y": 94,
+"X": 54,
+"Y": 95,
 "Width": 16,
 "Height": 16
 }
@@ -58812,7 +58812,7 @@
 "Direction": 0,
 "IsInteracting": false,
 "AIEnabled": true,
-"EntName": "Butt",
+"EntName": "Beutt",
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -58825,14 +58825,14 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Beutt",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
 "Species": "dustox",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 1
 },
 "Level": 1,
 "EXP": 0,
@@ -59216,7 +59216,7 @@
 "Species": "pancham",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 1
 },
 "Level": 1,
 "EXP": 0,
@@ -59282,8 +59282,200 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 240,
-"Y": 417,
+"X": 247,
+"Y": 414,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"Direction": 6,
+"IsInteracting": false,
+"AIEnabled": true,
+"EntName": "Tidy",
+"EntEnabled": false,
+"EntOrder": 0,
+"InteractOrder": 0,
+"serializationLoc": {
+"X": 363,
+"Y": 202
+},
+"serializationHeight": 0,
+"serializationDir": 6,
+"triggerType": 1,
+"<AI>k__BackingField": null,
+"Data": {
+"Nickname": "Tidy",
+"OriginalUUID": "",
+"OriginalTeam": "",
+"BaseForm": {
+"Species": "minccino",
+"Form": 0,
+"Skin": "normal",
+"Gender": 2
+},
+"Level": 1,
+"EXP": 0,
+"MaxHPBonus": 0,
+"AtkBonus": 0,
+"DefBonus": 0,
+"MAtkBonus": 0,
+"MDefBonus": 0,
+"SpeedBonus": 0,
+"BaseSkills": [
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+}
+],
+"BaseIntrinsics": [
+""
+],
+"FormIntrinsicSlot": -1,
+"Relearnables": {},
+"Discriminator": 0,
+"MetAt": "",
+"MetLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"DefeatAt": "",
+"DefeatLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"IsFounder": false,
+"IsPartner": false,
+"NameLocked": false,
+"IsFavorite": false,
+"Unrecruitable": false,
+"ActionEvents": [],
+"ScriptVars": null
+},
+"CollisionDisabled": false,
+"Collider": {
+"X": 363,
+"Y": 202,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"Direction": 2,
+"IsInteracting": false,
+"AIEnabled": true,
+"EntName": "Flow",
+"EntEnabled": false,
+"EntOrder": 0,
+"InteractOrder": 0,
+"serializationLoc": {
+"X": 389,
+"Y": 201
+},
+"serializationHeight": 0,
+"serializationDir": 2,
+"triggerType": 1,
+"<AI>k__BackingField": null,
+"Data": {
+"Nickname": "Flow",
+"OriginalUUID": "",
+"OriginalTeam": "",
+"BaseForm": {
+"Species": "flabebe",
+"Form": 0,
+"Skin": "normal",
+"Gender": 2
+},
+"Level": 1,
+"EXP": 0,
+"MaxHPBonus": 0,
+"AtkBonus": 0,
+"DefBonus": 0,
+"MAtkBonus": 0,
+"MDefBonus": 0,
+"SpeedBonus": 0,
+"BaseSkills": [
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+}
+],
+"BaseIntrinsics": [
+""
+],
+"FormIntrinsicSlot": -1,
+"Relearnables": {},
+"Discriminator": 0,
+"MetAt": "",
+"MetLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"DefeatAt": "",
+"DefeatLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"IsFounder": false,
+"IsPartner": false,
+"NameLocked": false,
+"IsFavorite": false,
+"Unrecruitable": false,
+"ActionEvents": [],
+"ScriptVars": null
+},
+"CollisionDisabled": false,
+"Collider": {
+"X": 389,
+"Y": 201,
 "Width": 16,
 "Height": 16
 }

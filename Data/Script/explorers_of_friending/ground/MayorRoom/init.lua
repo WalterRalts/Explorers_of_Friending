@@ -73,11 +73,11 @@ local function wait()
       GAME:WaitFrames(20)
       GROUND:MoveToPosition(azura, 214, 350 + 16, true, 2)
       end)
-    local coro04 = TASK:BranchCoroutine(function()
+    local coro05 = TASK:BranchCoroutine(function()
       GAME:WaitFrames(195)
       GAME:FadeOut(false, 90)
       end)  
-    TASK:JoinCoroutines({coro01, coro02, coro03, coro04})
+    TASK:JoinCoroutines({coro01, coro02, coro03, coro04, coro05})
     GAME:CutsceneMode(false)
     GAME:EnterGroundMap("AppleMayor_pt2", "Enter")
   end
@@ -136,7 +136,7 @@ end
 -------------------------------
 
 function MayorRoom.MayorLeave_Touch(obj, activator)
-  GAME:EnterGroundMap("AppleTownMayor_pt2", "Enter")
+  GAME:EnterGroundMap("AppleMayor_pt2", "Enter")
 end
 
 return MayorRoom

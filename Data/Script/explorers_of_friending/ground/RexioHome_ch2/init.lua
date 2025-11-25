@@ -84,7 +84,7 @@ function RexioHome_ch2.FlowerPot_Action(obj, activator)
   COMMON.CharHop("PLAYER")
   UI:SetSpeakerEmotion("Determined")
   UI:WaitShowDialogue("(I'll take good care of them, mom.)")
-  GROUND:CharSetAnim(rexio, "Idle", true)
+  GROUND:CharSetAnim(rexio, "Idle", false)
 end
 
 return RexioHome_ch2

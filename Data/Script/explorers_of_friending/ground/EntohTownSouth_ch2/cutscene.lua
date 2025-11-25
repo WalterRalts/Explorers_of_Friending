@@ -3,6 +3,7 @@ require 'explorers_of_friending.common'
 South_ch2 = {}
 
 function South_ch2.GoingIn()
+    GAME:CutsceneMode(true)
     GAME:SetTeamLeaderIndex(0)
     GAME:RemovePlayerTeam(1)
     GAME:RemovePlayerTeam(1)
@@ -12,13 +13,20 @@ function South_ch2.GoingIn()
     COMMON:RespawnAllies()
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Dizzy")
-    UI:WaitShowDialogue("Yikes... I'm... not getting used to that...")
+    UI:WaitShowDialogue("Yikes, I'm... not getting used to that...")
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("...whatever that was...")
 
     GAME:FadeIn(50)
     
+    GROUND:CharAnimateTurnTo(rexio, Dir8.Left, 3)
+    GAME:WaitFrames(20)
+    GROUND:CharAnimateTurnTo(rexio, Dir8.Up, 3)
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Looks like everyone is here but my dad... maybe I should ask around.")
+    UI:WaitShowDialogue("Looks like everyone is here but my dad. Maybe I should ask around.")
+
+    GAME:CutsceneMode(false)
 end
 
 function South_ch2.GoingInFull()
@@ -26,10 +34,6 @@ function South_ch2.GoingInFull()
     local rexio = CH("PLAYER")
     local flow = CH("Teammate1")
     local tidy = CH("Teammate2")
-    GAME:RemovePlayerTeam(1)
-    GAME:RemovePlayerTeam(1)
-    GAME:RemovePlayerTeam(1)
-    GAME:RemovePlayerTeam(1)
 
     COMMON:RespawnAllies()
     UI:SetSpeaker(rexio)

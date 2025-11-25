@@ -135,7 +135,7 @@ function TarroTownBigTree_ch3.PurpKek_Counter_Action(obj, activator)
 end
 
 function TarroTownBigTree_ch3.Tree_Exit_Touch(obj, activator)
-  outside_enter = 4
+  OutEnter = 4
   GAME:FadeOut(false, 20)
   GAME:EnterGroundMap("tarro_town", "TarroTownSquare_ch3", "TarroTree_Exit")
 end
@@ -194,7 +194,7 @@ function TarroTownBigTree_ch3.Dean_Action(obj, activator)
     chat = chat + 1
   elseif chat == 1 then
     COMMON.SetCharAndEmotion(obj, "Worried")
-    UI:WaitShowDialogue("I bet it looks better, too, but I can't see all that well.")
+    UI:WaitShowDialogue("I bet it looks good, too, but I can't see all that well.")
     chat = chat + 1
   else
     COMMON.SetCharAndEmotion(obj, "Normal")

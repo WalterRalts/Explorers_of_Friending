@@ -19,7 +19,7 @@ function TarroForestPassage.Init(map)
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
   local partner = CH('Teammate1')
-  if outside_enter == 1 then
+  if OutEnter == 1 then
     GROUND:TeleportTo(partner, 557, 504, Direction.Left, 0)
   end
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
@@ -119,53 +119,19 @@ function TarroForestPassage.Cherry_Action(obj, activator)
   UI:WaitShowDialogue("The sun here is absolutely divine. [pause=30]G[emote=Happy]et a [speed=0.6]feeeeel.")
 end
 
-function TarroForestPassage.TFPassage_DungeonExit_Touch(obj, activator)
-  if SV.tarro_town.PieChapter < 4 then
-    local azura = CH('Teammate1')
-    local maru = CH('PLAYER')
-    UI:SetSpeaker(azura)
-    UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowDialogue("Maru, apple!")
-
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("O-oh,[pause=15] sorry,[pause=10] I...[pause=25] uh...[emote=Happy][pause=20] forgot,[pause=25] haha...")
-  elseif SV.tarro_town.PieChapter == 4 then
-    GAME:FadeOut(false, 20)
-    outside_enter = 4
-    GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast", "TTEast_TarroTownForest")
-  elseif SV.tarro_town.PieChapter <= 10 then
-    GAME:FadeOut(false, 20)
-    outside_enter = 4
-    GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch2", "TTEast_TarroTownForest")
-  else -- == 11
-    GAME:FadeOut(false, 20)
-    outside_enter = 4
-    GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch3", "TTEast_TarroTownForest")
-  end
-end
-
-function TarroForestPassage.TFPassage_PlazaEnter_Touch(obj, activator)
-  GAME:FadeOut(false, 20)
-  GAME:EnterGroundMap("TarroForestPlaza", "TarroPlaza_Enter")
-end
-
 function TarroForestPassage.Buttums_Action(obj, activator)
-  local maru = CH("PLAYER")
-  local buttums = CH("Buttums")
-
-  GROUND:CharTurnToCharAnimated(buttums, maru, 4)
-  UI:SetSpeaker(buttums)
+  GROUND:CharTurnToCharAnimated(obj, activator, 4)
+  UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Normal")
   
   tarro_dungeonpoints = SV.tarro_forest.dungpoints + SV.deep_tarro_forest.dungpoints + SV.tarro_tree_hollows.dungpoints
   if tarro_dungeonpoints >= 300 then
     if GAME:DungeonUnlocked("deep_tarro_forest") == false or GAME:DungeonUnlocked("deep_tarro_forest") == false then
-      UI:SetSpeaker(buttums)
+      UI:SetSpeaker(obj)
       UI:SetSpeakerEmotion("Worried")
       UI:WaitShowDialogue("Even though you have all the points...")
 
-      UI:SetSpeaker(buttums)
+      UI:SetSpeaker(obj)
       UI:SetSpeakerEmotion("Pain")
       UI:WaitShowDialogue("You haven't found all the dungeons.")
 
@@ -174,7 +140,7 @@ function TarroForestPassage.Buttums_Action(obj, activator)
     else
     end
   else
-    UI:WaitShowDialogue("You are not worthy for this place yet; not enough points. Don't forget to read the sign.")
+    UI:WaitShowDialogue("You are not worthy for this place yet;[pause=45] not enough points. Don't forget to read the sign.")
   end
   
 end
@@ -219,6 +185,26 @@ function TarroForestPassage.Buttums_1_Action(obj, activator)
   end
 end
 
+function TarroForestPassage.Meta1_Action(obj, activator)
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("...?")
+end
+
+function TarroForestPassage.Meta2_Action(obj, activator)
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("There's gonna be a whole party back there.")
+end
+
+function TarroForestPassage.Meta3_Action(obj, activator)
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Pain")
+  UI:WaitShowDialogue("Stare much...?")
+end
+
+--- Objects
+
 function TarroForestPassage.BigApple_Action(obj, activator)
   GAME:CutsceneMode(true)
   local azura = CH('Teammate1')
@@ -245,20 +231,6 @@ function TarroForestPassage.BigApple_Action(obj, activator)
   SV.tarro_town.PieChapter = 4
 end
 
-function TarroForestPassage.TF_DeepForestEnter_Touch(obj, activator)
-  local maru = CH("PLAYER")
-
-  if SV.tarro_town.DarknessChapter == 2 then
-    local dungeon_entrances = {"deep_tarro_forest"}
-    local ground_entrances = {}
-    COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances)
-  else
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("(...maybe later...)")
-  end
-  
-end
 
 function TarroForestPassage.AppleTree_Action(obj, activator)
   local apple_give = 0
@@ -293,6 +265,54 @@ function TarroForestPassage.AppleTree_Action(obj, activator)
     else
       UI:WaitShowDialogue("Nope.")
     end
+  end
+end
+
+--- Entrance
+
+function TarroForestPassage.TFPassage_PlazaEnter_Touch(obj, activator)
+  GAME:FadeOut(false, 20)
+  GAME:EnterGroundMap("TarroForestPlaza", "TarroPlaza_Enter")
+end
+
+function TarroForestPassage.TF_DeepForestEnter_Touch(obj, activator)
+  local maru = CH("PLAYER")
+
+  if SV.tarro_town.DarknessChapter == 2 then
+    local dungeon_entrances = {"deep_tarro_forest"}
+    local ground_entrances = {}
+    COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances)
+  else
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("(...maybe later...)")
+  end
+  
+end
+
+function TarroForestPassage.TFPassage_DungeonExit_Touch(obj, activator)
+  if SV.tarro_town.PieChapter < 4 then
+    local azura = CH('Teammate1')
+    local maru = CH('PLAYER')
+    UI:SetSpeaker(azura)
+    UI:SetSpeakerEmotion("Angry")
+    UI:WaitShowDialogue("Maru, apple!")
+
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("O-oh,[pause=15] sorry,[pause=10] I...[pause=25] uh...[emote=Happy][pause=20] forgot,[pause=25] haha...")
+  elseif SV.tarro_town.PieChapter == 4 then
+    GAME:FadeOut(false, 20)
+    OutEnter = 4
+    GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast", "TTEast_TarroTownForest")
+  elseif SV.tarro_town.PieChapter <= 10 then
+    GAME:FadeOut(false, 20)
+    OutEnter = 4
+    GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch2", "TTEast_TarroTownForest")
+  else -- == 11
+    GAME:FadeOut(false, 20)
+    OutEnter = 4
+    GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch3", "TTEast_TarroTownForest")
   end
 end
 

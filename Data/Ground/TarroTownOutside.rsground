@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -40163,6 +40163,294 @@
 "Width": 16,
 "Height": 16
 }
+},
+{
+"Direction": 2,
+"IsInteracting": false,
+"AIEnabled": true,
+"EntName": "Reeshi",
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"serializationLoc": {
+"X": 133,
+"Y": 48
+},
+"serializationHeight": 0,
+"serializationDir": 2,
+"triggerType": 1,
+"<AI>k__BackingField": null,
+"Data": {
+"Nickname": "Reeshi",
+"OriginalUUID": "",
+"OriginalTeam": "",
+"BaseForm": {
+"Species": "mareep",
+"Form": 0,
+"Skin": "normal",
+"Gender": 0
+},
+"Level": 1,
+"EXP": 0,
+"MaxHPBonus": 0,
+"AtkBonus": 0,
+"DefBonus": 0,
+"MAtkBonus": 0,
+"MDefBonus": 0,
+"SpeedBonus": 0,
+"BaseSkills": [
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+}
+],
+"BaseIntrinsics": [
+""
+],
+"FormIntrinsicSlot": -1,
+"Relearnables": {},
+"Discriminator": 0,
+"MetAt": "",
+"MetLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"DefeatAt": "",
+"DefeatLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"IsFounder": false,
+"IsPartner": false,
+"NameLocked": false,
+"IsFavorite": false,
+"Unrecruitable": false,
+"ActionEvents": [],
+"ScriptVars": null
+},
+"CollisionDisabled": false,
+"Collider": {
+"X": 133,
+"Y": 48,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"Direction": 4,
+"IsInteracting": false,
+"AIEnabled": true,
+"EntName": "Roll",
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"serializationLoc": {
+"X": 117,
+"Y": 71
+},
+"serializationHeight": 0,
+"serializationDir": 4,
+"triggerType": 1,
+"<AI>k__BackingField": null,
+"Data": {
+"Nickname": "Roll",
+"OriginalUUID": "",
+"OriginalTeam": "",
+"BaseForm": {
+"Species": "wooloo",
+"Form": 0,
+"Skin": "normal",
+"Gender": 0
+},
+"Level": 1,
+"EXP": 0,
+"MaxHPBonus": 0,
+"AtkBonus": 0,
+"DefBonus": 0,
+"MAtkBonus": 0,
+"MDefBonus": 0,
+"SpeedBonus": 0,
+"BaseSkills": [
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+}
+],
+"BaseIntrinsics": [
+""
+],
+"FormIntrinsicSlot": -1,
+"Relearnables": {},
+"Discriminator": 0,
+"MetAt": "",
+"MetLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"DefeatAt": "",
+"DefeatLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"IsFounder": false,
+"IsPartner": false,
+"NameLocked": false,
+"IsFavorite": false,
+"Unrecruitable": false,
+"ActionEvents": [],
+"ScriptVars": null
+},
+"CollisionDisabled": false,
+"Collider": {
+"X": 117,
+"Y": 71,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"Direction": 7,
+"IsInteracting": false,
+"AIEnabled": true,
+"EntName": "Oink",
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"serializationLoc": {
+"X": 101,
+"Y": 47
+},
+"serializationHeight": 0,
+"serializationDir": 7,
+"triggerType": 1,
+"<AI>k__BackingField": null,
+"Data": {
+"Nickname": "Reeshi",
+"OriginalUUID": "",
+"OriginalTeam": "",
+"BaseForm": {
+"Species": "lechonk",
+"Form": 0,
+"Skin": "normal",
+"Gender": 0
+},
+"Level": 1,
+"EXP": 0,
+"MaxHPBonus": 0,
+"AtkBonus": 0,
+"DefBonus": 0,
+"MAtkBonus": 0,
+"MDefBonus": 0,
+"SpeedBonus": 0,
+"BaseSkills": [
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+}
+],
+"BaseIntrinsics": [
+""
+],
+"FormIntrinsicSlot": -1,
+"Relearnables": {},
+"Discriminator": 0,
+"MetAt": "",
+"MetLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"DefeatAt": "",
+"DefeatLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"IsFounder": false,
+"IsPartner": false,
+"NameLocked": false,
+"IsFavorite": false,
+"Unrecruitable": false,
+"ActionEvents": [],
+"ScriptVars": null
+},
+"CollisionDisabled": false,
+"Collider": {
+"X": 101,
+"Y": 47,
+"Width": 16,
+"Height": 16
+}
 }
 ],
 "GroundObjects": [
@@ -40203,10 +40491,10 @@
 "Y": 0
 },
 "Collider": {
-"X": 503,
-"Y": 331,
-"Width": 24,
-"Height": 79
+"X": 512,
+"Y": 330,
+"Width": 16,
+"Height": 80
 }
 },
 {
@@ -40291,7 +40579,7 @@
 "Collider": {
 "X": 0,
 "Y": 331,
-"Width": 24,
+"Width": 16,
 "Height": 79
 }
 },
@@ -40336,6 +40624,49 @@
 "Y": 278,
 "Width": 89,
 "Height": 38
+}
+},
+{
+"EntName": "CloudWatch",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 2,
+"ObjectAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"Passable": false,
+"CurrentAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"AnimTime": {
+"Ticks": 0
+},
+"Cycles": 0,
+"DrawOffset": {
+"X": 0,
+"Y": 0
+},
+"Collider": {
+"X": 192,
+"Y": 32,
+"Width": 144,
+"Height": 24
 }
 }
 ],
@@ -40422,8 +40753,8 @@
 "triggerType": 0,
 "EntityCallbacks": [],
 "Collider": {
-"X": 229,
-"Y": 51,
+"X": 235,
+"Y": 65,
 "Width": 16,
 "Height": 16
 }
@@ -40438,8 +40769,8 @@
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 280,
-"Y": 50,
+"X": 276,
+"Y": 65,
 "Width": 16,
 "Height": 16
 }
@@ -40452,8 +40783,8 @@
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 462,
-"Y": 346,
+"X": 487,
+"Y": 343,
 "Width": 16,
 "Height": 16
 }
@@ -40466,8 +40797,8 @@
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 45,
-"Y": 345,
+"X": 25,
+"Y": 344,
 "Width": 16,
 "Height": 16
 }

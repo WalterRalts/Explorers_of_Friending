@@ -49,7 +49,7 @@ function MaruHome.Init(map)
     GROUND:Hide("Amazuru")
   end
 
-  if outside_enter == 2 then
+  if OutEnter == 2 then
     GROUND:TeleportTo(partner, 273, 176, Direction.Down, 0)
   end
   
@@ -164,7 +164,7 @@ function MaruHome.Amazuru_Action(obj, activator)
 end
 
 -- Enters --
-function MaruHome.MaruHome_BasementEntrance_Touch(obj, activator)
+function MaruHome.BasementEntrance_Touch(obj, activator)
   local maru = CH("PLAYER")
   local azura = CH("Teammate1")
 
@@ -180,7 +180,11 @@ function MaruHome.MaruHome_BasementEntrance_Touch(obj, activator)
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("(Probably not the time...)")
-  elseif SV.tarro_town.PieChapter >= 10 then
+  elseif SV.tarro_town.PieChapter == 11 then
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("[speed=0.2]Hm...[pause=30] [speed=1.0]n[emote=Happy]ah.[pause=30] The[emote=Happy] only thing down there is Mom and Dad's bed.")
+  elseif SV.tarro_town.PieChapter > 11 then
     if oven_perms_need == false then
       UI:SetSpeaker(maru)
       UI:SetSpeakerEmotion("Worried")
@@ -216,8 +220,7 @@ function MaruHome.MaruHome_BasementEntrance_Touch(obj, activator)
 end
 
 function MaruHome.MaruHomeExit_Touch(obj, activator)
-  print("Exiting?")
-  outside_enter = 1
+  OutEnter = 1
   if SV.GroundTutorial == 1 then
     local amazuru = CH("Amazuru")
     local maru = CH("PLAYER")
@@ -294,13 +297,12 @@ function MaruHome.WaterHole_Action(obj, activator)
 end
 
 function MaruHome.MaruOven_Action(obj, activator)
-  local maru = CH("PLAYER")
 
   if SV.tarro_town.DarknessChapter == 1 then
     if oven_perms_given == true then
       GAME:EnterGroundMap("MaruHomeFood", "Marker")
     else
-      UI:SetSpeaker(maru)
+      UI:SetSpeaker(obj)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("This is what mom uses to cook with...")
 
@@ -311,6 +313,13 @@ function MaruHome.MaruOven_Action(obj, activator)
     end
   elseif SV.tarro_town.DarknessChapter > 1 then
     GAME:EnterGroundMap("MaruHomeFood", "Marker")
+  else
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("This is what mom uses to cook with...")
+
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Can't use it now, though. I have other stuff to do.")
   end
 end
 

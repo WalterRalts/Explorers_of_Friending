@@ -1,0 +1,21 @@
+﻿{
+"Version": "0.8.11.0",
+"Object": {
+"$type": "RogueEssence.Data.EmoteData, RogueEssence",
+"Name": {
+"DefaultText": "Has Minigame",
+"LocalTexts": {}
+},
+"Comment": "Use if an NPC has a minigame",
+"LocHeight": 27,
+"Anim": {
+"AnimIndex": "Minigame",
+"FrameTime": 14,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 200,
+"AnimFlip": 0
+}
+}
+}

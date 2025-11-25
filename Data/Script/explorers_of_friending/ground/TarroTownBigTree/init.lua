@@ -163,7 +163,7 @@ function TarroTownBigTree.TarroThingCut(map)
 
     UI:SetSpeaker(puchi)
     UI:SetSpeakerEmotion("Surprised")
-    UI:WaitShowDialogue("It's going into the tree!?,[pause=33] we gotta stop it!")
+    UI:WaitShowDialogue("It's going into the tree!?[pause=33] We gotta stop it!")
     end)	
   local coro4 = TASK:BranchCoroutine(function() 
     GROUND:MoveToPosition(maru, 341, 376, false, 4)
@@ -394,7 +394,17 @@ function TarroTownBigTree.InfoSign_Action(obj, activator)
 end
 
 function TarroTownBigTree.Tree_2ndFloorEntrance_Touch(obj, activator)
-  
+  local ziggy = CH("Teammate4")
+  local senna = CH('Teammate2')
+  local puchi = CH("Teammate3")
+
+  UI:SetSpeaker(ziggy)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Workers outside said the second floor was a WIP.")
+
+  UI:SetSpeaker(senna)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("Must be some builder lingo.")
 end
 
 function TarroTownBigTree.PurpKek_Counter_Action(obj, activator)
@@ -441,7 +451,7 @@ function TarroTownBigTree.Tree_Exit_Touch(obj, activator)
     GAME:RemovePlayerTeam(2)
     GAME:FadeOut(false, 20)
     SV.tarro_town.PieChapter = 7.1
-    outside_enter = 4
+    OutEnter = 4
     GAME:EnterGroundMap("tarro_town", "TarroTownSquare", "TarroTree_Exit")
   else
     

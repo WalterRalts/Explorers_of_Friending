@@ -141,7 +141,7 @@ function TarroTownTreeBreak.Cute_Action(obj, activator)
   UI:SetSpeakerEmotion("Happy")
   local choices = {("Yes!"),
         ("No!")}
-    UI:BeginChoiceMenu("What some honey?! Only 100 Poke!", choices, 1, 2)
+    UI:BeginChoiceMenu("Want some honey?! Only 100 Poke!", choices, 1, 2)
     UI:WaitForChoice()
     result = UI:ChoiceResult()
     if result == 1 then
@@ -327,7 +327,12 @@ function TarroTownTreeBreak.LockedStairs_Action(obj, activator)
     UI:ResetSpeaker()
     UI:WaitShowDialogue("The way seems locked...")
     if GAME:FindPlayerItem("key_tree", true, true) then
-      SV.tarro_tree_hollows.stairs_unlocked = true
+      UI:ChoiceMenuYesNo("The key you have seems to match. Would you like to use it?", false)
+      UI:WaitForChoice()
+      local result = UI:ChoiceResult()
+      if result then
+        SV.tarro_tree_hollows.stairs_unlocked = true
+      end
     else
       UI:WaitShowDialogue("There's a strange keyhole over the cover.")
     end

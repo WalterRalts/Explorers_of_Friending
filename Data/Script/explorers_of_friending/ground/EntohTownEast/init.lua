@@ -16,20 +16,23 @@ local EntohTownEast = {}
 ---EntohTownEast.Init(map)
 --Engine callback function
 function EntohTownEast.Init(map)
+  COMMON.RespawnAllies()
   local tidy = CH("Teammate1")
+  local flow = CH("Teammate2")
   if SV.entoh_town.firstfind == 0 or SV.entoh_town.firstfind == 1 then
     East.TidyUp()
     if SV.entoh_town.firstfind == 0 then
       SV.entoh_town.firstfind = 2
     end
   else
-    COMMON.RespawnAllies()
-    local partner = CH("Teammate1")
-    if outside_enter == 1 then
-      GROUND:TeleportTo(partner, 120, 460, Direction.Up, 0)
+    if OutEnter == 1 then
+      tidy.CollisionDisabled = true
+      flow.CollisionDisabled = true
+      GROUND:TeleportTo(tidy, 60, 200, Direction.Left, 0)
+      GROUND:TeleportTo(flow, 60, 210, Direction.Left, 0)
     end
     AI:SetCharacterAI(tidy, "origin.ai.ground_partner", CH('PLAYER'), tidy.Position)
-    partner.CollisionDisabled = true
+    AI:SetCharacterAI(flow, "origin.ai.ground_partner", tidy, flow.Position)
   end
   TidyRexTalk = 0
 end
@@ -78,6 +81,7 @@ end
 -------------------------------
 
 function EntohTownEast.Entoh_CenterEnter_Touch(obj, activator)
+  OutEnter = 1
   GAME:EnterGroundMap("EntohTownCenter_ch2", "EasternMarker")
 end
 

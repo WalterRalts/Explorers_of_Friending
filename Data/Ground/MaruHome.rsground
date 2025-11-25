@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -25853,7 +25853,7 @@
 "X": 269,
 "Y": 225,
 "Width": 56,
-"Height": 39
+"Height": 40
 }
 },
 {
@@ -25893,14 +25893,14 @@
 "Y": 0
 },
 "Collider": {
-"X": 264,
-"Y": 154,
-"Width": 67,
+"X": 259,
+"Y": 155,
+"Width": 75,
 "Height": 16
 }
 },
 {
-"EntName": "MaruHome_BasementEntrance",
+"EntName": "BasementEntrance",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,

@@ -1,6 +1,7 @@
 AppleBoss = {}
 
 function AppleBoss.Roomy()
+    UI:SetBounds(10, 16, 300, 50)
     COMMON.RespawnAllies()
     local maru = CH("PLAYER")
     local galia = CH("Galia")

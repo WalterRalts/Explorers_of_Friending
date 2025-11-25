@@ -30996,7 +30996,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -31005,7 +31005,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -31014,7 +31014,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -31059,7 +31059,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -31068,7 +31068,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -31077,7 +31077,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -31565,7 +31565,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -31574,7 +31574,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -31646,7 +31646,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -32134,7 +32134,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -35548,7 +35548,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -36117,7 +36117,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -36126,7 +36126,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -36198,7 +36198,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -36686,7 +36686,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -36695,7 +36695,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -36704,7 +36704,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -36749,7 +36749,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -36758,7 +36758,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -36767,7 +36767,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 1
+"Tags": 0
 },
 {
 "Bounds": {
@@ -55188,8 +55188,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 303,
-"Y": 397
+"X": 313,
+"Y": 399
 },
 "serializationHeight": 0,
 "serializationDir": 2,
@@ -55269,8 +55269,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 303,
-"Y": 397,
+"X": 313,
+"Y": 396,
 "Width": 16,
 "Height": 16
 }
@@ -55285,7 +55285,7 @@
 "InteractOrder": 0,
 "serializationLoc": {
 "X": 469,
-"Y": 394
+"Y": 396
 },
 "serializationHeight": 0,
 "serializationDir": 0,
@@ -55366,7 +55366,7 @@
 "CollisionDisabled": false,
 "Collider": {
 "X": 469,
-"Y": 394,
+"Y": 396,
 "Width": 16,
 "Height": 16
 }
@@ -55632,12 +55632,12 @@
 }
 },
 {
-"EntName": "NewObject_6",
+"EntName": "Sign",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 1,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -55670,7 +55670,7 @@
 "Collider": {
 "X": 144,
 "Y": 360,
-"Width": 43,
+"Width": 40,
 "Height": 40
 }
 },

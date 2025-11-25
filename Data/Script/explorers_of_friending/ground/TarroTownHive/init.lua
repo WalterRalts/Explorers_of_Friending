@@ -182,7 +182,7 @@ end
 
 function TarroTownHive.TTSquare_HiveExit_Touch(obj, activator)
   GAME:FadeOut(false, 20)
-  outside_enter = 3
+  OutEnter = 3
   if SV.tarro_town.PieChapter >= 10 then
     GAME:EnterGroundMap("TarroTownSquare_ch3", "TTSquare_WestEnter")
   else
@@ -194,11 +194,13 @@ function TarroTownHive.TTSquare_HiveA_Touch(obj, activator)
   local maru = CH('PLAYER')
 
   if SV.tarro_town.DarknessChapter > 0 then
-    
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("(A lot of bees make their home here, but it looks like they're making changes. I'll come back later.)")
   else
     UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("(A lot of bees make their home here, but it looks like they're making changes.")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("(A lot of bees make their home here, but it looks like they're making changes. I'll come back later.)")
   end
 end
 

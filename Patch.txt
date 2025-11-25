@@ -1,100 +1,28 @@
-- Allocated and changed more dialogue
-- Added missing quiz dialogue
-- Cutscenes that require certain items will no longer softlock the player if it is removed
-- A small fix concerning objects and characters facing eachother
-- An internal update that reduces space consumption and optimizes certain cutscenes
+- Optimized by lowering the number of dialogue boxes needed for the story
+- Reduced the number of ellipses in dialogue
+- Rexio can no longer interrupt the story by pressing [B] during a cutscene
+- Applied Cutscene Mode to cutscenes that didn't have it applied
+- Added front layer to cartain zones
+- Added a symbol to mark a minigame owner
+- Reduced the size of most hitboxes tthat activate moving zones and cutscenes
+- Gave internal genders to most Pokemon NPCs
+- Fixed most occurences of partners running to the other side of the map just to reach you.
 
 GROUND
 
 - Tarro
 
--- Mrs. Longline can now appear at home
+-- Allocated more dialogue
+-- Fixed Tarro Town West to be more than "a debug spot with no important spots".
+-- Fixed an issue where failing Tarro Forest would result in breaking chapter numbers
 
 - Entoh
 
--- Mouse's name is Mouse now
--- Added Dragon's Delivery
+-- Added a warning before the first boss of the zone
+-- Fixed an issue that stopped Flow's dialogue from occuring
+-- Budeg appears
 
-- Apple Town
+- Guild
 
--- Added more sections to Apple Town 
-
-DUNGEONS
-
-- Tarro Forest
-
-The first dungeon in the game, while easy, it is much too grindable, leading to an early lead in the game before the main chapters.
-It was also brought to my attention that grass-types against water-types are not a good idea for beginners to learn the game.
-
--- EXP Gain: 40 -> 35
--- Money (per floor): 5-30 (+10-20) -> 5-25 (+5-15)
-
--- Increased the number of Wonder Tiles on the first floor.
--- Decreased the amount of teams of 2 spawning
--- Bellsprout does not spawn on lower floors, and spawns less on higher floors.
--- Added Skitty
-
-- Tarro Tree Hallows
-
-Maru being the leader brings this dungeon to be more of an annoyance than a challenge with the theme of grass, so having him level up would be beneficial.
-The large lack of space on the lower floors reduced the number of options to battle freely, especially with a large team size.
-
--- EXP Gain: 25 -> 40
-
--- Forced Ziggy to have Pickup as his ability
--- Removed Warp Tiles, added Poison Tiles
--- Changed the look of the lower floors
--- Added more tunnels and made them longer
--- Reduced the overall levels of all Pokemon
--- Reduced the number of larger teams spawning on the floor
-
-- Dark Tarro Forest
-
-The dungeon was unnecessarily long, making it chokable and grindable.
-
--- Floors: 7F -> 6F
-
--- Oddish spawns less on all floors and now has a chance to learn Tickle instead of Double-Edge
--- Shroomish spawn more on all floors, but not all of them will know Rest
--- Phantump are less dumb and hold an Oran Berry with the Harvest ability
--- Further reduced naturally spawned Gold Tiles
-
-- Darker Tarro Forest
-
-The dungeon was unnecessarily long, making it chokable and grindable.
-
--- Floors: 8F -> 7F
-
--- Reduced the overall levels of all Pokemon
-
-- Dreaded Depths
-
-The use of Grimy food as a secondary status weapon was originally unintentional. 
-However, it proved worthy as both a secondary challenge and as a way for Rexio to deal with disabled moves.
-
--- EXP Gain: 40 -> 35
-
--- Increased the chance of Grimy Food and Leppa Berries. Decreased the chance of Apples and Throwables
--- Increased the minimum levels of some Pokemon from 1 to 3
--- Fixed an issue where enemies wouldn't spawn on the last floor
--- Spread the team number odds to range more throughout floors
--- Highly increased the level for Gloom in the dungeon
-
-- Swamp Line 
-
-This dungeon was a place holder. Things would be better if it weren't.
-
--- Floors: B3F -> B4F
--- EXP Gain: 100 -> 40
-
--- All floors now match eachother, and use a different song.
--- Ghost-type spawn much less often, and teams of four no longer spawn
--- Drastically reduced item spawns
-
-- Apple Forest
-
-The dungeon loot is not optimized for worth at all.
-
--- Greatly decreased the chance of Crunchy Leaves spawned in Vault Rooms
--- Greatly increased the chance of Appletun spawned in Vault Rooms
--- Extended the maximum length of the hallway leading to a vault room
+-- Fixed an issue regarding the incorrect texture being used, causing a missing hill on the left.
+-- Fixed an issue where the camera would be stuck on the player

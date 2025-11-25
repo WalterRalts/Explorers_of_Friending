@@ -59,31 +59,6 @@ end
 -- Entities Callbacks
 -------------------------------
 
--- CharFunc
-sand_talk = 0
-rex_talk = 0
-function ApartmentRooms_ch2.Mouse_Action(obj, activator)
-  local mouse = CH("Mouse")
-  COMMON.FaceEachother(activator, mouse)
-  if sand_talk == 0 then
-    UI:SetSpeaker(mouse)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Hey, Rexio.[pause=10] Hope you're well.[pause=10]")
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Me?[pause=10] Maybe Tidy hates me.[pause=10] I'm not all clean.[pause=10]")
-    UI:SetSpeakerEmotion("Sad")
-    UI:WaitShowDialogue("I'm not too clean.[pause=10] I'm just more organized.[pause=10] Even more than Tidy.[pause=10]")
-    UI:SetSpeakerEmotion("Pain")
-    UI:WaitShowDialogue("I hope we're friends.[pause=10] She never shows it.[pause=10] Like, ever.[pause=10]")
-    sand_talk = 1
-  else
-    UI:SetSpeaker(mouse)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Guess it doesn't matter.[pause=10] I have other friends...[pause=10]")
-  end
-  
-end
-
 -- EnterFunc
 
 function ApartmentRooms_ch2.ApartExit_Touch(obj, activator)
@@ -124,19 +99,38 @@ function ApartmentRooms_ch2.EmptyEnter_Touch(obj, activator)
   end
 end
 
-function ApartmentRooms_ch2.EmptyEnter_0_Touch(obj, activator)
-  local rexio = CH("PLAYER")
+function ApartmentRooms_ch2.MouseHome_Touch(obj, activator)
+  local mampha = CH("Mampha")
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("Why is there so much sand in there...?")
+end
 
-  if rex_talk == 0 then
-    UI:SetSpeaker(rexio)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("(Oh wooooooooow. Very interesting stuff in there.)")
-    rex_talk = 1
-  else
-    UI:SetSpeaker(rexio)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("(If my sarcasm wasn't obvious...)")
-  end
+function ApartmentRooms_ch2.PanchHome_Touch(obj, activator)
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("...nah. His place looks absolutely trashed.")
+  GAME:WaitFrames(30)
+  COMMON.CharSweatdrop("PLAYER")
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("...and bamboo'd.")
+end
+
+function ApartmentRooms_ch2.EncleenHouse_Touch(obj, activator)
+  COMMON.CharSweatdrop("PLAYER")
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Surprised")
+  UI:WaitShowDialogue("(Everyone is gone,[pause=45] but I still feel like I'm being watched.)")
+  UI:SetSpeakerEmotion("Pain")
+  UI:WaitShowDialogue("(I gotta get out of here.)")
+end
+
+function ApartmentRooms_ch2.Upper_Floor_Touch(obj, activator)
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("(A worker outside said the second floor was a WIP.)")
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("(Heard that fun stuff was gonna be up there.)")
 end
 
 return ApartmentRooms_ch2

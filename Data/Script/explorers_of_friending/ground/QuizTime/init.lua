@@ -24,7 +24,7 @@ function QuizTime.Init(map)
 
   GAME:FadeIn(5)
   GAME:WaitFrames(10)
-  outside_enter = 1
+  OutEnter = 1
   if quiz_done ~= 1 then
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Surprised")

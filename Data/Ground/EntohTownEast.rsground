@@ -36508,7 +36508,7 @@
 "Collider": {
 "X": 0,
 "Y": 160,
-"Width": 24,
+"Width": 8,
 "Height": 80
 }
 }
@@ -36700,8 +36700,8 @@
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 32,
-"Y": 196,
+"X": 15,
+"Y": 195,
 "Width": 16,
 "Height": 16
 }

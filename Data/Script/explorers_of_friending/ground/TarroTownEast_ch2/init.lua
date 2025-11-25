@@ -31,10 +31,10 @@ function TarroTownEast_ch2.Init(map)
     GROUND:Unhide("Furie")
     GROUND:Unhide("Beel")
   end
-  if outside_enter == 1 then
+  if OutEnter == 1 then
     GROUND:TeleportTo(partner, 355, 401, Direction.Down, 0)
     GAME:FadeIn(20)
-  elseif outside_enter == 2 then
+  elseif OutEnter == 2 then
     GROUND:TeleportTo(partner, 448, 19, Direction.Down, 0)
     GAME:FadeIn(20)
   end
@@ -86,7 +86,7 @@ end
 -------------------------------
 
 function TarroTownEast_ch2.TTEast_WExit_Touch(obj, activator)
-  outside_enter = 1
+  OutEnter = 1
   GAME:FadeOut(false, 20)
   GAME:EnterGroundMap("TarroTownOutside", "TTOutside_WEnter")
 end

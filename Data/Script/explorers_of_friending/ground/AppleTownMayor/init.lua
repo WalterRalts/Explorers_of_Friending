@@ -68,5 +68,34 @@ function AppleTownMayor.AppleTownEntrance_Touch(obj, activator)
   GAME:EnterGroundMap("AppleTown", "Enter2")
 end
 
+function AppleTownMayor.Biubin_Action(obj, activator)
+  COMMON.SetCharAndEmotion(obj, "Stunned")
+  UI:WaitShowDialogue("My brother is the mayor for today.")
+  UI:WaitShowDialogue("We couldn't decide who could lead better, so we just switch everyday.")
+end
+
+function AppleTownMayor.Candle_Action(obj, activator)
+  local flame = CH("Flame")
+  local wax = CH("Wax")
+
+  COMMON.SetCharAndEmotion(obj, "Happy")
+  UI:WaitShowDialogue("I can't wait to work today! We're gonna scare everyone!")
+
+  COMMON.CharSweatdrop("Flame")
+  COMMON.SetCharAndEmotion(flame, "Worried")
+  UI:WaitShowDialogue("...we'd probably get in trouble...")
+
+  COMMON.SetCharAndEmotion(wax, "Normal")
+  UI:WaitShowDialogue("Okay???[pause=40] Just don't get caught???[pause=55] Turn invisible like the ghost you are???")
+end
+
+function AppleTownMayor.Flame_Action(obj, activator)
+  AppleTownMayor.Candle_Action(CH("Candle"), activator)
+end
+
+function AppleTownMayor.Wax_Action(obj, activator)
+  AppleTownMayor.Candle_Action(CH("Candle"), activator)
+end
+
 return AppleTownMayor
 

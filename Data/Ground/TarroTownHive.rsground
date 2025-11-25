@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -79268,7 +79268,7 @@
 "Direction": 0,
 "IsInteracting": false,
 "AIEnabled": true,
-"EntName": "NewObject_2",
+"EntName": "Walter",
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -79355,7 +79355,7 @@
 "CollisionDisabled": false,
 "Collider": {
 "X": 412,
-"Y": 359,
+"Y": 358,
 "Width": 16,
 "Height": 16
 }
@@ -79931,7 +79931,7 @@
 "CollisionDisabled": false,
 "Collider": {
 "X": 388,
-"Y": 406,
+"Y": 405,
 "Width": 16,
 "Height": 16
 }
@@ -80078,12 +80078,12 @@
 }
 },
 {
-"EntName": "NewObject_1",
+"EntName": "TTSquare_HiveA",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -80158,9 +80158,9 @@
 },
 "Collider": {
 "X": 288,
-"Y": 192,
+"Y": 195,
 "Width": 72,
-"Height": 24
+"Height": 18
 }
 },
 {
@@ -80243,9 +80243,9 @@
 "Y": 0
 },
 "Collider": {
-"X": 864,
+"X": 876,
 "Y": 216,
-"Width": 24,
+"Width": 12,
 "Height": 72
 }
 }
@@ -80333,8 +80333,8 @@
 "triggerType": 0,
 "EntityCallbacks": [],
 "Collider": {
-"X": 841,
-"Y": 256,
+"X": 850,
+"Y": 258,
 "Width": 16,
 "Height": 16
 }
@@ -80349,8 +80349,8 @@
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 832,
-"Y": 230,
+"X": 843,
+"Y": 232,
 "Width": 16,
 "Height": 16
 }

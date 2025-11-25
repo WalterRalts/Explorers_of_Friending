@@ -25451,7 +25451,7 @@
 "Species": "linoone",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 1
 },
 "Level": 1,
 "EXP": 0,
@@ -25547,7 +25547,7 @@
 "Species": "sentret",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 2
 },
 "Level": 1,
 "EXP": 0,
@@ -25643,7 +25643,7 @@
 "Species": "zigzagoon",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 1
 },
 "Level": 1,
 "EXP": 0,
@@ -25739,7 +25739,7 @@
 "Species": "furret",
 "Form": 0,
 "Skin": "normal",
-"Gender": 0
+"Gender": 2
 },
 "Level": 1,
 "EXP": 0,
@@ -25805,8 +25805,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 315,
-"Y": 182,
+"X": 311,
+"Y": 175,
 "Width": 16,
 "Height": 16
 }
@@ -25851,9 +25851,9 @@
 },
 "Collider": {
 "X": 144,
-"Y": 312,
+"Y": 324,
 "Width": 144,
-"Height": 24
+"Height": 12
 }
 },
 {
@@ -25894,9 +25894,9 @@
 },
 "Collider": {
 "X": 197,
-"Y": 135,
+"Y": 139,
 "Width": 38,
-"Height": 16
+"Height": 12
 }
 },
 {
@@ -25980,9 +25980,9 @@
 },
 "Collider": {
 "X": 272,
-"Y": 153,
+"Y": 158,
 "Width": 61,
-"Height": 16
+"Height": 12
 }
 }
 ],
@@ -26069,8 +26069,8 @@
 "triggerType": 0,
 "EntityCallbacks": [],
 "Collider": {
-"X": 189,
-"Y": 285,
+"X": 190,
+"Y": 305,
 "Width": 16,
 "Height": 16
 }
@@ -26085,8 +26085,8 @@
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 216,
-"Y": 278,
+"X": 217,
+"Y": 300,
 "Width": 16,
 "Height": 16
 }

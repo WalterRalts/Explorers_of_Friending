@@ -118,6 +118,16 @@ function AppleTown.AppleTG_Action(obj, activator)
   UI:WaitShowDialogue("Please control her...")
 end
 
+function AppleTown.ApplinD_Action(obj, activator)
+  COMMON.SetCharAndEmotion(obj, "Normal")
+  UI:WaitShowDialogue("Where are the golden apples?[pause=50] Have we tried using those?")
+end
+
+function AppleTown.ApplinC_Action(obj, activator)
+  COMMON.SetCharAndEmotion(obj, "Normal")
+  UI:WaitShowDialogue("Red just isn't my style.[pause=50] Are there apples in orange?")
+end
+
 function AppleTown.AppleTownConcertEnter_Touch(obj, activator)
   GAME:FadeOut(false, 20)
   GAME:EnterGroundMap("AppleTownConcert", "Enter")
@@ -197,7 +207,8 @@ function AppleTown.Teammate2_Action(obj, activator)
 end
 
 function AppleTown.AppleWay_Touch(obj, activator)
-  
+  COMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(0), "Normal")
+  UI:WaitShowDialogue("Apples first.")
 end
 
 return AppleTown

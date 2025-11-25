@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -59588,6 +59588,20 @@
 "Collider": {
 "X": 100,
 "Y": 28,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "PanchIdle",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 376,
+"Y": 352,
 "Width": 16,
 "Height": 16
 }

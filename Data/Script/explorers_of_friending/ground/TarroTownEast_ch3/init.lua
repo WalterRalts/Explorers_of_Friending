@@ -27,13 +27,13 @@ function TarroTownEast_ch3.Init(map)
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
   local partner = CH('Teammate1')
-  if outside_enter == 1 then
+  if OutEnter == 1 then
     GROUND:TeleportTo(partner, 355, 401, Direction.Down, 0)
-  elseif outside_enter == 2 then
+  elseif OutEnter == 2 then
     GROUND:TeleportTo(partner, 448, 19, Direction.Down, 0)
-  elseif outside_enter == 3 then
+  elseif OutEnter == 3 then
     GROUND:TeleportTo(partner, 468, 411, Direction.Down, 0)
-  elseif outside_enter == 4 then
+  elseif OutEnter == 4 then
     GROUND:TeleportTo(partner, 244, 96, Direction.Down, 0)
   end
 
@@ -227,7 +227,7 @@ function TarroTownEast_ch3.Loast_Action(obj, activator)
 end
 
 function TarroTownEast_ch3.TTEast_WExit_Touch(obj, activator)
-  outside_enter = 1
+  OutEnter = 1
   GAME:FadeOut(false, 20)
   GAME:EnterGroundMap("TarroTownOutside", "TTOutside_WEnter")
 end
@@ -235,7 +235,7 @@ end
 function TarroTownEast_ch3.TarroForestEntrance_Touch(obj, activator)
 
   local maru = CH("PLAYER")
-  outside_enter = 0
+  OutEnter = 0
   
   if SV.tarro_town.PieChapter >= 10 then
     local dungeon_entrances = {"tarro_forest"}
@@ -349,7 +349,7 @@ function TarroTownEast_ch3.MaruMail_Action(obj, activator)
 end
 
 function TarroTownEast_ch3.TTEast_NExit_Touch(obj, activator)
-  outside_enter = 1
+  OutEnter = 1
   GAME:FadeOut(false, 20)
   GAME:EnterGroundMap("tarro_town", "TarroTownSquare_ch3", "TTSquare_EastEnter")
 end

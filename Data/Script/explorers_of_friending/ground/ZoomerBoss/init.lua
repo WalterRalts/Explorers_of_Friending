@@ -100,7 +100,7 @@ function ZoomerBoss.PreBattle()
 
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Stunned")
-  GROUND:CharSetEmote(maru, "sweating", 1)
+  COMMON.CharSweating("PLAYER")
   UI:WaitShowDialogue("Yeesh,[pause=0] yes ma'am.")
   
   UI:SetSpeaker(STRINGS:Format("\\uE040"))
@@ -140,14 +140,14 @@ function ZoomerBoss.PreBattle()
   
   UI:SetSpeaker(zoomer)
   GROUND:MoveToPosition(zoomer, 170, 140, false, 4)
-  GROUND:CharAnimateTurn(azura, Direction.UpLeft, 4, true)
-  GROUND:CharAnimateTurn(maru, Direction.UpRight, 2, false)
+  GROUND:CharAnimateTurnTo(azura, Direction.UpLeft, 4)
+  GROUND:CharAnimateTurnTo(maru, Direction.UpRight, 2)
   COMMON.CharAngry("Zoomer")
   UI:SetSpeakerEmotion("Angry")
   UI:WaitShowDialogue("Look, okay! [pause=0]This place is impossible!")
-  GROUND:CharAnimateTurn(zoomer, Direction.Up, 4, true)
+  GROUND:CharAnimateTurnTo(zoomer, Direction.Up, 4)
   UI:WaitShowDialogue("I don't...![pause=0] I just cannot right now!")
-  GROUND:CharAnimateTurn(zoomer, Direction.UpRight, 4, true)
+  GROUND:CharAnimateTurnTo(zoomer, Direction.UpRight, 2)
   UI:WaitShowDialogue("I've been going around everywhere \ntrying to find just one!")
   UI:WaitShowDialogue("So many of you come in here and \njust...[pause=20] aaah!!")
   
@@ -273,14 +273,14 @@ function ZoomerBoss.PostBattle()
   UI:SetSpeaker(zoomer)
   UI:SetSpeakerEmotion("Dizzy")
   GROUND:CharSetAnim(zoomer, "Hurt", true)
-  UI:WaitShowDialogue("...owie...")
+  UI:WaitShowDialogue("...owie.")
   
   GAME:CutsceneMode(false)
   SV.tarro_forest.dungpoints = SV.tarro_forest.dungpoints + 1
   SV.tarro_forest.revisit = true
   GAME:FadeOut(false, 20)
   GAME:EnterZone("tarro_forest", -1, 1, 0)
-  outside_enter = 0
+  OutEnter = 0
 end
 
 ---ZoomerBoss.Exit(map)

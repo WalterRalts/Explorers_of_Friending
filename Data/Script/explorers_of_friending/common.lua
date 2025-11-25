@@ -1432,6 +1432,12 @@ function COMMON.CharRealizeHeavy(char)
   SOUND:PlaySE("Battle/EVT_Emote_Shock_Bad")
 end
 
+function COMMON.CharHappy(char)
+  local real = CH(char)
+  GROUND:CharSetEmote(real, "happy", 2)
+  SOUND:PlaySE("Battle/EVT_Emote_Startled_2")
+end
+
 function COMMON.SetCharAndEmotion(char, emote)
   UI:SetSpeaker(char)
   UI:SetSpeakerEmotion(emote)
@@ -1471,4 +1477,9 @@ function COMMON.SaveStorage()
       box_storage:RemoveAt(i)
     end
   end
+end
+
+function COMMON.FadeEnterGround(area, zone)
+  GAME:FadeOut(false, 20)
+  GAME:EnterGroundMap(area, zone)
 end
