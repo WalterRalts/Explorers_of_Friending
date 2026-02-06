@@ -76,7 +76,7 @@ function AppleBoss.Roomy()
     COMMON.FaceEachother(rexio, azura)
     UI:WaitShowDialogue("And your sis wouldn't stop staring at that apple...")
 
-    GROUND:CharAnimateTurn(azura, Direction.UpRight, 4, false)
+    GROUND:CharAnimateTurnTo(azura, Direction.UpRight, 4)
     COMMON.SetCharAndEmotion(azura, "Worried")
     UI:WaitShowDialogue("Are you sure that we can't take it?")
 

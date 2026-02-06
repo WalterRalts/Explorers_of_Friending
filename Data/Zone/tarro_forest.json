@@ -1188,6 +1188,59 @@
 {
 "Key": {
 "str": [
+6
+]
+},
+"Value": {
+"$type": "RogueEssence.LevelGen.MapEffectStep`1[[RogueEssence.LevelGen.MapGenContext, RogueEssence]], RogueEssence",
+"Effect": {
+"UniversalStates": [],
+"BeforeTryActions": [],
+"BeforeActions": [],
+"OnActions": [],
+"BeforeExplosions": [],
+"BeforeHits": [],
+"OnHits": [],
+"OnHitTiles": [],
+"AfterActions": [],
+"ElementEffects": [],
+"OnEquips": [],
+"OnPickups": [],
+"BeforeStatusAdds": [],
+"OnStatusAdds": [],
+"OnStatusRemoves": [],
+"OnMapStatusAdds": [],
+"OnMapStatusRemoves": [],
+"OnMapStarts": [
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
+"Script": "DungeonTalker",
+"ArgTable": "{}"
+}
+}
+],
+"OnTurnStarts": [],
+"OnTurnEnds": [],
+"OnMapTurnEnds": [],
+"OnWalks": [],
+"OnDeaths": [],
+"OnRefresh": [],
+"OnMapRefresh": [],
+"ModifyHPs": [],
+"RestoreHPs": [],
+"InitActionData": []
+}
+}
+},
+{
+"Key": {
+"str": [
 6,
 1
 ]
@@ -2237,14 +2290,23 @@
 "SpawnFeatures": [
 {
 "$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+},
+{
+"$type": "PMDC.LevelGen.MobSpawnBoost, PMDC",
+"MaxHPBonus": -1,
+"AtkBonus": -3,
+"DefBonus": -3,
+"SpAtkBonus": -3,
+"SpDefBonus": -3,
+"SpeedBonus": -3
 }
 ]
 },
 "Role": 0
 },
-"Rate": 10,
+"Rate": 8,
 "Range": {
-"Min": 0,
+"Min": 1,
 "Max": 5
 }
 },
@@ -2305,12 +2367,17 @@
 "SpawnFeatures": [
 {
 "$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+},
+{
+"$type": "PMDC.LevelGen.MobSpawnMovesOff, PMDC",
+"StartAt": 2,
+"Remove": false
 }
 ]
 },
 "Role": 0
 },
-"Rate": 5,
+"Rate": 10,
 "Range": {
 "Min": 0,
 "Max": 5
@@ -2344,7 +2411,7 @@
 },
 "Role": 0
 },
-"Rate": 10,
+"Rate": 5,
 "Range": {
 "Min": 3,
 "Max": 5

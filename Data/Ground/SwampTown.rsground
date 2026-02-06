@@ -58590,7 +58590,7 @@
 "InteractOrder": 0,
 "serializationLoc": {
 "X": 81,
-"Y": 447
+"Y": 441
 },
 "serializationHeight": 0,
 "serializationDir": 5,
@@ -58670,8 +58670,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 81,
-"Y": 447,
+"X": 83,
+"Y": 442,
 "Width": 16,
 "Height": 16
 }
@@ -58685,8 +58685,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 124,
-"Y": 446
+"X": 126,
+"Y": 443
 },
 "serializationHeight": 0,
 "serializationDir": 5,
@@ -58766,8 +58766,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 124,
-"Y": 446,
+"X": 125,
+"Y": 444,
 "Width": 16,
 "Height": 16
 }
@@ -59192,8 +59192,8 @@
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 106,
-"Y": 444,
+"X": 105,
+"Y": 438,
 "Width": 16,
 "Height": 16
 }

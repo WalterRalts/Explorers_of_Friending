@@ -262,7 +262,7 @@ function TarroTownTreetop.ExplodeEvade(map)
 
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Special1")
-  UI:WaitShowDialogue("Geez, that was tiring!")
+  UI:WaitShowDialogue("That was tiring...!")
 
   UI:SetSpeaker(azura)
   UI:SetSpeakerEmotion("Worried")

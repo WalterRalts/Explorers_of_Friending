@@ -59391,12 +59391,12 @@
 ],
 "GroundObjects": [
 {
-"EntName": "NewObject",
+"EntName": "EntohForest",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -59427,10 +59427,10 @@
 "Y": 0
 },
 "Collider": {
-"X": 360,
+"X": 358,
 "Y": 0,
-"Width": 48,
-"Height": 18
+"Width": 52,
+"Height": 16
 }
 },
 {

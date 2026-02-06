@@ -3,6 +3,7 @@ require 'explorers_of_friending.common'
 Aurm = {}
 
 function Aurm.Feeling()
+    GAME:GroundSave()
     local rexio = CH("PLAYER")
     local luke = CH("Luke")
     GAME:CutsceneMode(true)
@@ -19,7 +20,7 @@ function Aurm.Feeling()
         UI:SetSpeakerEmotion("Worried")
         UI:WaitShowDialogue("...ugh, this is so boring...")
         UI:SetSpeakerEmotion("Determined")
-        UI:WaitShowDialogue("I don't get it, can't I just [emote=Happy]punch stuff?")
+        UI:WaitShowDialogue("I don't get it, can't I just[pause=40] [emote=Happy]punch stuff?")
         end)
     
     TASK:JoinCoroutines({coro01, coro02})
@@ -497,7 +498,7 @@ function Aurm2.LukeWarm()
         end)
     TASK:JoinCoroutines({coro1, coro2})
 
-    GROUND:CharTurnToChar(luke, rexio)
+    GROUND:CharTurnToCharAnimated(luke, rexio)
     GAME:WaitFrames(95)
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Normal")

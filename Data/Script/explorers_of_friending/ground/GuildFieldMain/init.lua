@@ -83,8 +83,13 @@ end
 -------------------------------
 
 function GuildFieldMain.NorthEast_Touch(obj, activator)
-  DUNsection = 0
-  COMMON.ShowDestinationMenu(SV.guild.dungeons.east, SV.guild.areas.east)
+  if SV.guild.day == 1 then
+
+  else
+    DUNsection = 0
+    COMMON.ShowDestinationMenu(SV.guild.dungeons.east, SV.guild.areas.east)
+    GAME:SetTeamLeaderIndex(0)
+  end
 end
 
 function GuildFieldMain.NorthWest_Touch(obj, activator)
@@ -230,6 +235,53 @@ end
 
 function GuildFieldMain.Storage_Action(obj, activator)
   COMMON:ShowTeamStorageMenu()
+end
+
+function GuildFieldMain.DayCheck_Touch(obj, activator)
+  local leader = CH("PLAYER")
+  local second = CH("Teammate1")
+  local third = CH("Teammate2")
+  if SV.guild.day == 2 then
+    if activator.Nickname == "Maru" then
+      UI:SetSpeaker(third)
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("Uh, Maru... other way.")
+
+      UI:SetSpeaker(leader)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Oh whoops.")
+    elseif activator.Nickname == "Rexio" then
+      UI:SetSpeaker(leader)
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("(This isn't the way to treasure.)")
+    else
+      UI:SetSpeaker(third)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Uhh...")
+      COMMON.FaceEachother(activator, third)
+
+      UI:SetSpeaker(leader)
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("Huh?")
+
+      UI:SetSpeaker(second)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Other way, Azura.")
+
+      UI:SetSpeaker(leader)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Okay!")
+    end
+    GROUND:MoveToPosition(activator, activator.Position.X + 15, activator.Position.Y + 15, false, 1)
+  end
+end
+
+function GuildFieldMain.Kitkit_Action(obj, activator)
+  COMMON.FaceEachother(obj, activator)
+
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("You three can do it!")
 end
 
 return GuildFieldMain

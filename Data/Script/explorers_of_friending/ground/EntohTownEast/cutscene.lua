@@ -134,7 +134,7 @@ function East.TidyUp()
             GROUND:AnimateInDirection(rexio, "Walk", Dir8.Right, Dir8.Left, 10, 3, 2)
         end)
         TASK:JoinCoroutines({cor11, cor12})
-        
+
         UI:SetSpeaker(tidy)
         UI:SetSpeakerEmotion("Angry")
         UI:WaitShowDialogue("Rexio!")

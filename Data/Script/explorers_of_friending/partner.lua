@@ -1,4 +1,5 @@
 function Partner()
+    local talk = math.random(5)
     local area_name = GAME:GetCurrentGround().AssetName
     if GAME:GetPlayerPartyCount() > 1 then
         if not SV.guilders.fielded_two then
@@ -491,14 +492,95 @@ function Partner()
                         UI:SetSpeakerEmotion("Pain")
                         UI:WaitShowDialogue("...")
                     end
+                elseif area_name == "EntohTownEast_ch2" then
+                    local rexio = CH("PLAYER")
+                    local flow = CH('Teammate1')
+                    local tidy = CH('Teammate2')
+                    local wurp = CH('Teammate3')
+                    local snow = CH('Teammate4')
+                    local talk = math.random(3)
+
+                    if talk == 1 then
+                        UI:SetSpeaker(tidy)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("W-wait...! We... we have to go that way?!")
+
+                        UI:SetSpeaker(snow)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowTimedDialogue("Y-yeah, but...")
+
+                        UI:SetSpeaker(tidy)
+                        UI:SetSpeakerEmotion("Dizzy")
+                        UI:WaitShowDialogue("Aaaaaaaaaa! [pause=30]Noooooooooo! It's so gross over there!")
+
+                        UI:SetSpeaker(flow)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("Tidy.[pause=30] Flower.")
+
+                        UI:SetSpeaker(tidy)
+                        UI:SetSpeakerEmotion("Pain")
+                        UI:WaitShowDialogue("Y-yeah... thank you...")
+                    elseif talk == 2 then
+                        UI:SetSpeaker(wurp)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("I won't wie, I feewike my couwage just defwated wike a bawoon...")
+
+                        UI:SetSpeaker(snow)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("M-maybe if...[pause=30] mm-, n-no, never mind.")
+
+                        UI:SetSpeaker(wurp)
+                        UI:SetSpeakerEmotion("Sad")
+                        UI:WaitShowDialogue("No, Snow, I get it...")
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("I just... I fewt wike I was saving the wowld after defeating that... thing...")
+
+                        UI:SetSpeaker(snow)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("R-rexio...[br] When w-we're done with this... adventure thing,[pause=0] w-will you come back...?")
+
+                        UI:SetSpeaker(tidy)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("Aren't we going with him?")
+
+                        UI:SetSpeaker(snow)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("M-mom doesn't...[pause=25] want me too f-far out there yet, s-so...")
+
+                        UI:SetSpeaker(rexio)
+                        UI:SetSpeakerEmotion("Happy")
+                        UI:WaitShowDialogue("I'll be back. Don't worry about it.")
+                    elseif talk == 3 then
+                        UI:SetSpeaker(flow)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("Hopefully there are some more flowers over there.")
+                        UI:SetSpeakerEmotion("Normal")
+                        UI:WaitShowDialogue("This one's all wilty and stuff.")
+
+                        UI:SetSpeaker(snow)
+                        UI:SetSpeakerEmotion("Happy")
+                        UI:WaitShowDialogue("D-dewey can... help you...!")
+
+                        UI:SetSpeaker(flow)
+                        UI:SetSpeakerEmotion("Happy")
+                        UI:WaitShowDialogue("Oh, I forgot he was studying plants!")
+
+                        UI:SetSpeaker(snow)
+                        UI:SetSpeakerEmotion("Happy")
+                        UI:WaitShowDialogue("Mhm! H-he can bring it back to it's... uh... not-wilty form!")
+
+                        UI:SetSpeaker(flow)
+                        UI:SetSpeakerEmotion("Normal")
+                        UI:WaitShowDialogue("I'll ask him when we're done with the trip.")
+                    end
                 end
+
             end
         else
             if GAME:IsKeyDown(66) then
                 local leader = GAME:GetPlayerPartyMember(0)
                 local second = GAME:GetPlayerPartyMember(1)
                 local third = GAME:GetPlayerPartyMember(2)
-                local talk = math.random(5)
                 COMMON.FaceEachother(CH("PLAYER"), CH("Teammate1"))
                 if area_name == "GuildFieldMain" then
                     if SV.guild.day == 1 then
@@ -611,7 +693,7 @@ function Partner()
 
                             UI:SetSpeaker(second)
                             UI:SetSpeakerEmotion("Happy")
-                            UI:WaitShowDialogue("We'll just spray the sand off!")
+                            UI:WaitShowDialogue("We'll just splash the sand off!")
 
                             COMMON.CharSweatdrop("Teammate2")
                             UI:SetSpeaker(third)
@@ -650,21 +732,38 @@ function Partner()
                     UI:SetSpeaker(second)
                     UI:SetSpeakerEmotion("Stunned")
                     UI:WaitShowDialogue("Scary...")
-
-                    UI:SetSpeaker(leader)
-                    UI:SetSpeakerEmotion("Determined")
-                    UI:WaitShowDialogue("Let's keep our guard up.")
                 elseif area_name == "AppleTown_pt2" then
-                    UI:SetSpeaker(third)
-                    UI:SetSpeakerEmotion("Stunned")
-                    UI:WaitShowDialogue("The Magnet forces.")
+                    
+                    if SV.guild.time == 99 then
+                        UI:SetSpeaker(second)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("I wanna go home...")
+                    elseif SV.guild.time == 100 then
+                        UI:SetSpeaker(third)
+                        UI:SetSpeakerEmotion("Stunned")
+                        UI:WaitShowDialogue("I guess we should tell the not-guild what happened.")
 
-                    UI:SetSpeaker(leader)
-                    UI:SetSpeakerEmotion("Normal")
-                    UI:WaitShowDialogue("Let's tell them what happened.")
+                        UI:SetSpeaker(leader)
+                        UI:SetSpeakerEmotion("Normal")
+                        UI:WaitShowDialogue("Right.")
+                    else
+                        UI:SetSpeaker(third)
+                        UI:SetSpeakerEmotion("Stunned")
+                        UI:WaitShowDialogue("The Magnet forces.")
+
+                        UI:SetSpeaker(leader)
+                        UI:SetSpeakerEmotion("Normal")
+                        UI:WaitShowDialogue("Let's tell them what happened.")
+                    end
                 elseif string.sub(area_name, 1, 6) == "Desert" then
                     if area_name == "DesertN" then
-                        
+                        UI:SetSpeaker(leader)
+                        UI:SetSpeakerEmotion("Normal")
+                        UI:WaitShowDialogue("There's the gate, but we don't know the password, right?")
+
+                        UI:SetSpeaker(third)
+                        UI:SetSpeakerEmotion("Normal")
+                        UI:WaitShowDialogue("Can't be any hard. Maybe it's, like, written down somewhere.")
                     else
                         UI:SetSpeaker(leader)
                         UI:SetSpeakerEmotion("Normal")

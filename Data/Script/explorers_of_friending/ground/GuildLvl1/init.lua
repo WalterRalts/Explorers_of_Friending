@@ -25,6 +25,7 @@ function GuildLvl1.Init(map)
   else
     Tent.FreeDay()
   end
+  rextalk = 0
 end
 
 ---GuildLvl1.Enter(map)
@@ -66,7 +67,7 @@ end
 -- Entities Callbacks
 -------------------------------
 
-local rextalk = 0
+
 function GuildLvl1.GuildExit1_Touch(obj, activator)
   local maru = CH("PLAYER")
   if SV.guild.day == 0 then
@@ -118,6 +119,30 @@ function GuildLvl1.MarTouch_Touch(obj, activator)
       UI:SetSpeaker(maru)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("(Might be missing something.)")
+    end
+  elseif SV.guild.day == 1 then
+    if SV.guild.time > 0 then
+      UI:ResetSpeaker()
+      UI:ChoiceMenuYesNo("Would you like to rest for tomorrow?", false)
+      UI:WaitForChoice()
+      local result = UI:ChoiceResult()
+      if result then
+        GAME:GroundSave()
+        UI:WaitShowDialogue("Game saved!")
+        GAME:FadeOut(false, 60)
+        rextalk = 0
+        SV.guild.day = SV.guild.day + 1
+        SV.guild.time = 0
+        Tent.DayStart()
+      else
+        UI:SetSpeaker(maru)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("(Might be missing something.)")
+      end
+    else
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("(I slept enough, I should actually do something.)")
     end
   else
     if SV.guild.time > 0 then
@@ -241,7 +266,7 @@ function GuildLvl1.Teammate1_Action(obj, activator)
       UI:WaitShowDialogue("...so shocking.")
 
       COMMON.SetCharAndEmotion(maru, "Stunned")
-      UI:WaitShowDialogue("Still illegal, Azu...")
+      UI:WaitShowDialogue("You need different eats, Azura...")
     end
   end
 end
@@ -310,7 +335,7 @@ function GuildLvl1.Teammate2_Action(obj, activator)
       UI:WaitShowDialogue("Mama...")
 
       COMMON.SetCharAndEmotion(maru, "Stunned")
-      UI:WaitShowDialogue("...I guess it's heavy in here now.")
+      UI:WaitShowDialogue("...there goes the mood.")
     end
   elseif SV.guild.day == 1 then
     if SV.guild.time == 100 then

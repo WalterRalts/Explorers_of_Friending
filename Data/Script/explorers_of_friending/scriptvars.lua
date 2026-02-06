@@ -95,7 +95,6 @@ SV.tarro_town =
   DarknessChapter = 0,
   spent_dungpoints = 0,
   puchi_tired = true,
-  
   cooking_tutorial_done = 1
 }
 
@@ -139,14 +138,14 @@ SV.dreaded_depths =
   dungpoints = 0,
 }
 
-SV.apple_forest = 
+SV.apple_forest =
 {
   apple = 0,
   revisit = false,
   dungpoints = 0,
 }
 
-SV.entoh_town = 
+SV.entoh_town =
 {
   panchdialogue = 0,
   HelperChapter = -1,
@@ -171,9 +170,14 @@ SV.apple_town =
 
 SV.hertz_town =
 {
+  passcount = 0,
   visited = false,
   solvedNW = true,
-  desert_scene = true
+  desert_scene = true,
+  TunnelCheck = "none",
+  fastvisited = {
+    0,
+  }
 }
 
 --- Guild

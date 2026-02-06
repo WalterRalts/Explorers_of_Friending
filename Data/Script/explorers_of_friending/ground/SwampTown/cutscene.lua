@@ -88,25 +88,27 @@ function SwampUp.TransferA()
 
     local lac1 = TASK:BranchCoroutine(function()
         GAME:WaitFrames(35)
-        GROUND:AnimateToPosition(flow, "Walk", Dir8.Left, flow.Position.X - 10, flow.Position.Y, 0.2, 6, 0)
+        GROUND:AnimateToPosition(flow, "Walk", Dir8.Left, tidy.Position.X + 10, tidy.Position.Y, 0.2, 6, 0)
         while mover == true do
             GROUND:CharSetEmote(flow, "sweating", 1)
             GAME:WaitFrames(50)
         end
         end)	
     local lac2 = TASK:BranchCoroutine(function()
-        GROUND:AnimateToPosition(tidy, "Walk", Dir8.Left, tidy.Position.X - 10, tidy.Position.Y, 0.2, 6, 0)
+        GROUND:AnimateToPosition(tidy, "Walk", Dir8.Left, 119, 471, 0.2, 6, 0)
         while mover == true do
-            GROUND:AnimateToPosition(tidy, "Walk", Dir8.Left, tidy.Position.X, tidy.Position.Y, 8, 120, 0)
-            GAME:WaitFrames(5)
+            GROUND:AnimateToPosition(tidy, "Walk", Dir8.Left, tidy.Position.X - 1, tidy.Position.Y, 2, 0.1, 0)
+            GAME:WaitFrames(10)
+            GROUND:AnimateToPosition(tidy, "Walk", Dir8.Left, tidy.Position.X + 1, tidy.Position.Y, 2, 0.1, 0)
+            GAME:WaitFrames(10)
         end
         end)
     local lac3 = TASK:BranchCoroutine(function()
         UI:SetSpeaker(tidy)
         UI:SetSpeakerEmotion("Shouting")
         UI:WaitShowDialogue("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!")
-        mover = false
         COMMON.CharSweatdrop("Wurp")
+        mover = false
         end)
     TASK:JoinCoroutines({lac1, lac2, lac3})
 

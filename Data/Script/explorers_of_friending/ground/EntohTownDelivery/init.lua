@@ -87,7 +87,7 @@ function EntohTownDelivery.Down_Action(obj, activator)
     UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Rexiiiii~![pause=15] Like,[pause=30] omyarceuuuuuuus!")
-    UI:WaitShowDialogue("That nap I had was sooooooo good,[pause=20] like,[pause=30] if you ever get insomnia...")
+    UI:WaitShowDialogue("That nap I had was sooooooo good,[pause=20] like,[pause=30] if you ever have, like, trouble sleeping...")
 
     UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Normal")
@@ -95,7 +95,7 @@ function EntohTownDelivery.Down_Action(obj, activator)
 
     UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Well, goshy gooooosh, didn't think you'd remember...~")
+    UI:WaitShowDialogue("Well, golly gooooosh, didn't think you'd remember...~")
   else
     UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Normal")

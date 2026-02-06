@@ -1503,9 +1503,25 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 
 			UI:SetSpeaker(maru)
 			UI:SetSpeakerEmotion("Happy")
-			UI:WaitShowDialogue("Now let's see if we can't find any items around.")
+			UI:WaitShowDialogue("Not yet.[pause=40] Now let's see if we can't find any items around.")
 			UI:SetSpeakerEmotion("Normal")
 			UI:WaitShowDialogue("Once we do, we can press " .. STRINGS:LocalKeyString(12) .. " to open the bag.")
+		elseif floor_no == 2 then
+			UI:SetSpeaker(azura)
+			UI:SetSpeakerEmotion("Worried")
+			UI:WaitShowDialogue("Hey, how come we can't use the apples on the ground for pies?")
+
+			UI:SetSpeaker(maru)
+			UI:SetSpeakerEmotion("Normal")
+			UI:WaitShowDialogue("I think the size of Big Apples make it taste better.")
+
+			UI:SetSpeaker(azura)
+			UI:SetSpeakerEmotion("Stunned")
+			UI:WaitShowDialogue("(How does that work...?)")
+
+			UI:SetSpeaker(maru)
+			UI:SetSpeakerEmotion("Happy")
+			UI:WaitShowDialogue("It's easier to get hungry in a dungeon anyway, so we should munch on them in here.")
 		end
 	elseif area_name == "Tarro Tree Hallows" and SV.tarro_town.PieChapter <= 9 then
 		local senna = GAME:GetPlayerPartyMember(2)
@@ -1529,7 +1545,7 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 	
 				UI:SetSpeaker(ziggy)
 				UI:SetSpeakerEmotion("Determined")
-				UI:WaitShowDialogue("Guuuuuuys!")
+				UI:WaitShowDialogue("Guuuuuuys, come ooooooooon!")
 			elseif floor_no == 2 then
 				UI:SetSpeaker(maru)
 				UI:SetSpeakerEmotion("Normal")
@@ -1661,6 +1677,17 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 			UI:SetSpeakerEmotion("Joyous")
 			UI:WaitShowDialogue("Yeah, flip flip flip!")
 		end
+	elseif string.sub(area_name, 1, 5) == "Hertz" and string.find(area_name, "T") > 5 then
+		local leader = GAME:GetPlayerPartyMember(0)
+		local second = GAME:GetPlayerPartyMember(1)
+		local third = GAME:GetPlayerPartyMember(2)
+		UI:SetSpeaker(third)
+		UI:SetSpeakerEmotion("Normal")
+		UI:WaitShowDialogue("...wow, dungeon tunnel.")
+
+		UI:SetSpeaker(leader)
+		UI:SetSpeakerEmotion("Normal")
+		UI:WaitShowDialogue("Cool.")
 	end
 end
 
@@ -1831,4 +1858,12 @@ function SINGLE_CHAR_SCRIPT.SlumberPollen(owner, ownerChar, context, args)
 			end
 		end
 	end
+end
+
+function SINGLE_CHAR_SCRIPT.TunnelCheck(owner, ownerChar, context, args)
+	local part = args[1]
+	local marker = args[2]
+	print(part)
+	print(marker)
+	COMMON.FadeEnterGround(part, marker)
 end

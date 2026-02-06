@@ -83,6 +83,7 @@ local function check_answer()
     if solved == true then
       SV.hertz_town.solvedNW = true
       SOUND:StopBGM()
+      GAME:WaitFrames(30)
       SOUND:PlayBattleSE("DUN_SunnyDay")
       UI:ResetSpeaker()
       UI:WaitShowDialogue("Something happened somewhere close...")
@@ -100,7 +101,8 @@ end
 
 function DesertNW.InfoTablet_Action(obj, activator)
   UI:ResetSpeaker()
-  UI:WaitShowDialogue("A few words this tablet holds.\nOne that flows before what grows.\nLast is one the second hates.\nAll can only be one.")
+  UI:WaitShowDialogue("\"A few words this tablet holds.\nOne that flows before what grows.\nLast is one the second hates.\nAll can only be one.\"")
+  UI:WaitShowDialogue("The number four is also lazily etched on the side.")
 end
 
 function DesertNW.WaterTablet_Action(obj, activator)
@@ -142,18 +144,38 @@ function DesertNW.FireTablet_Action(obj, activator)
   end
 end
 
+function DesertNW.cactus5_Action(obj, activator)
+  if activator.Nickname == "Rexio" then
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("(...I'm seeing a pattern.)")
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("(Because this place is a desert,[pause=50] I see cactuses-[emote=Worried]... cactoos... cack...)")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("(Big green spiky things.)")
+  elseif activator.Nickname == "Maru" then
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("(This one looks weird, too...)")
+  else
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("(Five!)")
+  end
+end
+
 -- Exits
 
 function DesertNW.S_Touch(obj, activator)
-  GAME:EnterGroundMap("DesertSW", "NorthEnter")
+  COMMON.FadeEnterGround("DesertSW", "NorthEnter")
 end
 
 function DesertNW.SE_Touch(obj, activator)
-  GAME:EnterGroundMap("DesertS", "NorthWestEnter")
+  COMMON.FadeEnterGround("DesertS", "NorthWestEnter")
 end
 
 function DesertNW.E_Touch(obj, activator)
-  GAME:EnterGroundMap("DesertN", "WestEnter")
+  COMMON.FadeEnterGround("DesertN", "WestEnter")
 end
 
 return DesertNW

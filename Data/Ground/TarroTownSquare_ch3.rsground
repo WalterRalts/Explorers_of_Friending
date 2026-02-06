@@ -186809,7 +186809,7 @@
 }
 },
 {
-"EntName": "NewObject_5",
+"EntName": "TarroWest",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
@@ -186846,9 +186846,9 @@
 },
 "Collider": {
 "X": 96,
-"Y": 480,
+"Y": 492,
 "Width": 72,
-"Height": 24
+"Height": 12
 }
 },
 {
@@ -186890,7 +186890,7 @@
 "Collider": {
 "X": 0,
 "Y": 192,
-"Width": 24,
+"Width": 12,
 "Height": 120
 }
 },
@@ -186975,9 +186975,9 @@
 },
 "Collider": {
 "X": 1632,
-"Y": 480,
+"Y": 492,
 "Width": 144,
-"Height": 24
+"Height": 12
 }
 },
 {
@@ -187150,8 +187150,8 @@
 "triggerType": 0,
 "EntityCallbacks": [],
 "Collider": {
-"X": 1695,
-"Y": 461,
+"X": 1690,
+"Y": 466,
 "Width": 16,
 "Height": 16
 }
@@ -187167,21 +187167,21 @@
 "triggerType": 0,
 "Collider": {
 "X": 1667,
-"Y": 454,
+"Y": 466,
 "Width": 16,
 "Height": 16
 }
 },
 {
-"EntName": "TTSquare_WestEnter",
+"EntName": "WestEnter",
 "Direction": 6,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 31,
-"Y": 230,
+"X": 32,
+"Y": 231,
 "Width": 16,
 "Height": 16
 }
@@ -187222,8 +187222,8 @@
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 141,
-"Y": 449,
+"X": 139,
+"Y": 469,
 "Width": 16,
 "Height": 16
 }

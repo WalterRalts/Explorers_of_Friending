@@ -65,7 +65,7 @@ function TarroTownHive.HoneyShop_Action(obj, activator)
   local cute = CH("Cute")
   local azura = CH('Teammate1')
 
-  pouch_money = GAME:GetPlayerMoney()
+  local pouch_money = GAME:GetPlayerMoney()
   UI:SetSpeaker(cute)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Oh my goodness, hi hi hi!")
@@ -86,9 +86,9 @@ function TarroTownHive.HoneyShop_Action(obj, activator)
         GAME:RemoveFromPlayerMoney(100)
         GROUND:MoveToPosition(cute, 309, 181, false, 10)
         GAME:WaitFrames(70)
-        SOUND:PlaySE("EVT_CH02_Item_Place")
         GROUND:MoveToPosition(cute, 323, 181, false, 10)
         GROUND:CharAnimateTurn(cute, Direction.DownRight, 2, true)
+        SOUND:PlaySE("EVT_CH02_Item_Place")
         GROUND:Unhide("PurchasedHoney")
         GAME:WaitFrames(20)
         GROUND:MoveToPosition(cute, 315, 175, false, 10)
@@ -96,7 +96,7 @@ function TarroTownHive.HoneyShop_Action(obj, activator)
         UI:SetSpeakerEmotion("Happy")
         GAME:GivePlayerItem("packed_honey")
         UI:WaitShowDialogue("There you go! Enjoy!")
-        
+
         GROUND:Hide("PurchasedHoney")
         UI:SetSpeaker(azura)
         UI:SetSpeakerEmotion("Joyous")
@@ -184,9 +184,9 @@ function TarroTownHive.TTSquare_HiveExit_Touch(obj, activator)
   GAME:FadeOut(false, 20)
   OutEnter = 3
   if SV.tarro_town.PieChapter >= 10 then
-    GAME:EnterGroundMap("TarroTownSquare_ch3", "TTSquare_WestEnter")
+    GAME:EnterGroundMap("TarroTownSquare_ch3", "WestEnter")
   else
-    GAME:EnterGroundMap("TarroTownSquare", "TTSquare_WestEnter")
+    GAME:EnterGroundMap("TarroTownSquare", "WestEnter")
   end
 end
 
@@ -196,12 +196,34 @@ function TarroTownHive.TTSquare_HiveA_Touch(obj, activator)
   if SV.tarro_town.DarknessChapter > 0 then
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("(A lot of bees make their home here, but it looks like they're making changes. I'll come back later.)")
+    UI:WaitShowDialogue("(A lot of bees make their home here, [color=#EFBF04]but it looks like they're making changes. I'll come back later.[color])")
   else
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("(A lot of bees make their home here, but it looks like they're making changes. I'll come back later.)")
+    UI:WaitShowDialogue("(A lot of bees make their home here, [color=#EFBF04]but it looks like they're making changes. I'll come back later.[color])")
   end
+end
+
+function TarroTownHive.Walter_Action(obj, activator)
+  UI:ResetSpeaker()
+  UI:WaitShowDialogue("A Ralts is enjoying himself with his friends.")
+  UI:WaitShowDialogue("He'd say something, but they all look too busy talking about something stupid probably.")
+end
+
+function TarroTownHive.Ether_Action(obj, activator)
+  TarroTownHive.Walter_Action()
+end
+
+function TarroTownHive.Wurm_Action(obj, activator)
+  TarroTownHive.Walter_Action()
+end
+
+function TarroTownHive.Toast_Action(obj, activator)
+  TarroTownHive.Walter_Action()
+end
+
+function TarroTownHive.Jeffrey_Action(obj, activator)
+  TarroTownHive.Walter_Action()
 end
 
 return TarroTownHive

@@ -84,10 +84,11 @@ function TarroTownSquare_ch3.Lax_Action(obj, activator)
   local munch = CH("Munch")
   local lax = CH("Lax")
   GROUND:CharSetAnim(lax, "Sleep", true)
-  
+  GROUND:CharTurnToCharAnimated(munch, lax, 2)
+
   UI:ResetSpeaker()
   UI:WaitShowDialogue("Zzzzzzzzz...")
-  
+
   UI:SetSpeaker(munch)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("Pops,[pause=25] getcha self up, would ya.")
@@ -109,7 +110,7 @@ function TarroTownSquare_ch3.Buzzer_Action(obj, activator)
   GROUND:CharTurnToCharAnimated(buzzer, maru, 2)
   UI:SetSpeaker(buzzer)
   UI:SetSpeakerEmotion("Angry")
-  UI:WaitShowDialogue("Oi! [pause=50]Behind the counter, buzz!")
+  UI:WaitShowDialogue("Oi! [pause=50]Not behind the counter, buzz!")
   GROUND:CharAnimateTurn(buzzer, Direction.Left, 4, true)
 end
 
@@ -132,7 +133,7 @@ function TarroTownSquare_ch3.Ribbon_Action(obj, activator)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Welcome to our little setup, friend.")
   UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("We aren't ready yet, though. [pause=20]Do come back later.")
+  UI:WaitShowDialogue("We aren't ready yet, though. [color=#EFBF04][pause=20]Do come back later.[color]")
   GROUND:CharAnimateTurn(ribbon, Direction.DownLeft, 4, false)
 end
 
@@ -144,7 +145,7 @@ function TarroTownSquare_ch3.BuzzStore_Action(obj, activator)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("Sorry, buzzas.")
   UI:SetSpeakerEmotion("Pain")
-  UI:WaitShowDialogue("Can't open the store up yet,[pause=35] setting it up perfectly iz harder then it lookz, buzz.")
+  UI:WaitShowDialogue("Can't open the store up yet,[pause=35] [color=#EFBF04]setting it up perfectly iz harder then it lookz, buzz.[color]")
   local menu = BuzzerShopMenu:new()
   UI:SetCustomMenu(menu.menu)
   UI:WaitForChoice()

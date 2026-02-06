@@ -1,28 +1,65 @@
-- Optimized by lowering the number of dialogue boxes needed for the story
-- Reduced the number of ellipses in dialogue
-- Rexio can no longer interrupt the story by pressing [B] during a cutscene
-- Applied Cutscene Mode to cutscenes that didn't have it applied
-- Added front layer to cartain zones
-- Added a symbol to mark a minigame owner
-- Reduced the size of most hitboxes tthat activate moving zones and cutscenes
-- Gave internal genders to most Pokemon NPCs
-- Fixed most occurences of partners running to the other side of the map just to reach you.
+Progress into Chapter 2 is being made, and to prevent the chance of anything being corrupted, patches will now come out more often. 
 
-GROUND
+TECHNICAL (may contain spoilers)
 
-- Tarro
+- Adjusted enter and exit names to make it easier to move around in code.
+- Removed dummy Maru. Turns out you can just disable an exit by hiding it, someone should document that.
+- Removed blank lines. All space is saved space lol.
+- Reorganize characters and enters for some areas.
+- Removed the "resetsettings" service.
+- Attempted to fix an issue where you wouldn't lose PP for moves when using Rexio for the first time.
 
--- Allocated more dialogue
--- Fixed Tarro Town West to be more than "a debug spot with no important spots".
--- Fixed an issue where failing Tarro Forest would result in breaking chapter numbers
+GAME
 
-- Entoh
+- Adjusted the direction of some markers so you spawn in looking in the right direction.
+- Allocated even more dialogue
+- Color coded dialogue that refers to future features.
+- Applied cutscene mode to, uh, cutscenes.
+- Two new music tracks have been added.
 
--- Added a warning before the first boss of the zone
--- Fixed an issue that stopped Flow's dialogue from occuring
--- Budeg appears
+TOWN SPECIFIC
 
-- Guild
+TARRO
 
--- Fixed an issue regarding the incorrect texture being used, causing a missing hill on the left.
--- Fixed an issue where the camera would be stuck on the player
+- The signs... work.
+
+DUNGEONS
+
+- General
+
+-- Gold tile's spawn range has been increased dramatically*, and the spread of gold awarded has shifted closer to the lower side.
+*3 x 3 -> 7 x 7
+
+- Tarro Forest
+
+Poison being so apparent in the first dungeon's first floors make the dungeon a little difficult because of the partner's default AI being 
+unable to avoid a move. A Skitty also oneshot Azura. Ouch.
+
+-- Weedle that have Poison Sting are more rare and not present on the first three floors. Those that don't will spawn more often.
+-- Reduced the stats of all Skitty manually.
+-- Very brief tutorial about hunger.
+
+
+ENTOH
+
+-- Fixed an issue where some NPCs wouldn't talk to you.
+-- Ensmoothified a few cutscenes.
+
+APPLE TOWN
+
+- Apple Forest
+
+Surprisingly, even after the three not-guilders reach this dungeon, it is still somehow too high level
+
+-- Reduced the average level of the monsters in this dungeon.
+-- Applin that have the ability Gluttony now have a 50% chance to drop an apple, with a 10% chance that it is big.
+-- Nincada now have a 20% chance to drop either a stick or an apple.
+
+-- 
+
+HERTZ
+
+-- Fixed an issue that occurs when you enter Hertz Desert with someone who isn't Maru.
+
+MINIGAMES
+

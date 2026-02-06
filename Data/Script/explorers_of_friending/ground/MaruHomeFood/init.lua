@@ -21,7 +21,7 @@ end
 
 function MaruHomeFood.CookingGameplay(map)
   OutEnter = 2
-  Cooking(0, 0, 0)
+  Cooking("Maru", 0, "Bluetail's House")
 end
 
 ---MaruHomeFood.Enter(map)

@@ -52822,8 +52822,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 256,
-"Y": 149,
+"X": 255,
+"Y": 156,
 "Width": 16,
 "Height": 16
 }
@@ -53109,12 +53109,12 @@
 }
 },
 {
-"EntName": "NewObject_1",
+"EntName": "Letters",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 1,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",

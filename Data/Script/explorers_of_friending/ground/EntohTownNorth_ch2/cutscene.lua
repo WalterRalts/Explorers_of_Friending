@@ -26,11 +26,11 @@ function Entoh2.TheFlow()
         GAME:WaitFrames(12)
         UI:SetSpeaker(chucky)
         UI:SetSpeakerEmotion("Stunned")
-        UI:WaitShowDialogue("Oh geez...")
+        UI:WaitShowDialogue("Ah geez...")
 
         UI:SetSpeaker(flow)
         UI:SetSpeakerEmotion("Angry")
-        UI:WaitShowDialogue("\'OH GEEZ?!\'")
+        UI:WaitShowDialogue("\'AH GEEZ?!\'")
 
         GAME:MoveCamera(MRKR("Centered").Position.X, MRKR("Centered").Position.Y, 1, false)
         GAME:FadeIn(50)

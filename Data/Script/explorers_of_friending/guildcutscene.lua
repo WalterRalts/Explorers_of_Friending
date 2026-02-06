@@ -80,24 +80,7 @@ function Guild.Day0()
     local coro01 = TASK:BranchCoroutine(function()
         local c1 = TASK:BranchCoroutine(function()
             while turner do
-                local dir_random = math.random(8)
-                if dir_random == 1 then
-                    GROUND:CharAnimateTurnTo(rexio, Dir8.Down, 4)
-                elseif dir_random == 2 then
-                    GROUND:CharAnimateTurnTo(rexio, Dir8.DownLeft, 4)
-                elseif dir_random == 3 then
-                    GROUND:CharAnimateTurnTo(rexio, Dir8.Left, 4)
-                elseif dir_random == 4 then
-                    GROUND:CharAnimateTurnTo(rexio, Dir8.UpLeft, 4)
-                elseif dir_random == 5 then
-                    GROUND:CharAnimateTurnTo(rexio, Dir8.Up, 4)
-                elseif dir_random == 6 then
-                    GROUND:CharAnimateTurnTo(rexio, Dir8.UpRight, 4)
-                elseif dir_random == 7 then
-                    GROUND:CharAnimateTurnTo(rexio, Dir8.Right, 4)
-                else
-                    GROUND:CharAnimateTurnTo(rexio, Dir8.DownRight, 4)
-                end
+                GROUND:CharAnimateTurnTo(rexio, GAME:RandomDirection(), 4)
                 GAME:WaitFrames(70)
             end
         end)
@@ -107,9 +90,9 @@ function Guild.Day0()
                 local distract = math.random(5)
                 GAME:WaitFrames(30)
                 if distract == 5 then
-                    GROUND:CharTurnToChar(smear, rexio)
+                    GROUND:CharTurnToCharAnimated(smear, rexio)
                     GAME:WaitFrames(20)
-                    GROUND:CharTurnToChar(smear, maru)
+                    GROUND:CharTurnToCharAnimated(smear, maru)
                 else
                     GAME:WaitFrames(20)
                 end
@@ -332,7 +315,7 @@ function Guild.Day1()
 
     UI:SetSpeaker(smear)
     UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("There is an announcement for the three of you to hear before I allow you to go on your mission.")
+    UI:WaitShowDialogue("There is an announcement for the three of you to hear before you continue.")
 
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
@@ -425,8 +408,8 @@ function Guild.Day1()
     UI:WaitShowDialogue("...oh, we're missing the pie...")
 
     UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("To be fair, we're missing a lot of things...")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("And everything else at home, really.")
 
     GROUND:CharSetAnim(rexio, "Idle", false)
     UI:SetSpeaker(rexio)
@@ -534,7 +517,7 @@ function Guild.Day2()
 
     UI:SetSpeaker(zoomer)
     UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("He's all nervous that he went to set a guild approval appointment later than he should've[pause=0], and now he's gotta figure out how to explain why kids are in his forefront.")
+    UI:WaitShowDialogue("He's all nervous that he went to set a guild approval appointment earlier than he should've[pause=0], and now he's gotta figure out how to explain why kids are in his forefront.")
 
     local function jumpup()
         COMMON.CharAngry("Smear")
@@ -604,7 +587,7 @@ function Guild.Day2()
             UI:WaitShowTimedDialogue("Your stupid little aura sense isn't even working!", 80)
             UI:SetSpeakerEmotion("Inspired")
             GROUND:CharSetAnim(zoomer, "Walk", false)
-            UI:WaitShowTimedDialogue("OoH, lOoK at ME! I can see TWO[emote=Angry] THINGS ON THE GROUND AT A TIME!", 80)
+            UI:WaitShowTimedDialogue("OoH, lOoK at ME![pause=30] I can see TWO[emote=Angry] THINGS ON THE GROUND AT A TIME!", 80)
             GROUND:CharSetAnim(zoomer, "Normal", false)
 
             UI:SetSpeaker(rexio)
@@ -624,7 +607,6 @@ function Guild.Day2()
             GROUND:MoveToMarker(kitty, MRKR("mKit"), false, 2)
             GROUND:MoveToMarker(kitty, MRKR("mKit_1"), false, 2)
             GROUND:CharTurnToCharAnimated(kitty, maru, 6)
-            angy = false
             COMMON.CharRealize("PLAYER")
             GROUND:CharTurnToCharAnimated(maru, kitty, 6)
             GROUND:CharTurnToCharAnimated(azura, kitty, 6)
@@ -632,6 +614,7 @@ function Guild.Day2()
             COMMON.CharQuestion("Zoomer")
             COMMON.CharRealize("Teammate1")
             GAME:WaitFrames(60)
+            angy = false
             GROUND:CharTurnToCharAnimated(kitty, smear, 6)
         end)
         TASK:JoinCoroutines({cc1, cc2})
@@ -829,7 +812,7 @@ function Guild.Day1Done()
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("Um,[pause=40] about that...")
 
-        GROUND:CharAnimateTurnTo(zoomer, Dir8.Left, 3)
+        GROUND:CharAnimateTurnTo(zoomer, Dir8.Right, 3)
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("The mission was so boring that we fell asleep and forgot.")
@@ -914,7 +897,7 @@ function Guild.Day1Done()
             UI:SetSpeaker(zoomer)
             UI:SetSpeakerEmotion("Stunned")
             UI:WaitShowDialogue("Of course, can't expect any more than nothing...")
-            GROUND:CharAnimateTurnTo(zoomer, Dir8.Down, 5)
+            GROUND:CharAnimateTurnTo(zoomer, Dir8.DownRight, 5)
             UI:WaitShowDialogue("Should've asked me for help at that point.")
 
             COMMON.FaceEachother(smear, zoomer)
@@ -938,6 +921,15 @@ function Guild.Day1Done()
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("Like, what is your deal...?")
+    else
+        UI:SetSpeaker(zoomer)
+        UI:SetSpeakerEmotion("Stunned")
+        UI:WaitShowDialogue(apple_storcount .. " of them. Interesting.")
+
+        COMMON.CharAngry("Teammate2")
+        UI:SetSpeaker(rexio)
+        UI:SetSpeakerEmotion("Stunned")
+        UI:WaitShowDialogue("...interesting?")
     end
 
     if apple_count == 0 then
@@ -956,7 +948,7 @@ function Guild.Day1Done()
         UI:WaitShowDialogue("Good job.[pause=30] For a first time guild dungeon experience, you did at least decently.")
     else
         UI:SetSpeaker(smear)
-        UI:SetSpeakerEmotion("Worried")
+        UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("Very good work, you three. My dreams of building a guild may actually come true.")
 
         UI:SetSpeaker(zoomer)
@@ -966,7 +958,7 @@ function Guild.Day1Done()
 
     UI:SetSpeaker(smear)
     UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Tomorrow is a new day, do better or do worse; just keep going with your dreams!")
+    UI:WaitShowDialogue("Tomorrow is a new day, do better or do worse; just keep moving forward!")
     
     GAME:WaitFrames(50)
 
@@ -1340,5 +1332,5 @@ function Tent.DayStart()
     GAME:CutsceneMode(false)
     maru.CollisionDisabled = false
     IntroCutscene = true
-    GAME:SetCanSwitch(true)
+    GAME:SetCanSwitch(false)
 end

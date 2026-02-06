@@ -30,14 +30,11 @@ function EntohTownCenter_ch2.Init(map)
   COMMON.RespawnAllies()
   
   if SV.entoh_town.HelperChapter == 7 then
-    local partner = CH('Teammate1')
-    local partner2 = CH('Teammate2')
-    GROUND:TeleportTo(partner, CH('PLAYER').Position.X, CH('PLAYER').Position.Y - 24, Direction.Left, 0)
-    GROUND:TeleportTo(partner2, CH('PLAYER').Position.X, CH('PLAYER').Position.Y + 24, Direction.Left, 0)
-    AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
-    AI:SetCharacterAI(partner2, "origin.ai.ground_partner", CH('Teammate1'), partner2.Position)
-    partner.CollisionDisabled = true
-    partner2.CollisionDisabled = true
+    if GAME:GetPlayerPartyCount() == 2 then
+      COMMON.TwoTeam()
+    elseif GAME:GetPlayerPartyCount() == 3 then
+      COMMON.ThreeTeam()
+    end
   else
     local partner = CH('Teammate1')
     AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)

@@ -65415,7 +65415,7 @@
 },
 {
 "EntName": "Exit",
-"Direction": 0,
+"Direction": 6,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,

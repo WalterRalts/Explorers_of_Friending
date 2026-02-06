@@ -95,6 +95,9 @@ COMMON.MISSION_ARCHIVED = 2
 ----------------------------------------------------------
 -- Convenience Scription Functions
 ----------------------------------------------------------
+
+--#region BaseGame
+
 function COMMON.RespawnStarterPartner()
   -- SV.test_grounds.Starter.Gender = LUA_ENGINE:EnumToNumeric(Gender.Female)
   local character = RogueEssence.Dungeon.CharData()
@@ -1363,6 +1366,10 @@ function COMMON.EndDayCycle()
   COMMON.UpdateDayEndVars()
 end
 
+--#endregion
+
+--#region Character Emotes
+
 function COMMON.CharSweatdrop(char)
   local sweater = CH(char)
   GROUND:CharSetEmote(sweater, "sweatdrop", 1)
@@ -1373,11 +1380,6 @@ function COMMON.CharAngry(char)
   local angry = CH(char)
   GROUND:CharSetEmote(angry, "angry", 3)
   SOUND:PlaySE("Battle/EVT_Emote_Complain_2")
-end
-
-function COMMON.FaceEachother(char1, char2)
-  GROUND:CharTurnToCharAnimated(char1, char2, 2)
-  GROUND:CharTurnToCharAnimated(char2, char1, 2)
 end
 
 function COMMON.CharExclaim(char)
@@ -1396,15 +1398,6 @@ function COMMON.CharQuestion2(char)
   local question = CH(char)
   GROUND:CharSetEmote(question, "question", 2)
   SOUND:PlaySE("Battle/EVT_Emote_Confused_2")
-end
-
-function COMMON.CharDistance(char1, char2)
-  local char1x = CH(char1).Position.X
-  local char1y = CH(char1).Position.Y
-  local char2x = CH(char2).Position.X
-  local char2y = CH(char2).Position.Y
-  local distance = math.sqrt(((char2x - char1x) ^ 2) + ((char2y - char1y) ^ 2))
-  return distance
 end
 
 function COMMON.CharHop(char)
@@ -1437,6 +1430,13 @@ function COMMON.CharHappy(char)
   GROUND:CharSetEmote(real, "happy", 2)
   SOUND:PlaySE("Battle/EVT_Emote_Startled_2")
 end
+
+function COMMON.CharHappyHop(char)
+  COMMON.CharHappy(char)
+  COMMON.CharHop(char)
+end
+
+--#endregion
 
 function COMMON.SetCharAndEmotion(char, emote)
   UI:SetSpeaker(char)
@@ -1482,4 +1482,56 @@ end
 function COMMON.FadeEnterGround(area, zone)
   GAME:FadeOut(false, 20)
   GAME:EnterGroundMap(area, zone)
+end
+
+function COMMON.FaceEachother(char1, char2)
+  GROUND:CharTurnToCharAnimated(char1, char2, 2)
+  GROUND:CharTurnToCharAnimated(char2, char1, 2)
+end
+
+function COMMON.TwoTeam()
+  COMMON.RespawnAllies()
+  CH("Teammate1").CollisionDisabled = true
+  GROUND:TeleportTo(CH("Teammate1"), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.DownRight, 0)
+  AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
+end
+
+function COMMON.ThreeTeam()
+  COMMON.RespawnAllies()
+  CH("Teammate1").CollisionDisabled = true
+  CH("Teammate2").CollisionDisabled = true
+  GROUND:TeleportTo(CH("Teammate1"), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.DownRight, 0)
+  GROUND:TeleportTo(CH("Teammate2"), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.UpRight, 0)
+  AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
+  AI:SetCharacterAI(CH("Teammate2"), "origin.ai.ground_partner", CH("Teammate1"), CH("Teammate2").Position)
+end
+
+function COMMON.AllyFollow(spawn, teleport) --Applies to every teammate
+  if spawn then
+    COMMON.RespawnAllies()
+  end
+  for i = 1, GAME:GetPlayerPartyCount() - 1, 1 do
+    if i == 1 then
+      if teleport then
+        GROUND:TeleportTo(CH("Teammate1"), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.UpRight, 0)
+      end
+      AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
+      CH("Teammate1").CollisionDisabled = true
+    else
+      if teleport then
+        GROUND:TeleportTo(CH("Teammate" .. tostring(i)), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.UpRight, 0)
+      end
+      AI:SetCharacterAI(CH("Teammate" .. tostring(i)), "origin.ai.ground_partner", CH("Teammate" .. tostring(i - 1)), CH("Teammate" .. tostring(i)).Position)
+    end
+    CH("Teammate" .. tostring(i)).CollisionDisabled = true
+  end
+end
+
+function COMMON.CharDistance(char1, char2)
+  local char1x = CH(char1).Position.X
+  local char1y = CH(char1).Position.Y
+  local char2x = CH(char2).Position.X
+  local char2y = CH(char2).Position.Y
+  local distance = math.sqrt(((char2x - char1x) ^ 2) + ((char2y - char1y) ^ 2))
+  return distance
 end

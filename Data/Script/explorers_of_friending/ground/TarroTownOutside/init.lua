@@ -22,7 +22,7 @@ end
 --Engine callback function
 function TarroTownOutside.Init(map)
   GAME:SetCanSwitch(false)
-  
+
   if SV.tarro_town.PieChapter >= 5 then
     GROUND:Hide("Puchi")
   end
@@ -139,98 +139,49 @@ end
 -- Entities Callbacks
 -------------------------------
 
---- Entrances
-function TarroTownOutside.TTOutside_WExit_Touch(obj, activator)
-  OutEnter = 0
-  GAME:FadeOut(false, 20)
-  if SV.tarro_town.PieChapter < 5 then    
-    if SV.GroundTutorial == 0 then
-      SOUND:PlayFanfare("Fanfare/Note")
-      UI:ResetSpeaker()
-			UI:WaitShowDialogue("Sometimes, you may get lost on your adventure.[pause=10] Or maybe you just need to talk to someone.")
-      UI:WaitShowDialogue("If you press [B] on your keyboard,[pause=10] you can talk to whoever is in your second slot.")
-      UI:WaitShowDialogue("There's currently no button for this on a controller,[pause=10] please be patient as the game continues to be patched.")
-      SV.GroundTutorial = SV.GroundTutorial + 1
-    end
-    GAME:EnterGroundMap("TarroTownEast", "TTEast_WEnter")
-  elseif SV.tarro_town.PieChapter < 10 then
-    GAME:EnterGroundMap("TarroTownEast_ch2", "TTEast_WEnter")
-  else
-    GAME:EnterGroundMap("TarroTownEast_ch3", "TTEast_WEnter")
-  end
-end
+local puchi_talk = 0
 
-function TarroTownOutside.TTOutsideSign_Action(obj, activator)
-  UI:ResetSpeaker()
-  UI:SetAutoFinish(true)
-  UI:WaitShowDialogue("Tarro Town East ->\n <- Tarro Town West")
-  UI:SetAutoFinish(false)
-end
-
-function TarroTownOutside.TTOutside_EExit_Touch(obj, activator)
-  local maru = CH("PLAYER")
-  local azura = CH('Teammate1')
-  local puchi = CH('Puchi')
-  if SV.tarro_town.PieChapter < 5 then  
-    GROUND:CharTurnToCharAnimated(puchi, maru, 4)
-    UI:SetSpeaker(puchi)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Oi.")
-
-    GROUND:CharTurnToCharAnimated(maru, puchi, 4)
-    GROUND:CharTurnToCharAnimated(azura, puchi, 4)
-    UI:SetSpeaker(puchi)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("For the sake of your ears, please don't go that way.")
-    UI:SetSpeakerEmotion("Pain")
-    UI:WaitShowDialogue("Ma's all mad again.")
-
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Oh. [pause=25]Darn.")
-  elseif SV.tarro_town.PieChapter <= 10 then
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Probably not the time...")
-  else
-    GAME:FadeOut(false, 20)
-    GAME:EnterGroundMap("TarroTownWest", "TarroTownWest_Enter")
-  end
-end
-
---- Characters
+-- Characters --
 function TarroTownOutside.Puchi_Action(obj, activator)
   local azura = CH('Teammate1')
-  if SV.tarro_town.PieChapter == 0 then  
-    COMMON.FaceEachother(obj, activator)
-    GROUND:CharTurnToCharAnimated(azura, obj, 4)
-    UI:SetSpeaker(activator)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Puchiiii!")
+  if SV.tarro_town.PieChapter == 0 then
+    if puchi_talk == 0 then
+      COMMON.FaceEachother(obj, activator)
+      GROUND:CharTurnToCharAnimated(azura, obj, 4)
+      UI:SetSpeaker(activator)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Puchiiii!")
 
-    UI:SetSpeaker(obj)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Yo.")
+      UI:SetSpeaker(obj)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Yo.")
 
-    UI:SetSpeaker(activator)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("What are you doing out here?")
+      UI:SetSpeaker(activator)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("What are you doing out here?")
 
-    UI:SetSpeaker(obj)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Not much...")
-    UI:WaitShowDialogue("...mostly waiting on my mom to calm down again.")
+      UI:SetSpeaker(obj)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Not much...")
+      UI:WaitShowDialogue("...mostly waiting on my mom to calm down again.")
 
-    UI:SetSpeaker(azura)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Again...?")
+      UI:SetSpeaker(azura)
+      UI:SetSpeakerEmotion("Worried")
+      UI:WaitShowDialogue("Again...?")
 
-    UI:SetSpeaker(obj)
-    UI:SetSpeakerEmotion("Pain")
-    UI:WaitShowDialogue("Yeah... it's not my day.[pause=35] Broke[emote=Worried] my favorite toy, too...")
-    UI:SetSpeakerEmotion("Happy")
-    GROUND:CharAnimateTurn(obj, Direction.Up, 4, false)
-    UI:WaitShowDialogue("The clouds are calming me down though, so puffy today.")
+      UI:SetSpeaker(obj)
+      UI:SetSpeakerEmotion("Pain")
+      UI:WaitShowDialogue("Yeah... it's not my day.[pause=35] Broke[emote=Worried] my favorite toy, too...")
+      UI:SetSpeakerEmotion("Happy")
+      GROUND:CharAnimateTurn(obj, Direction.Up, 4, false)
+      UI:WaitShowDialogue("The clouds are calming me down though, so puffy today.")
+      puchi_talk = 1
+    else
+      UI:SetSpeaker(obj)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("One day, I wanna be like a cloud.[pause=40] Imagine me being full fluffy.")
+    end
+    
   elseif SV.tarro_town.PieChapter == 1 then
     COMMON.FaceEachother(obj, activator)
     GROUND:CharTurnToCharAnimated(azura, obj, 4)
@@ -391,7 +342,8 @@ function TarroTownOutside.Roll_Action(obj, activator)
   UI:WaitShowDialogue("Comin' outtaf th' Jugnion Distric' 'cuza all the monsters movin' in.[pause=0] It'sso calm here, an' me pa'n I can fin'lly get some walkin' in.")
 end
 
---- Other
+-- Other --
+
 function TarroTownOutside.CupShuffle_Action(obj, activator)
   local brasi = CH("Brasion")
   if GAME:GetPlayerMoney() < 25 then
@@ -420,7 +372,7 @@ end
 
 function TarroTownOutside.CloudWatch_Touch(obj, activator)
   local azura = CH('Teammate1')
-  if SV.tarro_town.PieChapter <= 5 then
+  if SV.tarro_town.PieChapter < 5 then
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("Uhhhhh... hello?!?![pause=0] Piiiiiiieee????")
@@ -431,7 +383,67 @@ function TarroTownOutside.CloudWatch_Touch(obj, activator)
   else
     UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("The clouds are still up there.[pause=30] ...maybe we'll watch them later.")
+    UI:WaitShowDialogue("The clouds are still up there.[pause=30][color=#EFBF04] ...maybe we'll watch them later.[color]")
+  end
+end
+
+-- Entrances --
+
+function TarroTownOutside.TTOutside_WExit_Touch(obj, activator)
+  OutEnter = 0
+  GAME:FadeOut(false, 20)
+  if SV.tarro_town.PieChapter < 5 then    
+    if SV.GroundTutorial == 0 then
+      SOUND:PlayFanfare("Fanfare/Note")
+      UI:ResetSpeaker()
+			UI:WaitShowDialogue("Sometimes, you may get lost on your adventure.[pause=10] Or maybe you just need to talk to someone.")
+      UI:WaitShowDialogue("If you press [B] on your keyboard,[pause=10] you can talk to whoever is in your second slot.")
+      UI:WaitShowDialogue("There's currently no button for this on a controller,[pause=10] please be patient as the game continues to be patched.")
+      SV.GroundTutorial = SV.GroundTutorial + 1
+    end
+    GAME:EnterGroundMap("TarroTownEast", "TTEast_WEnter")
+  elseif SV.tarro_town.PieChapter < 10 then
+    GAME:EnterGroundMap("TarroTownEast_ch2", "TTEast_WEnter")
+  else
+    GAME:EnterGroundMap("TarroTownEast_ch3", "TTEast_WEnter")
+  end
+end
+
+function TarroTownOutside.TTOutsideSign_Action(obj, activator)
+  UI:ResetSpeaker()
+  UI:SetAutoFinish(true)
+  UI:WaitShowDialogue("Tarro Town East ->\n <- Tarro Town West")
+  UI:SetAutoFinish(false)
+end
+
+function TarroTownOutside.TTOutside_EExit_Touch(obj, activator)
+  local maru = CH("PLAYER")
+  local azura = CH('Teammate1')
+  local puchi = CH('Puchi')
+  if SV.tarro_town.PieChapter < 5 then  
+    GROUND:CharTurnToCharAnimated(puchi, maru, 4)
+    UI:SetSpeaker(puchi)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Oi.")
+
+    GROUND:CharTurnToCharAnimated(maru, puchi, 4)
+    GROUND:CharTurnToCharAnimated(azura, puchi, 4)
+    UI:SetSpeaker(puchi)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("For the sake of your ears, please don't go that way.")
+    UI:SetSpeakerEmotion("Pain")
+    UI:WaitShowDialogue("Ma's all mad again.")
+
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Oh. [pause=25]Darn.")
+  elseif SV.tarro_town.PieChapter <= 10 then
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Probably not the time...")
+  else
+    GAME:FadeOut(false, 20)
+    GAME:EnterGroundMap("TarroTownWest", "TarroTownWest_Enter")
   end
 end
 

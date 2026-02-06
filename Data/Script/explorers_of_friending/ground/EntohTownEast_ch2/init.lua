@@ -102,7 +102,7 @@ function EntohTownEast_ch2.EntohDeep_Touch(obj, activator)
   UI:WaitShowDialogue("...wait,[emote=Surprised] WAIT, WE'RE GOING THIS WAY?!?!")
 
   COMMON.SetCharAndEmotion(flow, "Worried")
-  UI:WaitShowDialogue("Tidy, come on, we aren't doing your germophobe thing![pause=30] We're helping Rexio!")
+  UI:WaitShowDialogue("Tidy, come on, we aren't doing your germ fear thing![pause=30] We're helping Rexio!")
 end
 
 function EntohTownEast_ch2.Wurp_Action(obj, activator)
@@ -136,7 +136,7 @@ function EntohTownEast_ch2.Snow_Action(obj, activator)
   GROUND:CharAnimateTurnTo(obj, Dir8.Right, 3)
   GROUND:CharAnimateTurnTo(activator, Dir8.Right, 3)
   COMMON.SetCharAndEmotion(obj, "Worried")
-  UI:WaitShowDialogue("I-if we're going th-that way, we're going to a m-murky town.")
+  UI:WaitShowDialogue("I-if we're going th-that way, we're going to a m-muddy town.")
   COMMON.FaceEachother(obj, activator)
   UI:WaitShowDialogue("Momma said th-that Tidy's mom w-would have a h-heart attack if she s-saw...")
   COMMON.CharSweatdrop("Snow")
@@ -148,7 +148,7 @@ function EntohTownEast_ch2.Item_Touch(obj, activator)
   local choice = math.random(3)
   if choice == 3 then
     item = "berry_kebab"
-  elseif choice then
+  elseif choice == 2 then
     item = "berry_sitrus"
   else
     item = "packed_honey"

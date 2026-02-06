@@ -111,7 +111,8 @@
 "TarroTownBigTree",
 "QuizTime",
 "TarroTownHive",
-"TarroTownSquare_ch3"
+"TarroTownSquare_ch3",
+"TarroTownWest"
 ],
 "Maps": [],
 "Name": {
@@ -502,7 +503,7 @@
 "KeepTreasure": false,
 "BagSize": -1,
 "Rescues": 0,
-"CountedFloors": 0,
+"CountedFloors": 1,
 "Rogue": 0,
 "Grounds": [
 "DesertS",
@@ -511,15 +512,23 @@
 "DesertNW",
 "DesertN",
 "DesertNE",
-"HertzGate"
+"HertzGate",
+"HertzEntrance",
+"HertzCenter",
+"HertzShopsA",
+"HertzLeftT"
 ],
-"Maps": [],
+"Maps": [
+[
+0
+]
+],
 "Name": {
 "DefaultText": "Dane Desert",
 "LocalTexts": {}
 },
 "Released": true,
-"Comment": "",
+"Comment": "Hertz, don't it?",
 "SortOrder": 0
 },
 "dense_apple": {

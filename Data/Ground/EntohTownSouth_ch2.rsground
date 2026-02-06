@@ -58241,8 +58241,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 352,
-"Y": 165
+"X": 350,
+"Y": 169
 },
 "serializationHeight": 0,
 "serializationDir": 7,
@@ -58332,12 +58332,12 @@
 "Direction": 1,
 "IsInteracting": false,
 "AIEnabled": true,
-"EntName": "Clean_1",
+"EntName": "Flowerson",
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 399,
+"X": 385,
 "Y": 165
 },
 "serializationHeight": 0,
@@ -58345,7 +58345,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "Clean",
+"Nickname": "Mrs. Flowerson",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -58418,7 +58418,7 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 399,
+"X": 385,
 "Y": 165,
 "Width": 16,
 "Height": 16
@@ -58441,7 +58441,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Champ",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -58610,8 +58610,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 54,
-"Y": 95,
+"X": 53,
+"Y": 94,
 "Width": 16,
 "Height": 16
 }
@@ -58825,7 +58825,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "Beutt",
+"Nickname": "Mrs. Threads",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -59113,7 +59113,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Paris",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -59201,15 +59201,15 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 247,
-"Y": 414
+"X": 248,
+"Y": 411
 },
 "serializationHeight": 0,
 "serializationDir": 1,
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Panch",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -59282,14 +59282,14 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 247,
-"Y": 414,
+"X": 248,
+"Y": 411,
 "Width": 16,
 "Height": 16
 }
 },
 {
-"Direction": 6,
+"Direction": 3,
 "IsInteracting": false,
 "AIEnabled": true,
 "EntName": "Tidy",
@@ -59297,11 +59297,11 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 363,
-"Y": 202
+"X": 364,
+"Y": 191
 },
 "serializationHeight": 0,
-"serializationDir": 6,
+"serializationDir": 3,
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
@@ -59393,8 +59393,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 389,
-"Y": 201
+"X": 398,
+"Y": 185
 },
 "serializationHeight": 0,
 "serializationDir": 2,
@@ -59474,8 +59474,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 389,
-"Y": 201,
+"X": 393,
+"Y": 186,
 "Width": 16,
 "Height": 16
 }
@@ -59612,7 +59612,184 @@
 }
 }
 ],
-"Spawners": [],
+"Spawners": [
+{
+"NPCName": "Teammate1",
+"NPCChar": {
+"Nickname": "",
+"OriginalUUID": "",
+"OriginalTeam": "",
+"BaseForm": {
+"Species": "missingno",
+"Form": 0,
+"Skin": "normal",
+"Gender": 0
+},
+"Level": 0,
+"EXP": 0,
+"MaxHPBonus": 0,
+"AtkBonus": 0,
+"DefBonus": 0,
+"MAtkBonus": 0,
+"MDefBonus": 0,
+"SpeedBonus": 0,
+"BaseSkills": [
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+}
+],
+"BaseIntrinsics": [
+""
+],
+"FormIntrinsicSlot": -1,
+"Relearnables": {},
+"Discriminator": 0,
+"MetAt": "",
+"MetLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"DefeatAt": "",
+"DefeatLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"IsFounder": false,
+"IsPartner": false,
+"NameLocked": false,
+"IsFavorite": false,
+"Unrecruitable": false,
+"ActionEvents": [],
+"ScriptVars": null
+},
+"EntName": "TEAMMATE_1",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"EntityCallbacks": [],
+"Collider": {
+"X": 644,
+"Y": 472,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"NPCName": "Teammate2",
+"NPCChar": {
+"Nickname": "",
+"OriginalUUID": "",
+"OriginalTeam": "",
+"BaseForm": {
+"Species": "missingno",
+"Form": 0,
+"Skin": "normal",
+"Gender": 0
+},
+"Level": 0,
+"EXP": 0,
+"MaxHPBonus": 0,
+"AtkBonus": 0,
+"DefBonus": 0,
+"MAtkBonus": 0,
+"MDefBonus": 0,
+"SpeedBonus": 0,
+"BaseSkills": [
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+}
+],
+"BaseIntrinsics": [
+""
+],
+"FormIntrinsicSlot": -1,
+"Relearnables": {},
+"Discriminator": 0,
+"MetAt": "",
+"MetLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"DefeatAt": "",
+"DefeatLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"IsFounder": false,
+"IsPartner": false,
+"NameLocked": false,
+"IsFavorite": false,
+"Unrecruitable": false,
+"ActionEvents": [],
+"ScriptVars": null
+},
+"EntName": "TEAMMATE_2",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"EntityCallbacks": [],
+"Collider": {
+"X": 599,
+"Y": 524,
+"Width": 16,
+"Height": 16
+}
+}
+],
 "Markers": [
 {
 "EntName": "NewObject_2",

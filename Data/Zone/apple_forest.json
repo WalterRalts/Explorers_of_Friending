@@ -8395,8 +8395,8 @@
 "Gender": -1
 },
 "Level": {
-"Min": 3,
-"Max": 7
+"Min": 1,
+"Max": 4
 },
 "SpecifiedSkills": [
 "protect",
@@ -8438,7 +8438,7 @@
 "Gender": -1
 },
 "Level": {
-"Min": 3,
+"Min": 1,
 "Max": 7
 },
 "SpecifiedSkills": [
@@ -8614,8 +8614,8 @@
 "Gender": -1
 },
 "Level": {
-"Min": 5,
-"Max": 7
+"Min": 3,
+"Max": 6
 },
 "SpecifiedSkills": [
 "defense_curl",
@@ -8654,8 +8654,8 @@
 "Gender": -1
 },
 "Level": {
-"Min": 5,
-"Max": 7
+"Min": 3,
+"Max": 6
 },
 "SpecifiedSkills": [
 "defense_curl",
@@ -8673,6 +8673,36 @@
 "SpawnFeatures": [
 {
 "$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+},
+{
+"$type": "PMDC.LevelGen.MobSpawnItem, PMDC",
+"Items": [
+{
+"Spawn": {
+"ID": "food_apple_big",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0
+},
+"Rate": 1
+},
+{
+"Spawn": {
+"ID": "food_apple",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0
+},
+"Rate": 9
+}
+],
+"MapStartOnly": false,
+"Chance": {
+"Numerator": 1,
+"Denominator": 2
+}
 }
 ]
 },
@@ -8680,7 +8710,7 @@
 },
 "Rate": 10,
 "Range": {
-"Min": 6,
+"Min": 9,
 "Max": 12
 }
 },
@@ -8695,7 +8725,7 @@
 },
 "Level": {
 "Min": 2,
-"Max": 9
+"Max": 6
 },
 "SpecifiedSkills": [
 "bug_buzz"
@@ -8703,7 +8733,38 @@
 "Intrinsic": "",
 "Tactic": "wander_normal",
 "SpawnConditions": [],
-"SpawnFeatures": []
+"SpawnFeatures": [
+{
+"$type": "PMDC.LevelGen.MobSpawnItem, PMDC",
+"Items": [
+{
+"Spawn": {
+"ID": "food_apple",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0
+},
+"Rate": 1
+},
+{
+"Spawn": {
+"ID": "ammo_stick",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 1,
+"Price": 0
+},
+"Rate": 9
+}
+],
+"MapStartOnly": false,
+"Chance": {
+"Numerator": 1,
+"Denominator": 5
+}
+}
+]
 },
 "Role": 0
 },

@@ -136,7 +136,7 @@ end
 function TarroTownWest.TarroTownOutside_Entrance_Touch()
   OutEnter = 2
   GAME:FadeOut(false, 20)
-  GAME:EnterGroundMap("TarroTownOutside", "TTOutside_EEnter")
+  GAME:EnterGroundMap("tarro_town_outside", "TarroTownOutside", "TTOutside_EEnter")
 end
 
 function TarroTownWest.PlantationStorage_Entrance_Touch(obj, activator)
@@ -164,7 +164,7 @@ function TarroTownWest.Sign_Action(obj, activator)
   UI:ResetSpeaker()
   UI:SetAutoFinish(true)
   UI:WaitShowDialogue("Tarro Town Outskirts ->\n Tarro Town Square ^")
-
+  UI:SetAutoFinish(false)
   UI:SetSpeaker(activator)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("(These signs are so convenient.)")

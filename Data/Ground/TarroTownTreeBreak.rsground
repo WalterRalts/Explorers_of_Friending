@@ -26860,7 +26860,7 @@
 "ScriptVars": null
 },
 "EntName": "TEAMMATE_1",
-"Direction": 0,
+"Direction": 5,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -27141,7 +27141,7 @@
 "Markers": [
 {
 "EntName": "BreakRoom_Enter",
-"Direction": 0,
+"Direction": 4,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,

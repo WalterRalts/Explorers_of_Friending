@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Data.ZoneData, RogueEssence",
 "Name": {
@@ -29,7 +29,8 @@
 "TarroTownBigTree",
 "QuizTime",
 "TarroTownHive",
-"TarroTownSquare_ch3"
+"TarroTownSquare_ch3",
+"TarroTownWest"
 ]
 }
 }

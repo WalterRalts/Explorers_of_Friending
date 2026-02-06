@@ -401,10 +401,10 @@ function EntohTownCenter.Flowerson_Action(obj, activator)
     UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Your mother loved these flowers.[pause=70] O[emote=Surprised]h,[pause=30] uh, [emote=Happy] I hope you can enjoy them as well.")
-  elseif talk == 1 then
+  elseif talk == 3 then
     UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("If you do well with your aura lesson, may you assist Flow with her concentration?")
+    UI:WaitShowDialogue("If you do well with your aura lessons, may you assist Flow with her concentration?")
     
     UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Happy")
@@ -412,7 +412,7 @@ function EntohTownCenter.Flowerson_Action(obj, activator)
   end
 end
 
-function TarroTownEast.Budeg_Action(obj, activator)
+function EntohTownCenter.Budeg_Action(obj, activator)
   local budeg = CH("Budeg")
 
   UI:SetSpeaker(budeg)

@@ -400,7 +400,7 @@ function TarroTownBigTree.Tree_2ndFloorEntrance_Touch(obj, activator)
 
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("Workers outside said the second floor was a WIP.")
+  UI:WaitShowDialogue("Workers outside said [color=#EFBF04]the second floor was a WIP.[color]")
 
   UI:SetSpeaker(senna)
   UI:SetSpeakerEmotion("Happy")

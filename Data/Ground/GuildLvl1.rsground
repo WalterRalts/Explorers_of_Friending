@@ -25745,7 +25745,7 @@
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 210,
+"X": 208,
 "Y": 290,
 "Width": 16,
 "Height": 16

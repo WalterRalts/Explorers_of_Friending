@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Data.TileData, RogueEssence",
 "Name": {
@@ -83,7 +83,7 @@
 "Y": 0
 }
 },
-"Rate": 425
+"Rate": 500
 },
 {
 "Spawn": {
@@ -98,7 +98,7 @@
 "Y": 0
 }
 },
-"Rate": 350
+"Rate": 600
 },
 {
 "Spawn": {
@@ -113,7 +113,7 @@
 "Y": 0
 }
 },
-"Rate": 250
+"Rate": 500
 },
 {
 "Spawn": {
@@ -128,7 +128,7 @@
 "Y": 0
 }
 },
-"Rate": 150
+"Rate": 300
 },
 {
 "Spawn": {
@@ -143,7 +143,7 @@
 "Y": 0
 }
 },
-"Rate": 75
+"Rate": 50
 },
 {
 "Spawn": {
@@ -158,7 +158,7 @@
 "Y": 0
 }
 },
-"Rate": 10
+"Rate": 15
 },
 {
 "Spawn": {
@@ -173,7 +173,7 @@
 "Y": 0
 }
 },
-"Rate": 3
+"Rate": 10
 },
 {
 "Spawn": {
@@ -193,8 +193,8 @@
 ],
 "MinAmount": 3,
 "MaxAmount": 15,
-"MaxRangeWidth": 3,
-"MaxRangeHeight": 3
+"MaxRangeWidth": 7,
+"MaxRangeHeight": 7
 }
 },
 {

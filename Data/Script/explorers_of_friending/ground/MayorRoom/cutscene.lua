@@ -69,14 +69,14 @@ function Mayor.Intro()
     end
 
     COMMON.SetCharAndEmotion(maru, "Stunned")
-    UI:WaitShowDialogue("Oh geez, not again...")
+    UI:WaitShowDialogue("Uh oh, not again...")
 
     COMMON.SetCharAndEmotion(azura, "Determined")
     UI:WaitShowDialogue("Every time when we need apples...!")
 
     COMMON.SetCharAndEmotion(rexio, "Stunned")
     UI:WaitShowDialogue("...let's... do it I guess?")
-    
+
     COMMON.BossTransition(false)
     GAME:ContinueDungeon("apple_forest", 1, 0, 0)
 end

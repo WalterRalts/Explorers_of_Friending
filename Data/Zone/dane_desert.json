@@ -7,7 +7,7 @@
 "LocalTexts": {}
 },
 "Released": true,
-"Comment": "",
+"Comment": "Hertz, don't it?",
 "NoEXP": false,
 "ExpPercent": 100,
 "Level": -1,
@@ -22,7 +22,33 @@
 "Persistent": false,
 "Rescues": 0,
 "Rogue": 0,
-"Segments": [],
+"Segments": [
+{
+"$type": "RogueEssence.LevelGen.LayeredSegment, RogueEssence",
+"Floors": [
+{
+"$type": "RogueEssence.LevelGen.LoadGen, RogueEssence",
+"GenSteps": [
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "RogueEssence.LevelGen.MappedRoomStep`1[[RogueEssence.LevelGen.MapLoadContext, RogueEssence]], RogueEssence",
+"MapID": "HurtzCenterT"
+}
+}
+],
+"Comment": ""
+}
+],
+"ZoneSteps": [],
+"IsRelevant": true,
+"Comment": ""
+}
+],
 "GroundMaps": [
 "DesertS",
 "DesertSW",
@@ -30,7 +56,11 @@
 "DesertNW",
 "DesertN",
 "DesertNE",
-"HertzGate"
+"HertzGate",
+"HertzEntrance",
+"HertzCenter",
+"HertzShopsA",
+"HertzLeftT"
 ]
 }
 }

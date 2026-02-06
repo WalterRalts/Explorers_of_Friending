@@ -326,7 +326,15 @@ function TarroTownTreeBreak.LockedStairs_Action(obj, activator)
   if SV.tarro_tree_hollows.stairs_unlocked == false then
     UI:ResetSpeaker()
     UI:WaitShowDialogue("The way seems locked...")
-    if GAME:FindPlayerItem("key_tree", true, true) then
+    for i = 0, GAME:GetPlayerBagCount() - 1, 1 do
+      baggy[i] = GAME:GetPlayerBagItem(i).ID
+    end
+    for _, v in pairs(baggy) do
+      if v == "key_tree" or GAME:GetPlayerEquippedItem(0).ID == "key_tree" then
+        held = true
+      end
+    end
+    if held then
       UI:ChoiceMenuYesNo("The key you have seems to match. Would you like to use it?", false)
       UI:WaitForChoice()
       local result = UI:ChoiceResult()

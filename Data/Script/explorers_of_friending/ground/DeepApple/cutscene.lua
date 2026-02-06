@@ -96,7 +96,9 @@ function Core.AppleOut()
             GROUND:MoveToPosition(azura, azura.Position.X, 300, false, 3)
             end)
         TASK:JoinCoroutines({h1, h2})
-        
+
+        GAME:FadeOut(false, 30)
+
         --remove the other two, add Rexio back as leader
         local new_x = rexio.Position.X
         local new_y = rexio.Position.Y
@@ -105,10 +107,12 @@ function Core.AppleOut()
         GAME:RemovePlayerTeam(0)
         COMMON.RespawnAllies()
         
-        COMMON.TeleportToMarker("PLAYER", new_x, new_y)
+        COMMON.TeleportTo("PLAYER", new_x, new_y, Dir8.Up, 0)
 
         COMMON.SetCharAndEmotion(rexio, "Determined")
         UI:WaitShowDialogue("Let's go. [pause=40][emote=Happy]I've got this!")
+
+        GAME:FadeIn(30)
     else
         SV.apple_town.teamed = true
         COMMON.SetCharAndEmotion(maru, "Worried")
@@ -122,6 +126,7 @@ function Core.AppleOut()
 
         COMMON.SetCharAndEmotion(azura, "Determined")
         UI:WaitShowDialogue("[speed=0.2]No...")
+        COMMON.CharHop("Teammate1")
         UI:WaitShowDialogue("I wanna be strong, too...")
 
         COMMON.SetCharAndEmotion(maru, "Sad")

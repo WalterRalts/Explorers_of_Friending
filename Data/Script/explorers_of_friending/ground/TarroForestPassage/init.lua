@@ -186,19 +186,19 @@ function TarroForestPassage.Buttums_1_Action(obj, activator)
 end
 
 function TarroForestPassage.Meta1_Action(obj, activator)
-  UI:SetSpeaker(activator)
+  UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("...?")
 end
 
 function TarroForestPassage.Meta2_Action(obj, activator)
-  UI:SetSpeaker(activator)
+  UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("There's gonna be a whole party back there.")
+  UI:WaitShowDialogue("There's gonna be a whole party back there soon.")
 end
 
 function TarroForestPassage.Meta3_Action(obj, activator)
-  UI:SetSpeaker(activator)
+  UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Pain")
   UI:WaitShowDialogue("Stare much...?")
 end

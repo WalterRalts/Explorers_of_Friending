@@ -55,10 +55,10 @@ function ZoomerBoss.NoBattle()
 end
 
 function ZoomerBoss.PreBattle()
-
   local maru = CH("PLAYER")
   local zoomer = CH("Zoomer")
   local azura = CH("Azura")
+  zoomer.Data.Nickname = "???"
   GAME:CutsceneMode(true)
 
   UI:WaitShowTitle(GAME:GetCurrentGround().Name:ToLocal(), 20)
@@ -95,6 +95,7 @@ function ZoomerBoss.PreBattle()
   UI:SetSpeaker(azura)
   UI:SetSpeakerEmotion("Angry")
   COMMON.CharAngry("Azura")
+  COMMON.CharHop("Azura")
   UI:WaitShowDialogue("Nuh-uh! Keep looking!")
   UI:WaitShowDialogue("I want my pie!")
 
@@ -210,10 +211,10 @@ function ZoomerBoss.PreBattle()
 end
 
 function ZoomerBoss.PostBattle()
-
   local maru = CH("PLAYER")
   local zoomer = CH("Zoomer")
   local azura = CH("Azura")
+  zoomer.Data.Nickname = "???"
   GAME:CutsceneMode(true)
   GROUND:CharSetAnim(zoomer, "Sleep", true)
   GAME:MoveCamera(180, 200, 1, false)

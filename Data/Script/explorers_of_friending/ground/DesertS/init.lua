@@ -123,5 +123,10 @@ function DesertS.E_Touch(obj, activator)
   COMMON.FadeEnterGround("DesertSE", "WestEnter")
 end
 
+function DesertS.Exit_Touch(obj, activator)
+  GAME:EnterGroundMap("guild_field", "GuildFieldMain", "DesertEnter")
+  GAME:FadeOut(false, 30)
+end
+
 return DesertS
 

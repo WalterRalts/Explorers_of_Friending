@@ -234,7 +234,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -185544,8 +185544,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 404,
-"Y": 208
+"X": 405,
+"Y": 209
 },
 "serializationHeight": 0,
 "serializationDir": 0,
@@ -185640,15 +185640,15 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 435,
-"Y": 210
+"X": 436,
+"Y": 211
 },
 "serializationHeight": 0,
 "serializationDir": 2,
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Munch",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -185721,8 +185721,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 435,
-"Y": 210,
+"X": 436,
+"Y": 211,
 "Width": 16,
 "Height": 16
 }
@@ -187272,8 +187272,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 76,
-"Y": 294
+"X": 77,
+"Y": 291
 },
 "serializationHeight": 0,
 "serializationDir": 5,
@@ -187658,7 +187658,7 @@
 "Collider": {
 "X": 0,
 "Y": 192,
-"Width": 24,
+"Width": 8,
 "Height": 120
 }
 },
@@ -187789,6 +187789,49 @@
 "Y": 201,
 "Width": 72,
 "Height": 17
+}
+},
+{
+"EntName": "Sign",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 1,
+"ObjectAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"Passable": true,
+"CurrentAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"AnimTime": {
+"Ticks": 0
+},
+"Cycles": 0,
+"DrawOffset": {
+"X": 0,
+"Y": 0
+},
+"Collider": {
+"X": 1055,
+"Y": 175,
+"Width": 42,
+"Height": 42
 }
 }
 ],
@@ -187926,15 +187969,15 @@
 }
 },
 {
-"EntName": "TTSquare_WestEnter",
+"EntName": "WestEnter",
 "Direction": 6,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 31,
-"Y": 230,
+"X": 16,
+"Y": 244,
 "Width": 16,
 "Height": 16
 }

@@ -75,19 +75,37 @@ function DesertNE.Sprout_Action(obj, activator)
   COMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(2), "Stunned")
   UI:WaitShowDialogue("Who is this...?")
   COMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(0), "Stunned")
-  UI:WaitShowDialogue("We'll... come back later.")
+  UI:WaitShowDialogue("We'll come back later.")
 end
 
+function DesertNE.cactus1_Action(obj, activator)
+  if activator.Nickname == "Rexio" then
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("(Cactus... tall.)")
+  elseif activator.Nickname == "Maru" then
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("(These shapes do seem kind of familiar, though.)")
+  else
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("(One!)")
+  end
+end
+
+-- Exits
+
 function DesertNE.S_Touch(obj, activator)
-  GAME:EnterGroundMap("DesertSE", "NorthEnter")
+  COMMON.FadeEnterGround("DesertSE", "NorthEnter")
 end
 
 function DesertNE.SW_Touch(obj, activator)
-  GAME:EnterGroundMap("DesertS", "NorthEastEnter")
+  COMMON.FadeEnterGround("DesertS", "NorthEastEnter")
 end
 
 function DesertNE.W_Touch(obj, activator)
-  GAME:EnterGroundMap("DesertN", "EastEnter")
+  COMMON.FadeEnterGround("DesertN", "EastEnter")
 end
 
 return DesertNE

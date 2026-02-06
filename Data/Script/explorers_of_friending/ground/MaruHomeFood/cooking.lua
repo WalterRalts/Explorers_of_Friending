@@ -36,39 +36,39 @@ local function ingr_quip(player, item)
         local choices = {("Sure!"),
             ("Nah!")}
         UI:BeginChoiceMenu("Should I put it in?", choices, 1, 2)
-    else
+    elseif player == "Rexio" then
         if item == "tarro_wheat" then
             UI:SetSpeakerEmotion("Happy")
-            UI:WaitShowDialogue("Some tarro wheat. Pretty basic stuff, but it still makes something delicious.")
+            UI:WaitShowDialogue("This is, what... grains? That's what pa called it.")
         elseif item == "crunchy_leaf" then
             UI:SetSpeakerEmotion("Normal")
-            UI:WaitShowDialogue("This thing has some crunch to it.")
+            UI:WaitShowDialogue("This is a leaf...")
         elseif item == "seed_plain" then
             UI:SetSpeakerEmotion("Stunned")
-            UI:WaitShowDialogue("A plain seed...[pause=30] it's...[pause=30] uh...[pause=30] a seed...")
+            UI:WaitShowDialogue("Basic seed.")
         elseif item == "tarro_bread" then
             UI:SetSpeakerEmotion("Happy")
-            UI:WaitShowDialogue("Our local fluffy bread. I probably don't need the oven to make something with this...")
+            UI:WaitShowDialogue("I hear that this is good for sandwiches.")
         elseif item == "ammo_stick" then
             UI:SetSpeakerEmotion("Normal")
-            UI:WaitShowDialogue("Look at da stick. Not sticky at all.")
+            UI:WaitShowDialogue("Stick.")
         elseif item == "wand_path" then
-            UI:SetSpeakerEmotion("Normal")
-            UI:WaitShowDialogue("This wand opens new paths![pause=40] L[emote=Happy]iterally!")
+            UI:SetSpeakerEmotion("Stunned")
+            UI:WaitShowDialogue("Gotta be careful not to wave this thing around again...")
         elseif item == "food_apple" then
             UI:SetSpeakerEmotion("Happy")
-            UI:WaitShowDialogue("Healthy and delicious!")
+            UI:WaitShowDialogue("Heh. Classic.")
         elseif item == "berry_oran" then
-            UI:SetSpeakerEmotion("Happy")
-            UI:WaitShowDialogue("I can't count the number of times this berry helped me through being hurt.")
+            UI:SetSpeakerEmotion("Normal")
+            UI:WaitShowDialogue("Health Berry.")
         elseif item == "berry_leppa" then
             UI:SetSpeakerEmotion("Normal")
-            UI:WaitShowDialogue("Eating a Leppa helps me remember my moves.")
+            UI:WaitShowDialogue("Brain berry.")
         end
 
         local choices = {("Sure!"),
             ("Nah!")}
-        UI:BeginChoiceMenu("Should I put it in?", choices, 1, 2)
+        UI:BeginChoiceMenu("Should I...?", choices, 1, 2)
     end
         UI:WaitForChoice()
         ingr_choice = UI:ChoiceResult()
@@ -108,6 +108,11 @@ local function ingredients_list()
         Ingredient_ID = GAME:GetPlayerBagItem(Ingredient_chosen).ID
 
         Ingredient_name = item_name[Ingredient_chosen]
+        if Ingredient_chosen == nil then
+            print("Cooking skipped...?")
+            Exit_cooking = true
+            return nil
+        end
         GAME:TakePlayerBagItem(Ingredient_chosen)
         print(Ingredient_name .. ", also known as " .. Ingredient_ID .. " has been removed from slot " .. Ingredient_chosen + 1)
         return Ingredient_ID
@@ -221,14 +226,13 @@ function Cooking(player, partner, location)
                 UI:WaitShowDialogue("Never mind.")
                 goto end_cooking
             end
-            local chosen = ingr_quip("Maru", ingritem)
+            local chosen = ingr_quip(player, ingritem)
             if chosen == 1 then
                 ingr[i] = ingritem
             else
-                GAME:GivePlayerItem(ingritem)
                 if ingritem ~= nil and ingritem ~= "Exit" then
-                        GAME:GivePlayerItem(ingritem)
-                    end
+                    GAME:GivePlayerItem(ingritem)
+                end
                 print(ingritem .. " has been put back.")
                 goto choose_again
             end
@@ -236,6 +240,11 @@ function Cooking(player, partner, location)
         Recipes()
     end
     ::end_cooking::
-    GAME:FadeOut(false, 30)
-    GAME:EnterGroundMap("MaruHome", "CookingExit")
+    
+    if location == "Bluetail's House" then
+        GAME:FadeOut(false, 30)
+        GAME:EnterGroundMap("MaruHome", "CookingExit")
+    elseif location == "Aurm's House" then
+        GAME:EnterGroundMap("RexioHome", "Cooker")
+    end
 end

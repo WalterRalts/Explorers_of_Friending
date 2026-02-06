@@ -94,9 +94,10 @@ function TheField.First()
   GROUND:MoveInDirection(zoomer, Dir8.Up, 60, false, 4)
   
   GROUND:TeleportTo(zoomer, smear.Position.X - 200, smear.Position.Y, Dir8.DownRight, 2)
+  COMMON.FaceEachother(maru, azura)
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("Let's go.")
+  UI:WaitShowDialogue("Okay, let's go.")
   GAME:CutsceneMode(false)
 end
 

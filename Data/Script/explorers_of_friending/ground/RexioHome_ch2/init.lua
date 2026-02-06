@@ -6,6 +6,7 @@
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
 require 'explorers_of_friending.ground.RexioHome_ch2.cutscene'
+require 'explorers_of_friending.ground.MaruHomeFood.cooking'
 
 -- Package name
 local RexioHome_ch2 = {}
@@ -85,6 +86,16 @@ function RexioHome_ch2.FlowerPot_Action(obj, activator)
   UI:SetSpeakerEmotion("Determined")
   UI:WaitShowDialogue("(I'll take good care of them, mom.)")
   GROUND:CharSetAnim(rexio, "Idle", false)
+end
+
+function RexioHome_ch2.RexioCooking_Action(obj, activator)
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("(...)")
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("(Sure, whatever, sure.)")
+
+  Cooking("Rexio", 0, "Aurm's Home")
 end
 
 return RexioHome_ch2

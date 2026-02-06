@@ -94,7 +94,7 @@ function TarroTownBigTree_ch3.InfoSign_Action(obj, activator)
   UI:WaitShowDialogue("Today's news!:")
   UI:WaitShowDialogue("The mayor is looking for more recruits to carry her honey around.")
   UI:WaitShowDialogue("Payment will be done bihourly by Queen herself.")
-  GROUND:CharTurnToChar(CH("PurpKek"), CH("PLAYER"))
+  GROUND:CharTurnToCharAnimated(CH("PurpKek"), CH("PLAYER"))
   UI:WaitShowDialogue("All help is welcome! Ask the one at the counter for a slip to apply at the hive west of town!")
   GROUND:CharAnimateTurn(CH("PurpKek"), Direction.DownRight, 4, false)
   slip_notice = 1

@@ -15,6 +15,5 @@ require 'origin.services.debug_tools'
 require 'origin.services.upgrade_tools'
 require 'origin.services.menu_tools'
 require 'explorers_of_friending.services.rexioscan'
-require 'explorers_of_friending.services.resetsettings'
 
 math.randomseed(os.time())

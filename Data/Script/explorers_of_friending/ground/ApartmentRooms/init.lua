@@ -175,7 +175,7 @@ end
 function ApartmentRooms.MouseHomeEnter_Touch(obj, activator)
   local mampha = CH("Mampha")
   COMMON.FaceEachother(mampha, activator)
-  if SV.entoh_town.DarknessChapter == 0 then
+  if SV.entoh_town.AdventureChapter == -1 then
     UI:SetSpeaker(mampha)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Rexio!")
@@ -241,7 +241,7 @@ end
 function ApartmentRooms.Upper_Floor_Touch(obj, activator)
   UI:SetSpeaker(activator)
   UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("(A worker outside said the second floor was a WIP.)")
+  UI:WaitShowDialogue("(A worker outside said [color=#EFBF04]the second floor was a WIP.[color])")
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("(Heard that fun stuff was gonna be up there.)")
 end

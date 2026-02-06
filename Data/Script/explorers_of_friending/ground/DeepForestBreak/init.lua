@@ -41,6 +41,7 @@ function DeepForestBreak.ZoomUp(map)
   local zoomer = CH("Zoomer")
 
   GAME:MoveCamera(172, 52, 5, false)
+  zoomer.Data.Nickname = "???"
   
   local coro11 = TASK:BranchCoroutine(function() 
     GROUND:Hide("PLAYER")
@@ -129,7 +130,7 @@ function DeepForestBreak.ZoomUp(map)
 
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("Mom checked it first. Did you get accepted, too?")
+  UI:WaitShowDialogue("Dad checked it first. Did you get accepted, too?")
   GROUND:CharAnimateTurnTo(zoomer, Dir8.Down, 3)
 
   UI:SetSpeaker(zoomer)

@@ -43,8 +43,7 @@ end
 ---DesertN.Update(map)
 --Engine callback function
 function DesertN.Update(map)
-
-
+  Partner()
 end
 
 ---DesertN.GameSave(map)
@@ -70,6 +69,47 @@ end
 
 function DesertN.HertzTunnel_Touch(obj, activator)
   
+end
+
+function DesertN.cactus6_Action(obj, activator)
+  if activator.Nickname == "Rexio" then
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("(...I'm seeing a pattern.)")
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("(Because this place is a desert,[pause=50] I see cactuses-[emote=Worried]... cactoos... cack...)")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("(Big green spiky things.)")
+  elseif activator.Nickname == "Maru" then
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("(This one looks weird, too...)")
+  else
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("(Six!)")
+  end
+end
+
+function DesertN.Potted_Action(obj, activator)
+  if activator.Nickname == "Rexio" then
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("(...small cactus.)")
+  elseif activator.Nickname == "Maru" then
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Inspired")
+    UI:WaitShowDialogue("(D'awwww, lil' cactus.)")
+  else
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("Those spikes look weird.")
+  end
+end
+
+function DesertN.Kassy_Action(obj, activator)
+  COMMON.SetCharAndEmotion(obj, "Stunned")
+  UI:WaitShowDialogue("Can you three hurry and figure out the puzzle!?")
 end
 
 -- Entrances

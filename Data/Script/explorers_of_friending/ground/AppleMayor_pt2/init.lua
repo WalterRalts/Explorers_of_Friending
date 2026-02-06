@@ -79,6 +79,8 @@ function AppleMayor_pt2.Counter_Action(obj, activator)
 end
 
 function AppleMayor_pt2.MayorBack_Touch(obj, activator)
+  COMMON.CharSweatdrop("Teammate2")
+
   UI:SetSpeaker(GAME:GetPlayerPartyMember(2))
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("Bluetail, I promise you there aren't any apples in there.")
@@ -95,6 +97,8 @@ function AppleMayor_pt2.Cut_Touch(obj, activator)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("...[pause=35]was that really it?")
 
+    COMMON.FaceEachother(azura, rexio)
+    COMMON.CharQuestion("Teammate1")
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("...huh?")
@@ -103,17 +107,32 @@ function AppleMayor_pt2.Cut_Touch(obj, activator)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("Are we really just about to leave with[pause=30], no treasure or anything...?")
 
+    COMMON.FaceEachother(maru, rexio)
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowTimedDialogue("I heard about a golden apple from someon")
+    UI:WaitShowDialogue("What treasure would we find here?")
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("Uh... well,[pause=35] maybe[emote=Worried] a golden apple?")
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("I just thought we'd be doing more...")
+
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Like epicly fighting weird goo monsters?")
 
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Let's go find one!")
+    UI:WaitShowDialogue("Yeah, just li-[pause=70][speed=0.1]...[pause=60][speed=1.0] s[emote=Angry]hut up!")
 
-    UI:SetSpeaker(maru)
+    UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("...")
+    UI:WaitShowTimedDialogue("...u-um...?", 70)
+
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Determined")
+    UI:WaitShowDialogue("Whatever... *grumble grumble*")
     cut = true
   end
 end

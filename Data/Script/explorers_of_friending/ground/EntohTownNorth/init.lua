@@ -144,5 +144,11 @@ function EntohTownNorth.Panch_Action(obj, activator)
   end
 end
 
+function EntohTownNorth.EntohForest_Touch(obj, activator)
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("I don't have time for this...")
+end
+
 return EntohTownNorth
 
