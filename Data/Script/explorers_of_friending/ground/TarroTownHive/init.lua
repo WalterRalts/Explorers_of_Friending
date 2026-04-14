@@ -20,7 +20,7 @@ function TarroTownHive.Init(map)
   local partner = CH('Teammate1')
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   partner.CollisionDisabled = true
-  
+
 end
 
 ---TarroTownHive.Enter(map)
@@ -76,7 +76,7 @@ function TarroTownHive.HoneyShop_Action(obj, activator)
     result = UI:ChoiceResult()
     if result == 1 then
       if pouch_money < 100 then
-        COMMON.CharSweatdrop("Cute")
+        EXPLCOMMON.CharSweatdrop("Cute")
         UI:SetSpeakerEmotion("Worried")
         UI:WaitShowDialogue("Sorry, I can't just give these on a discount.")
         UI:SetSpeakerEmotion("Normal")
@@ -110,7 +110,7 @@ function TarroTownHive.HoneyShop_Action(obj, activator)
 end
 
 function TarroTownHive.HiveJob_Action(obj, activator)
-  
+
 end
 
 function TarroTownHive.Sir_Lick_Action(obj, activator)
@@ -171,8 +171,8 @@ end
 function TarroTownHive.MayorEntrance_Touch(obj, activator)
   local maru = CH('PLAYER')
 
-  if SV.tarro_town.DarknessChapter > 0 then
-    
+  if SV.Story.sect > 0 then
+
   else
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Worried")
@@ -183,7 +183,7 @@ end
 function TarroTownHive.TTSquare_HiveExit_Touch(obj, activator)
   GAME:FadeOut(false, 20)
   OutEnter = 3
-  if SV.tarro_town.PieChapter >= 10 then
+  if SV.Story.chap == -3 then
     GAME:EnterGroundMap("TarroTownSquare_ch3", "WestEnter")
   else
     GAME:EnterGroundMap("TarroTownSquare", "WestEnter")
@@ -193,7 +193,7 @@ end
 function TarroTownHive.TTSquare_HiveA_Touch(obj, activator)
   local maru = CH('PLAYER')
 
-  if SV.tarro_town.DarknessChapter > 0 then
+  if SV.Story.sect > 0 then
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("(A lot of bees make their home here, [color=#EFBF04]but it looks like they're making changes. I'll come back later.[color])")

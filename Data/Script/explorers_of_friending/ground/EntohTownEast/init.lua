@@ -16,24 +16,12 @@ local EntohTownEast = {}
 ---EntohTownEast.Init(map)
 --Engine callback function
 function EntohTownEast.Init(map)
-  COMMON.RespawnAllies()
-  local tidy = CH("Teammate1")
-  local flow = CH("Teammate2")
-  if SV.entoh_town.firstfind == 0 or SV.entoh_town.firstfind == 1 then
+  if SV.Story.flag == 0 or (SV.Story.flag[1] == "Flow" and SV.Story.flag[2] == 0) then
     East.TidyUp()
-    if SV.entoh_town.firstfind == 0 then
-      SV.entoh_town.firstfind = 2
-    end
   else
-    if OutEnter == 1 then
-      tidy.CollisionDisabled = true
-      flow.CollisionDisabled = true
-      GROUND:TeleportTo(tidy, 60, 200, Direction.Left, 0)
-      GROUND:TeleportTo(flow, 60, 210, Direction.Left, 0)
-    end
-    AI:SetCharacterAI(tidy, "origin.ai.ground_partner", CH('PLAYER'), tidy.Position)
-    AI:SetCharacterAI(flow, "origin.ai.ground_partner", tidy, flow.Position)
+   EXPLCOMMON.AllyFollow(true, true)
   end
+
   TidyRexTalk = 0
 end
 

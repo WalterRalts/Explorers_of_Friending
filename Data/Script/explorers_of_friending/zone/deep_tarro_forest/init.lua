@@ -42,7 +42,6 @@ function deep_tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
                 GAME:EnterZone("deep_tarro_forest", -1, 0, 0)
             else
                 GAME:RemovePlayerTeam(2)
-                SV.tarro_town.DarknessChapter = 3
                 SV.deep_tarro_forest.revisit = true
                 SV.tarro_forest.dungpoints = SV.tarro_forest.dungpoints + 50
                 COMMON.EndDungeonDay(result, "the_field", -1, 0, 0)

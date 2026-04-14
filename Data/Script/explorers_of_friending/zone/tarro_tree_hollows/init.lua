@@ -47,15 +47,12 @@ function tarro_tree_hollows.ExitSegment(zone, result, rescue, segmentID, mapID)
     GAME:SetTeamLeaderIndex(0)
     if SV.tarro_tree_hollows.AmasDefeat == false then -- boss undefeated
       if segmentID == 0 then
-        if SV.tarro_town.PieChapter == 7 then
-          SV.tarro_town.PieChapter = 8
-        end
+        SV.Story.dunsect = 1
         GAME:EnterZone("tarro_tree_hollows", -1, 0, 0)
       elseif segmentID == 1 then
-        SV.tarro_town.PieChapter = 9
+        SV.Story.dunsect = 2
         GAME:EnterZone("tarro_tree_hollows", -1, 1, 0)
       else
-        SV.tarro_town.PieChapter = 10
         SV.tarro_tree_hollows.dungpoints = SV.tarro_tree_hollows.dungpoints + 200
         SV.tarro_tree_hollows.AmasDefeat = true
         COMMON.EndDungeonDay(result, "tarro_tree_hollows", -1, 1, 0)

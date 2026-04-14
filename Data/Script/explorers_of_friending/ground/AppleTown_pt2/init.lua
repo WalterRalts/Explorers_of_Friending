@@ -63,7 +63,7 @@ function AppleTown_pt2.Init(map)
     GROUND:Hide("Gaurd")
     GROUND:Hide("Police")
   end
-  if SV.guild.time == 100 then
+  if SV.Story.sect == 3 then
     Apple2.EndingUp()
   end
 end
@@ -110,8 +110,8 @@ end
 -------------------------------
 
 function AppleTown_pt2.AppleTownMayorEnter_Touch(obj, activator)
-  if SV.guild.time == 99 then
-    COMMON.SetCharAndEmotion(activator, "Worried")
+  if SV.Story.sect == 2 then
+   EXPLCOMMON.SetCharAndEmotion(activator, "Worried")
     UI:WaitShowDialogue("Rexio first, then go home!")
   else
     GAME:FadeOut(false, 20)
@@ -120,11 +120,11 @@ function AppleTown_pt2.AppleTownMayorEnter_Touch(obj, activator)
 end
 
 function AppleTown_pt2.AppleTownConcertEnter_Touch(obj, activator)
-  if SV.guild.time == 99 then
-    COMMON.SetCharAndEmotion(activator, "Worried")
+  if SV.Story.sect == 2 then
+   EXPLCOMMON.SetCharAndEmotion(activator, "Worried")
     UI:WaitShowDialogue("Rexio first, then we'll go home!")
-  elseif SV.guild.time == 100 then
-    COMMON.SetCharAndEmotion(activator, "Normal")
+  elseif SV.Story.sect == 3 then
+   EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
     UI:WaitShowDialogue("There's no show this late,[pause=30] I don't think.")
   else
     GAME:FadeOut(false, 20)
@@ -133,31 +133,31 @@ function AppleTown_pt2.AppleTownConcertEnter_Touch(obj, activator)
 end
 
 function AppleTown_pt2.AppleWay_Touch(obj, activator)
-  if SV.guild.time < 99 then
+  if SV.Story.sect < 2 then
     if activator.Nickname == "Maru" then
-      COMMON.SetCharAndEmotion(activator, "Normal")
+     EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
       UI:WaitShowDialogue("(That looks like a dungeon, but we aren't here for that...)")
     elseif activator.Nickname == "Azura" then
-      COMMON.SetCharAndEmotion(activator, "Worried")
+     EXPLCOMMON.SetCharAndEmotion(activator, "Worried")
       UI:WaitShowDialogue("(A dungeon? ...I can't go in there...)")
     else
-      COMMON.SetCharAndEmotion(activator, "Worried")
+     EXPLCOMMON.SetCharAndEmotion(activator, "Worried")
       UI:WaitShowDialogue("(Got sent on a mission. I can't skip it, so I can't do another dungeon trip.)")
     end
-  elseif SV.guild.time == 99 then
+  elseif SV.Story.sect == 2 then
     shakyApple = false
     COMMON.UnlockWithFanfare("dense_apple", false)
     GAME:FadeOut(false, 20)
     GAME:EnterGroundMap("dense_apple", "DeepApple", "Mark")
   else
     if activator.Nickname == "Maru" then
-      COMMON.SetCharAndEmotion(activator, "Normal")
+     EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
       UI:WaitShowDialogue("(It's late,[pause=40] Azura's tired.[pause=30] I don't wanna go back in there...)")
     elseif activator.Nickname == "Azura" then
-      COMMON.SetCharAndEmotion(activator, "Pain")
+     EXPLCOMMON.SetCharAndEmotion(activator, "Pain")
       UI:WaitShowDialogue("(...nmn, home... too tired.)")
     else
-      COMMON.SetCharAndEmotion(activator, "Worried")
+     EXPLCOMMON.SetCharAndEmotion(activator, "Worried")
       UI:WaitShowDialogue("(I can't believe...[pause=40] [emote=Angry]whatever!)")
     end
   end
@@ -173,15 +173,15 @@ function AppleTown_pt2.AppleTown_Exit_Touch(obj, activator)
         Entry = 3
       }
     }
-    if SV.guild.time == 99 then
-      COMMON.SetCharAndEmotion(activator, "Worried")
+    if SV.Story.sect == 2 then
+     EXPLCOMMON.SetCharAndEmotion(activator, "Worried")
       UI:WaitShowDialogue("Rexio first, then go home!")
     else
       COMMON.ShowDestinationMenu("apple_forest", guild)
     end
     
   else
-    COMMON.FaceEachother(CH("Gaurd"), activator)
+   EXPLCOMMON.FaceEachother(CH("Gaurd"), activator)
     AppleTown_pt2.Gaurd_Action(CH("Gaurd"), activator)
   end
 end
@@ -190,39 +190,39 @@ end
 
 function AppleTown_pt2.AppleTG_Action(obj, activator)
   shakyApple = false
-  COMMON.SetCharAndEmotion(obj, "Pain")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Pain")
   UI:WaitShowDialogue("It-...[pause=35] it was so close...[pause=45] I don't understand...")
 
   if activator.Nickname == "Maru" then
-    COMMON.SetCharAndEmotion(activator, "Worried")
+   EXPLCOMMON.SetCharAndEmotion(activator, "Worried")
     UI:WaitShowDialogue("(I should leave 'em alone...)")
   elseif activator.Nickname == "Azura" then
-    COMMON.SetCharAndEmotion(activator, "Sad")
+   EXPLCOMMON.SetCharAndEmotion(activator, "Sad")
     UI:WaitShowDialogue("(...aww.)")
   else
-    COMMON.SetCharAndEmotion(activator, "Worried")
+   EXPLCOMMON.SetCharAndEmotion(activator, "Worried")
     UI:WaitShowDialogue("(...geez...)")
   end
 
   shakyApple = true
-  COMMON.SetCharAndEmotion(obj, "Teary-Eyed")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Teary-Eyed")
   UI:WaitShowDialogue("H-how did this happen?")
 end
 
 function AppleTown_pt2.Gaurd_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Determined")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Determined")
   UI:WaitShowDialogue("all personel originally within[pause=20] APPLE TOWN[pause=20] must stay within borders while the incident is under investigation")
-  COMMON.SetCharAndEmotion(obj, "Normal")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("please step away from the tree line")
 end
 
 function AppleTown_pt2.MagnetA_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Normal")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("Investigating scene.[pause=30] BZZRK.")
 end
 
 function AppleTown_pt2.MagnetB_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Normal")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("Looking around the scene.[pause=30] BZZT.")
 end
 
@@ -231,50 +231,50 @@ function AppleTown_pt2.Police_Action(obj, activator)
   local third = CH("Teammate2")
   AI:DisableCharacterAI(second)
   AI:DisableCharacterAI(third)
-  COMMON.FaceEachother(obj, activator)
+ EXPLCOMMON.FaceEachother(obj, activator)
 
-  COMMON.SetCharAndEmotion(obj, "Normal")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("Ah,[quickscan_action()][pause=20][emote=Worried] you don't seem to be from around here.")
 
   ::continue::
   if activator.Nickname == "Maru" then
-    COMMON.SetCharAndEmotion(activator, "Normal")
+   EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
     UI:WaitShowDialogue("Yeah, we aren't. We're here to get apples for the guild.")
 
-    COMMON.SetCharAndEmotion(third, "Sigh")
+   EXPLCOMMON.SetCharAndEmotion(third, "Sigh")
     UI:WaitShowDialogue("(Fake guild...)")
 
-    COMMON.SetCharAndEmotion(second, "Worried")
+   EXPLCOMMON.SetCharAndEmotion(second, "Worried")
     UI:WaitShowDialogue("We weren't here for long, Mr. Police. What happened?")
 
-    COMMON.SetCharAndEmotion(obj, "Stunned")
+   EXPLCOMMON.SetCharAndEmotion(obj, "Stunned")
     UI:WaitShowDialogue("[acknowledge()][pause=20] Right,[pause=30] you kids shouldn't be here.[pause=20] Strange things have been occuring recently and we don't need kids on the suspect list...")
-    COMMON.SetCharAndEmotion(obj, "Normal")
+   EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
     UI:WaitShowDialogue("If you see anything that can assist in our searching function, then don't hesitate.")
     
-    COMMON.SetCharAndEmotion(third, "Worried")
+   EXPLCOMMON.SetCharAndEmotion(third, "Worried")
     UI:WaitShowDialogue("We fought these weird gooey things;[pause=30] I[emote=Happy] had to punch 'em.")
 
-    COMMON.SetCharAndEmotion(obj, "Stunned")
+   EXPLCOMMON.SetCharAndEmotion(obj, "Stunned")
     UI:WaitShowDialogue("[familiar_mem()][pause=20] Wait, was it wobbly and night-shaded?")
 
-    COMMON.CharHop("Teammate1")
-    COMMON.SetCharAndEmotion(second, "Happy")
+   EXPLCOMMON.CharHop("Teammate1")
+   EXPLCOMMON.SetCharAndEmotion(second, "Happy")
     UI:WaitShowDialogue("It was!")
 
-    COMMON.SetCharAndEmotion(obj, "Happy")
+   EXPLCOMMON.SetCharAndEmotion(obj, "Happy")
     UI:WaitShowDialogue("Great,[pause=30] that means we're on the trail. [interrogate()][pause=40] Our detectives would do good knowing this info, where did you find it?")
     
     GROUND:CharTurnToCharAnimated(obj, third, 2)
-    COMMON.SetCharAndEmotion(third, "Worried")
+   EXPLCOMMON.SetCharAndEmotion(third, "Worried")
     UI:WaitShowDialogue("The mayor's untouched room, apparently.")
 
     GROUND:CharTurnToCharAnimated(obj, second, 2)
-    COMMON.SetCharAndEmotion(second, "Happy")
+   EXPLCOMMON.SetCharAndEmotion(second, "Happy")
     UI:WaitShowDialogue("With the books!")
 
-    COMMON.FaceEachother(obj, CH("Gaurd"))
-    COMMON.SetCharAndEmotion(obj, "Happy")
+   EXPLCOMMON.FaceEachother(obj, CH("Gaurd"))
+   EXPLCOMMON.SetCharAndEmotion(obj, "Happy")
     UI:WaitShowDialogue("[signal()][pause=30] Magnet force![pause=20] New directive! [goto] The Library!")
     TASK:StartEntityTask(CH("Police"), magnet_out)
     GAME:WaitFrames(60)
@@ -284,27 +284,27 @@ function AppleTown_pt2.Police_Action(obj, activator)
 
     GAME:FadeOut(false, 80)
     GAME:SetTeamLeaderIndex(0)
-    COMMON.TeleportToMarker(CH("PLAYER"), "a1", Dir8.Down)
-    COMMON.TeleportToMarker(CH("Teammate1"), "a2", Dir8.UpRight)
-    COMMON.TeleportToMarker(CH("Teammate2"), "a3", Dir8.UpLeft)
-    COMMON.SetCharAndEmotion(third, "Worried")
+   EXPLCOMMON.TeleportToMarker(CH("PLAYER"), "a1", Dir8.Down)
+   EXPLCOMMON.TeleportToMarker(CH("Teammate1"), "a2", Dir8.UpRight)
+   EXPLCOMMON.TeleportToMarker(CH("Teammate2"), "a3", Dir8.UpLeft)
+   EXPLCOMMON.SetCharAndEmotion(third, "Worried")
     UI:WaitShowDialogue("So, what now?")
     GAME:FadeIn(30)
 
-    COMMON.SetCharAndEmotion(activator, "Normal")
+   EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
     UI:WaitShowDialogue("Well, we can get the apples from the dungeon, right?")
     UI:WaitShowDialogue("Probably not a good idea to stay if we can't do anything.")
 
-    COMMON.SetCharAndEmotion(second, "Worried")
+   EXPLCOMMON.SetCharAndEmotion(second, "Worried")
     UI:WaitShowDialogue("I'm tired...")
 
-    COMMON.SetCharAndEmotion(third, "Worried")
+   EXPLCOMMON.SetCharAndEmotion(third, "Worried")
     UI:WaitShowDialogue("...")
     
     MagnetForce_out = true
 
-    COMMON.CharHop("Teammate1")
-    COMMON.SetCharAndEmotion(second, "Normal")
+   EXPLCOMMON.CharHop("Teammate1")
+   EXPLCOMMON.SetCharAndEmotion(second, "Normal")
     UI:WaitShowDialogue("Let's go back to the guild!")
 
     GAME:WaitFrames(65)
@@ -320,24 +320,24 @@ function AppleTown_pt2.Police_Action(obj, activator)
       GAME:WaitFrames(15)
       GROUND:CharAnimateTurnTo(activator, Dir8.UpRight, 3)
       GROUND:CharAnimateTurnTo(second, Dir8.UpRight, 3)
-      COMMON.SetCharAndEmotion(second, "Surprised")
+     EXPLCOMMON.SetCharAndEmotion(second, "Surprised")
       UI:WaitShowDialogue("Wah!!")
 
-      COMMON.SetCharAndEmotion(activator, "Surprised")
+     EXPLCOMMON.SetCharAndEmotion(activator, "Surprised")
       UI:WaitShowDialogue("Rexio!!")
 
       GROUND:CharAnimateTurnTo(activator, Dir8.DownLeft, 3)
-      COMMON.SetCharAndEmotion(second, "Angry")
+     EXPLCOMMON.SetCharAndEmotion(second, "Angry")
       UI:WaitShowDialogue("I wanted to go home...!")
 
-      COMMON.CharSweatdrop("PLAYER")
-      COMMON.SetCharAndEmotion(activator, "Stunned")
+      EXPLCOMMON.CharSweatdrop("PLAYER")
+     EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
       UI:WaitShowDialogue("(Why would he do that...?)")
       
-      COMMON.SetCharAndEmotion(second, "Worried")
+     EXPLCOMMON.SetCharAndEmotion(second, "Worried")
       UI:WaitShowDialogue("D-do we get him?")
       
-      COMMON.SetCharAndEmotion(activator, "Stunned")
+     EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
       UI:WaitShowDialogue("No other choice, I think.")
       end)
     TASK:JoinCoroutines({coro01, coro02})
@@ -352,8 +352,8 @@ function AppleTown_pt2.Police_Action(obj, activator)
     third = CH("PLAYER")
     goto continue
   end
-  SV.guild.time = 99
-  AI:EnableCharacterAI(CH("Teammate1"))
+  AI:EnableCharacterAI(second)
+  SV.Story.sect = 2
 end
 
 return AppleTown_pt2

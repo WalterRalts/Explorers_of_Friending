@@ -27,6 +27,7 @@ function DesertS.Init(map)
   CH("Teammate2").CollisionDisabled = true
   AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
   AI:SetCharacterAI(CH("Teammate2"), "origin.ai.ground_partner", CH("Teammate1"), CH("Teammate2").Position)
+  GAME:SetCanSwitch(true)
 end
 
 ---DesertS.Enter(map)
@@ -89,7 +90,7 @@ function DesertS.Tumbleweed_Action(obj, activator)
   if activator.Nickname == "Rexio" then
     UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("(Tumbelweed. Because it's a desert. Neat.)")
+    UI:WaitShowDialogue("(Tumbleweed. Because it's a desert. Neat.)")
   elseif activator.Nickname == "Maru" then
     UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Normal")
@@ -97,30 +98,30 @@ function DesertS.Tumbleweed_Action(obj, activator)
   else
     UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Inspired")
-    UI:WaitShowDialogue("(Whoa... what's this thing.)")
+    UI:WaitShowDialogue("(Whoa... what's this thing?)")
   end
 end
 
 -- Entrances
 
 function DesertS.W_Touch(obj, activator)
-  COMMON.FadeEnterGround("DesertSW", "EastEnter")
+ EXPLCOMMON.FadeEnterGround("DesertSW", "EastEnter")
 end
 
 function DesertS.NW_Touch(obj, activator)
-  COMMON.FadeEnterGround("DesertNW", "SouthEastEnter")
+ EXPLCOMMON.FadeEnterGround("DesertNW", "SouthEastEnter")
 end
 
 function DesertS.N_Touch(obj, activator)
-  COMMON.FadeEnterGround("DesertN", "SouthEnter")
+ EXPLCOMMON.FadeEnterGround("DesertN", "SouthEnter")
 end
 
 function DesertS.NE_Touch(obj, activator)
-  COMMON.FadeEnterGround("DesertNE", "SouthWestEnter")
+ EXPLCOMMON.FadeEnterGround("DesertNE", "SouthWestEnter")
 end
 
 function DesertS.E_Touch(obj, activator)
-  COMMON.FadeEnterGround("DesertSE", "WestEnter")
+ EXPLCOMMON.FadeEnterGround("DesertSE", "WestEnter")
 end
 
 function DesertS.Exit_Touch(obj, activator)

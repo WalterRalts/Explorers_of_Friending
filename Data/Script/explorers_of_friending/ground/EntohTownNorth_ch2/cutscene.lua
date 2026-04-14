@@ -4,7 +4,7 @@ Entoh2 = {}
 
 function Entoh2.TheFlow()
     local mon_id1 = RogueEssence.Dungeon.MonsterID("flabebe", 0, "normal", Gender.Female)
-  
+
     local p1 = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id1, 5, "", 0)
     p1.IsFounder = true
     p1.IsPartner = true
@@ -16,8 +16,8 @@ function Entoh2.TheFlow()
         _DATA.Save.ActiveTeam.Players[GAME:GetPlayerPartyCount() - 1].ActionEvents:Add(talk_npc)
 
     COMMON.RespawnAllies()
-    if SV.entoh_town.firstfind == 2 then
-        SV.entoh_town.HelperChapter = 7
+    if SV.Story.flag[1] == "Tidy" and SV.Story.flag[2] == 0 then
+        SV.Story.flag = {"Tidy", "Flow"}
         local flow = CH("Teammate2")
         local tidy = CH("Teammate1")
         local chucky = CH("Chucky")
@@ -41,14 +41,14 @@ function Entoh2.TheFlow()
         UI:SetSpeakerEmotion("Worried")
         UI:WaitShowDialogue("He's a total wimp, and if I can't find him then he's probably gonna lose his mind...")
 
-        COMMON.CharExclaim("Chucky")
+       EXPLCOMMON.CharExclaim("Chucky")
 
         local cor1 = TASK:BranchCoroutine(function()
             GROUND:MoveToPosition(rexio, 352, 376, false, 3)
             GROUND:MoveToPosition(tidy, 320, 416, false, 3)
         end)	
         local cor2 = TASK:BranchCoroutine(function()
-            COMMON.CharHop("Teammate1")
+           EXPLCOMMON.CharHop("Teammate1")
             UI:SetSpeaker(flow)
             UI:SetSpeakerEmotion("Angry")
             UI:WaitShowDialogue("I NEED TO FIND MY MOTHER!")
@@ -63,20 +63,20 @@ function Entoh2.TheFlow()
         end)
         TASK:JoinCoroutines({cor1, cor2})
 
-        COMMON.FaceEachother(tidy, flow)
+       EXPLCOMMON.FaceEachother(tidy, flow)
         UI:SetSpeaker(tidy)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("Flow, what's going on?")
         
             
         local cor3 = TASK:BranchCoroutine(function()
-            COMMON.CharSweatdrop("Chucky")
+            EXPLCOMMON.CharSweatdrop("Chucky")
             GAME:WaitFrames(45)
             GROUND:MoveToMarker(chucky, MRKR("exit1"), true, 5)
             GROUND:MoveToMarker(chucky, MRKR("exit2"), true, 5)
         end)	
         local cor4 = TASK:BranchCoroutine(function()
-            COMMON.CharHop("Teammate1")
+           EXPLCOMMON.CharHop("Teammate1")
             UI:SetSpeaker(flow)
             UI:SetSpeakerEmotion("Angry")
             UI:WaitShowDialogue("I NEED TO FIND MY MOTHER AND CHUCKY ISN'T HELPING!")
@@ -106,9 +106,9 @@ function Entoh2.TheFlow()
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("We should go.")
-        SV.entoh_town.firstfind = 3
         GAME:MoveCamera(0, 0, 0, true)
-    elseif SV.entoh_town.firstfind < 3 then
+    elseif SV.Story.flag[1] == 0 then
+        SV.Story.flag = {"Flow", 0}
         local flow = CH("Teammate1")
         local chucky = CH("Chucky")
         local rexio = CH("PLAYER")
@@ -129,13 +129,13 @@ function Entoh2.TheFlow()
         UI:SetSpeakerEmotion("Worried")
         UI:WaitShowDialogue("He's a total wimp, and if I can't find him then he's probably gonna lose his mind...")
 
-        COMMON.CharExclaim("Chucky")
+       EXPLCOMMON.CharExclaim("Chucky")
 
         local cor1 = TASK:BranchCoroutine(function()
             GROUND:MoveToPosition(rexio, 352, 376, false, 3)
         end)	
         local cor2 = TASK:BranchCoroutine(function()
-            COMMON.CharHop("Teammate1")
+           EXPLCOMMON.CharHop("Teammate1")
             UI:SetSpeaker(flow)
             UI:SetSpeakerEmotion("Angry")
             UI:WaitShowDialogue("I NEED TO FIND MY MOTHER!")
@@ -180,7 +180,7 @@ function Entoh2.TheFlow()
         UI:SetSpeaker(flow)
         UI:SetSpeakerEmotion("Worried")
         UI:WaitShowDialogue("Just... hurry it up a little.[pause=35] Mother's probably worried sick...")
-        COMMON.FaceEachother(rexio, chucky)
+       EXPLCOMMON.FaceEachother(rexio, chucky)
         GAME:MoveCamera(0, 0, 0, true)
     end
 end

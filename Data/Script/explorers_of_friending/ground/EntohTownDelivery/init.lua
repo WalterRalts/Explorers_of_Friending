@@ -17,7 +17,7 @@ local EntohTownDelivery = {}
 --Engine callback function
 function EntohTownDelivery.Init(map)
   local down = CH("Down")
-  if SV.entoh_town.AdventureChapter > 0 then
+  if SV.Story.chap == -6 then
     COMMON.CreateWalkArea("Down", 175, 425, 72, 72)
     GROUND:Hide("Dragon")
     GROUND:Hide("Chucky")
@@ -27,7 +27,7 @@ function EntohTownDelivery.Init(map)
     GROUND:CharSetAnim(down, "Sleep", true)
   end
   
-  if SV.entoh_town.HelperChapter > 1 then
+  if SV.Story.sect > 2  or SV.Story.chap == -6 then
     GROUND:Hide("Bucks")
     GROUND:Hide("Ponya")
   end
@@ -82,8 +82,8 @@ function EntohTownDelivery.Entoh_DeliSouthEnter_Touch(obj, activator)
 end
 
 function EntohTownDelivery.Down_Action(obj, activator)
-  if SV.entoh_town.AdventureChapter > 0 then
-    COMMON.FaceEachother(activator, obj)
+  if SV.Story.chap == -6 then
+   EXPLCOMMON.FaceEachother(activator, obj)
     UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Rexiiiii~![pause=15] Like,[pause=30] omyarceuuuuuuus!")
@@ -101,13 +101,10 @@ function EntohTownDelivery.Down_Action(obj, activator)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("(The dragon sleeps. I probably shouldn't wake her...)")
   end
-  
 end
 
 function EntohTownDelivery.Dragon_CutsceneStart_Touch(obj, activator)
-  if SV.entoh_town.HelperChapter == 1 then
-    Entoh.Dragon()
-  end
+  Entoh.Dragon()
 end
 
 function EntohTownDelivery.Chucky_Action(obj, activator)
@@ -115,8 +112,8 @@ function EntohTownDelivery.Chucky_Action(obj, activator)
   local chucky = CH("Chucky")
   local rexio = CH("PLAYER")
   local time = math.random(3)
-  COMMON.FaceEachother(activator, obj)
-  if SV.entoh_town.HelperChapter == 3 then
+ EXPLCOMMON.FaceEachother(activator, obj)
+  if SV.Story.sect == 3 then
     if not KeyGet then
       SandInteract = true
       UI:SetSpeaker(rexio)
@@ -150,7 +147,7 @@ function EntohTownDelivery.Chucky_Action(obj, activator)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("I'm just here to cut stamps, bro.[pause=25] I[emote=Happy] don't need to deal with any of this.")
       
-      COMMON.FaceEachother(dragon, obj)
+     EXPLCOMMON.FaceEachother(dragon, obj)
       UI:SetSpeaker(dragon)
       UI:SetSpeakerEmotion("Worried")
       UI:WaitShowDialogue("Chucky...[pause=30][speed=0.7] help a monster out.")
@@ -173,7 +170,7 @@ end
 function EntohTownDelivery.Mud_Action(obj, activator)
   local mud = CH("Mud")
   local ponia = CH("Ponia")
-  if SV.entoh_town.AdventureChapter > 0 then
+  if SV.Story.chap == -6 then
     UI:SetSpeaker(mud)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("Pon went out with her ma, 'n' now I gotta sit here'n wait fer mine...")
@@ -201,8 +198,8 @@ end
 function EntohTownDelivery.Dragon_Action(obj, activator)
   local dragon = CH("Dragon")
   local rexio = CH("PLAYER")
-  COMMON.FaceEachother(activator, dragon)
-  if SV.entoh_town.HelperChapter == 3 then
+ EXPLCOMMON.FaceEachother(activator, dragon)
+  if SV.Story.sect == 3 then
     if not KeyGet then
       DragInteract = true
       UI:SetSpeaker(rexio)
@@ -252,7 +249,7 @@ function EntohTownDelivery.Dragon_Action(obj, activator)
       GROUND:CharSetAnim(dragon, "Walk", false)
       GROUND:Hide("Dragon")
       GAME:WaitFrames(110)
-      COMMON.FaceEachother(activator, dragon)
+     EXPLCOMMON.FaceEachother(activator, dragon)
       GAME:WaitFrames(15)
       GROUND:Unhide("Dragon")
       GROUND:CharSetAnim(dragon, "Walk", false)
@@ -280,7 +277,7 @@ end
 
 function EntohTownDelivery.PackageKey_Action(obj, activator)
   local rexio = CH("PLAYER")
-  if SV.entoh_town.HelperChapter < 3 then
+  if SV.Story.sect < 3 then
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Huh, a key?")
@@ -296,7 +293,7 @@ function EntohTownDelivery.PackageKey_Action(obj, activator)
     UI:WaitShowDialogue("Mine!")
     GROUND:Hide("PackageKey")
     KeyGet = true
-  elseif SV.entoh_town.HelperChapter == 3 then
+  elseif SV.Story.sect == 3 then
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Joyous")
     UI:WaitShowDialogue("Aha! Key!")
@@ -311,7 +308,7 @@ function EntohTownDelivery.PackageKey_Action(obj, activator)
 end
 
 function EntohTownDelivery.DragonDelivery_Touch(obj, activator)
-  if SV.entoh_town.AdventureChapter >= 0 then
+  if SV.Story.chap == -6 then
     GAME:FadeOut(false, 20)
     GAME:EnterGroundMap("DragonDelivery", "RexioEnter")
   end

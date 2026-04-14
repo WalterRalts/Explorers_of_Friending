@@ -1,20 +1,19 @@
 Rexio = {}
 
 function Rexio.Luke()
-    SV.entoh_town.AdventureChapter = 2
     local rexio = CH("PLAYER")
     local luke = CH("Luke")
-    
+
     GAME:CutsceneMode(true)
-    COMMON.CharRealize("PLAYER")
-    
+   EXPLCOMMON.CharRealize("PLAYER")
+
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Determined")
     UI:WaitShowDialogue("Rexio...")
 
     GAME:MoveCamera(376, 200, 100, false)
 
-    COMMON.CharSweatdrop("PLAYER")
+    EXPLCOMMON.CharSweatdrop("PLAYER")
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("...dad, you're scaring me.")
@@ -41,9 +40,10 @@ function Rexio.Luke()
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Great.")
 
+    GROUND:CharAnimateTurnTo(luke, Dir8.Left, 3)
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("...that's it?")
+    UI:WaitShowDialogue("...huh?")
 
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Normal")
@@ -53,24 +53,25 @@ function Rexio.Luke()
     UI:WaitShowDialogue("Unless it's one of those places that make you do the boring chores first.")
     GROUND:CharAnimateTurnTo(rexio, Dir8.Right, 3)
     UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("So yeah. I'm ready. I'll go.")
+    UI:WaitShowDialogue("So, yeah. I'm ready. I'll go.")
 
+    EXPLCOMMON.CharSweatdrop("Luke")
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Sigh")
     UI:WaitShowDialogue("...at least try to be a little homesick...")
 
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Surprised")
-    UI:WaitShowTimedDialogue("Oh!", 25)
+    UI:WaitShowTimedDialogue("Oh!", 35)
     UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowTimedDialogue("Uh...", 25)
+    UI:WaitShowTimedDialogue("Uh...", 35)
 
     SOUND:PlayBGM("Over.ogg", true)
     UI:SetSpeakerEmotion("Teary-Eyed")
     UI:WaitShowDialogue("D-dad... I'll miss you so much.")
     UI:SetSpeakerEmotion("Teary-Eyed")
     UI:WaitShowDialogue("Will I ever get to see you again?")
-    
+
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Sad")
     UI:WaitShowDialogue("Yes, Rexio.[pause=30] I'm [emote=Teary-Eyed]sure you will.")
@@ -88,7 +89,7 @@ function Rexio.Luke()
     --Flow
     GROUND:Hide("Flow")
     local mon_id1 = RogueEssence.Dungeon.MonsterID("flabebe", 0, "normal", Gender.Female)
-  
+
     local p1 = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id1, 6, "flower_veil", 0)
     p1.IsFounder = true
     p1.IsPartner = true
@@ -98,11 +99,11 @@ function Rexio.Luke()
 
     local talk_npc = RogueEssence.Dungeon.BattleScriptEvent("FlowInteract")
         _DATA.Save.ActiveTeam.Players[1].ActionEvents:Add(talk_npc)
-    
+
     --Tidy
     GROUND:Hide("Tidy")
     local mon_id2 = RogueEssence.Dungeon.MonsterID("minccino", 0, "normal", Gender.Female)
-    
+
     local p2 = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id2, 8, "", 0)
     p2.IsFounder = true
     p2.IsPartner = true
@@ -116,7 +117,7 @@ function Rexio.Luke()
     --Wurp
     GROUND:Hide("Wurp")
     local mon_id3 = RogueEssence.Dungeon.MonsterID("wurmple", 0, "normal", Gender.Male)
-  
+
     local p3 = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id3, 7, "", 0)
     p3.IsFounder = true
     p3.IsPartner = true
@@ -151,7 +152,8 @@ function Rexio.Luke()
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Let's flow, Rexio!")
 
-    SV.bag_size = 999
+    SV.Story.sect = 3
+    SV.bag_size = 12
     GAME:CutsceneMode(false)
     AI:SetCharacterAI(flow, "origin.ai.ground_partner", rexio, flow.Position)
     AI:SetCharacterAI(tidy, "origin.ai.ground_partner", flow, tidy.Position)

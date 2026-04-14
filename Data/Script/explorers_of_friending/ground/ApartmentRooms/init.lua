@@ -16,10 +16,12 @@ local ApartmentRooms = {}
 ---ApartmentRooms.Init(map)
 --Engine callback function
 function ApartmentRooms.Init(map)
-
   GROUND:Hide("Tidy")
-  if SV.entoh_town.HelperChapter == 0.1 then
-    Apart.TidyIntro()
+  if SV.Story.chap == -4 then
+    if SV.Story.sect == 0 then
+      Apart.TidyIntro()
+    end
+  elseif SV.Story.chap == -6 then
   end
   COMMON.CreateWalkArea("Mouse", CH("Mouse").Position.X, CH("Mouse").Position.Y, 75, 75)
 end
@@ -65,13 +67,137 @@ end
 -- Entities Callbacks
 -------------------------------
 
--- CharFunc
+-- Entrances
+
+function ApartmentRooms.ApartExit_Touch(obj, activator)
+  GAME:FadeOut(false, 10)
+  GAME:EnterGroundMap("EntohTownCenter", "HomeMarker")
+end
+
+function ApartmentRooms.RexioHome_Enter_Touch(obj, activator)
+  GAME:FadeOut(false, 10)
+  GAME:EnterGroundMap("RexioHome", "RexioHomeWay")
+end
+
+function ApartmentRooms.EmptyEnter_Touch(obj, activator)
+  if rex_talk == 0 then
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("(Oh wooooooooow. Very interesting stuff in there.)")
+    rex_talk = 1
+  else
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("(If my sarcasm wasn't obvious...)")
+  end
+end
+
+function ApartmentRooms.MouseTalk_Touch(obj, activator)
+  local mouse = CH("Mouse")
+  if SV.Story.flag == 0 then
+    UI:SetSpeaker(mouse)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Hey, Rexio.[pause=10] Got a sec?")
+
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Wassup, Mousy boi?")
+
+    UI:SetSpeaker(mouse)
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("Ew.[pause=50] [emote=Pain]Don't call me that.[pause=10] Ever.")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Anyway, about your dad.[pause=10] He ran past.[pause=10] ...like really ran.")
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Passing on a message.[pause=10] \"Tell Rexio, \'go east\'\".")
+
+    SV.Story.flag = 1
+  end
+end
+
+function ApartmentRooms.MouseHomeEnter_Touch(obj, activator)
+  local mampha = CH("Mampha")
+ EXPLCOMMON.FaceEachother(mampha, activator)
+  if SV.Story.chap == -4 then
+    UI:SetSpeaker(mampha)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Rexio!")
+
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Mrs. Slash.")
+
+    UI:SetSpeaker(mampha)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("You know that you can't go in uninvited wehhhh.")
+
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("[speed=0.1]...[speed=1.0]may I be invited?")
+
+    UI:SetSpeaker(mampha)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Haha![pause=50] N[emote=Normal]o.")
+  else
+    UI:SetSpeaker(mampha)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Rexio wehh!")
+
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Mrs. Slash.")
+
+    UI:SetSpeaker(mampha)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Don't you have somewhere to be wehhhh?")
+
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("It might be lame, though...")
+
+    UI:SetSpeaker(mampha)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("I'm sure your father will get you somewhere cool wehhhh.")
+  end
+end
+
+function ApartmentRooms.PanchHome_Touch(obj, activator)
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("...nah. His place looks absolutely trashed.")
+  GAME:WaitFrames(30)
+  EXPLCOMMON.CharSweatdrop("PLAYER")
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("...and bamboo'd.")
+end
+
+function ApartmentRooms.EncleenHouse_Touch(obj, activator)
+  SOUND:FadeOutBGM(100)
+  GAME:WaitFrames(100)
+  EXPLCOMMON.CharSweatdrop("PLAYER")
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("(...I feel like a grand presence of someone pristine is watching me!)")
+  SOUND:PlayBGM("Base Town.ogg", true)
+end
+
+function ApartmentRooms.Upper_Floor_Touch(obj, activator)
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("(A worker outside said [color=#EFBF04]the second floor was a WIP.[color])")
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("(Heard that fun stuff was gonna be up there.)")
+end
+
+-- Objects
+
+-- Characters
 
 sand_talk = 0
 rex_talk = 0
 function ApartmentRooms.Mouse_Action(obj, activator)
-  COMMON.FaceEachother(activator, obj)
-  if SV.entoh_town.AdventureChapter > 1 then
+ EXPLCOMMON.FaceEachother(activator, obj)
+  if SV.Story.chap == -6 then
     if sand_talk == 0 then
       UI:SetSpeaker(obj)
       UI:SetSpeakerEmotion("Normal")
@@ -122,128 +248,6 @@ function ApartmentRooms.Mampha_Action(obj, activator)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Live well,[pause=30] and don't do anything dumb wehhhh.")
-end
-
--- EnterFunc
-
-function ApartmentRooms.ApartExit_Touch(obj, activator)
-  GAME:FadeOut(false, 10)
-  GAME:EnterGroundMap("EntohTownCenter", "HomeMarker")
-end
-
-function ApartmentRooms.RexioHome_Enter_Touch(obj, activator)
-  GAME:FadeOut(false, 10)
-  GAME:EnterGroundMap("RexioHome", "RexioHomeWay")
-end
-
-function ApartmentRooms.EmptyEnter_Touch(obj, activator)
-  if rex_talk == 0 then
-    UI:SetSpeaker(activator)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("(Oh wooooooooow. Very interesting stuff in there.)")
-    rex_talk = 1
-  else
-    UI:SetSpeaker(activator)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("(If my sarcasm wasn't obvious...)")
-  end
-end
-
-function ApartmentRooms.MouseTalk_Touch(obj, activator)
-  local mouse = CH("Mouse")
-  if SV.entoh_town.AdventureChapter == 1 then
-    UI:SetSpeaker(mouse)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Hey, Rexio.[pause=10] Got a sec?")
-
-    UI:SetSpeaker(activator)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Wassup, Mousy boi?")
-
-    UI:SetSpeaker(mouse)
-    UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("Ew.[pause=50] [emote=Pain]Don't call me that.[pause=10] Ever.")
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Anyway, about your dad.[pause=10] He ran past.[pause=10] ...like really ran.")
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Passing on a message.[pause=10] \"Tell Rexio, \'go east\'\".")
-    
-    SV.entoh_town.AdventureChapter = 1.1
-  end
-end
-
-function ApartmentRooms.MouseHomeEnter_Touch(obj, activator)
-  local mampha = CH("Mampha")
-  COMMON.FaceEachother(mampha, activator)
-  if SV.entoh_town.AdventureChapter == -1 then
-    UI:SetSpeaker(mampha)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Rexio!")
-
-    UI:SetSpeaker(activator)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Mrs. Slash.")
-
-    UI:SetSpeaker(mampha)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("You know that you can't go in uninvited wehhhh.")
-
-    UI:SetSpeaker(activator)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("[speed=0.1]...[speed=1.0]may I be invited?")
-
-    UI:SetSpeaker(mampha)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Haha![pause=50] N[emote=Normal]o.")
-  else
-    UI:SetSpeaker(mampha)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Rexio wehh!")
-
-    UI:SetSpeaker(activator)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Mrs. Slash.")
-
-    UI:SetSpeaker(mampha)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Don't you have somewhere to be wehhhh?")
-
-    UI:SetSpeaker(activator)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("It might be lame, though...")
-
-    UI:SetSpeaker(mampha)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("I'm sure your father will get you somewhere cool wehhhh.")
-  end
-end
-
-function ApartmentRooms.PanchHome_Touch(obj, activator)
-  UI:SetSpeaker(activator)
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("...nah. His place looks absolutely trashed.")
-  GAME:WaitFrames(30)
-  COMMON.CharSweatdrop("PLAYER")
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("...and bamboo'd.")
-end
-
-function ApartmentRooms.EncleenHouse_Touch(obj, activator)
-  SOUND:FadeOutBGM(100)
-  GAME:WaitFrames(100)
-  COMMON.CharSweatdrop("PLAYER")
-  UI:SetSpeaker(activator)
-  UI:SetSpeakerEmotion("Stunned")
-  UI:WaitShowDialogue("(...I feel like a grand presence of someone pristine is watching me!)")
-  SOUND:PlayBGM("Base Town.ogg", true)
-end
-
-function ApartmentRooms.Upper_Floor_Touch(obj, activator)
-  UI:SetSpeaker(activator)
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("(A worker outside said [color=#EFBF04]the second floor was a WIP.[color])")
-  UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("(Heard that fun stuff was gonna be up there.)")
 end
 
 return ApartmentRooms

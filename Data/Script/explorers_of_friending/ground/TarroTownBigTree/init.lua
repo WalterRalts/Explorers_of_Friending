@@ -15,12 +15,12 @@ local TarroTownBigTree = {}
 ---TarroTownBigTree.Init(map)
 --Engine callback function
 function TarroTownBigTree.Init(map)
-  DUNsection = 0
+  SV.Story.dunsect = 0
   if thing_gone == true then
     GROUND:Hide("Thing")
   end
-  --SV.tarro_town.PieChapter == 7 is the first cutscene
-  if SV.tarro_town.PieChapter == 7 or tarro_tree_fail == false then -- before cutscene
+
+  if SV.Story.sect == 2 or tarro_tree_fail == false then -- before cutscene
     GAME:SetCanSwitch(true)
     if GAME:GetPlayerPartyCount() == 2 or SV.tarro_tree_hollows.tree_entered == false then
       local mon_id1 = RogueEssence.Dungeon.MonsterID("sentret", 0, "normal", Gender.Female)
@@ -200,7 +200,7 @@ function TarroTownBigTree.TarroThingCut(map)
     GROUND:CharTurnToCharAnimated(maru, senna, 2)
     end)  
   TASK:JoinCoroutines({coro01, coro02, coro03})
-  COMMON.FaceEachother(ziggy, senna)
+ EXPLCOMMON.FaceEachother(ziggy, senna)
   UI:SetSpeaker(senna)
   UI:SetSpeakerEmotion("Surprised")
   
@@ -210,7 +210,7 @@ function TarroTownBigTree.TarroThingCut(map)
     UI:WaitShowDialogue("Let's have the grown-ups deal with it!")
     end)
   local cor2 = TASK:BranchCoroutine(function()
-    COMMON.CharExclaim("Teammate4")
+   EXPLCOMMON.CharExclaim("Teammate4")
     GAME:WaitFrames(15)
     GROUND:AnimateToPosition(senna, "Walk", Dir8.Up, senna.Position.X, senna.Position.Y + 15, 1, 2, 0)
     end)
@@ -231,8 +231,8 @@ function TarroTownBigTree.TarroThingCut(map)
   UI:WaitShowDialogue("Senna...")
 
   local function angyzig()
-    COMMON.CharAngry("Teammate4")
-    COMMON.CharHop("Teammate4")
+   EXPLCOMMON.CharAngry("Teammate4")
+   EXPLCOMMON.CharHop("Teammate4")
   end
 
   SV.tarro_tree_hollows.tree_entered = true
@@ -248,7 +248,7 @@ function TarroTownBigTree.TarroThingCut(map)
   GROUND:AnimateToPosition(ziggy, "Walk", Dir8.Down, senna.Position.X, senna.Position.Y - 25, 5, 2, 0)
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Determined")
-  UI:WaitShowDialogue("Give us a strong face, Senna!")
+  UI:WaitShowDialogue("Strong face, Senna!")
 
   UI:SetSpeaker(senna)
   UI:SetSpeakerEmotion("Sad")
@@ -308,7 +308,7 @@ function TarroTownBigTree.TryAgain(map)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("Sensen, no...[pause=25] we all did pretty bad but that doesn't mean anything.")
 
-  COMMON.FaceEachother(maru, senna)
+ EXPLCOMMON.FaceEachother(maru, senna)
 
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Normal")
@@ -361,7 +361,7 @@ end
 -- Entities Callbacks
 -------------------------------
 function TarroTownBigTree.TreeHallow_Entrance_Touch(obj, activator)
-  DUNsection = 0
+  SV.Story.dunsect = 0
   COMMON.UnlockWithFanfare("tarro_tree_hollows", false)
   local dungeon_entrances = {"tarro_tree_hollows"}
   local ground_entrances = {}
@@ -387,7 +387,7 @@ function TarroTownBigTree.InfoSign_Action(obj, activator)
   UI:SetSpeakerEmotion("Determined")
   UI:WaitShowDialogue("That thing probably has something to do with this!")
 
-  COMMON.CharHop("Teammate1")
+ EXPLCOMMON.CharHop("Teammate1")
   UI:SetSpeaker(azura)
   UI:SetSpeakerEmotion("Determined")
   UI:WaitShowDialogue("Let's get after it!")
@@ -450,11 +450,9 @@ function TarroTownBigTree.Tree_Exit_Touch(obj, activator)
     GAME:RemovePlayerTeam(2)
     GAME:RemovePlayerTeam(2)
     GAME:FadeOut(false, 20)
-    SV.tarro_town.PieChapter = 7.1
+    SV.Story.flag = 1
     OutEnter = 4
     GAME:EnterGroundMap("tarro_town", "TarroTownSquare", "TarroTree_Exit")
-  else
-    
   end
 end
 

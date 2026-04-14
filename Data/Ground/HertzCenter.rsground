@@ -116896,7 +116896,7 @@
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -116982,7 +116982,7 @@
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -117025,7 +117025,7 @@
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -117146,6 +117146,49 @@
 "Y": 445,
 "Width": 30,
 "Height": 22
+}
+},
+{
+"EntName": "Itam",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 2,
+"ObjectAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "ItemSparkle",
+"FrameTime": 6,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"Passable": false,
+"CurrentAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"AnimTime": {
+"Ticks": 0
+},
+"Cycles": 0,
+"DrawOffset": {
+"X": 0,
+"Y": 0
+},
+"Collider": {
+"X": 120,
+"Y": 127,
+"Width": 24,
+"Height": 24
 }
 }
 ],
@@ -117422,6 +117465,146 @@
 "Collider": {
 "X": 772,
 "Y": 531,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "m0",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 481,
+"Y": 457,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "m1",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 447,
+"Y": 485,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "m3",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 478,
+"Y": 512,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "m2",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 506,
+"Y": 485,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "m0_1",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 488,
+"Y": 213,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "m1_1",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 508,
+"Y": 213,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "m2_1",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 505,
+"Y": 231,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "m2_2",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 505,
+"Y": 231,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "m3_1",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 494,
+"Y": 195,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "m3_2",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 494,
+"Y": 195,
 "Width": 16,
 "Height": 16
 }

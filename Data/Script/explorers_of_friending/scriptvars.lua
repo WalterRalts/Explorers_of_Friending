@@ -82,6 +82,13 @@ SV.magnagate =
   Cards = 0
 }
 
+SV.Story =
+{
+  chap = 0, --changes with chapter
+  sect = 0, --changes with part of chapter
+  flag = 0, --changes with part of part of chapter. use float points with flags to prevent confusion with parts
+  dunsect = 0 --for dungeons
+}
 -----------------------------------------------
 -- Level Specific Defaults
 -----------------------------------------------
@@ -89,10 +96,8 @@ SV.magnagate =
 --- Tarro Town
 --- Locations
 
-SV.tarro_town = 
+SV.tarro_town =
 {
-  PieChapter = -1,
-  DarknessChapter = 0,
   spent_dungpoints = 0,
   puchi_tired = true,
   cooking_tutorial_done = 1
@@ -123,6 +128,7 @@ SV.tarro_tree_hollows =
   sprout_money_give = false,
   stairs_unlocked = false,
   entering_party = 0,
+  in_boss = false,
   AmasDefeat = false
 }
 
@@ -147,19 +153,13 @@ SV.apple_forest =
 
 SV.entoh_town =
 {
-  panchdialogue = 0,
-  HelperChapter = -1,
-  AdventureChapter = -1,
   spent_dungpoints = 0,
   package_received = false,
   bag_size = 3,
   thicket =
   {
     result = -1
-  },
-  flowfirst = true,
-  tidyfirst = true,
-  firstfind = 0 -- 1 is for Flow, 2 is for Tidy
+  }
 }
 
 SV.apple_town =
@@ -245,7 +245,32 @@ SV.buzzers_store =
 }
 
 --Dungeon Stuff
+
 SV.rent_number = 0
 SV.dungeon_tutorial = 0
 SV.bag_size = 5
 SV.GroundTutorial = 0
+
+-- Berry Growing
+
+SV.grow_tutorial = false
+
+SV.berry_spot =
+{
+  hertz =
+  {
+    shop = {
+      berry = "",
+      time = -1
+    },
+    secret = {
+      berry = "",
+      time = -1
+    },
+  },
+  guild =
+  {
+    berry = {"", "", "", "", "", ""},
+    time = {-1, -1, -1, -1, -1, -1}
+  }
+}

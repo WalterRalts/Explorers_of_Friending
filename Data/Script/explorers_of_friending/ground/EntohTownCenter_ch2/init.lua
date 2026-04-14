@@ -16,10 +16,9 @@ local EntohTownCenter_ch2 = {}
 ---EntohTownCenter_ch2.Init(map)
 --Engine callback function
 function EntohTownCenter_ch2.Init(map)
-  if SV.entoh_town.HelperChapter == 5 then
+  if SV.Story.sect == 1 then
     Center.Feeling()
-    SV.entoh_town.HelperChapter = 6
-  elseif SV.entoh_town.HelperChapter == 8 then
+  elseif SV.Story.sect == 3 then
     GAME:RemovePlayerTeam(1)
     GAME:RemovePlayerTeam(1)
     GAME:RemovePlayerTeam(1)
@@ -28,17 +27,11 @@ function EntohTownCenter_ch2.Init(map)
   end
 
   COMMON.RespawnAllies()
-  
-  if SV.entoh_town.HelperChapter == 7 then
-    if GAME:GetPlayerPartyCount() == 2 then
-      COMMON.TwoTeam()
-    elseif GAME:GetPlayerPartyCount() == 3 then
-      COMMON.ThreeTeam()
-    end
-  else
-    local partner = CH('Teammate1')
-    AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
-    partner.CollisionDisabled = true
+
+  if GAME:GetPlayerPartyCount() == 2 then
+   EXPLCOMMON.TwoTeam()
+  elseif GAME:GetPlayerPartyCount() == 3 then
+   EXPLCOMMON.ThreeTeam()
   end
 end
 
@@ -93,20 +86,19 @@ function EntohTownCenter_ch2.Apartments_Enter_Touch(obj, activator)
 end
 
 function EntohTownCenter_ch2.Entoh_EastEnter_Touch(obj, activator)
-  if SV.entoh_town.HelperChapter >= 9 then
+  if SV.Story.sect > 2 then
     local rexio = CH("PLAYER")
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("(...not now...)")
   else
-    OutEnter = 1
     GAME:FadeOut(false, 20)
     GAME:EnterGroundMap("EntohTownEast", "Entrance")
   end
 end
 
 function EntohTownCenter_ch2.Entoh_SouthEnter_Touch(obj, activator)
-  if SV.entoh_town.HelperChapter >= 9 then
+  if SV.Story.sect > 2 then
     UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("(No one knew where dad was...)")
@@ -128,7 +120,7 @@ function EntohTownCenter_ch2.Entoh_SouthEnter_Touch(obj, activator)
 end
 
 function EntohTownCenter_ch2.Entoh_NorthEnter_Touch(obj, activator)
-  if SV.entoh_town.HelperChapter >= 9 then
+  if SV.Story.sect > 2 then
     local rexio = CH("PLAYER")
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Worried")
@@ -139,6 +131,7 @@ function EntohTownCenter_ch2.Entoh_NorthEnter_Touch(obj, activator)
   end
   
 end
+
 
 return EntohTownCenter_ch2
 

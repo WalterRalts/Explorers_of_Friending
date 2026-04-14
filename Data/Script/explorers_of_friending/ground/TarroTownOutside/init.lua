@@ -22,29 +22,16 @@ end
 --Engine callback function
 function TarroTownOutside.Init(map)
   GAME:SetCanSwitch(false)
-
-  if SV.tarro_town.PieChapter >= 5 then
+  GAME:GetPlayerPartyMember(0).IsPartner = true
+  if SV.Story.chap == 0 then
+    Outside.CloudWatch()
+  else
+    COMMON.RespawnAllies()
+  end
+  if SV.Story.chap < -1 then
     GROUND:Hide("Puchi")
   end
-  if GAME:GetPlayerPartyCount() == 1 then
-    local mon_id = RogueEssence.Dungeon.MonsterID("azurill", 0, "normal", Gender.Female)
-
-    local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 4, "", 0)
-    p.IsFounder = false
-    p.IsPartner = true
-    p.Nickname = "Azura"
-
-    _DATA.Save.ActiveTeam.Players:Add(p)
-  else 
-    if GAME:GetPlayerPartyCount() >= 2 then
-      GAME:RemovePlayerAssembly(3)
-    end
-  end
-  GAME:GetPlayerPartyMember(0).IsPartner = true 
-  MapStrings = STRINGS.MapStrings
-  COMMON.RespawnAllies()
   local partner = CH('Teammate1')
-  Outside.CloudWatch()
   if OutEnter == 1 then
     GROUND:TeleportTo(partner, 478, 379, Direction.Left, 0)
   elseif OutEnter == 2 then
@@ -52,10 +39,9 @@ function TarroTownOutside.Init(map)
   end
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   partner.CollisionDisabled = true
-
   if (wager_up ~= 0 and cup_total_points ~= 0) and (wager_up ~= nil and cup_total_points ~= nil) then
     TarroTownOutside.Reward()
-  end  
+  end
   GAME:CutsceneMode(false)
 end
 
@@ -144,9 +130,9 @@ local puchi_talk = 0
 -- Characters --
 function TarroTownOutside.Puchi_Action(obj, activator)
   local azura = CH('Teammate1')
-  if SV.tarro_town.PieChapter == 0 then
+  if SV.Story.sect == 0 then
     if puchi_talk == 0 then
-      COMMON.FaceEachother(obj, activator)
+     EXPLCOMMON.FaceEachother(obj, activator)
       GROUND:CharTurnToCharAnimated(azura, obj, 4)
       UI:SetSpeaker(activator)
       UI:SetSpeakerEmotion("Happy")
@@ -182,8 +168,8 @@ function TarroTownOutside.Puchi_Action(obj, activator)
       UI:WaitShowDialogue("One day, I wanna be like a cloud.[pause=40] Imagine me being full fluffy.")
     end
     
-  elseif SV.tarro_town.PieChapter == 1 then
-    COMMON.FaceEachother(obj, activator)
+  elseif SV.Story.sect == 1 then
+   EXPLCOMMON.FaceEachother(obj, activator)
     GROUND:CharTurnToCharAnimated(azura, obj, 4)
     UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Happy")
@@ -227,7 +213,7 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Fine, fine, we're going now.")
-  elseif SV.tarro_town.PieChapter < 3 then
+  elseif SV.Story.sect < 3 then
     GROUND:CharTurnToCharAnimated(activator, obj, 4)
     GROUND:CharTurnToCharAnimated(azura, obj, 4)
     GROUND:CharTurnToCharAnimated(obj, activator, 4)
@@ -258,10 +244,10 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeakerEmotion("Normal")
 
     local function azura_gasp()
-      COMMON.CharExclaim("Teammate1")
+     EXPLCOMMON.CharExclaim("Teammate1")
     end
 
-    COMMON.CharQuestion("Teammate1")
+   EXPLCOMMON.CharQuestion("Teammate1")
     UI:WaitShowDialogue("[speed=0.1]...![speed=1.0][pause=30] W[emote=Surprised]a[script=0]it![pause=40] T[emote=Inspired]hat must mean that you have a Big Apple!", {azura_gasp})
     UI:SetSpeakerEmotion("Joyous")
     UI:WaitShowDialogue("Gimme, gimme, gimme!")
@@ -272,7 +258,7 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:WaitShowDialogue("[pause=45]...I ate it.")
 
     GAME:WaitFrames(50)
-    COMMON.CharAngry("Teammate1")
+   EXPLCOMMON.CharAngry("Teammate1")
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("...")
@@ -280,7 +266,7 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("It was delicious.")
-  elseif SV.tarro_town.PieChapter <= 5 then
+  elseif SV.Story.sect <= 5 then
     GROUND:CharTurnToCharAnimated(activator, obj, 4)
     GROUND:CharTurnToCharAnimated(azura, obj, 4)
     GROUND:CharTurnToCharAnimated(obj, activator, 4)
@@ -318,14 +304,14 @@ function TarroTownOutside.Puchi_Action(obj, activator)
 end
 
 function TarroTownOutside.Oink_Action(obj, activator)
-  COMMON.FaceEachother(obj, activator)
+ EXPLCOMMON.FaceEachother(obj, activator)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("I just wanted to hang out,[pause=30] didn't know about all the moving and stuff.")
 end
 
 function TarroTownOutside.Reeshi_Action(obj, activator)
-  COMMON.FaceEachother(obj, activator)
+ EXPLCOMMON.FaceEachother(obj, activator)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("A lot of baaaaad Pokemon from the dungeons are turning good for better homes and stuff.")
@@ -336,7 +322,7 @@ function TarroTownOutside.Reeshi_Action(obj, activator)
 end
 
 function TarroTownOutside.Roll_Action(obj, activator)
-  COMMON.FaceEachother(obj, activator)
+ EXPLCOMMON.FaceEachother(obj, activator)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Comin' outtaf th' Jugnion Distric' 'cuza all the monsters movin' in.[pause=0] It'sso calm here, an' me pa'n I can fin'lly get some walkin' in.")
@@ -372,7 +358,7 @@ end
 
 function TarroTownOutside.CloudWatch_Touch(obj, activator)
   local azura = CH('Teammate1')
-  if SV.tarro_town.PieChapter < 5 then
+  if SV.Story.chap == -1 then
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("Uhhhhh... hello?!?![pause=0] Piiiiiiieee????")
@@ -392,7 +378,7 @@ end
 function TarroTownOutside.TTOutside_WExit_Touch(obj, activator)
   OutEnter = 0
   GAME:FadeOut(false, 20)
-  if SV.tarro_town.PieChapter < 5 then    
+  if SV.Story.chap == -1 then    
     if SV.GroundTutorial == 0 then
       SOUND:PlayFanfare("Fanfare/Note")
       UI:ResetSpeaker()
@@ -402,7 +388,7 @@ function TarroTownOutside.TTOutside_WExit_Touch(obj, activator)
       SV.GroundTutorial = SV.GroundTutorial + 1
     end
     GAME:EnterGroundMap("TarroTownEast", "TTEast_WEnter")
-  elseif SV.tarro_town.PieChapter < 10 then
+  elseif SV.Story.chap == -2 then
     GAME:EnterGroundMap("TarroTownEast_ch2", "TTEast_WEnter")
   else
     GAME:EnterGroundMap("TarroTownEast_ch3", "TTEast_WEnter")
@@ -420,7 +406,7 @@ function TarroTownOutside.TTOutside_EExit_Touch(obj, activator)
   local maru = CH("PLAYER")
   local azura = CH('Teammate1')
   local puchi = CH('Puchi')
-  if SV.tarro_town.PieChapter < 5 then  
+  if SV.Story.chap == -1 then
     GROUND:CharTurnToCharAnimated(puchi, maru, 4)
     UI:SetSpeaker(puchi)
     UI:SetSpeakerEmotion("Normal")
@@ -437,7 +423,11 @@ function TarroTownOutside.TTOutside_EExit_Touch(obj, activator)
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Oh. [pause=25]Darn.")
-  elseif SV.tarro_town.PieChapter <= 10 then
+  elseif SV.Story.chap == -2 and SV.Story.sect == 0 then
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("It's quicker to get to the fight from the other way.")
+  elseif SV.Story.chap == -2 then
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Probably not the time...")

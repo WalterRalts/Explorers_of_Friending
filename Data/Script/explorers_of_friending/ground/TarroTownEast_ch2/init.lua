@@ -23,8 +23,8 @@ function TarroTownEast_ch2.Init(map)
   local partner = CH('Teammate1')
   GROUND:Hide("Furie")
   GROUND:Hide("Beel")
-  
-  if SV.tarro_town.PieChapter >= 6 then
+
+  if SV.Story.sect > 0 then
     GROUND:Hide("Senna")
     GROUND:Hide("Ziggy")
     GROUND:Hide("Puchi")
@@ -46,9 +46,9 @@ end
 ---TarroTownEast_ch2.Enter(map)
 --Engine callback function
 function TarroTownEast_ch2.Enter(map)
-  
+
   GAME:FadeIn(20)
-  
+
 end
 
 ---TarroTownEast_ch2.Exit(map)
@@ -61,7 +61,7 @@ end
 ---TarroTownEast_ch2.Update(map)
 --Engine callback function
 function TarroTownEast_ch2.Update(map)
-  
+
   Partner()
 
 end
@@ -85,6 +85,8 @@ end
 -- Entities Callbacks
 -------------------------------
 
+-- Entrances
+
 function TarroTownEast_ch2.TTEast_WExit_Touch(obj, activator)
   OutEnter = 1
   GAME:FadeOut(false, 20)
@@ -95,16 +97,13 @@ function TarroTownEast_ch2.TarroForestEntrance_Touch(obj, activator)
 
   local maru = CH("PLAYER")
 
-  if SV.tarro_town.PieChapter == 5 then
+  if SV.Story.sect == 0 then
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("I don't think we have time for this...")
-    dungeon_oof = 0
-  elseif SV.tarro_town.PieChapter > 5 then
+  elseif SV.Story.sect == 1 then
     local dungeon_entrances = {"tarro_forest"}
-    local ground_entrances = {
-      {Flag = true, Zone = "tarro_forest", ID = 1, Entry = 0}
-    }
+    local ground_entrances = {}
     COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances)
   else
     UI:SetSpeaker(maru)
@@ -112,6 +111,57 @@ function TarroTownEast_ch2.TarroForestEntrance_Touch(obj, activator)
     UI:WaitShowDialogue("Hmm... maybe later...")
   end
 end
+
+function TarroTownEast_ch2.SennaHomeEntrance_Touch(obj, activator)
+  if SV.Story.sect == 0 then
+    local maru = CH("PLAYER")
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("I think I have better things to do...")
+  else
+    local beel = CH("Beel")
+    local furie = CH("Furie")
+    UI:SetSpeaker(beel)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Oi, Maru.")
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("It is to my understanding that Ziggy and Senna went out.")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("I can't just let you in for no reason, you know.")
+
+    UI:SetSpeaker(furie)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Yes, Mr. Maru. If you're looking for Ziggy and Senna, they should be in town.")
+  end
+end
+
+function TarroTownEast_ch2.MaruHomeEntrance_Touch(obj, activator)
+  GAME:FadeOut(false, 20)
+  GAME:EnterGroundMap("MaruHome", "MaruHome_MainEnter")
+end
+
+function TarroTownEast_ch2.TTEast_NExit_Touch(obj, activator)
+  GAME:FadeOut(false, 35)
+  GAME:EnterGroundMap("tarro_town", "TarroTownSquare", "TTSquare_EastEnter")
+end
+
+-- Objects
+
+function TarroTownEast_ch2.TTEastSign_Action(obj, activator)
+  local maru = CH("PLAYER")
+  UI:ResetSpeaker()
+  UI:SetAutoFinish(true)
+  UI:WaitShowDialogue("<- Tarro Town Outskirts \n Tarro Town Square ^")
+
+  UI:SetAutoFinish(false)
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Normal")
+  GROUND:CharAnimateTurn(maru, Direction.Left, 4, true)
+  UI:WaitShowDialogue("(I see.[pause=40] So that's the way to the other side of town.)")
+  UI:WaitShowDialogue("(Praise be the deity of well-placed signs.)")
+end
+
+-- Characters
 
 function TarroTownEast_ch2.Ziggy_Action(obj, activator)
   TarroTownEast_ch2.Senna_Action()
@@ -122,7 +172,7 @@ function TarroTownEast_ch2.Sunny_Action(obj, activator)
   local tango = CH('Tango')
   local mrseed = CH("MrSeed")
   local cherry = CH("Cherry")
-  if SV.tarro_town.PieChapter == 5 then
+  if SV.Story.sect == 0 then
     UI:SetSpeaker(sunny)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Alright, class!")
@@ -136,7 +186,7 @@ function TarroTownEast_ch2.Sunny_Action(obj, activator)
     GROUND:CharSetAnim(sunny, "Charge", true)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("[speed=0.4]Inhale, [pause=25][speed=1.0]and [emote=Inspired]feel the sun through your pores...")
-    
+
     UI:SetSpeaker(cherry)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Hey, Ms. Teacher?")
@@ -150,18 +200,18 @@ function TarroTownEast_ch2.Sunny_Action(obj, activator)
     UI:SetSpeaker(sunny)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("That's[pause=23] irrelevant right now, Cherry.")
-    
+
     UI:SetSpeaker(tango)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Heh.")
 
     GROUND:CharSetAnim(sunny, "Idle", true)
-    COMMON.CharAngry("Sunny")
-    COMMON.FaceEachother(sunny, tango)
+   EXPLCOMMON.CharAngry("Sunny")
+   EXPLCOMMON.FaceEachother(sunny, tango)
     UI:SetSpeaker(sunny)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("Tango, shush!")
-    
+
     UI:SetSpeaker(tango)
     UI:SetSpeakerEmotion("Joyous")
     UI:WaitShowDialogue("Hehehehahaha!")
@@ -182,16 +232,16 @@ function TarroTownEast_ch2.Sunny_Action(obj, activator)
 
     GROUND:CharAnimateTurn(cherry, Direction.Right, 4, false)
     GAME:WaitFrames(12)
-    local coro01 = TASK:BranchCoroutine(function() 
+    local coro01 = TASK:BranchCoroutine(function()
       GROUND:CharAnimateTurn(mrseed, Direction.DownRight, 4, false)
-      end)	
-    local coro02 = TASK:BranchCoroutine(function() 
+      end)
+    local coro02 = TASK:BranchCoroutine(function()
       GROUND:CharAnimateTurn(tango, Direction.Down, 4, false)
       end)
-  
+
     TASK:JoinCoroutines({coro01, coro02})
     GAME:WaitFrames(95)
-    
+
 
     UI:SetSpeaker(mrseed)
     UI:SetSpeakerEmotion("Stunned")
@@ -202,22 +252,22 @@ function TarroTownEast_ch2.Sunny_Action(obj, activator)
       GROUND:CharSetAnim(sunny, "None", true)
       print("Start")
     end
-    
+
     local coro1 = TASK:BranchCoroutine(function()
       GAME:WaitFrames(10)
       GROUND:CharTurnToCharAnimated(tango, sunny, 3)
       GROUND:CharTurnToCharAnimated(mrseed, sunny, 4)
       GAME:WaitFrames(30)
-      COMMON.CharSweatdrop("Tango")
-      end)	
-    local coro2 = TASK:BranchCoroutine(function() 
+      EXPLCOMMON.CharSweatdrop("Tango")
+      end)
+    local coro2 = TASK:BranchCoroutine(function()
       UI:SetSpeaker(cherry)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("Yeah, I'm just hearing the wind[script=0] fl-...[pause=50][emote=Worried]", { sunnycrying })
       UI:SetSpeakerEmotion("Worried")
       UI:WaitShowDialogue("Hey, teach,[pause=45] y[emote=Stunned]ou okay?")
       end)
-  
+
     TASK:JoinCoroutines({coro1, coro2})
 
     UI:SetSpeaker(tango)
@@ -245,20 +295,6 @@ end
 
 function TarroTownEast_ch2.MrSeed_Action(obj, activator)
   TarroTownEast_ch2.Sunny_Action()
-end
-
-function TarroTownEast_ch2.TTEastSign_Action(obj, activator)
-  local maru = CH("PLAYER")
-  UI:ResetSpeaker()
-  UI:SetAutoFinish(true)
-  UI:WaitShowDialogue("<- Tarro Town Outskirts \n Tarro Town Square ^")
-
-  UI:SetAutoFinish(false)
-  UI:SetSpeaker(maru)
-  UI:SetSpeakerEmotion("Normal")
-  GROUND:CharAnimateTurn(maru, Direction.Left, 4, true)
-  UI:WaitShowDialogue("(I see.[pause=40] So that's the way to the other side of town.)")
-  UI:WaitShowDialogue("(Praise be the deity of well-placed signs.)")
 end
 
 function TarroTownEast_ch2.Tsudo_Action(obj, activator)
@@ -303,7 +339,7 @@ function TarroTownEast_ch2.Senna_Action(obj, activator)
   UI:WaitShowDialogue("Come on, Senna, you're their friend too!");
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("They listen to you more, anyway!")
-  
+
   UI:SetSpeaker(senna)
   UI:SetSpeakerEmotion("Sad")
   UI:WaitShowDialogue("I... wasn't much help before...")
@@ -345,39 +381,6 @@ function TarroTownEast_ch2.Senna_Action(obj, activator)
 
   GROUND:CharSetAnim(senna, "Idle", true)
   GROUND:CharSetAnim(ziggy, "Idle", true)
-end
-
-function TarroTownEast_ch2.SennaHomeEntrance_Touch(obj, activator)
-  if SV.tarro_town.PieChapter < 6 then
-    local maru = CH("PLAYER")
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("I think I have better things to do...")
-  elseif SV.tarro_town.PieChapter >= 6 then
-    local beel = CH("Beel")
-    local furie = CH("Furie")
-    UI:SetSpeaker(beel)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Oi, Maru.")
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("It is to my understanding that Ziggy and Senna went out.")
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("I can't just let you in for no reason, you know.")
-
-    UI:SetSpeaker(furie)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Yes, Mr. Maru. If you're looking for Ziggy and Senna, they should be in town.")
-  end
-end
-
-function TarroTownEast_ch2.MaruHomeEntrance_Touch(obj, activator)
-  GAME:FadeOut(false, 20)
-  GAME:EnterGroundMap("MaruHome", "MaruHome_MainEnter")
-end
-
-function TarroTownEast_ch2.TTEast_NExit_Touch(obj, activator)
-  GAME:FadeOut(false, 35)
-  GAME:EnterGroundMap("tarro_town", "TarroTownSquare", "TTSquare_EastEnter")
 end
 
 function TarroTownEast_ch2.Puchi_Action(obj, activator)
@@ -445,7 +448,7 @@ function TarroTownEast_ch2.Beel_Action(obj, activator)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("I'm more attentive to those friends of theirs.")
   UI:WaitShowDialogue("What if...[pause=55] they're bad...?")
-  
+
   UI:SetSpeaker(beel)
   GROUND:CharSetAnim(beel, "None", true)
   GROUND:CharSetAnim(furie, "None", true)
@@ -462,6 +465,10 @@ function TarroTownEast_ch2.Beel_Action(obj, activator)
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Hehe...!")
+end
+
+function TarroTownEast_ch2.Budeg_Action(obj, activator)
+ EXPLCOMMON.DebugWithBudeg()
 end
 
 return TarroTownEast_ch2

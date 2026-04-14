@@ -39918,7 +39918,7 @@
 },
 {
 "MapLoc": {
-"X": 313,
+"X": 312,
 "Y": 250
 },
 "ObjectAnim": {
@@ -39934,7 +39934,7 @@
 },
 {
 "MapLoc": {
-"X": 313,
+"X": 312,
 "Y": 237
 },
 "ObjectAnim": {
@@ -39950,8 +39950,8 @@
 },
 {
 "MapLoc": {
-"X": 313,
-"Y": 223
+"X": 312,
+"Y": 224
 },
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
@@ -40664,9 +40664,52 @@
 },
 "Collider": {
 "X": 192,
-"Y": 32,
+"Y": 45,
 "Width": 144,
-"Height": 24
+"Height": 16
+}
+},
+{
+"EntName": "CloudWatch",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 2,
+"ObjectAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"Passable": false,
+"CurrentAnim": {
+"$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
+"AnimIndex": "",
+"FrameTime": 1,
+"StartFrame": -1,
+"EndFrame": -1,
+"AnimDir": -1,
+"Alpha": 255,
+"AnimFlip": 0
+},
+"AnimTime": {
+"Ticks": 0
+},
+"Cycles": 0,
+"DrawOffset": {
+"X": 0,
+"Y": 0
+},
+"Collider": {
+"X": 216,
+"Y": 39,
+"Width": 96,
+"Height": 16
 }
 }
 ],

@@ -17,8 +17,7 @@ local RexioHome_ch2 = {}
 ---RexioHome_ch2.Init(map)
 --Engine callback function
 function RexioHome_ch2.Init(map)
-
-  if SV.entoh_town.HelperChapter < 6 then
+  if SV.Story.sect == 0 then
     Aurm.AFeeling()
   end
 end
@@ -82,7 +81,7 @@ function RexioHome_ch2.FlowerPot_Action(obj, activator)
   UI:WaitShowDialogue("(...)")
   GROUND:CharSetAnim(rexio, "None", true)
   GAME:WaitFrames(95)
-  COMMON.CharHop("PLAYER")
+ EXPLCOMMON.CharHop("PLAYER")
   UI:SetSpeakerEmotion("Determined")
   UI:WaitShowDialogue("(I'll take good care of them, mom.)")
   GROUND:CharSetAnim(rexio, "Idle", false)

@@ -69,7 +69,7 @@ function AppleMayor.Lightning_Action(obj, activator)
 end
 
 function AppleMayor.Undrei_Action(obj, activator)
-  COMMON.FaceEachother(activator, obj)
+ EXPLCOMMON.FaceEachother(activator, obj)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("My ozer heads makes goot puppetry, ja?[pause=30] [emote=Happy]Good for the kids.")
@@ -78,22 +78,22 @@ end
 function AppleMayor.MayorDesk_Action(obj, activator)
   local galia = CH("Galia")
 
-  COMMON.CharRealize("Galia")
+ EXPLCOMMON.CharRealize("Galia")
   GROUND:CharTurnToCharAnimated(galia, activator, 2)
   GROUND:MoveToPosition(galia, activator.Position.X, galia.Position.Y, false, 1)
   GROUND:CharAnimateTurnTo(galia, Dir8.Down, 2)
 
   if SV.guild.day <= 1 then
-    COMMON.SetCharAndEmotion(galia, "Normal")
+   EXPLCOMMON.SetCharAndEmotion(galia, "Normal")
     UI:WaitShowDialogue("Greetings, child.[pause=35] If you are looking for the mayor, he is out for the week, I believe.")
 
-    COMMON.SetCharAndEmotion(activator, "Normal")
+   EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
     UI:WaitShowDialogue("I'm actually just looking for apples.[pause=30] This building looked important enough.")
 
-    COMMON.SetCharAndEmotion(galia, "Worried")
+   EXPLCOMMON.SetCharAndEmotion(galia, "Worried")
     UI:WaitShowDialogue("Ah, yes,[pause=30] I can't do that for you. That is the mayor's job and[pause=20] he isn't present.")
 
-    COMMON.SetCharAndEmotion(galia, "Happy")
+   EXPLCOMMON.SetCharAndEmotion(galia, "Happy")
     UI:WaitShowDialogue("Apologies for the inconvenience.")
   end
 
@@ -122,28 +122,28 @@ function AppleMayor.Whisp_Action(obj, activator)
 end
 
 function AppleMayor.Galeo_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Normal")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("Greeatings, child. Are you here for a story?")
 
   if SV.guild.day <= 1 then
     if activator.Nickname == "Maru" then
-      COMMON.SetCharAndEmotion(activator, "Normal")
+     EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
       UI:WaitShowDialogue("No thanks, we're looking for apples right now.")
     elseif activator.Nickname == "Azura" then
-      COMMON.SetCharAndEmotion(activator, "Joyous")
+     EXPLCOMMON.SetCharAndEmotion(activator, "Joyous")
       UI:WaitShowDialogue("Yeah! Story time!")
 
-      COMMON.SetCharAndEmotion(CH("Teammate1"), "Stunned")
+     EXPLCOMMON.SetCharAndEmotion(CH("Teammate1"), "Stunned")
       UI:WaitShowDialogue("Um,[pause=35] Azu...")
 
-      COMMON.CharExclaim("PLAYER")
-      COMMON.SetCharAndEmotion(activator, "Surprised")
+     EXPLCOMMON.CharExclaim("PLAYER")
+     EXPLCOMMON.SetCharAndEmotion(activator, "Surprised")
       UI:WaitShowDialogue("Oh! Um, n-no...[pause=40] [emote=Pain]no story time...")
     else
-      COMMON.SetCharAndEmotion(activator, "Worried")
+     EXPLCOMMON.SetCharAndEmotion(activator, "Worried")
       UI:WaitShowDialogue("Sounds boring.")
 
-      COMMON.SetCharAndEmotion(obj, "Surprised")
+     EXPLCOMMON.SetCharAndEmotion(obj, "Surprised")
       UI:WaitShowDialogue("Ah-! How dare you...!")
     end
   end

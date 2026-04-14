@@ -42,8 +42,8 @@ local function wait()
     GAME:CutsceneMode(true)
     rexio.CollisionDisabled = true
     maru.CollisionDisabled = true
-    COMMON.CharAngry("Teammate2")
-    COMMON.FaceEachother(maru, rexio)
+   EXPLCOMMON.CharAngry("Teammate2")
+   EXPLCOMMON.FaceEachother(maru, rexio)
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Sigh")
     UI:WaitShowDialogue("...")
@@ -69,7 +69,7 @@ local function wait()
       end)
     local coro04 = TASK:BranchCoroutine(function()
       GAME:WaitFrames(95)
-      COMMON.CharSweatdrop("Teammate1")
+      EXPLCOMMON.CharSweatdrop("Teammate1")
       GAME:WaitFrames(20)
       GROUND:MoveToPosition(azura, 214, 350 + 16, true, 2)
       end)
@@ -90,7 +90,7 @@ end
 --Engine callback function
 function MayorRoom.Init(map)
   COMMON.RespawnAllies()
-  if SV.guild.time < 40 then
+  if SV.Story.sect == 1 and SV.Story.flag == 0 then
     Mayor.Intro()
   else
     Mayor.Ender()

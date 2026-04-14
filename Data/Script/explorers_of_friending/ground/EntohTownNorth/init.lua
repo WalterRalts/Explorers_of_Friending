@@ -17,16 +17,16 @@ local EntohTownNorth = {}
 --Engine callback function
 function EntohTownNorth.Init(map)
   Todungeonscene = false
-  if SV.entoh_town.HelperChapter == 0 then
+  if SV.Story.sect == 1 then
     Entoh.PanchChallenge()
   elseif SV.entoh_town.thicket.result > -1 then
-    if SV.entoh_town.HelperChapter == 1 then
+    if SV.Story.sect == 2 then
       Entoh.Resulting()
     end
   end
 
-  if SV.entoh_town.AdventureChapter >= 0 then
-    COMMON.TeleportToMarker(CH("Panch"), "PanchIdle", Dir8.Down)
+  if SV.Story.chap == -6 then
+   EXPLCOMMON.TeleportToMarker(CH("Panch"), "PanchIdle", Dir8.Down)
     COMMON.CreateWalkArea("Panch", CH("Panch").Position.X, CH("Panch").Position.Y, 125, 125)
   end
 end
@@ -87,23 +87,38 @@ end
 function EntohTownNorth.Panch_Action(obj, activator)
   local panch = CH("Panch")
   local rexio = CH("PLAYER")
-  COMMON.FaceEachother(obj, activator)
-  if SV.entoh_town.HelperChapter < 3 then
-    if SV.entoh_town.panchdialogue == -1 then
-      UI:SetSpeaker(panch)
-      UI:SetSpeakerEmotion("Angry")
-      UI:WaitShowDialogue("W-... whateeeeeeever!")
-    elseif SV.entoh_town.panchdialogue > 4 then
-      UI:SetSpeaker(panch)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("I am impressed!")
+ EXPLCOMMON.FaceEachother(obj, activator)
+  if SV.Story.chap == -4 then
+    if SV.Story.sect < 3 then
+      if SV.entoh_town.thicket.result == 0 then
+        UI:SetSpeaker(panch)
+        UI:SetSpeakerEmotion("Angry")
+        UI:WaitShowDialogue("W-... whateeeeeeever!")
+      elseif SV.entoh_town.thicket.result > 4 then
+        UI:SetSpeaker(panch)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("I am impressed!")
+      else
+        UI:SetSpeaker(panch)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Even if you sucked, you still did it! Hooray!")
+      end
     else
       UI:SetSpeaker(panch)
       UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("Even if you sucked, you still did it! Hooray!")
+      UI:WaitShowDialogue("Wow, more chores?")
+
+      UI:SetSpeaker(rexio)
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("Nah, gotta find a key.")
+
+      EXPLCOMMON.CharSweatdrop("Panch")
+      UI:SetSpeaker(panch)
+      UI:SetSpeakerEmotion("Stunned")
+      UI:WaitShowDialogue("Booooooring!")
     end
-  elseif SV.entoh_town.AdventureChapter > 0 then
-    if SV.entoh_town.panchdialogue == -1 then
+  elseif SV.Story.chap == -6 then
+    if SV.entoh_town.thicket.result == 0 then
       UI:SetSpeaker(panch)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("Heh, so maybe you are brave enough to go places.")
@@ -128,19 +143,6 @@ function EntohTownNorth.Panch_Action(obj, activator)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("Dewey did.")
     end
-  else
-    UI:SetSpeaker(panch)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Wow, more chores?")
-
-    UI:SetSpeaker(rexio)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Nah, gotta find a key.")
-
-    COMMON.CharSweatdrop("Panch")
-    UI:SetSpeaker(panch)
-    UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("Booooooring!")
   end
 end
 

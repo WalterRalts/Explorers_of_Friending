@@ -15,14 +15,14 @@ local TheField = {}
 ---TheField.Init(map)
 --Engine callback function
 function TheField.Init(map)
-  if SV.entoh_town.AdventureChapter >= 3 then
+  if SV.Story.chap == -6 then
     GAME:RemovePlayerTeam(1)
     TheField.Second()
-  elseif SV.tarro_town.DarknessChapter == 3 then
+  elseif SV.Story.chap == -3 then
     COMMON.RespawnAllies()
     TheField.First()
     MapStrings = STRINGS.MapStrings
-    local partner = CH('Teammate1')  
+    local partner = CH('Teammate1')
     AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
     partner.CollisionDisabled = true
   end
@@ -69,12 +69,12 @@ function TheField.First()
   local maru = CH("PLAYER")
   local azura = CH("Teammate1")
   local zoomer = CH("Zoomer")
-  local smear = CH("Smear") 
+  local smear = CH("Smear")
   GAME:CutsceneMode(true)
-  local coro3 = TASK:BranchCoroutine(function() 
+  local coro3 = TASK:BranchCoroutine(function()
     GROUND:MoveInDirection(maru, Dir8.Up, 40, false, 2)
-    end)	
-  local coro4 = TASK:BranchCoroutine(function() 
+    end)
+  local coro4 = TASK:BranchCoroutine(function()
     GROUND:MoveInDirection(zoomer, Dir8.Up, 30, false, 2)
     UI:SetSpeaker(zoomer)
     UI:SetSpeakerEmotion("Normal")
@@ -82,7 +82,7 @@ function TheField.First()
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Oi! Boss! They're here!")
     end)
-  local coro5 = TASK:BranchCoroutine(function() 
+  local coro5 = TASK:BranchCoroutine(function()
     GAME:WaitFrames(25)
     GROUND:MoveInDirection(azura, Dir8.Up, 40, false, 2)
     end)
@@ -92,9 +92,9 @@ function TheField.First()
   TASK:JoinCoroutines({coro3, coro4, coro5, coro6})
   Zoommove = true
   GROUND:MoveInDirection(zoomer, Dir8.Up, 60, false, 4)
-  
+
   GROUND:TeleportTo(zoomer, smear.Position.X - 200, smear.Position.Y, Dir8.DownRight, 2)
-  COMMON.FaceEachother(maru, azura)
+ EXPLCOMMON.FaceEachother(maru, azura)
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("Okay, let's go.")
@@ -105,12 +105,12 @@ function TheField.Second()
   local rexio = CH("PLAYER")
   local zoomer = CH("Zoomer")
   local smear = CH("Smear")
-  
+
   GAME:CutsceneMode(true)
-  local coro3 = TASK:BranchCoroutine(function() 
+  local coro3 = TASK:BranchCoroutine(function()
     GROUND:MoveInDirection(maru, Dir8.Up, 40, false, 2)
-    end)	
-  local coro4 = TASK:BranchCoroutine(function() 
+    end)
+  local coro4 = TASK:BranchCoroutine(function()
     GROUND:MoveInDirection(zoomer, Dir8.Up, 30, false, 2)
     UI:SetSpeaker(zoomer)
     UI:SetSpeakerEmotion("Normal")
@@ -123,7 +123,7 @@ function TheField.Second()
     end)
   TASK:JoinCoroutines({coro3, coro4, coro6})
   GROUND:MoveInDirection(zoomer, Dir8.Up, 60, false, 4)
-  
+
   GROUND:TeleportTo(zoomer, smear.Position.X - 200, smear.Position.Y, Dir8.DownRight, 2)
   GAME:CutsceneMode(false)
 end
@@ -132,10 +132,10 @@ end
 -- Entities Callbacks
 -------------------------------
 function TheField.SceneEnd_Touch(obj, activator)
-  if SV.entoh_town.AdventureChapter >= 3 then
+  if SV.Story.chap == -6 then
     GAME:EnterGroundMap("guild_field", "GuildField", "Start")
     GAME:FadeOut(false, 30)
-  elseif SV.tarro_town.DarknessChapter == 3 then
+  elseif SV.Story.chap == -3 then
     UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("Um... we're here about the letter...")
@@ -161,10 +161,10 @@ function TheField.SceneEnd_Touch(obj, activator)
     local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("RexioInteract")
         _DATA.Save.ActiveTeam.Players[0].ActionEvents:Add(talk_evt)
     GAME:DepositAll()
-    
+
     --[[
 
-    -- Best to just remove storage from Rexio's chapter.
+    -- Best to possibly just remove storage from Rexio's chapter.
     
     ]]--
 
@@ -176,6 +176,12 @@ function TheField.SceneEnd_Touch(obj, activator)
     SOUND:StopBGM()
     UI:WaitShowVoiceOver("Some want the chaos back.", -1)
 
+    SV.Story = {
+      chap = -4,
+      sect = 0,
+      flag = 0,
+      dunsect = 0
+    }
     GAME:EnterGroundMap("entoh_town", "RexioHome", "RexioStart")
   end
 end

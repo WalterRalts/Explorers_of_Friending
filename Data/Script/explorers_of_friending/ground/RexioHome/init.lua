@@ -16,37 +16,33 @@ local RexioHome = {}
 ---RexioHome.Init(map)
 --Engine callback function
 function RexioHome.Init(map)
-
-  if SV.entoh_town.HelperChapter == -1 then
-    Aurm.Feeling()
-  elseif SV.entoh_town.package_received == true and SV.entoh_town.HelperChapter == 2 then
-    Aurm.Home()
-  elseif KeyGet and SV.entoh_town.HelperChapter == 3 then
-    Aurm.OpenIt()
-  elseif SV.entoh_town.HelperChapter == 9 then
-    Aurm2.LukeWarm()
+  if SV.Story.chap == -4 then
+    if SV.Story.sect == 0 then
+      Aurm.Feeling()
+    elseif SV.entoh_town.package_received == true and SV.Story.sect == 3 and SV.Story.flag ~= 1 then
+      Aurm.Home()
+    elseif KeyGet and SV.Story.sect == 3 then
+      Aurm.OpenIt()
+    end
+  elseif SV.Story.chap == -5 then
+    if SV.Story.sect == 3 then
+      Aurm2.LukeWarm()
+    end
   end
-
-  if SV.entoh_town.AdventureChapter > 0 then
+  if SV.Story.chap == -6 then
     GROUND:Hide("Luke")
   end
 
-  if SV.entoh_town.HelperChapter == 3 then
+  if SV.Story.sect == 3 then
     GROUND:Unhide("Package")
   end
-  
 end
 
 ---RexioHome.Enter(map)
 --Engine callback function
 function RexioHome.Enter(map)
 
-  if SV.entoh_town.HelperChapter == -1 then
-    
-  else
-    GAME:FadeIn(20)
-  end
-  
+  GAME:FadeIn(20)
 
 end
 
@@ -62,7 +58,7 @@ end
 function RexioHome.Update(map)
   local baggy = {}
   local held = false
-  if SV.entoh_town.HelperChapter == 4 then
+  if SV.Story.sect == 4 then
     for i = 0, GAME:GetPlayerBagCount() - 1, 1 do
       baggy[i] = GAME:GetPlayerBagItem(i).ID
     end
@@ -74,9 +70,8 @@ function RexioHome.Update(map)
 
     if held == false then
       Aurm.Slipped()
-    elseif GAME:GetPlayerEquippedItem(0).ID == "held_power_band" and SV.entoh_town.HelperChapter == 4 then
+    elseif GAME:GetPlayerEquippedItem(0).ID == "held_power_band" and SV.Story.sect == 4 then
       Aurm.Fashion()
-      SV.entoh_town.HelperChapter = 5
     end
   end
 end
@@ -100,7 +95,7 @@ end
 -- Entities Callbacks
 -------------------------------
 function RexioHome.ApartmentEnter_Touch(obj, activator)
-  if SV.entoh_town.HelperChapter == 4 then
+  if SV.Story.sect == 4 then
     local rexio = CH("PLAYER")
     local luke = CH("Luke")
 
@@ -126,8 +121,8 @@ function RexioHome.Poster_Action(obj, activator)
 end
 
 function RexioHome.Luke_Action(obj, activator)
-  COMMON.FaceEachother(obj, activator)
-  if SV.entoh_town.HelperChapter < 3 then
+ EXPLCOMMON.FaceEachother(obj, activator)
+  if SV.Story.sect < 3 then
     UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Go on, Rexio. [pause=30]Don't [emote=Happy]let me stop you.")
@@ -143,7 +138,7 @@ function RexioHome.Luke_Action(obj, activator)
     UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Kidding, kidding.")
-  elseif SV.entoh_town.HelperChapter == 3 then
+  elseif SV.Story.sect == 3 then
     UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("If you're asking for a hint, then I can't really help.")
@@ -168,7 +163,7 @@ function RexioHome.FlowerPot_Action(obj, activator)
   UI:WaitShowDialogue("(These are just flowers I can get from outside, though.)")
 
   GAME:WaitFrames(95)
-  COMMON.CharSweatdrop("PLAYER")
+  EXPLCOMMON.CharSweatdrop("PLAYER")
   UI:SetSpeakerEmotion("Sad")
   UI:WaitShowDialogue("(I hope she's doing okay...)")
 end

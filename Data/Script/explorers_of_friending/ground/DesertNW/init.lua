@@ -90,7 +90,7 @@ local function check_answer()
       SOUND:PlayBGM("Forsaken Desert.ogg", true)
     else
       GAME:WaitFrames(60)
-      COMMON.CharSweatdrop("PLAYER")
+      EXPLCOMMON.CharSweatdrop("PLAYER")
       GAME:WaitFrames(20)
       UI:ResetSpeaker()
       UI:WaitShowDialogue("...nothing seemed to happen.")
@@ -167,15 +167,15 @@ end
 -- Exits
 
 function DesertNW.S_Touch(obj, activator)
-  COMMON.FadeEnterGround("DesertSW", "NorthEnter")
+ EXPLCOMMON.FadeEnterGround("DesertSW", "NorthEnter")
 end
 
 function DesertNW.SE_Touch(obj, activator)
-  COMMON.FadeEnterGround("DesertS", "NorthWestEnter")
+ EXPLCOMMON.FadeEnterGround("DesertS", "NorthWestEnter")
 end
 
 function DesertNW.E_Touch(obj, activator)
-  COMMON.FadeEnterGround("DesertN", "WestEnter")
+ EXPLCOMMON.FadeEnterGround("DesertN", "WestEnter")
 end
 
 return DesertNW

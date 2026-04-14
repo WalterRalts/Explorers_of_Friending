@@ -15,13 +15,11 @@ local AppleMayor_pt2 = {}
 ---AppleMayor_pt2.Init(map)
 --Engine callback function
 function AppleMayor_pt2.Init(map)
-  if SV.guild.time >= 40 then
-    COMMON.RespawnAllies()
-    AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
-    AI:SetCharacterAI(CH("Teammate2"), "origin.ai.ground_partner", CH("Teammate1"), CH("Teammate2").Position)
-    CH("Teammate1").CollisionDisabled = true
-    CH("Teammate2").CollisionDisabled = true
-  end
+  COMMON.RespawnAllies()
+  AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
+  AI:SetCharacterAI(CH("Teammate2"), "origin.ai.ground_partner", CH("Teammate1"), CH("Teammate2").Position)
+  CH("Teammate1").CollisionDisabled = true
+  CH("Teammate2").CollisionDisabled = true
 end
 
 ---AppleMayor_pt2.Enter(map)
@@ -79,7 +77,7 @@ function AppleMayor_pt2.Counter_Action(obj, activator)
 end
 
 function AppleMayor_pt2.MayorBack_Touch(obj, activator)
-  COMMON.CharSweatdrop("Teammate2")
+  EXPLCOMMON.CharSweatdrop("Teammate2")
 
   UI:SetSpeaker(GAME:GetPlayerPartyMember(2))
   UI:SetSpeakerEmotion("Stunned")
@@ -97,8 +95,8 @@ function AppleMayor_pt2.Cut_Touch(obj, activator)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("...[pause=35]was that really it?")
 
-    COMMON.FaceEachother(azura, rexio)
-    COMMON.CharQuestion("Teammate1")
+   EXPLCOMMON.FaceEachother(azura, rexio)
+   EXPLCOMMON.CharQuestion("Teammate1")
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("...huh?")
@@ -107,7 +105,7 @@ function AppleMayor_pt2.Cut_Touch(obj, activator)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("Are we really just about to leave with[pause=30], no treasure or anything...?")
 
-    COMMON.FaceEachother(maru, rexio)
+   EXPLCOMMON.FaceEachother(maru, rexio)
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("What treasure would we find here?")

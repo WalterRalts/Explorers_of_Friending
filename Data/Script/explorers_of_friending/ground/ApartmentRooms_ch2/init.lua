@@ -15,7 +15,9 @@ local ApartmentRooms_ch2 = {}
 ---ApartmentRooms_ch2.Init(map)
 --Engine callback function
 function ApartmentRooms_ch2.Init(map)
-
+  if SV.Story.sect == 0 then
+    SV.Story.sect = 1
+  end
 end
 
 ---ApartmentRooms_ch2.Enter(map)
@@ -69,7 +71,7 @@ end
 function ApartmentRooms_ch2.RexioHome_Enter_Touch(obj, activator)
   print("Exiting?")
   GAME:FadeOut(false, 10)
-  if SV.entoh_town.HelperChapter < 9 then
+  if SV.Story.sect <= 2 then
     GAME:EnterGroundMap("RexioHome_ch2", "RexioHomeWay")
   else
     GAME:EnterGroundMap("RexioHome", "RexioHomeWay")
@@ -79,7 +81,7 @@ end
 function ApartmentRooms_ch2.EmptyEnter_Touch(obj, activator)
   local rexio = CH("PLAYER")
 
-  if SV.entoh_town.HelperChapter == 9 then
+  if SV.Story.sect == 3 then
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Sad")
     UI:WaitShowDialogue("...")
@@ -91,7 +93,7 @@ function ApartmentRooms_ch2.EmptyEnter_Touch(obj, activator)
       rex_talk = 1
     else
       GROUND:CharAnimateTurnTo(rexio, Dir8.Down, 3)
-      COMMON.CharAngry("PLAYER")
+     EXPLCOMMON.CharAngry("PLAYER")
       UI:SetSpeaker(rexio)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("(If my sarcasm still somehow isn't obvious...!)")
@@ -100,7 +102,6 @@ function ApartmentRooms_ch2.EmptyEnter_Touch(obj, activator)
 end
 
 function ApartmentRooms_ch2.MouseHome_Touch(obj, activator)
-  local mampha = CH("Mampha")
   UI:SetSpeaker(activator)
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("Why is there so much sand in there...?")
@@ -111,13 +112,13 @@ function ApartmentRooms_ch2.PanchHome_Touch(obj, activator)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("...nah. His place looks absolutely trashed.")
   GAME:WaitFrames(30)
-  COMMON.CharSweatdrop("PLAYER")
+  EXPLCOMMON.CharSweatdrop("PLAYER")
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("...and bamboo'd.")
 end
 
 function ApartmentRooms_ch2.EncleenHouse_Touch(obj, activator)
-  COMMON.CharSweatdrop("PLAYER")
+  EXPLCOMMON.CharSweatdrop("PLAYER")
   UI:SetSpeaker(activator)
   UI:SetSpeakerEmotion("Surprised")
   UI:WaitShowDialogue("(Everyone is gone,[pause=45] but I still feel like I'm being watched.)")

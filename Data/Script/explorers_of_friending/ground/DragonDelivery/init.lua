@@ -87,14 +87,14 @@ function DragonDelivery.Willow_Action(obj, activator)
   else
     obj.Data.Nickname = "???"
   end
-  COMMON.FaceEachother(obj, activator)
+ EXPLCOMMON.FaceEachother(obj, activator)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("I'm glad I got a job,[pause=40] but[emote=Worried] I was enjoying myself back home...")
 end
 
 function DragonDelivery.Chucky_Action(obj, activator)
-  COMMON.FaceEachother(obj, activator)
+ EXPLCOMMON.FaceEachother(obj, activator)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("The new gal is really helpful.[pause=50] No[emote=Worried] idea why Dragon dragged her out of a dungeon to help but...")

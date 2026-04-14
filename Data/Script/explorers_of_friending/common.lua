@@ -4,6 +4,7 @@
 ]]--
 require 'explorers_of_friending.common_gen'
 require 'explorers_of_friending.partner'
+require 'explorers_of_friending.explorerfuncs'
 
 ----------------------------------------
 -- Lib Definitions
@@ -11,7 +12,7 @@ require 'explorers_of_friending.partner'
 --Reserve the "class" symbol for instantiating classes
 Class    = require 'lib.middleclass'
 --Reserve the "Mediator" symbol for instantiating the message lib class
-Mediator = require 'lib.mediator' 
+Mediator = require 'lib.mediator'
 --Reserve the "Serpent" symbol for the serializer
 Serpent = require 'lib.serpent'
 
@@ -23,8 +24,8 @@ RogueEssence.Dungeon.ExplorerTeam.MAX_TEAM_SLOTS = 5
 
 --Prints to console!
 function PrintInfo(text)
-  if DiagManager then 
-    DiagManager.Instance:LogInfo( '[SE]:' .. text) 
+  if DiagManager then
+    DiagManager.Instance:LogInfo( '[SE]:' .. text)
   else
     print('[SE]:' .. text)
   end
@@ -32,8 +33,8 @@ end
 
 --Prints to console!
 function PrintError(text)
-  if DiagManager then 
-    DiagManager.Instance:LogInfo( '[SE]:' .. text) 
+  if DiagManager then
+    DiagManager.Instance:LogInfo( '[SE]:' .. text)
   else
     print('[SE](ERROR): ' .. text)
   end
@@ -41,7 +42,7 @@ end
 
 --Will print the stack and the specified error message
 function PrintStack(err)
-  PrintInfo(debug.traceback(tostring(err),2)) 
+  PrintInfo(debug.traceback(tostring(err),2))
 end
 
 function PrintSVAndStrings(mapstr)
@@ -66,7 +67,7 @@ function COMMON.AutoLoadLocalizedStrings()
   PrintInfo("WARNING: AutoLoadLocalizedStrings IS DEPRECATED.  PLEASE USE STRINGS.MapStrings INSTEAD.  MORE INFO AT: https://wiki.pmdo.pmdcollab.org/Lua_Script_Migration#Deprecated_MapStrings")
   --Get the package path
   local packagepath = SCRIPT:CurrentScriptDir()
-  
+
   --After we made the path, load the file
   return STRINGS:MakePackageStringTable(packagepath)
 end
@@ -96,8 +97,6 @@ COMMON.MISSION_ARCHIVED = 2
 -- Convenience Scription Functions
 ----------------------------------------------------------
 
---#region BaseGame
-
 function COMMON.RespawnStarterPartner()
   -- SV.test_grounds.Starter.Gender = LUA_ENGINE:EnumToNumeric(Gender.Female)
   local character = RogueEssence.Dungeon.CharData()
@@ -112,7 +111,7 @@ end
 
 function COMMON.RespawnAllies()
   GROUND:RefreshPlayer()
-  
+
 
   local party = GAME:GetPlayerPartyTable()
   local playeridx = GAME:GetTeamLeaderIndex()
@@ -149,7 +148,7 @@ function COMMON.ShowTeamAssemblyMenu(obj, init_fun)
 end
 
 function COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances, force_list, speaker, confirm_msg)
-  
+
   local open_dests = {}
   --check for unlock of grounds
   for ii = 1,#ground_entrances,1 do
@@ -161,7 +160,7 @@ function COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances, force_l
       table.insert(open_dests, { Name=ground_name, Dest=RogueEssence.Dungeon.ZoneLoc(ground_id, -1, ground_entrances[ii].ID, ground_entrances[ii].Entry) })
 	end
   end
-  
+
   --check for unlock of dungeons
   for ii = 1,#dungeon_entrances,1 do
     if GAME:DungeonUnlocked(dungeon_entrances[ii]) then
@@ -177,13 +176,13 @@ function COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances, force_l
 	  end
 	end
   end
-  
+
   local dest = RogueEssence.Dungeon.ZoneLoc.Invalid
   if #open_dests > 1 or force_list then
     if before_list ~= nil then
 	  before_list(dest)
 	end
-	
+
     SOUND:PlaySE("Menu/Skip")
 	default_choice = 1
 	while true do
@@ -191,12 +190,12 @@ function COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances, force_l
       UI:DestinationMenu(open_dests, default_choice)
 	  UI:WaitForChoice()
 	  default_choice = UI:ChoiceResult()
-	
+
 	  if default_choice == nil then
 	    break
 	  end
 	  ask_dest = open_dests[default_choice].Dest
-      if ask_dest.StructID.Segment >= 0 then	  
+      if ask_dest.StructID.Segment >= 0 then
 	    --chosen dungeon entry
 		if speaker ~= nil then
 		  UI:SetSpeaker(speaker)
@@ -209,7 +208,7 @@ function COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances, force_l
 	      dest = ask_dest
 	      break
 	    end
-	  else 
+	  else
 	    dest = ask_dest
 	    break
 	  end
@@ -245,7 +244,7 @@ function COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances, force_l
   else
     PrintInfo("No valid destinations found!")
   end
-  
+
   if dest:IsValid() then
     if confirm_msg ~= nil then
 	  UI:WaitShowDialogue(confirm_msg)
@@ -317,7 +316,7 @@ function COMMON.BossTransition(preserveMusic)
     GROUND:PlayVFX(emitter, center.X, center.Y)
     SOUND:PlayBattleSE("EVT_Battle_Flash")
     GAME:WaitFrames(46)
-    
+
     SOUND:PlayBattleSE('EVT_Battle_Transition')
 	COMMON.MakeWhoosh(center, -32, 0, false)
     GAME:WaitFrames(5)
@@ -404,7 +403,7 @@ function COMMON.GiftKeyItem(player, item_name)
   SOUND:PlayFanfare("Fanfare/Treasure")
   UI:ResetSpeaker(false)
   UI:SetCenter(true)
-  
+
   -- item names are expected to be passed in without formatting
   -- the standard color for event items is always green
   UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("DLG_RECEIVE_KEY_ITEM"):ToLocal(), player:GetDisplayName(), string.format("[color=#00FF00]%s[color]", item_name)))
@@ -413,14 +412,14 @@ end
 
 function COMMON.JoinTeamWithFanfare(recruit, from_dungeon)
   local orig_settings = UI:ExportSpeakerSettings()
-  
+
   if from_dungeon then
     recruit.MetAt = _ZONE.CurrentMap:GetColoredName()
   else
     recruit.MetAt = _ZONE.CurrentGround:GetColoredName()
   end
   recruit.MetLoc = RogueEssence.Dungeon.ZoneLoc(_ZONE.CurrentZoneID, _ZONE.CurrentMapID)
-  
+
   if _DATA.Save.ActiveTeam.Players.Count < _DATA.Save.ActiveTeam:GetMaxTeam(_ZONE.CurrentZone) then
     _DATA.Save.ActiveTeam.Players:Add(recruit)
   else
@@ -429,16 +428,16 @@ function COMMON.JoinTeamWithFanfare(recruit, from_dungeon)
   SOUND:PlayFanfare("Fanfare/JoinTeam")
   _DATA.Save:RegisterMonster(recruit.BaseForm.Species)
   _DATA.Save:RogueUnlockMonster(recruit.BaseForm.Species)
-	
+
   UI:ResetSpeaker(false)
   UI:SetCenter(true)
-  
+
   if _DATA.Save.ActiveTeam.Name ~= "" then
     UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("MSG_RECRUIT"):ToLocal(), recruit:GetDisplayName(true), _DATA.Save.ActiveTeam.Name))
   else
     UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("MSG_RECRUIT_ANY"):ToLocal(), recruit:GetDisplayName(true)))
   end
-  
+
   UI:ImportSpeakerSettings(orig_settings)
 end
 
@@ -446,7 +445,7 @@ end
 function COMMON.UnlockWithFanfare(dungeon_id, from_dungeon)
   if not GAME:DungeonUnlocked(dungeon_id) then
 	local orig_settings = UI:ExportSpeakerSettings()
-	
+
     local zone = _DATA.DataIndices[RogueEssence.Data.DataManager.DataType.Zone]:Get(dungeon_id)
 	if zone.Released == false then
       GAME:UnlockDungeon(dungeon_id)
@@ -461,10 +460,10 @@ function COMMON.UnlockWithFanfare(dungeon_id, from_dungeon)
     GAME:UnlockDungeon(dungeon_id)
     UI:ResetSpeaker(false)
 	UI:SetCenter(true)
-	
+
     SOUND:PlayFanfare("Fanfare/NewArea")
     UI:WaitShowDialogue(STRINGS:FormatKey("DLG_NEW_AREA", zone:GetColoredName()))
-	
+
     UI:ImportSpeakerSettings(orig_settings)
   end
 
@@ -489,14 +488,14 @@ function COMMON.LearnMoveFlow(member, move, replace_msg)
 end
 
 function COMMON.GetTutorableMoves(member, tutor_moves)
-	
+
 	local valid_moves = {}
 	local playerMonId = member.BaseForm
-	
+
 	while playerMonId ~= nil do
 		local mon = _DATA:GetMonster(playerMonId.Species)
 		local form = mon.Forms[playerMonId.Form]
-	  
+
 		--for each shared skill
 		for move_idx = 0, form.SharedSkills.Count - 1, 1 do
 			local move = form.SharedSkills[move_idx].Skill
@@ -519,14 +518,14 @@ function COMMON.GetTutorableMoves(member, tutor_moves)
 				end
 			end
 		end
-		
+
 		if mon.PromoteFrom ~= "" then
 		  playerMonId = RogueEssence.Dungeon.MonsterID(mon.PromoteFrom, form.PromoteForm, "normal", Gender.Genderless)
 		else
 		  playerMonId = nil
 		end
 	end
-  
+
   return valid_moves
 end
 
@@ -541,7 +540,7 @@ function COMMON.ClearPlayerPrices()
     local inv_item = GAME:GetPlayerEquippedItem(player_idx)
 	inv_item.Price = 0
   end
-  
+
   COMMON.ClearMapTeamPrices(_ZONE.CurrentMap.AllyTeams)
   COMMON.ClearMapTeamPrices(_ZONE.CurrentMap.MapTeams)
 end
@@ -571,7 +570,7 @@ end
 
 function COMMON.PayDungeonCartPrice(price)
   COMMON.ClearPlayerPrices()
-  
+
   -- clear map prices if not on mat
   local item_count = _ZONE.CurrentMap.Items.Count
   for item_idx = 0, item_count-1, 1 do
@@ -584,9 +583,9 @@ function COMMON.PayDungeonCartPrice(price)
 	  end
 	end
   end
-  
+
   GAME:RemoveFromPlayerMoney(price)
-  
+
   local security_price = COMMON.GetShopPriceState()
   security_price.Amount = security_price.Amount - price
   security_price.Cart = 0
@@ -610,7 +609,7 @@ function COMMON.PayDungeonSellPrice(price)
 	  end
 	end
   end
-  
+
   GAME:AddToPlayerMoney(price)
   local security_price = COMMON.GetShopPriceState()
   security_price.Amount = security_price.Amount + price * 2
@@ -633,7 +632,7 @@ function COMMON.GetDungeonCartPrice()
   local price = 0
   local security_price = COMMON.GetShopPriceState()
   price = security_price.Amount
-  
+
   -- iterate items on shop mats and subtract total price
   local item_count = _ZONE.CurrentMap.Items.Count
   for item_idx = 0, item_count-1, 1 do
@@ -676,16 +675,16 @@ end
 function COMMON.ThiefReturn()
   _GAME:BGM("", false)
   COMMON.ClearAllPrices()
-  
+
   local thief_check_idx = "shop_security"
   local thief_idx = "thief"
   local check_status = _DUNGEON:GetMapStatus(thief_check_idx)
-  
+
   local index_from = check_status.StatusStates:Get(luanet.ctype(MapIndexType))
   UI:SetSpeakerEmotion("Angry")
   UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey(string.format("TALK_SHOP_SUSPECT_%04d", index_from.Index)):ToLocal()))
   _DUNGEON:LogMsg(STRINGS:Format(RogueEssence.StringKey(string.format("TALK_SHOP_THIEF_RETURN_%04d", index_from.Index)):ToLocal()))
-  
+
   local thief_status = RogueEssence.Dungeon.MapStatus(thief_idx)
   thief_status:LoadFromData()
   -- put spawner from security status in thief status
@@ -741,7 +740,7 @@ function COMMON.TriggerAdHocMonsterHouse(owner, ownerChar, target)
 	  end
 	  local new_context = RogueEssence.Dungeon.SingleCharContext(target)
 	  TASK:WaitTask(monster_event:Apply(owner, ownerChar, new_context))
-  
+
 end
 
 function COMMON.CanTalk(chara)
@@ -762,7 +761,7 @@ function COMMON.DungeonInteract(chara, target, action_cancel, turn_cancel)
   action_cancel.Cancel = true
   -- TODO: create a charstate for being unable to talk and have talk-interfering statuses cause it
   if COMMON.CanTalk(target) then
-    
+
     --[[local ratio = target.HP * 100 // target.MaxHP
     
     local mon = _DATA:GetMonster(target.BaseForm.Species)
@@ -854,16 +853,16 @@ function COMMON.DungeonInteract(chara, target, action_cancel, turn_cancel)
   
     target.CharDir = oldDir]]--
   else
-  
+
     UI:ResetSpeaker()
-	
+
 	local chosen_quote = RogueEssence.StringKey("TALK_CANT"):ToLocal()
     chosen_quote = string.gsub(chosen_quote, "%[myname%]", target:GetDisplayName(true))
-	
+
     UI:WaitShowDialogue(chosen_quote)
-  
+
   end
-  
+
   --characters can comment on:
 
   --flavour for the dungeon (talk about the area and its lore)
@@ -956,20 +955,20 @@ function COMMON.DungeonInteract(chara, target, action_cancel, turn_cancel)
   --"Press {0} if you want me to lead the team.", (ii + 1).ToString()
   --"press 1 if you feel bad for [fainted mon]"
 
-  
+
 end
 
 function COMMON.ShowTeamStorageMenu()
   UI:ResetSpeaker()
-  
+
   local state = 0
-  
+
   while state > -1 do
-    
+
 	local has_items = GAME:GetPlayerBagCount() + GAME:GetPlayerEquippedCount() > 0
 	local has_storage = GAME:GetPlayerStorageCount() > 0
-	
-	
+
+
 	local storage_choices = { { STRINGS:FormatKey('MENU_STORAGE_STORE'), has_items},
 	{ STRINGS:FormatKey('MENU_STORAGE_TAKE_ITEM'), has_storage},
 	{ STRINGS:FormatKey('MENU_STORAGE_STORE_ALL'), has_items},
@@ -978,7 +977,7 @@ function COMMON.ShowTeamStorageMenu()
 	UI:BeginChoiceMenu(STRINGS:FormatKey('DLG_WHAT_DO'), storage_choices, 1, 5)
 	UI:WaitForChoice()
 	local result = UI:ChoiceResult()
-	
+
 	if result == 1 then
 	  UI:StorageMenu()
 	  UI:WaitForChoice()
@@ -994,54 +993,54 @@ function COMMON.ShowTeamStorageMenu()
 	elseif result == 4 then
 	  UI:BankMenu()
 	  UI:WaitForChoice()
-	
+
 	elseif result == 5 then
 	  state = -1
 	end
-	
+
   end
-  
+
 end
 
 function COMMON.GroundInteract(chara, target)
   GROUND:CharTurnToChar(target, chara)
   UI:SetSpeaker(target)
-  
+
   local mon = _DATA:GetMonster(target.CurrentForm.Species)
   local form = mon.Forms[target.CurrentForm.Form]
-  
+
   local personality = form:GetPersonalityType(target.Data.Discriminator)
-  
+
   local personality_group = COMMON.PERSONALITY[personality]
   local pool = personality_group.WAIT
   local key = "TALK_WAIT_%04d"
-  
+
   local running_pool = {table.unpack(pool)}
-  
+
   --TODO: valid quote filtering
   local valid_quote = false
   local chosen_quote = ""
-  
+
   while not valid_quote and #running_pool > 0 do
     valid_quote = true
     local chosen_idx = math.random(1, #running_pool)
 	local chosen_pool_idx = running_pool[chosen_idx]
     chosen_quote = RogueEssence.StringKey(string.format(key, chosen_pool_idx)):ToLocal()
-	
+
     chosen_quote = string.gsub(chosen_quote, "%[hero%]", chara:GetDisplayName())
-    
+
 	if not valid_quote then
 	  table.remove(running_pool, chosen_idx)
 	  chosen_quote = ""
 	end
   end
-  
-  
+
+
   UI:WaitShowDialogue(STRINGS:Format(chosen_quote))
 end
 
 function COMMON.Rescued(zone, name, mail)
-  
+
 
   if _DATA.CurrentReplay ~= nil then
     SOUND:PlayBattleSE("EVT_Title_Intro")
@@ -1091,7 +1090,7 @@ function COMMON.Rescued(zone, name, mail)
     SOUND:PlayBGM("C05. Rescue.ogg", true)
     TASK:WaitTask(_MENU:SetDialogue(STRINGS:FormatKey("MSG_RESCUES_LEFT", _DATA.Save.RescuesLeft)))
     GAME:WaitFrames(10)
-  
+
 
 
                 --//TODO: make the rescuers talk
@@ -1114,7 +1113,7 @@ function COMMON.Rescued(zone, name, mail)
                 --}
                 --RemoveDeadTeams();
   end
-  
+
   local rescue_idx = "rescued"
   local rescue_status = RogueEssence.Dungeon.MapStatus(rescue_idx)
   rescue_status:LoadFromData()
@@ -1143,18 +1142,18 @@ function COMMON.EnterDungeonMissionCheck(zoneId, segmentID)
     mission = SV.missions.Missions[name]
 	if mission.Complete == COMMON.MISSION_INCOMPLETE and zoneId == mission.DestZone and segmentID == mission.DestSegment then
 	  if mission.Type == 1 then -- escort
-		
+
 		-- add escort to team
 		local mon_id = mission.EscortSpecies
         local new_mob = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 50, "", -1)
         _DATA.Save.ActiveTeam.Guests:Add(new_mob)
-		
+
 		local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("EscortInteract")
         new_mob.ActionEvents:Add(talk_evt)
-		
+
 		local tbl = LTBL(new_mob)
 		tbl.Escort = name
-	    
+
         UI:ResetSpeaker()
         UI:WaitShowDialogue("Added ".. new_mob.Name .." to the party as a guest.")
 	  end
@@ -1164,17 +1163,17 @@ end
 
 
 function COMMON.ExitDungeonMissionCheck(result, rescue, zoneId, segmentID)
-  
+
   COMMON.ClearEscorts(result, zoneId, segmentID)
-  
+
   exited = false
-  
+
   exited = COMMON.ExitDungeonMissionCheckEx(result, rescue, zoneId, segmentID)
-  
+
   if rescue == true then
     exited = COMMON.EndRescue(zone, result, segmentID)
   end
-  
+
   return exited
 end
 
@@ -1258,7 +1257,7 @@ function COMMON.EndDungeonDay(result, zoneId, structureId, mapId, entryId)
 		_DATA.Save = _DATA:GetProgress()
 		local config = RogueEssence.Data.RogueConfig.RerollFromOther(curConfig)
         GAME:RestartRogue(config)
-      else 
+      else
         GAME:RestartToTitle()
       end
     else
@@ -1281,7 +1280,7 @@ function COMMON.EndDayCycle()
   SV.adventure.Thief = false
   SV.adventure.Tutors = { }
   SV.base_shop = { }
-  
+
   math.randomseed(GAME:GetDailySeed())
   --roll a random index from 1 to length of category
   --add the item in that index category to the shop
@@ -1291,41 +1290,41 @@ function COMMON.EndDayCycle()
 		local base_data = COMMON.ESSENTIALS[math.random(1, #COMMON.ESSENTIALS)]
 		table.insert(SV.base_shop, base_data)
 	end
-  
+
   --1-2 ammo, always
   type_count = math.random(1, 2)
 	for ii = 1, type_count, 1 do
 		local base_data = COMMON.AMMO[math.random(1, #COMMON.AMMO)]
 		table.insert(SV.base_shop, base_data)
 	end
-  
+
   --2-3 utilities, always
   type_count = math.random(3, 4)
 	for ii = 1, type_count, 1 do
 		local base_data = COMMON.UTILITIES[math.random(1, #COMMON.UTILITIES)]
 		table.insert(SV.base_shop, base_data)
 	end
-  
+
   --1-2 orbs, always
   type_count = math.random(1, 2)
 	for ii = 1, type_count, 1 do
 		local base_data = COMMON.ORBS[math.random(1, #COMMON.ORBS)]
 		table.insert(SV.base_shop, base_data)
 	end
-  
+
   --2 special item, always
   type_count = 2
 	for ii = 1, type_count, 1 do
 		local base_data = COMMON.SPECIAL[math.random(1, #COMMON.SPECIAL)]
 		table.insert(SV.base_shop, base_data)
 	end
-  
-  
+
+
   local catalog = {}
-  
+
   for ii = 1, #COMMON_GEN.TRADES_RANDOM, 1 do
     local base_data = { Item=COMMON_GEN.TRADES_RANDOM[ii].Item, ReqItem=COMMON_GEN.TRADES_RANDOM[ii].ReqItem }
-    
+
     -- check if the item has been acquired before, or if it's a 1* item and dex has been seen
     if SV.unlocked_trades[COMMON_GEN.TRADES_RANDOM[ii].Item] ~= nil then
       table.insert(catalog, base_data)
@@ -1354,184 +1353,13 @@ function COMMON.EndDayCycle()
   else
     type_count = 7
   end
-  
+
 	for ii = 1, type_count, 1 do
 		local idx = math.random(1, #catalog)
 		local base_data = catalog[idx]
 		table.insert(SV.base_trades, base_data)
 		table.remove(catalog, idx)
 	end
-	
-	
+
   COMMON.UpdateDayEndVars()
-end
-
---#endregion
-
---#region Character Emotes
-
-function COMMON.CharSweatdrop(char)
-  local sweater = CH(char)
-  GROUND:CharSetEmote(sweater, "sweatdrop", 1)
-  SOUND:PlaySE("Battle/EVT_Emote_Sweatdrop")
-end
-
-function COMMON.CharAngry(char)
-  local angry = CH(char)
-  GROUND:CharSetEmote(angry, "angry", 3)
-  SOUND:PlaySE("Battle/EVT_Emote_Complain_2")
-end
-
-function COMMON.CharExclaim(char)
-  local exclaim = CH(char)
-  GROUND:CharSetEmote(exclaim, "exclaim", 1)
-  SOUND:PlaySE("Battle/EVT_Emote_Exclaim")
-end
-
-function COMMON.CharQuestion(char)
-  local question = CH(char)
-  GROUND:CharSetEmote(question, "question", 1)
-  SOUND:PlaySE("Battle/EVT_Emote_Confused")
-end
-
-function COMMON.CharQuestion2(char)
-  local question = CH(char)
-  GROUND:CharSetEmote(question, "question", 2)
-  SOUND:PlaySE("Battle/EVT_Emote_Confused_2")
-end
-
-function COMMON.CharHop(char)
-  GROUND:AnimateToPosition(CH(char), "Idle", CH(char).Direction, CH(char).Position.X, CH(char).Position.Y, 0.5, 2, 7)
-  GROUND:AnimateToPosition(CH(char), "Idle", CH(char).Direction, CH(char).Position.X, CH(char).Position.Y, 0.5, 3, 0)
-  GROUND:AnimateToPosition(CH(char), "Idle", CH(char).Direction, CH(char).Position.X, CH(char).Position.Y, 0.5, 2, 7)
-  GROUND:AnimateToPosition(CH(char), "Idle", CH(char).Direction, CH(char).Position.X, CH(char).Position.Y, 0.5, 3, 0)
-end
-
-function COMMON.CharSweating(char)
-  local sweating = CH(char)
-  GROUND:CharSetEmote(sweating, "sweating", 2)
-  SOUND:PlaySE("Battle/EVT_Emote_Sweating")
-end
-
-function COMMON.CharRealize(char)
-  local real = CH(char)
-  GROUND:CharSetEmote(real, "notice", 2)
-  SOUND:PlaySE("Battle/EVT_Emote_Exclaim_Surprised")
-end
-
-function COMMON.CharRealizeHeavy(char)
-  local real = CH(char)
-  GROUND:CharSetEmote(real, "notice", 2)
-  SOUND:PlaySE("Battle/EVT_Emote_Shock_Bad")
-end
-
-function COMMON.CharHappy(char)
-  local real = CH(char)
-  GROUND:CharSetEmote(real, "happy", 2)
-  SOUND:PlaySE("Battle/EVT_Emote_Startled_2")
-end
-
-function COMMON.CharHappyHop(char)
-  COMMON.CharHappy(char)
-  COMMON.CharHop(char)
-end
-
---#endregion
-
-function COMMON.SetCharAndEmotion(char, emote)
-  UI:SetSpeaker(char)
-  UI:SetSpeakerEmotion(emote)
-end
-
-function COMMON.TeleportToMarker(char, marker, dir)
-  GROUND:TeleportTo(char, MRKR(marker).Position.X, MRKR(marker).Position.Y, dir, 0)
-end
-
-function COMMON.SaveStorage()
-  --remove bag and storage items and put them in a temporary table
-  SV.guilders.tarro_town.bluetail_storage = {}
-  local storage = _DATA.Save.ActiveTeam.Storage
-  local count = storage.Keys.Count
-  if count > 0 then
-    for i = count - 1, 0, -1 do
-      print(i)
-      local slot = {id = storage.Keys[i], count = storage.Values[i], hidden = ""}
-      table.insert(SV.guilders.tarro_town.bluetail_storage, slot)
-      print(slot.id)
-      print(slot.count)
-      print(slot.hidden)
-      storage:Remove(storage.Keys[i])
-    end
-  end
-  
-  local box_storage = _DATA.Save.ActiveTeam.BoxStorage
-  local box_count = box_storage.Count
-  if box_count > 0 then
-    for i = box_count - 1, 0, -1 do
-      print(i)
-      local slot = {id = box_storage[i].ID, count = 1, hidden_value = box_storage[i].HiddenValue}
-      table.insert(SV.guilders.tarro_town.bluetail_storage, slot)
-      print(slot.id)
-      print(slot.count)
-      print(slot.hidden_value)
-      box_storage:RemoveAt(i)
-    end
-  end
-end
-
-function COMMON.FadeEnterGround(area, zone)
-  GAME:FadeOut(false, 20)
-  GAME:EnterGroundMap(area, zone)
-end
-
-function COMMON.FaceEachother(char1, char2)
-  GROUND:CharTurnToCharAnimated(char1, char2, 2)
-  GROUND:CharTurnToCharAnimated(char2, char1, 2)
-end
-
-function COMMON.TwoTeam()
-  COMMON.RespawnAllies()
-  CH("Teammate1").CollisionDisabled = true
-  GROUND:TeleportTo(CH("Teammate1"), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.DownRight, 0)
-  AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
-end
-
-function COMMON.ThreeTeam()
-  COMMON.RespawnAllies()
-  CH("Teammate1").CollisionDisabled = true
-  CH("Teammate2").CollisionDisabled = true
-  GROUND:TeleportTo(CH("Teammate1"), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.DownRight, 0)
-  GROUND:TeleportTo(CH("Teammate2"), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.UpRight, 0)
-  AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
-  AI:SetCharacterAI(CH("Teammate2"), "origin.ai.ground_partner", CH("Teammate1"), CH("Teammate2").Position)
-end
-
-function COMMON.AllyFollow(spawn, teleport) --Applies to every teammate
-  if spawn then
-    COMMON.RespawnAllies()
-  end
-  for i = 1, GAME:GetPlayerPartyCount() - 1, 1 do
-    if i == 1 then
-      if teleport then
-        GROUND:TeleportTo(CH("Teammate1"), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.UpRight, 0)
-      end
-      AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
-      CH("Teammate1").CollisionDisabled = true
-    else
-      if teleport then
-        GROUND:TeleportTo(CH("Teammate" .. tostring(i)), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.UpRight, 0)
-      end
-      AI:SetCharacterAI(CH("Teammate" .. tostring(i)), "origin.ai.ground_partner", CH("Teammate" .. tostring(i - 1)), CH("Teammate" .. tostring(i)).Position)
-    end
-    CH("Teammate" .. tostring(i)).CollisionDisabled = true
-  end
-end
-
-function COMMON.CharDistance(char1, char2)
-  local char1x = CH(char1).Position.X
-  local char1y = CH(char1).Position.Y
-  local char2x = CH(char2).Position.X
-  local char2y = CH(char2).Position.Y
-  local distance = math.sqrt(((char2x - char1x) ^ 2) + ((char2y - char1y) ^ 2))
-  return distance
 end

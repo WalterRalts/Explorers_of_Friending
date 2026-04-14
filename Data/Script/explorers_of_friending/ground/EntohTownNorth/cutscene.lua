@@ -6,22 +6,22 @@ function Entoh.PanchChallenge()
     Todungeonscene = true
     local panch = CH("Panch")
     local rexio = CH("PLAYER")
-    local asd = TASK:BranchCoroutine(function() 
+    local asd = TASK:BranchCoroutine(function()
         GAME:FadeIn(60)
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("Hey, Rexio!")
-        end)	
-    local qwe = TASK:BranchCoroutine(function() 
+        end)
+    local qwe = TASK:BranchCoroutine(function()
         GROUND:AnimateToPosition(rexio, "Walk", Dir8.Up, rexio.Position.X, rexio.Position.Y - 45, 1, 1, 0)
         end)
     TASK:JoinCoroutines({asd, qwe})
 
-    local coro01 = TASK:BranchCoroutine(function() 
+    local coro01 = TASK:BranchCoroutine(function()
         GROUND:MoveToPosition(rexio, panch.Position.X - 40, panch.Position.Y, true, 4)
-        COMMON.FaceEachother(panch, rexio)
-        end)	
-    local coro02 = TASK:BranchCoroutine(function() 
+       EXPLCOMMON.FaceEachother(panch, rexio)
+        end)
+    local coro02 = TASK:BranchCoroutine(function()
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("Panch!")
@@ -37,7 +37,7 @@ function Entoh.PanchChallenge()
     UI:WaitShowDialogue("How's it been?!")
     UI:SetSpeakerEmotion("Joyous")
     UI:WaitShowDialogue("I've been doing great. Hadn't had to do anything all day!")
-    
+
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("Awwww, what?")
@@ -64,13 +64,13 @@ function Entoh.PanchChallenge()
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Follow me, bud.")
 
-    local movep = TASK:BranchCoroutine(function() 
+    local movep = TASK:BranchCoroutine(function()
         GROUND:MoveToMarker(panch, MRKR("m1"), false, 2)
         GROUND:MoveToMarker(panch, MRKR("m3"), false, 3)
         GROUND:CharAnimateTurn(panch, Direction.Left, 4, false)
         end)
-    local mover = TASK:BranchCoroutine(function() 
-        GAME:WaitFrames(30) 
+    local mover = TASK:BranchCoroutine(function()
+        GAME:WaitFrames(30)
         GROUND:MoveToMarker(rexio, MRKR("m1"), false, 2)
         GROUND:MoveToMarker(rexio, MRKR("m2"), false, 2)
         GROUND:CharAnimateTurn(rexio, Direction.Right, 4, false)
@@ -94,7 +94,7 @@ function Entoh.PanchChallenge()
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("...that's it?")
-    
+
     UI:SetSpeaker(panch)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("You scaaaaaaared?")
@@ -108,7 +108,7 @@ function Entoh.PanchChallenge()
     UI:SetSpeakerEmotion("Worried")
     GROUND:CharAnimateTurn(rexio, Direction.Right, 4, false)
     UI:WaitShowDialogue("I can't...[pause=30] I have to do chooooooores.")
-    
+
     UI:SetSpeaker(panch)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Don't be booooring, Rexio, c'mon.")
@@ -124,7 +124,7 @@ function Entoh.PanchChallenge()
         ("Yah")}
     UI:BeginChoiceMenu("Hmmmmmmmmmmmm...", choices, 1, 2)
     UI:WaitForChoice()
-    result = UI:ChoiceResult()
+    local result = UI:ChoiceResult()
     ::continue::
     if result == 1 then
         UI:SetSpeaker(rexio)
@@ -149,7 +149,7 @@ function Entoh.PanchChallenge()
 
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Worried")
-        local choices = {("Nuh-uh."),
+        choices = {("Nuh-uh."),
         ("Fine...")}
         UI:BeginChoiceMenu("Um...", choices, 1, 2)
         UI:WaitForChoice()
@@ -180,8 +180,8 @@ function Entoh.PanchChallenge()
                     UI:SetSpeaker(panch)
                     UI:SetSpeakerEmotion("Angry")
                     UI:WaitShowDialogue("Tch... whatever, go do your chooooores...")
-                    SV.entoh_town.HelperChapter = 1
-                    SV.entoh_town.thicket.result = -1
+                    SV.Story.sect = 2
+                    SV.entoh_town.thicket.result = 0
                 else
                     goto continue
                 end
@@ -192,7 +192,6 @@ function Entoh.PanchChallenge()
             goto continue
         end
     else
-        SV.entoh_town.HelperChapter = 1
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Sigh")
         UI:WaitShowDialogue("Fine,[pause=20] but if I get in trouble,[pause=10] you[emote=Worried] probably won't see me outside again.")
@@ -205,9 +204,7 @@ function Entoh.PanchChallenge()
 
         local coro1 = TASK:BranchCoroutine(function()
             GAME:FadeOut(false, 20)
-            SV.entoh_town.HelperChapter = 1
-
-        end)	
+        end)
         local coro2 = TASK:BranchCoroutine(function()
             GROUND:AnimateToPosition(rexio, "Walk", Dir8.Up, rexio.Position.X, rexio.Position.Y - 30, 0.5, 1, 0)
         end)
@@ -230,15 +227,15 @@ function Entoh.Resulting()
 
         GAME:FadeIn(60)
 
-        COMMON.CharSweating("Panch")
+       EXPLCOMMON.CharSweating("Panch")
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("...dude... maybe you should listen to your dad more...")
-        
+
         local cor1 = TASK:BranchCoroutine(function()
             GROUND:CharWaitAnim(rexio, "Wake")
             GROUND:CharSetAnim(rexio, "Idle", true)
-        end)	
+        end)
         local cor2 = TASK:BranchCoroutine(function()
             UI:SetSpeaker(rexio)
             UI:SetSpeakerEmotion("Pain")
@@ -249,12 +246,12 @@ function Entoh.Resulting()
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("I think you'd be better off getting your dad's package...")
-        
+
         local coro01 = TASK:BranchCoroutine(function()
             UI:SetSpeaker(rexio)
             UI:SetSpeakerEmotion("Pain")
             UI:WaitShowDialogue("Bruh.")
-        end)	
+        end)
         local coro02 = TASK:BranchCoroutine(function()
             GROUND:CharSetAnim(rexio, "Pain", false)
             GAME:WaitFrames(30)
@@ -288,14 +285,14 @@ function Entoh.Resulting()
 
         GAME:FadeIn(60)
 
-        COMMON.CharSweating("Panch")
+       EXPLCOMMON.CharSweating("Panch")
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("...dude.")
-        
+
         local cor1 = TASK:BranchCoroutine(function()
             GROUND:CharSetAnim(rexio, "Idle", true)
-        end)	
+        end)
         local cor2 = TASK:BranchCoroutine(function()
             UI:SetSpeaker(rexio)
             UI:SetSpeakerEmotion("Pain")
@@ -306,12 +303,12 @@ function Entoh.Resulting()
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("Hah, I think you'd be better off getting your dad's package...")
-        
+
         local coro01 = TASK:BranchCoroutine(function()
             UI:SetSpeaker(rexio)
             UI:SetSpeakerEmotion("Pain")
             UI:WaitShowDialogue("Bruh.")
-        end)	
+        end)
         local coro02 = TASK:BranchCoroutine(function()
             GROUND:CharSetAnim(rexio, "Pain", false)
             GAME:WaitFrames(30)
@@ -345,14 +342,14 @@ function Entoh.Resulting()
 
         GAME:FadeIn(60)
 
-        COMMON.CharSweating("Panch")
+       EXPLCOMMON.CharSweating("Panch")
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("I thought you said this would be easy.")
-        
+
         local cor1 = TASK:BranchCoroutine(function()
             GROUND:CharSetAnim(rexio, "Idle", true)
-        end)	
+        end)
         local cor2 = TASK:BranchCoroutine(function()
             UI:SetSpeaker(rexio)
             UI:SetSpeakerEmotion("Pain")
@@ -363,12 +360,12 @@ function Entoh.Resulting()
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("Hah, I think you'd be better off getting your dad's package...")
-        
+
         local coro01 = TASK:BranchCoroutine(function()
             UI:SetSpeaker(rexio)
             UI:SetSpeakerEmotion("Pain")
             UI:WaitShowDialogue("Bruh.")
-        end)	
+        end)
         local coro02 = TASK:BranchCoroutine(function()
             GROUND:CharSetAnim(rexio, "Pain", false)
             GAME:WaitFrames(30)
@@ -402,14 +399,14 @@ function Entoh.Resulting()
 
         GAME:FadeIn(60)
 
-        COMMON.CharSweating("Panch")
+       EXPLCOMMON.CharSweating("Panch")
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("Not as far as I was hoping, but ya did make it.")
-        
+
         local cor1 = TASK:BranchCoroutine(function()
             GROUND:CharSetAnim(rexio, "Idle", true)
-        end)	
+        end)
         local cor2 = TASK:BranchCoroutine(function()
             UI:SetSpeaker(rexio)
             UI:SetSpeakerEmotion("Pain")
@@ -420,12 +417,12 @@ function Entoh.Resulting()
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("Hah, I think you'd be better off getting your dad's package...")
-        
+
         local coro01 = TASK:BranchCoroutine(function()
             UI:SetSpeaker(rexio)
             UI:SetSpeakerEmotion("Pain")
             UI:WaitShowDialogue("Bruh.")
-        end)	
+        end)
         local coro02 = TASK:BranchCoroutine(function()
             GROUND:CharSetAnim(rexio, "Pain", false)
             GAME:WaitFrames(30)
@@ -448,18 +445,17 @@ function Entoh.Resulting()
 
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("Mhm")
+        UI:WaitShowDialogue("Mhm.")
     elseif SV.entoh_town.thicket.result == 8 then
         GROUND:TeleportTo(rexio, MRKR("m2").Position.X, MRKR("m2").Position.Y, Dir8.Right, 0)
-        GROUND:CharSetAnim(rexio, "Idle", true)
         GROUND:TeleportTo(panch, MRKR("m3").Position.X, MRKR("m3").Position.Y, Dir8.Left, 0)
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Joyous")
-        UI:WaitShowDialogue("Yeah!")
+        UI:WaitShowDialogue("Yeah!!")
 
         GAME:FadeIn(60)
 
-        COMMON.CharSweating("Panch")
+       EXPLCOMMON.CharSweating("Panch")
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Inspired")
         UI:WaitShowDialogue("Woah...")
@@ -467,7 +463,7 @@ function Entoh.Resulting()
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("Way too easy of a challenge.")
-        
+
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("Dude, you're on fire!")
@@ -490,6 +486,7 @@ function Entoh.Resulting()
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("Keep it up!")
 
+       EXPLCOMMON.CharHappyHop("PLAYER")
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Joyous")
         UI:WaitShowDialogue("Hahaaa!")
@@ -497,12 +494,12 @@ function Entoh.Resulting()
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("So, uh, I wasn't paying attention, and this totally isn't a failsafe \nfor situations I didn't account for, but...")
-        
+
         local coro01 = TASK:BranchCoroutine(function()
             UI:SetSpeaker(rexio)
             UI:SetSpeakerEmotion("Pain")
             UI:WaitShowDialogue("Bruh.")
-        end)	
+        end)
         local coro02 = TASK:BranchCoroutine(function()
             GROUND:CharSetAnim(rexio, "Pain", false)
             GAME:WaitFrames(30)
@@ -526,8 +523,6 @@ function Entoh.Resulting()
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("oh ok")
-        
+
     end
-    SV.entoh_town.panchdialogue = SV.entoh_town.thicket.result
-    SV.entoh_town.thicket.result = 9
 end

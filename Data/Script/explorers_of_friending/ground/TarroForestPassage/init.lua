@@ -25,20 +25,22 @@ function TarroForestPassage.Init(map)
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   partner.CollisionDisabled = true
 
-  if SV.tarro_town.PieChapter < 3 then
+  if SV.Story.chap == -1 and SV.Story.sect < 2 then
+    GAME:FadeIn(20)
     UI:SetSpeaker(partner)
     GROUND:CharTurnToCharAnimated(azura, maru, 4)
+   EXPLCOMMON.CharHappyHop("Teammate1")
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Okay! There should be an apple around here, I'm sure!")
-    SV.tarro_town.PieChapter = 3
+    SV.Story.sect = 2
   end
 
-  if SV.tarro_town.PieChapter >= 4 then -- after dungeon completion
+  if SV.Story.chap < -1 then -- after dungeon completion
     GROUND:Hide("Cherry")
     GROUND:Hide("BigApple")
   end
 
-  if SV.tarro_town.DarknessChapter == 1 then
+  if SV.Story.sect == 1 and SV.Story.chap == -3 then
     Dark.Darkness()
   end
 end
@@ -228,7 +230,7 @@ function TarroForestPassage.BigApple_Action(obj, activator)
 
   GAME:CutsceneMode(false)
   GROUND:Hide("BigApple")
-  SV.tarro_town.PieChapter = 4
+  SV.Story.flag = 1
 end
 
 
@@ -278,7 +280,7 @@ end
 function TarroForestPassage.TF_DeepForestEnter_Touch(obj, activator)
   local maru = CH("PLAYER")
 
-  if SV.tarro_town.DarknessChapter == 2 then
+  if SV.Story.sect == 2 and SV.Story.chap == -3 then
     local dungeon_entrances = {"deep_tarro_forest"}
     local ground_entrances = {}
     COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances)
@@ -291,25 +293,27 @@ function TarroForestPassage.TF_DeepForestEnter_Touch(obj, activator)
 end
 
 function TarroForestPassage.TFPassage_DungeonExit_Touch(obj, activator)
-  if SV.tarro_town.PieChapter < 4 then
-    local azura = CH('Teammate1')
-    local maru = CH('PLAYER')
-    UI:SetSpeaker(azura)
-    UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowDialogue("Maru, apple!")
+  if SV.Story.chap == -1 then
+    if SV.Story.sect == 2 and SV.Story.flag ~= 1 then
+      local azura = CH('Teammate1')
+      local maru = CH('PLAYER')
+      UI:SetSpeaker(azura)
+      UI:SetSpeakerEmotion("Angry")
+      UI:WaitShowDialogue("Maru, apple!")
 
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("O-oh,[pause=15] sorry,[pause=10] I...[pause=25] uh...[emote=Happy][pause=20] forgot,[pause=25] haha...")
-  elseif SV.tarro_town.PieChapter == 4 then
-    GAME:FadeOut(false, 20)
-    OutEnter = 4
-    GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast", "TTEast_TarroTownForest")
-  elseif SV.tarro_town.PieChapter <= 10 then
+      UI:SetSpeaker(maru)
+      UI:SetSpeakerEmotion("Stunned")
+      UI:WaitShowDialogue("O-oh,[pause=15] sorry,[pause=10] I...[pause=25] uh...[emote=Happy][pause=20] forgot,[pause=25] haha...")
+    elseif SV.Story.sect == 2 then
+      GAME:FadeOut(false, 20)
+      OutEnter = 4
+      GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast", "TTEast_TarroTownForest")
+    end
+  elseif SV.Story.chap == -2 then
     GAME:FadeOut(false, 20)
     OutEnter = 4
     GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch2", "TTEast_TarroTownForest")
-  else -- == 11
+  elseif SV.Story.chap == -3 then
     GAME:FadeOut(false, 20)
     OutEnter = 4
     GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch3", "TTEast_TarroTownForest")

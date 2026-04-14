@@ -10,6 +10,7 @@ require 'explorers_of_friending.ground.HertzEntrance.cutscene'
 local Coro = function()
   local gonk = CH("Gonk")
   if go_in == true and Golmoved == false then
+   EXPLCOMMON.CharRealize("Gonk")
     GROUND:Hide("hall2")
     GROUND:MoveToMarker(gonk, MRKR("move1"), false, 1)
     GROUND:MoveToMarker(gonk, MRKR("move2"), false, 1)
@@ -41,7 +42,7 @@ function HertzEntrance.Init(map)
     HertzTown.Cooldown()
     SV.guild.time = 11
   else
-    COMMON.ThreeTeam()
+   EXPLCOMMON.ThreeTeam()
   end
 end
 
@@ -87,19 +88,19 @@ end
 -------------------------------
 
 function HertzEntrance.EntranceEnter_Touch(obj, activator)
-  COMMON.FadeEnterGround("HertzEntrance", "ent_Enter")
+ EXPLCOMMON.FadeEnterGround("HertzEntrance", "ent_Enter")
 end
 
 function HertzEntrance.TownExit_Touch(obj, activator)
-  COMMON.FadeEnterGround("HertzGate", "GateEnter")
+ EXPLCOMMON.FadeEnterGround("HertzGate", "GateEnter")
 end
 
 function HertzEntrance.CenterEnter_Touch(obj, activator)
-  COMMON.FadeEnterGround("HertzCenter", "EnterS")
+ EXPLCOMMON.FadeEnterGround("HertzCenter", "EnterS")
 end
 
 function HertzEntrance.Kazen_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Normal")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("Good day to you, my name is Kazen; welcome to my fast travel service.")
   if SV.hertz_town.fastvisited[1] == 1 then
     UI:WaitShowDialogue("Would you like to go to " .. SV.hertz_town.fastvisited[1])
@@ -115,10 +116,10 @@ end
 function HertzEntrance.Gonk_Action(obj, activator)
   if CH("PLAYER").Position.Y >= CH("Gonk").Position.Y then
     if SV.hertz_town.passcount == 0 then
-      COMMON.SetCharAndEmotion(obj, "Normal")
+     EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
       UI:WaitShowDialogue("[speed=0.5]You do not seem to be holding a pass. I cannot let you through.")
     else
-      COMMON.SetCharAndEmotion(obj, "Happy")
+     EXPLCOMMON.SetCharAndEmotion(obj, "Happy")
       UI:WaitShowDialogue("[speed=0.5]You do seem to be holding a pass. I can let you through.")
 
       UI:ResetSpeaker()
@@ -130,23 +131,23 @@ function HertzEntrance.Gonk_Action(obj, activator)
       UI:WaitForChoice()
       result = UI:ChoiceResult()
       if result == 1 then
-        COMMON.SetCharAndEmotion(obj, "Normal")
+       EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
         UI:WaitShowDialogue("[speed=0.5]You may enter.")
         go_in = true
 
         GAME:WaitFrames(50)
-        COMMON.SetCharAndEmotion(activator, "Happy")
+       EXPLCOMMON.SetCharAndEmotion(activator, "Happy")
         UI:WaitShowDialogue("Alright, let's go.")
       end
     end
   else
     local talk = math.random(2)
     if talk == 1 then
-      COMMON.SetCharAndEmotion(obj, "Normal")
+     EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
       UI:WaitShowDialogue("[speed=0.5]If it isn't too much to ask, if the thief you're talking about did happen to get in.")
       UI:WaitShowDialogue("[speed=0.5]Please report it to me...[pause=45][emote=Stunned] and no one else.")
     else
-      COMMON.SetCharAndEmotion(obj, "Normal")
+     EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
       UI:WaitShowDialogue("[speed=0.5]Well, go on.")
       UI:WaitShowDialogue("[speed=0.5]I'm not in the way.")
     end
@@ -154,7 +155,7 @@ function HertzEntrance.Gonk_Action(obj, activator)
 end
 
 function HertzEntrance.ShopA_Touch(obj, activator)
-  COMMON.FadeEnterGround("HertzShopsA", "Enter")
+ EXPLCOMMON.FadeEnterGround("HertzShopsA", "Enter")
 end
 
 function HertzEntrance.hall2_Touch(obj, activator)

@@ -14,21 +14,21 @@ function East.TidyUp()
         _DATA.Save.ActiveTeam.Players[GAME:GetPlayerPartyCount() - 1].ActionEvents:Add(talk_npc)
 
     COMMON.RespawnAllies()
-    if SV.entoh_town.firstfind == 1 then
-        SV.entoh_town.HelperChapter = 7
+    if SV.Story.flag[1] == "Flow" and SV.Story.flag[2] == 0 then
+        SV.Story.flag = {"Flow", "Tidy"}
         local flow = CH("Teammate1")
         local tidy = CH("Teammate2")
         local rexio = CH("PLAYER")
         local cor1 = TASK:BranchCoroutine(function()
             GROUND:MoveToPosition(rexio, rexio.Position.X + 50, rexio.Position.Y, false, 1)
             
-            COMMON.CharExclaim("PLAYER")
+           EXPLCOMMON.CharExclaim("PLAYER")
 
             UI:SetSpeaker(tidy)
             UI:SetSpeakerEmotion("Shouting")
             UI:WaitShowDialogue("Waaeeehhhhh!!")
             GROUND:MoveToPosition(tidy, rexio.Position.X + 50, rexio.Position.Y, true, 12)
-            COMMON.CharRealize("Teammate2")
+           EXPLCOMMON.CharRealize("Teammate2")
 
             GROUND:CharSetAnim(CH("Teammate2"), "Trip", true)
             GROUND:CharSetAction(tidy, RogueEssence.Ground.PoseGroundAction(tidy.Position, tidy.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Trip")))
@@ -46,7 +46,7 @@ function East.TidyUp()
 
         GAME:WaitFrames(45)
 
-        COMMON.CharSweatdrop("PLAYER")
+        EXPLCOMMON.CharSweatdrop("PLAYER")
         UI:SetSpeaker(flow)
         UI:SetSpeakerEmotion("Surprised")
         UI:WaitShowDialogue("Tidy!")
@@ -76,7 +76,7 @@ function East.TidyUp()
 
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Stunned")
-        UI:WaitShowDialogue("I would love to keep reuniting,[pause=0] not really, but...")
+        UI:WaitShowDialogue("I would love to keep reuniting,[pause=0] well, not really, but...")
         UI:WaitShowDialogue("We should probably get going.")
 
         UI:SetSpeaker(tidy)
@@ -85,20 +85,19 @@ function East.TidyUp()
         AI:SetCharacterAI(tidy, "origin.ai.ground_partner", flow, tidy.Position)
         tidy.CollisionDisabled = true
         UI:WaitShowDialogue("Yeah? Alrighty.[pause=40][emote=Normal] Let's go.")
-        SV.entoh_town.firstfind = 3
-    elseif SV.entoh_town.firstfind < 3 then
-        SV.entoh_town.firstfind = 2
+    elseif SV.Story.flag[1] == 0 then
+        SV.Story.flag = {"Tidy", 0}
         local tidy = CH("Teammate1")
         local rexio = CH("PLAYER")
         local cor1 = TASK:BranchCoroutine(function()
             GROUND:MoveToPosition(rexio, rexio.Position.X + 50, rexio.Position.Y, false, 1)
-            COMMON.CharExclaim("PLAYER")
+           EXPLCOMMON.CharExclaim("PLAYER")
 
             UI:SetSpeaker(tidy)
             UI:SetSpeakerEmotion("Shouting")
             UI:WaitShowDialogue("Waaeeehhhhh!!")
             GROUND:MoveToPosition(tidy, rexio.Position.X + 50, rexio.Position.Y, true, 12)
-            COMMON.CharRealize("Teammate1")
+           EXPLCOMMON.CharRealize("Teammate1")
 
             GROUND:CharSetAction(tidy, RogueEssence.Ground.PoseGroundAction(tidy.Position, tidy.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Trip")))
         end)	
@@ -109,7 +108,7 @@ function East.TidyUp()
 
         GAME:WaitFrames(45)
 
-        COMMON.CharSweating("PLAYER")
+       EXPLCOMMON.CharSweating("PLAYER")
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("...um...")

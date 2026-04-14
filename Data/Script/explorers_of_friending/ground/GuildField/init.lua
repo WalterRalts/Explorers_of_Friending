@@ -26,12 +26,12 @@ end
 ---GuildField.Enter(map)
 --Engine callback function
 function GuildField.Enter(map)
+
 end
 
 ---GuildField.Exit(map)
 --Engine callback function
 function GuildField.Exit(map)
-
 
 end
 

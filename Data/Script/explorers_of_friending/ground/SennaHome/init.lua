@@ -21,7 +21,7 @@ function SennaHome.Init(map)
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   partner.CollisionDisabled = true
 
-  if SV.tarro_town.DarknessChapter > 0 then
+  if SV.Story.sect > 0 then
     GROUND:Unhide("Furie")
   end
 end
@@ -91,10 +91,10 @@ function SennaHome.Senna_Action(obj, activator)
     UI:WaitShowDialogue("Mmm,[pause=40] s[emote=Stunned]ome other time, m-maybe?")
 
     GAME:WaitFrames(10)
-    COMMON.FaceEachother(ziggy, azura)
+   EXPLCOMMON.FaceEachother(ziggy, azura)
     
     GAME:WaitFrames(10)
-    COMMON.FaceEachother(senna, activator)
+   EXPLCOMMON.FaceEachother(senna, activator)
 
     UI:SetSpeaker(ziggy)
     UI:SetSpeakerEmotion("Joyous")
@@ -109,7 +109,7 @@ function SennaHome.Senna_Action(obj, activator)
     UI:WaitShowDialogue("Hey, Maru. Azura. Been a while since you've visited.")
     UI:WaitShowDialogue("Ziggy and I were talking about more dungeons...")
 
-    COMMON.FaceEachother(ziggy, senna)
+   EXPLCOMMON.FaceEachother(ziggy, senna)
 
     UI:SetSpeaker(ziggy)
     UI:SetSpeakerEmotion("Happy")
@@ -124,7 +124,7 @@ function SennaHome.Senna_Action(obj, activator)
     UI:WaitShowDialogue("I would love to, but I'm [emote=Worried]still worried I'd slip up...")
     ktalk = 1
   else
-    COMMON.FaceEachother(senna, activator)
+   EXPLCOMMON.FaceEachother(senna, activator)
     UI:SetSpeaker(senna)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("I'd be happy to go with you guys.")
@@ -141,7 +141,7 @@ function SennaHome.Ziggy_Action(obj, activator)
   if ktalk == 0 then
     SennaHome.Senna_Action()
   elseif ktalk == 1 then
-    COMMON.FaceEachother(ziggy, azura)
+   EXPLCOMMON.FaceEachother(ziggy, azura)
     UI:SetSpeaker(ziggy)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Azu Azu Azu! Guess what!")
@@ -155,12 +155,12 @@ function SennaHome.Ziggy_Action(obj, activator)
     UI:ResetSpeaker()
     UI:WaitShowDialogue("Ziggy gives Azura an apple...?")
 
-    COMMON.CharHop("Ziggy")
+   EXPLCOMMON.CharHop("Ziggy")
     UI:SetSpeaker(ziggy)
     UI:SetSpeakerEmotion("Joyous")
     UI:WaitShowDialogue("Yippee!")
 
-    COMMON.CharHop("Teammate1")
+   EXPLCOMMON.CharHop("Teammate1")
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Joyous")
     UI:WaitShowDialogue("Yippee!")
@@ -181,14 +181,14 @@ function SennaHome.Beel_Action(obj, activator)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("I always thought that getting straight to the point was the way to go...")
 
-  COMMON.FaceEachother(activator, obj)
+ EXPLCOMMON.FaceEachother(activator, obj)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("I was proven wrong by Furie.[pause=10] My life has never been the same after that...")
 end
 
 function SennaHome.Furie_Action(obj, activator)
-  COMMON.FaceEachother(activator, obj)
+ EXPLCOMMON.FaceEachother(activator, obj)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("Sometimes, things are just[pause=45] straightforward. [pause=40][emote=Happy]Beel taught me that.")
@@ -215,7 +215,7 @@ end
 function SennaHome.SennaBasement_Entrance_Touch(obj, activator)
   local beel = CH("Beel")
   
-  COMMON.FaceEachother(beel, activator)
+ EXPLCOMMON.FaceEachother(beel, activator)
   UI:SetSpeaker(beel)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("Oi, Maru.[pause=10] That room's for family members only.")

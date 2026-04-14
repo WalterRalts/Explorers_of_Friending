@@ -14,7 +14,7 @@ local Coro = function()
   local will_move = math.random(100, 200)
   local will_sweat = math.random(25, 75)
   local coro01 = TASK:BranchCoroutine(function()
-    COMMON.CharHop("TheRai")
+   EXPLCOMMON.CharHop("TheRai")
     GAME:WaitFrames(will_move / 2)
     GROUND:CharSetEmote(rai, "angry", 5)
     GAME:WaitFrames(will_move)
@@ -32,7 +32,10 @@ end
 ---AppleTownConcert.Init(map)
 --Engine callback function
 function AppleTownConcert.Init(map)
-  
+  if SV.Story.flag == 0 then
+    SV.Story.flag = 0.1
+    AppleCon.Concert()
+  end
 end
 
 ---AppleTownConcert.Enter(map)
@@ -77,12 +80,12 @@ end
 -------------------------------
 
 function AppleTownConcert.TheRai_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Angry")
+  EXPLCOMMON.SetCharAndEmotion(obj, "Angry")
   UI:WaitShowDialogue("I CANNOT PERFORM![pause=50] My precious stones are not here, therefore the show is postponed!")
 end
 
 function AppleTownConcert.Fleet_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Worried")
+  EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
   UI:WaitShowDialogue("It's not that big big of a deal deal, Rairai.")
 end
 
@@ -92,8 +95,8 @@ function AppleTownConcert.AppleTown_Back_Touch(obj, activator)
 end
 
 function AppleTownConcert.Barnacle_Action(obj, activator)
-  COMMON.FaceEachother(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Normal")
+  EXPLCOMMON.FaceEachother(obj, activator)
+  EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("North of here are the oceans. Come visit if you want a splash.")
 end
 

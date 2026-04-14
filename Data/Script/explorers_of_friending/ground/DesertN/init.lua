@@ -108,34 +108,34 @@ function DesertN.Potted_Action(obj, activator)
 end
 
 function DesertN.Kassy_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Stunned")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Stunned")
   UI:WaitShowDialogue("Can you three hurry and figure out the puzzle!?")
 end
 
 -- Entrances
 
 function DesertN.W_Touch(obj, activator)
-  COMMON.FadeEnterGround("DesertNW", "EastEnter")
+ EXPLCOMMON.FadeEnterGround("DesertNW", "EastEnter")
 end
 
 function DesertN.SW_Touch(obj, activator)
-  COMMON.FadeEnterGround("DesertSW", "NorthEastEnter")
+ EXPLCOMMON.FadeEnterGround("DesertSW", "NorthEastEnter")
 end
 
 function DesertN.S_Touch(obj, activator)
-  COMMON.FadeEnterGround("DesertS", "NorthEnter")
+ EXPLCOMMON.FadeEnterGround("DesertS", "NorthEnter")
 end
 
 function DesertN.SE_Touch(obj, activator)
-  COMMON.FadeEnterGround("DesertSE", "NorthWestEnter")
+ EXPLCOMMON.FadeEnterGround("DesertSE", "NorthWestEnter")
 end
 
 function DesertN.E_Touch(obj, activator)
-  COMMON.FadeEnterGround("DesertNE", "WestEnter")
+ EXPLCOMMON.FadeEnterGround("DesertNE", "WestEnter")
 end
 
 function DesertN.N_Touch(obj, activator)
-  COMMON.FadeEnterGround("HertzGate", "Enter")
+ EXPLCOMMON.FadeEnterGround("HertzGate", "Enter")
 end
 
 return DesertN

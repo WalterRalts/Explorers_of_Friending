@@ -16,7 +16,7 @@ local TarroTownTreeBreak = {}
 --Engine callback function
 function TarroTownTreeBreak.Init(map)
   GAME:SetCanSwitch(false)
-  DUNsection = 1
+  SV.Story.dunsect = 1
   SleepingPuchi = false
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
@@ -28,6 +28,8 @@ function TarroTownTreeBreak.Init(map)
     GROUND:Hide("Senna")
     GROUND:Hide("Ziggy")
   else
+    GROUND:CharSetEmote(puchi, "Sleep", 0)
+    GROUND:CharSetAnim(puchi, "Sleep", true)
     if DUN_failure == false then
       Cute_talk = false
       TarroTownTreeBreak.BreakTime()
@@ -35,8 +37,8 @@ function TarroTownTreeBreak.Init(map)
       TarroTownTreeBreak.OopsTime()
     end
   end
-  if SV.tarro_town.PieChapter == 9 then
-    SV.tarro_town.PieChapter = 8
+  if SV.Story.dunsect == 2 then
+    SV.Story.dunsect = 1
   end
 end
 
@@ -126,8 +128,8 @@ function TarroTownTreeBreak.Cute_Action(obj, activator)
     UI:WaitShowDialogue("Aren't you that honey seller...?")
 
     UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("And how did you get through the [color=#01FE10]Big Tree[color]'s defenses?")
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("And how did you get in here?")
 
     UI:SetSpeaker(cute)
     UI:SetSpeakerEmotion("Happy")
@@ -146,7 +148,7 @@ function TarroTownTreeBreak.Cute_Action(obj, activator)
     result = UI:ChoiceResult()
     if result == 1 then
       if pouch_money < 100 then
-        COMMON.CharSweatdrop("Cute")
+        EXPLCOMMON.CharSweatdrop("Cute")
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("Sorry, I can't just give these on a discount.")
         UI:SetSpeakerEmotion("Normal")
@@ -197,10 +199,10 @@ function TarroTownTreeBreak.Sproutious_Action(obj, activator)
     UI:WaitShowDialogue("For this honey is the most delectable delicacy that my buds of taste hast ever layest against.")
     UI:SetSpeakerEmotion("Sad")
     UI:WaitShowDialogue("Alas, I haveth not sufficient Poke more on my person to consume more of these well crafted jars...")
-    COMMON.FaceEachother(obj, activator)
+   EXPLCOMMON.FaceEachother(obj, activator)
     UI:SetSpeakerEmotion("Surprised")
     GAME:WaitFrames(25)
-    COMMON.CharExclaim("Sproutious")
+   EXPLCOMMON.CharExclaim("Sproutious")
     UI:WaitShowDialogue("GASP!")
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("Ah[pause=15], you dare etch my eyes with not tasting this fine honey.")
@@ -238,7 +240,7 @@ function TarroTownTreeBreak.Senna_Action(obj, activator)
   local maru = CH("PLAYER")
   local azura = CH("Teammate1")
   local senna = CH('Senna')
-  COMMON.FaceEachother(activator, obj)
+ EXPLCOMMON.FaceEachother(activator, obj)
   UI:SetSpeaker(senna)
   UI:SetSpeakerEmotion("Sigh")
   UI:WaitShowDialogue("Phew. What a relief.")
@@ -263,7 +265,7 @@ function TarroTownTreeBreak.Senna_Action(obj, activator)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("I've seen these things all over the place.")
   UI:WaitShowDialogue("I think dad said we could use it to store things, but...")
-  COMMON.FaceEachother(obj, activator)
+ EXPLCOMMON.FaceEachother(obj, activator)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("...you know I don't get involved with dungeon stuff,[pause=25] h[emote=Happy]ehe.")
 end
@@ -290,7 +292,7 @@ function TarroTownTreeBreak.Ziggy_Action(obj, activator)
   end
 
   GAME:WaitFrames(15)
-  COMMON.FaceEachother(ziggy, activator)
+ EXPLCOMMON.FaceEachother(ziggy, activator)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("But you know what,[pause=11] I think we can do it,[pause=25][emote=Joyous] and we probably won't stop trying until the tree is saved!")
   UI:SetSpeakerEmotion("Joyous")
@@ -389,7 +391,7 @@ function TarroTownTreeBreak.TarroTreeHollows_End_Touch(obj, activator)
   UI:WaitForChoice()
   result = UI:ChoiceResult()
   if result == 1 then
-    if SV.tarro_town.PieChapter == 8 or 9 then
+    if SV.Story.dunsect == 1 then
       UI:SetSpeaker(ziggy)
       UI:SetSpeakerEmotion("Angry")
       UI:WaitShowDialogue("OI![pause=35] Don't give up on me, Mar! Let's go let's go let's go!")

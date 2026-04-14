@@ -15,7 +15,6 @@ local TarroTownBigTree_ch3 = {}
 ---TarroTownBigTree_ch3.Init(map)
 --Engine callback function
 function TarroTownBigTree_ch3.Init(map)
-  --SV.tarro_town.PieChapter == 7 is the first cutscene
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
   local partner = CH('Teammate1')
@@ -75,17 +74,17 @@ function TarroTownBigTree_ch3.TreeHallow_Entrance_Touch(obj, activator)
 end
 
 function TarroTownBigTree_ch3.Sloo_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Worried")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
   UI:WaitShowDialogue("[speed=0.3]I... forgot why I'm here.")
 end
 
 function TarroTownBigTree_ch3.Bungo_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Happy")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Happy")
   UI:WaitShowDialogue("I am master of the sea!")
 end
 
 function TarroTownBigTree_ch3.Hopsa_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Happy")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Happy")
   UI:WaitShowDialogue("I can kick things to the moon!")
 end
 
@@ -102,7 +101,7 @@ end
 
 function TarroTownBigTree_ch3.Tree_2ndFloorEntrance_Touch(obj, activator)
   local maru = CH('PLAYER')
-  COMMON.SetCharAndEmotion(maru, "Stunned")
+ EXPLCOMMON.SetCharAndEmotion(maru, "Stunned")
   UI:WaitShowDialogue("(That is a crowd and a half.)")
   UI:WaitShowDialogue("(...I'll come back later.)")
 end
@@ -173,7 +172,7 @@ end
 
 function TarroTownBigTree_ch3.RequestSign_Action(obj, activator)
   local maru = CH('PLAYER')
-  COMMON.SetCharAndEmotion(maru, "Worried")
+ EXPLCOMMON.SetCharAndEmotion(maru, "Worried")
   UI:WaitShowDialogue("(Whoa! That's a lot of requests!)")
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("(Guess all the guilds and rescue teams are busy with something bigger...)")
@@ -181,7 +180,7 @@ end
 
 function TarroTownBigTree_ch3.Tent_Action(obj, activator)
   local maru = CH('PLAYER')
-  COMMON.SetCharAndEmotion(maru, "Normal")
+ EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
   UI:WaitShowDialogue("(This tent looks like it's for someone else...)")
 end
 
@@ -189,15 +188,15 @@ function TarroTownBigTree_ch3.Dean_Action(obj, activator)
   local dean = CH('Dean')
   
   if chat == 0 then
-    COMMON.SetCharAndEmotion(obj, "Happy")
+   EXPLCOMMON.SetCharAndEmotion(obj, "Happy")
     UI:WaitShowDialogue("I love this tree so much![pause=15] The smell is so good!")
     chat = chat + 1
   elseif chat == 1 then
-    COMMON.SetCharAndEmotion(obj, "Worried")
+   EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
     UI:WaitShowDialogue("I bet it looks good, too, but I can't see all that well.")
     chat = chat + 1
   else
-    COMMON.SetCharAndEmotion(obj, "Normal")
+   EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
     UI:WaitShowDialogue("I should ask my ma to live here instead.[pause=20] I heard they're adding homes in the tree.")
   end
 end

@@ -6,14 +6,14 @@ function Center.Feeling()
     local rexio = CH("PLAYER")
     GAME:CutsceneMode(true)
     GAME:FadeIn(30)
-    COMMON.CharExclaim("PLAYER")
+   EXPLCOMMON.CharExclaim("PLAYER")
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Surprised")
     UI:WaitShowDialogue("(Not just dad![pause=45] Everyone!)")
 
     GAME:WaitFrames(90)
     GROUND:CharAnimateTurn(rexio, Direction.Left, 1, false)
-    COMMON.CharSweatdrop("PLAYER")
+    EXPLCOMMON.CharSweatdrop("PLAYER")
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("(Guess I have the place to myself for a while.)")
 
@@ -21,11 +21,11 @@ function Center.Feeling()
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("(The heck did everyone go?![pause=40] And without telling me!)")
 
+    SV.Story.sect = 2
     GAME:CutsceneMode(false)
 end
 
 function Center.AnotherFeeling()
-    SV.entoh_town.HelperChapter = 9
     local rexio = CH("PLAYER")
     local coro01 = TASK:BranchCoroutine(function()
         GROUND:AnimateToPosition(rexio, "Walk", Dir8.Up, rexio.Position.X, rexio.Position.Y - 245, 0.4, 1, 0)

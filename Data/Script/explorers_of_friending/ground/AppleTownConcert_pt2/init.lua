@@ -64,7 +64,7 @@ end
 -------------------------------
 
 function AppleTownConcert_pt2.Fleet_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Worried")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
   UI:WaitShowDialogue("Sorry, if you were expecting a show show, then it's not happening. Can't find Rairai anywhere...")
 end
 

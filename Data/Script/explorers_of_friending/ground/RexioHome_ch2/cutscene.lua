@@ -23,7 +23,7 @@ function Aurm.AFeeling()
     UI:WaitShowDialogue("Good morning, old guy!")
 
     GAME:WaitFrames(40)
-    COMMON.CharQuestion("PLAYER")
+   EXPLCOMMON.CharQuestion("PLAYER")
     GROUND:MoveToMarker(rexio, MRKR("look1"), false, 2)
     GROUND:CharSetAnim(rexio, "None", true)
     UI:SetSpeaker(rexio)
@@ -31,7 +31,7 @@ function Aurm.AFeeling()
     UI:WaitShowDialogue("...dad?")
 
     GAME:WaitFrames(40)
-    COMMON.CharQuestion2("PLAYER")
+   EXPLCOMMON.CharQuestion2("PLAYER")
     GROUND:MoveToMarker(rexio, MRKR("look2"), false, 2)
 
     UI:SetSpeaker(rexio)

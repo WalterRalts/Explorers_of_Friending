@@ -1,0 +1,11 @@
+---@meta
+---
+---@alias Dir8
+---| 'Dir8.Down'
+---| 'Dir8.DownLeft'
+---| 'Dir8.Left'
+---| 'Dir8.UpLeft'
+---| 'Dir8.Up'
+---| 'Dir8.UpRight'
+---| 'Dir8.Right'
+---| 'Dir8.DownRight'

@@ -16,16 +16,6 @@ local HertzCenter = {}
 ---HertzCenter.Init(map)
 --Engine callback function
 function HertzCenter.Init(map)
-  if SV.guild.time == 11 then
-    Hertz.DesertTown()
-  else
-    COMMON.ThreeTeam()
-    GROUND:Hide("one")
-    GROUND:Hide("two")
-    GROUND:Hide("three")
-    GROUND:Hide("four")
-  end
-  
   GROUND:CharSetAnim(CH("Moon"), "Sleep", true)
   COMMON.CreateWalkArea("Lilily", CH("Lilily").Position.X, CH("Lilily").Position.Y, 200, 200)
   if TrupPosition == nil then
@@ -33,8 +23,20 @@ function HertzCenter.Init(map)
   elseif TrupPosition == 1 then
     GROUND:TeleportTo(CH("Trup"), 701, 531, Dir8.DownRight, 0)
   else
-    COMMON.TeleportToMarker(CH("Trup"), "Sand", Dir8.DownLeftt)
+   EXPLCOMMON.TeleportToMarker(CH("Trup"), "Sand", Dir8.DownLeft)
   end
+
+  if SV.Story.sect == 1 then
+    Hertz.DesertTown()
+    SV.Story.sect = 2
+  else
+   EXPLCOMMON.AllyFollow(true, true)
+  end
+
+  GROUND:Hide("one")
+  GROUND:Hide("two")
+  GROUND:Hide("three")
+  GROUND:Hide("four")
 end
 
 ---HertzCenter.Enter(map)
@@ -88,7 +90,7 @@ end
 -- Characters
 
 function HertzCenter.Telef_Action(obj, activator)
-  COMMON.FaceEachother(obj, activator)
+ EXPLCOMMON.FaceEachother(obj, activator)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Hey, have you ever heard of space?!")
@@ -101,31 +103,31 @@ function HertzCenter.Moon_Action(obj, activator)
 end
 
 function HertzCenter.Esna_Action(obj, activator)
-  COMMON.FaceEachother(obj, activator)
+ EXPLCOMMON.FaceEachother(obj, activator)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("...")
 end
 
 function HertzCenter.Meteor_Action(obj, activator)
-  COMMON.FaceEachother(obj, activator)
+ EXPLCOMMON.FaceEachother(obj, activator)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Pain")
   UI:WaitShowDialogue("She's talked about nothing but space and the moon all week![pause=55] How does she know more than me?!")
 end
 
 function HertzCenter.Trup_Action(obj, activator)
-  COMMON.FaceEachother(obj, activator)
+  EXPLCOMMON.FaceEachother(obj, activator)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Sand.")
 
   GROUND:CharSetAnim(obj, "Hop", false)
-  GAME:WaitFrames(21)
+  GAME:WaitFrames(24)
   SOUND:PlayBattleSE("DUN_Dig")
   GROUND:Hide("Trup")
   if TrupPosition == 1 then
-    COMMON.TeleportToMarker(obj, "Sand", Dir8.DownLeft)
+   EXPLCOMMON.TeleportToMarker(obj, "Sand", Dir8.DownLeft)
   else
     GROUND:TeleportTo(obj, 701, 531, Dir8.DownRight, 0)
   end
@@ -138,10 +140,9 @@ function HertzCenter.Trup_Action(obj, activator)
     GROUND:TeleportTo(obj, 701, 531, Dir8.DownRight, 0)
     TrupPosition = 2
   else
-    COMMON.TeleportToMarker(obj, "Sand", Dir8.DownLeft)
+   EXPLCOMMON.TeleportToMarker(obj, "Sand", Dir8.DownLeft)
     TrupPosition = 1
   end
-  
 end
 
 function HertzCenter.Flag_Action(obj, activator)
@@ -152,6 +153,12 @@ function HertzCenter.Flag_Action(obj, activator)
   UI:WaitShowDialogue("It's been so long since anything's happened, that I've retired to help care for the kid.")
 end
 
+function HertzCenter.cacnea_1_Action(obj, activator)
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("The plan! The plan is in ruins!")
+end
+
 -- Entrances
 
 function HertzCenter.Housing_Touch(obj, activator)
@@ -159,11 +166,19 @@ function HertzCenter.Housing_Touch(obj, activator)
 end
 
 function HertzCenter.ExitW_Touch(obj, activator)
-  COMMON.FadeEnterGround("HertzLeftT", "EnterE")
+  EXPLCOMMON.FadeEnterGround("HertzLeftT", "EnterE")
 end
 
 function HertzCenter.ExitS_Touch(obj, activator)
-  COMMON.FadeEnterGround("HertzEntrance", "EnterN")
+  EXPLCOMMON.FadeEnterGround("HertzEntrance", "EnterN")
+end
+
+function HertzCenter.ExitN_Touch(obj, activator)
+  EXPLCOMMON.FadeEnterGround("HertzUpT", "EnterS")
+end
+
+function HertzCenter.Secret_Touch(obj, activator)
+  GAME:EnterDungeon("dane_desert", 0, 0, 0, RogueEssence.Data.GameProgress.DungeonStakes.Risk, false, false)
 end
 
 return HertzCenter

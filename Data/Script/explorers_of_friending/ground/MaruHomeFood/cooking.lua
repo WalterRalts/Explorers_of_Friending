@@ -98,7 +98,7 @@ local function ingredients_list()
     )
     UI:WaitForChoice()
     
-    if UI:ChoiceResult() == 100 then
+    if UI:ChoiceResult() == exit_index then
         print("Exit chosen.")
         Exit_cooking = true
         return nil
@@ -245,6 +245,7 @@ function Cooking(player, partner, location)
         GAME:FadeOut(false, 30)
         GAME:EnterGroundMap("MaruHome", "CookingExit")
     elseif location == "Aurm's House" then
+        GAME:FadeOut(false, 30)
         GAME:EnterGroundMap("RexioHome", "Cooker")
     end
 end

@@ -74,33 +74,19 @@ function AppleTownMayor_pt2.AppleTownEntrance_Touch(obj, activator)
 end
 
 function AppleTownMayor_pt2.Item_Touch(obj, activator)
-  local item
-  local choice = math.random(3)
-  if choice == 3 then
-    item = "berry_kebab"
-  elseif choice then
-    item = "berry_sitrus"
-  else
-    item = "packed_honey"
-  end
-  COMMON.GiftItem(activator, item)
-
-  UI:SetSpeaker(activator)
-  UI:SetSpeakerEmotion("Inspired")
-  UI:WaitShowDialogue("(Woah, this is rare!)")
-  GROUND:Hide("Item")
+  EXPLCOMMON.ItemGetSpecial(0, activator)
   Titem_found = true
 end
 
 --characters
 
 function AppleTownMayor_pt2.Bullet_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Worried")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
   UI:WaitShowDialogue("This strange investigation,[pause=45] it's so confusing.")
 end
 
 function AppleTownMayor_pt2.Tanker_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Normal")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("...elementary, my dear Bullet.[pause=25] It wouldn't be an investigation without a bit of mystery, hmhm?")
 end
 

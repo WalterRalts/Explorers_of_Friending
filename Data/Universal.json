@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "PMDC.Data.UniversalActiveEffect, PMDC",
 "ZoneSteps": [
@@ -669,6 +669,18 @@
 "Value": {
 "$type": "PMDC.Dungeon.ReactivateItemsEvent, PMDC"
 }
+},
+{
+"Key": {
+"str": [
+-5
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
+"Script": "AzuNotLeader",
+"ArgTable": "{}"
+}
 }
 ],
 "OnTurnStarts": [
@@ -683,9 +695,57 @@
 "Script": "AzuNotLeader",
 "ArgTable": "{}"
 }
+},
+{
+"Key": {
+"str": [
+-3
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
+"Script": "TreeHeal",
+"ArgTable": "{}"
+}
+},
+{
+"Key": {
+"str": [
+-3
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
+"Script": "TreeHeal",
+"ArgTable": "{}"
+}
 }
 ],
 "OnTurnEnds": [
+{
+"Key": {
+"str": [
+-6
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
+"Script": "CleanTidy",
+"ArgTable": "{}"
+}
+},
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
+"Script": "TreeHeal",
+"ArgTable": "{}"
+}
+},
 {
 "Key": {
 "str": [
@@ -742,12 +802,12 @@
 {
 "Key": {
 "str": [
-1
+6
 ]
 },
 "Value": {
 "$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
-"Script": "RexioFocus",
+"Script": "AzuNotLeader",
 "ArgTable": "{}"
 }
 }
@@ -846,18 +906,6 @@
 },
 "Value": {
 "$type": "PMDC.Dungeon.PreSkillEvent, PMDC"
-}
-},
-{
-"Key": {
-"str": [
--10
-]
-},
-"Value": {
-"$type": "RogueEssence.Dungeon.BattleScriptEvent, RogueEssence",
-"Script": "RexioScan",
-"ArgTable": "{}"
 }
 },
 {

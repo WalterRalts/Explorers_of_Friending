@@ -6,8 +6,8 @@ function CupShufflePlay(difficulty, speed)
 
     --shuffle function
     local function switch_cups()
-        cup1 = math.random(1, 3)
-        cup2 = math.random(1, 3)
+        local cup1 = math.random(1, 3)
+        local cup2 = math.random(1, 3)
         while cup1 == cup2 do
             cup2 = math.random(1, 3)
         end

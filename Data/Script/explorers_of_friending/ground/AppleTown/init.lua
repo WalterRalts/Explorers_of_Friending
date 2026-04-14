@@ -16,12 +16,10 @@ local AppleTown = {}
 ---AppleTown.Init(map)
 --Engine callback function
 function AppleTown.Init(map)
-  COMMON.RespawnAllies()
-  GAME:SetTeamLeaderIndex(0)
+  EXPLCOMMON.SetLeaderFront()
   GAME:SetCanSwitch(false)
-  if SV.guild.day == 1 and SV.apple_town.visited == false then
+  if SV.Story.chap == 1 and SV.apple_town.visited == false then
     Apple.Tour()
-    SV.guild.time = SV.guild.time + 30
   end
 end
 
@@ -71,60 +69,59 @@ local azutalk = 0
 
 function AppleTown.Teammate1_Action(obj, activator)
   local tour = CH("AppleTG")
- COMMON.FaceEachother(activator, obj)
+EXPLCOMMON.FaceEachother(activator, obj)
   if azutalk == 1 then
-    COMMON.FaceEachother(activator, obj)
-    COMMON.SetCharAndEmotion(obj, "Inspired")
+   EXPLCOMMON.FaceEachother(activator, obj)
+   EXPLCOMMON.SetCharAndEmotion(obj, "Inspired")
     UI:WaitShowDialogue("Maru! Imagine how good of a pie mama could make with this!!")
 
-    COMMON.SetCharAndEmotion(obj, "Joyous")
+   EXPLCOMMON.SetCharAndEmotion(obj, "Joyous")
     UI:WaitShowDialogue("Let's bring it back!!")
 
-    COMMON.SetCharAndEmotion(activator, "Stunned")
+   EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
     UI:WaitShowDialogue("Azu,[pause=30] I think that would be illegal.")
 
-    
     GROUND:CharAnimateTurnTo(obj, Direction.UpRight, 4)
-    COMMON.SetCharAndEmotion(obj, "Angry")
+   EXPLCOMMON.SetCharAndEmotion(obj, "Angry")
     UI:WaitShowDialogue("Hmmph!")
-    COMMON.CharHop("Teammate1")
+   EXPLCOMMON.CharHop("Teammate1")
     UI:WaitShowDialogue("No fair...!")
   else
     azutalk = 1
-    COMMON.FaceEachother(obj, tour)
-    COMMON.FaceEachother(activator, tour)
-    COMMON.SetCharAndEmotion(tour, "Happy")
+   EXPLCOMMON.FaceEachother(obj, tour)
+   EXPLCOMMON.FaceEachother(activator, tour)
+   EXPLCOMMON.SetCharAndEmotion(tour, "Happy")
     UI:WaitShowDialogue("And this is the favorite, and famous, largest apple to discover.")
     UI:WaitShowDialogue("We hope that by keeping it infused with the ground,[pause=25] we will grow a whole big tree!")
 
-    COMMON.SetCharAndEmotion(obj, "Inspired")
+   EXPLCOMMON.SetCharAndEmotion(obj, "Inspired")
     UI:WaitShowDialogue("Whooaaaaa...!")
 
-    COMMON.SetCharAndEmotion(activator, "Normal")
+   EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
     UI:WaitShowDialogue("Pretty cool.")
   end
 end
 
 function AppleTown.AppleTG_Action(obj, activator)
   local azura = CH("Teammate1")
-  COMMON.SetCharAndEmotion(obj, "Worried")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
   UI:WaitShowDialogue("Sir, are you related to the Azurill drooling at the Grand Apple?")
 
   GROUND:CharTurnToCharAnimated(activator, azura, 4)
-  COMMON.SetCharAndEmotion(activator, "Stunned")
+ EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
   UI:WaitShowDialogue("...um, yeah...?")
 
-  COMMON.SetCharAndEmotion(obj, "Pain")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Pain")
   UI:WaitShowDialogue("Please control her...")
 end
 
 function AppleTown.ApplinD_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Normal")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("Where are the golden apples?[pause=50] Have we tried using those?")
 end
 
 function AppleTown.ApplinC_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Normal")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("Red just isn't my style.[pause=50] Are there apples in orange?")
 end
 
@@ -139,66 +136,66 @@ function AppleTown.AppleTownMayorEnter_Touch(obj, activator)
 end
 
 function AppleTown.Puff_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Worried")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
   UI:WaitShowDialogue("I got in trouble once drooling on the Apple.")
-  COMMON.SetCharAndEmotion(obj, "Pain")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Pain")
   UI:WaitShowDialogue("Never have I ever thought I would get pelted by the one thing I love...!")
 end
 
 function AppleTown.Bubba_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Normal")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("I heard that some of us went to fight in Entoh.")
-  COMMON.SetCharAndEmotion(obj, "Worried")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
   UI:WaitShowDialogue("But usually we send out a signal, so maybe it's just a rumor?")
 end
 
 function AppleTown.ApplinA_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Happy")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Happy")
   UI:WaitShowDialogue("Maybe we just missed the signal. Been a while since we've ever had one.")
 end
 
 function AppleTown.ApplinB_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Normal")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("Maybe the fighters just wanted to throw hands.")
-  COMMON.SetCharAndEmotion(obj, "Worried")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
   UI:WaitShowDialogue("It's not against us to fight a bunch.")
 end
 
 function AppleTown.Chum_Action(obj, activator)
   local rexio = CH("Teammate2")
-  COMMON.SetCharAndEmotion(obj, "Normal")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("[speed=0.2]...so you want apples...?")
 
-  COMMON.SetCharAndEmotion(rexio, "Angry")
+ EXPLCOMMON.SetCharAndEmotion(rexio, "Angry")
   UI:WaitShowDialogue("Yes![pause=30] Please![pause=60] And I mean, PLEASE!")
 
-  COMMON.SetCharAndEmotion(obj, "Normal")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("[speed=0.1]Well...")
   GROUND:CharAnimateTurnTo(obj, Direction.Left, 12)
-  COMMON.SetCharAndEmotion(obj, "Normal")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowTimedDialogue("[speed=0.2]...maybe they're...")
 
-  COMMON.CharAngry("Teammate2")
-  COMMON.CharHop("Teammate2")
-  COMMON.SetCharAndEmotion(rexio, "Shouting")
+ EXPLCOMMON.CharAngry("Teammate2")
+ EXPLCOMMON.CharHop("Teammate2")
+ EXPLCOMMON.SetCharAndEmotion(rexio, "Shouting")
   UI:WaitShowDialogue("WHERE ARE THEY?!?!")
 
   GROUND:CharAnimateTurnTo(obj, Direction.DownRight, 12)
-  COMMON.SetCharAndEmotion(obj, "Pain")
+ EXPLCOMMON.SetCharAndEmotion(obj, "Pain")
   UI:WaitShowTimedDialogue("[speed=0.2]Geez, brother.[pause=80] No need to get all feisty.", 20)
 
-  COMMON.FaceEachother(rexio, activator)
-  COMMON.SetCharAndEmotion(rexio, "Teary-Eyed")
+ EXPLCOMMON.FaceEachother(rexio, activator)
+ EXPLCOMMON.SetCharAndEmotion(rexio, "Teary-Eyed")
   UI:WaitShowDialogue("Maru, please...!")
 
-  COMMON.SetCharAndEmotion(activator, "Stunned")
+ EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
   UI:WaitShowDialogue("I don't think I can help...")
 
   GROUND:CharAnimateTurnTo(rexio, Direction.UpLeft, 3)
-  COMMON.SetCharAndEmotion(rexio, "Pain")
+ EXPLCOMMON.SetCharAndEmotion(rexio, "Pain")
   UI:WaitShowDialogue("Waaa...")
 
-  COMMON.SetCharAndEmotion(activator, "Normal")
+ EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
   UI:WaitShowDialogue("(I think I'll need to look for the apples before Rexio loses it.)")
 end
 
@@ -207,7 +204,7 @@ function AppleTown.Teammate2_Action(obj, activator)
 end
 
 function AppleTown.AppleWay_Touch(obj, activator)
-  COMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(0), "Normal")
+ EXPLCOMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(0), "Normal")
   UI:WaitShowDialogue("Apples first.")
 end
 

@@ -64,7 +64,7 @@ function RexioScan:Scan()
                 GAME:CutsceneMode(false)
               end
             elseif GAME:GetPlayerPartyCount() == 1 then
-              if SV.entoh_town.HelperChapter == 3 and not KeyGet == true then
+              if SV.Story.sect == 3 and not KeyGet == true then
                 GAME:CutsceneMode(true)
                 GAME:WaitFrames(15)
                 SOUND:PlaySE("Battle/_UNK_DUN_Charge")
@@ -97,6 +97,14 @@ function RexioScan:Scan()
   end)
 end
 
+function RexioScan:GameCheck()
+  if type(SV.Story.flag) == "number" then
+    PrintInfo("Chapter " .. SV.Story.chap .. ", part " .. SV.Story.sect .. ", with a flag of " .. SV.Story.flag)
+  else
+    PrintInfo("The flag is a table!")
+  end
+end
+
 function RexioScan:EnterDungeon()
   in_dungeon = true
 end
@@ -109,6 +117,7 @@ function RexioScan:Subscribe(med)
   med:Subscribe("RexioScan", EngineServiceEvents.Update, function() self:Scan() end)
   med:Subscribe("RexioScan", EngineServiceEvents.DungeonModeBegin, function() self:EnterDungeon() end)
   med:Subscribe("RexioScan", EngineServiceEvents.DungeonModeEnd, function() self:ExitDungeon() end)
+  med:Subscribe("RexioScan", EngineServiceEvents.GroundMapInit, function() self:GameCheck() end)
 end
 
 function RexioScan:UnSubscribe(med)

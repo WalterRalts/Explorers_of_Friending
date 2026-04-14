@@ -25,8 +25,8 @@ end
 --Engine callback function
 function HertzGate.Init(map)
   DoorClosed = true
-  COMMON.RespawnAllies()
-  GAME:SetTeamLeaderIndex(0)
+  EXPLCOMMON.SetLeaderFront()
+  GAME:SetCanSwitch(true)
   CH("Teammate1").CollisionDisabled = true
   CH("Teammate2").CollisionDisabled = true
   GROUND:TeleportTo(CH("Teammate1"), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.DownRight, 0)
@@ -76,26 +76,26 @@ end
 -------------------------------
 
 function HertzGate.Exit_Touch(obj, activator)
-  COMMON.FadeEnterGround("DesertN", "NorthEnter")
+ EXPLCOMMON.FadeEnterGround("DesertN", "NorthEnter")
 end
 
 function HertzGate.Durian_Action(obj, activator)
   if DoorClosed == true then
-    COMMON.SetCharAndEmotion(obj, "Angry")
+   EXPLCOMMON.SetCharAndEmotion(obj, "Angry")
     UI:WaitShowDialogue("You want to get into the stupid town?!")
     SV.guild.time = 10
 
-    COMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(0), "Happy")
+   EXPLCOMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(0), "Happy")
     UI:WaitShowDialogue("Sounds like you don't like it.[pause=40][emote=Normal] Can we get in?")
 
-    COMMON.SetCharAndEmotion(obj, "Angry")
+   EXPLCOMMON.SetCharAndEmotion(obj, "Angry")
     UI:WaitShowDialogue("No, you stupid child!")
     UI:WaitShowDialogue("You need the stupid password to get into the stupid town!")
 
-    COMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(1), "Stunned")
+   EXPLCOMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(1), "Stunned")
     UI:WaitShowDialogue("Password...?")
 
-    COMMON.SetCharAndEmotion(obj, "Angry")
+   EXPLCOMMON.SetCharAndEmotion(obj, "Angry")
     UI:WaitShowDialogue("Just say the stupid password already!")
     local password = "442149"
     UI:NameMenu("Just say the stupid password already!", "Password", 200, "Numbers")
@@ -104,37 +104,39 @@ function HertzGate.Durian_Action(obj, activator)
       UI:SetSpeakerEmotion("Pain")
       UI:WaitShowDialogue("Stupid answer, stupid children! Get out!")
 
-      COMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(2), "Worried")
+     EXPLCOMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(2), "Worried")
       UI:WaitShowDialogue("Ugh, gotta try again...")
     else
       GAME:WaitFrames(70)
 
-      COMMON.SetCharAndEmotion(obj, "Normal")
+     EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
       UI:WaitShowDialogue("You three are not so stupid, actually.")
 
-      COMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(0), "Happy")
+     EXPLCOMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(0), "Happy")
       UI:WaitShowDialogue("Hehe.")
 
       GROUND:MoveToPosition(obj, obj.Position.X - 26, obj.Position.Y, false, 2)
       GROUND:CharAnimateTurnTo(obj, Dir8.DownRight, 3)
-      COMMON.SetCharAndEmotion(obj, "Sigh")
+     EXPLCOMMON.SetCharAndEmotion(obj, "Sigh")
       UI:WaitShowDialogue("You may enter the stupid town.")
 
       GROUND:ObjectSetAnim(OBJ("Door"), 50, 0, 4, RogueElements.Dir8.Down, 1)
       DoorClosed = false
 
-      COMMON.CharHappy("Teammate1")
-      COMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(1), "Joyous")
+     EXPLCOMMON.CharHappy("Teammate1")
+     EXPLCOMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(1), "Joyous")
       UI:WaitShowDialogue("Let's go!")
+
+      SV.Story.sect = 1
     end
   else
-    COMMON.SetCharAndEmotion(obj, "Normal")
+   EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
     UI:WaitShowDialogue("You guys aren't so stupid,[pause=50] not[emote=Happy] bad not bad.")
   end
 end
 
 function HertzGate.Door_Touch(obj, activator)
-  COMMON.FadeEnterGround("HertzEntrance", "EntranceEnter")
+ EXPLCOMMON.FadeEnterGround("HertzEntrance", "EntranceEnter")
 end
 
 return HertzGate

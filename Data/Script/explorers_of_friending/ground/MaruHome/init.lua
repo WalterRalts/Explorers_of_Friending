@@ -21,38 +21,33 @@ function MaruHome.Init(map)
   COMMON.RespawnAllies()
   local partner = CH('Teammate1')
   partner.CollisionDisabled = true
-  if SV.tarro_town.PieChapter <= 1 then
-    Bluetails.PieTime()
-    SV.tarro_town.PieChapter = 2
-  elseif SV.tarro_town.PieChapter == 4 then -- Apple secured
-    Bluetails.RealPieTime()
-    Bluetails.AfterPieTime()
-  elseif SV.tarro_town.PieChapter == 10 or SV.tarro_town.PieChapter == 11 then -- before mail
+  if SV.Story.chap == -1 then
+    if SV.Story.sect == 0 then
+      Bluetails.PieTime()
+    elseif SV.Story.sect == 2 then -- Apple secured
+      Bluetails.RealPieTime()
+      Bluetails.AfterPieTime()
+    end
+  elseif SV.Story.chap == -3 and SV.Story.sect == 0 then -- before mail
     GROUND:Hide("Arama")
     GROUND:TeleportTo(CH("Amazuru"), 229, 248, Direction.DownRight, 0)
-    if SV.tarro_town.PieChapter == 10 then
-      UI:WaitShowTitle("Prologue A-2:\nMysteries", 120)
-      GAME:WaitFrames(30)
-      UI:WaitHideTitle(120)
+    if mail_read == nil then
       Bluetails.MailTime()
-    elseif SV.tarro_town.PieChapter == 11 and mail_read == 1 then
-      -- Move checks to DarknessChapter
+    elseif mail_read == 1 then
       Bluetails.AfterMailTime()
-      mail_read = 3
-      SV.tarro_town.PieChapter = 12
-      SV.tarro_town.DarknessChapter = 1
+    else
+      Bluetails.AfterCook()
     end
     COMMON.CreateWalkArea("Amazuru", 195, 225, 72, 72)
-    
-  elseif SV.tarro_town.DarknessChapter >= 1 then -- after mail and cooking
+
+  elseif SV.Story.chap == -3 and SV.Story.sect == 1 then -- after mail and cooking
     GROUND:Hide("Arama")
     GROUND:Hide("Amazuru")
   end
-
   if OutEnter == 2 then
     GROUND:TeleportTo(partner, 273, 176, Direction.Down, 0)
   end
-  
+
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   GAME:CutsceneMode(false)
   GAME:FadeIn(20)
@@ -107,7 +102,7 @@ function MaruHome.Arama_Action(obj, activator)
   local maru = CH("PLAYER")
   local arama = CH("Arama")
   GROUND:CharTurnToCharAnimated(arama, maru, 2)
-  if SV.tarro_town.PieChapter < 5 then
+  if SV.Story.chap == -1 then
     UI:SetSpeaker(arama)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("Okay, I know that you two are well-taught for this, but...")
@@ -123,7 +118,6 @@ function MaruHome.Arama_Action(obj, activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("But have fun in town,[pause=30] I guess...?")
   end
-  
 end
 
 function MaruHome.Amazuru_Action(obj, activator)
@@ -132,7 +126,7 @@ function MaruHome.Amazuru_Action(obj, activator)
   local maru = CH("PLAYER")
   GROUND:CharTurnToCharAnimated(amazuru, maru, 2)
 
-  if SV.tarro_town.PieChapter < 5 then
+  if SV.Story.chap == -1 then
     UI:SetSpeaker(amazuru)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("You two will be fine in there.")
@@ -151,16 +145,16 @@ function MaruHome.Amazuru_Action(obj, activator)
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("[speed=0.05]...b[speed=1.0][emote=Determined]ooooooo.")
-  elseif SV.tarro_town.PieChapter < 10 then
+  elseif SV.Story.chap == -2 then
     UI:SetSpeaker(amazuru)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Have fun out there, kiddos!")
-  elseif SV.tarro_town.PieChapter < 15 then
+  elseif SV.Story.chap == -3 then
     UI:SetSpeaker(amazuru)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Shouldn't be too hard to find our mailbox,[pause=30] t[emote=Happy]he handle has our tail on it.")
   end
-  
+
 end
 
 -- Enters --
@@ -168,23 +162,23 @@ function MaruHome.BasementEntrance_Touch(obj, activator)
   local maru = CH("PLAYER")
   local azura = CH("Teammate1")
 
-  if SV.tarro_town.PieChapter < 5 then
+  if SV.Story.chap == -1 then
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("Maru,[pause=35] apple!")
-    
+
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Oh,[pause=15] yes,[pause=15] apple,[pause=15] yep.")
-  elseif SV.tarro_town.PieChapter < 8 then
+  elseif SV.Story.chap == -2 then
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("(Probably not the time...)")
-  elseif SV.tarro_town.PieChapter == 11 then
+  elseif SV.Story.chap == -3 and SV.Story.sect == 0 then
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("[speed=0.2]Hm...[pause=30] [speed=1.0]n[emote=Happy]ah.[pause=30] The[emote=Happy] only thing down there is Mom and Dad's bed.")
-  elseif SV.tarro_town.PieChapter > 11 then
+  elseif SV.Story.chap == -3 and SV.Story.sect == 1 then
     if oven_perms_need == false then
       UI:SetSpeaker(maru)
       UI:SetSpeakerEmotion("Worried")
@@ -229,12 +223,12 @@ function MaruHome.MaruHomeExit_Touch(obj, activator)
     UI:WaitShowDialogue("Hang on there, bud!")
 
     GROUND:MoveToPosition(amazuru, maru.Position.X, maru.Position.Y - 24, false, 6)
-    COMMON.FaceEachother(maru, amazuru)
+   EXPLCOMMON.FaceEachother(maru, amazuru)
     COMMON.GiftItem(CH("PLAYER"), "berry_oran")
 
     UI:SetSpeaker(amazuru)
     UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("That berry in your bag will come in handy later.")
+    UI:WaitShowDialogue("That berry you're holding will come in handy later.")
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Hold onto it when you get into a pinch.")
 
@@ -244,15 +238,15 @@ function MaruHome.MaruHomeExit_Touch(obj, activator)
     GROUND:CharAnimateTurn(maru, Dir8.Down, 3, true)
     SV.GroundTutorial = 2
   end
-  if SV.tarro_town.PieChapter >= 2 and SV.tarro_town.PieChapter <= 4 then
+  if SV.Story.chap == -1 then
     print("Exiting?")
     GAME:FadeOut(false, 20)
     GAME:EnterGroundMap("TarroTownEast", "TTEast_MaruHomeEnter")
-  elseif SV.tarro_town.PieChapter <= 8 then
+  elseif SV.Story.chap == -2 then
     print("Exiting?")
     GAME:FadeOut(false, 20)
     GAME:EnterGroundMap("TarroTownEast_ch2", "TTEast_MaruHomeEnter")
-  elseif SV.tarro_town.PieChapter <= 15 then
+  elseif SV.Story.chap == -3 then
     print("Exiting?")
     GAME:FadeOut(false, 20)
     GAME:EnterGroundMap("TarroTownEast_ch3", "TTEast_MaruHomeEnter")
@@ -298,7 +292,7 @@ end
 
 function MaruHome.MaruOven_Action(obj, activator)
 
-  if SV.tarro_town.DarknessChapter == 1 then
+  if SV.Story.sect == 1 then
     if oven_perms_given == true then
       GAME:EnterGroundMap("MaruHomeFood", "Marker")
     else
@@ -311,7 +305,7 @@ function MaruHome.MaruOven_Action(obj, activator)
       oven_perms_given = false
       oven_perms_need = true
     end
-  elseif SV.tarro_town.DarknessChapter > 1 then
+  elseif SV.Story.sect > 1 then
     GAME:EnterGroundMap("MaruHomeFood", "Marker")
   else
     UI:SetSpeaker(activator)

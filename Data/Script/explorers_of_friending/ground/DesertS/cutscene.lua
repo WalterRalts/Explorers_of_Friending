@@ -3,6 +3,12 @@ Desert = {}
 function Desert.KassyMeet()
     GAME:CutsceneMode(true)
     SV.hertz_town.desert_scene = false
+    SV.Story = {
+        chap = 2,
+        sect = 0,
+        flag = 0,
+        dunsect = 0
+    }
     local azura = CH("Teammate1")
     local rexio = CH("Teammate2")
     local maru = CH("PLAYER")
@@ -24,19 +30,19 @@ function Desert.KassyMeet()
             GAME:WaitFrames(100)
             UI:WaitHideTitle(60)
 
-            COMMON.SetCharAndEmotion(rexio, "Pain")
-            UI:WaitShowDialogue("[pause=45][speed=0.4]...heat... sudden blast just... hit me...")
+           EXPLCOMMON.SetCharAndEmotion(rexio, "Pain")
+            UI:WaitShowDialogue("[pause=45][speed=0.4]Augh... heat... sudden blast just... hit me...")
 
-            COMMON.SetCharAndEmotion(maru, "Normal")
+           EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
             UI:WaitShowDialogue("Does this count as training?")
 
-            COMMON.SetCharAndEmotion(rexio, "Pain")
+           EXPLCOMMON.SetCharAndEmotion(rexio, "Pain")
             UI:WaitShowDialogue("[speed=0.4]Sh-shut it, Bluetail...!")
 
-            COMMON.SetCharAndEmotion(maru, "Normal")
+           EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
             UI:WaitShowDialogue("Alrighty.")
 
-            COMMON.SetCharAndEmotion(azura, "Worried")
+           EXPLCOMMON.SetCharAndEmotion(azura, "Worried")
             UI:WaitShowDialogue("Where could the treasure be?[pause=20] Ms. Kitkit never told us.")
             end)
         local the2 = TASK:BranchCoroutine(function()
@@ -52,62 +58,61 @@ function Desert.KassyMeet()
     GROUND:AnimateToPosition(kassy, "Walk", Dir8.Down, maru.Position.X, maru.Position.Y - 60, 1.5, 3, 0)
 
     kassy.Data.Nickname = "???"
-    COMMON.CharHappy("Kassy")
-    COMMON.SetCharAndEmotion(kassy, "Inspired")
+   EXPLCOMMON.CharHappy("Kassy")
+   EXPLCOMMON.SetCharAndEmotion(kassy, "Inspired")
     UI:WaitShowDialogue("I overheard the word \"treasure\".")
     GROUND:CharAnimateTurnTo(azura, Direction.UpRight, 4)
 
-    COMMON.SetCharAndEmotion(rexio, "Dizzy")
+   EXPLCOMMON.SetCharAndEmotion(rexio, "Dizzy")
     UI:WaitShowDialogue("[speed=0.4]How convenient... ack...")
 
     GROUND:CharAnimateTurnTo(kassy, Direction.Up, 4)
     GROUND:CharSetAnim(kassy, "SpAttack", false)
     GROUND:CharSetAction(kassy, RogueEssence.Ground.PoseGroundAction(kassy.Position, kassy.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("SpAttack")))
-    COMMON.SetCharAndEmotion(kassy, "Dizzy")
+    EXPLCOMMON.SetCharAndEmotion(kassy, "Dizzy")
     UI:WaitShowDialogue("The legendary treasure of the Hertz Sands!")
     UI:WaitShowDialogue("I knew it was real, and it shall be mine!")
 
-    COMMON.CharSweatdrop("PLAYER")
-    COMMON.SetCharAndEmotion(maru, "Stunned")
+    EXPLCOMMON.CharSweatdrop("PLAYER")
+    EXPLCOMMON.SetCharAndEmotion(maru, "Stunned")
     UI:WaitShowDialogue("...")
     GROUND:CharSetAnim(kassy, "Idle", false)
     GROUND:CharAnimateTurnTo(kassy, Direction.Down, 4)
 
-    COMMON.SetCharAndEmotion(azura, "Happy")
+    EXPLCOMMON.SetCharAndEmotion(azura, "Happy")
     UI:WaitShowDialogue("Lead the way!")
 
-    COMMON.SetCharAndEmotion(kassy, "Normal")
+    EXPLCOMMON.SetCharAndEmotion(kassy, "Normal")
     UI:WaitShowDialogue("I can't.[pause=50] The treasure is in town and town's locked up.")
     UI:WaitShowDialogue("Need some password or whatever.")
 
-    COMMON.SetCharAndEmotion(maru, "Normal")
+    EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
     UI:WaitShowDialogue("...you don't live here?")
 
     local function erm()
         GROUND:CharAnimateTurnTo(kassy, Direction.DownRight, 4)
-        COMMON.CharSweatdrop("Kassy")
+        EXPLCOMMON.CharSweatdrop("Kassy")
     end
     local function well()
         GROUND:CharAnimateTurnTo(kassy, Direction.Down, 4)
-        COMMON.CharHop("Kassy")
+       EXPLCOMMON.CharHop("Kassy")
     end
-    COMMON.SetCharAndEmotion(kassy, "Stunned")
+    EXPLCOMMON.SetCharAndEmotion(kassy, "Stunned")
     UI:WaitShowDialogue("Uh, well[pause=40],[script=0] of[emote=Happy] course I do![pause=40][script=1] I just forgot the password, haha!", {erm, well})
 
-    COMMON.SetCharAndEmotion(azura, "Happy")
+    EXPLCOMMON.SetCharAndEmotion(azura, "Happy")
     UI:WaitShowDialogue("Sounds fair to me!")
 
-    COMMON.SetCharAndEmotion(rexio, "Dizzy")
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Dizzy")
     UI:WaitShowDialogue("[speed=0.4]Alright, team...!")
     GROUND:CharAnimateTurnTo(rexio, Direction.Down, 4)
     GAME:WaitFrames(35)
-    GROUND:CharSetAnim(rexio, "Pose", true)
-    GROUND:CharSetAction(rexio, RogueEssence.Ground.PoseGroundAction(rexio.Position, rexio.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Pose")))
+    EXPLCOMMON.StartAndStop(rexio, "Pose")
     UI:WaitShowDialogue("[speed=0.4]Unlock... the town...!")
     GAME:WaitFrames(120)
 
     GROUND:CharAnimateTurnTo(kassy, Direction.Up, 4)
-    COMMON.SetCharAndEmotion(kassy, "Happy")
+    EXPLCOMMON.SetCharAndEmotion(kassy, "Happy")
     UI:WaitShowDialogue("I'll be waiting at the gate up North, you guys have fun!")
 
     local the1 = TASK:BranchCoroutine(function()
@@ -116,7 +121,7 @@ function Desert.KassyMeet()
         end)
     local the2 = TASK:BranchCoroutine(function()
         GAME:WaitFrames(70)
-        COMMON.SetCharAndEmotion(maru, "Normal")
+       EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
         GROUND:CharTurnToChar(maru, rexio)
         GAME:WaitFrames(40)
         UI:WaitShowDialogue("Nice to see you having fun.")
@@ -125,9 +130,8 @@ function Desert.KassyMeet()
         GAME:WaitFrames(40)
         GROUND:CharAnimateTurnTo(rexio, Direction.Down, 4)
         GAME:WaitFrames(35)
-        GROUND:CharSetAnim(rexio, "Pose", true)
-        GROUND:CharSetAction(rexio, RogueEssence.Ground.PoseGroundAction(rexio.Position, rexio.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Pose")))
-        COMMON.SetCharAndEmotion(rexio, "Dizzy")
+        EXPLCOMMON.StartAndStop(rexio, "Pose")
+        EXPLCOMMON.SetCharAndEmotion(rexio, "Dizzy")
         UI:WaitShowDialogue("[speed=0.4]...yeeeaaaaah!")
         end)
     TASK:JoinCoroutines({the1, the2})

@@ -23,25 +23,23 @@ function TarroTownEast.Init(map)
 
   GROUND:Hide("MrSeed")
 
-  if OutEnter == 1 and SV.tarro_town.PieChapter <= 2 then
+  if OutEnter == 1 then
     GROUND:TeleportTo(partner, 355, 401, Direction.Down, 0)
-    GAME:FadeIn(20)
-  elseif SV.tarro_town.PieChapter ~= 4 then
-    if dungeon_oof ~= 1 then
-      if SV.tarro_town.PieChapter == 2.1 then
-        TarroTownEast.TarroForrestFailed()
-      elseif SV.tarro_town.PieChapter == 2.2 then
-        TarroTownEast.TarroForrestFailed()
-      end
-    end  
-  elseif SV.tarro_town.PieChapter == 4 then
+  end
+  if SV.Story.sect == 1 then
+    if SV.Story.flag == 1 then
+      TarroTownEast.TarroForrestFailed()
+    elseif SV.Story.flag == 2 then
+      TarroTownEast.TarroForrestFailed()
+    end
+  elseif SV.Story.sect == 2 then
     GROUND:TeleportTo(tango, 476, 279, Direction.UpLeft, 0)
     GROUND:Unhide("MrSeed")
     if OutEnter == 4 then
       GROUND:TeleportTo(azura, 244, 96, Direction.Down, 0)
     end
   end
-  
+
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   partner.CollisionDisabled = true
 end
@@ -49,8 +47,9 @@ end
 ---TarroTownEast.Enter(map)
 --Engine callback function
 function TarroTownEast.Enter(map)
-  
+
   GAME:FadeIn(20)
+
 end
 
 ---TarroTownEast.Exit(map)
@@ -63,9 +62,6 @@ end
 ---TarroTownEast.Update(map)
 --Engine callback function
 function TarroTownEast.Update(map)
-  if SV.tarro_town.PieChapter == 0 then
-    SV.tarro_town.PieChapter = 1
-  end
   Partner()
 end
 
@@ -76,7 +72,7 @@ function TarroTownEast.TarroForrestFailed()
 
   GROUND:TeleportTo(senna, 220, 126, Direction.Up, 0)
   GROUND:TeleportTo(azura, 244, 96, Direction.Down, 0)
-  dungeon_oof = 1
+
   GAME:CutsceneMode(true)
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Pain")
@@ -115,12 +111,12 @@ function TarroTownEast.TarroForrestFailed()
   UI:SetSpeaker(senna)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("Next time,[pause=68] y[emote=Determined]ou got this!")
-  dungeon_oof = 0
 
   GROUND:MoveToPosition(senna, 52, 100, false, 3)
   GROUND:MoveToPosition(senna, 52, 246, false, 2)
   GAME:CutsceneMode(false)
   GROUND:MoveToPosition(senna, 7, 246, false, 4)
+  SV.Story.flag = 0
 end
 
 ---TarroTownEast.GameSave(map)
@@ -142,6 +138,8 @@ end
 -- Entities Callbacks
 -------------------------------
 
+--Entrances
+
 function TarroTownEast.TTEast_WExit_Touch(obj, activator)
   OutEnter = 1
   GAME:FadeOut(false, 20)
@@ -149,11 +147,10 @@ function TarroTownEast.TTEast_WExit_Touch(obj, activator)
 end
 
 function TarroTownEast.TarroForestEntrance_Touch(obj, activator)
-
   local maru = CH("PLAYER")
   local azura = CH('Teammate1')
 
-  if SV.tarro_town.PieChapter == 1 then
+  if SV.Story.sect == 0 then
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("This leads to a dungeon, doesn't it...?")
@@ -168,7 +165,7 @@ function TarroTownEast.TarroForestEntrance_Touch(obj, activator)
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Right. Pie first.")
-  elseif SV.tarro_town.PieChapter == 2 then
+  elseif SV.Story.sect == 1 then
     GROUND:CharTurnToCharAnimated(maru, azura, 4)
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
@@ -177,45 +174,117 @@ function TarroTownEast.TarroForestEntrance_Touch(obj, activator)
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Determined")
     UI:WaitShowDialogue("Yeah! Pie time!")
-    
+
     GROUND:CharAnimateTurn(maru, Direction.Up, 4, true)
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Determined")
     UI:WaitShowDialogue("Let's do it.")
-    
+
     COMMON.UnlockWithFanfare("tarro_forest", false)
     local dungeon_entrances = {"tarro_forest"}
     local ground_entrances = {}
     COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances)
-    dungeon_oof = 0
-  elseif SV.tarro_town.PieChapter > 2 then
+  elseif SV.Story.sect > 1 then
     local dungeon_entrances = {"tarro_forest"}
     local ground_entrances = {}
-    DUNsection = 0
+    SV.Story.dunsect = 0
     COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances)
   else
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Hmm... maybe later...")
+    UI:WaitShowDialogue("Something isn't right... probably not the time to enter the dungeon...")
   end
 end
+
+function TarroTownEast.SennaHomeEntrance_Touch(obj, activator)
+  local maru = CH("PLAYER")
+  local ziggy = CH("Ziggy")
+  UI:SetSpeaker(ziggy)
+  UI:SetSpeakerEmotion("Angry")
+ EXPLCOMMON.FaceEachother(maru, ziggy)
+  UI:WaitShowDialogue("AHA! YOU'VE BEEN STEALING MY BERRIES![pause=45] E[emote=Worried]r, uh... [pause=20]OUR[emote=Determined] BERRIES!")
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Surprised")
+  UI:WaitShowDialogue("No! I didn't![pause=25] I haven't been in your house!")
+
+  UI:SetSpeaker(ziggy)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("...oh, sorry.")
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Well...")
+  UI:SetSpeakerEmotion("Determined")
+  UI:WaitShowDialogue("NO ENTRY ANYWAY!")
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("Right...")
+end
+
+function TarroTownEast.MaruHomeEntrance_Touch(obj, activator)
+  GAME:FadeOut(false, 20)
+  GAME:EnterGroundMap("MaruHome", "MaruHome_MainEnter")
+end
+
+function TarroTownEast.TTEast_NExit_Touch(obj, activator)
+  local maru = CH("PLAYER")
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("This path leads into town.")
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Though, now may not be the time.[pause=45] Pie's waiting.")
+end
+
+---Objects
+
+function TarroTownEast.TTEastSign_Action(obj, activator)
+  local maru = CH("PLAYER")
+  UI:ResetSpeaker()
+  UI:SetAutoFinish(true)
+  UI:WaitShowDialogue("<- Tarro Town Outskirts \n Tarro Town Square ^")
+
+  UI:SetAutoFinish(false)
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Normal")
+  GROUND:CharAnimateTurn(maru, Direction.Left, 4, true)
+  UI:WaitShowDialogue("(I see.[pause=40] So that's the way to the other side of town.)")
+  UI:WaitShowDialogue("(Praise be the deity of well-placed signs.)")
+end
+
+function TarroTownEast.Bluetail_Mailbox_Action(obj, activator)
+  local maru = CH("PLAYER")
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("(I guess I should check the mail...)")
+  GAME:WaitFrames(80)
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("(Nothin'.)")
+end
+
+--Characters
 
 Ziggy_talk = 0
 function TarroTownEast.Ziggy_Action(obj, activator)
   local maru = CH("PLAYER")
   local azura = CH('Teammate1')
   local ziggy = CH("Ziggy")
-  if SV.tarro_town.PieChapter <= 2 then
+  if SV.Story.sect <= 1 then
     AI:DisableCharacterAI(azura)
     GROUND:MoveToPosition(maru, 460, 422, false, 8)
     GROUND:MoveToPosition(azura, 460, 400, false, 8)
     GROUND:CharTurnToCharAnimated(maru, ziggy, 4)
-    COMMON.FaceEachother(azura, ziggy)
+   EXPLCOMMON.FaceEachother(azura, ziggy)
     if senna_check_ziggy == 1 then
       UI:SetSpeaker(azura)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("ZIG!")
-      
+
       UI:SetSpeaker(ziggy)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("AZU!")
@@ -234,7 +303,7 @@ function TarroTownEast.Ziggy_Action(obj, activator)
         UI:SetSpeaker(azura)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("ZIG!")
-        
+
         UI:SetSpeaker(ziggy)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("AZU!")
@@ -279,14 +348,14 @@ function TarroTownEast.Ziggy_Action(obj, activator)
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("ZIG!")
-    
+
     UI:SetSpeaker(ziggy)
     UI:SetSpeakerEmotion("Sad")
     UI:WaitShowDialogue("Azuuuuu![pause=25] When can I get a piece of pie?!")
 
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Well it's made for us, Ziggy.[pause=15] She won't have enough for you now...")
+    UI:WaitShowDialogue("Well it's made for us, Ziggy.[pause=25] [emote=Normal]She won't have enough for you probably...")
 
     UI:SetSpeaker(ziggy)
     UI:SetSpeakerEmotion("Teary-Eyed")
@@ -299,7 +368,7 @@ function TarroTownEast.Sunny_Action(obj, activator)
   local sunny = CH("Sunny")
   local tango = CH('Tango')
   local mrseed = CH("MrSeed")
-  if SV.tarro_town.PieChapter < 4 then
+  if SV.Story.sect < 2 then
     UI:SetSpeaker(sunny)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("This is the perfect place for my photosynthesis classes!")
@@ -314,7 +383,7 @@ function TarroTownEast.Sunny_Action(obj, activator)
     UI:WaitShowTimedDialogue("Well... er... [pause=50][emote=Pain]...[br]I uh...[pause=65][br]...", 30)
     UI:SetSpeakerEmotion("Determined")
     UI:WaitShowDialogue("I'll find someone!")
-  elseif SV.tarro_town.PieChapter == 4 then
+  elseif SV.Story.sect == 2 then
     UI:SetSpeaker(sunny)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("I told you I'd find someone!")
@@ -338,32 +407,7 @@ function TarroTownEast.Sunny_Action(obj, activator)
     UI:SetSpeaker(sunny)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("[speed=0.4]W-[pause=13]well...[speed=1.1][pause=40] yes![pause=15] I[emote=Determined]'m still looking!")
-  elseif SV.tarro_town.PieChapter == 5 then
-    UI:SetSpeaker(sunny)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("I told you I'd find someone!")
-
-    UI:SetSpeaker(tango)
-    UI:SetSpeakerEmotion("Stunned")
-    GROUND:CharTurnToCharAnimated(tango, mrseed, 4)
-    UI:WaitShowDialogue("...who's this?")
-    GROUND:CharTurnToCharAnimated(sunny, mrseed, 4)
-
-    UI:SetSpeaker(mrseed)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Yo.")
-
-    UI:SetSpeaker(tango)
-    UI:SetSpeakerEmotion("Sigh")
-    UI:WaitShowDialogue("...")
-    UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("Is that it?[pause=0] One other student?")
-
-    UI:SetSpeaker(sunny)
-    UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("W-well... yes! I[emote=Determined]'m still looking!")
   end
-  
 end
 
 function TarroTownEast.Tango_Action(obj, activator)
@@ -372,20 +416,6 @@ end
 
 function TarroTownEast.MrSeed_Action(obj, activator)
   TarroTownEast.Sunny_Action()
-end
-
-function TarroTownEast.TTEastSign_Action(obj, activator)
-  local maru = CH("PLAYER")
-  UI:ResetSpeaker()
-  UI:SetAutoFinish(true)
-  UI:WaitShowDialogue("<- Tarro Town Outskirts \n Tarro Town Square ^")
-
-  UI:SetAutoFinish(false)
-  UI:SetSpeaker(maru)
-  UI:SetSpeakerEmotion("Normal")
-  GROUND:CharAnimateTurn(maru, Direction.Left, 4, true)
-  UI:WaitShowDialogue("(I see.[pause=40] So that's the way to the other side of town.)")
-  UI:WaitShowDialogue("(Praise be the deity of well-placed signs.)")
 end
 
 function TarroTownEast.Tsudo_Action(obj, activator)
@@ -415,7 +445,7 @@ function TarroTownEast.Senna_Action(obj, activator)
   local maru = CH("PLAYER")
   local azura = CH("Teammate1")
   local senna = CH('Senna')
-  if SV.tarro_town.PieChapter <= 2 and senna_talk ~= 0 then
+  if SV.Story.sect <= 1 and senna_talk ~= 0 then
     senna_talk = 0
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
@@ -551,7 +581,7 @@ function TarroTownEast.Senna_Action(obj, activator)
     GROUND:CharTurnToCharAnimated(senna, maru, 2)
 
     senna_dialogue = math.random(1, 3)
-    if SV.tarro_town.PieChapter <= 2 then
+    if SV.Story.sect <= 1 then
       if senna_dialogue == 1 then
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("Mm... Maru, Azura.")
@@ -567,7 +597,7 @@ function TarroTownEast.Senna_Action(obj, activator)
         UI:SetSpeakerEmotion("Surprised")
         UI:WaitShowDialogue("Eek![pause=61] Hm, you two [emote=Sigh]startled me.")
       end
-    elseif SV.tarro_town.PieChapter > 2 then
+    elseif SV.Story.sect > 1 then
       if senna_dialogue == 1 then
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("Mm... Maru, Azura.")
@@ -589,186 +619,11 @@ function TarroTownEast.Senna_Action(obj, activator)
     end
     GROUND:CharAnimateTurn(senna, Direction.Left, 2, true)
   end
-  
-end
 
-function TarroTownEast.SennaHomeEntrance_Touch(obj, activator)
-  local maru = CH("PLAYER")
-  local ziggy = CH("Ziggy")
-  UI:SetSpeaker(ziggy)
-  UI:SetSpeakerEmotion("Angry")
-  GROUND:CharAnimateTurn(maru, Direction.Right, 2, false)
-  GROUND:CharAnimateTurn(ziggy, Direction.Left, 2, false)
-  UI:WaitShowDialogue("AHA! YOU'VE BEEN STEALING MY BERRIES![pause=45] E[emote=Worried]r, uh... [pause=20]OUR[emote=Determined] BERRIES!")
-
-  UI:SetSpeaker(maru)
-  UI:SetSpeakerEmotion("Surprised")
-  UI:WaitShowDialogue("No! I didn't![pause=25] I haven't been in your house!")
-
-  UI:SetSpeaker(ziggy)
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("...oh, sorry.")
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("Well...")
-  UI:SetSpeakerEmotion("Determined")
-  UI:WaitShowDialogue("NO ENTRY ANYWAY!")
-
-  UI:SetSpeaker(maru)
-  UI:SetSpeakerEmotion("Stunned")
-  UI:WaitShowDialogue("Right...")
-end
-
-function TarroTownEast.MaruHomeEntrance_Touch(obj, activator)
-  GAME:FadeOut(false, 20)
-  GAME:EnterGroundMap("MaruHome", "MaruHome_MainEnter")
-end
-
-function TarroTownEast.TTEast_NExit_Touch(obj, activator)
-  if SV.tarro_town.PieChapter < 5 then
-    local maru = CH("PLAYER")
-
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("This path leads into town.")
-
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Though, now may not be the time.[pause=45] Pie's waiting.")
-  else
-    GAME:FadeOut(false, 20)
-    GAME:EnterGroundMap("TarroTownSquare", "TTSquare_EastEnter")
-  end
-end
-
-function TarroTownEast.Bluetail_Mailbox_Action(obj, activator)
-  local maru = CH("PLAYER")
-  
-  UI:SetSpeaker(maru)
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("(I guess I should check the mail...)")
-  GAME:WaitFrames(80)
-
-  UI:SetSpeaker(maru)
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("(Nothin'.)")
 end
 
 function TarroTownEast.Budeg_Action(obj, activator)
-  local budeg = CH("Budeg")
-
-  UI:SetSpeaker(budeg)
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("Zzrk, this town is a little boring,[pause=50] but it's not... [pause=30]zzzt,[pause=30] [emote=Stunned]bad???")
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("...almost as if it's the first town ever.")
-  UI:WaitShowDialogue("...")
-  UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("Zzt, welcome to dev mode. Bzzt, I am made to skip scenes and jump bewteen characters.")
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("Krzzt, I really hope this get to the right person...")
-  
-  local password = "Aa1Bb2devdebug;345"
-  UI:NameMenu("Please enter the password.", "Password", 200, "Catbug")
-  UI:WaitForChoice()
-  if UI:ChoiceResult() ~= password then
-    UI:SetSpeakerEmotion("Pain")
-    UI:WaitShowDialogue("Wrong!")
-    UI:SetSpeaker(budeg)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Have a nice day!")
-  else
-    ::question::
-    UI:SetSpeakerEmotion("Happy")
-    local choices = {("Maru and Azura"),
-      ("Rexio"),
-      ("Guild"),
-      ("Cancel")}
-      UI:BeginChoiceMenu("Please choose a character for dev work.", choices, 1, 2)
-      UI:WaitForChoice()
-      result = UI:ChoiceResult()
-    if result == 1 then
-      UI:SetSpeakerEmotion("Happy")
-      local choices = {("Fight!"),
-        ("Darkness")}
-        UI:BeginChoiceMenu("Please choose a chapter for dev work.", choices, 1, 2)
-        UI:WaitForChoice()
-        result = UI:ChoiceResult()
-      if result == 1 then
-        SV.tarro_town.PieChapter = 4 --PieChapter 4 is the intro to town
-        GAME:EnterGroundMap("tarro_town_outside", "MaruHome", "MaruHome_MainEnter")
-      else
-        SV.tarro_town.PieChapter = 10 --PieChapter 10 switches to deep tarro
-        GAME:EnterGroundMap("tarro_town_outside", "MaruHome", "MaruHome_MainEnter")
-      end
-      
-    elseif result == 2 then
-      UI:SetSpeaker(budeg)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("Zzt, changing to Rexio")
-      GAME:FadeOut(false, 60)
-      --Begin replacement
-      --Save Maru and Azura's stats
-      SV.guilders.tarro_town.bluetail_stats = GAME:GetPlayerPartyTable()
-      --Replace them with Rexio
-      GAME:RemovePlayerTeam(0)
-      GAME:RemovePlayerTeam(0)
-      local mon_id = RogueEssence.Dungeon.MonsterID("riolu", 0, "normal", Gender.Male)
-
-      local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 7, "", 0)
-      p.IsFounder = true
-      p.IsPartner = true
-      p.Nickname = "Rexio"
-
-      _DATA.Save.ActiveTeam.Players:Add(p)
-      local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("RexioInteract")
-        _DATA.Save.ActiveTeam.Players[0].ActionEvents:Add(talk_evt)
-      GAME:DepositAll()
-      --COMMON.SaveStorage()
-      
-      GAME:EnterGroundMap("entoh_town", "RexioHome", "RexioStart")
-    elseif result == 3 then
-
-      UI:SetSpeaker(budeg)
-      UI:SetSpeakerEmotion("Stunned")
-      UI:WaitShowDialogue("You may be a little underleveled for this part of the story...!")
-      UI:ChoiceMenuYesNo("Are you sure?", false)
-      UI:WaitForChoice()
-      local result = UI:ChoiceResult()
-      
-      if result then
-        GAME:FadeOut(false, 60)
-        --Begin replacement
-        --Save Maru and Azura's stats
-        SV.guilders.tarro_town.bluetail_stats = GAME:GetPlayerPartyTable()
-        --Replace them with Rexio
-        GAME:RemovePlayerTeam(0)
-        GAME:RemovePlayerTeam(0)
-        local mon_id = RogueEssence.Dungeon.MonsterID("riolu", 0, "normal", Gender.Male)
-
-        local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 7, "", 0)
-        p.IsFounder = true
-        p.IsPartner = true
-        p.Nickname = "Rexio"
-
-        _DATA.Save.ActiveTeam.Players:Add(p)
-        local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("RexioInteract")
-        _DATA.Save.ActiveTeam.Players[0].ActionEvents:Add(talk_evt)
-        GAME:DepositAll()
-        SV.tarro_town.DarknessChapter = 3
-        SV.entoh_town.AdventureChapter = 3
-        SV.tarro_town.PieChapter = 12
-        SV.entoh_town.HelperChapter = 10
-
-        GAME:EnterGroundMap("the_field", "TheField", "MainEntrance_1")
-      else
-        goto question
-      end
-    else
-      UI:SetSpeaker(budeg)
-      UI:SetSpeakerEmotion("Happy")
-      UI:WaitShowDialogue("Zzt, have a good day.")
-    end
-  end
+ EXPLCOMMON.DebugWithBudeg()
 end
 
 return TarroTownEast

@@ -2743,17 +2743,17 @@
 "$type": "RogueEssence.AddTunnelStep`1[[RogueElements.IFloorPlanGenContext, RogueElements]], RogueEssence",
 "TurnLength": {
 "Min": 0,
-"Max": 11
+"Max": 21
 },
 "MaxLength": {
 "Min": 0,
-"Max": 21
+"Max": 31
 },
 "AllowDeadEnd": false,
 "TraverseFloor": true,
 "Halls": {
-"Min": 1,
-"Max": 6
+"Min": 2,
+"Max": 11
 },
 "Brush": {
 "$type": "RogueElements.DefaultHallBrush, RogueElements"

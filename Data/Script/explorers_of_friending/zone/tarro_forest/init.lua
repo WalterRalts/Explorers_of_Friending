@@ -29,23 +29,20 @@ end
 function tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
   if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
     print("Get out!")
-    dungeon_oof = 0
-    
     if segmentID == 0 then
-      if SV.tarro_town.PieChapter > 3 then
-      else
-        SV.tarro_town.PieChapter = 2.1
+      if SV.Story.chap == -1 and SV.Story.sect < 3 then
+        SV.Story.flag = 1
       end
     else
-      SV.tarro_town.PieChapter = 2.2
+      SV.Story.flag = 2
     end
-    
-    if SV.tarro_town.PieChapter > 9 then
+
+    if SV.Story.chap == -3 then
       COMMON.EndDungeonDay(result, "tarro_town_outside", -1, 6, 2)
-    elseif SV.tarro_town.PieChapter > 4 then
+    elseif SV.Story.chap == -2 then
       COMMON.EndDungeonDay(result, "tarro_town_outside", -1, 4, 2)
     else
-      SV.tarro_town.PieChapter = 2.1
+      SV.Story.flag = 1
       COMMON.EndDungeonDay(result, "tarro_town_outside", -1, 1, 2)
     end
   else

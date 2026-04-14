@@ -1,65 +1,76 @@
-Progress into Chapter 2 is being made, and to prevent the chance of anything being corrupted, patches will now come out more often. 
+0.7.2 - Keep those patches coming as the desert gets extended, it's starting to get eyes on it so I should probably hurry it up lol.
 
 TECHNICAL (may contain spoilers)
 
-- Adjusted enter and exit names to make it easier to move around in code.
-- Removed dummy Maru. Turns out you can just disable an exit by hiding it, someone should document that.
-- Removed blank lines. All space is saved space lol.
-- Reorganize characters and enters for some areas.
-- Removed the "resetsettings" service.
-- Attempted to fix an issue where you wouldn't lose PP for moves when using Rexio for the first time.
+- "All empty space is saved space".
+- Implemented less difficult to understand chapters and sections S.Variables... for my sake.
+- No longer check to see whether or not Maru is alone when adding Azura to the beginning of the game.
+- Remove unnecessary "if-else" checks out of chapters.
+- EXPLCOMMONified a few more common functions. Oh yeah, the custom COMMON functions are now EXPLCOMMON functions
+- Budeg is around more and had his system optimized.
+- Some but not all documentation added that can be used in other mods. Thank you wiki people.
+- Fix a possible issue that allows the player to start as Azura on a new floor.
 
 GAME
-
-- Adjusted the direction of some markers so you spawn in looking in the right direction.
-- Allocated even more dialogue
-- Color coded dialogue that refers to future features.
-- Applied cutscene mode to, uh, cutscenes.
-- Two new music tracks have been added.
 
 TOWN SPECIFIC
 
 TARRO
 
-- The signs... work.
-
-DUNGEONS
-
-- General
-
--- Gold tile's spawn range has been increased dramatically*, and the spread of gold awarded has shifted closer to the lower side.
-*3 x 3 -> 7 x 7
-
-- Tarro Forest
-
-Poison being so apparent in the first dungeon's first floors make the dungeon a little difficult because of the partner's default AI being 
-unable to avoid a move. A Skitty also oneshot Azura. Ouch.
-
--- Weedle that have Poison Sting are more rare and not present on the first three floors. Those that don't will spawn more often.
--- Reduced the stats of all Skitty manually.
--- Very brief tutorial about hunger.
-
+- Adjusted some ground objects to align properly on activation.
+- Give the player more direction after getting the mail.
 
 ENTOH
 
--- Fixed an issue where some NPCs wouldn't talk to you.
--- Ensmoothified a few cutscenes.
-
 APPLE TOWN
 
-- Apple Forest
-
-Surprisingly, even after the three not-guilders reach this dungeon, it is still somehow too high level
-
--- Reduced the average level of the monsters in this dungeon.
--- Applin that have the ability Gluttony now have a 50% chance to drop an apple, with a 10% chance that it is big.
--- Nincada now have a 20% chance to drop either a stick or an apple.
-
--- 
+- Added a bit more cutscening.
 
 HERTZ
 
--- Fixed an issue that occurs when you enter Hertz Desert with someone who isn't Maru.
+DUNGEONS
+
+--- TARRO
+
+-- Tarro Forest
+For a beginning dungeon, you'd want to allow the player more space for more options.
+
+- Increased the number of tunnels possible on all floors. (1-5 -> 2-10)
+- Removed the option to go to Tarro Forest Plaza, skipping the dungeon entirely in a later chapter.
+
+-- Tarro Treetops
+With normal gameplay, if grinding is not done, there may be a bit of struggle with the boss of this room.
+
+- Reimplement healing factor in boss room.
+- Reduced the overall stats of the ???.
+
+-- Dark Tarro
+While the overall level of monsters in this room are okay, beginners may still struggle.
+
+- Reduced the chance of teams of two, and add the small chance of spawning teams of zero and three.
+- Morelull can now spawn in the second half.
+
+--- ENTOH
+
+-- Entoh Thicket
+Given the future for this game being a little more casual, it should be noted that too many isolated sections will cause softlocks.
+
+- Properly remove tiles to prevent most diagonal tiles, adding additional effects.
+
+-- Dreaded Depths
+Tidy being a germophobe made me come up with something funny.
+
+- Tidy will now get the healing effect of Aqua Ring. However, she will recieve poison if she is 3 units away from Flow.
+
+--- APPLE TOWN
+
+-- Apple Forest
+Too many mobs spawn in areas that can be immediately reached... and in areas that can't be immediately reached.
+
+- Reduced the number of maximum spawns on all floors. 
+1F - 6F: 20 -> 10
+7F - 12F: 20 -> 15
+- Apples fall more often with more variance
+Per Turn: 25 -> 20
 
 MINIGAMES
-

@@ -70,11 +70,11 @@ function DesertNE.Sprout_Action(obj, activator)
   UI:SetSpeakerEmotion("Dizzy")
   UI:WaitShowDialogue("[speed=0.2]Water...[pause=45] water...!")
 
-  COMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(1), "Stunned")
+ EXPLCOMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(1), "Stunned")
   UI:WaitShowDialogue("Why is he here...?")
-  COMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(2), "Stunned")
+ EXPLCOMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(2), "Stunned")
   UI:WaitShowDialogue("Who is this...?")
-  COMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(0), "Stunned")
+ EXPLCOMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(0), "Stunned")
   UI:WaitShowDialogue("We'll come back later.")
 end
 
@@ -97,15 +97,15 @@ end
 -- Exits
 
 function DesertNE.S_Touch(obj, activator)
-  COMMON.FadeEnterGround("DesertSE", "NorthEnter")
+ EXPLCOMMON.FadeEnterGround("DesertSE", "NorthEnter")
 end
 
 function DesertNE.SW_Touch(obj, activator)
-  COMMON.FadeEnterGround("DesertS", "NorthEastEnter")
+ EXPLCOMMON.FadeEnterGround("DesertS", "NorthEastEnter")
 end
 
 function DesertNE.W_Touch(obj, activator)
-  COMMON.FadeEnterGround("DesertN", "EastEnter")
+ EXPLCOMMON.FadeEnterGround("DesertN", "EastEnter")
 end
 
 return DesertNE

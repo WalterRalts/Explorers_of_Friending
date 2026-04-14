@@ -60,7 +60,11 @@
 "HertzEntrance",
 "HertzCenter",
 "HertzShopsA",
-"HertzLeftT"
+"HertzLeftT",
+"HertzVault",
+"HertzWest",
+"HertzUpT",
+"HertzGuildOut"
 ]
 }
 }

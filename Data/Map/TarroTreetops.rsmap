@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.11.0",
 "Object": {
 "$type": "RogueEssence.Dungeon.Map, RogueEssence",
 "Name": {
@@ -18,7 +18,6 @@
 "Element1": "normal",
 "Element2": "none",
 "TurnWait": 0,
-"TiersUsed": 0,
 "TurnUsed": false,
 "movementSpeed": 0,
 "dead": false,
@@ -100,7 +99,7 @@
 },
 "Absentee": false,
 "ChargeBoost": 0,
-"HP": 27,
+"HP": 25,
 "HPRemainder": 0,
 "Fullness": 100,
 "FullnessRemainder": 0,
@@ -205,7 +204,6 @@
 "SeeTraps": false,
 "CharStates": [],
 "BackRef": {
-"Assembly": false,
 "Index": -1
 },
 "Nickname": "???",
@@ -219,7 +217,7 @@
 },
 "Level": 6,
 "EXP": 0,
-"MaxHPBonus": 10,
+"MaxHPBonus": 8,
 "AtkBonus": -2,
 "DefBonus": 1,
 "MAtkBonus": -2,
@@ -293,7 +291,6 @@
 "Element1": "normal",
 "Element2": "none",
 "TurnWait": 0,
-"TiersUsed": 0,
 "TurnUsed": false,
 "movementSpeed": 0,
 "dead": false,
@@ -375,7 +372,7 @@
 },
 "Absentee": false,
 "ChargeBoost": 0,
-"HP": 23,
+"HP": 20,
 "HPRemainder": 0,
 "Fullness": 100,
 "FullnessRemainder": 0,
@@ -480,7 +477,6 @@
 "SeeTraps": false,
 "CharStates": [],
 "BackRef": {
-"Assembly": false,
 "Index": -1
 },
 "Nickname": "???",
@@ -494,12 +490,12 @@
 },
 "Level": 3,
 "EXP": 0,
-"MaxHPBonus": 10,
+"MaxHPBonus": 7,
 "AtkBonus": -2,
-"DefBonus": 1,
+"DefBonus": 0,
 "MAtkBonus": -2,
-"MDefBonus": 1,
-"SpeedBonus": 3,
+"MDefBonus": 0,
+"SpeedBonus": 0,
 "BaseSkills": [
 {
 "SkillNum": "cut",
@@ -568,7 +564,6 @@
 "Element1": "normal",
 "Element2": "none",
 "TurnWait": 0,
-"TiersUsed": 0,
 "TurnUsed": false,
 "movementSpeed": 0,
 "dead": false,
@@ -755,7 +750,6 @@
 "SeeTraps": false,
 "CharStates": [],
 "BackRef": {
-"Assembly": false,
 "Index": -1
 },
 "Nickname": "???",
@@ -771,10 +765,10 @@
 "EXP": 0,
 "MaxHPBonus": 10,
 "AtkBonus": -2,
-"DefBonus": 1,
+"DefBonus": 0,
 "MAtkBonus": -2,
-"MDefBonus": 1,
-"SpeedBonus": 3,
+"MDefBonus": 0,
+"SpeedBonus": 0,
 "BaseSkills": [
 {
 "SkillNum": "cut",
@@ -843,7 +837,6 @@
 "Element1": "normal",
 "Element2": "none",
 "TurnWait": 0,
-"TiersUsed": 0,
 "TurnUsed": false,
 "movementSpeed": 0,
 "dead": false,
@@ -925,7 +918,7 @@
 },
 "Absentee": false,
 "ChargeBoost": 0,
-"HP": 23,
+"HP": 15,
 "HPRemainder": 0,
 "Fullness": 100,
 "FullnessRemainder": 0,
@@ -1030,7 +1023,6 @@
 "SeeTraps": false,
 "CharStates": [],
 "BackRef": {
-"Assembly": false,
 "Index": -1
 },
 "Nickname": "???",
@@ -1044,12 +1036,12 @@
 },
 "Level": 3,
 "EXP": 0,
-"MaxHPBonus": 10,
+"MaxHPBonus": 2,
 "AtkBonus": -2,
-"DefBonus": 1,
+"DefBonus": 0,
 "MAtkBonus": -2,
-"MDefBonus": 1,
-"SpeedBonus": 3,
+"MDefBonus": 0,
+"SpeedBonus": 0,
 "BaseSkills": [
 {
 "SkillNum": "cut",
@@ -1118,7 +1110,6 @@
 "Element1": "normal",
 "Element2": "none",
 "TurnWait": 0,
-"TiersUsed": 0,
 "TurnUsed": false,
 "movementSpeed": 0,
 "dead": false,
@@ -1200,7 +1191,7 @@
 },
 "Absentee": false,
 "ChargeBoost": 0,
-"HP": 24,
+"HP": 20,
 "HPRemainder": 0,
 "Fullness": 100,
 "FullnessRemainder": 0,
@@ -1305,7 +1296,6 @@
 "SeeTraps": false,
 "CharStates": [],
 "BackRef": {
-"Assembly": false,
 "Index": -1
 },
 "Nickname": "???",
@@ -1317,14 +1307,14 @@
 "Skin": "normal",
 "Gender": 0
 },
-"Level": 4,
+"Level": 2,
 "EXP": 0,
-"MaxHPBonus": 10,
+"MaxHPBonus": 9,
 "AtkBonus": -2,
-"DefBonus": 1,
+"DefBonus": 0,
 "MAtkBonus": -2,
-"MDefBonus": 1,
-"SpeedBonus": 3,
+"MDefBonus": 0,
+"SpeedBonus": 0,
 "BaseSkills": [
 {
 "SkillNum": "cut",
@@ -1393,7 +1383,6 @@
 "Element1": "normal",
 "Element2": "none",
 "TurnWait": 0,
-"TiersUsed": 0,
 "TurnUsed": false,
 "movementSpeed": 0,
 "dead": false,
@@ -1475,7 +1464,7 @@
 },
 "Absentee": false,
 "ChargeBoost": 0,
-"HP": 23,
+"HP": 20,
 "HPRemainder": 0,
 "Fullness": 100,
 "FullnessRemainder": 0,
@@ -1580,7 +1569,6 @@
 "SeeTraps": false,
 "CharStates": [],
 "BackRef": {
-"Assembly": false,
 "Index": -1
 },
 "Nickname": "???",
@@ -1594,12 +1582,12 @@
 },
 "Level": 3,
 "EXP": 0,
-"MaxHPBonus": 10,
+"MaxHPBonus": 7,
 "AtkBonus": -2,
-"DefBonus": 1,
+"DefBonus": 0,
 "MAtkBonus": -2,
-"MDefBonus": 1,
-"SpeedBonus": 3,
+"MDefBonus": 0,
+"SpeedBonus": 0,
 "BaseSkills": [
 {
 "SkillNum": "cut",

@@ -8328,7 +8328,7 @@
 },
 "Respawn": {
 "$type": "PMDC.Dungeon.RespawnFromEligibleEvent, PMDC",
-"MaxFoes": 20,
+"MaxFoes": 10,
 "RespawnTime": 60
 },
 "MaxFoes": 0,
@@ -8336,6 +8336,27 @@
 },
 "Range": {
 "Min": 0,
+"Max": 6
+}
+},
+{
+"Item": {
+"$type": "PMDC.LevelGen.MobSpawnSettingsStep`1[[RogueEssence.LevelGen.MapGenContext, RogueEssence]], PMDC",
+"Priority": {
+"str": [
+15
+]
+},
+"Respawn": {
+"$type": "PMDC.Dungeon.RespawnFromEligibleEvent, PMDC",
+"MaxFoes": 15,
+"RespawnTime": 60
+},
+"MaxFoes": 0,
+"RespawnTime": 0
+},
+"Range": {
+"Min": 6,
 "Max": 12
 }
 }

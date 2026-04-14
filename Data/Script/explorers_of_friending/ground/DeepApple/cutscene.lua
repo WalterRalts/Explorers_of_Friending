@@ -19,7 +19,7 @@ function Core.AppleOut()
             GAME:FadeIn(60)
             end)
         TASK:JoinCoroutines({wh2, wh3})
-        COMMON.CharRealize("Teammate2")
+       EXPLCOMMON.CharRealize("Teammate2")
         GROUND:CharTurnToChar(rexio, azura)
         GROUND:MoveToPosition(maru, rexio.Position.X - 12, rexio.Position.Y + 40, true, 4)
         GAME:WaitFrames(15)
@@ -29,33 +29,33 @@ function Core.AppleOut()
         GROUND:MoveToPosition(azura, rexio.Position.X + 12, rexio.Position.Y + 50, false, 2)
         end)
     local the3 = TASK:BranchCoroutine(function()
-        COMMON.SetCharAndEmotion(maru, "Shouting")
+       EXPLCOMMON.SetCharAndEmotion(maru, "Shouting")
         GAME:WaitFrames(80)
         UI:WaitShowTimedDialogue("Rexio!", 75)
         end)
     TASK:JoinCoroutines({the1, the2, the3})
 
-    COMMON.SetCharAndEmotion(maru, "Angry")
+   EXPLCOMMON.SetCharAndEmotion(maru, "Angry")
     UI:WaitShowTimedDialogue("Why would you", 10)
 
-    COMMON.SetCharAndEmotion(rexio, "Normal")
+   EXPLCOMMON.SetCharAndEmotion(rexio, "Normal")
     UI:WaitShowDialogue("No.")
 
-    COMMON.SetCharAndEmotion(maru, "Stunned")
+   EXPLCOMMON.SetCharAndEmotion(maru, "Stunned")
     UI:WaitShowDialogue("Huh?")
 
     GROUND:CharAnimateTurnTo(rexio, Dir8.Up, 3)
-    COMMON.SetCharAndEmotion(rexio, "Normal")
+   EXPLCOMMON.SetCharAndEmotion(rexio, "Normal")
     UI:WaitShowDialogue("I know where this is gonna go,[pause=45] you're gonna tell me it's too dangerous.")
     UI:WaitShowDialogue("You're gonna tell me we don't need to be here.")
 
-    COMMON.SetCharAndEmotion(maru, "Worried")
+   EXPLCOMMON.SetCharAndEmotion(maru, "Worried")
     UI:WaitShowDialogue("...")
 
-    COMMON.SetCharAndEmotion(rexio, "Determined")
+   EXPLCOMMON.SetCharAndEmotion(rexio, "Determined")
     UI:WaitShowDialogue("I want to be good at dungeoning,[pause=40] just like dad.[pause=40] Just like mom...")
     GROUND:CharAnimateTurnTo(rexio, Dir8.Down, 3)
-    COMMON.SetCharAndEmotion(rexio, "Angry")
+   EXPLCOMMON.SetCharAndEmotion(rexio, "Angry")
     UI:WaitShowDialogue("And whether or not you guys go with me, I won't let you slow me down!")
 
     UI:SetSpeaker(maru, false)
@@ -109,30 +109,30 @@ function Core.AppleOut()
         
         COMMON.TeleportTo("PLAYER", new_x, new_y, Dir8.Up, 0)
 
-        COMMON.SetCharAndEmotion(rexio, "Determined")
+       EXPLCOMMON.SetCharAndEmotion(rexio, "Determined")
         UI:WaitShowDialogue("Let's go. [pause=40][emote=Happy]I've got this!")
 
         GAME:FadeIn(30)
     else
         SV.apple_town.teamed = true
-        COMMON.SetCharAndEmotion(maru, "Worried")
+       EXPLCOMMON.SetCharAndEmotion(maru, "Worried")
         UI:WaitShowDialogue("Azura, how long do you think you can hold on for?")
 
-        COMMON.SetCharAndEmotion(azura, "Pain")
+       EXPLCOMMON.SetCharAndEmotion(azura, "Pain")
         UI:WaitShowDialogue("...I'll try,[pause=35] but...")
 
-        COMMON.SetCharAndEmotion(rexio, "Worried")
+       EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
         UI:WaitShowDialogue("Does she have to come with?[pause=30] She seems out of it.")
 
-        COMMON.SetCharAndEmotion(azura, "Determined")
+       EXPLCOMMON.SetCharAndEmotion(azura, "Determined")
         UI:WaitShowDialogue("[speed=0.2]No...")
-        COMMON.CharHop("Teammate1")
+       EXPLCOMMON.CharHop("Teammate1")
         UI:WaitShowDialogue("I wanna be strong, too...")
 
-        COMMON.SetCharAndEmotion(maru, "Sad")
+       EXPLCOMMON.SetCharAndEmotion(maru, "Sad")
         UI:WaitShowDialogue("Azura...")
 
-        COMMON.SetCharAndEmotion(rexio, "Happy")
+       EXPLCOMMON.SetCharAndEmotion(rexio, "Happy")
         UI:WaitShowDialogue("Great! Let's get ready and get goin'!")
     end
     maru.CollisionDisabled = false

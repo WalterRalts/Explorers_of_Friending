@@ -3,194 +3,195 @@ require 'explorers_of_friending.common'
 Bluetails = {}
 
 function Bluetails.PieTime()
-    GAME:CutsceneMode(true)
-    local maru = CH("PLAYER")
-    local azura = CH("Teammate1")
-    local arama = CH("Arama")
-    local amazuru = CH("Amazuru")
-    GROUND:TeleportTo(amazuru, 186, 211, Direction.Right, 0)
-    GROUND:TeleportTo(arama, 221, 211, Direction.Left, 0)
-    GROUND:TeleportTo(maru, 227, 350, Direction.UpRight, 0)
-    GROUND:TeleportTo(azura, 220, 350, Direction.UpRight, 0)
-    GAME:MoveCamera(229, 248, 1, false)
-    GAME:FadeIn(20)
-    GROUND:Hide("MaruHomeExit")
-    
-    UI:SetSpeaker(arama)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Oh... what should I do...?")
-    
-    UI:SetSpeaker(amazuru)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("I don't see the problem.")
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Everything you make is good, can't you just[emote=Normal] use normal apples?")
-  
-    UI:SetSpeaker(arama)
-    UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowDialogue("Are you kidding?![pause=60] The smaller apples won't make it taste as good! T[emote=Pain]hey would tell immediately...!")
-    UI:SetSpeakerEmotion("Sad")
-    UI:WaitShowDialogue("It doesn't help the fact that I made a promise, too...")
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Azura will be devestated!")
-  
-    UI:SetSpeaker(amazuru)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Just tell them that you're out of Big Apples.[pause=30] No big deal.")
-  
-    UI:SetSpeaker(arama)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowTimedDialogue("But then that woul-", 20)
-    
-    local function enterforpie()
-      GROUND:MoveToPosition(azura, 186, 240, false, 6)
-      GROUND:MoveToPosition(maru, 221, 240, true, 2)
-    end
-    GROUND:CharTurnToCharAnimated(maru, arama, 2)
-    GROUND:CharTurnToCharAnimated(azura, arama, 2)
-    COMMON.CharHop("Teammate1")
-    UI:SetSpeaker(azura)
-    UI:SetSpeakerEmotion("Joyous")
-    UI:WaitShowDialogue("Mama,[script=0] pie time!", { enterforpie })
-  
-    UI:SetSpeaker(arama)
-    UI:SetSpeakerEmotion("Surprised")
-    UI:WaitShowDialogue("Oh! [pause=15]Pie![pause=15] Yes!")
-    GROUND:MoveToPosition(arama, 290, 170, true, 3)
-    GROUND:CharTurnToCharAnimated(maru, arama, 2)
-    GROUND:CharTurnToCharAnimated(azura, arama, 2)
-    GROUND:CharTurnToCharAnimated(amazuru, arama, 2)
-    UI:SetSpeakerEmotion("Joyous")
-    GROUND:CharAnimateTurn(arama, Direction.Up, 2, true)
-    UI:WaitShowDialogue("I'll get right on that! [speed=2.0]Ahahahahahahahahahahahaha!")
-  
-    GAME:WaitFrames(30)
-    COMMON.FaceEachother(maru, azura)
-  
-    GAME:WaitFrames(30)
-    GROUND:CharTurnToCharAnimated(maru, arama, 2)
-    GROUND:CharTurnToCharAnimated(azura, arama, 2)
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Uhh... mom?")
-    UI:WaitShowDialogue("Don't you need a Big Apple?")
-  
-    local function AramaLeft()
-      GROUND:CharAnimateTurn(arama, Direction.Left, 2, true)
-    end
-    local function AramaRight()
-      GROUND:CharAnimateTurn(arama, Direction.Right, 2, true)
-    end
-  
-    UI:SetSpeaker(arama)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Uh...! [pause=15][script=0]Well...![pause=15][script=1] Umm...!", { AramaLeft, AramaRight })
-    GROUND:CharAnimateTurn(arama, Direction.Down, 2, true)
-    UI:WaitShowDialogue("Oh! [pause=30][emote=Happy]I found it, I found it!")
-    GROUND:Unhide("NotApple")
-    SOUND:PlaySE("Battle/DUN_Money")
-  
-    GAME:WaitFrames(115)
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("[speed=0.7]Mom...? That's not...")
-  
-    UI:SetSpeaker(amazuru)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Pfft, that[speed=0.3][emote=Normal]...[pause=40] t[speed=1.0]h-... [emote=Happy]hhhhhhh...")
-  
-    UI:SetSpeaker(azura)
-    UI:SetSpeakerEmotion("Teary-Eyed")
-    UI:WaitShowDialogue("B-but... I wan pie...")
-    
-    GROUND:CharTurnToCharAnimated(arama, azura, 2)
-    UI:SetSpeaker(arama)
-    UI:SetSpeakerEmotion("Surprised")
-    UI:WaitShowDialogue("No no no no, Azura[emote=Happy], sweetie!")
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("I just... ran out of Big Apples! It'll be fine!")
-  
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("You promised, mom.")
-  
-    UI:SetSpeaker(arama)
-    UI:SetSpeakerEmotion("Sad")
-    UI:WaitShowDialogue("Yes, I know.")
-  
-    GROUND:CharAnimateTurn(arama, Direction.Down, 2, true)
-    GROUND:Hide("NotApple")
-    SOUND:PlaySE("Battle/DUN_Money")
-  
-    GROUND:MoveToPosition(arama, 221, 211, false, 2)
-    GROUND:CharTurnToCharAnimated(maru, arama, 2)
-    GROUND:CharTurnToCharAnimated(azura, arama, 2)
-    GROUND:CharTurnToCharAnimated(amazuru, arama, 2)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("I guess I should've checked first...")
-  
-    UI:SetSpeaker(azura)
-    UI:SetSpeakerEmotion("Sad")
-    UI:WaitShowDialogue("[speed=0.6]...")
-  
-    GROUND:CharTurnToCharAnimated(amazuru, maru, 2)
-    UI:SetSpeaker(amazuru)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Alright kids, go get your mom an apple.")
-  
-    COMMON.CharExclaim("Amazuru")
-    GROUND:CharTurnToCharAnimated(arama, amazuru, 2)
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Oh,[pause=10] us?")
-  
-    GROUND:CharTurnToCharAnimated(amazuru, arama, 2)
-    UI:SetSpeaker(arama)
-    UI:SetSpeakerEmotion("Surprised")
-    UI:WaitShowDialogue("What?! No way! We're not sending them into a dungeon!")
-  
-    UI:SetSpeaker(amazuru)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("C'moooon, that dungeon is fine.[pause=0] I already taught them how to battle well; it'll be easy.")
-  
-    UI:SetSpeaker(arama)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("I know,[pause=35] but why don't I just go?[pause=40] Keep the kids out of danger.")
-  
-    UI:SetSpeaker(amazuru)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("All they have to do is avoid the wild bugs, they're all weak. The Big Apple tree is not too far either.")
-    UI:WaitShowDialogue("Come on, dear, they'll need the practice anyway.")
-  
-    GROUND:CharTurnToCharAnimated(maru, azura, 2)
-    COMMON.CharHop("Teammate1")
-    UI:SetSpeaker(azura)
-    UI:SetSpeakerEmotion("Shouting")
-    UI:WaitShowDialogue("Let's do it![pause=35] FOR THE PIE!")
-    
-    COMMON.FaceEachother(maru, arama)
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("I don't think you have to worry, ma.")
-    GROUND:CharTurnToCharAnimated(arama, azura, 2)
-  
-    UI:SetSpeaker(arama)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("...[pause=34]f[emote=Sigh]ine.")
-    UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("Azura,[pause=46] don't hurt yourself, dear...")
-  
-    UI:SetSpeaker(azura)
-    UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Hehee.")
-    GAME:FadeOut(false, 20)
-    GROUND:TeleportTo(amazuru, 172, 149, Direction.Down, 0)
-    GROUND:TeleportTo(maru, 221, 240, Direction.Up, 0)
-    GROUND:TeleportTo(arama, 245, 184, Direction.DownLeft, 0)
-    GAME:MoveCamera(0, 0, 0, true)
-    GROUND:Unhide("MaruHomeExit")
+  GAME:CutsceneMode(true)
+  local maru = CH("PLAYER")
+  local azura = CH("Teammate1")
+  local arama = CH("Arama")
+  local amazuru = CH("Amazuru")
+  GROUND:TeleportTo(amazuru, 186, 211, Direction.Right, 0)
+  GROUND:TeleportTo(arama, 221, 211, Direction.Left, 0)
+  GROUND:TeleportTo(maru, 227, 350, Direction.UpRight, 0)
+  GROUND:TeleportTo(azura, 220, 350, Direction.UpRight, 0)
+  GAME:MoveCamera(229, 248, 1, false)
+  GAME:FadeIn(20)
+  GROUND:Hide("MaruHomeExit")
+
+  UI:SetSpeaker(arama)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Oh... what should I do...?")
+
+  UI:SetSpeaker(amazuru)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("I don't see the problem.")
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("Everything you make is good, can't you just[emote=Normal] use normal apples?")
+
+  UI:SetSpeaker(arama)
+  UI:SetSpeakerEmotion("Angry")
+  UI:WaitShowDialogue("Are you kidding?![pause=60] The smaller apples won't make it taste as good! T[emote=Pain]hey would tell immediately...!")
+  UI:SetSpeakerEmotion("Sad")
+  UI:WaitShowDialogue("It doesn't help the fact that I made a promise, too...")
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Azura will be devestated!")
+
+  UI:SetSpeaker(amazuru)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Just tell them that you're out of Big Apples.[pause=30] No big deal.")
+
+  UI:SetSpeaker(arama)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowTimedDialogue("But then that woul-", 20)
+
+  local function enterforpie()
+    GROUND:MoveToPosition(azura, 186, 240, false, 6)
+    GROUND:MoveToPosition(maru, 221, 240, true, 2)
+  end
+  GROUND:CharTurnToCharAnimated(maru, arama, 2)
+  GROUND:CharTurnToCharAnimated(azura, arama, 2)
+ EXPLCOMMON.CharHop("Teammate1")
+  UI:SetSpeaker(azura)
+  UI:SetSpeakerEmotion("Joyous")
+  UI:WaitShowDialogue("Mama,[script=0] pie time!", { enterforpie })
+
+  UI:SetSpeaker(arama)
+  UI:SetSpeakerEmotion("Surprised")
+  UI:WaitShowDialogue("Oh! [pause=15]Pie![pause=15] Yes!")
+  GROUND:MoveToPosition(arama, 290, 170, true, 3)
+  GROUND:CharTurnToCharAnimated(maru, arama, 2)
+  GROUND:CharTurnToCharAnimated(azura, arama, 2)
+  GROUND:CharTurnToCharAnimated(amazuru, arama, 2)
+  UI:SetSpeakerEmotion("Joyous")
+  GROUND:CharAnimateTurn(arama, Direction.Up, 2, true)
+  UI:WaitShowDialogue("I'll get right on that! [speed=2.0]Ahahahahahahahahahahahaha!")
+
+  GAME:WaitFrames(30)
+ EXPLCOMMON.FaceEachother(maru, azura)
+
+  GAME:WaitFrames(30)
+  GROUND:CharTurnToCharAnimated(maru, arama, 2)
+  GROUND:CharTurnToCharAnimated(azura, arama, 2)
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Uhh... mom?")
+  UI:WaitShowDialogue("Don't you need a Big Apple?")
+
+  local function AramaLeft()
+    GROUND:CharAnimateTurn(arama, Direction.Left, 2, true)
+  end
+  local function AramaRight()
+    GROUND:CharAnimateTurn(arama, Direction.Right, 2, true)
+  end
+
+  UI:SetSpeaker(arama)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Uh...! [pause=15][script=0]Well...![pause=15][script=1] Umm...!", { AramaLeft, AramaRight })
+  GROUND:CharAnimateTurn(arama, Direction.Down, 2, true)
+  UI:WaitShowDialogue("Oh! [pause=30][emote=Happy]I found it, I found it!")
+  GROUND:Unhide("NotApple")
+  SOUND:PlaySE("Battle/DUN_Money")
+
+  GAME:WaitFrames(115)
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("[speed=0.7]Mom...? That's not...")
+
+  UI:SetSpeaker(amazuru)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("Pfft, that[speed=0.3][emote=Normal]...[pause=40] t[speed=1.0]h-... [emote=Happy]hhhhhhh...")
+
+  UI:SetSpeaker(azura)
+  UI:SetSpeakerEmotion("Teary-Eyed")
+  UI:WaitShowDialogue("B-but... I wan pie...")
+
+  GROUND:CharTurnToCharAnimated(arama, azura, 2)
+  UI:SetSpeaker(arama)
+  UI:SetSpeakerEmotion("Surprised")
+  UI:WaitShowDialogue("No no no no, Azura[emote=Happy], sweetie!")
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("I just... ran out of Big Apples! It'll be fine!")
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("You promised, mom.")
+
+  UI:SetSpeaker(arama)
+  UI:SetSpeakerEmotion("Sad")
+  UI:WaitShowDialogue("Yes, I know.")
+
+  GROUND:CharAnimateTurn(arama, Direction.Down, 2, true)
+  GROUND:Hide("NotApple")
+  SOUND:PlaySE("Battle/DUN_Money")
+
+  GROUND:MoveToPosition(arama, 221, 211, false, 2)
+  GROUND:CharTurnToCharAnimated(maru, arama, 2)
+  GROUND:CharTurnToCharAnimated(azura, arama, 2)
+  GROUND:CharTurnToCharAnimated(amazuru, arama, 2)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("I guess I should've checked first...")
+
+  UI:SetSpeaker(azura)
+  UI:SetSpeakerEmotion("Sad")
+  UI:WaitShowDialogue("[speed=0.6]...")
+
+  GROUND:CharTurnToCharAnimated(amazuru, maru, 2)
+  UI:SetSpeaker(amazuru)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("Alright kids, go get your mom an apple.")
+
+ EXPLCOMMON.CharExclaim("Amazuru")
+  GROUND:CharTurnToCharAnimated(arama, amazuru, 2)
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Oh,[pause=10] us?")
+
+  GROUND:CharTurnToCharAnimated(amazuru, arama, 2)
+  UI:SetSpeaker(arama)
+  UI:SetSpeakerEmotion("Surprised")
+  UI:WaitShowDialogue("What?! No way! We're not sending them into a dungeon!")
+
+  UI:SetSpeaker(amazuru)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("C'moooon, that dungeon is fine.[pause=0] I already taught them how to battle well; it'll be easy.")
+
+  UI:SetSpeaker(arama)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("I know,[pause=35] but why don't I just go?[pause=40] Keep the kids out of danger.")
+
+  UI:SetSpeaker(amazuru)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("All they have to do is avoid the wild bugs, they're all weak. The Big Apple tree is not too far either.")
+  UI:WaitShowDialogue("Come on, dear, they'll need the practice anyway.")
+
+  GROUND:CharTurnToCharAnimated(maru, azura, 2)
+ EXPLCOMMON.CharHop("Teammate1")
+  UI:SetSpeaker(azura)
+  UI:SetSpeakerEmotion("Shouting")
+  UI:WaitShowDialogue("Let's do it![pause=35] FOR THE PIE!")
+
+ EXPLCOMMON.FaceEachother(maru, arama)
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("I don't think you have to worry, ma.")
+  GROUND:CharTurnToCharAnimated(arama, azura, 2)
+
+  UI:SetSpeaker(arama)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("...[pause=34]f[emote=Sigh]ine.")
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("Azura,[pause=46] don't hurt yourself, dear...")
+
+  UI:SetSpeaker(azura)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("Hehee.")
+  GAME:FadeOut(false, 20)
+  GROUND:TeleportTo(amazuru, 172, 149, Direction.Down, 0)
+  GROUND:TeleportTo(maru, 221, 240, Direction.Up, 0)
+  GROUND:TeleportTo(arama, 245, 184, Direction.DownLeft, 0)
+  GAME:MoveCamera(0, 0, 0, true)
+  GROUND:Unhide("MaruHomeExit")
+  SV.Story.sect = 1
 end
-  
+
 function Bluetails.RealPieTime()
     GAME:CutsceneMode(true)
     GAME:MoveCamera(229, 248, 1, false)
@@ -205,21 +206,21 @@ function Bluetails.RealPieTime()
     GAME:FadeIn(20)
     GROUND:Hide("MaruHomeExit")
     GROUND:Hide("Maru_BedSave")
-    
+
     UI:SetSpeaker(amazuru)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("I'll never understand how you do it, Ara.")
-    
+
     UI:SetSpeaker(arama)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Just a bit of magic.")
-  
+
     UI:SetSpeaker(amazuru)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Ooh[pause=35], so if I find out your secret...")
     UI:SetSpeakerEmotion("Inspired")
     UI:WaitShowDialogue("...I could impress the kids with cooking, too!")
-    
+
     GROUND:CharTurnToCharAnimated(arama, amazuru, 4)
     UI:SetSpeaker(arama)
     UI:SetSpeakerEmotion("Happy")
@@ -229,13 +230,13 @@ function Bluetails.RealPieTime()
 
     local coro21 = TASK:BranchCoroutine(function()
       GROUND:CharAnimateTurn(amazuru, Direction.DownLeft, 12, false)
-      end)	
+      end)
     local coro22 = TASK:BranchCoroutine(function()
       UI:SetSpeaker(amazuru)
       UI:SetSpeakerEmotion("Worried")
       UI:WaitShowDialogue("[speed=0.7]Awwww[speed=0.3]...")
       end)
-    
+
     TASK:JoinCoroutines({coro21, coro22})
 
     local function enterforpie()
@@ -244,30 +245,30 @@ function Bluetails.RealPieTime()
       GROUND:CharTurnToCharAnimated(maru, arama, 2)
       GROUND:CharTurnToCharAnimated(azura, arama, 2)
     end
-    
+
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Joyous")
     UI:WaitShowDialogue("Mama![script=0] Apple!", { enterforpie })
-    
-    
+
+
 
     local coro233 = TASK:BranchCoroutine(function()
       local coro2333 = TASK:BranchCoroutine(function()
         GROUND:MoveToPosition(maru, 181, 271, false, 2)
         GROUND:CharAnimateTurn(maru, Direction.UpRight, 4, true)
         GAME:WaitFrames(20)
-        end)	
+        end)
       local coro2343 = TASK:BranchCoroutine(function()
         GROUND:MoveToPosition(azura, 221, 251, false, 2)
         GROUND:MoveToPosition(arama, 221, 221, false, 2)
-        COMMON.FaceEachother(arama, azura)
+       EXPLCOMMON.FaceEachother(arama, azura)
         GAME:WaitFrames(20)
-        COMMON.CharHop("Teammate1")
+       EXPLCOMMON.CharHop("Teammate1")
         GROUND:MoveToPosition(arama, 290, 170, false, 2)
         GROUND:CharAnimateTurn(arama, Direction.Up, 4, true)
         end)
       TASK:JoinCoroutines({coro2333, coro2343})
-      end)	
+      end)
     local coro234 = TASK:BranchCoroutine(function()
       GROUND:CharTurnToCharAnimated(amazuru, azura, 2)
       UI:SetSpeaker(amazuru)
@@ -275,11 +276,11 @@ function Bluetails.RealPieTime()
       UI:WaitShowDialogue("Well, lookie here.[pause=0] They're back and they're completely fine.")
       end)
     TASK:JoinCoroutines({coro233, coro234})
-    
+
     UI:SetSpeaker(arama)
-    UI:SetSpeakerEmotion("Joyous")    
+    UI:SetSpeakerEmotion("Joyous")
     UI:WaitShowDialogue("Now it's pie'n time!")
-  
+
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Joyous")
     UI:WaitShowDialogue("Whooooooo!")
@@ -367,10 +368,10 @@ function Bluetails.AfterPieTime()
   UI:WaitShowTitle("Prologue A-1:\nExplosive", 180)
   GAME:WaitFrames(30)
 
-  local coro01 = TASK:BranchCoroutine(function() 
+  local coro01 = TASK:BranchCoroutine(function()
     UI:WaitHideTitle(180)
-    end)	
-  local coro02 = TASK:BranchCoroutine(function() 
+    end)
+  local coro02 = TASK:BranchCoroutine(function()
     UI:SetSpeaker(arama)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Alright, you two, r[emote=Joyous]ise and shine!")
@@ -382,7 +383,7 @@ function Bluetails.AfterPieTime()
   GAME:WaitFrames(15)
   GROUND:Unhide("Amazuru")
   GAME:WaitFrames(45)
-  COMMON.FaceEachother(amazuru, arama)
+ EXPLCOMMON.FaceEachother(amazuru, arama)
 
   UI:SetSpeaker(amazuru)
   UI:SetSpeakerEmotion("Normal")
@@ -393,12 +394,12 @@ function Bluetails.AfterPieTime()
   UI:WaitShowDialogue("Appreciated.")
   GROUND:MoveToPosition(amazuru, 129, 206, false, 5)
 
-  local coro1 = TASK:BranchCoroutine(function() 
+  local coro1 = TASK:BranchCoroutine(function()
     UI:SetSpeaker(amazuru)
     UI:SetSpeakerEmotion("Shouting")
     UI:WaitShowDialogue("ARISE MY CHILDREN!")
-    end)	
-  local coro2 = TASK:BranchCoroutine(function() 
+    end)
+  local coro2 = TASK:BranchCoroutine(function()
     GROUND:CharSetAnim(maru, "Hurt", true)
     GROUND:CharSetAnim(azura, "Hurt", true)
     GROUND:CharTurnToCharAnimated(azura, amazuru, 2)
@@ -438,7 +439,7 @@ function Bluetails.AfterPieTime()
   UI:SetSpeakerEmotion("Sigh")
   UI:WaitShowDialogue("Guh...[pause=30] phew![pause=30][emote=Dizzy] Ran...[pause=30][speed=0.6] too fast...!")
 
-  COMMON.FaceEachother(maru, ziggy)
+ EXPLCOMMON.FaceEachother(maru, ziggy)
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("Ziggy?[pause=30] What's going on?")
@@ -462,10 +463,10 @@ function Bluetails.AfterPieTime()
   GROUND:MoveToPosition(ziggy, 200, 346, false, 10)
   GAME:WaitFrames(65)
 
-  COMMON.CharSweatdrop("Arama")
+  EXPLCOMMON.CharSweatdrop("Arama")
   GAME:WaitFrames(10)
-  COMMON.CharSweatdrop("Amazuru")
-  COMMON.FaceEachother(arama, amazuru)
+  EXPLCOMMON.CharSweatdrop("Amazuru")
+ EXPLCOMMON.FaceEachother(arama, amazuru)
 
   UI:SetSpeaker(arama)
   UI:SetSpeakerEmotion("Stunned")
@@ -479,11 +480,19 @@ function Bluetails.AfterPieTime()
   GROUND:TeleportTo(azura, 186, 240, Direction.Right, 0)
   GROUND:Unhide("MaruHomeExit")
   GROUND:Unhide("Maru_BedSave")
-  SV.tarro_town.PieChapter = 5
+  SV.Story = {
+    chap = -2,
+    sect = 0,
+    flag = 0
+  }
   GAME:CutsceneMode(false)
 end
 
 function Bluetails.MailTime()
+  UI:WaitShowTitle("Prologue A-2:\nMysteries", 120)
+  GAME:WaitFrames(30)
+  UI:WaitHideTitle(120)
+
   local amazuru = CH("Amazuru")
   local maru = CH("PLAYER")
   GAME:MoveCamera(229, 248, 1, false)
@@ -495,7 +504,7 @@ function Bluetails.MailTime()
   UI:WaitShowDialogue("Hey, before you two leave, could you two go check the mail real quickly?")
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("I sent your mom out to get it, but I think she got caught up with Mrs. Longline.")
-  SV.tarro_town.PieChapter = 11
+  mail_read = 0
 end
 
 function Bluetails.AfterMailTime()
@@ -516,7 +525,7 @@ function Bluetails.AfterMailTime()
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("You two have the mail, I'm guessing.")
 
-  local coro1 = TASK:BranchCoroutine(function() 
+  local coro1 = TASK:BranchCoroutine(function()
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Yeah.[pause=30] But,[emote=Worried] this letter has a little weird print on it.")
@@ -528,11 +537,11 @@ function Bluetails.AfterMailTime()
     UI:ResetSpeaker()
     UI:SetBounds(10, 16, 300, 50)
     UI:WaitShowDialogue("Maru gives his dad the letter.")
-    end)	
-  local coro2 = TASK:BranchCoroutine(function() 
+    end)
+  local coro2 = TASK:BranchCoroutine(function()
     GAME:FadeIn(40)
     end)
-  
+
   TASK:JoinCoroutines({coro1, coro2})
 
   UI:SetSpeaker(amazuru)
@@ -545,7 +554,7 @@ function Bluetails.AfterMailTime()
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Hey kids! So sorry, I was talking a while with our neighbor.")
 
-    COMMON.FaceEachother(arama, azura)
+   EXPLCOMMON.FaceEachother(arama, azura)
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Joyous")
     UI:WaitShowDialogue("Mama!")
@@ -553,21 +562,21 @@ function Bluetails.AfterMailTime()
     UI:SetSpeaker(arama)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowTimedDialogue("I see you two got the mail.[pause=60] ...er, maybe your dad did?", 40)
-    end)	
+    end)
   local coro02 = TASK:BranchCoroutine(function()
     GAME:WaitFrames(75)
-    COMMON.CharExclaim("Amazuru")
+   EXPLCOMMON.CharExclaim("Amazuru")
     GAME:WaitFrames(80)
-    COMMON.CharSweatdrop("Amazuru")
+    EXPLCOMMON.CharSweatdrop("Amazuru")
     end)
-  
+
   TASK:JoinCoroutines({coro01, coro02})
 
   UI:SetSpeaker(arama)
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("Ama, is everything okay?")
 
-  local coro11 = TASK:BranchCoroutine(function() 
+  local coro11 = TASK:BranchCoroutine(function()
     UI:SetSpeaker(amazuru)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Ara,[pause=25] you're gonna want to see this.[pause=0] It's important.")
@@ -575,12 +584,12 @@ function Bluetails.AfterMailTime()
     UI:SetSpeaker(arama)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("Um, go to the basement, we'll talk about it later.")
-    end)	
+    end)
   local coro12 = TASK:BranchCoroutine(function()
     GROUND:MoveToPosition(amazuru, 135, 172, false, 2)
-    COMMON.FaceEachother(arama, amazuru)
+   EXPLCOMMON.FaceEachother(arama, amazuru)
     end)
-  TASK:JoinCoroutines({coro11, coro12}) 
+  TASK:JoinCoroutines({coro11, coro12})
   GROUND:CharAnimateTurn(amazuru, Direction.UpLeft, 4, false)
   GROUND:Hide("Amazuru")
 
@@ -593,9 +602,9 @@ function Bluetails.AfterMailTime()
     UI:SetSpeaker(arama)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("I guess since you two know your way around dungeons,[pause=50] how about I teach you about ovens?")
-    end)	
+    end)
   local coro22 = TASK:BranchCoroutine(function()
-    COMMON.CharSweatdrop("Teammate1")
+    EXPLCOMMON.CharSweatdrop("Teammate1")
     GAME:WaitFrames(35)
     GROUND:CharTurnToCharAnimated(azura, arama, 5)
     end)
@@ -604,6 +613,56 @@ function Bluetails.AfterMailTime()
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Inspired")
   UI:WaitShowDialogue("Really?")
+  mail_read = 2
+  SV.Story.sect = 1
+ EXPLCOMMON.FadeEnterGround("MaruHomeFood", "Marker")
+end
 
-  GAME:EnterGroundMap("MaruHomeFood", "Marker")
+function Bluetails.AfterCook()
+  local maru = CH("PLAYER")
+  local azura = CH("Teammate1")
+  GAME:FadeIn(30)
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("That was fun.")
+
+  UI:SetSpeaker(azura)
+  UI:SetSpeakerEmotion("Joyous")
+  UI:WaitShowDialogue("Cooking with mama is fun!")
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("You think we'll be better than her one day?")
+
+  UI:SetSpeaker(azura)
+  UI:SetSpeakerEmotion("Surprised")
+  UI:WaitShowDialogue("What?![pause=20] [emote=Angry]Never!")
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowTimedDialogue("I was just joking.")
+
+  UI:SetSpeaker(azura)
+  UI:SetSpeakerEmotion("Surprised")
+  UI:WaitShowDialogue("WAIT! MAMA DIDN'T GET MORE BIG APPLES![pause=50] WE HAVE TO GET MORE RIGHT NOW!")
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("Why???")
+
+  UI:SetSpeaker(azura)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Uh... uh uh... uh...[pause=40] [emote=Happy]because!")
+
+  EXPLCOMMON.CharSweatdrop("PLAYER")
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("Okay...")
+
+  SV.Story = {
+    chap = -3,
+    sect = 1,
+    flag = 0
+  }
 end

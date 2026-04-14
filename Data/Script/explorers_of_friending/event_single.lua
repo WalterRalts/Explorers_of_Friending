@@ -31,7 +31,7 @@ bag_warn = false
 function SINGLE_CHAR_SCRIPT.BagCount(owner, ownerChar, context, args)
 	local item_count = GAME:GetPlayerBagCount()
 	local bag_limit = SV.bag_size
-	
+
 	if item_count == bag_limit then
 		if bag_warn == false then
 			GAME:WaitFrames(25)
@@ -61,7 +61,7 @@ function SINGLE_CHAR_SCRIPT.CastawayCaveAltMusic(owner, ownerChar, context, args
   else
 	_ZONE.CurrentMap.Music = "B24. Castaway Cave 2.ogg"
   end
-  
+
   SOUND:PlayBGM(_ZONE.CurrentMap.Music, true)
 end
 
@@ -72,7 +72,7 @@ function SINGLE_CHAR_SCRIPT.CastawayCaveAltEnemies(owner, ownerChar, context, ar
   if not SV.castaway_cave.TookTreasure then
     return
   end
-  
+
   _ZONE.CurrentMap.MapEffect.OnMapTurnEnds:Add(RogueElements.Priority(15), PMDC.Dungeon.RespawnFromEligibleEvent(14, 160))
   for ii = 1, 3, 1 do
 	PMDC.Dungeon.RespawnFromEligibleEvent.Respawn()
@@ -89,7 +89,7 @@ function SINGLE_CHAR_SCRIPT.SleepingCalderaAltData(owner, ownerChar, context, ar
 	_ZONE.CurrentMap.Name = RogueEssence.LocalText(STRINGS:Format(RogueEssence.StringKey("TITLE_ENRAGED_CALDERA"):ToLocal(), _ZONE.CurrentMap.ID + 1))
 	_ZONE.CurrentMap.Music = "B11. Enraged Caldera.ogg"
   end
-  
+
   SOUND:PlayBGM(_ZONE.CurrentMap.Music, true)
 end
 
@@ -100,7 +100,7 @@ function SINGLE_CHAR_SCRIPT.SleepingCalderaAltTiles(owner, ownerChar, context, a
   if not SV.sleeping_caldera.TookTreasure then
     return
   end
-  
+
   --set all water tiles to lava
   for xx = 0, _ZONE.CurrentMap.Width - 1, 1 do
 	for yy = 0, _ZONE.CurrentMap.Height - 1, 1 do
@@ -151,7 +151,7 @@ function SINGLE_CHAR_SCRIPT.SleepingCalderaAltEnemies(owner, ownerChar, context,
   if not SV.sleeping_caldera.TookTreasure then
     return
   end
-  
+
   _ZONE.CurrentMap.MapEffect.OnMapTurnEnds:Add(RogueElements.Priority(15), PMDC.Dungeon.RespawnFromEligibleEvent(15, 50))
   for ii = 1, 3, 1 do
 	PMDC.Dungeon.RespawnFromEligibleEvent.Respawn()
@@ -165,11 +165,11 @@ function SINGLE_CHAR_SCRIPT.SleepingCalderaSummonHeatran(owner, ownerChar, conte
   if not SV.sleeping_caldera.TookTreasure then
     return
   end
-  
+
   if SV.sleeping_caldera.GotHeatran then
     return
   end
-  
+
   -- spawn heatran- try 10 times; not guaranteed but not crucial
   local origin = _DUNGEON.ActiveTeam.Leader.CharLoc
   for ii = 1, 10, 1 do
@@ -180,7 +180,7 @@ function SINGLE_CHAR_SCRIPT.SleepingCalderaSummonHeatran(owner, ownerChar, conte
 	  --spawn it here
 	  DUNGEON:MoveScreen(RogueEssence.Content.ScreenMover(3, 6, 30))
 	  GAME:WaitFrames(10)
-	  
+
 	  local new_team = RogueEssence.Dungeon.MonsterTeam()
 	  local mob_data = RogueEssence.Dungeon.CharData()
 	  mob_data.BaseForm = RogueEssence.Dungeon.MonsterID("heatran", 0, "normal", Gender.Male)
@@ -198,40 +198,40 @@ function SINGLE_CHAR_SCRIPT.SleepingCalderaSummonHeatran(owner, ownerChar, conte
 	  new_team.Players:Add(new_mob)
 	  player_tbl = LTBL(new_mob)
 	  player_tbl.IsLegend = true
-	  
+
 	  --with fanfare
 	  SOUND:PlayBattleSE("_UNK_EVT_003")
 	  local arriveAnim = RogueEssence.Content.StaticAnim(RogueEssence.Content.AnimData("Sacred_Fire_Ranger", 3), 1)
 	  arriveAnim:SetupEmitted(RogueElements.Loc(new_mob.CharLoc.X * 24 + 12, new_mob.CharLoc.Y * 24 + 12), 32, RogueElements.Dir8.Down)
 	  DUNGEON:PlayVFXAnim(arriveAnim, RogueEssence.Content.DrawLayer.Front)
-	  
+
 	  GAME:WaitFrames(3)
-	  
+
 	  _ZONE.CurrentMap.MapTeams:Add(new_team)
 	  new_mob:RefreshTraits()
-	  
+
       TASK:WaitTask(_DUNGEON:SpecialIntro(new_mob))
       TASK:WaitTask(new_mob:OnMapStart())
-	  
+
 	  _ZONE.CurrentMap:UpdateExploration(new_mob)
-	  
+
 	  break
 	end
   end
-  
+
 end
 
 function SINGLE_CHAR_SCRIPT.GuildBlock(owner, ownerChar, context, args)
-  
+
   if not SV.guildmaster_summit.GameComplete then
     UI:ResetSpeaker()
     UI:SetAutoFinish(true)
     UI:WaitShowDialogue(RogueEssence.StringKey("DLG_LOCK_GUILD"):ToLocal())
   else
-    
+
     UI:ResetSpeaker()
     UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("DLG_LOCK_GUILD_OPEN"):ToLocal(), context.User:GetDisplayName(true)))
-	
+
 	_DUNGEON.PendingLeaderAction = _DUNGEON:ProcessPlayerInput(RogueEssence.Dungeon.GameAction(RogueEssence.Dungeon.GameAction.ActionType.Tile, Dir8.None, 1))
   end
 end
@@ -243,9 +243,9 @@ MapIndexType = luanet.import_type('RogueEssence.Dungeon.MapIndexState')
 function SINGLE_CHAR_SCRIPT.ThiefCheck(owner, ownerChar, context, args)
   local baseLoc = _DUNGEON.ActiveTeam.Leader.CharLoc
   local tile = _ZONE.CurrentMap.Tiles[baseLoc.X][baseLoc.Y]
-  
+
   local thief_idx = "thief"
-  
+
   local price = COMMON.GetDungeonCartPrice()
   local security_price = COMMON.GetShopPriceState()
   if price < 0 then
@@ -265,16 +265,16 @@ function SINGLE_CHAR_SCRIPT.ThiefCheck(owner, ownerChar, context, args)
     end
   end
 
-  
+
   if tile.Effect.ID ~= "area_shop" then
 	if security_price.Cart > 0 then
 	  _GAME:BGM("", false)
       COMMON.ClearAllPrices()
-	  
+
 	  SV.adventure.Thief = true
 	  local index_from = owner.StatusStates:Get(luanet.ctype(MapIndexType))
 	  _DUNGEON:LogMsg(STRINGS:Format(RogueEssence.StringKey(string.format("TALK_SHOP_THIEF_%04d", index_from.Index)):ToLocal()))
-		
+
 	  -- create thief status
 	  local thief_status = RogueEssence.Dungeon.MapStatus(thief_idx)
       thief_status:LoadFromData()
@@ -289,7 +289,7 @@ function SINGLE_CHAR_SCRIPT.ThiefCheck(owner, ownerChar, context, args)
   else
     local shop_idx = "shopping"
 	if not _ZONE.CurrentMap.Status:ContainsKey(thief_idx) and not _ZONE.CurrentMap.Status:ContainsKey(shop_idx) then
-	  
+
 	  local shop_status = RogueEssence.Dungeon.MapStatus(shop_idx)
       shop_status:LoadFromData()
       TASK:WaitTask(_DUNGEON:AddMapStatus(shop_status))
@@ -307,7 +307,7 @@ function SINGLE_CHAR_SCRIPT.ShopCheckout(owner, ownerChar, context, args)
 	  local security_state = COMMON.GetShopPriceState()
       local price = security_state.Cart
 	  local sell_price = COMMON.GetDungeonSellPrice()
-  
+
       if price > 0 or sell_price > 0 then
 	    local is_near = false
 		local loc_diff = _DUNGEON.ActiveTeam.Leader.CharLoc - found_shopkeep.CharLoc
@@ -320,7 +320,7 @@ function SINGLE_CHAR_SCRIPT.ShopCheckout(owner, ownerChar, context, args)
 		      near_mat = true
 		    end
 		  end
-		  
+
 		  if (near_mat or found_shopkeep:CanSeeCharacter(_DUNGEON.ActiveTeam.Leader)) then
 	        -- attempt to warp the shopkeeper next to the player
 		    local cand_locs = _ZONE.CurrentMap:FindNearLocs(found_shopkeep, baseLoc, 1)
@@ -338,12 +338,12 @@ function SINGLE_CHAR_SCRIPT.ShopCheckout(owner, ownerChar, context, args)
 		  DUNGEON:CharTurnToChar(found_shopkeep, _DUNGEON.ActiveTeam.Leader)
 		  DUNGEON:CharTurnToChar(_DUNGEON.ActiveTeam.Leader, found_shopkeep)
           UI:SetSpeaker(found_shopkeep)
-		  
+
 		  if sell_price > 0 then
 		    UI:ChoiceMenuYesNo(STRINGS:Format(RogueEssence.StringKey(string.format("TALK_SHOP_SELL_%04d", found_shopkeep.Discriminator)):ToLocal(), STRINGS:FormatKey("MONEY_AMOUNT", sell_price)), false)
 		    UI:WaitForChoice()
 		    result = UI:ChoiceResult()
-		  
+
 		    if SV.adventure.Thief then
 			  COMMON.ThiefReturn()
 			  price = 0
@@ -356,7 +356,7 @@ function SINGLE_CHAR_SCRIPT.ShopCheckout(owner, ownerChar, context, args)
 			  -- nothing
 		    end
 		  end
-		  
+
 		  if price > 0 then
 	        UI:ChoiceMenuYesNo(STRINGS:Format(RogueEssence.StringKey(string.format("TALK_SHOP_PAY_%04d", found_shopkeep.Discriminator)):ToLocal(), STRINGS:FormatKey("MONEY_AMOUNT", price)), false)
 	        UI:WaitForChoice()
@@ -418,13 +418,13 @@ function SINGLE_CHAR_SCRIPT.SidequestOutlawFloor(owner, ownerChar, context, args
   if context.User ~= nil then
     return
   end
-  
+
   if not args.Silent then
     SOUND:PlayBGM("C07. Outlaw.ogg", false)
     UI:ResetSpeaker()
     UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("DLG_MISSION_OUTLAW"):ToLocal()))
   end
-  
+
   -- add a map status for outlaw clear check
   local checkClearStatus = "outlaw_clear_check" -- outlaw clear check
   local status = RogueEssence.Dungeon.MapStatus(checkClearStatus)
@@ -436,12 +436,12 @@ function SINGLE_CHAR_SCRIPT.OutlawHouse(owner, ownerChar, context, args)
   if context.User ~= nil then
     return
   end
-  
+
   local found_outlaw = COMMON.FindNpcWithTable(true, "Mission", args.Mission)
   found_outlaw.CharDir = _ZONE.CurrentMap:ApproximateClosestDir8(found_outlaw.CharLoc, _DUNGEON.ActiveTeam.Leader.CharLoc)
   UI:SetSpeaker(found_outlaw)
   UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("DLG_MISSION_OUTLAW_TRAP"):ToLocal()))
-	
+
   COMMON.TriggerAdHocMonsterHouse(owner, ownerChar, found_outlaw)
 end
 
@@ -464,12 +464,12 @@ function SINGLE_CHAR_SCRIPT.OutlawClearCheck(owner, ownerChar, context, args)
         -- if no outlaws of the mission list, mark quest as complete
         mission.Complete = COMMON.MISSION_COMPLETE
         UI:ResetSpeaker()
-        
+
         -- retrieve the species of the target
         local target_name = _DATA:GetMonster(mission.TargetSpecies.Species).Name
         -- retrieve the species of the quest giver
         local client_name = _DATA:GetMonster(mission.ClientSpecies.Species).Name
-        
+
         UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("DLG_MISSION_OUTLAW_DONE"):ToLocal(), target_name:ToLocal()))
         UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("DLG_MISSION_REMINDER"):ToLocal(), client_name:ToLocal()))
       end
@@ -485,7 +485,7 @@ end
 
 function SINGLE_CHAR_SCRIPT.ShowTileName(owner, ownerChar, context, args)
 
-    
+
 	if SV.test_grounds.Tileset == 0 then
 	  UI:TextPopUp("Tiny Woods", 150)
 	elseif SV.test_grounds.Tileset == 1 then
@@ -930,11 +930,11 @@ function SINGLE_CHAR_SCRIPT.ShowTileName(owner, ownerChar, context, args)
 end
 
 function SINGLE_CHAR_SCRIPT.SetTileData(wall, ground, water)
-  
+
     _ZONE.CurrentMap.TextureMap["wall"] = RogueEssence.Dungeon.AutoTile(wall)
     _ZONE.CurrentMap.TextureMap["floor"] = RogueEssence.Dungeon.AutoTile(ground)
     _ZONE.CurrentMap.TextureMap["water"] = RogueEssence.Dungeon.AutoTile(water)
-  
+
   --call recalculate all autotiles for the entire map
   _ZONE.CurrentMap:CalculateTerrainAutotiles(RogueElements.Loc(0, 0), RogueElements.Loc(_ZONE.CurrentMap.Width, _ZONE.CurrentMap.Height))
 end
@@ -942,7 +942,7 @@ end
 function SINGLE_CHAR_SCRIPT.TileTestChange(owner, ownerChar, context, args)
 
   SV.test_grounds.Tileset = SV.test_grounds.Tileset + 1
-  
+
 	if SV.test_grounds.Tileset == 1 then
 
 	  SINGLE_CHAR_SCRIPT.SetTileData("thunderwave_cave_wall", "thunderwave_cave_floor", "thunderwave_cave_secondary")
@@ -1459,9 +1459,11 @@ function SINGLE_CHAR_SCRIPT.AllyDeathCheck(owner, ownerChar, context, args)
 end
 
 function SINGLE_CHAR_SCRIPT.DungeonTalker(owner, ownerChar, context, args) --Thank you, Halcyon scripters.
-	if context.User == nil then return else print(context.User) end
-	if context.User == GAME:GetPlayerPartyMember(0) then --this check is needed so that the script runs only once, otherwise it'll run for each entity in the map. 
-	  GAME:QueueLeaderEvent(function() SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args) end)
+	if context.User == nil then return else PrintInfo(context.User.Name .. " is on this floor.") end
+	if context.User == GAME:GetPlayerPartyMember(0) then --this check is needed so that the script runs only once, otherwise it'll run for each entity in the map.
+		GAME:QueueLeaderEvent(function() SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args) end)
+		--GAME:QueueLeaderEvent(function() SINGLE_CHAR_SCRIPT.SlumberPollen(owner, ownerChar, context, args) end)
+		--GAME:QueueLeaderEvent(function() SINGLE_CHAR_SCRIPT.TreeHeal(owner, ownerChar, context, args) end)
 	end
 end
 
@@ -1470,9 +1472,9 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 	local azura = GAME:GetPlayerPartyMember(1)
 	local area_name = DUNGEON:DungeonDisplayName()
 	local floor_no = DUNGEON:DungeonCurrentFloor()
-	if area_name == "Tarro Forest" and SV.tarro_town.PieChapter < 4 then
+	if area_name == "Tarro Forest" and SV.Story.chap == -1 then
 		if floor_no == 0 then
-			if DUNsection == 1 then
+			if SV.Story.dunsect == 1 then
 			else
 				UI:SetSpeaker(maru)
 				UI:SetSpeakerEmotion("Normal")
@@ -1523,26 +1525,26 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 			UI:SetSpeakerEmotion("Happy")
 			UI:WaitShowDialogue("It's easier to get hungry in a dungeon anyway, so we should munch on them in here.")
 		end
-	elseif area_name == "Tarro Tree Hallows" and SV.tarro_town.PieChapter <= 9 then
+	elseif area_name == "Tarro Tree Hallows" and SV.Story.chap == -2 then
 		local senna = GAME:GetPlayerPartyMember(2)
 		local puchi = GAME:GetPlayerPartyMember(3)
 		local ziggy = GAME:GetPlayerPartyMember(4)
-		if DUNsection == 0 then
+		if SV.Story.dunsect == 0 then
 			if floor_no == 0 then
 				UI:SetSpeaker(puchi)
 				UI:SetSpeakerEmotion("Dizzy")
 				UI:WaitShowDialogue("Guys... I'm not making it, I'm way too tired...")
-	
+
 				UI:SetSpeaker(azura)
 				UI:SetSpeakerEmotion("Worried")
 				UI:WaitShowDialogue("Uh oh...")
-	
+
 				UI:SetSpeaker(senna)
 				UI:SetSpeakerEmotion("Teary-Eyed")
 				UI:WaitShowDialogue("I-I... this is... this is a d-dungeon...??")
 				UI:SetSpeakerEmotion("Pain")
 				UI:WaitShowDialogue("It's huge...!")
-	
+
 				UI:SetSpeaker(ziggy)
 				UI:SetSpeakerEmotion("Determined")
 				UI:WaitShowDialogue("Guuuuuuys, come ooooooooon!")
@@ -1550,21 +1552,21 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 				UI:SetSpeaker(maru)
 				UI:SetSpeakerEmotion("Normal")
 				UI:WaitShowDialogue("I think I'm getting tired of being in front...")
-	
+
 				UI:SetSpeaker(ziggy)
 				UI:SetSpeakerEmotion("Happy")
 				UI:WaitShowDialogue("LEMME LEMME LEMME LEMME!")
-	
+
 				UI:SetSpeaker(maru)
 				UI:SetSpeakerEmotion("Happy")
 				UI:WaitShowDialogue("Mkaaaay, I'll just [emote=Normal]switch up using the number keys: 1, 2, 3, and 4.")
 
 				GAME:WaitFrames(60)
-	
+
 				UI:SetSpeaker(ziggy)
 				UI:SetSpeakerEmotion("Worried")
 				UI:WaitShowDialogue("Azu, what is he talking about?")
-	
+
 				UI:SetSpeaker(azura)
 				UI:SetSpeakerEmotion("Worried")
 				UI:WaitShowDialogue("I don't know...")
@@ -1572,20 +1574,20 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 				UI:SetSpeaker(maru)
 				UI:SetSpeakerEmotion("Normal")
 				UI:WaitShowDialogue("Puchi is pretty strong, maybe he can go in front and get all the dungeon monsters out of the way.")
-	
+
 				UI:SetSpeaker(ziggy)
 				UI:SetSpeakerEmotion("Happy")
 				UI:WaitShowDialogue("Yeah! Let's change tactics team!")
-	
+
 				UI:SetSpeaker(puchi)
 				UI:SetSpeakerEmotion("Pain")
 				UI:WaitShowDialogue("(I'm so tired.)")
-	
+
 				UI:SetSpeaker(maru)
 				UI:SetSpeakerEmotion("Normal")
 				UI:WaitShowDialogue("I'll consider opening the menu and choosing Tactics.")
 			end
-		elseif DUNsection == 1 then
+		elseif SV.Story.dunsect == 1 then
 			if floor_no == 0 then
 				UI:SetSpeaker(puchi)
 				UI:SetSpeakerEmotion("Stunned")
@@ -1615,7 +1617,7 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 				UI:SetSpeakerEmotion("Determined")
 				UI:WaitShowDialogue("We'll fight for her if this tree is her friend.")
 			end
-		elseif DUNsection == 2 then
+		elseif SV.Story.dunsect == 2 then
 			UI:SetSpeaker(senna)
 			UI:SetSpeakerEmotion("Worried")
 			UI:WaitShowDialogue("W-what's the plan, guys?")
@@ -1655,7 +1657,7 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 			local third = GAME:GetPlayerPartyMember(2)
 			UI:SetSpeaker(leader)
 			UI:SetSpeakerEmotion("Normal")
-			UI:WaitShowDialogue("There are a lot of switches here.")
+			UI:WaitShowDialogue("There are a lot of hidden switches here.")
 
 			UI:SetSpeaker(second)
 			UI:SetSpeakerEmotion("Stunned")
@@ -1702,27 +1704,27 @@ end
 function SINGLE_CHAR_SCRIPT.LuaBeginBattleEvent(owner, ownerChar, context, args)
 	local MapCheckState = luanet.import_type('RogueEssence.Dungeon.MapCheckState')
 	local SingleCharScriptEvent = luanet.import_type('RogueEssence.Dungeon.SingleCharScriptEvent')
-	
+
 	local map_clear_idx = 'map_clear_check'
 
 	if context.User ~= nil then return end
 	--if a custom clear event is not given, use the default one.
 	if args.CustomClearEvent == nil then args.CustomClearEvent = 'LuaCheckBossClearEvent' end
-	
+
 	--Turn on Team Mode if allowed when the boss fight starts.
 	if _DUNGEON:CanUseTeamMode() then
 		_DUNGEON:SetTeamMode(true)
 	end
-	
+
 	local clear_status = RogueEssence.Dungeon.MapStatus(map_clear_idx)
 	clear_status:LoadFromData()
-	
+
 	local check = clear_status.StatusStates:GetWithDefault(luanet.ctype(MapCheckState))
 	--The 2nd argument in the function below needs a string that represents a lua table of the arguments to pass. Serpent.line will convert the lua table to a string representing it for us.
 	--We only NEED to pass args, as owner, ownerchar, and context are automatically passed in when the check event is called
 	check.CheckEvents:Add(SingleCharScriptEvent(args.CustomClearEvent, Serpent.line(args)))
 	--check.CheckEvents:Add(LuaCheckBossClearEvent(owner, ownerChar, context, args))
-	
+
 	TASK:WaitTask(_DUNGEON:AddMapStatus(clear_status))
 end
 
@@ -1740,33 +1742,33 @@ Serpent = require 'lib.serpent'
 function SINGLE_CHAR_SCRIPT.CheckRightTileEvent(owner, ownerChar, context, args)
 	local MapCheckState = luanet.import_type('RogueEssence.Dungeon.MapCheckState')
 	local SingleCharScriptEvent = luanet.import_type('RogueEssence.Dungeon.SingleCharScriptEvent')
-	
+
 	---
 	-- Sequence that runs when map is over. Fade out, cut the music, etc.
 	-- @usage Coroutine
 	function end_sequence()
 		_GAME:BGM("", true)
-		
+
 		SOUND:PlayBattleSE('EVT_Battle_Transition')
 		TASK:WaitTask(_GAME:FadeOut(true))
-		 
+
 		_DUNGEON:ResetTurns()
-		
+
 		-- restore all and remove all map status
 		local statuses_to_remove = {}
 		for i = 0, _ZONE.CurrentMap.Status.Keys.Count - 1, 1 do
 			statuses_to_remove[i] = _ZONE.CurrentMap.Status.Keys[i]
 		end
-		
+
 		for i = 0, #statuses_to_remove - 1, 1 do
 			TASK:WaitTask(_DUNGEON:RemoveMapStatus(statuses_to_remove[i], false))
-		end 
-		
+		end
+
 		-- heal everyone in the party
 		for i = 0, GAME:GetPlayerPartyCount() - 1, 1 do
 			_DATA.Save.ActiveTeam.Players[i]:FullRestore()
 		end
-		
+
 		TASK:WaitTask(_GAME:EndSegment(RogueEssence.Data.GameProgress.ResultType.Cleared))
 	end
 
@@ -1775,11 +1777,11 @@ function SINGLE_CHAR_SCRIPT.CheckRightTileEvent(owner, ownerChar, context, args)
 	if not Endsouthboss then
 		return
 	end
-	
-	
+
+
 	-- Everyone's dead, clear the scene.
 	local checks = owner.StatusStates:GetWithDefault(luanet.ctype(MapCheckState))
-	
+
 	-- The call originally for this was to remove(this), which isn't in lua. 
 	-- So we need to find the LuaCheckBossClearEvent and remove that (remove ourself)
 	for i = 0, checks.CheckEvents.Count - 1, 1 do
@@ -1789,13 +1791,13 @@ function SINGLE_CHAR_SCRIPT.CheckRightTileEvent(owner, ownerChar, context, args)
 			end
 		end
 	end
-	
+
 	if _DATA.CurrentReplay == nil then
 		TASK:WaitTask(end_sequence())
-	else 
+	else
 		TASK:WaitTask(_GAME:EndSegment(RogueEssence.Data.GameProgress.ResultType.Cleared))
 	end
-	
+
 end
 
 function SINGLE_CHAR_SCRIPT.TileCheck()
@@ -1812,10 +1814,19 @@ function SINGLE_CHAR_SCRIPT.AddApple(owner, ownerChar, context, args)
 	local placex = map.Rand:Next(0, map.Width)
 	local placey = map.Rand:Next(0, map.Height)
 	local loc = RogueElements.Loc(placex, placey)
-	if apple >= 25 then
+	if apple >= 20 then
+		local new_item = RogueEssence.Dungeon.MapItem("food_apple")
+		local type = map.Rand:Next(0, 30)
 		SOUND:PlaySE("Battle/EVT_CH02_Item_Place")
 		_DUNGEON:LogMsg("An apple fell somewhere.")
-		local new_item = RogueEssence.Dungeon.MapItem("food_apple")
+		if type == 30 then
+			new_item = RogueEssence.Dungeon.MapItem("food_apple_perfect")
+		elseif type > 25 then
+			new_item = RogueEssence.Dungeon.MapItem("food_apple_big")
+		else
+			new_item = RogueEssence.Dungeon.MapItem("food_apple")
+		end
+		
 		new_item.TileLoc = loc
 		map.Items:Add(new_item)
 		apple = -1
@@ -1854,7 +1865,7 @@ function SINGLE_CHAR_SCRIPT.SlumberPollen(owner, ownerChar, context, args)
 					sleep_roll = true
 				end
 			else
-				PrintInfo("Sleep roll failed!")
+				--PrintInfo("Sleep roll failed!")
 			end
 		end
 	end
@@ -1865,5 +1876,49 @@ function SINGLE_CHAR_SCRIPT.TunnelCheck(owner, ownerChar, context, args)
 	local marker = args[2]
 	print(part)
 	print(marker)
-	COMMON.FadeEnterGround(part, marker)
+	EXPLCOMMON.FadeEnterGround(part, marker)
+end
+
+local ij = 0
+function SINGLE_CHAR_SCRIPT.TreeHeal(owner, ownerChar, context, args)
+	local map = DUNGEON:DungeonDisplayName()
+	local player_count = GAME:GetPlayerPartyCount()
+	--PrintInfo("Hi, you are in " .. map .. " and " .. context.User.Name .. " has ended their turn.")
+	if map == "Tarro Tree Hallows" and SV.tarro_tree_hollows.in_boss == true then
+		local player = GAME:GetPlayerPartyMember(ij)
+		print("Healing: " .. GAME:GetPlayerPartyMember(ij).HP)
+		if player.HP + math.ceil(player.MaxHP / 10) >= player.MaxHP then
+			player.HP = player.MaxHP
+		else
+			player.HP = player.HP + math.ceil(player.MaxHP / 10)
+		end
+
+		print("Heal checking: " .. GAME:GetPlayerPartyMember(ij).HP)
+		ij = ij + 1
+		if ij == player_count then
+			ij = 0
+		end
+	end
+end
+
+function SINGLE_CHAR_SCRIPT.CleanTidy()
+	if SV.Story.chap == -6 and GAME:GetPlayerPartyMember(3).BaseForm.Species == "minccino" then
+		local clean = false
+		local tidy = GAME:GetPlayerPartyMember(2)
+		local flow = GAME:GetPlayerPartyMember(1)
+		local poison = RogueEssence.Dungeon.StatusEffect("poison")
+		local heal = RogueEssence.Dungeon.StatusEffect("aqua_ring")
+		if (tidy.CharLoc - flow.CharLoc):Dist8() <= 3 then
+			clean = true
+		end
+		if clean == true then
+			heal:LoadFromData()
+			TASK:WaitTask(tidy:AddStatusEffect(nil, heal, false))
+		else
+			if GAME:GetPlayerPartyMember(2):GetStatusEffect("poison") == nil then
+				poison:LoadFromData()
+				TASK:WaitTask(tidy:AddStatusEffect(nil, poison, false))
+			end
+		end
+	end
 end

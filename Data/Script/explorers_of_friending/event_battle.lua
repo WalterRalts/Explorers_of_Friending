@@ -16,17 +16,17 @@ function BATTLE_SCRIPT.ShopkeeperInteract(owner, ownerChar, context, args)
 	local security_state = COMMON.GetShopPriceState()
     local price = security_state.Cart
     local sell_price = COMMON.GetDungeonSellPrice()
-  
+
     local oldDir = context.Target.CharDir
     DUNGEON:CharTurnToChar(context.Target, context.User)
-	
+
     if sell_price > 0 then
       context.TurnCancel.Cancel = true
       UI:SetSpeaker(context.Target)
 	  UI:ChoiceMenuYesNo(STRINGS:Format(RogueEssence.StringKey(string.format("TALK_SHOP_SELL_%04d", context.Target.Discriminator)):ToLocal(), STRINGS:FormatKey("MONEY_AMOUNT", sell_price)), false)
 	  UI:WaitForChoice()
 	  result = UI:ChoiceResult()
-	  
+
 	  if SV.adventure.Thief then
 	    COMMON.ThiefReturn()
 	  elseif result then
@@ -38,7 +38,7 @@ function BATTLE_SCRIPT.ShopkeeperInteract(owner, ownerChar, context, args)
 	    -- nothing
 	  end
     end
-	
+
     if price > 0 then
       context.TurnCancel.Cancel = true
       UI:SetSpeaker(context.Target)
@@ -60,7 +60,7 @@ function BATTLE_SCRIPT.ShopkeeperInteract(owner, ownerChar, context, args)
 	    UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey(string.format("TALK_SHOP_PAY_REFUSE_%04d", context.Target.Discriminator)):ToLocal()))
 	  end
     end
-	
+
 	if price == 0 and sell_price == 0 then
       context.CancelState.Cancel = true
       UI:SetSpeaker(context.Target)
@@ -70,7 +70,7 @@ function BATTLE_SCRIPT.ShopkeeperInteract(owner, ownerChar, context, args)
   else
 
     UI:ResetSpeaker()
-	
+
 	local chosen_quote = RogueEssence.StringKey("TALK_CANT"):ToLocal()
     chosen_quote = string.gsub(chosen_quote, "%[myname%]", context.Target:GetDisplayName(true))
     UI:WaitShowDialogue(chosen_quote)
@@ -92,21 +92,21 @@ function BATTLE_SCRIPT.EscortInteractSister(owner, ownerChar, context, args)
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
   UI:SetSpeaker(context.Target)
-  
+
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
-  
+
   UI:SetSpeaker(context.Target)
-  
+
   local ratio = context.Target.HP * 100 // context.Target.MaxHP
-  
+
   if ratio <= 25 then
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue(RogueEssence.StringKey("TALK_ESCORT_SISTER_PINCH"):ToLocal())
   elseif ratio <= 50 then
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue(RogueEssence.StringKey("TALK_ESCORT_SISTER_HALF"):ToLocal())
-  else 
+  else
     UI:SetSpeakerEmotion("Worried")
     if tbl.TalkAmount == nil then
 	  UI:WaitShowDialogue(RogueEssence.StringKey("TALK_ESCORT_SISTER_FULL_001"):ToLocal())
@@ -134,21 +134,21 @@ function BATTLE_SCRIPT.EscortInteractMother(owner, ownerChar, context, args)
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
   UI:SetSpeaker(context.Target)
-  
+
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
-  
+
   UI:SetSpeaker(context.Target)
-  
+
   local ratio = context.Target.HP * 100 // context.Target.MaxHP
-  
+
   if ratio <= 25 then
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue(RogueEssence.StringKey("TALK_ESCORT_MOTHER_PINCH"):ToLocal())
   elseif ratio <= 50 then
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue(RogueEssence.StringKey("TALK_ESCORT_MOTHER_HALF"):ToLocal())
-  else 
+  else
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue(RogueEssence.StringKey("TALK_ESCORT_MOTHER_FULL_001"):ToLocal())
   end
@@ -164,21 +164,21 @@ function BATTLE_SCRIPT.EscortInteractFather(owner, ownerChar, context, args)
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
   UI:SetSpeaker(context.Target)
-  
+
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
-  
+
   UI:SetSpeaker(context.Target)
-  
+
   local ratio = context.Target.HP * 100 // context.Target.MaxHP
-  
+
   if ratio <= 25 then
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue(RogueEssence.StringKey("TALK_ESCORT_FATHER_PINCH"):ToLocal())
   elseif ratio <= 50 then
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue(RogueEssence.StringKey("TALK_ESCORT_FATHER_HALF"):ToLocal())
-  else 
+  else
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue(RogueEssence.StringKey("TALK_ESCORT_FATHER_FULL_001"):ToLocal())
   end
@@ -193,21 +193,21 @@ function BATTLE_SCRIPT.EscortInteractBrother(owner, ownerChar, context, args)
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
   UI:SetSpeaker(context.Target)
-  
+
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
-  
+
   UI:SetSpeaker(context.Target)
-  
+
   local ratio = context.Target.HP * 100 // context.Target.MaxHP
-  
+
   if ratio <= 25 then
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue(RogueEssence.StringKey("TALK_ESCORT_BROTHER_PINCH"):ToLocal())
   elseif ratio <= 50 then
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue(RogueEssence.StringKey("TALK_ESCORT_BROTHER_HALF"):ToLocal())
-  else 
+  else
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue(RogueEssence.StringKey("TALK_ESCORT_BROTHER_FULL_001"):ToLocal())
   end
@@ -222,21 +222,21 @@ function BATTLE_SCRIPT.EscortInteractGrandma(owner, ownerChar, context, args)
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
   UI:SetSpeaker(context.Target)
-  
+
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
-  
+
   UI:SetSpeaker(context.Target)
-  
+
   local ratio = context.Target.HP * 100 // context.Target.MaxHP
-  
+
   if ratio <= 25 then
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue(RogueEssence.StringKey("TALK_ESCORT_GRANDMA_PINCH"):ToLocal())
   elseif ratio <= 50 then
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue(RogueEssence.StringKey("TALK_ESCORT_GRANDMA_HALF"):ToLocal())
-  else 
+  else
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue(RogueEssence.StringKey("TALK_ESCORT_GRANDMA_FULL_001"):ToLocal())
   end
@@ -251,21 +251,21 @@ function BATTLE_SCRIPT.EscortInteractPet(owner, ownerChar, context, args)
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
   UI:SetSpeaker(context.Target)
-  
+
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
-  
+
   UI:SetSpeaker(context.Target)
-  
+
   local ratio = context.Target.HP * 100 // context.Target.MaxHP
-  
+
   if ratio <= 25 then
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue(RogueEssence.StringKey("TALK_ESCORT_PET_PINCH"):ToLocal())
   elseif ratio <= 50 then
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue(RogueEssence.StringKey("TALK_ESCORT_PET_HALF"):ToLocal())
-  else 
+  else
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue(RogueEssence.StringKey("TALK_ESCORT_PET_FULL_001"):ToLocal())
   end
@@ -278,30 +278,30 @@ function BATTLE_SCRIPT.SidequestRescueReached(owner, ownerChar, context, args)
 
   local tbl = LTBL(context.Target)
   local mission = SV.missions.Missions[tbl.Mission]
-  
+
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
-  
+
   UI:ResetSpeaker()
   local target_name = _DATA:GetMonster(mission.TargetSpecies.Species).Name
   UI:ChoiceMenuYesNo(STRINGS:Format(RogueEssence.StringKey("DLG_MISSION_RESCUE_ASK"):ToLocal(), target_name:ToLocal()), false)
   UI:WaitForChoice()
   result = UI:ChoiceResult()
   if result then
-  
+
     mission.Complete = COMMON.MISSION_COMPLETE
-    
+
     local poseAction = RogueEssence.Dungeon.CharAnimPose(context.User.CharLoc, context.User.CharDir, 50, 0)
     DUNGEON:CharSetAction(context.User, poseAction)
     UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("DLG_MISSION_RESCUE_DONE"):ToLocal(), target_name:ToLocal()))
-        
+
     UI:SetSpeaker(context.Target)
     UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("DLG_MISSION_RESCUE_THANKS"):ToLocal()))
-    
+
     -- warp out
     TASK:WaitTask(_DUNGEON:ProcessBattleFX(context.Target, context.Target, _DATA.SendHomeFX))
     _DUNGEON:RemoveChar(context.Target)
-    
+
     DUNGEON:CharEndAnim(context.User)
 
 	context.TurnCancel.Cancel = true
@@ -313,33 +313,33 @@ end
 
 
 function BATTLE_SCRIPT.SidequestEscortReached(owner, ownerChar, context, args)
-  
+
   local tbl = LTBL(context.Target)
   local escort = COMMON.FindMissionEscort(tbl.Mission)
-  
+
   if escort then
-    
+
     local mission = SV.missions.Missions[tbl.Mission]
     mission.Complete = COMMON.MISSION_COMPLETE
-  
+
     local oldDir = context.Target.CharDir
     DUNGEON:CharTurnToChar(context.Target, context.User)
-  
+
     --UI:SetSpeaker(context.Target)
     UI:ResetSpeaker()
     local client_name = _DATA:GetMonster(mission.ClientSpecies.Species).Name
     UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("DLG_MISSION_ESCORT_DONE"):ToLocal(), client_name:ToLocal()))
-  
+
     -- warp out
     TASK:WaitTask(_DUNGEON:ProcessBattleFX(escort, escort, _DATA.SendHomeFX))
     _DUNGEON:RemoveChar(escort)
-	
+
     TASK:WaitTask(_DUNGEON:ProcessBattleFX(context.Target, context.Target, _DATA.SendHomeFX))
     _DUNGEON:RemoveChar(context.Target)
-  
+
     UI:ResetSpeaker()
     UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("DLG_MISSION_REMINDER"):ToLocal(), client_name:ToLocal()))
-	
+
 	context.TurnCancel.Cancel = true
   else
 	context.CancelState.Cancel = true
@@ -347,17 +347,17 @@ function BATTLE_SCRIPT.SidequestEscortReached(owner, ownerChar, context, args)
 end
 
 function BATTLE_SCRIPT.SidequestEscortOutReached(owner, ownerChar, context, args)
-  
+
   local tbl = LTBL(context.Target)
-  
+
     local mission = SV.missions.Missions[tbl.Mission]
-  
+
     local oldDir = context.Target.CharDir
     DUNGEON:CharTurnToChar(context.Target, context.User)
-  
+
     UI:SetSpeaker(context.Target)
     UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey(args.EscortStartMsg):ToLocal()))
-    
+
 	-- ask to join
     UI:ResetSpeaker()
 	UI:ChoiceMenuYesNo(STRINGS:Format(RogueEssence.StringKey("TALK_ESCORT_ASK"):ToLocal()), false)
@@ -374,35 +374,35 @@ function BATTLE_SCRIPT.SidequestEscortOutReached(owner, ownerChar, context, args
 	  context.Target.Tactic:Initialize(context.Target)
 
 	  context.Target:FullRestore()
-		
+
 	  context.Target.ActionEvents:Clear()
 	  local talk_evt = RogueEssence.Dungeon.BattleScriptEvent(args.EscortInteract)
 	  context.Target.ActionEvents:Add(talk_evt)
-	  
+
 	  SOUND:PlayFanfare("Fanfare/Note")
       UI:ResetSpeaker()
 	  UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("MSG_RECRUIT_GUEST"):ToLocal(), context.Target:GetDisplayName(true)))
       UI:SetSpeaker(context.Target)
       UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey(args.EscortAcceptMsg):ToLocal()))
-	  
+
 	  context.TurnCancel.Cancel = true
 	else
 	  context.Target.CharDir = oldDir
 	  context.CancelState.Cancel = true
 	end
-	
+
 end
 
 function BATTLE_SCRIPT.CountTalkTest(owner, ownerChar, context, args)
   context.CancelState.Cancel = true
-  
+
   local tbl = LTBL(context.Target)
-  
+
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
-  
+
   UI:SetSpeaker(context.Target)
-  
+
   if tbl.TalkAmount == nil then
     UI:WaitShowDialogue("I will remember how many times I've been talked to.")
 	tbl.TalkAmount = 1
@@ -410,19 +410,19 @@ function BATTLE_SCRIPT.CountTalkTest(owner, ownerChar, context, args)
 	tbl.TalkAmount = tbl.TalkAmount + 1
   end
   UI:WaitShowDialogue("You've talked to me "..tostring(tbl.TalkAmount).." times.")
-  
+
   context.Target.CharDir = oldDir
 end
 
 
 function BATTLE_SCRIPT.PairTalk(owner, ownerChar, context, args)
   context.CancelState.Cancel = true
-  
+
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
-  
+
   UI:SetSpeaker(context.Target)
-  
+
   if args.Pair == 0 then
     UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("TALK_ADVICE_TEAM_MODE"):ToLocal(), _DIAG:GetControlString(RogueEssence.FrameInput.InputType.TeamMode)))
   else
@@ -432,8 +432,8 @@ function BATTLE_SCRIPT.PairTalk(owner, ownerChar, context, args)
 	  UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("TALK_ADVICE_SWITCH_KEYBOARD"):ToLocal(), _DIAG:GetControlString(RogueEssence.FrameInput.InputType.LeaderSwap1), _DIAG:GetControlString(RogueEssence.FrameInput.InputType.LeaderSwap2), _DIAG:GetControlString(RogueEssence.FrameInput.InputType.LeaderSwap3), _DIAG:GetControlString(RogueEssence.FrameInput.InputType.LeaderSwap4)))
 	end
   end
-  
-  
+
+
   context.Target.CharDir = oldDir
 end
 
@@ -442,12 +442,12 @@ StackType = luanet.import_type('RogueEssence.Dungeon.StackState')
 
 function BATTLE_SCRIPT.AccuracyTalk(owner, ownerChar, context, args)
   context.CancelState.Cancel = true
-  
+
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
-  
+
   UI:SetSpeaker(context.Target)
-  
+
   local sanded = false
   local acc_mod = context.Target:GetStatusEffect("mod_accuracy")
   if acc_mod ~= nil then
@@ -456,13 +456,13 @@ function BATTLE_SCRIPT.AccuracyTalk(owner, ownerChar, context, args)
 	  sanded = true
 	end
   end
-  
+
   if sanded then
     UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("TALK_ADVICE_STAT_DROP"):ToLocal()))
   else
     UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("TALK_ADVICE_STAT_DROP_CLEAR"):ToLocal()))
   end
-  
+
   context.Target.CharDir = oldDir
 end
 
@@ -488,22 +488,22 @@ function BATTLE_SCRIPT.TutorTalk(owner, ownerChar, context, args)
 
     local oldDir = context.Target.CharDir
     DUNGEON:CharTurnToChar(context.Target, context.User)
-  
+
     UI:SetSpeaker(context.Target)
-	
+
 	local tbl = LTBL(context.Target)
-	
+
 	if tbl.TaughtMove ~= nil then
 	  UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("TALK_TUTOR_DONE"):ToLocal()))
-	  
+
 	  context.Target.CharDir = oldDir
 	  context.CancelState.Cancel = true
 	  return
 	end
-	
+
 	local move_idx = context.Target.BaseSkills[0].SkillNum
 	local skill_data = _DATA:GetSkill(move_idx)
-	
+
 	local already_learned = context.User:HasBaseSkill(move_idx)
 	if already_learned then
 	  UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("TALK_TUTOR_ALREADY"):ToLocal(), skill_data:GetIconName()))
@@ -512,12 +512,12 @@ function BATTLE_SCRIPT.TutorTalk(owner, ownerChar, context, args)
 		context.TurnCancel.Cancel = true
 	  return
 	end
-	
-	
+
+
 	  local team_id = context.User.BaseForm
 	  local mon = _DATA:GetMonster(team_id.Species)
 	  local form = mon.Forms[team_id.Form]
-	
+
 	local can_learn = false
 	local skill = COMMON.TUTOR[move_idx]
 	  if not skill.Special then
@@ -537,47 +537,47 @@ function BATTLE_SCRIPT.TutorTalk(owner, ownerChar, context, args)
 		  end
 		end
 	  end
-	
+
 	if can_learn then
 		UI:ChoiceMenuYesNo(STRINGS:Format(RogueEssence.StringKey("TALK_TUTOR_ASK"):ToLocal(), skill_data:GetIconName()), false)
 		UI:WaitForChoice()
 		result = UI:ChoiceResult()
-		
+
 		if result then
 		  local replace_msg = STRINGS:Format(RogueEssence.StringKey("TALK_TUTOR_REPLACE"):ToLocal(), skill_data:GetIconName())
 		  result = COMMON.LearnMoveFlow(context.User, move_idx, replace_msg)
 		end
-		
+
 		if result then
 		  -- attempt to learn move
 		  UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("TALK_TUTOR_ACCEPT"):ToLocal(), skill_data:GetIconName()))
-		  
+
 		  --attack in a 90-degree turn from the talk
 		  context.Target.CharDir = Direction.Down
 		  context.User.CharDir = Direction.Down
-		  
+
 		  BATTLE_SCRIPT.Tutor_Sequence(context.Target)
-		  
+
 		  --player does the same animation offset by a little time
 		  BATTLE_SCRIPT.Tutor_Sequence(context.User)
-		  
+
 		  SOUND:PlayFanfare("Fanfare/LearnSkill")
 		  local orig_settings = UI:ExportSpeakerSettings()
 		  UI:ResetSpeaker(false)
 		  UI:WaitShowDialogue(STRINGS:FormatKey("DLG_SKILL_LEARN", context.User:GetDisplayName(true), skill_data:GetIconName()))
 		  UI:ImportSpeakerSettings(orig_settings)
-		  
+
 		  DUNGEON:CharTurnToChar(context.Target, context.User)
 		  DUNGEON:CharTurnToChar(context.User, context.Target)
-		  
+
 		  tbl.TaughtMove = true
 		  UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("TALK_TUTOR_VISIT"):ToLocal()))
 		else
 		  UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("TALK_TUTOR_DECLINE"):ToLocal(), skill_data:GetIconName()))
 		end
-		
+
 		SV.base_town.TutorMoves[move_idx] = true
-		
+
 		context.TurnCancel.Cancel = true
 	else
 	  UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("TALK_TUTOR"):ToLocal(), skill_data:GetIconName()))
@@ -590,14 +590,14 @@ end
 
 function BATTLE_SCRIPT.DisguiseTalk(owner, ownerChar, context, args)
   context.TurnCancel.Cancel = true
-  
+
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
-  
+
   local appearance = context.Target.Appearance
   local name = _DATA:GetMonster(appearance.Species).Name:ToLocal()
   UI:SetSpeaker("[color=#00FF00]"..name.."[color]", true, appearance.Species, appearance.Form, appearance.Skin, appearance.Gender)
-  
+
   local tbl = LTBL(context.Target)
 
   if tbl.TalkAmount == nil then
@@ -612,7 +612,7 @@ function BATTLE_SCRIPT.DisguiseTalk(owner, ownerChar, context, args)
       SOUND:PlayBGM("", false)
       UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("TALK_OUTLAW_DISGUISE_004"):ToLocal()))
       UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("TALK_OUTLAW_DISGUISE_005"):ToLocal()))
-      
+
         local teamIndex = _ZONE.CurrentMap.AllyTeams:IndexOf(context.Target.MemberTeam)
       _DUNGEON:RemoveTeam(RogueEssence.Dungeon.Faction.Friend, teamIndex)
       _DUNGEON:AddTeam(RogueEssence.Dungeon.Faction.Foe, context.Target.MemberTeam)
@@ -620,9 +620,9 @@ function BATTLE_SCRIPT.DisguiseTalk(owner, ownerChar, context, args)
       context.Target.Tactic = RogueEssence.Data.AITactic(tactic)
       context.Target.Tactic:Initialize(context.Target)
       TASK:WaitTask(context.Target:RemoveStatusEffect("attack_response", false))
-    
+
       TASK:WaitTask(context.Target:RemoveStatusEffect("illusion", true))
-      
+
       COMMON.TriggerAdHocMonsterHouse(owner, ownerChar, context.Target)
     end
 	tbl.TalkAmount = tbl.TalkAmount + 1
@@ -631,9 +631,9 @@ end
 
 
 function BATTLE_SCRIPT.DisguiseHit(owner, ownerChar, context, args)
-  
+
   DUNGEON:CharTurnToChar(context.Target, context.User)
-  
+
   local appearance = context.Target.Appearance
   local name = _DATA:GetMonster(appearance.Species).Name:ToLocal()
   UI:SetSpeaker("[color=#00FF00]"..name.."[color]", true, appearance.Species, appearance.Form, appearance.Skin, appearance.Gender)
@@ -641,20 +641,20 @@ function BATTLE_SCRIPT.DisguiseHit(owner, ownerChar, context, args)
 
   SOUND:PlayBGM("", false)
   UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("TALK_OUTLAW_DISGUISE_ATTACKED"):ToLocal()))
-	
+
   UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("TALK_OUTLAW_DISGUISE_005"):ToLocal()))
-	  
+
       local teamIndex = _ZONE.CurrentMap.AllyTeams:IndexOf(context.Target.MemberTeam)
 	  _DUNGEON:RemoveTeam(RogueEssence.Dungeon.Faction.Friend, teamIndex)
 	  _DUNGEON:AddTeam(RogueEssence.Dungeon.Faction.Foe, context.Target.MemberTeam)
 	  local tactic = _DATA:GetAITactic("boss") -- shopkeeper attack tactic
 	  context.Target.Tactic = RogueEssence.Data.AITactic(tactic)
 	  context.Target.Tactic:Initialize(context.Target)
-	
-	
+
+
 	  TASK:WaitTask(context.Target:RemoveStatusEffect("attack_response", false))
   TASK:WaitTask(context.Target:RemoveStatusEffect("illusion", true))
-	  
+
   COMMON.TriggerAdHocMonsterHouse(owner, ownerChar, context.Target)
 end
 
@@ -678,10 +678,10 @@ function BATTLE_SCRIPT.LegendRecruitCheck(owner, ownerChar, context, args)
 		  break
 		end
 	  end
-	  
+
 	  if found_legend == nil then
 	    local assemblyCount = GAME:GetPlayerAssemblyCount()
-		
+
 		for assembly_idx = 0,assemblyCount-1,1 do
 		  player = GAME:GetPlayerAssemblyMember(assembly_idx)
 		  local player_tbl = LTBL(player)
@@ -691,7 +691,7 @@ function BATTLE_SCRIPT.LegendRecruitCheck(owner, ownerChar, context, args)
 		  end
 		end
 	  end
-	  
+
 	  if found_legend ~= nil then
 	    --if so, set obtained to true
 	    SV.sleeping_caldera.GotHeatran = true
@@ -711,10 +711,10 @@ function BATTLE_SCRIPT.PuchiInteract(owner, ownerChar, context, args)
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
   UI:SetSpeaker(context.Target)
-  
+
   local ratio = context.Target.HP * 100 // context.Target.MaxHP
   local say_choice = math.random(4)
-  if SV.tarro_town.PieChapter == 7 or SV.tarro_town.PieChapter == 8 then
+  if SV.Story.chap == -2 and SV.Story.dunsect < 2 then
     if context.Target:GetStatusEffect("sleep") == nil then
       if ratio <= 25 then
         if say_choice <= 3 then
@@ -743,7 +743,7 @@ function BATTLE_SCRIPT.PuchiInteract(owner, ownerChar, context, args)
             UI:SetSpeaker(context.Target)
             UI:SetSpeakerEmotion("Worried")
             UI:WaitShowDialogue("Couldn't you have just let me sleep?")
-            
+
             UI:SetSpeaker(context.User)
             UI:SetSpeakerEmotion("Normal")
             UI:WaitShowDialogue("No, not really, this was too important.")
@@ -771,7 +771,7 @@ function BATTLE_SCRIPT.PuchiInteract(owner, ownerChar, context, args)
         end
       end
     end
-  elseif SV.tarro_town.PieChapter == 9 then
+  elseif SV.Story.chap == -2 and SV.Story.dunsect == 2 then
     if context.Target:GetStatusEffect("sleep") == nil then
       if ratio <= 25 then
         if say_choice <= 3 then
@@ -812,14 +812,14 @@ function BATTLE_SCRIPT.SennaInteract(owner, ownerChar, context, args)
   context.CancelState.Cancel = true
   local tbl = LTBL(context.Target)
   local oldDir = context.Target.CharDir
-  DUNGEON:CharTurnToChar(context.Target, context.User)  
+  DUNGEON:CharTurnToChar(context.Target, context.User)
   local target = context.Target
   local user = context.User
-  
+
   UI:SetSpeaker(context.Target)
   local ratio = context.Target.HP * 100 // context.Target.MaxHP
   local say_choice = math.random(3)
-  if SV.tarro_town.PieChapter == 7 or SV.tarro_town.PieChapter == 8 then
+  if SV.Story.sect == 2 and SV.Story.dunsect < 2 then
     if ratio <= 25 then
       if say_choice <= 2 then
         UI:SetSpeakerEmotion("Pain")
@@ -833,7 +833,7 @@ function BATTLE_SCRIPT.SennaInteract(owner, ownerChar, context, args)
     elseif ratio <= 50 then
       UI:SetSpeakerEmotion("Pain")
       UI:WaitShowDialogue("Oh... oh no oh no...")
-      
+
     else
       if say_choice == 1 then
         if user.BaseForm.Species == "zigzagoon" then
@@ -862,7 +862,7 @@ function BATTLE_SCRIPT.SennaInteract(owner, ownerChar, context, args)
         UI:WaitShowDialogue("I wish I practiced before this.[pause=0] S[emote=Stunned]omething about fighting that thing is still scaring me...")
       end
     end
-  elseif SV.tarro_town.PieChapter == 9 then
+  elseif SV.Story.sect == 2 and SV.Story.dunsect == 2 then
     if ratio <= 25 then
       if say_choice <= 2 then
         UI:SetSpeakerEmotion("Pain")
@@ -904,11 +904,11 @@ function BATTLE_SCRIPT.ZiggyInteract(owner, ownerChar, context, args)
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
   UI:SetSpeaker(context.Target)
-  
+
   local ratio = context.Target.HP * 100 // context.Target.MaxHP
   local say_choice = math.random(4)
   if context.User.BaseForm.Species == "marill" then
-    if SV.tarro_town.PieChapter == 7 or SV.tarro_town.PieChapter == 8 then
+    if SV.Story.sect == 2 and SV.Story.dunsect < 2 then
       if ratio <= 25 then
         if say_choice <= 3 then
           UI:SetSpeakerEmotion("Stunned")
@@ -932,7 +932,7 @@ function BATTLE_SCRIPT.ZiggyInteract(owner, ownerChar, context, args)
           UI:WaitShowDialogue("I finally get to explore with you guys!")
           local concern_mon = math.random(4)
           local mon_define = _DATA.Save.ActiveTeam.Players[concern_mon - 1]
-    
+
           if concern_mon == 1 then
             UI:SetSpeaker(mon_define)
             DUNGEON:CharTurnToChar(context.Target, mon_define)
@@ -984,7 +984,7 @@ function BATTLE_SCRIPT.ZiggyInteract(owner, ownerChar, context, args)
           UI:WaitShowDialogue("You guys still holding up well?!")
           local concern_mon = math.random(4)
           local mon_define = _DATA.Save.ActiveTeam.Players[concern_mon - 1]
-    
+
           if concern_mon == 1 then
             UI:SetSpeaker(mon_define)
             DUNGEON:CharTurnToChar(context.Target, mon_define)
@@ -1014,7 +1014,7 @@ function BATTLE_SCRIPT.ZiggyInteract(owner, ownerChar, context, args)
       end
     end
   elseif context.User.BaseForm.Species == "sentret" then
-    if SV.tarro_town.PieChapter == 7 or SV.tarro_town.PieChapter == 8 then
+    if SV.Story.sect == 2 and SV.Story.dunsect < 2 then
       if ratio <= 25 then
         if say_choice <= 3 then
           UI:SetSpeakerEmotion("Stunned")
@@ -1042,7 +1042,7 @@ function BATTLE_SCRIPT.ZiggyInteract(owner, ownerChar, context, args)
           UI:WaitShowDialogue("I finally get to explore with you guys!")
           local concern_mon = math.random(4)
           local mon_define = _DATA.Save.ActiveTeam.Players[concern_mon - 1]
-    
+
           if concern_mon == 1 then
             UI:SetSpeaker(mon_define)
             DUNGEON:CharTurnToChar(context.Target, mon_define)
@@ -1094,7 +1094,7 @@ function BATTLE_SCRIPT.ZiggyInteract(owner, ownerChar, context, args)
           UI:WaitShowDialogue("You guys still holding up well?!")
           local concern_mon = math.random(4)
           local mon_define = _DATA.Save.ActiveTeam.Players[concern_mon - 1]
-    
+
           if concern_mon == 1 then
             UI:SetSpeaker(mon_define)
             DUNGEON:CharTurnToChar(context.Target, mon_define)
@@ -1124,7 +1124,7 @@ function BATTLE_SCRIPT.ZiggyInteract(owner, ownerChar, context, args)
       end
     end
   else
-    if SV.tarro_town.PieChapter == 7 or SV.tarro_town.PieChapter == 8 then
+    if SV.Story.dunsect == 1 then
       if ratio <= 25 then
         if say_choice <= 3 then
           UI:SetSpeakerEmotion("Stunned")
@@ -1148,7 +1148,7 @@ function BATTLE_SCRIPT.ZiggyInteract(owner, ownerChar, context, args)
           UI:WaitShowDialogue("I finally get to explore with you guys!")
           local concern_mon = math.random(4)
           local mon_define = _DATA.Save.ActiveTeam.Players[concern_mon - 1]
-    
+
           if concern_mon == 1 then
             UI:SetSpeaker(mon_define)
             DUNGEON:CharTurnToChar(context.Target, mon_define)
@@ -1186,13 +1186,13 @@ function BATTLE_SCRIPT.ZoomerInteract(owner, ownerChar, context, args)
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
   UI:SetSpeaker(context.Target)
-  
+
   local oldDir = context.Target.CharDir
   DUNGEON:CharTurnToChar(context.Target, context.User)
-  
+
   UI:SetSpeaker(context.Target)
   local current_dungeon = DUNGEON:DungeonDisplayName()
-  
+
   local ratio = context.Target.HP * 100 // context.Target.MaxHP
   local say_choice = math.random(5)
   if current_dungeon == "Deep Tarro Forest" or current_dungeon == "Swamp Line" then
@@ -1261,15 +1261,15 @@ function BATTLE_SCRIPT.AzuraInteract(owner, ownerChar, context, args)
   DUNGEON:CharTurnToChar(context.Target, context.User)
   -- TODO: create a charstate for being unable to talk and have talk-interfering statuses cause it
   if COMMON.CanTalk(context.Target) then
-    
+
     local ratio = context.Target.HP * 100 // context.Target.MaxHP
     local user_ratio = context.User.HP * 100 // context.User.MaxHP
     local current_dungeon = DUNGEON:DungeonDisplayName()
     local say_choice = math.random(3)
     local target = context.Target
     local user = context.User
-    
-    if current_dungeon == "Tarro Forest" and SV.tarro_town.PieChapter < 5 then
+
+    if current_dungeon == "Tarro Forest" and SV.Story.chap == -1 then
       if ratio <= 25 then
         UI:SetSpeaker(target)
         UI:SetSpeakerEmotion("Pain")
@@ -1432,6 +1432,22 @@ function BATTLE_SCRIPT.AzuraInteract(owner, ownerChar, context, args)
           UI:WaitShowDialogue("Let's do our best!")
         end
       end
+    elseif current_dungeon == "Apple Forest" then
+      if ratio <= 25 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Pain")
+        UI:WaitShowDialogue("Need... need apple...!")
+      elseif ratio <= 50 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Nothing to worry 'bout!")
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("Not with apples involved.")
+      else
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Apple time![pause=20] La la apple time!")
+      end
     else
       if ratio <= 25 then
         UI:SetSpeaker(target)
@@ -1459,11 +1475,11 @@ function BATTLE_SCRIPT.MaruInteract(owner, ownerChar, context, args)
   local user = context.User
   -- TODO: create a charstate for being unable to talk and have talk-interfering statuses cause it
   if COMMON.CanTalk(target) then
-    
+
     local ratio = target.HP * 100 // target.MaxHP
     local current_dungeon = DUNGEON:DungeonDisplayName()
     local say_choice = math.random(3)
-    
+
     if current_dungeon == "Tarro Tree Hallows" then
       if ratio <= 25 then
         UI:SetSpeaker(target)
@@ -1585,7 +1601,7 @@ function BATTLE_SCRIPT.MaruInteract(owner, ownerChar, context, args)
         UI:WaitShowDialogue("Let's go!")
       end
     end
-  end  
+  end
 end
 
 function BATTLE_SCRIPT.FlowInteract(owner, ownerChar, context, args)
@@ -1598,7 +1614,7 @@ function BATTLE_SCRIPT.FlowInteract(owner, ownerChar, context, args)
     local ratio = target.HP * 100 // target.MaxHP
     local current_dungeon = DUNGEON:DungeonDisplayName()
     local say_choice = math.random(3)
-    
+
     if current_dungeon == "Dreaded Depths" then
       if say_choice == 3 then
         if user.Name == "Tidy" then
@@ -1668,13 +1684,13 @@ function BATTLE_SCRIPT.TidyInteract(owner, ownerChar, context, args)
   DUNGEON:CharTurnToChar(context.Target, context.User)
   local target = context.Target
   local user = context.User
-  
+
   -- TODO: create a charstate for being unable to talk and have talk-interfering statuses cause it
   if COMMON.CanTalk(target) then
     local ratio = target.HP * 100 // target.MaxHP
     local current_dungeon = DUNGEON:DungeonDisplayName()
     local say_choice = math.random(3)
-    
+
     if current_dungeon == "Dreaded Depths" then
       if say_choice == 3 then
         if user.Name == "Flow" then
@@ -1804,7 +1820,7 @@ function BATTLE_SCRIPT.WurpInteract(owner, ownerChar, context, args)
           UI:SetSpeakerEmotion("Normal")
           UI:WaitShowDialogue("Gonna be hard to aim in this darkness...")
         end
-        
+
       else
         UI:SetSpeaker(target)
         UI:SetSpeakerEmotion("Pain")
@@ -1979,7 +1995,7 @@ function BATTLE_SCRIPT.RexioInteract(owner, ownerChar, context, args)
           UI:SetSpeakerEmotion("Worried")
           UI:WaitShowDialogue("...a strange feeling of apples again.[pause=30] Geez, I can't get away from apples.")
         end
-        
+
       elseif say_choice == 2 then
         UI:SetSpeaker(target)
         UI:SetSpeakerEmotion("Worried")
@@ -1993,7 +2009,7 @@ function BATTLE_SCRIPT.RexioInteract(owner, ownerChar, context, args)
           UI:SetSpeaker(target)
           UI:SetSpeakerEmotion("Normal")
           UI:WaitShowDialogue("Yeah,[pause=40] I'm just cool enough to feel the aura of stuff or whatever.")
-          
+
           local mon_define = _DATA.Save.ActiveTeam.Players[1]
           UI:SetSpeaker(mon_define)
           UI:SetSpeakerEmotion("Inspired")
@@ -2012,3 +2028,17 @@ function BATTLE_SCRIPT.RexioInteract(owner, ownerChar, context, args)
   end
 end
 
+local ij = 0
+function BATTLE_SCRIPT.TreeHeal(owner, ownerChar, context, args)
+	local map = _ZONE.CurrentMap.Name
+
+	if map == "Tarro Treetops" then
+		local player_count = GAME:GetPlayerPartyCount()
+		local player = GAME:GetPlayerPartyMember(ij)
+		player.HP = player.HP + (player.MaxHP / 5)
+		ij = ij + 1
+		if ij == player_count then
+			ij = 0
+		end
+	end
+end

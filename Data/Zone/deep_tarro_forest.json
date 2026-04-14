@@ -2889,15 +2889,31 @@
 ],
 "TeamSizes": [
 {
-"Spawn": 2,
-"Rate": 5,
+"Spawn": 3,
+"Rate": 1,
 "Range": {
-"Min": 3,
+"Min": 4,
+"Max": 6
+}
+},
+{
+"Spawn": 2,
+"Rate": 9,
+"Range": {
+"Min": 2,
 "Max": 6
 }
 },
 {
 "Spawn": 1,
+"Rate": 30,
+"Range": {
+"Min": 0,
+"Max": 6
+}
+},
+{
+"Spawn": 0,
 "Rate": 10,
 "Range": {
 "Min": 0,
@@ -6501,6 +6517,33 @@
 "Rate": 10,
 "Range": {
 "Min": 3,
+"Max": 7
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
+"Species": "morelull",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 1,
+"Max": 7
+},
+"SpecifiedSkills": [],
+"Intrinsic": "",
+"Tactic": "wander_normal",
+"SpawnConditions": [],
+"SpawnFeatures": []
+},
+"Role": 0
+},
+"Rate": 10,
+"Range": {
+"Min": 5,
 "Max": 7
 }
 }

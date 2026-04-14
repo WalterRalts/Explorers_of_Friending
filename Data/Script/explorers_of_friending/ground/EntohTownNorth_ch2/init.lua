@@ -16,21 +16,10 @@ local EntohTownNorth_ch2 = {}
 ---EntohTownNorth_ch2.Init(map)
 --Engine callback function
 function EntohTownNorth_ch2.Init(map)
-  if SV.entoh_town.firstfind == 0 or SV.entoh_town.firstfind == 2 then
+  if SV.Story.flag == 0 or (SV.Story.flag[1] == "Tidy" and SV.Story.flag[2] == 0) then
     Entoh2.TheFlow()
-    if SV.entoh_town.firstfind == 0 then
-      SV.entoh_town.firstfind = 1
-    end
   else
-    GROUND:Hide("Chucky")
-
-    COMMON.RespawnAllies()
-    local partner = CH("Teammate1")
-    if OutEnter == 1 then
-      GROUND:TeleportTo(partner, 120, 460, Direction.Up, 0)
-    end
-    AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
-    partner.CollisionDisabled = true
+   EXPLCOMMON.AllyFollow(true, true)
   end
   FlowRexTalk = 0
 end

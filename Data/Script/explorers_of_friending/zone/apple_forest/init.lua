@@ -45,11 +45,9 @@ function apple_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
             COMMON.EndDungeonDay(result, "apple_forest", -1, 0, 0)
         elseif segmentID == 1 then
             COMMON.EndDungeonDay(result, "apple_forest", -1, 4, 0)
-            SV.guild.time = 40
         else -- this is a fallback branch, in case we went through all of the branches and hit nothing (which should not happen!)
             PrintInfo("No exit procedure found!")
             -- just send the player to their last checkpoint
-            DUN_failure = true
 	        COMMON.EndDungeonDay(result, SV.checkpoint.Zone, SV.checkpoint.Segment, SV.checkpoint.Map, SV.checkpoint.Entry)
         end
     end

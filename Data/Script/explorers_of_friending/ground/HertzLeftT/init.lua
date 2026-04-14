@@ -15,7 +15,7 @@ local HertzLeftT = {}
 ---HertzLeftT.Init(map)
 --Engine callback function
 function HertzLeftT.Init(map)
-  COMMON.ThreeTeam()
+  EXPLCOMMON.ThreeTeam()
 end
 
 ---HertzLeftT.Enter(map)
@@ -59,21 +59,15 @@ end
 -------------------------------
 
 function HertzLeftT.ExitW_Touch(obj, activator)
-  COMMON.FadeEnterGround("HertzCenter", "EnterW")
+  EXPLCOMMON.FadeEnterGround("HertzWest", "EnterE")
 end
 
 function HertzLeftT.ExitE_Touch(obj, activator)
-  COMMON.FadeEnterGround("HertzCenter", "EnterW")
+  EXPLCOMMON.FadeEnterGround("HertzCenter", "EnterW")
 end
 
 function HertzLeftT.Kazen_Action(obj, activator)
-  COMMON.SetCharAndEmotion(obj, "Normal")
-  UI:WaitShowDialogue("Good day to you, my name is Kazen; welcome to my fast travel service.")
-  if SV.hertz_town.fastvisited[1] == 1 then
-    UI:WaitShowDialogue("Would you like to go to " .. SV.hertz_town.fastvisited[1])
-  elseif SV.hertz_town.fastvisited[1] < 1 then
-    UI:WaitShowDialogue("Looks like you haven't even gone into town yet. There's no need for me to assist you.")
-  end
+  EXPLCOMMON.KazenService()
 end
 
 function HertzLeftT.Secret_Touch(obj, activator)

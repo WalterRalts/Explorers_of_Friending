@@ -34,7 +34,7 @@ function GuildFieldMain.Init(map)
       Guild.Day2()
     else
       GROUND:Unhide("Kitkit")
-      COMMON.TeleportToMarker(CH("Kitkit"), "mKit_1", Dir8.DownLeft)
+     EXPLCOMMON.TeleportToMarker(CH("Kitkit"), "mKit_1", Dir8.DownLeft)
     end
     IntroCutscene = false
   end
@@ -86,14 +86,14 @@ function GuildFieldMain.NorthEast_Touch(obj, activator)
   if SV.guild.day == 1 then
 
   else
-    DUNsection = 0
+    SV.Story.dunsect = 0
     COMMON.ShowDestinationMenu(SV.guild.dungeons.east, SV.guild.areas.east)
     GAME:SetTeamLeaderIndex(0)
   end
 end
 
 function GuildFieldMain.NorthWest_Touch(obj, activator)
-  DUNsection = 0
+  SV.Story.dunsect = 0
   COMMON.UnlockWithFanfare("apple_forest", false)
   COMMON.ShowDestinationMenu(SV.guild.dungeons.west, SV.guild.areas.west)
 end
@@ -133,16 +133,16 @@ function GuildFieldMain.TentEntrance_Touch(obj, activator)
     UI:SetSpeaker(second)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("That's fine.")
-    COMMON.FaceEachother(second, third)
+   EXPLCOMMON.FaceEachother(second, third)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("We'll make some apple pie with the leftover apples ourselves.")
 
-    COMMON.CharRealize("PLAYER")
+   EXPLCOMMON.CharRealize("PLAYER")
     UI:SetSpeaker(third)
     UI:SetSpeakerEmotion("Inspired")
     UI:WaitShowDialogue("Gasp![pause=40] Y[emote=Joyous]ippee!")
 
-    COMMON.FaceEachother(leader, third)
+   EXPLCOMMON.FaceEachother(leader, third)
     UI:SetSpeaker(leader)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("...I have suddenly changed my mind.")
@@ -157,7 +157,7 @@ function GuildFieldMain.TentEntrance_Touch(obj, activator)
 
     UI:SetSpeaker(leader)
     UI:SetSpeakerEmotion("Normal")
-    COMMON.FaceEachother(leader, third)
+   EXPLCOMMON.FaceEachother(leader, third)
     UI:WaitShowDialogue("No, actually, I thought I left something in there.")
   else
     UI:SetSpeaker(leader)
@@ -167,7 +167,7 @@ function GuildFieldMain.TentEntrance_Touch(obj, activator)
 end
 
 function GuildFieldMain.Smear_Action(obj, activator)
-  if SV.guild.day == 1 and SV.guild.time == 100 then
+  if SV.guild.day == 1 and SV.Story.sect == 3 then
     GAME:SetTeamLeaderIndex(0)
     Guild.Day1Done()
     GAME:EnterGroundMap("GuildLvl1", "GuildEnter1")
@@ -177,7 +177,7 @@ function GuildFieldMain.Smear_Action(obj, activator)
     local zoomer = CH("Zoomer")
     local smear = CH("Smear")
 
-    COMMON.FaceEachother(leader, smear)
+   EXPLCOMMON.FaceEachother(leader, smear)
     if activator.Nickname == "Rexio" then
       UI:SetSpeaker(leader)
       UI:SetSpeakerEmotion("Worried")
@@ -195,7 +195,7 @@ function GuildFieldMain.Smear_Action(obj, activator)
       UI:SetSpeakerEmotion("Worried")
       UI:WaitShowTimedDialogue("I expected Zoomer to")
 
-      COMMON.FaceEachother(smear, zoomer)
+     EXPLCOMMON.FaceEachother(smear, zoomer)
 
       UI:SetSpeaker(zoomer)
       UI:SetSpeakerEmotion("Angry")
@@ -215,7 +215,7 @@ function GuildFieldMain.Smear_Action(obj, activator)
 end
 
 function GuildFieldMain.Zoomer_Action(obj, activator)
-  COMMON.FaceEachother(obj, activator)
+ EXPLCOMMON.FaceEachother(obj, activator)
   if activator.Nickname == "Rexio" then
     UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Normal")
@@ -258,7 +258,7 @@ function GuildFieldMain.DayCheck_Touch(obj, activator)
       UI:SetSpeaker(third)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("Uhh...")
-      COMMON.FaceEachother(activator, third)
+     EXPLCOMMON.FaceEachother(activator, third)
 
       UI:SetSpeaker(leader)
       UI:SetSpeakerEmotion("Worried")
@@ -277,7 +277,7 @@ function GuildFieldMain.DayCheck_Touch(obj, activator)
 end
 
 function GuildFieldMain.Kitkit_Action(obj, activator)
-  COMMON.FaceEachother(obj, activator)
+ EXPLCOMMON.FaceEachother(obj, activator)
 
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Happy")

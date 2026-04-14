@@ -13,16 +13,16 @@ function Aurm.Feeling()
         GAME:WaitFrames(30)
         UI:WaitHideTitle(120)
         GAME:FadeIn(50)
-        end)	
+        end)
     local coro02 = TASK:BranchCoroutine(function()
-        GAME:WaitFrames(200)
+        GAME:WaitFrames(180)
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Worried")
         UI:WaitShowDialogue("...ugh, this is so boring...")
         UI:SetSpeakerEmotion("Determined")
         UI:WaitShowDialogue("I don't get it, can't I just[pause=40] [emote=Happy]punch stuff?")
         end)
-    
+
     TASK:JoinCoroutines({coro01, coro02})
     rexio_stance = false
 
@@ -41,7 +41,7 @@ function Aurm.Feeling()
         UI:SetSpeaker(luke)
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("Okay, now focus.")
-        end)	
+        end)
     local coro002 = TASK:BranchCoroutine(function()
         GAME:WaitFrames(100)
         GROUND:MoveToPosition(rexio, 256, 184, false, 2)
@@ -63,12 +63,12 @@ function Aurm.Feeling()
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Nothin'?")
-    
+
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("It's so stupid, dad!")
-    COMMON.FaceEachother(rexio, luke)
-    COMMON.CharHop("PLAYER")
+   EXPLCOMMON.FaceEachother(rexio, luke)
+   EXPLCOMMON.CharHop("PLAYER")
     UI:WaitShowDialogue("I get it, aura, purpose![pause=20] I just don't see the point in focusing all day just to know who's right next to me!")
 
     UI:SetSpeaker(luke)
@@ -108,9 +108,9 @@ function Aurm.Feeling()
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue("Uugghhhhhhh!")
-        
+
     SV.guilders.entoh_town.scan_level = 1
-    SV.entoh_town.HelperChapter = 0.1
+
     GAME:CutsceneMode(false)
     GAME:MoveCamera(0, 0, 0, true)
 end
@@ -120,7 +120,7 @@ function Aurm.Home()
     local luke = CH("Luke")
     GAME:CutsceneMode(true)
     GAME:FadeIn(50)
-    COMMON.FaceEachother(rexio, luke)
+   EXPLCOMMON.FaceEachother(rexio, luke)
     local coro01 = TASK:BranchCoroutine(function()
         UI:SetSpeaker(luke)
         UI:SetSpeakerEmotion("Happy")
@@ -133,17 +133,17 @@ function Aurm.Home()
         UI:SetSpeaker(luke)
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("Good, because it's actually for you.")
-        end)	
+        end)
     local coro02 = TASK:BranchCoroutine(function()
         GAME:WaitFrames(50)
         GAME:MoveCamera(229, 248, 1, false)
         GROUND:MoveToMarker(rexio, MRKR("RexioStart"), false, 4)
         GAME:WaitFrames(10)
-        COMMON.FaceEachother(rexio, luke)
+       EXPLCOMMON.FaceEachother(rexio, luke)
         GROUND:Unhide("Package")
         SOUND:PlaySE("Battle/EVT_CH02_Item_Place")
         end)
-    
+
     TASK:JoinCoroutines({coro01, coro02})
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Inspired")
@@ -153,7 +153,7 @@ function Aurm.Home()
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("But...")
 
-    COMMON.CharSweatdrop("PLAYER")
+    EXPLCOMMON.CharSweatdrop("PLAYER")
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("But...?")
@@ -177,29 +177,29 @@ function Aurm.Home()
         SOUND:PlayFanfare("Fanfare/Item")
         UI:ResetSpeaker()
         UI:WaitShowDialogue("It's a Power Band!")
-        
+
         GAME:WaitFrames(70)
         UI:SetSpeaker(luke)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("...well?")
 
         GAME:WaitFrames(10)
-        COMMON.CharSweatdrop("PLAYER")
+        EXPLCOMMON.CharSweatdrop("PLAYER")
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("...what is it?")
-        
-        COMMON.CharExclaim("Luke")
+
+       EXPLCOMMON.CharExclaim("Luke")
         UI:SetSpeaker(luke)
         UI:WaitShowDialogue("It's... uh...")
-        COMMON.CharSweatdrop("Luke")
+        EXPLCOMMON.CharSweatdrop("Luke")
         UI:SetSpeakerEmotion("Pain")
         UI:WaitShowDialogue("(That's not my order...)")
 
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("Did you grab someone else's package again?")
-        
+
         UI:SetSpeaker(luke)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowTimedDialogue("No, I could've sworn I...", 10)
@@ -212,17 +212,16 @@ function Aurm.Home()
         UI:SetSpeakerEmotion("Worried")
         UI:WaitShowDialogue("Well, it has to be ours, kid! You wouldn't have needed a key!")
 
-        SV.entoh_town.HelperChapter = 4
-
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("Okay, so... do I just...?")
-        
+
         UI:SetSpeaker(luke)
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("Probably like a headband.")
         UI:WaitShowDialogue("Put it on.")
 
+        SV.Story.sect = 4
         GAME:GivePlayerItem("held_power_band")
         GAME:CutsceneMode(false)
         GAME:MoveCamera(0, 0, 0, true)
@@ -239,7 +238,7 @@ function Aurm.Home()
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("...you know what,[pause=30] I[emote=Determined]'ll find it!")
 
-        COMMON.CharHop("Luke")
+       EXPLCOMMON.CharHop("Luke")
         UI:SetSpeaker(luke)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("Yeah, you will!")
@@ -249,12 +248,12 @@ function Aurm.Home()
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("This'll be easy!")
 
-        COMMON.CharHop("Luke")
+       EXPLCOMMON.CharHop("Luke")
         UI:SetSpeaker(luke)
         UI:SetSpeakerEmotion("Joyous")
         UI:WaitShowDialogue("That's my boy!")
 
-        SV.entoh_town.HelperChapter = 3
+        SV.Story.flag = 1
         GAME:CutsceneMode(false)
         GAME:MoveCamera(0, 0, 0, true)
     end
@@ -265,7 +264,7 @@ function Aurm.OpenIt()
     local luke = CH("Luke")
     GAME:CutsceneMode(true)
     GAME:FadeIn(20)
-    COMMON.FaceEachother(rexio, luke)
+   EXPLCOMMON.FaceEachother(rexio, luke)
 
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Happy")
@@ -278,12 +277,12 @@ function Aurm.OpenIt()
         UI:SetSpeaker(luke)
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("Alright, then open it.")
-        end)	
+        end)
     local coro02 = TASK:BranchCoroutine(function()
         GAME:MoveCamera(229, 248, 1, false)
         GROUND:MoveToMarker(rexio, MRKR("RexioStart"), false, 4)
         GAME:WaitFrames(10)
-        COMMON.FaceEachother(rexio, luke)
+       EXPLCOMMON.FaceEachother(rexio, luke)
         end)
     TASK:JoinCoroutines({coro01, coro02})
 
@@ -293,29 +292,29 @@ function Aurm.OpenIt()
     SOUND:PlayFanfare("Fanfare/Item")
     UI:ResetSpeaker()
     UI:WaitShowDialogue("It's a Power Band!")
-    
+
     GAME:WaitFrames(70)
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("...well?")
 
     GAME:WaitFrames(10)
-    COMMON.CharSweatdrop("PLAYER")
+    EXPLCOMMON.CharSweatdrop("PLAYER")
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("...what is it?")
-    
-    COMMON.CharExclaim("Luke")
+
+   EXPLCOMMON.CharExclaim("Luke")
     UI:SetSpeaker(luke)
     UI:WaitShowDialogue("It's... uh...")
-    COMMON.CharSweatdrop("Luke")
+    EXPLCOMMON.CharSweatdrop("Luke")
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue("(That's not my order...)")
 
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Did you grab someone else's package again?")
-    
+
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowTimedDialogue("No, I could've sworn I...", 10)
@@ -328,17 +327,16 @@ function Aurm.OpenIt()
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("Well, it has to be ours, kid! You wouldn't have needed a key!")
 
-    SV.entoh_town.HelperChapter = 4
-
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("Okay, so... do I just...?")
-    
+
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Probably like a headband.")
     UI:WaitShowDialogue("Put it on.")
 
+    SV.Story.sect = 4
     GAME:GivePlayerItem("held_power_band")
     GAME:CutsceneMode(false)
     GAME:MoveCamera(0, 0, 0, true)
@@ -347,11 +345,11 @@ end
 function Aurm.Fashion()
     local rexio = CH("PLAYER")
     local luke = CH("Luke")
-    COMMON.CharExclaim("PLAYER")
+   EXPLCOMMON.CharExclaim("PLAYER")
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Surprised")
     UI:WaitShowDialogue("Whoa, I feel...!")
-    
+
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("You feel...?")
@@ -361,7 +359,7 @@ function Aurm.Fashion()
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("...stronger.")
 
-    COMMON.FaceEachother(rexio, luke)
+   EXPLCOMMON.FaceEachother(rexio, luke)
 
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Worried")
@@ -371,15 +369,15 @@ function Aurm.Fashion()
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Heh, I'll keep it.[pause=30] Not like I need it, but thanks, pops.")
-    
+
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("...")
 
     GROUND:CharWaitAnim(rexio, "RearUp", false)
-    COMMON.CharQuestion("PLAYER")
+   EXPLCOMMON.CharQuestion("PLAYER")
     GAME:WaitFrames(30)
-    COMMON.SetCharAndEmotion(rexio, "Worried")
+   EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
     UI:WaitShowDialogue("...something up?")
 
     UI:SetSpeaker(luke)
@@ -389,7 +387,12 @@ function Aurm.Fashion()
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Bruuuuuuuh.")
-    SV.entoh_town.HelperChapter = 5
+    SV.Story = {
+        chap = -5,
+        sect = 0,
+        flag = 0,
+        dunsect = 0
+    }
     GAME:FadeOut(false, 50)
     GAME:EnterGroundMap("RexioHome_ch2", "RexioStart2")
 end
@@ -398,7 +401,7 @@ function Aurm.Slipped()
     GAME:WaitFrames(30)
     local rexio = CH("PLAYER")
     local luke = CH("Luke")
-    COMMON.CharExclaim("PLAYER")
+   EXPLCOMMON.CharExclaim("PLAYER")
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("There is no way...")
@@ -408,7 +411,7 @@ function Aurm.Slipped()
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("...uhhhhhh.")
 
-    COMMON.FaceEachother(rexio, luke)
+   EXPLCOMMON.FaceEachother(rexio, luke)
 
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Worried")
@@ -417,24 +420,29 @@ function Aurm.Slipped()
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Special3")
     UI:WaitShowDialogue("Hehe...[pause=30] I did it...[pause=30] hehehe...[pause=30] it turned invisible when I put it on, though...")
-    
+
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("...")
-    
-    COMMON.SetCharAndEmotion(rexio, "Special3")
+
+   EXPLCOMMON.SetCharAndEmotion(rexio, "Special3")
     UI:WaitShowDialogue("...?")
 
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Somehow I expected that excuse out of you.")
 
-    COMMON.CharAngry("PLAYER")
-    COMMON.CharHop("PLAYER")
+   EXPLCOMMON.CharAngry("PLAYER")
+   EXPLCOMMON.CharHop("PLAYER")
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("Bruuuuuuuh.")
-    SV.entoh_town.HelperChapter = 5
+    SV.Story = {
+        chap = -5,
+        sect = 0,
+        flag = 0,
+        dunsect = 0
+    }
     GAME:FadeOut(false, 50)
     GAME:EnterGroundMap("RexioHome_ch2", "RexioStart2")
 end
@@ -446,9 +454,9 @@ function Aurm2.LukeWarm()
     local luke = CH("Luke")
     GAME:CutsceneMode(true)
     GAME:FadeIn(20)
-    COMMON.FaceEachother(rexio, luke)
-    COMMON.CharRealize("PLAYER")
-    
+   EXPLCOMMON.FaceEachother(rexio, luke)
+   EXPLCOMMON.CharRealize("PLAYER")
+
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowTimedDialogue("Oh hey, welcome back again, buddy!", 30)
@@ -457,21 +465,21 @@ function Aurm2.LukeWarm()
         GAME:WaitFrames(190)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("Buddy...?[pause=30] ...hello???")
-        end)	
+        end)
     local coro02 = TASK:BranchCoroutine(function()
         GAME:MoveCamera(229, 248, 1, false)
         GROUND:MoveToMarker(rexio, MRKR("RexioStart"), false, 1)
         GAME:WaitFrames(10)
-        COMMON.FaceEachother(rexio, luke)
+       EXPLCOMMON.FaceEachother(rexio, luke)
         end)
     TASK:JoinCoroutines({coro01, coro02})
-    
+
     GAME:WaitFrames(70)
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("...are you real?")
-    
-    COMMON.CharSweatdrop("Luke")
+
+    EXPLCOMMON.CharSweatdrop("Luke")
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("Did you eat too many berries again?")
@@ -481,7 +489,7 @@ function Aurm2.LukeWarm()
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("You were gone! I should be asking you! Were you not concerned?!")
-    
+
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Kid, I was here the whole time,[pause=20] and I'm definitely sure this time.")
@@ -492,7 +500,7 @@ function Aurm2.LukeWarm()
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Determined")
         UI:WaitShowDialogue("Tch... whatever, man...")
-        end)	
+        end)
     local coro1 = TASK:BranchCoroutine(function()
         GROUND:MoveToPosition(rexio, rexio.Position.X, rexio.Position.Y - 35, false, 2)
         end)
@@ -521,10 +529,10 @@ function Aurm2.LukeWarm()
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Determined")
         UI:WaitShowDialogue("I didn't like it![pause=25] Why did it feel so awful?!")
-        end)	
+        end)
     local coro1 = TASK:BranchCoroutine(function()
         GROUND:MoveToMarker(rexio, MRKR("RexioStart"), false, 4)
-        COMMON.FaceEachother(luke, rexio)
+       EXPLCOMMON.FaceEachother(luke, rexio)
         end)
     TASK:JoinCoroutines({coro1, coro2})
 
@@ -564,12 +572,15 @@ function Aurm2.LukeWarm()
 
     --Next Chapter
 
-    SV.entoh_town.AdventureChapter = 1
-    SV.entoh_town.HelperChapter = 10
+    SV.Story = {
+        chap = -6,
+        sect = 0,
+        flag = 0,
+        dunsect = 0
+    }
     GAME:FadeOut(false, 90)
 
     GAME:CutsceneMode(true)
-    local rexio = CH("PLAYER")
     GROUND:CharSetAnim(rexio, "EventSleep", true)
     GAME:FadeIn(180)
     UI:WaitShowTitle("Prologue B-2:\nAnew", 120)
@@ -580,16 +591,16 @@ function Aurm2.LukeWarm()
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue("Hic!")
-    
+
     GROUND:CharWaitAnim(rexio, "Wake", true)
     GROUND:CharSetAnim(rexio, "Idle", true)
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowTimedDialogue("Good morning, old g")
-    COMMON.CharRealize("PLAYER")
-    GAME:WaitFrames(30)
+   EXPLCOMMON.CharRealize("PLAYER")
+    GAME:WaitFrames(50)
 
-    COMMON.CharAngry("PLAYER")
+   EXPLCOMMON.CharAngry("PLAYER")
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowTimedDialogue("[speed=0.7]Oh you have got to be kidding me")
@@ -597,6 +608,7 @@ function Aurm2.LukeWarm()
     local coro2 = TASK:BranchCoroutine(function()
         SOUND:PlayBattleSE("DUN_Aura_Sphere_2")
         GAME:WaitFrames(10)
+        local center = GAME:GetCameraCenter()
 
         local result_emitter = RogueEssence.Content.SingleEmitter(RogueEssence.Content.AnimData("Blast_Seed", 3))
         result_emitter.LocHeight = 6
@@ -614,21 +626,26 @@ function Aurm2.LukeWarm()
         SOUND:PlayBattleSE("DUN_Explosion")
         GAME:WaitFrames(10)
         SOUND:PlayBattleSE("DUN_Self-Destruct")
-        end)	
+
+        GAME:WaitFrames(10)
+        GROUND:Unhide("Luke")
+        end)
     local coro1 = TASK:BranchCoroutine(function()
         GAME:WaitFrames(5)
 
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Surprised")
-        UI:WaitShowTimedDialogue("Wah!", 5)
+        UI:WaitShowTimedDialogue("Wah!", 10)
         GROUND:MoveToMarker(rexio, MRKR("RexioStart"), false, 4)
-        COMMON.FaceEachother(luke, rexio)
-        GROUND:AnimateToPosition(rexio, "Walk", Dir8.Up, rexio.Position.X + 30, rexio.Position.Y, 5, 6, 0)
+       EXPLCOMMON.FaceEachother(luke, rexio)
+        GROUND:AnimateToPosition(rexio, "HitGround", Dir8.Right, rexio.Position.X + 30, rexio.Position.Y, 5, 6, 0)
+        GAME:WaitFrames(30)
+        GROUND:CharWaitAnim(rexio, "Wake", true)
+        GROUND:CharSetAnim(rexio, "Idle", false)
         end)
     TASK:JoinCoroutines({coro1, coro2})
 
-    GROUND:Unhide("Luke")
-    COMMON.FaceEachother(rexio, luke)
+   EXPLCOMMON.FaceEachother(rexio, luke)
     GAME:WaitFrames(60)
 
     UI:SetSpeaker(rexio)
@@ -646,8 +663,8 @@ function Aurm2.LukeWarm()
     UI:WaitShowDialogue("Wh-... where?!")
 
     GAME:WaitFrames(30)
+    EXPLCOMMON.CharSweatdrop("Luke")
     GROUND:CharAnimateTurnTo(luke, Dir8.Down, 10)
-    COMMON.CharSweatdrop("Luke")
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("No idea, but it's important! Come ooooooon!")

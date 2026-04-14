@@ -95,7 +95,7 @@ function TarroTownSquare_ch3.Lax_Action(obj, activator)
 end
 
 function TarroTownSquare_ch3.Getic_Action(obj, activator)
-  COMMON.FaceEachother(obj, activator)
+ EXPLCOMMON.FaceEachother(obj, activator)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("Gonna let you know, Maru.")
@@ -242,7 +242,7 @@ function TarroTownSquare_ch3.Gepii_Action(obj, activator)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("More!")
     elseif gepii_dialogue == 4 then
-        COMMON.FaceEachother(activator, obj)
+       EXPLCOMMON.FaceEachother(activator, obj)
         UI:SetSpeaker(gepii)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("Oh hey, Mars![pause=25] Welcome to town!")
@@ -337,21 +337,7 @@ function TarroTownSquare_ch3.Munch_Action(obj, activator)
 end
 
 function TarroTownSquare_ch3.Item_Touch(obj, activator)
-  local item
-  local choice = math.random(3)
-  if choice == 3 then
-    item = "berry_kebab"
-  elseif choice then
-    item = "berry_sitrus"
-  else
-    item = "packed_honey"
-  end
-  COMMON.GiftItem(activator, item)
-
-  UI:SetSpeaker(activator)
-  UI:SetSpeakerEmotion("Inspired")
-  UI:WaitShowDialogue("(Woah, this is rare!)")
-  GROUND:Hide("Item")
+  EXPLCOMMON.ItemGetSpecial(0, activator)
   SV.item.tarro = true
 end
 

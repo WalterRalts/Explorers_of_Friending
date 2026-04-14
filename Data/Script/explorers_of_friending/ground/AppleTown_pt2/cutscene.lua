@@ -35,5 +35,5 @@ function Apple2.EndingUp() --CutWIP
         GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
       end
     end
-    COMMON.RespawnAllies()
+   EXPLCOMMON.AllyFollow(true, true)
 end

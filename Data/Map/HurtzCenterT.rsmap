@@ -4756,7 +4756,7 @@
 {
 "$type": "PMDC.Dungeon.TileScriptState, PMDC",
 "Script": "TunnelCheck",
-"ArgTable": "{\"HertzCenter\", \"Secret\"}"
+"ArgTable": "{\"HertzCenter\", \"ExitSecret\"}"
 }
 ]
 }
@@ -5006,7 +5006,7 @@
 {
 "$type": "PMDC.Dungeon.TileScriptState, PMDC",
 "Script": "TunnelCheck",
-"ArgTable": "{\"HertzCenter\", \"Secret\"}"
+"ArgTable": "{\"HertzCenter\", \"ExitSecret\"}"
 }
 ]
 }

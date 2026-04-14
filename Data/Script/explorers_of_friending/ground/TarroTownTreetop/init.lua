@@ -20,13 +20,13 @@ function TarroTownTreetop.Init(map)
   else
     TarroTownTreetop.ExplodeEvade()
   end
-  
+
 end
 
 ---TarroTownTreetop.Init(map)
 --Engine callback function
 function TarroTownTreetop.ExploreExplode(map)
-  DUNsection = 2
+  SV.Story.dunsect = 2
   local ama1 = CH("Thing_1")
   local ama2 = CH("Thing_2")
   local ama3 = CH("Thing_3")
@@ -37,7 +37,7 @@ function TarroTownTreetop.ExploreExplode(map)
   GROUND:Hide("Thing_3")
   GROUND:Hide("Thing_4")
   GROUND:Hide("Thing_5")
-  
+
   local maru = CH("Maru")
   local azura = CH('Azura')
   local puchi = CH("Puchi")
@@ -56,7 +56,7 @@ function TarroTownTreetop.ExploreExplode(map)
     GROUND:CharTurnToCharAnimated(senna, puchi, 2)
     end)
   local coroe = TASK:BranchCoroutine(function()
-    GAME:FadeIn(300, false)
+    GAME:FadeIn(300)
     end)
   local coro1 = TASK:BranchCoroutine(function()
     UI:SetSpeaker(puchi)
@@ -65,12 +65,13 @@ function TarroTownTreetop.ExploreExplode(map)
 
     UI:SetSpeaker(senna)
     UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Not really.[pause=15] He's a torpedo, and I can't stop him, so he's a bit of a problem...")
+    UI:WaitShowDialogue("Not really.[pause=15] He's fast, and I can't stop him, so he's a bit of a problem...")
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("But I'd never know what I'd do without my brother.")
     end)
   TASK:JoinCoroutines({coroc, corod, coroe, coro1})
 
+  SV.tarro_tree_hollows.in_boss = true
   GROUND:CharTurnToCharAnimated(senna, ziggy, 2)
   UI:WaitShowDialogue("Speaking of which:[pause=25] did you find anything, Ziggy?")
   GAME:MoveCamera(185, 135, 25, false)
@@ -128,8 +129,8 @@ function TarroTownTreetop.ExploreExplode(map)
     emitter3.LocHeight = 6
     GROUND:PlayVFX(emitter3, ama3.Bounds.Center.X, ama3.Bounds.Center.Y)
 
-    COMMON.FaceEachother(maru, ama3)
-    COMMON.FaceEachother(azura, ama4)
+   EXPLCOMMON.FaceEachother(maru, ama3)
+   EXPLCOMMON.FaceEachother(azura, ama4)
     GAME:WaitFrames(20)
     local emitter4 = RogueEssence.Content.SingleEmitter(RogueEssence.Content.AnimData("Blast_Seed", 3))
     SOUND:PlayBattleSE("DUN_Explosion")
@@ -140,7 +141,7 @@ function TarroTownTreetop.ExploreExplode(map)
     GAME:WaitFrames(20)
     local emitter5 = RogueEssence.Content.SingleEmitter(RogueEssence.Content.AnimData("Blast_Seed", 3))
     SOUND:PlayBattleSE("DUN_Explosion")
-    COMMON.FaceEachother(ama5, puchi)
+   EXPLCOMMON.FaceEachother(ama5, puchi)
     GROUND:Unhide("Thing_5")
     emitter5.LocHeight = 6
     GROUND:PlayVFX(emitter5, ama5.Bounds.Center.X, ama5.Bounds.Center.Y)
@@ -148,7 +149,7 @@ function TarroTownTreetop.ExploreExplode(map)
     GAME:WaitFrames(10)
     end)
   local coro11 = TASK:BranchCoroutine(function()
-    COMMON.FaceEachother(ziggy, senna)
+   EXPLCOMMON.FaceEachother(ziggy, senna)
     UI:SetSpeaker(ziggy)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("It hurt the tree, Senna! I need to bring justice!")
@@ -173,8 +174,8 @@ function TarroTownTreetop.ExploreExplode(map)
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("Uh, guys...")
 
-  COMMON.FaceEachother(ziggy, ama2)
-  COMMON.FaceEachother(senna, ama5)
+ EXPLCOMMON.FaceEachother(ziggy, ama2)
+ EXPLCOMMON.FaceEachother(senna, ama5)
   UI:SetSpeaker(senna)
   UI:SetSpeakerEmotion("Surprised")
   UI:WaitShowDialogue("Huh?! Where did they...?!")
@@ -258,7 +259,7 @@ function TarroTownTreetop.ExplodeEvade(map)
   UI:SetSpeakerEmotion("Joyous")
   UI:WaitShowDialogue("Alright!")
 
-  COMMON.FaceEachother(maru, ziggy)
+ EXPLCOMMON.FaceEachother(maru, ziggy)
 
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Special1")
@@ -290,12 +291,6 @@ function TarroTownTreetop.ExplodeEvade(map)
 
   local coro12 = TASK:BranchCoroutine(function()
     GROUND:CharTurnToCharAnimated(azura, senna, 3)
-    repeat
-      GROUND:TeleportTo(senna, 150, 150, Direction.UpRight, 0)
-      GAME:WaitFrames(2)
-      GROUND:TeleportTo(senna, 149, 149, Direction.UpRight, 0)
-      GAME:WaitFrames(2)
-    until leave_the_tree == true
     end)
   local coro11 = TASK:BranchCoroutine(function()
     GROUND:CharSetAnim(senna, "None", true)
@@ -316,11 +311,9 @@ function TarroTownTreetop.ExplodeEvade(map)
     UI:SetSpeakerEmotion("Teary-Eyed")
     UI:WaitShowTimedDialogue("...", 60)
 
-    leave_the_tree = true
+    EXPLCOMMON.StopTremble()
     GAME:WaitFrames(70)
-
     end)
-
   TASK:JoinCoroutines({coro11, coro12})
 
   UI:SetSpeaker(senna)
@@ -331,6 +324,7 @@ function TarroTownTreetop.ExplodeEvade(map)
   GAME:FadeOut(false, 90)
   GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch2end", "Marker1")
 end
+
 ---TarroTownTreetop.Enter(map)
 --Engine callback function
 function TarroTownTreetop.Enter(map)
