@@ -1,3 +1,2 @@
----@meta
+---@meta _
 ---@alias ZoneID string
----@source Data/Zone

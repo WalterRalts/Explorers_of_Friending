@@ -74,7 +74,7 @@ function AppleTownMayor_pt2.AppleTownEntrance_Touch(obj, activator)
 end
 
 function AppleTownMayor_pt2.Item_Touch(obj, activator)
-  EXPLCOMMON.ItemGetSpecial(0, activator)
+  EXPLCOMMON.ItemGetSpecial(1, activator)
   Titem_found = true
 end
 

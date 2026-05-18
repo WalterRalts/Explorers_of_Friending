@@ -150,7 +150,7 @@ function HertzCenter.Flag_Action(obj, activator)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("I've been told weird things have been happening lately.[pause=50] But that can't be true.")
   UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("It's been so long since anything's happened, that I've retired to help care for the kid.")
+  UI:WaitShowDialogue("It's been so long since anything's happened that I've retired to help care for the kid.")
 end
 
 function HertzCenter.cacnea_1_Action(obj, activator)
@@ -159,10 +159,18 @@ function HertzCenter.cacnea_1_Action(obj, activator)
   UI:WaitShowDialogue("The plan! The plan is in ruins!")
 end
 
+function HertzCenter.Item_Touch(obj, activator)
+  EXPLCOMMON.ItemGetSpecial(0, activator)
+end
+
 -- Entrances
 
 function HertzCenter.Housing_Touch(obj, activator)
   GAME:EnterDungeon("dane_desert", 0, 0, 0, RogueEssence.Data.GameProgress.DungeonStakes.Risk, false, false)
+end
+
+function HertzCenter.ExitE_Touch(obj, activator)
+  EXPLCOMMON.FadeEnterGround("HertzRightT", "EnterW")
 end
 
 function HertzCenter.ExitW_Touch(obj, activator)
@@ -178,7 +186,7 @@ function HertzCenter.ExitN_Touch(obj, activator)
 end
 
 function HertzCenter.Secret_Touch(obj, activator)
-  GAME:EnterDungeon("dane_desert", 0, 0, 0, RogueEssence.Data.GameProgress.DungeonStakes.Risk, false, false)
+  GAME:EnterDungeon("dane_desert", 0, 0, 1, RogueEssence.Data.GameProgress.DungeonStakes.Risk, false, false)
 end
 
 return HertzCenter

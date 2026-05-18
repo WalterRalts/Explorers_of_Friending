@@ -16,7 +16,7 @@ local EntohTownEast_ch2 = {}
 ---EntohTownEast_ch2.Init(map)
 --Engine callback function
 function EntohTownEast_ch2.Init(map)
-  if SV.Story.sect == 2 then
+  if SV.Story.sect == 1 then
     GROUND:Hide("Luke")
   end
   if SV.item.entoh == true then
@@ -65,21 +65,20 @@ end
 -------------------------------
 
 function EntohTownEast_ch2.Entoh_CenterEnter_Touch(obj, activator)
-  SV.Story.sect = 2
   GAME:EnterGroundMap("EntohTownCenter", "EasternMarker")
 end
 
 function EntohTownEast_ch2.LukeTalk_Touch(obj, activator)
-  if SV.Story.sect == 2 then
+  if SV.Story.sect == 0 then
     SV.Story.flag = 0
     Rexio.Luke()
-  elseif SV.Story.sect == 3 and SV.Story.flag == 0 then
+  elseif SV.Story.sect == 1 and SV.Story.flag == 0 then
     GROUND:Hide("Wurp")
     GROUND:Hide("Snow")
     GROUND:Hide("Tidy")
     GROUND:Hide("Flow")
-   EXPLCOMMON.AllyFollow(true, true)
     GROUND:Hide("LukeTalk")
+    EXPLCOMMON.AllyFollow(true, true)
   end
 end
 
@@ -91,24 +90,24 @@ function EntohTownEast_ch2.EntohDeep_Touch(obj, activator)
   local flow = CH('Teammate1')
   local tidy = CH('Teammate2')
  EXPLCOMMON.SetCharAndEmotion(tidy, "Worried")
-  UI:WaitShowDialogue("...wait,[emote=Surprised] WAIT, WE'RE GOING THIS WAY?!?!")
+  UI:WaitShowDialogue("...wait,[pause=40][emote=Surprised] WAIT, WE'RE GOING THIS WAY?!?!")
 
  EXPLCOMMON.SetCharAndEmotion(flow, "Worried")
   UI:WaitShowDialogue("Tidy, come on, we aren't doing your germ fear thing![pause=30] We're helping Rexio!")
 end
 
 function EntohTownEast_ch2.Wurp_Action(obj, activator)
- EXPLCOMMON.FaceEachother(obj, activator)
- EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
+  EXPLCOMMON.FaceEachother(obj, activator)
+  EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
   UI:WaitShowDialogue("Um, Wexio, why is youw dad just standing thewe...?")
 end
 
 function EntohTownEast_ch2.Tidy_Action(obj, activator)
- EXPLCOMMON.FaceEachother(obj, activator)
- EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
+  EXPLCOMMON.FaceEachother(obj, activator)
+  EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
   UI:WaitShowDialogue("What was this for, Rexio?")
 
- EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
+  EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
   UI:WaitShowDialogue("I dunno,[pause=30] this is new to me.")
 end
 
@@ -127,9 +126,9 @@ function EntohTownEast_ch2.Snow_Action(obj, activator)
 
   GROUND:CharAnimateTurnTo(obj, Dir8.Right, 3)
   GROUND:CharAnimateTurnTo(activator, Dir8.Right, 3)
- EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
+  EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
   UI:WaitShowDialogue("I-if we're going th-that way, we're going to a m-muddy town.")
- EXPLCOMMON.FaceEachother(obj, activator)
+  EXPLCOMMON.FaceEachother(obj, activator)
   UI:WaitShowDialogue("Momma said th-that Tidy's mom w-would have a h-heart attack if she s-saw...")
   EXPLCOMMON.CharSweatdrop("Snow")
   UI:WaitShowDialogue("Imagine wh-what would happen to Tidy...")

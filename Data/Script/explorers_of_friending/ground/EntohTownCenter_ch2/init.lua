@@ -129,9 +129,11 @@ function EntohTownCenter_ch2.Entoh_NorthEnter_Touch(obj, activator)
     GAME:FadeOut(false, 10)
     GAME:EnterGroundMap("EntohTownNorth_ch2", "EnterMark_South")
   end
-  
 end
 
+function EntohTownCenter_ch2.Budeg_Action(obj, activator)
+  EXPLCOMMON.DebugWithBudeg()
+end
 
 return EntohTownCenter_ch2
 

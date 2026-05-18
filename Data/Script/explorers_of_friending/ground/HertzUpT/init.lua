@@ -59,7 +59,7 @@ end
 -------------------------------
 
 function HertzUpT.ExitN_Touch(obj, activator)
- EXPLCOMMON.FadeEnterGround("HertzGuildOut", "EnterW")
+ EXPLCOMMON.FadeEnterGround("HertzGuildOut", "EnterS")
 end
 
 function HertzUpT.ExitS_Touch(obj, activator)

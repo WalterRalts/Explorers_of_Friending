@@ -1,0 +1,37 @@
+---@meta _
+
+---@alias Anim
+---| '"None"' Remove animation
+---| '"Idle"' 
+---| '"Walk"' 
+---| '"Hurt"' 
+---| '"Run"' 
+---| '"Charge"'
+---| '"RearUp"'
+---| '"EventSleep"'
+---| '"Pose"'
+---| '"DeepBreath"'
+---| '"Sleep"'
+---| '"Laying"'
+---| '"Pain"'
+---| '"Attack"'
+---| '"SpAttack"'
+---| '"Wake"'
+---| '"Rotate"'
+---| '"Trip"'
+
+---@alias Emote
+---| '"angry"'          # Angry
+---| '"question"'        # Question Mark
+---| '"sweating"'        # Multiple Sweatdrops
+---| '"notice"'          # 
+---| '"glowing"'   
+---| '"shock"'           # ! 
+---| '"sweatdrop"'       # Singular Sweatdrop
+---| '"happy"'
+---| '"exclaim"'
+
+---@alias Effect
+---| '"notice"'
+---| '"sweatdrop"'
+---| '"exclaim"'

@@ -5,6 +5,7 @@
 ]]--
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
+require 'explorers_of_friending.ground.TarroTownBigTree.cutscene'
 
 -- Package name
 local TarroTownBigTree = {}
@@ -24,31 +25,31 @@ function TarroTownBigTree.Init(map)
     GAME:SetCanSwitch(true)
     if GAME:GetPlayerPartyCount() == 2 or SV.tarro_tree_hollows.tree_entered == false then
       local mon_id1 = RogueEssence.Dungeon.MonsterID("sentret", 0, "normal", Gender.Female)
-  
+
       local p1 = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id1, 5, "", 0)
       p1.IsFounder = true
       p1.IsPartner = true
       p1.Nickname = "Senna"
-  
+
       _DATA.Save.ActiveTeam.Players:Add(p1)
       --
       local mon_id2 = RogueEssence.Dungeon.MonsterID("poochyena", 0, "normal", Gender.Male)
-  
+
       local p2 = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id2, 9, "", 0)
       p2.IsFounder = true
       p2.IsPartner = true
       p2.Nickname = "Puchi"
-  
+
       _DATA.Save.ActiveTeam.Players:Add(p2)
       --
       local mon_id3 = RogueEssence.Dungeon.MonsterID("zigzagoon", 0, "normal", Gender.Male)
-  
+
       local p3 = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id3, 7, "pickup", 0)
       p3.IsFounder = true
       p3.IsPartner = true
       p3.Nickname = "Ziggy"
-  
-      
+
+
       _DATA.Save.ActiveTeam.Players:Add(p3)
       _DATA.Save.ActiveTeam.Players[2]:RefreshTraits()
       _DATA.Save.ActiveTeam.Players[3]:RefreshTraits()
@@ -60,31 +61,16 @@ function TarroTownBigTree.Init(map)
             talk_npc = RogueEssence.Dungeon.BattleScriptEvent("ZiggyInteract")
             _DATA.Save.ActiveTeam.Players[4].ActionEvents:Add(talk_npc)
     end
-    
-    
+
     MapStrings = STRINGS.MapStrings
     COMMON.RespawnAllies()
     if SV.tarro_tree_hollows.tree_entered == false then
-      TarroTownBigTree.TarroThingCut()
+      Tree.FirstEnter()
     end
-    local partner = CH('Teammate1')
-    AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
-    partner.CollisionDisabled = true
-  
-    local partner2 = CH('Teammate2')
-    AI:SetCharacterAI(partner2, "origin.ai.ground_partner", CH('Teammate1'), partner2.Position)
-    partner2.CollisionDisabled = true
-  
-    local partner3 = CH('Teammate3')
-    AI:SetCharacterAI(partner3, "origin.ai.ground_partner", CH('Teammate2'), partner3.Position)
-    partner3.CollisionDisabled = true
-  
-    local partner4 = CH('Teammate4')
-    AI:SetCharacterAI(partner4, "origin.ai.ground_partner", CH('Teammate3'), partner4.Position)
-    partner4.CollisionDisabled = true
+    EXPLCOMMON.AllyFollow(true, false)
     puchi_tired = true
   elseif SV.tarro_tree_hollows.tree_entered == true then --after cutscene
-    
+
     local total = 1
     local playeridx = GAME:GetTeamLeaderIndex()
     for i, p in ipairs(SV.tarro_tree_hollows.entering_party) do
@@ -97,7 +83,7 @@ function TarroTownBigTree.Init(map)
     end
     MapStrings = STRINGS.MapStrings
     COMMON.RespawnAllies()
-    
+
     _DATA.Save.ActiveTeam.Players[2]:RefreshTraits()
     _DATA.Save.ActiveTeam.Players[3]:RefreshTraits()
     _DATA.Save.ActiveTeam.Players[4]:RefreshTraits()
@@ -122,155 +108,7 @@ function TarroTownBigTree.Init(map)
 
   local partner4 = CH('Teammate4')
   AI:SetCharacterAI(partner4, "origin.ai.ground_partner", CH('Teammate3'), partner4.Position)
-  partner4.CollisionDisabled = true  
-end
-
-function TarroTownBigTree.TarroThingCut(map)
-  local ama = CH("Thing")
-  GAME:CutsceneMode(true)
-  GAME:MoveCamera(464, 302, 7, false)
-  
-  local coro1 = TASK:BranchCoroutine(function() 
-    GROUND:MoveToPosition(ama, 533, 254, false, 2)
-    end)	
-  local coro2 = TASK:BranchCoroutine(function() 
-    GAME:FadeIn(40)
-    end)
-  
-  TASK:JoinCoroutines({coro1, coro2})
-
-  GROUND:CharAnimateTurn(ama, Direction.DownRight, 5, false)
-  GAME:WaitFrames(20)
-  GROUND:CharAnimateTurn(ama, Direction.UpLeft, 5, false)
-  GAME:WaitFrames(25)
-  GROUND:CharAnimateTurn(ama, Direction.DownLeft, 5, false)
-  GAME:WaitFrames(34)
-  GROUND:MoveToPosition(ama, 550, 240, false, 2)
-  GROUND:Hide("Thing")
-  
-  local maru = CH("PLAYER")
-  local azura = CH('Teammate1')
-  local ziggy = CH("Teammate4")
-  local senna = CH('Teammate2')
-  local puchi = CH("Teammate3")
-  
-  GROUND:MoveInDirection(player, Direction.Down, 24, false, 2)
-  
-  local coro3 = TASK:BranchCoroutine(function()
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("What was that thing?!")
-
-    UI:SetSpeaker(puchi)
-    UI:SetSpeakerEmotion("Surprised")
-    UI:WaitShowDialogue("It's going into the tree!?[pause=33] We gotta stop it!")
-    end)	
-  local coro4 = TASK:BranchCoroutine(function() 
-    GROUND:MoveToPosition(maru, 341, 376, false, 4)
-    end)
-  local coro5 = TASK:BranchCoroutine(function() 
-    GROUND:MoveToPosition(azura, 359, 398, false, 6)
-    end)	
-  local coro6 = TASK:BranchCoroutine(function() 
-    GROUND:MoveToPosition(ziggy, 314, 368, false, 8)
-    GROUND:MoveToPosition(puchi, 306, 342, false, 3)
-    end)
-  local coro7 = TASK:BranchCoroutine(function() 
-    GROUND:MoveToPosition(senna, 302, 398, false, 4)
-  end)
-  local coro8 = TASK:BranchCoroutine(function() 
-    GAME:MoveCamera(0, 0, 30, true)
-  end)
-  TASK:JoinCoroutines({coro3, coro4, coro5, coro6, coro7, coro8})
-  
-  
-  
-
-  local coro01 = TASK:BranchCoroutine(function()
-    UI:SetSpeaker(ziggy)
-    UI:SetSpeakerEmotion("Surprised")
-    UI:WaitShowDialogue("We gotta stop it!")
-    GROUND:CharTurnToCharAnimated(puchi, senna, 2)
-    end)
-  local coro02 = TASK:BranchCoroutine(function() 
-    GROUND:CharTurnToCharAnimated(azura, senna, 2)
-    end)	
-  local coro03 = TASK:BranchCoroutine(function()
-    GAME:WaitFrames(15)
-    GROUND:CharTurnToCharAnimated(maru, senna, 2)
-    end)  
-  TASK:JoinCoroutines({coro01, coro02, coro03})
- EXPLCOMMON.FaceEachother(ziggy, senna)
-  UI:SetSpeaker(senna)
-  UI:SetSpeakerEmotion("Surprised")
-  
-
-  local cor1 = TASK:BranchCoroutine(function() 
-    UI:WaitShowDialogue("H-[pause=10]huh...?![pause=25] We have to-[pause=30].[emote=Pain]..[pause=35]?!")
-    UI:WaitShowDialogue("Let's have the grown-ups deal with it!")
-    end)
-  local cor2 = TASK:BranchCoroutine(function()
-   EXPLCOMMON.CharExclaim("Teammate4")
-    GAME:WaitFrames(15)
-    GROUND:AnimateToPosition(senna, "Walk", Dir8.Up, senna.Position.X, senna.Position.Y + 15, 1, 2, 0)
-    end)
-  TASK:JoinCoroutines({cor1, cor2})
-
-  
-  UI:SetSpeaker(ziggy)
-  UI:SetSpeakerEmotion("Determined")
-  UI:WaitShowTimedDialogue("They aren't here, Senna,[pause=35] come on! We might lose the tree!", 50)
-  UI:WaitShowDialogue("No way![pause=15] We have to hurry up now now now!")
-
-  UI:SetSpeaker(senna)
-  UI:SetSpeakerEmotion("Sad")
-  UI:WaitShowDialogue("B-but...[pause=40] but[emote=Teary-Eyed][pause=25] but...")
-
-  UI:SetSpeaker(azura)
-  UI:SetSpeakerEmotion("Sad")
-  UI:WaitShowDialogue("Senna...")
-
-  local function angyzig()
-   EXPLCOMMON.CharAngry("Teammate4")
-   EXPLCOMMON.CharHop("Teammate4")
-  end
-
-  SV.tarro_tree_hollows.tree_entered = true
-  UI:SetSpeaker(ziggy)
-  UI:SetSpeakerEmotion("Determined")
-  UI:WaitShowDialogue("Senna! You have us with you! T[emote=Angry][script=0]he epic Friend Circle will not be stopped!", {angyzig})
-  UI:WaitShowDialogue("You can't keep being scared of battling! Just do it, it's not that bad!")
-
-  UI:SetSpeaker(senna)
-  UI:SetSpeakerEmotion("Teary-Eyed")
-  UI:WaitShowDialogue("...")
-
-  GROUND:AnimateToPosition(ziggy, "Walk", Dir8.Down, senna.Position.X, senna.Position.Y - 25, 5, 2, 0)
-  UI:SetSpeaker(ziggy)
-  UI:SetSpeakerEmotion("Determined")
-  UI:WaitShowDialogue("Strong face, Senna!")
-
-  UI:SetSpeaker(senna)
-  UI:SetSpeakerEmotion("Sad")
-  UI:WaitShowTimedDialogue("...", 65)
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowTimedDialogue("...", 64)
-  UI:SetSpeakerEmotion("Determined")
-  UI:WaitShowDialogue("...")
-
-  UI:SetSpeaker(ziggy)
-  UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("There ya go!")
-
-  UI:SetSpeaker(puchi)
-  UI:SetSpeakerEmotion("Determined")
-  UI:WaitShowDialogue("Alright then, let's go.")
-
-  UI:SetSpeaker(puchi)
-  UI:SetSpeakerEmotion("Pain")
-  UI:WaitShowDialogue("(...why am I still so tired...?)")
-  GAME:CutsceneMode(false)
-  thing_gone = true
+  partner4.CollisionDisabled = true
 end
 
 function TarroTownBigTree.TryAgain(map)
@@ -289,6 +127,11 @@ function TarroTownBigTree.TryAgain(map)
   GROUND:TeleportTo(ziggy, 545, 290, Direction.Down, 0)
   GROUND:TeleportTo(senna, 472, 275, Direction.DownLeft, 0)
   GROUND:TeleportTo(puchi, 460, 248, Direction.Left, 0)
+  GROUND:CharSetAnim(maru, "Laying", true)
+  GROUND:CharSetAnim(azura, "Laying", true)
+  GROUND:CharSetAnim(ziggy, "Laying", true)
+  GROUND:CharSetAnim(senna, "Laying", true)
+  GROUND:CharSetAnim(puchi, "Laying", true)
 
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Pain")
@@ -298,22 +141,48 @@ function TarroTownBigTree.TryAgain(map)
   UI:SetSpeakerEmotion("Pain")
   UI:WaitShowDialogue("Oof...")
 
+  local coro3 = TASK:BranchCoroutine(function()
+    GAME:WaitFrames(math.random(3, 10))
+    GROUND:CharSetAnim(maru, "Wake", false)
+  end)
+  local coro4 = TASK:BranchCoroutine(function()
+    GAME:WaitFrames(math.random(10, 20))
+    GROUND:CharSetAnim(azura, "Wake", false)
+  end)
+  local coro5 = TASK:BranchCoroutine(function()
+    GAME:WaitFrames(math.random(3, 10))
+    GROUND:CharSetAnim(ziggy, "Wake", false)
+  end)
+  local coro6 = TASK:BranchCoroutine(function()
+    GAME:WaitFrames(math.random(3, 10))
+    GROUND:CharSetAnim(senna, "Wake", false)
+  end)
+  local coro7 = TASK:BranchCoroutine(function()
+    GAME:WaitFrames(math.random(3, 20))
+    GROUND:CharSetAnim(puchi, "Wake", false)
+  end)
+  TASK:JoinCoroutines({coro3, coro4, coro5, coro6, coro7})
+
   GAME:FadeIn(25)
+  local function sibling()
+    GROUND:CharTurnToCharAnimated(puchi, senna, 6)
+    EXPLCOMMON.FaceEachother(ziggy, senna)
+  end
 
   UI:SetSpeaker(senna)
   UI:SetSpeakerEmotion("Sad")
-  UI:WaitShowDialogue("I knew I'd be a drag,[pause=30] maybe I should just go home...")
+  UI:WaitShowDialogue("I knew I'd be a drag,[pause=30][script=0] maybe I should just go home...", {sibling})
 
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("Sensen, no...[pause=25] we all did pretty bad but that doesn't mean anything.")
 
- EXPLCOMMON.FaceEachother(maru, senna)
+  EXPLCOMMON.FaceEachother(maru, senna)
 
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("We'll just try again,[pause=25] no problem.")
-  
+
   AI:EnableCharacterAI(azura)
   AI:EnableCharacterAI(ziggy)
   AI:EnableCharacterAI(senna)
@@ -433,7 +302,7 @@ function TarroTownBigTree.Tree_Exit_Touch(obj, activator)
     local ziggy = CH("Teammate4")
     local senna = CH('Teammate2')
     local puchi = CH("Teammate3")
-  
+
     UI:SetSpeaker(senna)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Leaving?")

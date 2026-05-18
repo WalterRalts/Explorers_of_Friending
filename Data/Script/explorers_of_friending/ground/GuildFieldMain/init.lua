@@ -277,11 +277,15 @@ function GuildFieldMain.DayCheck_Touch(obj, activator)
 end
 
 function GuildFieldMain.Kitkit_Action(obj, activator)
- EXPLCOMMON.FaceEachother(obj, activator)
+  EXPLCOMMON.FaceEachother(obj, activator)
 
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("You three can do it!")
+end
+
+function GuildFieldMain.Budeg_Action(obj, activator)
+  EXPLCOMMON.DebugWithBudeg()
 end
 
 return GuildFieldMain

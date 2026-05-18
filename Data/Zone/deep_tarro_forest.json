@@ -14,7 +14,7 @@
 "LevelCap": false,
 "KeepSkills": false,
 "TeamRestrict": false,
-"TeamSize": 5,
+"TeamSize": -1,
 "MoneyRestrict": false,
 "BagRestrict": -1,
 "KeepTreasure": false,
@@ -2561,6 +2561,15 @@
 "Numerator": 3,
 "Denominator": 5
 }
+},
+{
+"$type": "PMDC.LevelGen.MobSpawnBoost, PMDC",
+"MaxHPBonus": -3,
+"AtkBonus": -3,
+"DefBonus": 0,
+"SpAtkBonus": -3,
+"SpDefBonus": 0,
+"SpeedBonus": 0
 }
 ]
 },
@@ -2568,7 +2577,7 @@
 },
 "Rate": 5,
 "Range": {
-"Min": 3,
+"Min": 1,
 "Max": 6
 }
 },
@@ -2646,7 +2655,7 @@
 },
 "Role": 3
 },
-"Rate": 15,
+"Rate": 20,
 "Range": {
 "Min": 0,
 "Max": 6
@@ -2720,7 +2729,7 @@
 },
 "Role": 3
 },
-"Rate": 20,
+"Rate": 30,
 "Range": {
 "Min": 0,
 "Max": 6

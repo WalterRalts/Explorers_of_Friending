@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.11.0",
+"Version": "0.8.12.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -40789,7 +40789,7 @@
 "ScriptVars": null
 },
 "EntName": "TEAMMATE_1",
-"Direction": 0,
+"Direction": 4,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -40806,7 +40806,7 @@
 "Markers": [
 {
 "EntName": "OutsideStart",
-"Direction": 0,
+"Direction": 4,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,

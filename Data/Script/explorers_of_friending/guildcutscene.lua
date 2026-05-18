@@ -2,6 +2,7 @@ Guild = {}
 Tent = {} --guild lvl1
 
 function Guild.Day0()
+    GAME:CutsceneMode(true)
     SV.guilders.fielded_two = true
     GROUND:Hide("PLAYER")
     GAME:MoveCamera(1000, 640, 30, false)
@@ -13,13 +14,11 @@ function Guild.Day0()
     local kitty = CH("Kitkit")
     local smear = CH("Smear")
 
-    UI:SetSpeaker(rexio)
-    UI:SetSpeakerEmotion("Stunned")
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Stunned")
     UI:WaitShowDialogue("What's going on?")
 
-   EXPLCOMMON.FaceEachother(rexio, azura)
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Stunned")
+    EXPLCOMMON.FaceEachother(rexio, azura)
+    EXPLCOMMON.SetCharAndEmotion(maru, "Stunned")
     UI:WaitShowDialogue("I don't know,[pause=15] he's just been standing there for the last three minutes.")
 
     UI:SetSpeaker(azura)
@@ -87,7 +86,7 @@ function Guild.Day0()
 
         local c2 = TASK:BranchCoroutine(function()
             while turner do
-                local distract = math.random(5)
+                local distract = math.random(8)
                 GAME:WaitFrames(30)
                 if distract == 5 then
                     GROUND:CharTurnToCharAnimated(smear, rexio, 1)
@@ -126,7 +125,7 @@ function Guild.Day0()
     end)
     TASK:JoinCoroutines({coro01, coro02})
 
-   EXPLCOMMON.FaceEachother(rexio, smear)
+    EXPLCOMMON.FaceEachother(rexio, smear)
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("...okay, so what's the issue? Is the guild somewhere else or what?")
@@ -140,7 +139,7 @@ function Guild.Day0()
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("Wha-![pause=20] Waste[emote=Angry] of my time!")
 
-    GROUND:CharAnimateTurnTo(smear, maru, 4)
+    GROUND:CharTurnToCharAnimated(smear, maru, 4)
     UI:SetSpeaker(smear)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("It may seem that way.[pause=15] However,[pause=15] it is because of this that I hastily requested you here.")
@@ -181,7 +180,7 @@ function Guild.Day0()
     GROUND:CharTurnToCharAnimated(maru, smear, 4)
     GROUND:CharTurnToCharAnimated(rexio, smear, 4)
     UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Now that you are all hastily familiar with eachother, let me show you around the psuedoguild.")
+    UI:WaitShowDialogue("Now that you are all hastily familiar with eachother, let me show you around the potential guild.")
 
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Happy")
@@ -213,7 +212,7 @@ function Guild.Day0()
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("And...?")
 
-   EXPLCOMMON.CharSweating("Smear")
+    EXPLCOMMON.CharSweating("Smear")
     UI:SetSpeaker(smear)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("Well... of course uh...")
@@ -236,7 +235,7 @@ function Guild.Day0()
     UI:WaitShowDialogue("I cannot give you a mission[pause=0], we are not a guild.")
    EXPLCOMMON.CharAngry("Rexio")
     GAME:WaitFrames(35)
-    UI:WaitShowDialogue("While I appreciate your enthuiasm, I cannot in good conscious let three children outside during sunset.")
+    UI:WaitShowDialogue("While I appreciate your enthusiasm, I cannot in good conscious let three children outside during sunset.")
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("To bed you shall go. And when you awaken, we will talk about your dungeoning skills.")
 
@@ -351,7 +350,7 @@ function Guild.Day1()
 
     UI:SetSpeaker(smear)
     UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Essentially, against the clear disappointment I was given yesterday, I'll have to give you three a mission.")
+    UI:WaitShowDialogue("Essentially, against the clear disappointment I was given yesterday, I will have to give you three a mission.")
 
     local rexihap = true
     local coro1 = TASK:BranchCoroutine(function()
@@ -433,6 +432,7 @@ function Guild.Day1()
 end
 
 function Guild.Day2()
+    local nervous_smear = true
     SV.guilders.fielded_two = true
     local maru = CH("PLAYER")
     local azura = CH("Teammate1")
@@ -440,72 +440,92 @@ function Guild.Day2()
     local kitty = CH("Kitkit")
     local zoomer = CH("Zoomer")
     local smear = CH("Smear")
+    local smearx = smear.Position.X
+    local smeary = smear.Position.Y
 
     rexio.CollisionDisabled = true
     azura.CollisionDisabled = true
 
-   EXPLCOMMON.TeleportToMarker(maru, "m1", Dir8.DownLeft)
-   EXPLCOMMON.TeleportToMarker(azura, "m1", Dir8.DownLeft)
-   EXPLCOMMON.TeleportToMarker(rexio, "m1", Dir8.DownLeft)
+    EXPLCOMMON.TeleportToMarker(maru, "m1", Dir8.DownLeft)
+    EXPLCOMMON.TeleportToMarker(azura, "m1", Dir8.DownLeft)
+    EXPLCOMMON.TeleportToMarker(rexio, "m1", Dir8.DownLeft)
 
     GROUND:Hide("PLAYER")
     GROUND:Hide("Teammate1")
     GROUND:Hide("Teammate2")
     GAME:MoveCamera(1000, 640, 1, false)
     GAME:FadeIn(70)
+    local x1 = TASK:BranchCoroutine(function ()
+        local coro011 = TASK:BranchCoroutine(function()
+            GROUND:Unhide("PLAYER")
+            GAME:WaitFrames(20)
+            GROUND:MoveToMarker(maru, MRKR("Start"), false, 1)
+            GROUND:CharTurnToCharAnimated(maru, smear, 2)
+        end)
+        local coro012 = TASK:BranchCoroutine(function()
+            GAME:WaitFrames(55)
+            GROUND:Unhide("Teammate1")
+            GAME:WaitFrames(20)
+            GROUND:MoveToPosition(azura, 1029, 654, false, 1)
+            GROUND:CharTurnToCharAnimated(azura, smear, 2)
+        end)
+        local coro013 = TASK:BranchCoroutine(function()
+            GAME:WaitFrames(90)
+            GROUND:Unhide("Teammate2")
+            GAME:WaitFrames(20)
+            GROUND:MoveToPosition(rexio, 971, 654, false, 1)
+            GROUND:CharTurnToCharAnimated(rexio, smear, 2)
+        end)
+        TASK:JoinCoroutines({coro011, coro012, coro013})
 
-    local coro011 = TASK:BranchCoroutine(function()
-        GROUND:Unhide("PLAYER")
-        GAME:WaitFrames(20)
-        GROUND:MoveToMarker(maru, MRKR("Start"), false, 1)
-        GROUND:CharTurnToCharAnimated(maru, smear, 2)
-    end)
-    local coro012 = TASK:BranchCoroutine(function()
-        GAME:WaitFrames(55)
-        GROUND:Unhide("Teammate1")
-        GAME:WaitFrames(20)
-        GROUND:MoveToPosition(azura, 1029, 654, false, 1)
-        GROUND:CharTurnToCharAnimated(azura, smear, 2)
-    end)
-    local coro013 = TASK:BranchCoroutine(function()
-        GAME:WaitFrames(90)
-        GROUND:Unhide("Teammate2")
-        GAME:WaitFrames(20)
-        GROUND:MoveToPosition(rexio, 971, 654, false, 1)
-        GROUND:CharTurnToCharAnimated(rexio, smear, 2)
-    end)
-    TASK:JoinCoroutines({coro011, coro012, coro013})
+        GAME:WaitFrames(40)
+        UI:SetSpeaker(rexio)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("...")
 
-    GAME:WaitFrames(40)
-    UI:SetSpeaker(rexio)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("...")
+        UI:SetSpeaker(azura)
+        UI:SetSpeakerEmotion("Worried")
+        UI:WaitShowDialogue("Mr. Smear?")
+        EXPLCOMMON.CharRealize("Smear")
 
-    UI:SetSpeaker(azura)
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Mr. Smear?")
-   EXPLCOMMON.CharRealize("Smear")
-    GROUND:CharTurnToCharAnimated(smear, maru, 6)
+        nervous_smear = false
+        GAME:WaitFrames(60)
+        UI:SetSpeaker(maru)
+        UI:SetSpeakerEmotion("Stunned")
+        UI:WaitShowDialogue("...are you okay?")
+    end)
+    local x2 = TASK:BranchCoroutine(function()
+        EXPLCOMMON.StartTremble(smear)
+        GROUND:MoveToPosition(smear, smear.Position.X - 36, smear.Position.Y, false, 1)
+        GAME:WaitFrames(math.random(90, 120))
+        while nervous_smear do
+            GROUND:MoveToPosition(smear, smear.Position.X + 72, smear.Position.Y, false, 1)
+            GAME:WaitFrames(math.random(90, 120))
+            GROUND:MoveToPosition(smear, smear.Position.X - 72, smear.Position.Y, false, 1)
+            GAME:WaitFrames(math.random(90, 120))
+        end
+        GROUND:CharTurnToCharAnimated(smear, maru, 6)
+        EXPLCOMMON.StopTremble(smear)
+    end)
+    TASK:JoinCoroutines({x1, x2})
 
     GAME:WaitFrames(60)
-    UI:SetSpeaker(maru)
-    UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("...are you okay?")
+    EXPLCOMMON.CharSweating("Smear")
+    GROUND:MoveToPosition(smear, smearx, smeary, false, 1)
+    GROUND:CharTurnToCharAnimated(smear, maru, 4)
 
-    GAME:WaitFrames(60)
-   EXPLCOMMON.CharSweating("Smear")
     UI:SetSpeaker(smear)
     UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Well, it is, uh...")
+    UI:WaitShowDialogue("Well, you see...")
     GAME:WaitFrames(10)
-   EXPLCOMMON.CharSweating("Smear")
+    EXPLCOMMON.CharSweating("Smear")
     GAME:WaitFrames(30)
     UI:WaitShowDialogue("...I do not have a mission, [pause=50]a[emote=Stunned]gain,[pause=40] but I have more of a request.")
 
     GROUND:CharTurnToCharAnimated(smear, rexio, 6)
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowDialogue("Greeeeaaaat!")
+    UI:WaitShowDialogue("I want to go home!")
 
     UI:SetSpeaker(smear)
     UI:SetSpeakerEmotion("Pain")
@@ -528,7 +548,7 @@ function Guild.Day2()
     jumpup()
     UI:SetSpeaker(smear)
     UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowDialogue("Zoomer![pause=0][script=0] Zoomer,[pause=15][script=1] they're capable, Zoomer!", {jumpup, jumpup})
+    UI:WaitShowDialogue("Zoomer![pause=0][script=0] Zoomer,[pause=15][script=1] they are capable, Zoomer!", {jumpup, jumpup})
 
     EXPLCOMMON.CharAngry("Zoomer")
     UI:SetSpeaker(zoomer)
@@ -566,7 +586,7 @@ function Guild.Day2()
         EXPLCOMMON.FaceEachother(zoomer, rexio)
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Angry")
-        UI:WaitShowDialogue("Excuse me?![pause=30] I can do all these side quests by myself! I'm too strong to do any of this!")
+        UI:WaitShowDialogue("Excuse me?![pause=30] I can do all these boring chores by myself! I'm too strong to do any of this!")
 
         UI:SetSpeaker(zoomer)
         UI:SetSpeakerEmotion("Angry")
@@ -589,7 +609,7 @@ function Guild.Day2()
             UI:SetSpeakerEmotion("Inspired")
             GROUND:CharSetAnim(zoomer, "Walk", false)
             UI:WaitShowTimedDialogue("OoH, lOoK at ME![pause=30] I can see TWO[emote=Angry] THINGS ON THE GROUND AT A TIME!", 80)
-            GROUND:CharSetAnim(zoomer, "Normal", false)
+            GROUND:CharSetAnim(zoomer, "Idle", false)
 
             UI:SetSpeaker(rexio)
             UI:SetSpeakerEmotion("Angry")
@@ -742,31 +762,40 @@ function Guild.Day2()
     UI:SetSpeaker(smear)
     UI:SetSpeakerEmotion("Sigh")
     UI:WaitShowTimedDialogue("...", 50)
-   EXPLCOMMON.FaceEachother(smear, maru)
+    EXPLCOMMON.FaceEachother(smear, maru)
     UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("As you all have heard, it is a good time to further your team.[pause=50] For this guild,[pause=30] er, for Kitkat,[pause=30] get the treasure and bring it back!")
+    UI:WaitShowDialogue("As you all have heard, it is a good time to get some experience.[pause=50] For this guild,[pause=30] er, for Kitkat really,[pause=30] get the treasure and bring it back!")
 
     GROUND:CharAnimateTurnTo(rexio, Dir8.Down, 3)
     GROUND:CharAnimateTurnTo(maru, Dir8.Down, 3)
     GROUND:CharAnimateTurnTo(azura, Dir8.Down, 3)
 
-    GROUND:CharWaitAnim(maru, "Pose")
-    GROUND:CharSetAction(maru, RogueEssence.Ground.PoseGroundAction(maru.Position, maru.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Pose")))
-    GROUND:CharWaitAnim(rexio, "Pose")
-    GROUND:CharSetAction(rexio, RogueEssence.Ground.PoseGroundAction(rexio.Position, rexio.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Pose")))
-    GROUND:CharWaitAnim(azura, "Pose")
-    GROUND:CharSetAction(azura, RogueEssence.Ground.PoseGroundAction(azura.Position, azura.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Pose")))
     GAME:MoveCamera(0, 0, 30, true)
+    local g1 = TASK:BranchCoroutine(function()
+        GROUND:CharWaitAnim(maru, "Pose")
+        GROUND:CharSetAction(maru, RogueEssence.Ground.PoseGroundAction(maru.Position, maru.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Pose")))
+        GAME:WaitFrames(20)
+        GROUND:CharSetAnim(maru, "None", false)
+    end)
+    local g2 = TASK:BranchCoroutine(function()
+        GROUND:CharWaitAnim(rexio, "Pose")
+        GROUND:CharSetAction(rexio, RogueEssence.Ground.PoseGroundAction(rexio.Position, rexio.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Pose")))
+        GAME:WaitFrames(20)
+        GROUND:CharSetAnim(rexio, "None", false)
+    end)
+    local g3 = TASK:BranchCoroutine(function()
+        GROUND:CharWaitAnim(azura, "Pose")
+        GROUND:CharSetAction(azura, RogueEssence.Ground.PoseGroundAction(azura.Position, azura.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Pose")))
+        GAME:WaitFrames(20)
+        GROUND:CharSetAnim(azura, "None", false)
+    end)
+    TASK:JoinCoroutines({g1, g2, g3})
     SV.guild.areas.east[1] = {
         Flag = true,
         Zone = "dane_desert",
         ID = 0,
         Entry = 0
     }
-
-    GROUND:CharSetAnim(maru, "None", false)
-    GROUND:CharSetAnim(rexio, "None", false)
-    GROUND:CharSetAnim(azura, "None", false)
     IntroCutscene = false
 end
 
@@ -783,8 +812,8 @@ function Guild.Day1Done()
 
     GROUND:TeleportTo(azura, 1029, 654, Dir8.UpLeft, 0)
     GROUND:TeleportTo(rexio, 971, 654, Dir8.UpRight, 0)
-   EXPLCOMMON.TeleportToMarker(maru, "Start", Dir8.Up)
-   EXPLCOMMON.FaceEachother(maru, smear)
+    EXPLCOMMON.TeleportToMarker(maru, "Start", Dir8.Up)
+    EXPLCOMMON.FaceEachother(maru, smear)
 
     UI:SetSpeaker(smear)
     UI:SetSpeakerEmotion("Normal")
@@ -795,30 +824,37 @@ function Guild.Day1Done()
     UI:WaitShowDialogue("This was not a part of the original plan,[pause=30] but alas, there is nothing we can do.")
     UI:WaitShowDialogue("Since we are not anything official, we are not authorized to help them without permission...")
 
+    UI:SetSpeaker(rexio)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Yeah, of course we can't...")
+
     GROUND:CharAnimateTurnTo(smear, Dir8.Down, 3)
+    UI:SetSpeaker(smear)
     UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("Let's see how many apples you've gotten regardless.")
+    UI:WaitShowDialogue("Let us see how many apples you have gotten, since that was what you all travelled for.")
 
     local apple_storcount = GAME:GetPlayerStorageItemCount("food_apple") + GAME:GetPlayerStorageItemCount("food_apple_big")
     local apple_bagcount = 0
-
     for i = 0, GAME:GetPlayerBagCount() - 1, 1 do
-        if GAME:GetPlayerBagItem(i).ID == "food_apple" or GAME:GetPlayerBagItem(i).ID == "food_apple_big" then
+        if string.find(GAME:GetPlayerBagItem(i).ID, "apple") then
             apple_bagcount = apple_bagcount + 1
         end
     end
     local apple_count = apple_bagcount + apple_storcount
+    local function mar_approach()
+        GROUND:MoveToPosition(maru, smear.Position.X, smear.Position.Y, false, 1)
+    end
     if apple_bagcount == 0 then
         UI:SetSpeaker(maru)
         UI:SetSpeakerEmotion("Stunned")
-        UI:WaitShowDialogue("Um,[pause=40] about that...")
+        UI:WaitShowDialogue("Um,[pause=40] about that...[script=0]", {mar_approach})
 
         GROUND:CharAnimateTurnTo(zoomer, Dir8.Right, 3)
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("The mission was so boring that we fell asleep and forgot.")
 
-       EXPLCOMMON.FaceEachother(maru, rexio)
+        EXPLCOMMON.FaceEachother(maru, rexio)
 
         UI:SetSpeaker(maru)
         UI:SetSpeakerEmotion("Determined")
@@ -834,13 +870,13 @@ function Guild.Day1Done()
     else
         UI:SetSpeaker(maru)
         UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("Here ya go.")
+        UI:WaitShowDialogue("[script=0]Here ya go.", {mar_approach})
         if apple_bagcount < 10 then
             UI:SetSpeaker(smear)
             UI:SetSpeakerEmotion("Normal")
-            UI:WaitShowDialogue(apple_bagcount .. ", it seems. Now we'll check storage.")
+            UI:WaitShowDialogue(apple_bagcount .. ", it seems. Now we will check storage.")
         else
-           EXPLCOMMON.CharExclaim("Smear")
+            EXPLCOMMON.CharExclaim("Smear")
             UI:SetSpeaker(smear)
             UI:SetSpeakerEmotion("Surprised")
             UI:WaitShowDialogue("Huh?! Have you three carried nothing but apples with you this entire time?!")
@@ -852,6 +888,10 @@ function Guild.Day1Done()
             UI:SetSpeaker(rexio)
             UI:SetSpeakerEmotion("Normal")
             UI:WaitShowDialogue("The mission was too easy... and also boring.")
+
+            UI:SetSpeaker(smear)
+            UI:SetSpeakerEmotion("Normal")
+            UI:WaitShowDialogue(apple_bagcount .. " is impressive indeed. Now we will check storage.")
         end
     end
 
@@ -898,25 +938,25 @@ function Guild.Day1Done()
             GROUND:CharAnimateTurnTo(zoomer, Dir8.DownRight, 5)
             UI:WaitShowDialogue("Should've asked me for help at that point.")
 
-           EXPLCOMMON.FaceEachother(smear, zoomer)
+            EXPLCOMMON.FaceEachother(smear, zoomer)
             UI:SetSpeaker(smear)
             UI:SetSpeakerEmotion("Worried")
             UI:WaitShowDialogue("As pretentious as that is...")
 
-           EXPLCOMMON.CharAngry("Zoomer")
-           EXPLCOMMON.CharHop("Zoomer")
+            EXPLCOMMON.CharAngry("Zoomer")
+            EXPLCOMMON.CharHop("Zoomer")
             GROUND:CharAnimateTurnTo(smear, Dir8.Down, 3)
             UI:SetSpeaker(zoomer)
             UI:SetSpeakerEmotion("Angry")
-            UI:WaitShowDialogue("OI!")
+            UI:WaitShowDialogue("HEY!")
         end
     elseif apple_storcount < 5 then
         UI:SetSpeaker(zoomer)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue(apple_storcount .. " of them. Right, because you're inexperienced.")
 
-       EXPLCOMMON.FaceEachother(rexio, zoomer)
-       EXPLCOMMON.CharAngry("Teammate2")
+        EXPLCOMMON.FaceEachother(rexio, zoomer)
+        EXPLCOMMON.CharAngry("Teammate2")
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("Like, what is your deal...?")
@@ -925,8 +965,8 @@ function Guild.Day1Done()
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue(apple_storcount .. " of them. Interesting.")
 
-       EXPLCOMMON.FaceEachother(rexio, zoomer)
-       EXPLCOMMON.CharAngry("Teammate2")
+        EXPLCOMMON.FaceEachother(rexio, zoomer)
+        EXPLCOMMON.CharAngry("Teammate2")
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("...interesting?")
@@ -1021,20 +1061,8 @@ end
 function Tent.Day0()
     local moverex = GAME:GetPlayerPartyTable()
     GAME:SetCanSwitch(false)
-    function PrintTable(t, indent)
-        indent = indent or 0
-        for key, value in pairs(t) do
-            local formatting = string.rep("  ", indent) .. tostring(key) .. ": "
-            if type(value) == "table" then
-                print(formatting)
-                PrintTable(value, indent + 1)
-            else
-                print(formatting .. tostring(value))
-            end
-        end
-    end
-    PrintTable(SV.guilders.tarro_town.bluetail_stats)
-    PrintTable(moverex)
+    EXPLCOMMON.PrintTable(SV.guilders.tarro_town.bluetail_stats)
+    EXPLCOMMON.PrintTable(moverex)
     if GAME:GetPlayerPartyCount() <= 1 then
         for i, p in ipairs(SV.guilders.tarro_town.bluetail_stats) do
         GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
@@ -1105,6 +1133,7 @@ function Tent.Day0()
     EXPLCOMMON.CharSweatdrop("Teammate1")
     EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
     UI:WaitShowDialogue("Alrighty.")
+    GAME:CutsceneMode(false)
 end
 
 function Tent.Day1()

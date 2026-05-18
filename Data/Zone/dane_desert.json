@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.11.0",
+"Version": "0.8.12.0",
 "Object": {
 "$type": "RogueEssence.Data.ZoneData, RogueEssence",
 "Name": {
@@ -64,7 +64,9 @@
 "HertzVault",
 "HertzWest",
 "HertzUpT",
-"HertzGuildOut"
+"HertzGuildOut",
+"Osias",
+"DarkGuild"
 ]
 }
 }

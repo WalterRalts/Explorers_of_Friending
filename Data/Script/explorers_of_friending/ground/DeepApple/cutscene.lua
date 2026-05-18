@@ -19,7 +19,7 @@ function Core.AppleOut()
             GAME:FadeIn(60)
             end)
         TASK:JoinCoroutines({wh2, wh3})
-       EXPLCOMMON.CharRealize("Teammate2")
+        EXPLCOMMON.CharRealize("Teammate2")
         GROUND:CharTurnToChar(rexio, azura)
         GROUND:MoveToPosition(maru, rexio.Position.X - 12, rexio.Position.Y + 40, true, 4)
         GAME:WaitFrames(15)
@@ -29,33 +29,33 @@ function Core.AppleOut()
         GROUND:MoveToPosition(azura, rexio.Position.X + 12, rexio.Position.Y + 50, false, 2)
         end)
     local the3 = TASK:BranchCoroutine(function()
-       EXPLCOMMON.SetCharAndEmotion(maru, "Shouting")
+        EXPLCOMMON.SetCharAndEmotion(maru, "Shouting")
         GAME:WaitFrames(80)
         UI:WaitShowTimedDialogue("Rexio!", 75)
         end)
     TASK:JoinCoroutines({the1, the2, the3})
 
-   EXPLCOMMON.SetCharAndEmotion(maru, "Angry")
-    UI:WaitShowTimedDialogue("Why would you", 10)
+    EXPLCOMMON.SetCharAndEmotion(maru, "Angry")
+    UI:WaitShowTimedDialogue("Why would you", 15)
 
-   EXPLCOMMON.SetCharAndEmotion(rexio, "Normal")
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Normal")
     UI:WaitShowDialogue("No.")
 
-   EXPLCOMMON.SetCharAndEmotion(maru, "Stunned")
+    EXPLCOMMON.SetCharAndEmotion(maru, "Stunned")
     UI:WaitShowDialogue("Huh?")
 
     GROUND:CharAnimateTurnTo(rexio, Dir8.Up, 3)
-   EXPLCOMMON.SetCharAndEmotion(rexio, "Normal")
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Normal")
     UI:WaitShowDialogue("I know where this is gonna go,[pause=45] you're gonna tell me it's too dangerous.")
     UI:WaitShowDialogue("You're gonna tell me we don't need to be here.")
 
-   EXPLCOMMON.SetCharAndEmotion(maru, "Worried")
+    EXPLCOMMON.SetCharAndEmotion(maru, "Worried")
     UI:WaitShowDialogue("...")
 
-   EXPLCOMMON.SetCharAndEmotion(rexio, "Determined")
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Determined")
     UI:WaitShowDialogue("I want to be good at dungeoning,[pause=40] just like dad.[pause=40] Just like mom...")
     GROUND:CharAnimateTurnTo(rexio, Dir8.Down, 3)
-   EXPLCOMMON.SetCharAndEmotion(rexio, "Angry")
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Angry")
     UI:WaitShowDialogue("And whether or not you guys go with me, I won't let you slow me down!")
 
     UI:SetSpeaker(maru, false)
@@ -106,35 +106,75 @@ function Core.AppleOut()
         GAME:RemovePlayerTeam(0)
         GAME:RemovePlayerTeam(0)
         COMMON.RespawnAllies()
-        
-        COMMON.TeleportTo("PLAYER", new_x, new_y, Dir8.Up, 0)
 
-       EXPLCOMMON.SetCharAndEmotion(rexio, "Determined")
+        GROUND:TeleportTo("PLAYER", new_x, new_y, Dir8.Up, 0)
+
+        EXPLCOMMON.SetCharAndEmotion(rexio, "Determined")
         UI:WaitShowDialogue("Let's go. [pause=40][emote=Happy]I've got this!")
 
         GAME:FadeIn(30)
     else
         SV.apple_town.teamed = true
-       EXPLCOMMON.SetCharAndEmotion(maru, "Worried")
+        EXPLCOMMON.SetCharAndEmotion(maru, "Worried")
         UI:WaitShowDialogue("Azura, how long do you think you can hold on for?")
 
-       EXPLCOMMON.SetCharAndEmotion(azura, "Pain")
+        EXPLCOMMON.SetCharAndEmotion(azura, "Pain")
         UI:WaitShowDialogue("...I'll try,[pause=35] but...")
 
-       EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
+        EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
         UI:WaitShowDialogue("Does she have to come with?[pause=30] She seems out of it.")
 
-       EXPLCOMMON.SetCharAndEmotion(azura, "Determined")
+        EXPLCOMMON.SetCharAndEmotion(azura, "Determined")
         UI:WaitShowDialogue("[speed=0.2]No...")
-       EXPLCOMMON.CharHop("Teammate1")
+        EXPLCOMMON.CharHop("Teammate1")
         UI:WaitShowDialogue("I wanna be strong, too...")
 
-       EXPLCOMMON.SetCharAndEmotion(maru, "Sad")
+        EXPLCOMMON.SetCharAndEmotion(maru, "Sad")
         UI:WaitShowDialogue("Azura...")
 
-       EXPLCOMMON.SetCharAndEmotion(rexio, "Happy")
+        EXPLCOMMON.SetCharAndEmotion(rexio, "Happy")
         UI:WaitShowDialogue("Great! Let's get ready and get goin'!")
     end
     maru.CollisionDisabled = false
     GAME:CutsceneMode(false)
+end
+
+function Core.Oof()
+    local moverex = GAME:GetPlayerPartyTable()
+    EXPLCOMMON.PrintTable(SV.guilders.tarro_town.bluetail_stats)
+    EXPLCOMMON.PrintTable(moverex)
+    if GAME:GetPlayerPartyCount() <= 1 then
+      for i, p in ipairs(SV.guilders.tarro_town.bluetail_stats) do
+        GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
+        --GROUND:GiveCharIdleChatter(chara)  
+      end
+      GAME:RemovePlayerTeam(0)
+      for i, p in ipairs(moverex) do
+        GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
+      end
+    end
+
+    COMMON.RespawnAllies()
+    local maru = CH("PLAYER")
+    local second = CH("Teammate1")
+    local third = CH("Teammate2")
+
+    GROUND:CharSetAnim(third, "Laying", true)
+    GROUND:TeleportTo(CH("Teammate1"), third.Position.X + 12, third.Position.Y + 50, Dir8.UpLeft, 0)
+    GROUND:TeleportTo(CH("PLAYER"), third.Position.X - 12, third.Position.Y + 40, Dir8.UpRight, 0)
+    GAME:FadeIn(50)
+    
+
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("We did tell you this would happen.")
+
+    GROUND:CharWaitAnim(third, "Wake", true)
+
+    UI:SetSpeaker(third)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("...whatever.")
+
+    GAME:SetCanSwitch(false)
+    EXPLCOMMON.AllyFollow(false, false)
 end

@@ -279,8 +279,8 @@ function TarroTownEast.Ziggy_Action(obj, activator)
     GROUND:MoveToPosition(maru, 460, 422, false, 8)
     GROUND:MoveToPosition(azura, 460, 400, false, 8)
     GROUND:CharTurnToCharAnimated(maru, ziggy, 4)
-   EXPLCOMMON.FaceEachother(azura, ziggy)
-    if senna_check_ziggy == 1 then
+    EXPLCOMMON.FaceEachother(azura, ziggy)
+    if Senna_check_ziggy == 1 then
       UI:SetSpeaker(azura)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("ZIG!")
@@ -297,7 +297,7 @@ function TarroTownEast.Ziggy_Action(obj, activator)
       UI:SetSpeaker(ziggy)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("Yep yep! Just guarding and stuff!")
-      senna_check_ziggy = 0
+      Senna_check_ziggy = 0
     else
       if Ziggy_talk == 0 then
         UI:SetSpeaker(azura)
@@ -580,7 +580,7 @@ function TarroTownEast.Senna_Action(obj, activator)
     UI:SetSpeaker(senna)
     GROUND:CharTurnToCharAnimated(senna, maru, 2)
 
-    senna_dialogue = math.random(1, 3)
+    local senna_dialogue = math.random(1, 3)
     if SV.Story.sect <= 1 then
       if senna_dialogue == 1 then
         UI:SetSpeakerEmotion("Normal")
@@ -592,10 +592,10 @@ function TarroTownEast.Senna_Action(obj, activator)
         UI:WaitShowDialogue("Make sure you check on my brother, too.")
         UI:SetSpeakerEmotion("Sigh")
         UI:WaitShowDialogue("He's been sitting in front of our house all day today...")
-        senna_check_ziggy = 1
+        Senna_check_ziggy = 1
       elseif senna_dialogue == 3 then
         UI:SetSpeakerEmotion("Surprised")
-        UI:WaitShowDialogue("Eek![pause=61] Hm, you two [emote=Sigh]startled me.")
+        UI:WaitShowDialogue("Eek![pause=60][emote=Sigh] Hm, you two startled me.")
       end
     elseif SV.Story.sect > 1 then
       if senna_dialogue == 1 then
@@ -619,13 +619,21 @@ function TarroTownEast.Senna_Action(obj, activator)
     end
     GROUND:CharAnimateTurn(senna, Direction.Left, 2, true)
   end
-
 end
 
 function TarroTownEast.Budeg_Action(obj, activator)
- EXPLCOMMON.DebugWithBudeg()
+  EXPLCOMMON.DebugWithBudeg()
 end
 
+function TarroTownEast.Stuffy_Action(obj, activator)
+  local maru = CH("PLAYER")
+  local azura = CH("Teammate1")
+  local stuff = CH('Stuffy')
+  
+  EXPLCOMMON.CharHop("Stuffy")
+  EXPLCOMMON.SetCharAndEmotion(CH("Stuffy"), "Normal")
+  UI:WaitShowDialogue("These trees are mine... and those ones over there.")
+end
 return TarroTownEast
 
 

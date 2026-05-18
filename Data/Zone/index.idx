@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.11.0",
+"Version": "0.8.12.0",
 "Object": {
 "$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[RogueEssence.Data.EntrySummary, RogueEssence]], System.Private.CoreLib",
 "deep_tarro_forest": {
@@ -9,7 +9,7 @@
 "LevelCap": false,
 "KeepSkills": false,
 "TeamRestrict": false,
-"TeamSize": 5,
+"TeamSize": -1,
 "MoneyRestrict": false,
 "BagRestrict": -1,
 "KeepTreasure": false,
@@ -520,7 +520,9 @@
 "HertzVault",
 "HertzWest",
 "HertzUpT",
-"HertzGuildOut"
+"HertzGuildOut",
+"Osias",
+"DarkGuild"
 ],
 "Maps": [
 [
@@ -551,7 +553,8 @@
 "CountedFloors": 0,
 "Rogue": 0,
 "Grounds": [
-"DeepApple"
+"DeepApple",
+"DeepAppleEnd"
 ],
 "Maps": [
 [

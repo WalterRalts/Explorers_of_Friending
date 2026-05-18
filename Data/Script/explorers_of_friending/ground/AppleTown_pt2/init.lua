@@ -7,16 +7,6 @@
 require 'explorers_of_friending.common'
 require 'explorers_of_friending.ground.AppleTown_pt2.cutscene'
 
-local function scarred_apple()
-  GROUND:CharSetAction(CH("AppleTG"), RogueEssence.Ground.PoseGroundAction(CH("AppleTG").Position, CH("AppleTG").Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Trip")))
-  while shakyApple do
-    GROUND:TeleportTo(CH("AppleTG"), CH("AppleTG").Position.X + 1, CH("AppleTG").Position.Y + 1, Dir8.DownLeft, 0)
-    GAME:WaitFrames(math.random(4))
-    GROUND:TeleportTo(CH("AppleTG"), CH("AppleTG").Position.X - 1, CH("AppleTG").Position.Y - 1, Dir8.DownLeft, 0)
-    GAME:WaitFrames(math.random(4))
-  end
-end
-
 local function magnet_out()
   CH("MagnetA").CollisionDisabled = true
   CH("Police").CollisionDisabled = true
@@ -48,15 +38,8 @@ local AppleTown_pt2 = {}
 ---AppleTown_pt2.Init(map)
 --Engine callback function
 function AppleTown_pt2.Init(map)
-  shakyApple = true
-  COMMON.RespawnAllies()
-  CH("Teammate1").CollisionDisabled = true
-  CH("Teammate2").CollisionDisabled = true
-  GROUND:TeleportTo(CH("Teammate1"), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.DownRight, 0)
-  GROUND:TeleportTo(CH("Teammate2"), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.UpRight, 0)
-  AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
-  AI:SetCharacterAI(CH("Teammate2"), "origin.ai.ground_partner", CH("Teammate1"), CH("Teammate2").Position)
-
+  EXPLCOMMON.StartAndStop(CH("AppleTG"), "Trip")
+  EXPLCOMMON.AllyFollow(true, true)
   if MagnetForce_out then
     GROUND:Hide("MagnetB")
     GROUND:Hide("MagnetA")
@@ -86,7 +69,6 @@ end
 ---AppleTown_pt2.Update(map)
 --Engine callback function
 function AppleTown_pt2.Update(map)
-  TASK:StartEntityTask(CH("AppleTG"), scarred_apple)
   Partner()
 end
 
@@ -231,17 +213,17 @@ function AppleTown_pt2.Police_Action(obj, activator)
   local third = CH("Teammate2")
   AI:DisableCharacterAI(second)
   AI:DisableCharacterAI(third)
- EXPLCOMMON.FaceEachother(obj, activator)
+  EXPLCOMMON.FaceEachother(obj, activator)
 
- EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
+  EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("Ah,[quickscan_action()][pause=20][emote=Worried] you don't seem to be from around here.")
 
   ::continue::
   if activator.Nickname == "Maru" then
-   EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
+    EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
     UI:WaitShowDialogue("Yeah, we aren't. We're here to get apples for the guild.")
 
-   EXPLCOMMON.SetCharAndEmotion(third, "Sigh")
+    EXPLCOMMON.SetCharAndEmotion(third, "Sigh")
     UI:WaitShowDialogue("(Fake guild...)")
 
    EXPLCOMMON.SetCharAndEmotion(second, "Worried")
@@ -295,16 +277,16 @@ function AppleTown_pt2.Police_Action(obj, activator)
     UI:WaitShowDialogue("Well, we can get the apples from the dungeon, right?")
     UI:WaitShowDialogue("Probably not a good idea to stay if we can't do anything.")
 
-   EXPLCOMMON.SetCharAndEmotion(second, "Worried")
+    EXPLCOMMON.SetCharAndEmotion(second, "Worried")
     UI:WaitShowDialogue("I'm tired...")
 
-   EXPLCOMMON.SetCharAndEmotion(third, "Worried")
+    EXPLCOMMON.SetCharAndEmotion(third, "Worried")
     UI:WaitShowDialogue("...")
     
     MagnetForce_out = true
 
-   EXPLCOMMON.CharHop("Teammate1")
-   EXPLCOMMON.SetCharAndEmotion(second, "Normal")
+    EXPLCOMMON.CharHop("Teammate1")
+    EXPLCOMMON.SetCharAndEmotion(second, "Normal")
     UI:WaitShowDialogue("Let's go back to the guild!")
 
     GAME:WaitFrames(65)
@@ -352,7 +334,7 @@ function AppleTown_pt2.Police_Action(obj, activator)
     third = CH("PLAYER")
     goto continue
   end
-  AI:EnableCharacterAI(second)
+  AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH("PLAYER"), CH("Teammate1").Position)
   SV.Story.sect = 2
 end
 

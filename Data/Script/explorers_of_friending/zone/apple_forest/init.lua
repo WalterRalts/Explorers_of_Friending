@@ -21,8 +21,7 @@ end
 ---apple_forest.EnterSegment(zone, rescuing, segmentID, mapID)
 --Engine callback function
 function apple_forest.EnterSegment(zone, rescuing, segmentID, mapID)
-
-
+    AppleForest_fail = false
 end
 
 ---apple_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
@@ -36,9 +35,9 @@ function apple_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
     if exited == true then
         --do nothing; this is a dummy branch to stop us from going through the other branches
     elseif result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then -- resolves true if the dungeon was not cleared
-        --end the dungeon day by sending the player back to their last checkpoint, since they didn't clear the dungeon
+        --end the dungeon day by sending the player back to their last checkpoint, since they didn't clear the 
+        AppleForest_fail = true
         COMMON.EndDungeonDay(result, SV.checkpoint.Zone, SV.checkpoint.Segment, SV.checkpoint.Map, SV.checkpoint.Entry)
-        
     else -- we didn't resolve true for being in rescue or losing the dungeon, so we must have cleared the dungeon
          -- now we will check what segment we took, so we can make the game do what we want to depending on the segment
         if segmentID == 0 then
@@ -56,7 +55,6 @@ end
 ---apple_forest.Rescued(zone, name, mail)
 --Engine callback function
 function apple_forest.Rescued(zone, name, mail)
-
 
 end
 

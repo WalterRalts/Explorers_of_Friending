@@ -112,12 +112,7 @@ function GuildLvl1.MarTouch_Touch(obj, activator)
       GAME:FadeOut(false, 60)
       SV.guild.day = 1
       SV.guild.time = 0
-      SV.Story = {
-        chap = 1,
-        sect = 0,
-        flag = 0,
-        dunsect = 0
-      }
+      EXPLCOMMON.SetNewChapter(1)
       Tent.Day1()
       local partner = CH('Teammate1')
       AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
@@ -140,12 +135,7 @@ function GuildLvl1.MarTouch_Touch(obj, activator)
         rextalk = 0
         SV.guild.day = SV.guild.day + 1
         SV.guild.time = 0
-        SV.Story = {
-          chap = 2,
-          sect = 0,
-          flag = 0,
-          dunsect = 0
-        }
+        EXPLCOMMON.SetNewChapter(2)
         Tent.DayStart()
       else
         UI:SetSpeaker(maru)

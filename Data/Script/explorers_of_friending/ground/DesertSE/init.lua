@@ -39,14 +39,7 @@ local DesertSE = {}
 ---DesertSE.Init(map)
 --Engine callback function
 function DesertSE.Init(map)
-  COMMON.RespawnAllies()
-  local partner = CH('Teammate1')
-  CH("Teammate1").CollisionDisabled = true
-  CH("Teammate2").CollisionDisabled = true
-  GROUND:TeleportTo(CH("Teammate1"), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.DownRight, 0)
-  GROUND:TeleportTo(CH("Teammate2"), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.UpRight, 0)
-  AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
-  AI:SetCharacterAI(CH("Teammate2"), "origin.ai.ground_partner", CH("Teammate1"), CH("Teammate2").Position)
+  EXPLCOMMON.AllyFollow(true, true)
 
   COMMON.CreateWalkArea("Bal1", CH("Bal1").Position.X, CH("Bal1").Position.Y, 200, 200)
   COMMON.CreateWalkArea("Bal2", CH("Bal2").Position.X, CH("Bal2").Position.Y, 200, 200)

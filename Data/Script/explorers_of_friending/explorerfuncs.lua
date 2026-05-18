@@ -1,9 +1,10 @@
 --[[
-    common.lua
+    explcommon.lua
     A collection of frequently used functions and values!
 ]]--
 EXPLCOMMON = {}
 
+---@param char string
 function EXPLCOMMON.CharSweatdrop(char)
   local sweater = CH(char)
   GROUND:CharSetEmote(sweater, "sweatdrop", 1)
@@ -84,6 +85,10 @@ function EXPLCOMMON.SetCharAndEmotion(char, emote)
   end
 end
 
+---Teleports an entity to a marker
+---@param char GroundCH
+---@param marker Marker
+---@param dir Dir8
 function EXPLCOMMON.TeleportToMarker(char, marker, dir)
   GROUND:TeleportTo(char, MRKR(marker).Position.X, MRKR(marker).Position.Y, dir, 0)
 end
@@ -104,7 +109,7 @@ function EXPLCOMMON.SaveStorage()
       storage:Remove(storage.Keys[i])
     end
   end
-  
+
   local box_storage = _DATA.Save.ActiveTeam.BoxStorage
   local box_count = box_storage.Count
   if box_count > 0 then
@@ -125,9 +130,17 @@ function EXPLCOMMON.FadeEnterGround(area, zone)
   GAME:EnterGroundMap(area, zone)
 end
 
+---Makes two characters turn towards eachother.
+---@param char1 GroundCH
+---@param char2 GroundCH
 function EXPLCOMMON.FaceEachother(char1, char2)
-  GROUND:CharTurnToCharAnimated(char1, char2, 2)
-  GROUND:CharTurnToCharAnimated(char2, char1, 2)
+  local coro1 = TASK:BranchCoroutine(function()
+    GROUND:CharTurnToCharAnimated(char1, char2, 4)
+    end)
+  local coro2 = TASK:BranchCoroutine(function()
+    GROUND:CharTurnToCharAnimated(char2, char1, 4)
+    end)
+  TASK:JoinCoroutines({coro1, coro2})
 end
 
 function EXPLCOMMON.TwoTeam()
@@ -148,22 +161,23 @@ function EXPLCOMMON.ThreeTeam()
 end
 
 ---Automatically sets your team to follow you.
----If spawn is true, then they will respawn at the given spawners.
----If teleport is true, they will teleport to the player after spawning.
+---@param spawn boolean If spawn is true, then they will respawn at the given spawners.
+---@param teleport boolean If teleport is true, they will teleport to the player after spawning.
 function EXPLCOMMON.AllyFollow(spawn, teleport)
+  player = CH("PLAYER")
   if spawn then
     COMMON.RespawnAllies()
   end
   for i = 1, GAME:GetPlayerPartyCount() - 1, 1 do
     if i == 1 then
       if teleport then
-        GROUND:TeleportTo(CH("Teammate1"), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.UpRight, 0)
+        GROUND:TeleportTo(CH("Teammate1"), player.Position.X, player.Position.Y, player.Direction, 0)
       end
       AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
       CH("Teammate1").CollisionDisabled = true
     else
       if teleport then
-        GROUND:TeleportTo(CH("Teammate" .. tostring(i)), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.UpRight, 0)
+        GROUND:TeleportTo(CH("Teammate" .. tostring(i)), CH("PLAYER").Position.X, player.Position.Y, player.Direction, 0)
       end
       AI:SetCharacterAI(CH("Teammate" .. tostring(i)), "origin.ai.ground_partner", CH("Teammate" .. tostring(i - 1)), CH("Teammate" .. tostring(i)).Position)
     end
@@ -171,17 +185,21 @@ function EXPLCOMMON.AllyFollow(spawn, teleport)
   end
 end
 
+---Check the distance between two characters
+---@param char1 GroundCH
+---@param char2 GroundCH
+---@return number
 function EXPLCOMMON.CharDistance(char1, char2)
-  local char1x = CH(char1).Position.X
-  local char1y = CH(char1).Position.Y
-  local char2x = CH(char2).Position.X
-  local char2y = CH(char2).Position.Y
+  local char1x = char1.Position.X
+  local char1y = char1.Position.Y
+  local char2x = char2.Position.X
+  local char2y = char2.Position.Y
   local distance = math.sqrt(((char2x - char1x) ^ 2) + ((char2y - char1y) ^ 2))
   return distance
 end
 
 function EXPLCOMMON.KazenService()
- EXPLCOMMON.SetCharAndEmotion(CH("Kazen"), "Normal")
+  EXPLCOMMON.SetCharAndEmotion(CH("Kazen"), "Normal")
   UI:WaitShowDialogue("Good day to you, my name is Kazen; welcome to my fast travel service.")
   if SV.hertz_town.fastvisited[1] == 1 then
     UI:ChoiceMenuYesNo("Would you like to go to " .. SV.hertz_town.fastvisited[2], false)
@@ -201,6 +219,17 @@ function EXPLCOMMON.KazenService()
   elseif SV.hertz_town.fastvisited[1] < 1 then
     UI:WaitShowDialogue("Looks like you haven't even gone into town yet. There's no need for me to assist you.")
   end
+end
+
+---Sets a scene as a new chapter, resetting all other story values.
+---@param number integer
+function EXPLCOMMON.SetNewChapter(number)
+  SV.Story = {
+    chap = number,
+    sect = 0,
+    flag = 0,
+    dunsect = 0
+  }
 end
 
 function EXPLCOMMON.DebugWithBudeg()
@@ -240,12 +269,22 @@ function EXPLCOMMON.DebugWithBudeg()
     UI:WaitShowDialogue("...you know what,[pause=40] you're cool.")
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Glad you're around.")
+
+    UI:SetSpeaker(budeg)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Awww, thank Rexio.")
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("By the waaaay, zzt, I'm a little broken here at the moment, krzzt...")
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("If you're testing the game out and have the password, I recommend not trying to use the Bluetail's teleports for now.")
+  elseif area_name == "GuildFieldMain" then
+    UI:SetSpeaker(budeg)
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("I'm zzt sorry, this is supposed to be a guild?")
+
+    UI:SetSpeaker(budeg)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Good luck with that.")
   end
   EXPLCOMMON.FaceEachother(budeg, CH("PLAYER"))
   UI:SetSpeakerEmotion("Happy")
@@ -269,7 +308,7 @@ function EXPLCOMMON.DebugWithBudeg()
       ("Rexio"),
       ("Guild"),
       ("Cancel")}
-      UI:BeginChoiceMenu("Please choose a character for dev work.", choices, 1, 2)
+      UI:BeginChoiceMenu("Please choose a character for dev work.", choices, 1, 3)
       UI:WaitForChoice()
       result = UI:ChoiceResult()
     if result == 1 then
@@ -282,25 +321,13 @@ function EXPLCOMMON.DebugWithBudeg()
       UI:WaitForChoice()
       result = UI:ChoiceResult()
       if result == 1 then --Prologue 1
-        SV.Story = {
-          chap = -1,
-          sect = 0,
-          flag = 0
-        }
+        EXPLCOMMON.SetNewChapter(-1)
         GAME:EnterGroundMap("tarro_town_outside", "TarroTownOutside", "OutsideStart")
       elseif result == 2 then --Prologue 2
-        SV.Story = {
-          chap = -2,
-          sect = 0,
-          flag = 0
-        }
+        EXPLCOMMON.SetNewChapter(-2)
         GAME:EnterGroundMap("tarro_town_outside", "MaruHome", "MaruHome_MainEnter")
       else --Prologue 3
-        SV.Story = {
-          chap = -3,
-          sect = 0,
-          flag = 0
-        }
+        EXPLCOMMON.SetNewChapter(-3)
         GAME:EnterGroundMap("tarro_town_outside", "MaruHome", "MaruHome_MainEnter")
       end
 
@@ -331,36 +358,23 @@ function EXPLCOMMON.DebugWithBudeg()
 
       UI:SetSpeakerEmotion("Happy")
       local choices = {
-        ("Clouds..."),
-        ("Fight!"),
-        ("Darkness.")}
-      UI:BeginChoiceMenu("Please choose a chapter for dev work.", choices, 1, 2)
+        ("Aura!"),
+        ("Gone..."),
+        ("Adventure.")}
+      UI:BeginChoiceMenu("Please choose a chapter for dev work.", choices, 1, 3)
       UI:WaitForChoice()
       result = UI:ChoiceResult()
       if result == 1 then --Prologue 4
-        SV.Story = {
-          chap = -4,
-          sect = 0,
-          flag = 0
-        }
+        EXPLCOMMON.SetNewChapter(-4)
         GAME:EnterGroundMap("entoh_town", "RexioHome", "RexioStart")
       elseif result == 2 then --Prologue 5
-        SV.Story = {
-          chap = -5,
-          sect = 0,
-          flag = 0
-        }
+        EXPLCOMMON.SetNewChapter(-5)
         GAME:EnterGroundMap("entoh_town", "RexioHome_ch2", "RexioStart")
       else --Prologue 6
-        SV.Story = {
-          chap = -6,
-          sect = 0,
-          flag = 0
-        }
+        EXPLCOMMON.SetNewChapter(-6)
         GAME:EnterGroundMap("entoh_town", "RexioHome", "RexioStart")
       end
     elseif result == 3 then
-
       UI:SetSpeaker(budeg)
       UI:SetSpeakerEmotion("Stunned")
       UI:WaitShowDialogue("You may be a little underleveled for this part of the story...!")
@@ -369,6 +383,24 @@ function EXPLCOMMON.DebugWithBudeg()
       local result = UI:ChoiceResult()
 
       if result then
+        UI:SetSpeakerEmotion("Happy")
+        local choices = {
+          ("Begin..."),
+          ("Apple Up!"),
+          ("Desert")}
+        UI:BeginChoiceMenu("Please choose a chapter for dev work.", choices, 1, 2)
+        UI:WaitForChoice()
+        result = UI:ChoiceResult()
+        if result == 1 then --Prologue 4
+          EXPLCOMMON.SetNewChapter(-6)
+          GAME:EnterGroundMap("entoh_town", "RexioHome", "RexioStart")
+        elseif result == 2 then --Prologue 5
+          EXPLCOMMON.SetNewChapter(1)
+          GAME:EnterGroundMap("entoh_town", "RexioHome_ch2", "RexioStart")
+        else --Prologue 6
+          EXPLCOMMON.SetNewChapter(2)
+          GAME:EnterGroundMap("entoh_town", "RexioHome", "RexioStart")
+        end
         GAME:FadeOut(false, 60)
         --Begin replacement
         --Save Maru and Azura's stats
@@ -387,11 +419,7 @@ function EXPLCOMMON.DebugWithBudeg()
         local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("RexioInteract")
         _DATA.Save.ActiveTeam.Players[0].ActionEvents:Add(talk_evt)
         GAME:DepositAll()
-        SV.Story = {
-          chap = -6,
-          sect = 0,
-          flag = 0
-        }
+        EXPLCOMMON.SetNewChapter(-6)
 
         GAME:EnterGroundMap("the_field", "TheField", "MainEntrance_1")
       else
@@ -405,6 +433,8 @@ function EXPLCOMMON.DebugWithBudeg()
   end
 end
 
+---Makes a character tremble
+---@param chara GroundCH
 function EXPLCOMMON.StartTremble(chara)
   GROUND:CharSetAction(chara, RogueEssence.Ground.FrameGroundAction(chara.Position, chara.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Walk"), 0))
   GROUND:CharSetDrawEffect(chara, DrawEffect.Trembling)
@@ -415,6 +445,9 @@ function EXPLCOMMON.StopTremble(chara)
   GROUND:CharEndDrawEffect(chara, DrawEffect.Trembling)
 end
 
+---Begins an animation and ends it on the last frame
+---@param char GroundCH
+---@param anim Anim
 function EXPLCOMMON.StartAndStop(char, anim)
   GROUND:CharSetAnim(char, anim, true)
   GROUND:CharSetAction(char, RogueEssence.Ground.PoseGroundAction(char.Position, char.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex(anim)))
@@ -425,6 +458,9 @@ function EXPLCOMMON.SetLeaderFront()
   COMMON.RespawnAllies()
 end
 
+---Used for the sparklies hidden around the map.
+---@param pack integer
+---@param player GroundCH
 function EXPLCOMMON.ItemGetSpecial(pack, player)
   local item
   local choice = math.random(3)
@@ -436,20 +472,38 @@ function EXPLCOMMON.ItemGetSpecial(pack, player)
     else
       item = "packed_honey"
     end
+  elseif pack == 1 then
+    if choice == 3 then
+      item = "food_apple"
+    elseif choice then
+      item = "food_apple_big"
+    else
+      item = "food_apple_golden"
+    end
   end
   COMMON.GiftItem(player, item)
 
-  if player.Name == "Maru" then
+  if player.Nickname == "Maru" then
     UI:SetSpeaker(player)
     UI:SetSpeakerEmotion("Inspired")
     UI:WaitShowDialogue("(Woah, this is rare!)")
-    GROUND:Hide("Item")
-  elseif player.Name == Rexio then
+  elseif player.Nickname == "Rexio" then
     UI:SetSpeaker(player)
     UI:SetSpeakerEmotion("Inspired")
     UI:WaitShowDialogue("(Woah, this is rare!)")
-    GROUND:Hide("Item")
   end
-  
-  
+  GROUND:Hide("Item")
+end
+
+function EXPLCOMMON.PrintTable(t, indent)
+  indent = indent or 0
+  for key, value in pairs(t) do
+    local formatting = string.rep("  ", indent) .. tostring(key) .. ": "
+    if type(value) == "table" then
+      print(formatting)
+      EXPLCOMMON.PrintTable(value, indent + 1)
+    else
+      print(formatting .. tostring(value))
+    end
+  end
 end

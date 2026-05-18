@@ -6,7 +6,7 @@ function Center.Feeling()
     local rexio = CH("PLAYER")
     GAME:CutsceneMode(true)
     GAME:FadeIn(30)
-   EXPLCOMMON.CharExclaim("PLAYER")
+    EXPLCOMMON.CharExclaim("PLAYER")
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Surprised")
     UI:WaitShowDialogue("(Not just dad![pause=45] Everyone!)")
@@ -22,6 +22,7 @@ function Center.Feeling()
     UI:WaitShowDialogue("(The heck did everyone go?![pause=40] And without telling me!)")
 
     SV.Story.sect = 2
+    SV.Story.flag = {0, 0}
     GAME:CutsceneMode(false)
 end
 

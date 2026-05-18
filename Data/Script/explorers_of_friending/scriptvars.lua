@@ -42,14 +42,14 @@ SV.General =
   --Anything that applies to more than a single level, and that is too small to make a sub-table for, should be put in here ideally, or a sub-table of this
 }
 
-SV.checkpoint = 
+SV.checkpoint =
 {
   Zone    = 'guildmaster_island', Segment  = -1,
   Map  = 1, Entry  = 0
 }
 
 
-SV.adventure = 
+SV.adventure =
 {
   Thief    = false,
   Tutors = { }
@@ -120,7 +120,7 @@ SV.deep_tarro_forest =
   dungpoints = 0,
 }
 
-SV.tarro_tree_hollows = 
+SV.tarro_tree_hollows =
 {
   tree_entered = false,
   revisit = false,
@@ -132,13 +132,13 @@ SV.tarro_tree_hollows =
   AmasDefeat = false
 }
 
-SV.entoh_thicket = 
+SV.entoh_thicket =
 {
   revisit = false,
   dungpoints = 0,
 }
 
-SV.dreaded_depths = 
+SV.dreaded_depths =
 {
   revisit = false,
   dungpoints = 0,
@@ -177,19 +177,20 @@ SV.hertz_town =
   TunnelCheck = "none",
   fastvisited = {
     0,
-  }
+  },
+  guild_entered = false
 }
 
 --- Guild
 
-SV.guilders = 
+SV.guilders =
 {
-  tarro_town = 
+  tarro_town =
   {
     bluetail_stats = {},
     bluetail_storage = {}
   },
-  entoh_town = 
+  entoh_town =
   {
     aurm_stats = {},
     scan_level = 1
@@ -197,7 +198,7 @@ SV.guilders =
   fielded_two = false
 }
 
-SV.guild = 
+SV.guild =
 {
   time = 0,
   day = 0,

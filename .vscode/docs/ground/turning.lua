@@ -24,36 +24,17 @@ function GROUND:CharTurnToCharAnimated(turner, turnTo, dur) end
 ---@return self
 function GROUND:EntTurn(entity, dir) end
 
---[[
-EntTurn
-Makes a ground entity turn to face a direction. Argument order is GROUND:EntTurn(entity, dir).
+---Makes a character do an animated turn to face a chosen direction over the specified time. 
+---Must specify clockwise or counter-clockwise.
+---@param chara GroundCH
+---@param dir Dir8
+---@param dur integer
+---@param isCounterClockwise boolean
+function GROUND:CharAnimateTurn(chara, dir, dur, isCounterClockwise) end
 
-Arguments
-Name	Type	Technical Type	Purpose
-entity	Ground Entity	RogueEssence.Ground.GroundEntity	
-dir	Direction	ogueElements.Dir8	The direction to face.
-CharAnimateTurn
-Makes a character do an animated turn to face a chosen direction over the specified time. Must specify clockwise or counter-clockwise. Waits until the operation is completed. Argument order is GROUND:CharAnimateTurn(chara, dir, dur, isCounterClockwise).
-
-Arguments
-Name	Type	Technical Type	Purpose
-entity	Ground Entity	RogueEssence.Ground.GroundEntity	
-dir	Direction	RogueElements.Dir8	The direction to face.
-name=isCounterClockwise	type=Boolean	techt=System.Bool	purp=false if clockwise, true if counter-clockwise
-}}
-
-Example
-
-GROUND:CharTurnToCharAnimated(charFrom, Dir8.Left, 3, true)
-
-CharAnimateTurnTo
-Makes a character do an animated turn to face a chosen direction over the specified time. Waits until the operation is completed. Argument order is GROUND:CharAnimateTurnTo(chara, dir, dur).
-
-Arguments
-Name	Type	Technical Type	Purpose
-chara	(undocumented)	(undocumented)	The character to turn
-dir	(undocumented)	(undocumented)	The direction to turn to
-dur	(undocumented)	(undocumented)	The time spent in each intermediate direction, in frames
-Example
-
-CharAnimateTurnTo(charFrom, Dir8.Left, 3)]]
+---Makes a character do an animated turn to face a chosen direction over the specified time. 
+---Waits until the operation is completed.
+---@param chara GroundCH
+---@param dir Dir8
+---@param dur integer
+function GROUND:CharAnimateTurnTo(chara, dir, dur) end

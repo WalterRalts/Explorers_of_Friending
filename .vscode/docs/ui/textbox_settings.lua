@@ -15,7 +15,7 @@ function UI:ResetBounds() end
 
 ---Sets the centering of the text in the textbox. 
 ---@param centerH boolean
----@param centerV boolean
+---@param centerV? boolean
 function UI:SetCenter(centerH, centerV) end
 
 ---Makes the text automatically finish when it shows up. 

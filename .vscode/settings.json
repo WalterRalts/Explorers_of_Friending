@@ -6,7 +6,12 @@
         "CH"
     ],
     "Lua.diagnostics.disable": [
-        "undefined-global"
+        "undefined-global",
+        "need-check-nil",
+        "lowercase-global"
+    ],
+    "Lua.workspace.library": [
+        "C:\\Users\\Walte\\OneDrive\\Documents\\PMDOSetup\\PMDO\\MODS\\Explorers_of_Friending\\.vscode\\docs"
     ],
     "figura.librariesFolderPath": "C:\\Users\\Walte\\AppData\\Roaming\\.minecraft\\figura\\avatars\\libraries\\",
 }

@@ -18,15 +18,17 @@ local EntohTownNorth = {}
 function EntohTownNorth.Init(map)
   Todungeonscene = false
   if SV.Story.sect == 1 then
+    Panch_challenge = false
     Entoh.PanchChallenge()
   elseif SV.entoh_town.thicket.result > -1 then
-    if SV.Story.sect == 2 then
+    if SV.Story.sect == 2 and Panch_challenge == false then
       Entoh.Resulting()
+      Panch_challenge = true
     end
   end
 
   if SV.Story.chap == -6 then
-   EXPLCOMMON.TeleportToMarker(CH("Panch"), "PanchIdle", Dir8.Down)
+    EXPLCOMMON.TeleportToMarker(CH("Panch"), "PanchIdle", Dir8.Down)
     COMMON.CreateWalkArea("Panch", CH("Panch").Position.X, CH("Panch").Position.Y, 125, 125)
   end
 end

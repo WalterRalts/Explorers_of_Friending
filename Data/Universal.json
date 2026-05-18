@@ -683,44 +683,7 @@
 }
 }
 ],
-"OnTurnStarts": [
-{
-"Key": {
-"str": [
--3
-]
-},
-"Value": {
-"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
-"Script": "AzuNotLeader",
-"ArgTable": "{}"
-}
-},
-{
-"Key": {
-"str": [
--3
-]
-},
-"Value": {
-"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
-"Script": "TreeHeal",
-"ArgTable": "{}"
-}
-},
-{
-"Key": {
-"str": [
--3
-]
-},
-"Value": {
-"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
-"Script": "TreeHeal",
-"ArgTable": "{}"
-}
-}
-],
+"OnTurnStarts": [],
 "OnTurnEnds": [
 {
 "Key": {
@@ -730,18 +693,6 @@
 },
 "Value": {
 "$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
-"Script": "CleanTidy",
-"ArgTable": "{}"
-}
-},
-{
-"Key": {
-"str": [
-0
-]
-},
-"Value": {
-"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
 "Script": "TreeHeal",
 "ArgTable": "{}"
 }
@@ -749,7 +700,7 @@
 {
 "Key": {
 "str": [
-0
+-6
 ]
 },
 "Value": {
@@ -761,7 +712,7 @@
 {
 "Key": {
 "str": [
-0
+-6
 ]
 },
 "Value": {
@@ -797,6 +748,18 @@
 "EnemyHungerRate": 1,
 "AllyHungerRate": 5,
 "Denominator": 1000
+}
+},
+{
+"Key": {
+"str": [
+6
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
+"Script": "CleanTidy",
+"ArgTable": "{}"
 }
 },
 {

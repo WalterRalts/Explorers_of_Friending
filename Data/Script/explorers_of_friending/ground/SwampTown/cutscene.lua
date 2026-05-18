@@ -93,12 +93,9 @@ function SwampUp.TransferA()
             GROUND:CharSetEmote(flow, "sweating", 1)
             GAME:WaitFrames(50)
         end
-        end)	
+        end)
     local lac2 = TASK:BranchCoroutine(function()
-        GROUND:AnimateToPosition(tidy, "Walk", Dir8.Left, 119, 471, 0.2, 6, 0)
-        while mover == true do
-            GROUND:CharSetAnim(tidy, walk)
-        end
+        GROUND:CharSetAnim(tidy, "Rotate", true)
         end)
     local lac3 = TASK:BranchCoroutine(function()
         UI:SetSpeaker(tidy)
@@ -142,14 +139,11 @@ function SwampUp.TransferA()
     GROUND:TeleportTo(snow, 160, 170, Direction.DownLeft, 0)
     snow.CollisionDisabled = false
     wurp.CollisionDisabled = false
-    GAME:RemovePlayerTeam(1)
-    GAME:RemovePlayerTeam(1)
-    GAME:RemovePlayerTeam(1)
-    GAME:RemovePlayerTeam(1)
+    for i = 1, 4 do
+        GAME:RemovePlayerTeam(1)
+    end
     GAME:CutsceneMode(false)
 end
-
-
 
 function SwampUp.TransferB()
     GAME:CutsceneMode(true)

@@ -374,10 +374,11 @@ function Aurm.Fashion()
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("...")
 
-    GROUND:CharWaitAnim(rexio, "RearUp", false)
-   EXPLCOMMON.CharQuestion("PLAYER")
+    GROUND:CharWaitAnim(rexio, "RearUp")
+    GAME:WaitFrames(15)
+    EXPLCOMMON.CharQuestion("PLAYER")
     GAME:WaitFrames(30)
-   EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
     UI:WaitShowDialogue("...something up?")
 
     UI:SetSpeaker(luke)
@@ -387,12 +388,7 @@ function Aurm.Fashion()
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Bruuuuuuuh.")
-    SV.Story = {
-        chap = -5,
-        sect = 0,
-        flag = 0,
-        dunsect = 0
-    }
+    EXPLCOMMON.SetNewChapter(-5)
     GAME:FadeOut(false, 50)
     GAME:EnterGroundMap("RexioHome_ch2", "RexioStart2")
 end
@@ -437,12 +433,7 @@ function Aurm.Slipped()
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("Bruuuuuuuh.")
-    SV.Story = {
-        chap = -5,
-        sect = 0,
-        flag = 0,
-        dunsect = 0
-    }
+    EXPLCOMMON.SetNewChapter(-5)
     GAME:FadeOut(false, 50)
     GAME:EnterGroundMap("RexioHome_ch2", "RexioStart2")
 end
@@ -506,7 +497,7 @@ function Aurm2.LukeWarm()
         end)
     TASK:JoinCoroutines({coro1, coro2})
 
-    GROUND:CharTurnToCharAnimated(luke, rexio)
+    GROUND:CharTurnToCharAnimated(luke, rexio, 4)
     GAME:WaitFrames(95)
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Normal")
@@ -572,12 +563,7 @@ function Aurm2.LukeWarm()
 
     --Next Chapter
 
-    SV.Story = {
-        chap = -6,
-        sect = 0,
-        flag = 0,
-        dunsect = 0
-    }
+    EXPLCOMMON.SetNewChapter(-6)
     GAME:FadeOut(false, 90)
 
     GAME:CutsceneMode(true)
@@ -586,7 +572,7 @@ function Aurm2.LukeWarm()
     UI:WaitShowTitle("Prologue B-2:\nAnew", 120)
     GAME:WaitFrames(30)
     UI:WaitHideTitle(120)
-    GROUND:CharWaitAnim(rexio, "EventSleep", true)
+    GROUND:CharWaitAnim(rexio, "EventSleep")
     GROUND:CharSetAnim(rexio, "Laying", true)
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Pain")
@@ -597,10 +583,10 @@ function Aurm2.LukeWarm()
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowTimedDialogue("Good morning, old g")
-   EXPLCOMMON.CharRealize("PLAYER")
+    EXPLCOMMON.CharRealize("PLAYER")
     GAME:WaitFrames(50)
 
-   EXPLCOMMON.CharAngry("PLAYER")
+    EXPLCOMMON.CharAngry("PLAYER")
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowTimedDialogue("[speed=0.7]Oh you have got to be kidding me")

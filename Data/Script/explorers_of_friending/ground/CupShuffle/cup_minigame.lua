@@ -1,5 +1,6 @@
 function CupShufflePlay(difficulty, speed)
-    local begin_position = {OBJ("Cup_1").Position.X + 11, OBJ("Cup_2").Position.X + 11, OBJ("Cup_3").Position.X + 11}
+    local CUP_OFFSET = 11
+    local begin_position = {OBJ("Cup_1").Position.X + CUP_OFFSET, OBJ("Cup_2").Position.X + CUP_OFFSET, OBJ("Cup_3").Position.X + CUP_OFFSET}
     local ball_position = 2
     local cup_win = 0
     --check if the player has done a tutorial (WIP)
@@ -19,13 +20,14 @@ function CupShufflePlay(difficulty, speed)
             ball_position = cup1
         end
         local coro1 = TASK:BranchCoroutine(function() 
-            GROUND:MoveObjectToPosition(OBJ("Cup_" .. cup1), OBJ("Cup_" .. cup2).Position.X, 111, speed)
+            TASK:WaitTask(GROUND:MoveObjectToPosition(OBJ("Cup_" .. cup1), OBJ("Cup_" .. cup2).Position.X, 111, speed))
             GAME:WaitFrames(math.floor(50 / speed) + 5)
             end)	
         local coro2 = TASK:BranchCoroutine(function() 
-            GROUND:MoveObjectToPosition(OBJ("Cup_" .. cup2), OBJ("Cup_" .. cup1).Position.X, 111, speed)
+            TASK:WaitTask(GROUND:MoveObjectToPosition(OBJ("Cup_" .. cup2), OBJ("Cup_" .. cup1).Position.X, 111, speed))
             end)
         TASK:JoinCoroutines({coro1, coro2})
+        PrintInfo(cup1 .. " and " .. cup2 .. " have been swapped.")
     end
     
     
@@ -134,11 +136,9 @@ function CupShufflePlay(difficulty, speed)
             GAME:WaitFrames(14)
             GROUND:MoveObjectToPosition(OBJ("Cup_3"), OBJ("Cup_3").Position.X, 80, 9)
             end)
-        TASK:JoinCoroutines({coro00, coro01, coro02})
-
         GROUND:Unhide("Ball")
         GROUND:MoveObjectToPosition(OBJ("Ball"), begin_position[ball_position], 133, 100)
-        PrintInfo("The ball is under cup " .. ball_position .. " and was revealed under either cup " .. cup1 .. " or " .. cup2)
+        PrintInfo("The ball is under cup " .. ball_position .. " and was revealed.")
         
         if cup_choice == ball_position then
             SOUND:PlaySE("Battle/EVT_Minigame_Correct")

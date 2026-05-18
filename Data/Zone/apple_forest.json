@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.11.0",
+"Version": "0.8.12.0",
 "Object": {
 "$type": "RogueEssence.Data.ZoneData, RogueEssence",
 "Name": {
@@ -8267,6 +8267,48 @@
 }
 },
 {
+"$type": "RogueEssence.LevelGen.RangeStepZoneStep, RogueEssence",
+"StepPriority": {
+"str": [
+1
+]
+},
+"Spawns": {
+"nodes": [
+{
+"Item": {
+"$type": "RogueEssence.AddTunnelStep`1[[RogueElements.IFloorPlanGenContext, RogueElements]], RogueEssence",
+"TurnLength": {
+"Min": 5,
+"Max": 11
+},
+"MaxLength": {
+"Min": 5,
+"Max": 21
+},
+"AllowDeadEnd": false,
+"TraverseFloor": false,
+"Halls": {
+"Min": 2,
+"Max": 11
+},
+"Brush": {
+"$type": "RogueElements.SquareHallBrush, RogueElements",
+"Dims": {
+"X": 2,
+"Y": 2
+}
+}
+},
+"Range": {
+"Min": 0,
+"Max": 12
+}
+}
+]
+}
+},
+{
 "$type": "RogueEssence.LevelGen.TileSpawnZoneStep, RogueEssence",
 "Priority": {
 "str": [
@@ -8395,6 +8437,15 @@
 "SpawnFeatures": [
 {
 "$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+},
+{
+"$type": "PMDC.LevelGen.MobSpawnBoost, PMDC",
+"MaxHPBonus": 3,
+"AtkBonus": 0,
+"DefBonus": -6,
+"SpAtkBonus": -1,
+"SpDefBonus": -1,
+"SpeedBonus": -1
 }
 ]
 },
@@ -8635,25 +8686,28 @@
 "Gender": -1
 },
 "Level": {
-"Min": 3,
+"Min": 2,
 "Max": 6
 },
 "SpecifiedSkills": [
 "defense_curl",
 "rollout"
 ],
-"Intrinsic": "ripen",
+"Intrinsic": "bulletproof",
 "Tactic": "wander_dumb",
-"SpawnConditions": [
-{
-"$type": "PMDC.LevelGen.MobCheckSaveVar, PMDC",
-"SaveVar": "SV.apple_forest.revisited",
-"Status": false
-}
-],
+"SpawnConditions": [],
 "SpawnFeatures": [
 {
 "$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+},
+{
+"$type": "PMDC.LevelGen.MobSpawnBoost, PMDC",
+"MaxHPBonus": 3,
+"AtkBonus": 0,
+"DefBonus": -6,
+"SpAtkBonus": -1,
+"SpDefBonus": -1,
+"SpeedBonus": -1
 }
 ]
 },

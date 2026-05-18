@@ -5,7 +5,7 @@ function Rexio.Luke()
     local luke = CH("Luke")
 
     GAME:CutsceneMode(true)
-   EXPLCOMMON.CharRealize("PLAYER")
+    EXPLCOMMON.CharRealize("PLAYER")
 
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Determined")
@@ -142,19 +142,21 @@ function Rexio.Luke()
     local talk_npc = RogueEssence.Dungeon.BattleScriptEvent("SnowInteract")
         _DATA.Save.ActiveTeam.Players[4].ActionEvents:Add(talk_npc)
 
-    COMMON.RespawnAllies()
+    EXPLCOMMON.AllyFollow(true, true)
+    GAME:CutsceneMode(false)
     local flow = CH('Teammate1')
     local tidy = CH('Teammate2')
     local wurp = CH('Teammate3')
     local snow = CH('Teammate4')
 
+    GAME:WaitFrames(40)
     UI:SetSpeaker(flow)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Let's flow, Rexio!")
 
-    SV.Story.sect = 3
+    SV.Story.sect = 1
     SV.bag_size = 12
-    GAME:CutsceneMode(false)
+
     AI:SetCharacterAI(flow, "origin.ai.ground_partner", rexio, flow.Position)
     AI:SetCharacterAI(tidy, "origin.ai.ground_partner", flow, tidy.Position)
     AI:SetCharacterAI(wurp, "origin.ai.ground_partner", tidy, wurp.Position)

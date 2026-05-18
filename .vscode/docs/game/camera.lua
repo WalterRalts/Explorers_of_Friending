@@ -1,4 +1,4 @@
----@meta
+---@meta _
 ---@diagnostic disable: duplicate-set-field
 ---Functions to control things in the game
 ---@class GAME
@@ -9,8 +9,8 @@
 ---@return self
 function GAME:FadeOut(isWhite, dur) end
 
----Fade into the screen. Waits to complete before continuing.
----@param dur integer The amount of time to fade out in frames.
+---Fade into the screen. Waits to complete before continuing. Always fades to black.
+---@param dur integer The amount of time to fade out in frames. 
 ---@return self
 function GAME:FadeIn(dur) end
 

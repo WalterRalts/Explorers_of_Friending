@@ -45,7 +45,7 @@ function TarroTownSquare.Init(map)
   end
   if SV.Story.sect == 2 and Quiz[2] == 2 then
     ziggy.CollisionDisabled = true
-    if SV.tarro_tree_hollows.tree_entered == false then
+    if SV.tarro_tree_hollows.tree_entered == false and Quiz[1] == false then
       Square.AfterQuiz()
     end
     SOUND:PlayBGM("None", false, 0)

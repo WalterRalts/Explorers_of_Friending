@@ -36,12 +36,12 @@ function dense_apple.ExitSegment(zone, result, rescue, segmentID, mapID)
     if exited == true then
 
     elseif result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
-        COMMON.EndDungeonDay(result, "apple_forest", -1, 7, 0)
+        COMMON.EndDungeonDay(result, "dense_apple", -1, 0, 0)
         SV.guild.time = 100
         SV.Story.sect = 3
     else
         if segmentID == 0 then
-            COMMON.EndDungeonDay(result, "apple_forest", -1, 7, 0)
+            COMMON.EndDungeonDay(result, "dense_apple", -1, 1, 0)
             SV.guild.time = 100
             SV.Story.sect = 3
         else -- this is a fallback branch, in case we went through all of the branches and hit nothing (which should not happen!)

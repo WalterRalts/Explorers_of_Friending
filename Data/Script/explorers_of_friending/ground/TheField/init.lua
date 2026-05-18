@@ -176,12 +176,7 @@ function TheField.SceneEnd_Touch(obj, activator)
     SOUND:StopBGM()
     UI:WaitShowVoiceOver("Some want the chaos back.", -1)
 
-    SV.Story = {
-      chap = -4,
-      sect = 0,
-      flag = 0,
-      dunsect = 0
-    }
+    EXPLCOMMON.SetNewChapter(-4)
     GAME:EnterGroundMap("entoh_town", "RexioHome", "RexioStart")
   end
 end

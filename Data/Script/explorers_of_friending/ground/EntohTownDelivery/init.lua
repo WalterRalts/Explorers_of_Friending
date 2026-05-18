@@ -26,8 +26,8 @@ function EntohTownDelivery.Init(map)
   else
     GROUND:CharSetAnim(down, "Sleep", true)
   end
-  
-  if SV.Story.sect > 2  or SV.Story.chap == -6 then
+
+  if SV.Story.sect > 2 or SV.Story.chap == -6 then
     GROUND:Hide("Bucks")
     GROUND:Hide("Ponya")
   end
@@ -112,8 +112,8 @@ function EntohTownDelivery.Chucky_Action(obj, activator)
   local chucky = CH("Chucky")
   local rexio = CH("PLAYER")
   local time = math.random(3)
- EXPLCOMMON.FaceEachother(activator, obj)
-  if SV.Story.sect == 3 then
+  EXPLCOMMON.FaceEachother(activator, obj)
+  if SV.Story.sect == 4 then
     if not KeyGet then
       SandInteract = true
       UI:SetSpeaker(rexio)
@@ -198,8 +198,8 @@ end
 function EntohTownDelivery.Dragon_Action(obj, activator)
   local dragon = CH("Dragon")
   local rexio = CH("PLAYER")
- EXPLCOMMON.FaceEachother(activator, dragon)
-  if SV.Story.sect == 3 then
+  EXPLCOMMON.FaceEachother(activator, dragon)
+  if SV.Story.sect == 4 then
     if not KeyGet then
       DragInteract = true
       UI:SetSpeaker(rexio)
@@ -235,9 +235,7 @@ function EntohTownDelivery.Dragon_Action(obj, activator)
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("That aura sensing of yours seems pretty useful;[pause=50] t[emote=Happy]each me sometime, why don't ya?")
       end
-      
     end
-    
   else
     if SV.entoh_town.package_received == false then
       UI:SetSpeaker(dragon)
@@ -277,7 +275,7 @@ end
 
 function EntohTownDelivery.PackageKey_Action(obj, activator)
   local rexio = CH("PLAYER")
-  if SV.Story.sect < 3 then
+  if SV.Story.sect < 4 then
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Huh, a key?")
@@ -293,7 +291,7 @@ function EntohTownDelivery.PackageKey_Action(obj, activator)
     UI:WaitShowDialogue("Mine!")
     GROUND:Hide("PackageKey")
     KeyGet = true
-  elseif SV.Story.sect == 3 then
+  elseif SV.Story.sect == 4 then
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Joyous")
     UI:WaitShowDialogue("Aha! Key!")

@@ -35,7 +35,7 @@ function MaruHome.Init(map)
       Bluetails.MailTime()
     elseif mail_read == 1 then
       Bluetails.AfterMailTime()
-    else
+    elseif mail_read == 2 then
       Bluetails.AfterCook()
     end
     COMMON.CreateWalkArea("Amazuru", 195, 225, 72, 72)
@@ -58,10 +58,6 @@ end
 function MaruHome.Enter(map)
 
 end
-
-
-
-
 
 ---MaruHome.Exit(map)
 --Engine callback function
@@ -296,7 +292,7 @@ function MaruHome.MaruOven_Action(obj, activator)
     if oven_perms_given == true then
       GAME:EnterGroundMap("MaruHomeFood", "Marker")
     else
-      UI:SetSpeaker(obj)
+      UI:SetSpeaker(activator)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("This is what mom uses to cook with...")
 
@@ -318,4 +314,3 @@ function MaruHome.MaruOven_Action(obj, activator)
 end
 
 return MaruHome
-

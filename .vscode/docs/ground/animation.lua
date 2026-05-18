@@ -27,45 +27,23 @@ function GROUND:CharEndDrawEffect(chara, effect) end
 ---@param anim Anim The anim to set the fallback anim to
 ---@return self
 function GROUND:CharGetAnimFallback(chara, anim) end
+
+---Gets a character's current animation as a string.
+---@param chara GroundCH 
+function GROUND:CharGetAnim(chara) end
+
+---Gets the chosen action point of the character at this specific frame.
+---@param chara GroundCH
+---@param actpoint ActionPoint
+---@return Loc
+function GROUND:CharGetAnimPoint(chara, actpoint) end
+
+---Set a character's animation.
+---@param chara GroundCH
+---@param anim Anim
+---@param loop boolean
+function GROUND:CharSetAnim(chara, anim, loop) end
 --[[
-GROUND:CharGetAnimFallback(RogueEssence.Ground.GroundChar,System.String)
-Gets the fallback animation for the character.
-
-
-
-Arguments
-chara: None
-anim: The anim to get the fallback anim of.
-Returns
-The fallback animation, as a string. Blank if there is none. Will return anim if anim already exists.
-
-GROUND:CharGetAnim(RogueEssence.Ground.GroundChar)
-Gets a character's current animation as a string.
-
-
-
-Arguments
-chara: None
-GROUND:CharGetAnimPoint(RogueEssence.Ground.GroundChar,RogueEssence.Content.ActionPointType)
-Gets the chosen action point of the character at this specific frame.
-
-
-
-Arguments
-chara: None
-actionPoint: The ype of action point to retrieve the coordinates for.
-Returns
-The location of the action point in absolute coordinates on the map.
-
-GROUND:CharSetAnim(RogueEssence.Ground.GroundChar,System.String,System.Boolean)
-Set a character's animation.
-
-
-
-Arguments
-chara: Character to animate
-anim: Name of the animation
-loop: Whether to loop the animation
 GROUND:CharEndAnim(RogueEssence.Ground.GroundChar)
 Stops a character's current animation, reverting them to default idle.
 

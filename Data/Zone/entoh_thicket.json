@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.11.0",
+"Version": "0.8.12.0",
 "Object": {
 "$type": "RogueEssence.Data.ZoneData, RogueEssence",
 "Name": {
@@ -706,8 +706,8 @@
 },
 "Respawn": {
 "$type": "PMDC.Dungeon.RespawnFromEligibleEvent, PMDC",
-"MaxFoes": 30,
-"RespawnTime": 30
+"MaxFoes": 40,
+"RespawnTime": 40
 },
 "MaxFoes": 0,
 "RespawnTime": 0
@@ -800,9 +800,9 @@
 },
 "Role": 0
 },
-"Rate": 10,
+"Rate": 15,
 "Range": {
-"Min": 0,
+"Min": 4,
 "Max": 8
 }
 },
@@ -948,7 +948,7 @@
 },
 "Role": 0
 },
-"Rate": 10,
+"Rate": 15,
 "Range": {
 "Min": 2,
 "Max": 8

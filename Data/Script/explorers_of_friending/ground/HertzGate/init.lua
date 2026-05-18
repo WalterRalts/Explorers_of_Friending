@@ -26,13 +26,7 @@ end
 function HertzGate.Init(map)
   DoorClosed = true
   EXPLCOMMON.SetLeaderFront()
-  GAME:SetCanSwitch(true)
-  CH("Teammate1").CollisionDisabled = true
-  CH("Teammate2").CollisionDisabled = true
-  GROUND:TeleportTo(CH("Teammate1"), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.DownRight, 0)
-  GROUND:TeleportTo(CH("Teammate2"), CH("PLAYER").Position.X, CH("PLAYER").Position.Y, Dir8.UpRight, 0)
-  AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
-  AI:SetCharacterAI(CH("Teammate2"), "origin.ai.ground_partner", CH("Teammate1"), CH("Teammate2").Position)
+  EXPLCOMMON.AllyFollow(true, true)
 end
 
 ---HertzGate.Enter(map)

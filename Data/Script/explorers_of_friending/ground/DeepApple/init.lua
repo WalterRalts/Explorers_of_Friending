@@ -17,12 +17,17 @@ local DeepApple = {}
 --Engine callback function
 function DeepApple.Init(map)
   print(map)
-  Core.AppleOut()
-  CH("Teammate1").CollisionDisabled = true
-  CH("Teammate2").CollisionDisabled = true
-  AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
-  AI:SetCharacterAI(CH("Teammate2"), "origin.ai.ground_partner", CH("Teammate1"), CH("Teammate2").Position)
-  GROUND:Unhide("Exit")
+  if SV.Story.sect == 2 then
+    Core.AppleOut()
+    CH("Teammate1").CollisionDisabled = true
+    CH("Teammate2").CollisionDisabled = true
+    AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
+    AI:SetCharacterAI(CH("Teammate2"), "origin.ai.ground_partner", CH("Teammate1"), CH("Teammate2").Position)
+    GROUND:Unhide("Exit")
+  elseif SV.Story.sect == 3 then
+    Core.Oof()
+    GROUND:Unhide("Exit")
+  end
 end
 
 ---DeepApple.Enter(map)
@@ -71,15 +76,19 @@ function DeepApple.Storage_Action(obj, activator)
 end
 
 function DeepApple.Exit_Touch(obj, activator)
-  if SV.apple_town.teamed == true then
-   EXPLCOMMON.FaceEachother(CH("PLAYER"), CH("Teammate2"))
-    GAME:WaitFrames(45)
-   EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
-    UI:WaitShowDialogue("(Rexio's giving me the stare of his life,[pause=35] backing out isn't an option yet.)")
-    GROUND:AnimateToPosition(activator, "Walk", Dir8.Up, activator.Position.X, activator.Position.Y - 24, 0.7, 0.5, 0)
+  if SV.Story.sect == 2 then
+    if SV.apple_town.teamed == true then
+      EXPLCOMMON.FaceEachother(CH("PLAYER"), CH("Teammate2"))
+      GAME:WaitFrames(45)
+      EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
+      UI:WaitShowDialogue("(Rexio's giving me the stare of his life,[pause=35] backing out isn't an option yet.)")
+      GROUND:AnimateToPosition(activator, "Walk", Dir8.Up, activator.Position.X, activator.Position.Y - 24, 0.7, 0.5, 0)
+    else
+      EXPLCOMMON.SetCharAndEmotion(activator, "Determined")
+      UI:WaitShowDialogue("(No, no...! I need to prove myself!)")
+    end
   else
-   EXPLCOMMON.SetCharAndEmotion(activator, "Determined")
-    UI:WaitShowDialogue("(No, no...! I need to prove myself!)")
+    GAME:EnterGroundMap("apple_forest", "AppleTown_pt2", "ExitN")
   end
 end
 

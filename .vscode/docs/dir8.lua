@@ -1,6 +1,6 @@
----@meta
----
----@alias Dir8
+---@meta _
+
+---@class Dir8
 ---| 'Dir8.Down'
 ---| 'Dir8.DownLeft'
 ---| 'Dir8.Left'

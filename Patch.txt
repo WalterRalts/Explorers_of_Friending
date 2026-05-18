@@ -1,76 +1,84 @@
-0.7.2 - Keep those patches coming as the desert gets extended, it's starting to get eyes on it so I should probably hurry it up lol.
-
-TECHNICAL (may contain spoilers)
-
-- "All empty space is saved space".
-- Implemented less difficult to understand chapters and sections S.Variables... for my sake.
-- No longer check to see whether or not Maru is alone when adding Azura to the beginning of the game.
-- Remove unnecessary "if-else" checks out of chapters.
-- EXPLCOMMONified a few more common functions. Oh yeah, the custom COMMON functions are now EXPLCOMMON functions
-- Budeg is around more and had his system optimized.
-- Some but not all documentation added that can be used in other mods. Thank you wiki people.
-- Fix a possible issue that allows the player to start as Azura on a new floor.
+0.7.3 - Getting closer to freeform gameplay. Turns out there are pretty big bugs in this one. 
+Once the newest area is done, there will be no updates to the version number ingame.
 
 GAME
+
+- Fixed an issue where the title song wouldn't change when switch to this quest.
 
 TOWN SPECIFIC
 
 TARRO
 
-- Adjusted some ground objects to align properly on activation.
-- Give the player more direction after getting the mail.
+- Fixed an issue concerning an old converting method for the Eastern side of Tarro
+- "Weren't there trees here?"
 
 ENTOH
 
+- STORY BREAKER UNBROKEN! (Fix multiple major issues where the story would be in the wrong order, causing a softlock.)
+
 APPLE TOWN
 
-- Added a bit more cutscening.
-
 HERTZ
+
+- Added a few more zones
+
+============================
 
 DUNGEONS
 
 --- TARRO
 
 -- Tarro Forest
-For a beginning dungeon, you'd want to allow the player more space for more options.
 
-- Increased the number of tunnels possible on all floors. (1-5 -> 2-10)
-- Removed the option to go to Tarro Forest Plaza, skipping the dungeon entirely in a later chapter.
+- Spawn of items on all floors in all rooms: 0-6 (varies) -> 0-2
+Max Foes: 20 -> 15
+Enemy Respawn Rate: 60 -> 50
 
 -- Tarro Treetops
-With normal gameplay, if grinding is not done, there may be a bit of struggle with the boss of this room.
 
-- Reimplement healing factor in boss room.
-- Reduced the overall stats of the ???.
+- Made the roll for puchi falling asleep only occur once every 50 turns, setting it to a 20% chance.
+- Reduce healing factor in boss room.
 
 -- Dark Tarro
-While the overall level of monsters in this room are okay, beginners may still struggle.
+Oddish is the most annoying part of this dungeon, with its moveset almost immediately overpowering both heroes.
+It is especially awful with any other Pokemon assisting it.
 
-- Reduced the chance of teams of two, and add the small chance of spawning teams of zero and three.
-- Morelull can now spawn in the second half.
+- Reduce the chance of Oddish spawning in the first half of the dungeon
+- Reduce the overall attack power of Oddish that know Takedown
+- No longer override team size
 
 --- ENTOH
 
 -- Entoh Thicket
-Given the future for this game being a little more casual, it should be noted that too many isolated sections will cause softlocks.
 
-- Properly remove tiles to prevent most diagonal tiles, adding additional effects.
+Max Foes: 30 -> 40
+Enemy Respawn Rate: 30 -> 40
+
+- Decrease enemy variety on lower floors.
 
 -- Dreaded Depths
-Tidy being a germophobe made me come up with something funny.
 
-- Tidy will now get the healing effect of Aqua Ring. However, she will recieve poison if she is 3 units away from Flow.
+- Allow some turns before applying effects with Tidy's germophobia
 
 --- APPLE TOWN
 
 -- Apple Forest
-Too many mobs spawn in areas that can be immediately reached... and in areas that can't be immediately reached.
 
-- Reduced the number of maximum spawns on all floors. 
-1F - 6F: 20 -> 10
-7F - 12F: 20 -> 15
-- Apples fall more often with more variance
-Per Turn: 25 -> 20
+- Adjusted dialogue.
+- Applied general stat reductions to all Applin
+- Added at least one (1) thick tunnel to every floor
+
+-- Deep Apple Forest
+
+- Set the fail point to the dungeon entrance
+
+============================
 
 MINIGAMES
+
+- Possible cup shuffle fix???
+
+TECHNICAL (may contain spoilers)
+
+- Fixed multiple issues concerning obj and activator
+- Fixed multiple issues concerning story variables and flags

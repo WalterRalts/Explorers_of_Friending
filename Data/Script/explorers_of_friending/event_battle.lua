@@ -466,7 +466,6 @@ function BATTLE_SCRIPT.AccuracyTalk(owner, ownerChar, context, args)
   context.Target.CharDir = oldDir
 end
 
-
 function BATTLE_SCRIPT.Tutor_Sequence(chara)
 
 	GAME:WaitFrames(10)
@@ -587,7 +586,6 @@ function BATTLE_SCRIPT.TutorTalk(owner, ownerChar, context, args)
 	end
 end
 
-
 function BATTLE_SCRIPT.DisguiseTalk(owner, ownerChar, context, args)
   context.TurnCancel.Cancel = true
 
@@ -629,7 +627,6 @@ function BATTLE_SCRIPT.DisguiseTalk(owner, ownerChar, context, args)
   end
 end
 
-
 function BATTLE_SCRIPT.DisguiseHit(owner, ownerChar, context, args)
 
   DUNGEON:CharTurnToChar(context.Target, context.User)
@@ -657,7 +654,6 @@ function BATTLE_SCRIPT.DisguiseHit(owner, ownerChar, context, args)
 
   COMMON.TriggerAdHocMonsterHouse(owner, ownerChar, context.Target)
 end
-
 
 function BATTLE_SCRIPT.LegendRecruitCheck(owner, ownerChar, context, args)
 
@@ -1124,7 +1120,7 @@ function BATTLE_SCRIPT.ZiggyInteract(owner, ownerChar, context, args)
       end
     end
   else
-    if SV.Story.dunsect == 1 then
+    if SV.Story.dunsect < 2 then
       if ratio <= 25 then
         if say_choice <= 3 then
           UI:SetSpeakerEmotion("Stunned")
@@ -1788,7 +1784,7 @@ function BATTLE_SCRIPT.WurpInteract(owner, ownerChar, context, args)
         else
           UI:SetSpeaker(target)
           UI:SetSpeakerEmotion("Normal")
-          UI:WaitShowDialogue("Gonna be hawd to aim in this dawkness...")
+          UI:WaitShowDialogue("And this bug mawches foward.")
         end
       elseif say_choice == 2 then
         if user.BaseForm.Species == "riolu" then
@@ -1840,7 +1836,7 @@ function BATTLE_SCRIPT.WurpInteract(owner, ownerChar, context, args)
       else
         UI:SetSpeaker(target)
         UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("We're doing great, guys!")
+        UI:WaitShowDialogue("We'we doing gweat, guys!")
       end
     end
   end
@@ -1894,7 +1890,7 @@ function BATTLE_SCRIPT.SnowInteract(owner, ownerChar, context, args)
 
           UI:SetSpeaker(user)
           UI:SetSpeakerEmotion("Happy")
-          UI:WaitShowDialogue("I know my best friend,[pause=45] if Rexio's dad wasn't so convincing, she wouldn't be here...")
+          UI:WaitShowDialogue("I know my best friend,[pause=45] if Rexio's dad wasn't so persistent, she wouldn't be here...")
 
           UI:SetSpeaker(target)
           UI:SetSpeakerEmotion("Happy")
@@ -2026,19 +2022,4 @@ function BATTLE_SCRIPT.RexioInteract(owner, ownerChar, context, args)
       end
     end
   end
-end
-
-local ij = 0
-function BATTLE_SCRIPT.TreeHeal(owner, ownerChar, context, args)
-	local map = _ZONE.CurrentMap.Name
-
-	if map == "Tarro Treetops" then
-		local player_count = GAME:GetPlayerPartyCount()
-		local player = GAME:GetPlayerPartyMember(ij)
-		player.HP = player.HP + (player.MaxHP / 5)
-		ij = ij + 1
-		if ij == player_count then
-			ij = 0
-		end
-	end
 end

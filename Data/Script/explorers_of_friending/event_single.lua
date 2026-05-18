@@ -1,7 +1,7 @@
 require 'explorers_of_friending.common'
 
 function SINGLE_CHAR_SCRIPT.Test(owner, ownerChar, context, args)
-  PrintInfo("Test")
+  	PrintInfo("Test")
 end
 
 function SINGLE_CHAR_SCRIPT.AzuNotLeader(owner, ownerChar, context, args)
@@ -10,12 +10,12 @@ function SINGLE_CHAR_SCRIPT.AzuNotLeader(owner, ownerChar, context, args)
 	if GAME:GetPlayerPartyMember(wholeads).BaseForm.Species == "azurill" and GAME:GetPlayerPartyMember(wholeads).Name == "Azura" then
 		if player.Name == "Maru" then
 			UI:SetSpeaker(player)
-        	UI:SetSpeakerEmotion("Worried")
-        	UI:WaitShowDialogue("Sorry, Azura. As an older brother, I can't let you lead.[pause=35] Let[emote=Happy] someone else lead instead.")
+        		UI:SetSpeakerEmotion("Worried")
+        		UI:WaitShowDialogue("Sorry, Azura. As an older brother, I can't let you lead.[pause=35] Let[emote=Happy] someone else lead instead.")
 		elseif player.Name == "Rexio" then
 			UI:SetSpeaker(player)
-        	UI:SetSpeakerEmotion("Normal")
-        	UI:WaitShowDialogue("Sorry, 'Zura. I respect Maru too much to put ya in danger like that.[pause=35] Back[emote=Happy] you go.")
+        		UI:SetSpeakerEmotion("Normal")
+        		UI:WaitShowDialogue("Sorry, 'Zura. I respect Maru too much to put ya in danger like that.[pause=35] Back[emote=Happy] you go.")
 		end
 		if GAME:GetPlayerPartyCount() > 2 then
 			GAME:SetTeamLeaderIndex(2)
@@ -1462,8 +1462,6 @@ function SINGLE_CHAR_SCRIPT.DungeonTalker(owner, ownerChar, context, args) --Tha
 	if context.User == nil then return else PrintInfo(context.User.Name .. " is on this floor.") end
 	if context.User == GAME:GetPlayerPartyMember(0) then --this check is needed so that the script runs only once, otherwise it'll run for each entity in the map.
 		GAME:QueueLeaderEvent(function() SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args) end)
-		--GAME:QueueLeaderEvent(function() SINGLE_CHAR_SCRIPT.SlumberPollen(owner, ownerChar, context, args) end)
-		--GAME:QueueLeaderEvent(function() SINGLE_CHAR_SCRIPT.TreeHeal(owner, ownerChar, context, args) end)
 	end
 end
 
@@ -1641,7 +1639,7 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 			UI:WaitShowDialogue("It's a pretty open space. This'll be easy.")
 
 			UI:ResetSpeaker()
-			UI:WaitShowDialogue("While playling as Rexio, use the B key to sense items within 10 tiles")
+			UI:WaitShowDialogue("While playing as Rexio, use the B key to sense items within 10 tiles")
 		end
 	elseif area_name == "Entoh Town" then
 		local rexio = GAME:GetPlayerPartyMember(0)
@@ -1832,20 +1830,22 @@ function SINGLE_CHAR_SCRIPT.AddApple(owner, ownerChar, context, args)
 		apple = -1
 	else
 		apple = apple + 1
-		print(apple)
+		PrintInfo(apple)
 	end
 end
 
 function SINGLE_CHAR_SCRIPT.SlumberPollen(owner, ownerChar, context, args)
 	--only check if puchi is in the team
-	if GAME:GetPlayerPartyCount() > 4 and GAME:GetPlayerPartyMember(3).BaseForm.Species == "poochyena" then
-		local puchi = GAME:GetPlayerPartyMember(3)
+	local puchi = GAME:GetPlayerPartyMember(3)
+	if context.User ~= puchi then return
+	elseif GAME:GetPlayerPartyCount() > 4 and puchi.BaseForm.Species == "poochyena" then
+		PrintInfo("This is Puchi playing right now")
 		UI:SetSpeaker(puchi)
 		local sleep = RogueEssence.Dungeon.StatusEffect("sleep")
 		local turns = _DATA.Save.TotalTurns
-		if turns % 60 == 0 and turns > 5 then
-			local sleep_chance = math.random(20)
-			if sleep_chance == 20 then
+		if turns % 50 == 0 and turns > 5 then
+			local sleep_chance = math.random(5)
+			if sleep_chance == 5 then
 				local sleep_roll = false
 				if SV.tarro_town.puchi_tired and puchi:GetStatusEffect("sleep") == nil and sleep_roll == false then
 					PrintInfo("Sleepy time!")
@@ -1865,7 +1865,7 @@ function SINGLE_CHAR_SCRIPT.SlumberPollen(owner, ownerChar, context, args)
 					sleep_roll = true
 				end
 			else
-				--PrintInfo("Sleep roll failed!")
+				PrintInfo("Sleep roll failed!")
 			end
 		end
 	end
@@ -1874,8 +1874,8 @@ end
 function SINGLE_CHAR_SCRIPT.TunnelCheck(owner, ownerChar, context, args)
 	local part = args[1]
 	local marker = args[2]
-	print(part)
-	print(marker)
+	PrintInfo(part)
+	PrintInfo(marker)
 	EXPLCOMMON.FadeEnterGround(part, marker)
 end
 
@@ -1883,26 +1883,29 @@ local ij = 0
 function SINGLE_CHAR_SCRIPT.TreeHeal(owner, ownerChar, context, args)
 	local map = DUNGEON:DungeonDisplayName()
 	local player_count = GAME:GetPlayerPartyCount()
-	--PrintInfo("Hi, you are in " .. map .. " and " .. context.User.Name .. " has ended their turn.")
-	if map == "Tarro Tree Hallows" and SV.tarro_tree_hollows.in_boss == true then
-		local player = GAME:GetPlayerPartyMember(ij)
-		print("Healing: " .. GAME:GetPlayerPartyMember(ij).HP)
-		if player.HP + math.ceil(player.MaxHP / 10) >= player.MaxHP then
-			player.HP = player.MaxHP
-		else
-			player.HP = player.HP + math.ceil(player.MaxHP / 10)
-		end
+	if context.User ~= nil then
+		if map == "Tarro Tree Hallows" and SV.tarro_tree_hollows.in_boss == true then
+			local player = GAME:GetPlayerPartyMember(ij)
+			print("Healing: " .. GAME:GetPlayerPartyMember(ij).HP)
+			if player.HP + 2 >= player.MaxHP then
+				player.HP = player.MaxHP
+			else
+				player.HP = player.HP + 2
+			end
 
-		print("Heal checking: " .. GAME:GetPlayerPartyMember(ij).HP)
-		ij = ij + 1
-		if ij == player_count then
-			ij = 0
+			print("Heal checking: " .. GAME:GetPlayerPartyMember(ij).Nickname .. " has " .. GAME:GetPlayerPartyMember(ij).HP)
+			ij = ij + 1
+			if ij == player_count then
+				ij = 0
+			end
 		end
 	end
 end
 
-function SINGLE_CHAR_SCRIPT.CleanTidy()
-	if SV.Story.chap == -6 and GAME:GetPlayerPartyMember(3).BaseForm.Species == "minccino" then
+function SINGLE_CHAR_SCRIPT.CleanTidy(owner, ownerChar, context, args)
+	local turns = _DATA.Save.TotalTurns
+	if SV.Story.chap == -6 and GAME:GetPlayerPartyMember(2).BaseForm.Species == "minccino" and turns % 10 == 0 then
+		PrintInfo("Tidy is on your team!")
 		local clean = false
 		local tidy = GAME:GetPlayerPartyMember(2)
 		local flow = GAME:GetPlayerPartyMember(1)
@@ -1920,5 +1923,7 @@ function SINGLE_CHAR_SCRIPT.CleanTidy()
 				TASK:WaitTask(tidy:AddStatusEffect(nil, poison, false))
 			end
 		end
+	else
+		return
 	end
 end

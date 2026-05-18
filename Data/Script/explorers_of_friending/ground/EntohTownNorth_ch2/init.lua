@@ -16,7 +16,7 @@ local EntohTownNorth_ch2 = {}
 ---EntohTownNorth_ch2.Init(map)
 --Engine callback function
 function EntohTownNorth_ch2.Init(map)
-  if SV.Story.flag == 0 or (SV.Story.flag[1] == "Tidy" and SV.Story.flag[2] == 0) then
+  if (SV.Story.flag[1] == "Tidy" and SV.Story.flag[2] == 0) or SV.Story.flag[1] == 0 then
     Entoh2.TheFlow()
   else
    EXPLCOMMON.AllyFollow(true, true)

@@ -227,7 +227,7 @@ function Entoh.Resulting()
 
         GAME:FadeIn(60)
 
-       EXPLCOMMON.CharSweating("Panch")
+        EXPLCOMMON.CharSweating("Panch")
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("...dude... maybe you should listen to your dad more...")
@@ -285,7 +285,7 @@ function Entoh.Resulting()
 
         GAME:FadeIn(60)
 
-       EXPLCOMMON.CharSweating("Panch")
+        EXPLCOMMON.CharSweating("Panch")
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("...dude.")
@@ -342,7 +342,7 @@ function Entoh.Resulting()
 
         GAME:FadeIn(60)
 
-       EXPLCOMMON.CharSweating("Panch")
+        EXPLCOMMON.CharSweating("Panch")
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("I thought you said this would be easy.")
@@ -359,7 +359,7 @@ function Entoh.Resulting()
 
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("Hah, I think you'd be better off getting your dad's package...")
+        UI:WaitShowDialogue("Hah, I think you'd be better off getting your dad's package.")
 
         local coro01 = TASK:BranchCoroutine(function()
             UI:SetSpeaker(rexio)
@@ -399,7 +399,7 @@ function Entoh.Resulting()
 
         GAME:FadeIn(60)
 
-       EXPLCOMMON.CharSweating("Panch")
+        EXPLCOMMON.CharSweating("Panch")
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("Not as far as I was hoping, but ya did make it.")
@@ -455,7 +455,7 @@ function Entoh.Resulting()
 
         GAME:FadeIn(60)
 
-       EXPLCOMMON.CharSweating("Panch")
+        EXPLCOMMON.CharSweating("Panch")
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Inspired")
         UI:WaitShowDialogue("Woah...")
@@ -486,10 +486,53 @@ function Entoh.Resulting()
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("Keep it up!")
 
-       EXPLCOMMON.CharHappyHop("PLAYER")
+        EXPLCOMMON.CharHappyHop("PLAYER")
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Joyous")
         UI:WaitShowDialogue("Hahaaa!")
+    elseif SV.entoh_town.thicket.result < 8 then
+        GROUND:TeleportTo(rexio, MRKR("m2").Position.X, MRKR("m2").Position.Y, Dir8.Right, 0)
+        GROUND:TeleportTo(panch, MRKR("m3").Position.X, MRKR("m3").Position.Y, Dir8.Left, 0)
+        UI:SetSpeaker(rexio)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Not bad!")
+
+        GAME:FadeIn(60)
+
+        EXPLCOMMON.CharSweating("Panch")
+        UI:SetSpeaker(panch)
+        UI:SetSpeakerEmotion("Inspired")
+        UI:WaitShowDialogue("Woah... you really made it that far?!")
+
+        UI:SetSpeaker(rexio)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Way too easy of a challenge.")
+
+        UI:SetSpeaker(panch)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Dude!")
+
+        UI:SetSpeaker(rexio)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Surprised I'm that good?")
+
+        UI:SetSpeaker(panch)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("You know what?")
+
+        GAME:GivePlayerItem("berry_sitrus")
+        SOUND:PlayFanfare("Fanfare/Item")
+        UI:ResetSpeaker()
+        UI:WaitShowDialogue("Panch gives Rexio two Sitrus Berries.")
+
+        UI:SetSpeaker(panch)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("Keep it up!")
+
+        EXPLCOMMON.CharHappyHop("PLAYER")
+        UI:SetSpeaker(rexio)
+        UI:SetSpeakerEmotion("Joyous")
+        UI:WaitShowDialogue("Yes!")
     else
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Stunned")
@@ -523,6 +566,5 @@ function Entoh.Resulting()
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("oh ok")
-
     end
 end

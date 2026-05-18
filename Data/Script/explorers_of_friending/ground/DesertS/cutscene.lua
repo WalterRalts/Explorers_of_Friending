@@ -3,12 +3,7 @@ Desert = {}
 function Desert.KassyMeet()
     GAME:CutsceneMode(true)
     SV.hertz_town.desert_scene = false
-    SV.Story = {
-        chap = 2,
-        sect = 0,
-        flag = 0,
-        dunsect = 0
-    }
+    EXPLCOMMON.SetNewChapter(2)
     local azura = CH("Teammate1")
     local rexio = CH("Teammate2")
     local maru = CH("PLAYER")
@@ -58,8 +53,8 @@ function Desert.KassyMeet()
     GROUND:AnimateToPosition(kassy, "Walk", Dir8.Down, maru.Position.X, maru.Position.Y - 60, 1.5, 3, 0)
 
     kassy.Data.Nickname = "???"
-   EXPLCOMMON.CharHappy("Kassy")
-   EXPLCOMMON.SetCharAndEmotion(kassy, "Inspired")
+    EXPLCOMMON.CharHappy("Kassy")
+    EXPLCOMMON.SetCharAndEmotion(kassy, "Inspired")
     UI:WaitShowDialogue("I overheard the word \"treasure\".")
     GROUND:CharAnimateTurnTo(azura, Direction.UpRight, 4)
 

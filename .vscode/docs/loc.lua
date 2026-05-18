@@ -1,5 +1,5 @@
----@meta
+---@meta _
 
 ---@class Loc
----@field x integer
----@field y integer
+---@field X integer
+---@field Y integer

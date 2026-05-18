@@ -55,37 +55,21 @@ function UI:TextVoiceOver(text, expireTime, x, y, width, height, callbacks) end
 ---@param centerH? boolean
 ---@param centerV? boolean
 function UI:TextPopUp(text, expireTime, x, y, width, height, centerH, centerV) end
+
+---Fades in a title text, waiting until the fade-in is complete.
+---@param text string
+---@param time integer
+function UI:WaitShowTitle(text, time) end
+
+---Shows text in the format of a title drop. Requires WaitDialog to actually display.
+---@param text string
+---@param time integer
+function UI:TextShowTitle(text, time) end
+
+---Shows text in the format of a title drop. Requires WaitDialog to actually display.
+---@param time integer
+function UI:WaitHideTitle(time) end
 --[[
-WaitShowTitle
-Fades in a title text, waiting until the fade-in is complete.
-
-Arguments
-Argument order is UI:WaitShowTitle(text, time)
-
-Name	Type	Technical Type	Purpose	Required
-text	String	System.String	The text to display with the textbox.	Yes
-time	Integer	System.Int32	How long the text takes to fade in.	No
-Example
-
-UI:WaitShowTitle("Hello World!", 60)
-
-TextShowTitle
-Shows text in the format of a title drop. Requires WaitDialog to actually display.
-
-Arguments
-Name	Type	Technical Type	Purpose
-text	String	System.String	The text to display.
-time	Integer	System.Int32	The time for the text to fade in.
-WaitHideTitle
-Fades out the currently displayed title, waiting until the fade-out is complete.
-
-Arguments
-Name	Type	Technical Type	Purpose
-time	Integer	System.Int32	The time for the text to fade in.
-Example
-
-UI:WaitHideTitle(60)
-
 TextFadeTitle
 Fades out the text set in a title drop. Requires WaitDialog to actually fade.
 

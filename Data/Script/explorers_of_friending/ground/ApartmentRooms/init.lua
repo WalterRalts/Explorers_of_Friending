@@ -94,7 +94,7 @@ end
 
 function ApartmentRooms.MouseTalk_Touch(obj, activator)
   local mouse = CH("Mouse")
-  if SV.Story.flag == 0 then
+  if SV.Story.chap == -6 and SV.Story.flag == 0 then
     UI:SetSpeaker(mouse)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Hey, Rexio.[pause=10] Got a sec?")
@@ -117,7 +117,7 @@ end
 
 function ApartmentRooms.MouseHomeEnter_Touch(obj, activator)
   local mampha = CH("Mampha")
- EXPLCOMMON.FaceEachother(mampha, activator)
+  EXPLCOMMON.FaceEachother(mampha, activator)
   if SV.Story.chap == -4 then
     UI:SetSpeaker(mampha)
     UI:SetSpeakerEmotion("Normal")

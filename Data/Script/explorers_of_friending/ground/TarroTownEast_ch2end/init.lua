@@ -38,36 +38,37 @@ function TarroTownEast_ch2end.WentWhere()
   UI:SetSpeakerReverse(false)
   UI:SetSpeaker(furie)
   UI:SetSpeakerEmotion("Surprised")
-  UI:WaitShowDialogue("[speed=0.6]You two went where?!")
-  
+  UI:WaitShowDialogue("[speed=0.8]You two went where?!")
+
   UI:SetSpeakerReverse(true)
   UI:SetSpeaker(arama)
   UI:SetSpeakerEmotion("Surprised")
-  UI:WaitShowDialogue("[speed=0.6]You two went w[emote=Angry]heeeere?!")
+  UI:WaitShowDialogue("[speed=0.5]You two went w[emote=Angry]heeeere?!")
   GAME:FadeIn(35)
 
   UI:SetBounds(10, 16, 300, 50)
   UI:SetSpeaker(furie)
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("I can't believe it...!")
-  
- EXPLCOMMON.CharAngry("Arama")
+
+  EXPLCOMMON.CharAngry("Arama")
   UI:SetSpeaker(arama)
   UI:SetSpeakerEmotion("Surprised")
-  UI:WaitShowTimedDialogue("Exactly, Furie. What you two did was r-")
+  UI:WaitShowTimedDialogue("Exactly, Furie. What you two did was real-")
 
   UI:SetSpeaker(furie)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Wonderful!")
 
   UI:SetSpeaker(arama)
-  UI:SetSpeakerEmotion("Surprised")
+  UI:SetSpeakerEmotion("Angry")
   UI:WaitShowTimedDialogue("Yes, exa-", 10)
+  GAME:WaitFrames(30)
 
   local coro1 = TASK:BranchCoroutine(function()
     GROUND:CharTurnToCharAnimated(arama, furie, 9)
-    end)	
-  local coro2 = TASK:BranchCoroutine(function() 
+    end)
+  local coro2 = TASK:BranchCoroutine(function()
     UI:SetSpeaker(arama)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("[speed=2.0]What?")
@@ -75,6 +76,7 @@ function TarroTownEast_ch2end.WentWhere()
 
   TASK:JoinCoroutines({coro1, coro2})
 
+  GROUND:CharSetAnim(furie, "Idle", false)
   UI:SetSpeaker(furie)
   UI:SetSpeakerEmotion("Inspired")
   UI:WaitShowDialogue("Our little Senna got over her fear!")
@@ -102,15 +104,15 @@ function TarroTownEast_ch2end.WentWhere()
   local coro11 = TASK:BranchCoroutine(function()
     UI:SetSpeakerEmotion("Determined")
     UI:WaitShowDialogue("Furie,[pause=15] I know that you're glad for your kid,[pause=20] but you shouldn't let Ziggian keep running off like that!")
-    end)	
-  local coro21 = TASK:BranchCoroutine(function() 
+    end)
+  local coro21 = TASK:BranchCoroutine(function()
     GAME:WaitFrames(45)
     EXPLCOMMON.CharSweatdrop("Ziggy")
     GROUND:CharTurnToCharAnimated(arama, maru, 9)
     end)
 
   TASK:JoinCoroutines({coro11, coro21})
-  
+
  EXPLCOMMON.CharSweating("Ziggy")
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Stunned")
@@ -123,7 +125,7 @@ function TarroTownEast_ch2end.WentWhere()
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("We heard a thing explode!")
-  
+
   local function Boom()
    EXPLCOMMON.CharHop("Azura")
   end
@@ -234,7 +236,7 @@ function TarroTownEast_ch2end.WentWhere()
     GROUND:CharAnimateTurnTo(beel, Direction.Left, 6)
     GROUND:CharAnimateTurnTo(furie, Direction.Left, 5)
     end)
-  local coro03 = TASK:BranchCoroutine(function() 
+  local coro03 = TASK:BranchCoroutine(function()
     UI:WaitShowDialogue("[speed=1.5]PUUUUUUUUCH[speed=0.7]IIIIIIIIIIIIIII!!")
     end)
   TASK:JoinCoroutines({coro01, coro02, coro03})
@@ -261,18 +263,14 @@ function TarroTownEast_ch2end.WentWhere()
     end)
   TASK:JoinCoroutines({coro001, coro002})
 
-  SV.Story = {
-    chap = -3,
-    sect = 0,
-    flag = 0
-  }
+  EXPLCOMMON.SetNewChapter(-3)
   GAME:CutsceneMode(false)
   UI:ResetBounds()
   GAME:EnterGroundMap("MaruHome", "MaruHome_MainEnter")
 end
 
 function TarroTownEast_ch2end.Enter(map)
-  
+
 end
 
 ---TarroTownEast_ch2.Exit(map)

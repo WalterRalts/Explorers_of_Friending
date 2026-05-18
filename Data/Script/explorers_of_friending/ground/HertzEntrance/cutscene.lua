@@ -56,7 +56,7 @@ function HertzTown.Cooldown()
                 GROUND:CharTurnToCharAnimated(rexio, gonk, 4)
             end
            EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
-            UI:WaitShowDialogue("Huh,[pause=45][script=0][emote=Happy] oh, pfft.[pause=35] I've got this!", {turn2})
+            UI:WaitShowDialogue("Huh,[script=0][pause=45][emote=Happy] oh, pfft.[pause=35] I've got this!", {turn2})
             end)
         local the2 = TASK:BranchCoroutine(function()
             GAME:WaitFrames(30)
@@ -86,45 +86,48 @@ function HertzTown.Cooldown()
         end)
     TASK:JoinCoroutines({coro00, coro10, coro20, coro30})
 
-   EXPLCOMMON.SetCharAndEmotion(gonk, "Normal")
+    EXPLCOMMON.SetCharAndEmotion(gonk, "Normal")
     UI:WaitShowDialogue("[speed=0.5]Please present your entry passes.")
 
-   EXPLCOMMON.CharQuestion("Teammate2")
-   EXPLCOMMON.SetCharAndEmotion(rexio, "Stunned")
+    EXPLCOMMON.CharQuestion("Teammate2")
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Stunned")
     UI:WaitShowDialogue("[speed=0.6]Huh...?[pause=45] Our what...?")
 
-   EXPLCOMMON.SetCharAndEmotion(gonk, "Normal")
+    EXPLCOMMON.SetCharAndEmotion(gonk, "Normal")
     UI:WaitShowDialogue("[speed=0.5]Please present your entry passes.")
 
-   EXPLCOMMON.SetCharAndEmotion(maru, "Stunned")
+    EXPLCOMMON.SetCharAndEmotion(maru, "Stunned")
     UI:WaitShowDialogue("Umm?[pause=45] What if we don't have any?")
 
-   EXPLCOMMON.SetCharAndEmotion(gonk, "Normal")
+    EXPLCOMMON.SetCharAndEmotion(gonk, "Normal")
     UI:WaitShowDialogue("[speed=0.5]Then you may purchase one to the left.")
 
-   EXPLCOMMON.CharHop("Teammate2")
-   EXPLCOMMON.SetCharAndEmotion(rexio, "Angry")
+    EXPLCOMMON.SetCharAndEmotion(maru, "Sigh")
+    UI:WaitShowDialogue("Aww, this wasn't as easy as I hoped...")
+
+    EXPLCOMMON.CharHop("Teammate2")
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Angry")
     UI:WaitShowDialogue("We nyeeeeed the treasure, though! Let us through!")
 
-   EXPLCOMMON.SetCharAndEmotion(gonk, "Sigh")
-    UI:WaitShowDialogue("[speed=0.5]I don't get paid enough to either care or know about what you are talking about")
+    EXPLCOMMON.SetCharAndEmotion(gonk, "Sigh")
+    UI:WaitShowDialogue("[speed=0.5]I don't care enough to know what treasure you are talking about.")
 
     local function fake()
         GROUND:CharTurnToCharAnimated(rexio, maru, 4)
         EXPLCOMMON.CharSweatdrop("Teammate2")
     end
-   EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
+    EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
     UI:WaitShowDialogue("We got sent on a mission.[pause=45] Someone stole treasure here and it belongs to our guild[script=0]leader's friend.", {fake})
 
     GROUND:CharTurnToCharAnimated(rexio, gonk, 4)
     UI:WaitShowDialogue("Did a thiefy guy run by here?")
 
-   EXPLCOMMON.SetCharAndEmotion(gonk, "Normal")
+    EXPLCOMMON.SetCharAndEmotion(gonk, "Normal")
     UI:WaitShowDialogue("[speed=0.5]No.[pause=40] Now please purchase a pass.")
 
-   EXPLCOMMON.FaceEachother(rexio, maru)
-   EXPLCOMMON.SetCharAndEmotion(rexio, "Stunned")
+    EXPLCOMMON.FaceEachother(rexio, maru)
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Stunned")
     UI:WaitShowDialogue("Wow.")
-   EXPLCOMMON.AllyFollow(false, false)
+    EXPLCOMMON.AllyFollow(false, false)
     GAME:CutsceneMode(false)
 end

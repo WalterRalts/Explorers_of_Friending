@@ -29,13 +29,14 @@ function TarroForestPassage.Init(map)
     GAME:FadeIn(20)
     UI:SetSpeaker(partner)
     GROUND:CharTurnToCharAnimated(azura, maru, 4)
-   EXPLCOMMON.CharHappyHop("Teammate1")
+    EXPLCOMMON.CharHappyHop("Teammate1")
+    GAME:WaitFrames(15)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Okay! There should be an apple around here, I'm sure!")
     SV.Story.sect = 2
   end
 
-  if SV.Story.chap < -1 then -- after dungeon completion
+  if SV.Story.chap < -1 or (SV.Story.chap == -1 and SV.Story.flag == 1) then -- after dungeon completion
     GROUND:Hide("Cherry")
     GROUND:Hide("BigApple")
   end
@@ -67,9 +68,7 @@ end
 ---TarroForestPassage.Update(map)
 --Engine callback function
 function TarroForestPassage.Update(map)
-  
   Partner()
-
 end
 
 ---TarroForestPassage.GameSave(map)

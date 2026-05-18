@@ -173,14 +173,14 @@ function Entoh2.TheFlow()
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Worried")
         UI:WaitShowDialogue("Well, he's gone so I guess I'm in charge...?")
-        
+    
         AI:SetCharacterAI(flow, "origin.ai.ground_partner", CH('PLAYER'), flow.Position)
         flow.CollisionDisabled = true
 
         UI:SetSpeaker(flow)
         UI:SetSpeakerEmotion("Worried")
         UI:WaitShowDialogue("Just... hurry it up a little.[pause=35] Mother's probably worried sick...")
-       EXPLCOMMON.FaceEachother(rexio, chucky)
+        EXPLCOMMON.FaceEachother(rexio, chucky)
         GAME:MoveCamera(0, 0, 0, true)
     end
 end

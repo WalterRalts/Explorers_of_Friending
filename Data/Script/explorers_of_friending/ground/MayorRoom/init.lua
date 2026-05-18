@@ -90,7 +90,7 @@ end
 --Engine callback function
 function MayorRoom.Init(map)
   COMMON.RespawnAllies()
-  if SV.Story.sect == 1 and SV.Story.flag == 0 then
+  if SV.Story.sect == 1 and SV.Story.flag ~= 1 then
     Mayor.Intro()
   else
     Mayor.Ender()

@@ -340,8 +340,12 @@ function COMMON.GiftItem(player, receive_item)
   COMMON.GiftItemFull(player, receive_item, true, false)
 end
 
+---Give the player an item
+---@param player GroundCH
+---@param receive_item ItemID | string
+---@param fanfare boolean
+---@param force_storage boolean
 function COMMON.GiftItemFull(player, receive_item, fanfare, force_storage)
-  local orig_settings = UI:ExportSpeakerSettings()
   if fanfare then
     SOUND:PlayFanfare("Fanfare/Item")
   end
@@ -349,14 +353,15 @@ function COMMON.GiftItemFull(player, receive_item, fanfare, force_storage)
   UI:SetCenter(true)
   if not force_storage and GAME:GetPlayerBagCount() + GAME:GetPlayerEquippedCount() < GAME:GetPlayerBagLimit() then
     --give to inventory
-	UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("DLG_RECEIVE_ITEM"):ToLocal(), player:GetDisplayName(), _DATA:GetItem(receive_item):GetColoredName()))
+	UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("DLG_RECEIVE_ITEM"):ToLocal(), player.Nickname, _DATA:GetItem(receive_item).Name:ToLocal()))
 	GAME:GivePlayerItem(receive_item)
   else
     --give to storage
-	UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("DLG_RECEIVE_ITEM_STORAGE"):ToLocal(), player:GetDisplayName(), _DATA:GetItem(receive_item):GetDisplayName()))
+	UI:WaitShowDialogue(STRINGS:Format(RogueEssence.StringKey("DLG_RECEIVE_ITEM_STORAGE"):ToLocal(), player.Nickname, _DATA:GetItem(receive_item).Name:ToLocal()))
 	GAME:GivePlayerStorageItem(receive_item)
   end
-  UI:ImportSpeakerSettings(orig_settings)
+  UI:SetCenter(false)
+  UI:ResetSpeaker()
 end
 
 -- useful for counting the number of multiple items carried by the player at the same time

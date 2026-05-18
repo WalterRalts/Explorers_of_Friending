@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.11.0",
+"Version": "0.8.12.0",
 "Object": {
 "$type": "RogueEssence.Data.ZoneData, RogueEssence",
 "Name": {
@@ -415,7 +415,7 @@
 "$type": "RogueElements.ContextSpawner`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.InvItem, RogueEssence]], RogueElements",
 "Amount": {
 "Min": 0,
-"Max": 4
+"Max": 3
 }
 }
 }
@@ -836,8 +836,8 @@
 "Spawn": {
 "$type": "RogueElements.ContextSpawner`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.InvItem, RogueEssence]], RogueElements",
 "Amount": {
-"Min": 1,
-"Max": 5
+"Min": 0,
+"Max": 3
 }
 }
 }
@@ -1259,7 +1259,7 @@
 "$type": "RogueElements.ContextSpawner`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.InvItem, RogueEssence]], RogueElements",
 "Amount": {
 "Min": 0,
-"Max": 4
+"Max": 3
 }
 }
 }
@@ -1628,7 +1628,7 @@
 "$type": "RogueElements.ContextSpawner`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.InvItem, RogueEssence]], RogueElements",
 "Amount": {
 "Min": 0,
-"Max": 4
+"Max": 3
 }
 }
 }
@@ -1996,8 +1996,8 @@
 "Spawn": {
 "$type": "RogueElements.ContextSpawner`2[[RogueEssence.LevelGen.MapGenContext, RogueEssence],[RogueEssence.Dungeon.InvItem, RogueEssence]], RogueElements",
 "Amount": {
-"Min": 2,
-"Max": 7
+"Min": 0,
+"Max": 3
 }
 }
 }
@@ -2146,8 +2146,8 @@
 },
 "Respawn": {
 "$type": "PMDC.Dungeon.RespawnFromEligibleEvent, PMDC",
-"MaxFoes": 20,
-"RespawnTime": 60
+"MaxFoes": 15,
+"RespawnTime": 50
 },
 "MaxFoes": 0,
 "RespawnTime": 0

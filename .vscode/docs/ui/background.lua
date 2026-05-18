@@ -1,4 +1,4 @@
----@meta
+---@meta _
 ---@diagnostic disable: duplicate-set-field
 ---Functions to control things on the ground
 ---@class UI

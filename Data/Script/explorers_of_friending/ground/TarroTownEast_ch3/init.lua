@@ -160,6 +160,7 @@ function TarroTownEast_ch3.Sunny_Action(obj, activator)
 
   local coro001 = TASK:BranchCoroutine(function()
     GROUND:CharTurnToCharAnimated(mrseed, sunny, 4)
+    GAME:WaitFrames(5)
     GROUND:CharTurnToCharAnimated(loast, sunny, 4)
     end)
   local coro002 = TASK:BranchCoroutine(function()
@@ -169,9 +170,8 @@ function TarroTownEast_ch3.Sunny_Action(obj, activator)
 
     UI:SetSpeaker(sunny)
     UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("Class, let's not bother our fellow students.[pause=30] Plants must learn to depend on more nuatural sources.")
+    UI:WaitShowDialogue("Class, let's not bother our fellow students.[pause=30] Plants must learn to depend on more natural sources.")
     end)
-
   TASK:JoinCoroutines({coro001, coro002})
 
   GROUND:CharTurnToCharAnimated(sunny, cherry, 4)
