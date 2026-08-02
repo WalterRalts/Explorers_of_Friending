@@ -43,26 +43,17 @@ function GROUND:CharGetAnimPoint(chara, actpoint) end
 ---@param anim Anim
 ---@param loop boolean
 function GROUND:CharSetAnim(chara, anim, loop) end
+
+---Stops a character's current animation, reverting them to default idle.
+---@param chara GroundCH
+function GROUND:CharEndAnim(chara) end
+
+---Makes the character perform an animation and waits until it's over.
+---@param chara GroundCH
+---@param anim Anim
+function GROUND:CharWaitAnim(chara, anim) end
+
 --[[
-GROUND:CharEndAnim(RogueEssence.Ground.GroundChar)
-Stops a character's current animation, reverting them to default idle.
-
-
-
-Arguments
-chara: Character to stop animating
-GROUND:CharWaitAnim
-Makes the character perform an animation and waits until it's over.
-
-
-
-Arguments
-ent: Character to animate
-anim: Animation to play
-Example
-
-GROUND:CharWaitAnim(player, "Hurt")
-
 GROUND:CharSetAction(RogueEssence.Ground.GroundChar,RogueEssence.Ground.GroundAction)
 Set a character's action.
 

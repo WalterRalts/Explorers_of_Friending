@@ -52,30 +52,21 @@ function GAME:EnterDungeon(dunID, structID, mapID, entry, stakes, recorded, sile
 ---@param mapID integer | MapID
 ---@param entry integer | EntryID
 function GAME:ContinueDungeon(dunID, structID, mapID, entry) end
---[[
-EndDungeonRun
-Ends the current adventure, sending the player to a specified destination. Argument order is GAME:EndDungeonRun(result, zoneID, structID, mapID, entryID, display, fanfare, completedZone).
 
-Arguments
-Name	Type	Technical Type	Purpose
-result	(undocumented)	(undocumented)	The result of the adventure.
-zoneID	String	System.String	The id of the dungeon to travel to.
-structID	String	System.String	The segment within the dungeon to start in. -1 represents ground maps.
-mapID	String	System.String	The id of the ground map or dungeon map within the dungeon segment.
-entryID	String	System.String	The entry point on the resulting map
-display	(undocumented)	(undocumented)	Display an epitaph marking the end of the adventure.
-fanfare	Boolean	System.Boolean	Play a fanfare.
-completedZone	Boolean	System.Boolean	Zone to mark as completed. Defaults to current zone.
-Example
+---Ends the current adventure, sending the player to a specified destination.
+---@param result Result
+---@param zoneID string
+---@param structID string
+---@param mapID string
+---@param entryID string
+---@param display any
+---@param fanfare boolean
+---@param completedZone boolean
+function GAME:EndDungeonRun(result, zoneID, structID, mapID, entryID, display, fanfare, completedZone) end
 
-GAME:EndDungeonRun(GameProgress.ResultType.Cleared, 0, -1, 1, 0, true, true)
-
-EnterZone
-Enters a zone and begins a new adventure.
-
-Arguments
-Name	Type	Technical Type	Purpose
-dunID	Integer	System.Integer	The id of the dungeon to travel to.
-structID	Integer	System.Integer	The segment (or structure ID) within the zone to start in. -1 represents ground maps.
-mapID	Integer	System.Integer	The id of the ground map or dungeon map within the dungeon segment.
-entry	String	System.String	The entry point on the resulting map.]]
+---Enters a zone and begins a new adventure.
+---@param dunID integer
+---@param structID integer
+---@param mapID integer
+---@param entry string
+function GAME:EnterZone(dunID, structID, mapID, entry) end
