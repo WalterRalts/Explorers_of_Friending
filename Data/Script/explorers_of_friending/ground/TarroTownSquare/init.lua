@@ -6,6 +6,7 @@
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
 require 'explorers_of_friending.ground.TarroTownSquare.cutscene'
+require 'explorers_of_friending.menu.buzzers_shop'
 
 -- Package name
 local TarroTownSquare = {}
@@ -32,6 +33,8 @@ function TarroTownSquare.Init(map)
   if SV.Story.sect == 0 then
     Quiz = {false, 0}
     Square.FightFightFight()
+  elseif Quiz == nil then
+    Quiz = {true, -1}
   end
   
   if Quiz[2] == 1 and OutEnter == 1 then
@@ -45,7 +48,7 @@ function TarroTownSquare.Init(map)
   end
   if SV.Story.sect == 2 and Quiz[2] == 2 then
     ziggy.CollisionDisabled = true
-    if SV.tarro_tree_hollows.tree_entered == false and Quiz[1] == false then
+    if SV.tarro_tree_hollows.tree_entered == false and Quiz[1] == true then
       Square.AfterQuiz()
     end
     SOUND:PlayBGM("None", false, 0)
@@ -155,10 +158,7 @@ function TarroTownSquare.Store_Action(obj, activator)
 end
 
 function TarroTownSquare.Sign_Action(obj, activator)
-  UI:ResetSpeaker()
-  UI:SetAutoFinish(true)
-  UI:WaitShowDialogue("Tarro Town East ->\n <- Tarro Town West | Tarro Town Hives")
-  UI:SetAutoFinish(false)
+  EXPLCOMMON.SignDialogue("Tarro Town East ->\n <- Tarro Town West | Tarro Town Hives")
 end
 
 function TarroTownSquare.BuzzStore_Action(obj, activator)
@@ -174,7 +174,9 @@ function TarroTownSquare.BuzzStore_Action(obj, activator)
   UI:WaitShowDialogue("Welcome, welcome, buzz!")
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Got some quick stuff here, so buy something, will ya!")
-  BuzzerShopStart()]]
+  local menu = BuzzerShopMenu:new()
+  UI:SetCustomMenu(menu.menu)
+  UI:WaitForChoice()]]
 end
 
 -- Characters
@@ -199,10 +201,10 @@ function TarroTownSquare.Lax_Action(obj, activator)
   local lax = CH("Lax")
   GROUND:CharTurnToCharAnimated(munch, lax, 2)
   GROUND:CharSetAnim(lax, "Sleep", true)
-  
+
   UI:ResetSpeaker()
   UI:WaitShowDialogue("Zzzzzzzzz...")
-  
+
   UI:SetSpeaker(munch)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("Pops... getcha self up, would ya.")

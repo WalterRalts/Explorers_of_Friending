@@ -1,4 +1,6 @@
-function Partner()
+---Partner script. Put in Update section of any ground map
+---@param turn? boolean
+function Partner(turn)
     if GAME:IsKeyDown(66) then
         local talk = math.random(5)
         local area_name = GAME:GetCurrentGround().AssetName
@@ -18,10 +20,12 @@ function Partner()
                     tidy = CH('Teammate1')
                 end
 
-               EXPLCOMMON.FaceEachother(CH("PLAYER"), CH("Teammate1"))
+                if turn == nil or turn == true then
+                    EXPLCOMMON.FaceEachother(CH("PLAYER"), CH("Teammate1"))
+                end
                 if area_name == "TarroTownOutside" then
                     if SV.Story.chap == -1 then
-                        if SV.Story.sect < 1 then
+                        if SV.Story.sect == 0 then
                             UI:SetSpeaker(azura)
                             UI:SetSpeakerEmotion("Happy")
                             UI:WaitShowDialogue("Let's go home and get some pie!")
@@ -48,7 +52,7 @@ function Partner()
                             UI:SetSpeaker(azura)
                             UI:SetSpeakerEmotion("Angry")
                             UI:WaitShowDialogue("Not enough for you!")
-                        elseif SV.Story.sect < 3 then
+                        elseif SV.Story.sect == 1 then
                             if SV.Story.flag == 1 then
                                 UI:SetSpeaker(azura)
                                 UI:SetSpeakerEmotion("Angry")
@@ -773,7 +777,15 @@ function Partner()
                         if talk == 1 then
                             UI:SetSpeaker(leader)
                             UI:SetSpeakerEmotion("Normal")
-                            UI:WaitShowDialogue("Let's go.")
+                            UI:WaitShowDialogue("This kind of heat is a little much, but I don't think it's so bad.")
+
+                            UI:SetSpeaker(third)
+                            UI:SetSpeakerEmotion("Dizzy")
+                            UI:WaitShowDialogue("...")
+
+                            UI:SetSpeaker(leader)
+                            UI:SetSpeakerEmotion("Normal")
+                            UI:WaitShowDialogue("...I don't, at least.")
                         elseif talk == 2 then
                             UI:SetSpeaker(second)
                             UI:SetSpeakerEmotion("Happy")

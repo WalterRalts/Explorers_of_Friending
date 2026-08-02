@@ -240,7 +240,7 @@ function TarroTownTreeBreak.Senna_Action(obj, activator)
   local maru = CH("PLAYER")
   local azura = CH("Teammate1")
   local senna = CH('Senna')
- EXPLCOMMON.FaceEachother(activator, obj)
+  EXPLCOMMON.FaceEachother(activator, obj)
   UI:SetSpeaker(senna)
   UI:SetSpeakerEmotion("Sigh")
   UI:WaitShowDialogue("Phew. What a relief.")
@@ -328,16 +328,10 @@ function TarroTownTreeBreak.LockedStairs_Action(obj, activator)
   if SV.tarro_tree_hollows.stairs_unlocked == false then
     UI:ResetSpeaker()
     UI:WaitShowDialogue("The way seems locked...")
-    for i = 0, GAME:GetPlayerBagCount() - 1, 1 do
-      baggy[i] = GAME:GetPlayerBagItem(i).ID
-    end
-    for _, v in pairs(baggy) do
-      if v == "key_tree" or GAME:GetPlayerEquippedItem(0).ID == "key_tree" then
-        held = true
-      end
-    end
+
+    local held = EXPLCOMMON.CheckHeld("key_tree")
     if held then
-      UI:ChoiceMenuYesNo("The key you have seems to match. Would you like to use it?", false)
+      UI:ChoiceMenuYesNo("The key you have seems to match.[pause=30] Would you like to use it?", false)
       UI:WaitForChoice()
       local result = UI:ChoiceResult()
       if result then

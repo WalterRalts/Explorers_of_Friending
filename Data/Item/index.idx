@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.11.0",
+"Version": "0.8.12.0",
 "Object": {
 "$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[RogueEssence.Data.EntrySummary, RogueEssence]], System.Private.CoreLib",
 "berry_oran": {
@@ -203,7 +203,7 @@
 "UsageType": 1,
 "States": [
 {
-"assembly": "PMDC, Version=0.8.11.0, Culture=neutral, PublicKeyToken=null",
+"assembly": "PMDC, Version=0.8.12.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.UtilityState"
 }
 ],
@@ -211,7 +211,7 @@
 "CannotDrop": false,
 "BagEffect": false,
 "Name": {
-"DefaultText": "Key",
+"DefaultText": "Key Tree",
 "LocalTexts": {
 "fr": "Clé",
 "de": "Schlüssel",
@@ -232,7 +232,7 @@
 "UsageType": 4,
 "States": [
 {
-"assembly": "PMDC, Version=0.8.9.0, Culture=neutral, PublicKeyToken=null",
+"assembly": "PMDC, Version=0.8.12.0, Culture=neutral, PublicKeyToken=null",
 "type": "PMDC.Dungeon.EdibleState"
 }
 ],
@@ -323,6 +323,22 @@
 "LocalTexts": {}
 },
 "Released": true,
+"Comment": "",
+"SortOrder": 0
+},
+"key_hertz": {
+"$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
+"Icon": -1,
+"UsageType": 0,
+"States": [],
+"MaxStack": 0,
+"CannotDrop": true,
+"BagEffect": false,
+"Name": {
+"DefaultText": "Hertz Key",
+"LocalTexts": {}
+},
+"Released": false,
 "Comment": "",
 "SortOrder": 0
 }

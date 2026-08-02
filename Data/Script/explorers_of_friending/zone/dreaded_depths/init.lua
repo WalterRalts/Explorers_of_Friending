@@ -30,8 +30,8 @@ end
 --Engine callback function
 function dreaded_depths.ExitSegment(zone, result, rescue, segmentID, mapID)
     if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
+        GAME:SetTeamLeaderIndex(0)
         DUN_failure = true
-        print("Get out!")
         COMMON.EndDungeonDay(result, "entoh_town", -1, 12, 0)
     else
         DUN_failure = false
@@ -39,7 +39,6 @@ function dreaded_depths.ExitSegment(zone, result, rescue, segmentID, mapID)
         SV.entoh_thicket.dungpoints = SV.entoh_thicket.dungpoints + 120
         COMMON.EndDungeonDay(result, "swamp_town", -1, 0, 0)
     end
-
 end
 
 ---dreaded_depths.Rescued(zone, name, mail)

@@ -342,6 +342,32 @@ function TarroTownEast_ch3.Budeg_Action(obj, activator)
  EXPLCOMMON.DebugWithBudeg()
 end
 
+function TarroTownEast_ch3.Stuffy_Action(obj, activator)
+  local stuff = CH('Stuffy')
+  local reeshi = CH('Reeshi')
+
+  EXPLCOMMON.CharHop("Stuffy")
+  EXPLCOMMON.SetCharAndEmotion(stuff, "Normal")
+  UI:WaitShowDialogue("It's real easy.")
+
+  GROUND:CharAnimateTurnTo(stuff, Dir8.UpRight, 5)
+  EXPLCOMMON.SetCharAndEmotion(stuff, "Normal")
+  UI:WaitShowDialogue("You see that tree?")
+
+  EXPLCOMMON.SetCharAndEmotion(reeshi, "Stunned")
+  UI:WaitShowDialogue("Baa?")
+
+  GROUND:CharTurnToCharAnimated(stuff, reeshi, 4)
+  EXPLCOMMON.SetCharAndEmotion(stuff, "Happy")
+  UI:WaitShowDialogue("It's mine.")
+
+  EXPLCOMMON.CharSweatdrop("Reeshi")
+end
+
+function TarroTownEast_ch3.Reeshi_Action(obj, activator)
+   TarroTownEast_ch3.Stuffy_Action()
+end
+
 return TarroTownEast_ch3
 
 

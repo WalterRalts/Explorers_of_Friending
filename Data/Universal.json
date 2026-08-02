@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.11.0",
+"Version": "0.8.12.0",
 "Object": {
 "$type": "PMDC.Data.UniversalActiveEffect, PMDC",
 "ZoneSteps": [
@@ -681,6 +681,18 @@
 "Script": "AzuNotLeader",
 "ArgTable": "{}"
 }
+},
+{
+"Key": {
+"str": [
+6
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
+"Script": "DungeonTalker",
+"ArgTable": "{}"
+}
 }
 ],
 "OnTurnStarts": [],
@@ -724,6 +736,18 @@
 {
 "Key": {
 "str": [
+-6
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
+"Script": "CleanTidy",
+"ArgTable": "{}"
+}
+},
+{
+"Key": {
+"str": [
 0
 ]
 },
@@ -748,18 +772,6 @@
 "EnemyHungerRate": 1,
 "AllyHungerRate": 5,
 "Denominator": 1000
-}
-},
-{
-"Key": {
-"str": [
-6
-]
-},
-"Value": {
-"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
-"Script": "CleanTidy",
-"ArgTable": "{}"
 }
 },
 {

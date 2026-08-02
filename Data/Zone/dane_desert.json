@@ -60,13 +60,15 @@
 "HertzEntrance",
 "HertzCenter",
 "HertzShopsA",
-"HertzLeftT",
 "HertzVault",
 "HertzWest",
+"HertzRightT",
+"HertzLeftT",
 "HertzUpT",
 "HertzGuildOut",
 "Osias",
-"DarkGuild"
+"DarkGuild",
+"OsiasLake"
 ]
 }
 }

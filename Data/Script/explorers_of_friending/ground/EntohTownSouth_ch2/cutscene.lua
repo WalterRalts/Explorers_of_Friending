@@ -30,15 +30,23 @@ function South_ch2.GoingIn()
 end
 
 function South_ch2.GoingInFull()
+    GAME:RemovePlayerTeam(3)
+    GAME:RemovePlayerTeam(3)
     COMMON:RespawnAllies()
     GAME:SetTeamLeaderIndex(0)
     GROUND:Unhide("Tidy")
     GROUND:Unhide("Flow")
-    GAME:RemovePlayerTeam(3)
-    GAME:RemovePlayerTeam(3)
+
     local rexio = CH("PLAYER")
     local flow = CH("Teammate1")
     local tidy = CH("Teammate2")
+    if SV.Story.flag == {"Flow", "Tidy"} then
+        flow = CH('Teammate1')
+        tidy = CH('Teammate2')
+    elseif SV.Story.flag == {"Tidy", "Flow"} then
+        flow = CH('Teammate2')
+        tidy = CH('Teammate1')
+    end
 
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Dizzy")

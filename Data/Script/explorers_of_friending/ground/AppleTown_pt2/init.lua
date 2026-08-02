@@ -40,7 +40,7 @@ local AppleTown_pt2 = {}
 function AppleTown_pt2.Init(map)
   EXPLCOMMON.StartAndStop(CH("AppleTG"), "Trip")
   EXPLCOMMON.AllyFollow(true, true)
-  if MagnetForce_out then
+  if MagnetForce_out or SV.Story.sect >= 3 then
     GROUND:Hide("MagnetB")
     GROUND:Hide("MagnetA")
     GROUND:Hide("Gaurd")
@@ -133,13 +133,13 @@ function AppleTown_pt2.AppleWay_Touch(obj, activator)
     GAME:EnterGroundMap("dense_apple", "DeepApple", "Mark")
   else
     if activator.Nickname == "Maru" then
-     EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
+      EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
       UI:WaitShowDialogue("(It's late,[pause=40] Azura's tired.[pause=30] I don't wanna go back in there...)")
     elseif activator.Nickname == "Azura" then
-     EXPLCOMMON.SetCharAndEmotion(activator, "Pain")
+      EXPLCOMMON.SetCharAndEmotion(activator, "Pain")
       UI:WaitShowDialogue("(...nmn, home... too tired.)")
     else
-     EXPLCOMMON.SetCharAndEmotion(activator, "Worried")
+      EXPLCOMMON.SetCharAndEmotion(activator, "Worried")
       UI:WaitShowDialogue("(I can't believe...[pause=40] [emote=Angry]whatever!)")
     end
   end

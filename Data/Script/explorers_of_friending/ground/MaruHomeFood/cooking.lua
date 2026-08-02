@@ -39,7 +39,7 @@ local function ingr_quip(player, item)
     elseif player == "Rexio" then
         if item == "tarro_wheat" then
             UI:SetSpeakerEmotion("Happy")
-            UI:WaitShowDialogue("This is, what... grains? That's what pa called it.")
+            UI:WaitShowDialogue("This is, what... grains? That's what dad called it.")
         elseif item == "crunchy_leaf" then
             UI:SetSpeakerEmotion("Normal")
             UI:WaitShowDialogue("This is a leaf...")
@@ -83,7 +83,7 @@ local function ingredients_list()
     for i = 0, GAME:GetPlayerBagCount() - 1, 1 do
         item_name[i] = GAME:GetPlayerBagItem(i):GetDisplayName()
     end
-    local exit_index = GAME:GetPlayerBagCount() + 1
+    local exit_index = GAME:GetPlayerBagCount() + 2
     item_name[exit_index] = "Exit"
 
     UI:BeginMultiPageMenu(
@@ -203,7 +203,7 @@ function Cooking(player, partner, location)
                     goto choose_again
                 end
             end
-            Recipes()
+            Recipes(player)
             UI:SetSpeaker(arama)
             UI:SetSpeakerEmotion("Happy")
             UI:WaitShowDialogue("Alrighty, I guess you do know how to.")
@@ -237,7 +237,7 @@ function Cooking(player, partner, location)
                 goto choose_again
             end
         end
-        Recipes()
+        Recipes(player)
     end
     ::end_cooking::
     

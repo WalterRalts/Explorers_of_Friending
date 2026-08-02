@@ -16,7 +16,6 @@ local EntohTownCenter = {}
 --Engine callback function
 local flow_talk = 0
 function EntohTownCenter.Init(map)
-
   COMMON.CreateWalkArea("Tidy", 200, 300, 48, 48)
   GROUND:CharSetAnim(CH("Flow"), "Sleep", true)
   if flow_talk == 1 then
@@ -120,12 +119,14 @@ function EntohTownCenter.WaterHole_Action(obj, activator)
 end
 
 function EntohTownCenter.Sign_Action(obj, activator)
-  UI:ResetSpeaker()
   if sign_tutorial ~= 1 then
-    UI:SetAutoFinish(true)
-    UI:WaitShowDialogue("You can get dungeon points by doing certain things in a certain group of dungeons.")
-    UI:WaitShowDialogue("Some dungeons, including this one, will only require completion. Other dungeons may require certain items to be turned in, or Pokemon to find.")
-    UI:WaitShowDialogue("Getting enough dungeon experience will unlock things that will help you on your future journeys, so be sure to complete as many of these as you can.")
+    EXPLCOMMON.SignDialogue(
+      "You can get dungeon points by doing certain things in a certain group of dungeons.\n" +
+      "Some dungeons, including this one, will only require completion.\n" +
+      "Other dungeons may require certain items to be turned in, or Pokemon to find.\n" +
+      "Getting enough dungeon experience will unlock things that will help you on your future journeys,\n" +
+      "so be sure to complete as many of these as you can."
+    )
     sign_tutorial = 1
   end
 
@@ -342,8 +343,8 @@ function EntohTownCenter.Gran_Action(obj, activator)
 end
 
 function EntohTownCenter.Tidy_Action(obj, activator)
-  local tidy = CH("Tidy")
-  UI:SetSpeaker(tidy)
+  EXPLCOMMON.FaceEachother(obj, activator)
+  UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Stay clean, Rexxy!")
 end
@@ -351,7 +352,6 @@ end
 function EntohTownCenter.Flow_Action(obj, activator)
   local flow = CH("Flow")
   local rexio = CH("PLAYER")
-
   if flow_talk == 0 then
     UI:SetSpeaker(flow)
     UI:SetSpeakerEmotion("Sigh")
@@ -363,13 +363,13 @@ function EntohTownCenter.Flow_Action(obj, activator)
 
     UI:SetSpeaker(flow)
     UI:SetSpeakerEmotion("Sigh")
-    UI:WaitShowTimedDialogue("...[pause=65][speed=0.6] ...[pause=65] ...", 70)
+    UI:WaitShowTimedDialogue("...[pause=45][speed=0.6] ...[pause=45] ...", 70)
 
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowTimedDialogue("Meep.", 15)
+    UI:WaitShowTimedDialogue("Meep.", 25)
 
-   EXPLCOMMON.FaceEachother(flow, activator)
+    EXPLCOMMON.FaceEachother(flow, activator)
     GROUND:CharSetAnim(CH("Flow"), "Charge", true)
     UI:SetSpeaker(flow)
     UI:SetSpeakerEmotion("Angry")
@@ -377,21 +377,21 @@ function EntohTownCenter.Flow_Action(obj, activator)
     flow_talk = 1
     GROUND:CharSetAnim(flow, "Idle", true)
   else
-   EXPLCOMMON.FaceEachother(flow, activator)
+    EXPLCOMMON.FaceEachother(flow, activator)
     UI:SetSpeaker(flow)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("Now I have to start all over...")
   end
-
 end
 
 function EntohTownCenter.Worker_Action(obj, activator)
   local timba = CH("Worker")
-
   if SV.Story.chap == -6 then
     UI:SetSpeaker(timba)
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue("Thank goodness work on the East is over...")
+  else
+    EntohTownCenter.Entoh_EastEnter_Touch()
   end
 end
 
@@ -420,6 +420,9 @@ function EntohTownCenter.Budeg_Action(obj, activator)
   EXPLCOMMON.DebugWithBudeg()
 end
 
+function EntohTownCenter.Worker2_Action(obj, activator)
+  EntohTownCenter.Entoh_SouthEnter_Touch()
+end
 
 return EntohTownCenter
 

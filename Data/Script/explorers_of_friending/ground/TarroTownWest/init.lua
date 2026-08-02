@@ -153,21 +153,15 @@ end
 
 function TarroTownWest.PlantationStorage_Sign_Action()
   sign_check = 1
-  UI:ResetSpeaker()
-  UI:SetAutoFinish(true)
-  UI:WaitShowDialogue("These stairs lead to the plant-storage room. Do not touch any of the plants within the facility. Thank you.\n - Greenly Facility")
-
-  UI:SetAutoFinish(false)
+  EXPLCOMMON.SignDialogue("These stairs lead to the plant-storage room. Do not touch any of the plants within the facility. Thank you.\n - Greenly Facility")
 end
 
 function TarroTownWest.Sign_Action(obj, activator)
-  UI:ResetSpeaker()
-  UI:SetAutoFinish(true)
-  UI:WaitShowDialogue("Tarro Town Outskirts ->\n Tarro Town Square ^")
-  UI:SetAutoFinish(false)
+  EXPLCOMMON.SignDialogue("Tarro Town Outskirts ->\n Tarro Town Square ^")
+
   UI:SetSpeaker(activator)
   UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("(These signs are so convenient.)")
+  UI:WaitShowDialogue("(These signs are so convenient, whoever made signs must've been really smart.)")
 end
 
 function TarroTownWest.Tsudosen_Action(obj, activator)

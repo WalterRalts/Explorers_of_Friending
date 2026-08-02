@@ -76,6 +76,20 @@ function EXPLCOMMON.CharHappyHop(char)
   EXPLCOMMON.CharHop(char)
 end
 
+---Sign Words
+---@param string string
+function EXPLCOMMON.SignDialogue(string)
+  UI:SetAutoFinish(true)
+  UI:ResetSpeaker(false)
+  UI:SetCenter(true)
+  UI:WaitShowDialogue(string)
+  UI:SetAutoFinish(false)
+end
+
+
+---Sets the emotion of the specified character.
+---@param char GroundCH
+---@param emote? PortEmote
 function EXPLCOMMON.SetCharAndEmotion(char, emote)
   if char == "none" then
     UI:ResetSpeaker()
@@ -87,7 +101,7 @@ end
 
 ---Teleports an entity to a marker
 ---@param char GroundCH
----@param marker Marker
+---@param marker string
 ---@param dir Dir8
 function EXPLCOMMON.TeleportToMarker(char, marker, dir)
   GROUND:TeleportTo(char, MRKR(marker).Position.X, MRKR(marker).Position.Y, dir, 0)
@@ -141,6 +155,17 @@ function EXPLCOMMON.FaceEachother(char1, char2)
     GROUND:CharTurnToCharAnimated(char2, char1, 4)
     end)
   TASK:JoinCoroutines({coro1, coro2})
+end
+
+function EXPLCOMMON.GroupFacer(group, char, time)
+  for i = 1, #group, 1 do
+    if time ~= nil then
+      GROUND:CharTurnToCharAnimated(group[i], char, 4)
+      GAME:WaitFrames(math.random(2, 15))
+    else
+      GROUND:CharTurnToChar(group[i], char)
+    end
+  end
 end
 
 function EXPLCOMMON.TwoTeam()
@@ -235,6 +260,7 @@ end
 function EXPLCOMMON.DebugWithBudeg()
   local budeg = CH("Budeg")
   local area_name = GAME:GetCurrentGround().AssetName
+  EXPLCOMMON.FaceEachother(budeg, CH("PLAYER"))
   if area_name == "TarroTownEast" then
     UI:SetSpeaker(budeg)
     UI:SetSpeakerEmotion("Worried")
@@ -252,7 +278,7 @@ function EXPLCOMMON.DebugWithBudeg()
     UI:SetSpeaker(budeg)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("Zzt, this town is weird.[pause=30] A little too natural for me.")
-    UI:WaitShowDialogue("Flowers everywhere,[pause=60] stone buildings,[pause=60] and a Drampa telling stories like he's 300 years old.")
+    UI:WaitShowDialogue("Flowers everywhere,[pause=30] stone buildings,[pause=30] and a Drampa telling stories like he's 300 years old.")
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Very informative stories.")
     UI:SetSpeakerEmotion("Stunned")
@@ -286,7 +312,6 @@ function EXPLCOMMON.DebugWithBudeg()
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Good luck with that.")
   end
-  EXPLCOMMON.FaceEachother(budeg, CH("PLAYER"))
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Zzt, welcome to dev mode. Bzzt, I am made to skip scenes and jump bewteen characters.")
   UI:SetSpeakerEmotion("Worried")
@@ -313,13 +338,25 @@ function EXPLCOMMON.DebugWithBudeg()
       result = UI:ChoiceResult()
     if result == 1 then
       UI:SetSpeakerEmotion("Happy")
-      local choices = {
+      local choices2 = {
         ("Clouds..."),
         ("Fight!"),
         ("Darkness.")}
-      UI:BeginChoiceMenu("Please choose a chapter for dev work.", choices, 1, 2)
+      UI:BeginChoiceMenu("Please choose a chapter for dev work.", choices2, 1, 2)
       UI:WaitForChoice()
+
       result = UI:ChoiceResult()
+      UI:SetSpeaker(budeg)
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("Changing to Maru and Azura!")
+      GAME:FadeOut(false, 20)
+      if CH("PLAYER").Nickname == "Rexio" then
+        SV.tablestats.aurm_stats = GAME:GetPlayerPartyTable()
+        GAME:RemovePlayerTeam(0)
+        for i, p in ipairs(SV.tablestats.bluetail_stats) do
+          GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
+        end
+      end
       if result == 1 then --Prologue 1
         EXPLCOMMON.SetNewChapter(-1)
         GAME:EnterGroundMap("tarro_town_outside", "TarroTownOutside", "OutsideStart")
@@ -330,18 +367,16 @@ function EXPLCOMMON.DebugWithBudeg()
         EXPLCOMMON.SetNewChapter(-3)
         GAME:EnterGroundMap("tarro_town_outside", "MaruHome", "MaruHome_MainEnter")
       end
-
     elseif result == 2 then
       UI:SetSpeaker(budeg)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("Changing to Rexio!")
 
-      GAME:FadeOut(false, 60)
-      --Begin replacement
-      --Save Maru and Azura's stats
-      SV.guilders.tarro_town.bluetail_stats = GAME:GetPlayerPartyTable()
-      --Replace them with Rexio
-      GAME:RemovePlayerTeam(0)
+      GAME:FadeOut(false, 20)
+      if CH("PLAYER").Nickname ~= "Rexio" then
+        SV.tablestats.bluetail_stats = GAME:GetPlayerPartyTable()
+        GAME:RemovePlayerTeam(0)
+      end
       GAME:RemovePlayerTeam(0)
       local mon_id = RogueEssence.Dungeon.MonsterID("riolu", 0, "normal", Gender.Male)
 
@@ -404,7 +439,7 @@ function EXPLCOMMON.DebugWithBudeg()
         GAME:FadeOut(false, 60)
         --Begin replacement
         --Save Maru and Azura's stats
-        SV.guilders.tarro_town.bluetail_stats = GAME:GetPlayerPartyTable()
+        SV.tablestats.bluetail_stats = GAME:GetPlayerPartyTable()
         --Replace them with Rexio
         GAME:RemovePlayerTeam(0)
         GAME:RemovePlayerTeam(0)
@@ -506,4 +541,17 @@ function EXPLCOMMON.PrintTable(t, indent)
       print(formatting .. tostring(value))
     end
   end
+end
+
+function EXPLCOMMON.CheckHeld(item)
+  local baggy = {}
+  for i = 0, GAME:GetPlayerBagCount() - 1, 1 do
+    baggy[i] = GAME:GetPlayerBagItem(i).ID
+  end
+  for _, v in pairs(baggy) do
+    if v == item or GAME:GetPlayerEquippedItem(0).ID == item then
+      held = true
+    end
+  end
+  return held
 end

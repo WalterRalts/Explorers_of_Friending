@@ -91,7 +91,7 @@ end
 function DesertSE.Gunke_Action(obj, activator)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("Those four haven't moved out of the desert all day, keh.")
+  UI:WaitShowDialogue("Those Baltoy haven't moved out of the desert all day, keh.")
 end
 
 function DesertSE.cactus2_Action(obj, activator)

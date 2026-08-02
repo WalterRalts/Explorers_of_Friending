@@ -117,7 +117,7 @@ function COMMON.RespawnAllies()
   local playeridx = GAME:GetTeamLeaderIndex()
 
   --Place player teammates
-  for i = 1,3,1
+  for i = 1,RogueEssence.Dungeon.ExplorerTeam.MAX_TEAM_SLOTS,1
   do
     GROUND:RemoveCharacter("Teammate" .. tostring(i))
   end
@@ -461,10 +461,10 @@ function COMMON.UnlockWithFanfare(dungeon_id, from_dungeon)
       UI:ResetSpeaker()
       UI:SetCenter(true)
       UI:WaitShowDialogue(STRINGS:FormatKey("DLG_NEW_AREA_TO"))
-	end
+	  end
     GAME:UnlockDungeon(dungeon_id)
     UI:ResetSpeaker(false)
-	UI:SetCenter(true)
+	  UI:SetCenter(true)
 
     SOUND:PlayFanfare("Fanfare/NewArea")
     UI:WaitShowDialogue(STRINGS:FormatKey("DLG_NEW_AREA", zone:GetColoredName()))

@@ -1073,7 +1073,7 @@ function BATTLE_SCRIPT.ZiggyInteract(owner, ownerChar, context, args)
           UI:WaitShowDialogue("No...[pause=35] no, I can't fall! Not now!")
         elseif say_choice == 4 then
           UI:SetSpeakerEmotion("Teary-Eyed")
-          UI:WaitShowDialogue("[color=#01FE10]Tarro Tree[color]![pause=55] [emote=Pain]You are going to be freed from this!")
+          UI:WaitShowDialogue("[color=#01FE10]Tarro Tree[color]![pause=55] [emote=Pain]We'll save you!")
         end
       elseif ratio <= 50 then
         UI:SetSpeakerEmotion("Happy")
@@ -1265,37 +1265,55 @@ function BATTLE_SCRIPT.AzuraInteract(owner, ownerChar, context, args)
     local target = context.Target
     local user = context.User
 
-    if current_dungeon == "Tarro Forest" and SV.Story.chap == -1 then
-      if ratio <= 25 then
-        UI:SetSpeaker(target)
-        UI:SetSpeakerEmotion("Pain")
-        UI:WaitShowDialogue("I... I can't... need pie...!")
-      elseif ratio <= 50 then
-        UI:SetSpeaker(target)
-        UI:SetSpeakerEmotion("Determined")
-        UI:WaitShowDialogue("It's tough, but I need my pie!")
+    if current_dungeon == "Tarro Forest" then
+      if SV.Story.chap == -1 then
+        if ratio <= 25 then
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Pain")
+          UI:WaitShowDialogue("I... I can't... need pie...!")
+        elseif ratio <= 50 then
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Determined")
+          UI:WaitShowDialogue("It's tough, but I need my pie!")
+        else
+          if say_choice == 1 then
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Happy")
+            UI:WaitShowDialogue("Okay, Maru! Let's go get that apple!")
+          elseif say_choice == 2 then
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Worried")
+            UI:WaitShowDialogue("Where are those stairs?")
+
+            UI:SetSpeaker(user)
+            UI:SetSpeakerEmotion("Normal")
+            UI:WaitShowDialogue("If we knew, we'd be out by now.")
+
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Worried")
+            UI:WaitShowDialogue("We have to find them now?")
+            UI:WaitShowDialogue("[speed=0.05]...[speed=1.0][emote=Happy]the pie'll be worth it!")
+          elseif say_choice == 3 then
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Shouting")
+            UI:WaitShowDialogue("For the pie!")
+          end
+        end
       else
-        if say_choice == 1 then
+        if ratio <= 25 then
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Pain")
+          UI:WaitShowDialogue("Ack... I'm sorry...")
+        elseif ratio <= 50 then
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Determined")
+          UI:WaitShowDialogue("Nothing to worry 'bout.")
+          UI:SetSpeakerEmotion("Worried")
+          UI:WaitShowDialogue("...I think.")
+        else
           UI:SetSpeaker(target)
           UI:SetSpeakerEmotion("Happy")
-          UI:WaitShowDialogue("Okay, Maru! Let's go get that apple!")
-        elseif say_choice == 2 then
-          UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Worried")
-          UI:WaitShowDialogue("Where are those stairs?")
-
-          UI:SetSpeaker(user)
-          UI:SetSpeakerEmotion("Normal")
-          UI:WaitShowDialogue("If we knew, we'd be out by now.")
-
-          UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Worried")
-          UI:WaitShowDialogue("We have to find them now?")
-          UI:WaitShowDialogue("[speed=0.05]...[speed=1.0][emote=Happy]the pie'll be worth it!")
-        elseif say_choice == 3 then
-          UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Shouting")
-          UI:WaitShowDialogue("For the pie!")
+          UI:WaitShowDialogue("Let's go! Can't wait!")
         end
       end
     elseif current_dungeon == "Tarro Tree Hallows" then
@@ -1610,57 +1628,94 @@ function BATTLE_SCRIPT.FlowInteract(owner, ownerChar, context, args)
     local ratio = target.HP * 100 // target.MaxHP
     local current_dungeon = DUNGEON:DungeonDisplayName()
     local say_choice = math.random(3)
-
     if current_dungeon == "Dreaded Depths" then
-      if say_choice == 3 then
-        if user.Name == "Tidy" then
+      if ratio <= 25 then
+        if say_choice == 3 then
+          if user.Name == "Tidy" then
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Pain")
+            UI:WaitShowDialogue("Tidy...[pause=30] stay near me...")
+
+            UI:SetSpeaker(user)
+            UI:SetSpeakerEmotion("Surprised")
+            UI:WaitShowDialogue("Flow! Flow! No, you can't go down on me!")
+
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Pain")
+            UI:WaitShowDialogue("My flower will stand for you, Tidy.")
+
+            UI:SetSpeaker(user)
+            UI:SetSpeakerEmotion("Shouting")
+            UI:WaitShowDialogue("NOOOOOOOOOOOO!!")
+
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Sigh")
+            UI:WaitShowDialogue("I'll be fine, Tidy...")
+          else
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Normal")
+            UI:WaitShowDialogue("...urk...")
+          end
+        elseif say_choice == 2 then
           UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Worried")
-          UI:WaitShowDialogue("Geez, Tidy,[pause=30] there's not even that much dirt...")
-
-          UI:SetSpeaker(user)
-          UI:SetSpeakerEmotion("Angry")
-          UI:WaitShowDialogue("Not that much dirt?![pause=40] It smells like poison in here!")
-
-          UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Stunned")
-          UI:WaitShowDialogue("It's a swamp...")
-
-          UI:SetSpeaker(user)
-          UI:SetSpeakerEmotion("Shouting")
-          UI:WaitShowDialogue("GET ME OOOOOOUT!")
-
-          UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Sigh")
-          UI:WaitShowDialogue("Just stay next to my flower, Tidy.")
+          UI:SetSpeakerEmotion("Pain")
+          UI:WaitShowDialogue("...the winds here are getting stronger!")
         else
           UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Normal")
-          UI:WaitShowDialogue("Don't worry about the grime.[pause=15] My flower is good at dealing with that.")
+          UI:SetSpeakerEmotion("Pain")
+          UI:WaitShowDialogue("Geez, didn't expect it to be this bad...")
         end
-      elseif say_choice == 2 then
-        UI:SetSpeaker(target)
-        UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("...the winds here aren't too strong.[pause=10] If[emote=Happy] I fall, one of you will have to carry me.")
-      else
-        UI:SetSpeaker(target)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("Just have to feel the flowers. Not too hard, yes?")
+      elseif ratio <= 100 then
+        if say_choice == 3 then
+          if user.Name == "Tidy" then
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Worried")
+            UI:WaitShowDialogue("Geez, Tidy,[pause=30] there's not even that much dirt...")
 
-        if user.Name == "Rexio" then
-          UI:SetSpeaker(user)
-          UI:SetSpeakerEmotion("Normal")
-          UI:WaitShowDialogue("Where are they, though...?")
+            UI:SetSpeaker(user)
+            UI:SetSpeakerEmotion("Angry")
+            UI:WaitShowDialogue("Not that much dirt?![pause=40] It smells like poison in here!")
 
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Stunned")
+            UI:WaitShowDialogue("It's a swamp...")
+
+            UI:SetSpeaker(user)
+            UI:SetSpeakerEmotion("Shouting")
+            UI:WaitShowDialogue("GET ME OOOOOOUT!")
+
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Sigh")
+            UI:WaitShowDialogue("Just stay next to my flower, Tidy.")
+          else
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Normal")
+            UI:WaitShowDialogue("Don't worry about the grime.[pause=15] My flower is good at dealing with that.")
+          end
+        elseif say_choice == 2 then
           UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Stunned")
-          UI:WaitShowDialogue("Ah... um...")
+          UI:SetSpeakerEmotion("Normal")
+          UI:WaitShowDialogue("...the winds here aren't too strong.[pause=10] If[emote=Happy] I fall, one of you will have to carry me.")
+        else
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("Just have to feel the flowers. Not too hard, yes?")
+
+          if user.Name == "Rexio" then
+            UI:SetSpeaker(user)
+            UI:SetSpeakerEmotion("Normal")
+            UI:WaitShowDialogue("Where are they, though...?")
+
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Stunned")
+            UI:WaitShowDialogue("Ah... um...")
+          end
         end
       end
     else
       if say_choice == 3 then
         UI:SetSpeaker(target)
-        UI:SetSpeakerEmotion("Pain")
+        UI:SetSpeakerEmotion("Worried")
         UI:WaitShowDialogue("Why this town, of all of towns?")
       elseif say_choice == 2 then
         UI:SetSpeaker(target)
@@ -1688,36 +1743,88 @@ function BATTLE_SCRIPT.TidyInteract(owner, ownerChar, context, args)
     local say_choice = math.random(3)
 
     if current_dungeon == "Dreaded Depths" then
-      if say_choice == 3 then
-        if user.Name == "Flow" then
+      if ratio <= 25 then
+        if say_choice == 3 then
+          if user.Name == "Flow" then
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Dizzy")
+            UI:WaitShowDialogue("FLOW YOUR FLOWER IS NOT WORKING I'M MELTIIIIIING!!!")
+
+            UI:SetSpeaker(user)
+            UI:SetSpeakerEmotion("Worried")
+            UI:WaitShowDialogue("Tidy, you aren't melting...")
+
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Dizzy")
+            UI:WaitShowDialogue("BLEEEEEEEEHHH!!!")
+
+            UI:SetSpeaker(user)
+            UI:SetSpeakerEmotion("Worried")
+            UI:WaitShowDialogue("...guys, we need to get out of here.")
+          else
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Dizzy")
+            UI:WaitShowDialogue("AAAAAAAAAAAAA!!!")
+          end
+        elseif say_choice == 2 then
           UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Crying")
-          UI:WaitShowDialogue("FLOOOOOOOOOOW!")
+          UI:SetSpeakerEmotion("Determined")
+          UI:WaitShowDialogue("BLEEEEEEEEHHH!!!")
+        else
+          if user.Name == "Wurp" then
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Dizzy")
+            UI:WaitShowDialogue("WAAAAAAAAAAAAAHHH!!!")
 
-          UI:SetSpeaker(user)
-          UI:SetSpeakerEmotion("Worried")
-          UI:WaitShowDialogue("Yeah yeah,[pause=20] I know,[pause=40] just keep close to my flower and you'll be fine.")
+            UI:SetSpeaker(user)
+            UI:SetSpeakerEmotion("Stunned")
+            UI:WaitShowDialogue("...")
 
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Dizzy")
+            UI:WaitShowDialogue("BLEEEEEEEEHHH!!!")
+
+            UI:SetSpeaker(user)
+            UI:SetSpeakerEmotion("Worried")
+            UI:WaitShowDialogue("You'we scawing me...")
+          else
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Dizzy")
+            UI:WaitShowDialogue("...the dirt,[pause=50] the grime.")
+          end
+        end
+      else
+        if say_choice == 3 then
+          if user.Name == "Flow" then
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Crying")
+            UI:WaitShowDialogue("FLOOOOOOOOOOW!")
+
+            UI:SetSpeaker(user)
+            UI:SetSpeakerEmotion("Worried")
+            UI:WaitShowDialogue("Yeah yeah,[pause=20] I know,[pause=40] just keep close to my flower and you'll be fine.")
+
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Teary-Eyed")
+            UI:WaitShowDialogue("Flooooow...")
+
+            UI:SetSpeaker(user)
+            UI:SetSpeakerEmotion("Worried")
+            UI:WaitShowDialogue("I gotcha.")
+          else
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Dizzy")
+            UI:WaitShowDialogue("THIS PLACE IS SO DIRTY GET ME OUUUUUT!")
+          end
+        elseif say_choice == 2 then
           UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Teary-Eyed")
-          UI:WaitShowDialogue("Flooooow...")
-
-          UI:SetSpeaker(user)
-          UI:SetSpeakerEmotion("Worried")
-          UI:WaitShowDialogue("I gotcha.")
+          UI:SetSpeakerEmotion("Determined")
+          UI:WaitShowDialogue("I'll... need to take, like... 30 baths...")
         else
           UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Dizzy")
-          UI:WaitShowDialogue("THIS PLACE IS SO DIRTY GET ME OUUUUUT!")
+          UI:SetSpeakerEmotion("Angry")
+          UI:WaitShowDialogue("GET US OUT![pause=10] PRONTO!")
         end
-      elseif say_choice == 2 then
-        UI:SetSpeaker(target)
-        UI:SetSpeakerEmotion("Determined")
-        UI:WaitShowDialogue("I'll... need to take, like... 30 baths...")
-      else
-        UI:SetSpeaker(target)
-        UI:SetSpeakerEmotion("Angry")
-        UI:WaitShowDialogue("GET US OUT![pause=10] PRONTO!")
       end
     else
       if say_choice == 3 then
@@ -1816,7 +1923,6 @@ function BATTLE_SCRIPT.WurpInteract(owner, ownerChar, context, args)
           UI:SetSpeakerEmotion("Normal")
           UI:WaitShowDialogue("Gonna be hard to aim in this darkness...")
         end
-
       else
         UI:SetSpeaker(target)
         UI:SetSpeakerEmotion("Pain")
@@ -1951,7 +2057,21 @@ function BATTLE_SCRIPT.RexioInteract(owner, ownerChar, context, args)
         else
           UI:SetSpeaker(target)
           UI:SetSpeakerEmotion("Pain")
-          UI:WaitShowDialogue("Now I have to try and keep up?![pause=40] This isn't how it works!")
+          UI:WaitShowDialogue("Now I have to try and keep up?![pause=40][emote=Stunned] This isn't how it works!")
+        end
+      elseif ratio <= 50 then
+        if say_choice == 3 then
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Normal")
+          UI:WaitShowDialogue("It's fine.")
+        elseif say_choice == 2 then
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Normal")
+          UI:WaitShowDialogue("Pushing a little but it's light work...")
+        else
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("I'm still standing, aren't I?")
         end
       else
         if say_choice == 3 then
@@ -1965,61 +2085,159 @@ function BATTLE_SCRIPT.RexioInteract(owner, ownerChar, context, args)
         else
           UI:SetSpeaker(target)
           UI:SetSpeakerEmotion("Happy")
-          UI:WaitShowDialogue("Try to keep up.")
+          UI:WaitShowDialogue("Try to keep up, guys.")
         end
       end
     elseif current_dungeon == "Apple Forest" then
-      if say_choice == 3 then
-        if user.Name == "Maru" then
+      if ratio <= 25 then
+        if say_choice == 3 then
           UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Normal")
-          UI:WaitShowDialogue("Hey,[pause=40] Maru, yeah?")
-
-          UI:SetSpeaker(user)
-          UI:SetSpeakerEmotion("Normal")
-          UI:WaitShowDialogue("Mhm?")
-
+          UI:SetSpeakerEmotion("Pain")
+          UI:WaitShowDialogue("Um... okay... this isn't good...")
+        elseif say_choice == 2 then
           UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Normal")
-          UI:WaitShowDialogue("Don't get in my way,[pause=30] I got this.")
-
-          UI:SetSpeaker(user)
-          UI:SetSpeakerEmotion("Worried")
-          UI:WaitShowDialogue("Sure, I think.")
+          UI:SetSpeakerEmotion("Angry")
+          UI:WaitShowDialogue("Why can't apples heal?!")
         else
           UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Worried")
-          UI:WaitShowDialogue("...a strange feeling of apples again.[pause=30] Geez, I can't get away from apples.")
+          UI:SetSpeakerEmotion("Pain")
+          UI:WaitShowDialogue("Now I have to try and keep up?![pause=40][emote=Stunned] This isn't how it works!")
         end
+      else
+        if say_choice == 3 then
+          if user.Name == "Maru" then
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Normal")
+            UI:WaitShowDialogue("Hey,[pause=40] Maru, yeah?")
 
+            UI:SetSpeaker(user)
+            UI:SetSpeakerEmotion("Normal")
+            UI:WaitShowDialogue("Mhm?")
+
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Normal")
+            UI:WaitShowDialogue("Don't get in my way,[pause=30] I got this.")
+
+            UI:SetSpeaker(user)
+            UI:SetSpeakerEmotion("Worried")
+            UI:WaitShowDialogue("Sure, I think.")
+          else
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Worried")
+            UI:WaitShowDialogue("...a strange feeling of apples again.[pause=30] Geez, I can't get away from apples.")
+          end
+
+        elseif say_choice == 2 then
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Worried")
+          UI:WaitShowDialogue("I'd sense things, but there are apples everywhere...")
+
+          if user.Name == "Maru" and SV.apple_forest.revisit == false then
+            UI:SetSpeaker(user)
+            UI:SetSpeakerEmotion("Normal")
+            UI:WaitShowDialogue("Sense?")
+
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Normal")
+            UI:WaitShowDialogue("Yeah,[pause=40] I'm just cool enough to feel the aura of stuff or whatever.")
+
+            local mon_define = _DATA.Save.ActiveTeam.Players[1]
+            UI:SetSpeaker(mon_define)
+            UI:SetSpeakerEmotion("Inspired")
+            UI:WaitShowDialogue("Cooooooool...!")
+
+            UI:SetSpeaker(target)
+            UI:SetSpeakerEmotion("Happy")
+            UI:WaitShowDialogue("Heh. Yeah, I am.")
+          end
+        else
+          UI:SetSpeaker(target)
+          UI:SetSpeakerEmotion("Happy")
+          UI:WaitShowDialogue("Try to keep up.")
+        end
+      end
+    else
+      if say_choice == 3 then
+        UI:SetSpeaker(target)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("I'll try to sense things out.")
       elseif say_choice == 2 then
         UI:SetSpeaker(target)
         UI:SetSpeakerEmotion("Worried")
-        UI:WaitShowDialogue("I'd sense things, but there are apples everywhere...")
-
-        if user.Name == "Maru" and SV.apple_forest.revisit == false then
-          UI:SetSpeaker(user)
-          UI:SetSpeakerEmotion("Normal")
-          UI:WaitShowDialogue("Sense?")
-
-          UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Normal")
-          UI:WaitShowDialogue("Yeah,[pause=40] I'm just cool enough to feel the aura of stuff or whatever.")
-
-          local mon_define = _DATA.Save.ActiveTeam.Players[1]
-          UI:SetSpeaker(mon_define)
-          UI:SetSpeakerEmotion("Inspired")
-          UI:WaitShowDialogue("Cooooooool...!")
-
-          UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Happy")
-          UI:WaitShowDialogue("Heh. Yeah, I am.")
-        end
+        UI:WaitShowDialogue("...ugh,[pause=20] I feel like this would've been so easy with dad here.")
       else
         UI:SetSpeaker(target)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("Try to keep up.")
       end
     end
+  end
+end
+
+--boss interacts
+local zoomed = false
+function BATTLE_SCRIPT.ZoomerSass(owner, ownerChar, context, args)
+  local ratio = context.User.HP / context.User.MaxHP
+  PrintInfo(ratio)
+  PrintInfo(context.User.Name)
+  if context.User.Name == "???" and zoomed == false then
+    if ratio <= 0.4 then
+      UI:SetSpeaker(context.User)
+      UI:SetSpeakerEmotion("Angry")
+      UI:WaitShowDialogue("Buncha lousy kids,[pause=40] this is NOT over!")
+
+      zoomed = true
+    end
+  end
+end
+
+function BATTLE_SCRIPT.ItemGoal(owner, ownerChar, context, args)
+  PrintInfo("TRIGGERED!")
+  local baggy = {}
+  for i = 0, GAME:GetPlayerBagCount() - 1, 1 do
+    baggy[i] = GAME:GetPlayerBagItem(i).ID
+  end
+
+  --up to four random items with four random amounts in a table
+  --compare with pairs to get item check and compare tables
+  local tile_check = {}
+  local bag_check = {}
+  local slot = 0
+  local count = map.Rand:Next(0, 4) + 1
+  local item = map.Rand:Next(1, count)
+  local amount = map.Rand:Next(1, 5)
+  local function addToTable(itemID)
+    for i = 0, amount do
+      tile_check[slot + i] = itemID
+    end
+    slot = slot + amount
+  end
+  if item == 1 then
+    addToTable("apple")
+  elseif item == 2 then
+    addToTable("crunchy_leaf")
+  elseif item == 3 then
+    addToTable("berry_oran")
+  elseif item == 4 then
+    addToTable("ammo_cacnea_spike")
+  end
+  table.sort(tile_check)
+  local goodCheck = 0
+  for i, v in ipairs(tile_check) do
+    print(i, v)
+    for ii, w in pairs(baggy) do
+      print(ii, w)
+      if v == w then
+        goodCheck = goodCheck + 1
+        bag_check[goodCheck] = w
+        i = 1
+      end
+    end
+  end
+  table.sort(bag_check)
+  if tile_check == bag_check then
+    PrintDebug("PASS!")
+  else
+    context.User.Position.Y = context.User.Position.Y + 1
   end
 end

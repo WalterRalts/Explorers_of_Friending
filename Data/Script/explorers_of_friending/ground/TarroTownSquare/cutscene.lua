@@ -331,7 +331,6 @@ function Square.FightFightFight()
 end
 
 function Square.AfterQuiz()
-  Quiz[1] = false
   local partner = CH('Teammate1')
   local maru = CH("PLAYER")
   local azura = CH('Teammate1')
@@ -356,7 +355,7 @@ function Square.AfterQuiz()
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("An explosion from the Big Tree?")
 
- EXPLCOMMON.FaceEachother(ziggy, senna)
+  EXPLCOMMON.FaceEachother(ziggy, senna)
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Angry")
   UI:WaitShowDialogue("No! No no no no!")
@@ -401,4 +400,5 @@ function Square.AfterQuiz()
   GAME:MoveCamera(0, 0, 30, true)
   GAME:CutsceneMode(false)
   AI:EnableCharacterAI(partner)
+  Quiz[1] = false
 end

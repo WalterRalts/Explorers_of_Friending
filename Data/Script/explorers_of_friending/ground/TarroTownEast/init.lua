@@ -185,10 +185,14 @@ function TarroTownEast.TarroForestEntrance_Touch(obj, activator)
     local ground_entrances = {}
     COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances)
   elseif SV.Story.sect > 1 then
-    local dungeon_entrances = {"tarro_forest"}
-    local ground_entrances = {}
-    SV.Story.dunsect = 0
-    COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances)
+    UI:SetSpeaker(azura)
+    GROUND:CharTurnToCharAnimated(maru, azura, 2)
+    UI:SetSpeakerEmotion("Angry")
+    UI:WaitShowDialogue("MARU!")
+
+    UI:SetSpeaker(maru)
+    UI:SetSpeakerEmotion("Stunned")
+    UI:WaitShowDialogue("Yeesh!")
   else
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Worried")
@@ -242,11 +246,8 @@ end
 
 function TarroTownEast.TTEastSign_Action(obj, activator)
   local maru = CH("PLAYER")
-  UI:ResetSpeaker()
-  UI:SetAutoFinish(true)
-  UI:WaitShowDialogue("<- Tarro Town Outskirts \n Tarro Town Square ^")
+  EXPLCOMMON.SignDialogue("<- Tarro Town Outskirts \n Tarro Town Square ^")
 
-  UI:SetAutoFinish(false)
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Normal")
   GROUND:CharAnimateTurn(maru, Direction.Left, 4, true)
@@ -626,14 +627,11 @@ function TarroTownEast.Budeg_Action(obj, activator)
 end
 
 function TarroTownEast.Stuffy_Action(obj, activator)
-  local maru = CH("PLAYER")
-  local azura = CH("Teammate1")
-  local stuff = CH('Stuffy')
-  
   EXPLCOMMON.CharHop("Stuffy")
   EXPLCOMMON.SetCharAndEmotion(CH("Stuffy"), "Normal")
   UI:WaitShowDialogue("These trees are mine... and those ones over there.")
 end
+
 return TarroTownEast
 
 

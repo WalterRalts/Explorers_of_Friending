@@ -105,7 +105,6 @@ function Apart.TidyIntro()
         GAME:WaitFrames(22)
     end
     GAME:WaitFrames(30)
-    GROUND:MoveToPosition(tidy, mouse.Position.X + 25, mouse.Position.Y, true, 4)
     SOUND:PlaySE("Battle/EVT_Minigame_Wrong")
 
     GAME:WaitFrames(120)

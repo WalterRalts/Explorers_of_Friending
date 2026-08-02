@@ -16,12 +16,12 @@ local TarroTownSquare_ch3 = {}
 ---TarroTownSquare_ch3.Init(map)
 --Engine callback function
 function TarroTownSquare_ch3.Init(map)
-  
+
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
   local partner = CH('Teammate1')
   partner.CollisionDisabled = true
-  
+
   if OutEnter == 1 then
     GROUND:TeleportTo(partner, 1750, 458, Direction.Left, 0)
   end
@@ -57,7 +57,7 @@ end
 
 ---TarroTownSquare_ch3.Update(map)
 --Engine callback function
-function TarroTownSquare_ch3.Update(map)  
+function TarroTownSquare_ch3.Update(map)
   Partner()
 end
 
@@ -146,12 +146,10 @@ function TarroTownSquare_ch3.BuzzStore_Action(obj, activator)
   UI:WaitShowDialogue("Sorry, buzzas.")
   UI:SetSpeakerEmotion("Pain")
   UI:WaitShowDialogue("Can't open the store up yet,[pause=35] [color=#EFBF04]setting it up perfectly iz harder then it lookz, buzz.[color]")
-  local menu = BuzzerShopMenu:new()
+  --[[local menu = BuzzerShopMenu:new()
   UI:SetCustomMenu(menu.menu)
   UI:WaitForChoice()
-
-  
-  --[[UI:SetSpeakerEmotion("Happy")
+  UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Welcome, welcome, buzz!")
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Got some quick stuff here, so buy something, will ya!")
@@ -233,7 +231,7 @@ function TarroTownSquare_ch3.Gepii_Action(obj, activator)
         UI:SetSpeaker(gepii)
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("Ooh![pause=25] Let's get some of the honey!")
-        
+
         UI:SetSpeaker(gekis)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("Gepii, I bought you three whole jars last week.[pause=25] And you still haven't even opened one.")
@@ -248,7 +246,7 @@ function TarroTownSquare_ch3.Gepii_Action(obj, activator)
         UI:WaitShowDialogue("Oh hey, Mars![pause=25] Welcome to town!")
         GROUND:CharAnimateTurn(gepii, Direction.Left, 4, false)
     end
-    
+
 end
 
 --enters
@@ -302,7 +300,7 @@ function TarroTownSquare_ch3.Munch_Action(obj, activator)
     UI:WaitShowDialogue("One of those crunchy salads.[pause=30] Yeah,[emote=Happy] could get of a good bite from that.")
     munch_accept = true
   end
-  local slot = GAME:FindPlayerItem("crunchy_salad", true, true) 
+  local slot = GAME:FindPlayerItem("crunchy_salad", true, true)
 
   if slot:IsValid() then
     UI:SetSpeaker(munch)
@@ -339,6 +337,18 @@ end
 function TarroTownSquare_ch3.Item_Touch(obj, activator)
   EXPLCOMMON.ItemGetSpecial(0, activator)
   SV.item.tarro = true
+end
+
+function TarroTownSquare_ch3.WingmonHouse_Touch(obj, activator)
+  UI:SetSpeaker(activator)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("(A little too fancy for us.)")
+end
+
+function TarroTownSquare_ch3.KekShop_Action(obj, activator)
+  UI:SetSpeaker(CH("Kecleon"))
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Store's closed,[pause=35] still restocking from the rich buying me out,[pause=35] [color=#EFBF04]come back later.[color]")
 end
 
 return TarroTownSquare_ch3

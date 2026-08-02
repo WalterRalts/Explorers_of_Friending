@@ -16,7 +16,6 @@ local deep_tarro_forest = {}
 --Engine callback function
 function deep_tarro_forest.Init(zone)
     DUN_failure = false
-
 end
 
 ---deep_tarro_forest.EnterSegment(zone, rescuing, segmentID, mapID)

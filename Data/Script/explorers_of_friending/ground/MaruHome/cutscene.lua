@@ -297,7 +297,7 @@ function Bluetails.RealPieTime()
 
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Joyous")
-    UI:WaitShowDialogue("Whooooooo!")
+    UI:WaitShowDialogue("Yippee!!")
     GAME:FadeOut(false, 30)
 end
 
@@ -410,9 +410,10 @@ function Bluetails.AfterPieTime()
   UI:WaitShowDialogue("Appreciated.")
 
   local coro1 = TASK:BranchCoroutine(function()
+    EXPLCOMMON.CharHappyHop("Amazuru")
     UI:SetSpeaker(amazuru)
     UI:SetSpeakerEmotion("Shouting")
-    UI:WaitShowDialogue("ARISE MY CHILDREN!")
+    UI:WaitShowDialogue("ARISE, MY CHILDREN!")
     end)
   local coro2 = TASK:BranchCoroutine(function()
     GROUND:CharSetAnim(maru, "Hurt", true)
@@ -424,9 +425,14 @@ function Bluetails.AfterPieTime()
 
   GROUND:CharSetAnim(maru, "None", false)
   GROUND:CharSetAnim(azura, "None", false)
+  GAME:WaitFrames(35)
   UI:SetSpeaker(azura)
   UI:SetSpeakerEmotion("Angry")
   UI:WaitShowDialogue("Whyyyyy???")
+
+  UI:SetSpeaker(amazuru)
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("Works every time.")
 
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Pain")
@@ -459,10 +465,10 @@ function Bluetails.AfterPieTime()
     end)
   TASK:JoinCoroutines({c1, c2})
 
-  GAME:WaitFrames(40)
+  GAME:WaitFrames(30)
   UI:SetSpeaker(ziggy)
   GROUND:CharTurnToCharAnimated(ziggy, maru, 2)
-  GAME:WaitFrames(40)
+  GAME:WaitFrames(20)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("Oh hey, you're up, that's good.[pause=30] [emote=Happy]Less work for me.")
 
@@ -486,7 +492,7 @@ function Bluetails.AfterPieTime()
   UI:SetSpeakerEmotion("Determined")
   UI:WaitShowDialogue("Yep![pause=0] They're more angry now! Hurry up, they might start shooting lightning and stuff!")
 
-  GROUND:MoveToPosition(ziggy, 200, 346, false, 10)
+  GROUND:MoveToPosition(ziggy, 200, 346, false, 7)
   GAME:WaitFrames(65)
 
   EXPLCOMMON.CharSweatdrop("Arama")
@@ -637,10 +643,10 @@ function Bluetails.AfterMailTime()
     end)
   TASK:JoinCoroutines({coro21, coro22})
 
+  mail_read = 2
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Inspired")
   UI:WaitShowDialogue("Really?")
-  mail_read = 2
   SV.Story.sect = 1
   EXPLCOMMON.FadeEnterGround("MaruHomeFood", "Marker")
 end

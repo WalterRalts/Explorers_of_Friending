@@ -101,7 +101,7 @@ end
 
 function TarroTownBigTree_ch3.Tree_2ndFloorEntrance_Touch(obj, activator)
   local maru = CH('PLAYER')
- EXPLCOMMON.SetCharAndEmotion(maru, "Stunned")
+  EXPLCOMMON.SetCharAndEmotion(maru, "Stunned")
   UI:WaitShowDialogue("(That is a crowd and a half.)")
   UI:WaitShowDialogue("(...I'll come back later.)")
 end
@@ -153,8 +153,10 @@ function TarroTownBigTree_ch3.Hollian_Action(obj, activator)
     UI:WaitShowDialogue("Given you wanna go to the top of the tree, then you're gonna have to wait.")
     vile = vile + 1
   else
+    UI:SetSpeaker(holly)
     UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Wait, aren't you two are locals? You heard the explosion.[pause=40] You should probably tell the mayor when she's less busy.")
+    UI:WaitShowDialogue("Wait, aren't you two are locals? You heard the explosion.")
+    UI:WaitShowDialogue("You should probably tell the mayor when she's less busy.")
   end
 end
 
@@ -172,7 +174,7 @@ end
 
 function TarroTownBigTree_ch3.RequestSign_Action(obj, activator)
   local maru = CH('PLAYER')
- EXPLCOMMON.SetCharAndEmotion(maru, "Worried")
+  EXPLCOMMON.SetCharAndEmotion(maru, "Worried")
   UI:WaitShowDialogue("(Whoa! That's a lot of requests!)")
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("(Guess all the guilds and rescue teams are busy with something bigger...)")
@@ -180,7 +182,7 @@ end
 
 function TarroTownBigTree_ch3.Tent_Action(obj, activator)
   local maru = CH('PLAYER')
- EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
+  EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
   UI:WaitShowDialogue("(This tent looks like it's for someone else...)")
 end
 

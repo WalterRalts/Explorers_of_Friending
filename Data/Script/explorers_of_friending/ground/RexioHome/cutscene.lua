@@ -109,8 +109,6 @@ function Aurm.Feeling()
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue("Uugghhhhhhh!")
 
-    SV.guilders.entoh_town.scan_level = 1
-
     GAME:CutsceneMode(false)
     GAME:MoveCamera(0, 0, 0, true)
 end
@@ -221,7 +219,7 @@ function Aurm.Home()
         UI:WaitShowDialogue("Probably like a headband.")
         UI:WaitShowDialogue("Put it on.")
 
-        SV.Story.sect = 4
+        SV.Story.sect = 5
         GAME:GivePlayerItem("held_power_band")
         GAME:CutsceneMode(false)
         GAME:MoveCamera(0, 0, 0, true)
@@ -253,7 +251,7 @@ function Aurm.Home()
         UI:SetSpeakerEmotion("Joyous")
         UI:WaitShowDialogue("That's my boy!")
 
-        SV.Story.flag = 1
+        SV.Story.sect = 4
         GAME:CutsceneMode(false)
         GAME:MoveCamera(0, 0, 0, true)
     end
@@ -336,7 +334,7 @@ function Aurm.OpenIt()
     UI:WaitShowDialogue("Probably like a headband.")
     UI:WaitShowDialogue("Put it on.")
 
-    SV.Story.sect = 4
+    SV.Story.sect = 5
     GAME:GivePlayerItem("held_power_band")
     GAME:CutsceneMode(false)
     GAME:MoveCamera(0, 0, 0, true)
@@ -345,7 +343,7 @@ end
 function Aurm.Fashion()
     local rexio = CH("PLAYER")
     local luke = CH("Luke")
-   EXPLCOMMON.CharExclaim("PLAYER")
+    EXPLCOMMON.CharExclaim("PLAYER")
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Surprised")
     UI:WaitShowDialogue("Whoa, I feel...!")
@@ -530,7 +528,7 @@ function Aurm2.LukeWarm()
     GAME:WaitFrames(50)
     UI:SetSpeaker(luke)
     UI:SetSpeakerEmotion("Stunned")
-    UI:WaitShowDialogue("What?[pause=30] Emotions?")
+    UI:WaitShowDialogue("What?[pause=30] Like, your emotions?")
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("I'd say that your aura is growing and making them a little stronger.")
 
@@ -578,7 +576,7 @@ function Aurm2.LukeWarm()
     UI:SetSpeakerEmotion("Pain")
     UI:WaitShowDialogue("Hic!")
 
-    GROUND:CharWaitAnim(rexio, "Wake", true)
+    GROUND:CharWaitAnim(rexio, "Wake")
     GROUND:CharSetAnim(rexio, "Idle", true)
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Happy")
@@ -589,7 +587,7 @@ function Aurm2.LukeWarm()
     EXPLCOMMON.CharAngry("PLAYER")
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowTimedDialogue("[speed=0.7]Oh you have got to be kidding me")
+    UI:WaitShowTimedDialogue("[speed=0.7]Oh you have got to be kidding me!", 25)
 
     local coro2 = TASK:BranchCoroutine(function()
         SOUND:PlayBattleSE("DUN_Aura_Sphere_2")

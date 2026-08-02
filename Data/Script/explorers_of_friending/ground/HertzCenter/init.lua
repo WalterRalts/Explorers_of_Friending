@@ -89,8 +89,33 @@ end
 
 -- Characters
 
+function HertzCenter.Cal_Action(obj, activator)
+  EXPLCOMMON.FaceEachother(obj, activator)
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Have you noticed how much the dungeons have changed?")
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("I haven't... I really wish I knew why dungeons are the way they are...")
+end
+
+function HertzCenter.Grym_Action(obj, activator)
+  EXPLCOMMON.FaceEachother(obj, activator)
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("Battling is real popular in Hertz.")
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("You can imagine how we feel about rescue teams, right?")
+end
+
+function HertzCenter.Lilily_Action(obj, activator)
+  EXPLCOMMON.FaceEachother(obj, activator)
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("You kids sure you wanna explore a place as big as this?")
+end
+
 function HertzCenter.Telef_Action(obj, activator)
- EXPLCOMMON.FaceEachother(obj, activator)
+  EXPLCOMMON.FaceEachother(obj, activator)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Hey, have you ever heard of space?!")
@@ -122,8 +147,7 @@ function HertzCenter.Trup_Action(obj, activator)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Sand.")
 
-  GROUND:CharSetAnim(obj, "Hop", false)
-  GAME:WaitFrames(24)
+  GROUND:CharWaitAnim(obj, "Hop")
   SOUND:PlayBattleSE("DUN_Dig")
   GROUND:Hide("Trup")
   if TrupPosition == 1 then

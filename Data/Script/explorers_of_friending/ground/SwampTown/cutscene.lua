@@ -173,7 +173,7 @@ function SwampUp.TransferB()
 
     UI:SetSpeaker(zoomer)
     UI:SetSpeakerEmotion("Angry")
-    UI:WaitShowDialogue("Whaaaaaaaaat?![pause=30] Another kid?![pause=30] Accepted?!")
+    UI:WaitShowDialogue("Whaaaaaaaaat?![pause=30] Another kid?!")
 
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Happy")
@@ -182,7 +182,7 @@ function SwampUp.TransferB()
     GROUND:CharSetAnim(rexio, "Pose", true)
     GROUND:CharSetAction(rexio, RogueEssence.Ground.PoseGroundAction(rexio.Position, rexio.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Pose")))
 
-   EXPLCOMMON.FaceEachother(wurp, rexio)
+    EXPLCOMMON.FaceEachother(wurp, rexio)
     GROUND:CharSetAnim(rexio, "None", false)
     
     UI:SetSpeaker(wurp)
@@ -271,4 +271,7 @@ function SwampUp.TransferB()
     local talk_npc = RogueEssence.Dungeon.BattleScriptEvent("ZoomerInteract")
         _DATA.Save.ActiveTeam.Players[1].ActionEvents:Add(talk_npc)
     GAME:CutsceneMode(false)
+    
+    AI:SetCharacterAI(zoomer, "origin.ai.ground_partner", CH('PLAYER'), zoomer.Position)
+    zoomer.CollisionDisabled = true
 end

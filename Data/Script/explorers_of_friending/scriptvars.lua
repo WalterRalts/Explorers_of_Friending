@@ -185,17 +185,15 @@ SV.hertz_town =
 
 SV.guilders =
 {
-  tarro_town =
-  {
-    bluetail_stats = {},
-    bluetail_storage = {}
-  },
-  entoh_town =
-  {
-    aurm_stats = {},
-    scan_level = 1
-  },
   fielded_two = false
+}
+
+SV.tablestats =
+{
+  bluetail_stats = {},
+  aurm_stats = {},
+  bluetail_storage = {},
+  scan_level = 1
 }
 
 SV.guild =
@@ -238,10 +236,17 @@ SV.item =
 
 SV.buzzers_store =
 {
-  plain_seed =
   {
+    item = "plain_seed",
     count = 10,
-    price = 5
+    price = 5,
+    sprite = "Seed_White"
+  },
+  {
+    item = "berry_oran",
+    count = 10,
+    price = 5,
+    sprite = "Berry_Oran"
   }
 }
 
@@ -251,6 +256,12 @@ SV.rent_number = 0
 SV.dungeon_tutorial = 0
 SV.bag_size = 5
 SV.GroundTutorial = 0
+SV.OsiasTile =
+{
+  total_count = 0, --number of items
+  item_id = {}, --the specific item
+  item_amount = {} --amounts of each item
+}
 
 -- Berry Growing
 

@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.11.0",
+"Version": "0.8.12.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -55250,8 +55250,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 337,
-"Y": 243
+"X": 339,
+"Y": 240
 },
 "serializationHeight": 0,
 "serializationDir": 7,
@@ -55450,7 +55450,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Dean",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -55523,7 +55523,7 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 60,
+"X": 59,
 "Y": 272,
 "Width": 16,
 "Height": 16
@@ -55642,7 +55642,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Hopsa",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -55811,8 +55811,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 460,
-"Y": 46,
+"X": 452,
+"Y": 45,
 "Width": 16,
 "Height": 16
 }
@@ -55907,8 +55907,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 438,
-"Y": 37,
+"X": 446,
+"Y": 30,
 "Width": 16,
 "Height": 16
 }
@@ -56003,8 +56003,8 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 0,
-"Y": 0,
+"X": 418,
+"Y": 28,
 "Width": 16,
 "Height": 16
 }
@@ -56402,7 +56402,7 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 399,
+"X": 401,
 "Y": 71
 },
 "serializationHeight": 0,
@@ -56483,7 +56483,7 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 399,
+"X": 401,
 "Y": 71,
 "Width": 16,
 "Height": 16
@@ -56914,7 +56914,7 @@
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 1,
+"triggerType": 3,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -56945,10 +56945,10 @@
 "Y": 0
 },
 "Collider": {
-"X": 384,
+"X": 364,
 "Y": 0,
-"Width": 168,
-"Height": 72
+"Width": 182,
+"Height": 90
 }
 },
 {

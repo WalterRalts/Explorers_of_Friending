@@ -1,5 +1,7 @@
 Guild = {}
-Tent = {} --guild lvl1
+Tent = {} 
+
+--guild lvl1
 
 function Guild.Day0()
     GAME:CutsceneMode(true)
@@ -278,9 +280,9 @@ function Guild.Day1()
     rexio.CollisionDisabled = true
     azura.CollisionDisabled = true
 
-   EXPLCOMMON.TeleportToMarker(maru, "m1", Dir8.DownLeft)
-   EXPLCOMMON.TeleportToMarker(azura, "m1", Dir8.DownLeft)
-   EXPLCOMMON.TeleportToMarker(rexio, "m1", Dir8.DownLeft)
+    EXPLCOMMON.TeleportToMarker(maru, "m1", Dir8.DownLeft)
+    EXPLCOMMON.TeleportToMarker(azura, "m1", Dir8.DownLeft)
+    EXPLCOMMON.TeleportToMarker(rexio, "m1", Dir8.DownLeft)
 
     GROUND:Hide("PLAYER")
     GROUND:Hide("Teammate1")
@@ -292,7 +294,7 @@ function Guild.Day1()
         GROUND:Unhide("PLAYER")
         GAME:WaitFrames(20)
         GROUND:MoveToMarker(maru, MRKR("Start"), false, 1)
-       EXPLCOMMON.FaceEachother(maru, smear)
+        EXPLCOMMON.FaceEachother(maru, smear)
         GROUND:CharTurnToCharAnimated(azura, smear, 2)
 
         GAME:WaitFrames(20)
@@ -429,6 +431,7 @@ function Guild.Day1()
     UI:WaitShowDialogue("Yes, boss!")
     GAME:UnlockDungeon("apple_forest")
     GAME:MoveCamera(0, 0, 0, true)
+    EXPLCOMMON.AllyFollow(false, false)
 end
 
 function Guild.Day2()
@@ -466,7 +469,7 @@ function Guild.Day2()
             GAME:WaitFrames(55)
             GROUND:Unhide("Teammate1")
             GAME:WaitFrames(20)
-            GROUND:MoveToPosition(azura, 1029, 654, false, 1)
+            GROUND:MoveToPosition(azura, MRKR("Start").Position.X + (MRKR("Start").Position.X - 971), 654, false, 1)
             GROUND:CharTurnToCharAnimated(azura, smear, 2)
         end)
         local coro013 = TASK:BranchCoroutine(function()
@@ -558,18 +561,23 @@ function Guild.Day2()
     local angy = true
 
     local c1 = TASK:BranchCoroutine(function()
-        while angy do
-            local a1 = TASK:BranchCoroutine(function()
+
+        local a1 = TASK:BranchCoroutine(function()
+            while angy do
                 GAME:WaitFrames(85)
                 GROUND:CharSetEmote(smear, "angry", 3)
                 EXPLCOMMON.CharHop("Smear")
-            end)
-            local a2 = TASK:BranchCoroutine(function()
+            end
+        end)
+        local a2 = TASK:BranchCoroutine(function()
+            while angy do
                 GAME:WaitFrames(110)
                 GROUND:CharSetEmote(zoomer, "angry", 3)
                 EXPLCOMMON.CharHop("Zoomer")
-            end)
-            local a3 = TASK:BranchCoroutine(function()
+            end
+        end)
+        local a3 = TASK:BranchCoroutine(function()
+            while angy do
                 EXPLCOMMON.CharHop("Teammate2")
                 GROUND:CharSetEmote(rexio, "angry", 3)
                 GAME:WaitFrames(75)
@@ -578,9 +586,9 @@ function Guild.Day2()
                 GAME:WaitFrames(75)
                 GROUND:CharTurnToCharAnimated(rexio, zoomer, 2)
                 EXPLCOMMON.CharHop("Teammate2")
-            end)
-            TASK:JoinCoroutines({a1, a2, a3})
-        end
+            end
+        end)
+        TASK:JoinCoroutines({a1, a2, a3})
     end)
     local c2 = TASK:BranchCoroutine(function()
         EXPLCOMMON.FaceEachother(zoomer, rexio)
@@ -600,7 +608,7 @@ function Guild.Day2()
         GROUND:Unhide("Kitkit")
         UI:SetSpeaker(maru)
         UI:SetSpeakerEmotion("Stunned")
-        UI:WaitShowDialogue("I'm sure they'll stop being mad...[speed=0.5][pause=35] at some point...")
+        UI:WaitShowDialogue("I'm sure they'll stop being mad...[speed=0.5][pause=45] at some point...")
 
         local cc1 = TASK:BranchCoroutine(function()
             UI:SetSpeaker(zoomer)
@@ -622,6 +630,9 @@ function Guild.Day2()
             UI:SetSpeaker(zoomer)
             UI:SetSpeakerEmotion("Angry")
             UI:WaitShowTimedDialogue("Blame the kid!!", 80)
+
+            angy = false
+            GAME:WaitFrames(20)
         end)
         local cc2 = TASK:BranchCoroutine(function()
             GAME:WaitFrames(55)
@@ -635,7 +646,6 @@ function Guild.Day2()
             EXPLCOMMON.CharQuestion("Zoomer")
             EXPLCOMMON.CharRealize("Teammate1")
             GAME:WaitFrames(60)
-            angy = false
             GROUND:CharTurnToCharAnimated(kitty, smear, 6)
         end)
         TASK:JoinCoroutines({cc1, cc2})
@@ -650,9 +660,9 @@ function Guild.Day2()
     EXPLCOMMON.FaceEachother(kitty, smear)
 
     EXPLCOMMON.SetCharAndEmotion(smear, "Surprised")
-    UI:WaitShowDialogue("Kitkat! There is no need for you to be here right now!")
+    UI:WaitShowDialogue("Kitkat! Why are you here?!")
     EXPLCOMMON.SetCharAndEmotion(smear, "Worried")
-    UI:WaitShowDialogue("And, uh... of course, it is also not the best time since I am trying to figure out what to do with the current team.")
+    UI:WaitShowDialogue("It is also not the best time since I am trying to figure out what to do with the current team.")
 
     GROUND:CharTurnToCharAnimated(kitty, maru, 6)
     EXPLCOMMON.SetCharAndEmotion(kitty, "Worried")
@@ -664,7 +674,7 @@ function Guild.Day2()
     UI:WaitShowDialogue("This is the first grand team that you're putting together, nya?")
     EXPLCOMMON.FaceEachother(kitty, rexio)
     UI:SetSpeakerEmotion("Happy")
-    UI:WaitShowDialogue("They look like they could only do[emote=Happy] fetch quests.")
+    UI:WaitShowDialogue("They look like they could only do fetch quests.")
 
     EXPLCOMMON.CharAngry("Teammate2")
     EXPLCOMMON.SetCharAndEmotion(rexio, "Angry")
@@ -682,10 +692,10 @@ function Guild.Day2()
     end
 
     EXPLCOMMON.SetCharAndEmotion(kitty, "Normal")
-    UI:WaitShowDialogue("Cool desert,[script=0][pause=40] over there nya,[script=1][pause=40] my important treasure is guarded by really bad people and we nyeeeeeed it.", {cat1turn, cat2turn})
+    UI:WaitShowDialogue("Cool desert[pause=40],[script=0] over there nya[pause=40],[script=1] my important treasure is guarded by really bad people and we nyeeeeeed it.", {cat1turn, cat2turn})
 
     EXPLCOMMON.SetCharAndEmotion(rexio, "Joyous")
-    UI:WaitShowDialogue("Now that's a quest!")
+    UI:WaitShowDialogue("A real adventure!")
 
     EXPLCOMMON.FaceEachother(kitty, smear)
     EXPLCOMMON.SetCharAndEmotion(smear, "Stunned")
@@ -723,7 +733,7 @@ function Guild.Day2()
         end
     end)
     local d2 = TASK:BranchCoroutine(function()
-        UI:WaitShowDialogue("Not to mention that Mr. Aurm is giving me a strange feeling of recklessness.[pause=45] I must not be the one responsible for the kid of Luke getting into trouble.")
+        UI:WaitShowDialogue("Mr. Aurm is giving me a strange feeling of recklessness.[pause=45] I must not be the one responsible for the kid of Luke getting into trouble.")
     end)
     TASK:JoinCoroutines({d1, d2})
 
@@ -772,20 +782,17 @@ function Guild.Day2()
 
     GAME:MoveCamera(0, 0, 30, true)
     local g1 = TASK:BranchCoroutine(function()
-        GROUND:CharWaitAnim(maru, "Pose")
-        GROUND:CharSetAction(maru, RogueEssence.Ground.PoseGroundAction(maru.Position, maru.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Pose")))
+        EXPLCOMMON.StartAndStop(maru, "Pose")
         GAME:WaitFrames(20)
         GROUND:CharSetAnim(maru, "None", false)
     end)
     local g2 = TASK:BranchCoroutine(function()
-        GROUND:CharWaitAnim(rexio, "Pose")
-        GROUND:CharSetAction(rexio, RogueEssence.Ground.PoseGroundAction(rexio.Position, rexio.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Pose")))
+        EXPLCOMMON.StartAndStop(rexio, "Pose")
         GAME:WaitFrames(20)
         GROUND:CharSetAnim(rexio, "None", false)
     end)
     local g3 = TASK:BranchCoroutine(function()
-        GROUND:CharWaitAnim(azura, "Pose")
-        GROUND:CharSetAction(azura, RogueEssence.Ground.PoseGroundAction(azura.Position, azura.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Pose")))
+        EXPLCOMMON.StartAndStop(azura, "Pose")
         GAME:WaitFrames(20)
         GROUND:CharSetAnim(azura, "None", false)
     end)
@@ -796,11 +803,14 @@ function Guild.Day2()
         ID = 0,
         Entry = 0
     }
+    kitty.CollisionDisabled = false
     IntroCutscene = false
+    EXPLCOMMON.AllyFollow(false, false)
 end
 
 function Guild.Day1Done()
     GAME:FadeOut(false, 40)
+    GAME:MoveCamera(1000, 640, 1, false)
     local maru = CH("PLAYER")
     local azura = CH("Teammate1")
     local rexio = CH("Teammate2")
@@ -842,7 +852,7 @@ function Guild.Day1Done()
     end
     local apple_count = apple_bagcount + apple_storcount
     local function mar_approach()
-        GROUND:MoveToPosition(maru, smear.Position.X, smear.Position.Y, false, 1)
+        GROUND:MoveToPosition(maru, smear.Position.X, smear.Position.Y - 40, false, 1)
     end
     if apple_bagcount == 0 then
         UI:SetSpeaker(maru)
@@ -874,7 +884,7 @@ function Guild.Day1Done()
         if apple_bagcount < 10 then
             UI:SetSpeaker(smear)
             UI:SetSpeakerEmotion("Normal")
-            UI:WaitShowDialogue(apple_bagcount .. ", it seems. Now we will check storage.")
+            UI:WaitShowDialogue(apple_bagcount .. ", it seems, very good.[pause=0] Now we will check storage.")
         else
             EXPLCOMMON.CharExclaim("Smear")
             UI:SetSpeaker(smear)
@@ -897,26 +907,31 @@ function Guild.Day1Done()
 
     local c11 = TASK:BranchCoroutine(function()
         if apple_bagcount < 10 then
+            GROUND:MoveToMarker(maru, MRKR("Start"), 4)
+            GROUND:CharTurnToCharAnimated(maru, zoomer, 4)
         else
             GROUND:CharTurnToCharAnimated(maru, rexio, 4)
             EXPLCOMMON.CharSweatdrop("PLAYER")
             GAME:WaitFrames(70)
-            GROUND:CharTurnToCharAnimated(maru, smear, 4)
+            GROUND:MoveToMarker(maru, MRKR("Start"), 4)
+            GROUND:CharTurnToCharAnimated(maru, zoomer, 4)
         end
     end)
     local c12 = TASK:BranchCoroutine(function()
         GROUND:CharAnimateTurnTo(zoomer, Dir8.Right, 4)
-        GAME:WaitFrames(40)
+        GAME:WaitFrames(10)
+        GROUND:CharSetAnim(zoomer, "Walk", true)
+        GAME:WaitFrames(90)
+        GROUND:CharSetAnim(zoomer, "Idle", false)
     end)
     TASK:JoinCoroutines({c11, c12})
-
     if apple_storcount == 0 then
         if apple_bagcount == 0 then
             UI:SetSpeaker(zoomer)
             UI:SetSpeakerEmotion("Angry")
             UI:WaitShowDialogue("There aren't any apples in here!")
 
-           EXPLCOMMON.FaceEachother(zoomer, rexio)
+            EXPLCOMMON.FaceEachother(zoomer, rexio)
 
             UI:SetSpeaker(zoomer)
             UI:SetSpeakerEmotion("Angry")
@@ -958,15 +973,14 @@ function Guild.Day1Done()
         EXPLCOMMON.FaceEachother(rexio, zoomer)
         EXPLCOMMON.CharAngry("Teammate2")
         UI:SetSpeaker(rexio)
-        UI:SetSpeakerEmotion("Stunned")
-        UI:WaitShowDialogue("Like, what is your deal...?")
+        UI:SetSpeakerEmotion("Determined")
+        UI:WaitShowDialogue("Like, what is your deal...?!")
     else
         UI:SetSpeaker(zoomer)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue(apple_storcount .. " of them. Interesting.")
 
         EXPLCOMMON.FaceEachother(rexio, zoomer)
-        EXPLCOMMON.CharAngry("Teammate2")
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("...interesting?")
@@ -1061,10 +1075,10 @@ end
 function Tent.Day0()
     local moverex = GAME:GetPlayerPartyTable()
     GAME:SetCanSwitch(false)
-    EXPLCOMMON.PrintTable(SV.guilders.tarro_town.bluetail_stats)
+    EXPLCOMMON.PrintTable(SV.tablestats.bluetail_stats)
     EXPLCOMMON.PrintTable(moverex)
     if GAME:GetPlayerPartyCount() <= 1 then
-        for i, p in ipairs(SV.guilders.tarro_town.bluetail_stats) do
+        for i, p in ipairs(SV.tablestats.bluetail_stats) do
         GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
         --GROUND:GiveCharIdleChatter(chara)  
         end
@@ -1134,12 +1148,14 @@ function Tent.Day0()
     EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
     UI:WaitShowDialogue("Alrighty.")
     GAME:CutsceneMode(false)
+    GAME:SetCanSwitch(true)
 end
 
 function Tent.Day1()
     local maru = CH("PLAYER")
     local azura = CH("Teammate1")
     local rexio = CH("Teammate2")
+    maru.CollisionDisabled = true
     azura.CollisionDisabled = true
     GAME:CutsceneMode(true)
     awaken()
@@ -1159,8 +1175,9 @@ function Tent.Day1()
        EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
         UI:WaitShowDialogue("...almost forgot we were still here.")
 
-       EXPLCOMMON.FaceEachother(maru, azura)
-       EXPLCOMMON.SetCharAndEmotion(azura, "Happy")
+        EXPLCOMMON.CharHappyHop("Teammate1")
+        EXPLCOMMON.FaceEachother(maru, azura)
+        EXPLCOMMON.SetCharAndEmotion(azura, "Happy")
         UI:WaitShowDialogue("Time for adventure!")
     end)
     local cor3 = TASK:BranchCoroutine(function()

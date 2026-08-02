@@ -167,9 +167,8 @@ function TarroTownOutside.Puchi_Action(obj, activator)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("One day, I wanna be like a cloud.[pause=40] Imagine me being full fluffy.")
     end
-    
   elseif SV.Story.sect == 1 then
-   EXPLCOMMON.FaceEachother(obj, activator)
+    EXPLCOMMON.FaceEachother(obj, activator)
     GROUND:CharTurnToCharAnimated(azura, obj, 4)
     UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Happy")
@@ -213,7 +212,7 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Fine, fine, we're going now.")
-  elseif SV.Story.sect < 3 then
+  elseif SV.Story.sect == 1 then
     GROUND:CharTurnToCharAnimated(activator, obj, 4)
     GROUND:CharTurnToCharAnimated(azura, obj, 4)
     GROUND:CharTurnToCharAnimated(obj, activator, 4)
@@ -244,7 +243,7 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeakerEmotion("Normal")
 
     local function azura_gasp()
-     EXPLCOMMON.CharExclaim("Teammate1")
+      EXPLCOMMON.CharExclaim("Teammate1")
     end
 
    EXPLCOMMON.CharQuestion("Teammate1")
@@ -258,7 +257,7 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:WaitShowDialogue("[pause=45]...I ate it.")
 
     GAME:WaitFrames(50)
-   EXPLCOMMON.CharAngry("Teammate1")
+    EXPLCOMMON.CharAngry("Teammate1")
     UI:SetSpeaker(azura)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("...")
@@ -266,7 +265,7 @@ function TarroTownOutside.Puchi_Action(obj, activator)
     UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("It was delicious.")
-  elseif SV.Story.sect <= 5 then
+  elseif SV.Story.sect == 2 then
     GROUND:CharTurnToCharAnimated(activator, obj, 4)
     GROUND:CharTurnToCharAnimated(azura, obj, 4)
     GROUND:CharTurnToCharAnimated(obj, activator, 4)
@@ -314,11 +313,11 @@ function TarroTownOutside.Reeshi_Action(obj, activator)
  EXPLCOMMON.FaceEachother(obj, activator)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("A lot of baaaaad Pokemon from the dungeons are turning good for better homes and stuff.")
+  UI:WaitShowDialogue("A lot of baaaaad Pokemon from the dungeons are turning good and getting better homes and stuff.")
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("But thaaaaaat also means we need more than a few houses as places to live.")
   UI:SetSpeakerEmotion("Stunned")
-  UI:WaitShowDialogue("The noise from the building is super loud, baa...")
+  UI:WaitShowDialogue("The building noises are super loud, baa...")
 end
 
 function TarroTownOutside.Roll_Action(obj, activator)
@@ -396,10 +395,7 @@ function TarroTownOutside.TTOutside_WExit_Touch(obj, activator)
 end
 
 function TarroTownOutside.TTOutsideSign_Action(obj, activator)
-  UI:ResetSpeaker()
-  UI:SetAutoFinish(true)
-  UI:WaitShowDialogue("Tarro Town East ->\n <- Tarro Town West")
-  UI:SetAutoFinish(false)
+  EXPLCOMMON.SignDialogue("Tarro Town East ->\n <- Tarro Town West")
 end
 
 function TarroTownOutside.TTOutside_EExit_Touch(obj, activator)

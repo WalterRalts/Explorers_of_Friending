@@ -80,6 +80,10 @@ function DesertN.cactus6_Action(obj, activator)
   end
 end
 
+function DesertN.HertzSign_Action(obj, activator)
+  EXPLCOMMON.SignDialogue("Durian is gaurding the town this week. The town password is six digits long.\n If you're having trouble, try looking around for stuff in groups.")
+end
+
 function DesertN.Potted_Action(obj, activator)
   if activator.Nickname == "Rexio" then
     UI:SetSpeaker(activator)

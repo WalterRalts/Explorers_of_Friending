@@ -65,41 +65,41 @@ function HertzShopsA.TrinketSeller_Action(obj, activator)
   local pouch_money = GAME:GetPlayerMoney()
 
   if trinktalk == nil then
-   EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
+    EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
     UI:WaitShowDialogue("I sell trinkets, you want a trinket?[pause=40][emote=Happy] I gots trinkets there and here and here and there.")
 
     local maru = CH("PLAYER")
     local azura = CH("Teammate1")
     local rexio = CH("Teammate2")
 
-   EXPLCOMMON.SetCharAndEmotion(azura, "Inspired")
+    EXPLCOMMON.SetCharAndEmotion(azura, "Inspired")
     UI:WaitShowDialogue("Ooh! I want one!")
 
-   EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
+    EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
     UI:WaitShowDialogue("Is a pass a trinket?")
 
-   EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
+    EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
     UI:WaitShowDialogue("Well, probably not, I think[pause=45],[emote=Normal] but I do sell them.")
 
-   EXPLCOMMON.SetCharAndEmotion(rexio, "Normal")
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Normal")
     UI:WaitShowDialogue("Give it.")
 
-   EXPLCOMMON.SetCharAndEmotion(obj, "Sigh")
+    EXPLCOMMON.SetCharAndEmotion(obj, "Sigh")
     UI:WaitShowDialogue("This isn't a charity, kid. You gotta pay up, 100 of those cool coins.")
 
     if pouch_money < 100 then
-     EXPLCOMMON.FaceEachother(maru, rexio)
+      EXPLCOMMON.FaceEachother(maru, rexio)
 
-     EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
-      UI:WaitShowDialogue("This is so inconvenient.[pause=0] And it's boring, too.")
+      EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
+      UI:WaitShowDialogue("We don't have the money...")
 
-     EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
+      EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
       UI:WaitShowDialogue("There is a storage thing outside, could get money from that.")
 
-     EXPLCOMMON.SetCharAndEmotion(rexio, "Stunned")
+      EXPLCOMMON.SetCharAndEmotion(rexio, "Stunned")
       UI:WaitShowDialogue("And what if that's empty?")
 
-     EXPLCOMMON.SetCharAndEmotion(azura, "Happy")
+      EXPLCOMMON.SetCharAndEmotion(azura, "Happy")
       UI:WaitShowDialogue("Let's ask Mr. Smear!")
       trinktalk = 1
     end
@@ -135,81 +135,88 @@ function HertzShopsA.TrinketSeller_Action(obj, activator)
 end
 
 function HertzShopsA.BerrySeller_Action(obj, activator)
- EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
+  EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
   UI:WaitShowDialogue("Sorry, this shop is closed.[pause=45] [color=#EFBF04]It's uh... missing something right now.[color]")
 end
 
 function HertzShopsA.Meteor_Action(obj, activator)
- EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
+  EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("I feel like I just fell out of the sky.[pause=45] What town is this again?")
 end
 
 function HertzShopsA.Chucky_Action(obj, activator)
   local rexio = CH("Teammate2")
 
-  if convo == nil then
+  if ChuckyConvo == nil then
     HertzShopsA.Kyuki_Action(CH("Kyuki"), activator)
   else
-   EXPLCOMMON.SetCharAndEmotion(obj, "Happy")
+    EXPLCOMMON.SetCharAndEmotion(obj, "Happy")
     UI:WaitShowDialogue("I'm Chucky, by the way.")
 
-   EXPLCOMMON.SetCharAndEmotion(activator, "Sad")
-  UI:WaitShowDialogue("Nice to meet you, too.")
+    EXPLCOMMON.SetCharAndEmotion(activator, "Happy")
+    UI:WaitShowDialogue("Nice to meet you, too.")
   end
 end
 
 function HertzShopsA.Kyuki_Action(obj, activator)
-  local chuck = CH("Chucky")
-  local azura = CH("Teammate1")
-  local rexio = CH("Teammate2")
- EXPLCOMMON.SetCharAndEmotion(obj, "Sad")
-  UI:WaitShowDialogue("B-but... but what if I'm too spooky...")
+  if ChuckyConvo then
+    EXPLCOMMON.SetCharAndEmotion(obj, "Sad")
+    UI:WaitShowDialogue("...h-hello.")
+  else
+    local chuck = CH("Chucky")
+    local azura = CH("Teammate1")
+    local rexio = CH("Teammate2")
+    EXPLCOMMON.SetCharAndEmotion(obj, "Sad")
+    UI:WaitShowDialogue("B-but... but what if I'm too spooky...")
 
- EXPLCOMMON.SetCharAndEmotion(chuck, "Worried")
-  UI:WaitShowDialogue("Spooky?[pause=45] Your disguise isn't really spooky,[pause=45] could use some work actually...")
+    EXPLCOMMON.SetCharAndEmotion(chuck, "Worried")
+    UI:WaitShowDialogue("Spooky?[pause=45] Your disguise isn't really spooky,[pause=45] could use some work actually...")
 
- EXPLCOMMON.FaceEachother(obj, activator)
- EXPLCOMMON.FaceEachother(chuck, activator)
- EXPLCOMMON.SetCharAndEmotion(chuck, "Happy")
-  UI:WaitShowDialogue("Look, there's some new people, talk to them!")
+    EXPLCOMMON.FaceEachother(obj, activator)
+    EXPLCOMMON.FaceEachother(chuck, activator)
+    EXPLCOMMON.SetCharAndEmotion(chuck, "Happy")
+    UI:WaitShowDialogue("Look, there's some new people, talk to them!")
 
- EXPLCOMMON.SetCharAndEmotion(activator, "Happy")
-  UI:WaitShowDialogue("Hello.")
+    EXPLCOMMON.SetCharAndEmotion(activator, "Happy")
+    UI:WaitShowDialogue("Hello.")
 
- EXPLCOMMON.SetCharAndEmotion(obj, "Sad")
-  UI:WaitShowDialogue("...u-um... hello. I'm Kyuki... nice to, uh...")
+    EXPLCOMMON.SetCharAndEmotion(obj, "Sad")
+    UI:WaitShowDialogue("...u-um... hello. I'm Kyuki... nice to, uh...")
 
- EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
-  UI:WaitShowDialogue("That's a boring way to start anything...")
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
+    UI:WaitShowDialogue("Boring.")
 
- EXPLCOMMON.CharSweating("Kyuki")
- EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
-  UI:WaitShowDialogue("I'm... I'm sorry.")
+    EXPLCOMMON.CharSweating("Kyuki")
+    EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
+    UI:WaitShowDialogue("I'm... I'm sorry.")
 
- EXPLCOMMON.SetCharAndEmotion(azura, "Happy")
-  UI:WaitShowDialogue("I think we can be friends.")
+    EXPLCOMMON.SetCharAndEmotion(azura, "Happy")
+    UI:WaitShowDialogue("I think we can be friends.")
 
- EXPLCOMMON.SetCharAndEmotion(obj, "Inspired")
-  UI:WaitShowDialogue("R-really?!")
+    EXPLCOMMON.SetCharAndEmotion(obj, "Inspired")
+    UI:WaitShowDialogue("R-really?!")
 
- EXPLCOMMON.SetCharAndEmotion(activator, "Happy")
-  UI:WaitShowDialogue("I also think we can be friends.")
+    EXPLCOMMON.SetCharAndEmotion(activator, "Happy")
+    UI:WaitShowDialogue("I also think we can be friends.")
 
-  GAME:WaitFrames(90)
-  GROUND:CharTurnToCharAnimated(activator, rexio, 4)
-  GROUND:CharTurnToCharAnimated(azura, rexio, 4)
-  GROUND:CharTurnToCharAnimated(chuck, rexio, 2)
-  GROUND:CharTurnToCharAnimated(obj, rexio, 4)
+    GAME:WaitFrames(90)
+    GROUND:CharTurnToCharAnimated(activator, rexio, 4)
+    GROUND:CharTurnToCharAnimated(azura, rexio, 4)
+    GROUND:CharTurnToCharAnimated(chuck, rexio, 2)
+    GROUND:CharTurnToCharAnimated(obj, rexio, 4)
 
- EXPLCOMMON.CharQuestion("Rexio")
- EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
-  UI:WaitShowDialogue("...oh, uh,[pause=75] work [emote=Normal]on your intro first and then maybe probably maybe we can talk.")
+    EXPLCOMMON.CharQuestion("Rexio")
+    GAME:WaitFrames(35)
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
+    UI:WaitShowDialogue("...oh, uh,[pause=75] work [emote=Normal]on your intro first and then maybe probably maybe we can talk.")
+    ChuckyConvo = true
+  end
 end
 
 function HertzShopsA.Cacnea_Action(obj, activator)
   local pouch_money = GAME:GetPlayerMoney()
 
- EXPLCOMMON.FaceEachother(obj, activator)
+  EXPLCOMMON.FaceEachother(obj, activator)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Happy")
   local choices = {
@@ -243,7 +250,12 @@ function HertzShopsA.Cacnea_Action(obj, activator)
 end
 
 function HertzShopsA.Exit_Touch(obj, activator)
- EXPLCOMMON.FadeEnterGround("HertzEntrance", "ShopOut")
+  EXPLCOMMON.FadeEnterGround("HertzEntrance", "ShopOut")
+end
+
+function HertzShopsA.Pants_Action(obj, activator)
+  EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
+  UI:WaitShowDialogue("...oh,[pause=30] I don't run this store.[pause=0] I'm just too tired to move.")
 end
 
 return HertzShopsA

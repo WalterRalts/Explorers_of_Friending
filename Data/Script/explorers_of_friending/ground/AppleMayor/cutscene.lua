@@ -1,7 +1,6 @@
 AppleBoss = {}
 
 function AppleBoss.Roomy()
-    UI:SetBounds(10, 16, 300, 50)
     COMMON.RespawnAllies()
     local maru = CH("PLAYER")
     local galia = CH("Galia")
@@ -31,6 +30,7 @@ function AppleBoss.Roomy()
         EXPLCOMMON.SetCharAndEmotion(galia, "Stunned")
         UI:WaitShowTimedDialogue("I would much prefer it if you didn't.[pause=30] Maybe with someone else with you...?", 10)
 
+        UI:SetBounds(10, 16, 300, 50)
         EXPLCOMMON.SetCharAndEmotion(rexio, "Happy")
         UI:WaitShowTimedDialogue("Oi! Clever blue nickname!", 60)
 
@@ -40,10 +40,10 @@ function AppleBoss.Roomy()
         EXPLCOMMON.SetCharAndEmotion(rexio, "Normal")
         UI:WaitShowDialogue("Maru just sounded lame, so I wanna think of something cooler.")
 
-       EXPLCOMMON.SetCharAndEmotion(azura, "Determined")
+        EXPLCOMMON.SetCharAndEmotion(azura, "Determined")
         UI:WaitShowDialogue("Maru's not lame!")
 
-       EXPLCOMMON.SetCharAndEmotion(rexio, "Stunned")
+        EXPLCOMMON.SetCharAndEmotion(rexio, "Stunned")
         UI:WaitShowDialogue("I didn't mean...[pause=40] ...okay,[emote=Normal] anyway,[pause=30] uhhh,[pause=30] Bluetail...![pause=40] B[emote=Happy]luetail sounds cool!")
 
         EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
@@ -63,28 +63,29 @@ function AppleBoss.Roomy()
         azura.CollisionDisabled = true
         GAME:WaitFrames(30)
         GROUND:MoveToMarker(azura, MRKR("a1"), false, 1)
-       EXPLCOMMON.FaceEachother(azura, rexio)
+        EXPLCOMMON.FaceEachother(azura, rexio)
         GAME:WaitFrames(120)
         GROUND:MoveToMarker(azura, MRKR("r1"), false, 1)
         GROUND:MoveToMarker(azura, MRKR("r2"), false, 1)
+        UI:ResetBounds()
         GROUND:MoveToMarker(azura, MRKR("r3"), false, 1)
         GROUND:MoveToMarker(azura, MRKR("a2"), false, 1)
         azura.CollisionDisabled = false
         end)
     TASK:JoinCoroutines({c0, c1, c2})
 
-   EXPLCOMMON.FaceEachother(rexio, azura)
+    EXPLCOMMON.FaceEachother(rexio, azura)
     UI:WaitShowDialogue("And your sis wouldn't stop staring at that apple...")
 
     GROUND:CharAnimateTurnTo(azura, Direction.UpRight, 4)
-   EXPLCOMMON.SetCharAndEmotion(azura, "Worried")
+    EXPLCOMMON.SetCharAndEmotion(azura, "Worried")
     UI:WaitShowDialogue("Are you sure that we can't take it?")
 
-   EXPLCOMMON.SetCharAndEmotion(maru, "Worried")
+    EXPLCOMMON.SetCharAndEmotion(maru, "Worried")
     UI:WaitShowDialogue("Uh,[pause=40] [emote=Normal]this room first.[pause=30] Then we'll maybe ask for a piece.")
 
-   EXPLCOMMON.CharHop("Teammate1")
-   EXPLCOMMON.SetCharAndEmotion(azura, "Happy")
+    EXPLCOMMON.CharHop("Teammate1")
+    EXPLCOMMON.SetCharAndEmotion(azura, "Happy")
     UI:WaitShowDialogue("Then let's go!")
 
     GAME:FadeOut(false, 20)

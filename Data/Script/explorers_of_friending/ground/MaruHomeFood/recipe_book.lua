@@ -1,7 +1,7 @@
-local function countValue(table, targetValue)
+local function countValue(table, target)
     local count = 0
     for _, value in ipairs(table) do
-        if value == targetValue then
+        if value == target then
             count = count + 1
         end
     end
@@ -54,7 +54,7 @@ end
 
 -- the actual recipes
 
-function Recipes()
+function Recipes(player)
     local salad = false
     if countValue(ingr, "crunchy_salad") >= 1 then
         salad = true
@@ -62,20 +62,20 @@ function Recipes()
         salad = false
     end
     if countValue(ingr, "tarro_wheat") == 3 then --three tarro wheat 
-        cook_result("Maru", 1, "tarro_bread", 4)
+        cook_result(player, 1, "tarro_bread", 4)
     elseif countValue(ingr, "crunchy_leaf") + countValue(ingr, "seed_plain") == 3 then --three crunchy leaves and plain seeds
-        cook_result("Maru", 0, "crunchy_salad", 1)
+        cook_result(player, 0, "crunchy_salad", 1)
     elseif countValue(ingr, "crunchy_salad") + countValue(ingr, "berry_oran") == 3 and salad == true then --salad and oran
-        cook_result("Maru", 1, "crunchy_oran", 2)
+        cook_result(player, 1, "crunchy_oran", 2)
     elseif countValue(ingr, "crunchy_salad") + countValue(ingr, "food_apple") == 3 and salad == true then --salad and apple
         if countValue(ingr, "food_apple") == 1 then
-            cook_result("Maru", 1, "crunchy_apple", 1)
+            cook_result(player, 1, "crunchy_apple", 1)
         elseif countValue(ingr, "food_apple") == 2 then
-            cook_result("Maru", 1, "crunchy_apple", 2)
+            cook_result(player, 1, "crunchy_apple", 2)
         end
     elseif countValue(ingr, "ammo_stick") == 1 and countValue(ingr, "berry_oran") == 1 and countValue(ingr, "berry_leppa") == 1 then --berries and a stick
-        cook_result("Maru", 1, "berry_kebab", 3)
+        cook_result(player, 1, "berry_kebab", 3)
     else --oops
-        cook_result("Maru", -1, "seed_plain", 1)
+        cook_result(player, -1, "seed_plain", 1)
     end
 end

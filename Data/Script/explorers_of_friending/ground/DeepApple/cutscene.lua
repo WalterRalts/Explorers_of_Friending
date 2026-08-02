@@ -102,10 +102,10 @@ function Core.AppleOut()
         --remove the other two, add Rexio back as leader
         local new_x = rexio.Position.X
         local new_y = rexio.Position.Y
-        SV.guilders.tarro_town.bluetail_stats = GAME:GetPlayerPartyTable()
+        SV.tablestats.bluetail_stats = GAME:GetPlayerPartyTable()
         GAME:RemovePlayerTeam(0)
         GAME:RemovePlayerTeam(0)
-        COMMON.RespawnAllies()
+        COMMON.RespawnStarterPartner()
 
         GROUND:TeleportTo("PLAYER", new_x, new_y, Dir8.Up, 0)
 
@@ -141,10 +141,10 @@ end
 
 function Core.Oof()
     local moverex = GAME:GetPlayerPartyTable()
-    EXPLCOMMON.PrintTable(SV.guilders.tarro_town.bluetail_stats)
+    EXPLCOMMON.PrintTable(SV.tablestats.bluetail_stats)
     EXPLCOMMON.PrintTable(moverex)
     if GAME:GetPlayerPartyCount() <= 1 then
-      for i, p in ipairs(SV.guilders.tarro_town.bluetail_stats) do
+      for i, p in ipairs(SV.tablestats.bluetail_stats) do
         GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
         --GROUND:GiveCharIdleChatter(chara)  
       end
@@ -154,7 +154,7 @@ function Core.Oof()
       end
     end
 
-    COMMON.RespawnAllies()
+    EXPLCOMMON.SetLeaderFront()
     local maru = CH("PLAYER")
     local second = CH("Teammate1")
     local third = CH("Teammate2")
@@ -163,13 +163,12 @@ function Core.Oof()
     GROUND:TeleportTo(CH("Teammate1"), third.Position.X + 12, third.Position.Y + 50, Dir8.UpLeft, 0)
     GROUND:TeleportTo(CH("PLAYER"), third.Position.X - 12, third.Position.Y + 40, Dir8.UpRight, 0)
     GAME:FadeIn(50)
-    
 
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("We did tell you this would happen.")
 
-    GROUND:CharWaitAnim(third, "Wake", true)
+    GROUND:CharWaitAnim(third, "Wake")
 
     UI:SetSpeaker(third)
     UI:SetSpeakerEmotion("Worried")

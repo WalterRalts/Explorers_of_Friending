@@ -59,9 +59,7 @@ end
 -------------------------------
 
 function HertzGuildOut.GuildEnter_Touch(obj, activator)
-  --EXPLCOMMON.FadeEnterGround("DarkGuild", "cutmark")
-  UI:ResetSpeaker()
-  UI:WaitShowDialogue("WIP")
+  EXPLCOMMON.FadeEnterGround("DarkGuild", "cutmark")
 end
 
 function HertzGuildOut.ExitS_Touch(obj, activator)

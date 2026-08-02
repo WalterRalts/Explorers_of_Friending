@@ -11,11 +11,11 @@ require 'explorers_of_friending.ground.MayorRoom.cutscene'
 local MayorRoom = {}
 local time = 0
 
+
 local function wait()
   local maru = CH("PLAYER")
   local azura = CH("Teammate1")
   local rexio = CH("Teammate2")
-
   time = time + 1
   if time == 600 then
     UI:SetSpeaker(rexio)
@@ -137,6 +137,13 @@ end
 
 function MayorRoom.MayorLeave_Touch(obj, activator)
   GAME:EnterGroundMap("AppleMayor_pt2", "Enter")
+end
+
+function MayorRoom.NewObject_Action(obj, activator)
+  local maru = CH("PLAYER")
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("Nothing under here,[pause=50] probably no reason to put anything under here anyway.")
 end
 
 return MayorRoom

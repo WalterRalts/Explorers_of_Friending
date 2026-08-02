@@ -30,16 +30,17 @@ end
 --Engine callback function
 function entoh_thicket.ExitSegment(zone, result, rescue, segmentID, mapID)
     if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
+        if SV.Story.sect <= 1 then
+            SV.Story.sect = 2
+        end
         SV.entoh_town.thicket.result = DUNGEON:DungeonCurrentFloor()
-        if result == RogueEssence.Data.GameProgress.ResultType.Escaped then 
+        if result == RogueEssence.Data.GameProgress.ResultType.Escaped then
             SV.entoh_town.thicket.result = SV.entoh_town.thicket.result + 0.1
         elseif result == RogueEssence.Data.GameProgress.ResultType.GaveUp then
             SV.entoh_town.thicket.result = SV.entoh_town.thicket.result + 0.2
         end
         print(SV.entoh_town.thicket.result)
         SV.rent_number = 0
-        
-        print("Get out!")
         SV.entoh_thicket.dungpoints = SV.entoh_thicket.dungpoints + (10 * SV.entoh_town.thicket.result)
         COMMON.EndDungeonDay(result, "entoh_town", -1, 3, 2)
     else

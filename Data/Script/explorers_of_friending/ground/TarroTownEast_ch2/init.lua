@@ -149,11 +149,8 @@ end
 
 function TarroTownEast_ch2.TTEastSign_Action(obj, activator)
   local maru = CH("PLAYER")
-  UI:ResetSpeaker()
-  UI:SetAutoFinish(true)
-  UI:WaitShowDialogue("<- Tarro Town Outskirts \n Tarro Town Square ^")
+  EXPLCOMMON.SignDialogue("<- Tarro Town Outskirts \n Tarro Town Square ^")
 
-  UI:SetAutoFinish(false)
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Normal")
   GROUND:CharAnimateTurn(maru, Direction.Left, 4, true)

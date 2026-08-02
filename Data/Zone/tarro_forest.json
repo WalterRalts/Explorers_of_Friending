@@ -2428,7 +2428,7 @@
 },
 "Level": {
 "Min": 1,
-"Max": 3
+"Max": 4
 },
 "SpecifiedSkills": [],
 "Intrinsic": "",
@@ -2441,9 +2441,9 @@
 {
 "$type": "PMDC.LevelGen.MobSpawnBoost, PMDC",
 "MaxHPBonus": 0,
-"AtkBonus": -4,
+"AtkBonus": -2,
 "DefBonus": 0,
-"SpAtkBonus": -4,
+"SpAtkBonus": -2,
 "SpDefBonus": 0,
 "SpeedBonus": 0
 }

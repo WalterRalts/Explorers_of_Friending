@@ -21,7 +21,6 @@ function EntohTownEast.Init(map)
   else
     EXPLCOMMON.AllyFollow(true, true)
   end
-
   TidyRexTalk = 0
 end
 
@@ -45,8 +44,7 @@ end
 ---EntohTownEast.Update(map)
 --Engine callback function
 function EntohTownEast.Update(map)
-
-
+  Partner()
 end
 
 ---EntohTownEast.GameSave(map)

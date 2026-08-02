@@ -70,13 +70,11 @@ end
 -- Entrances
 
 function ApartmentRooms.ApartExit_Touch(obj, activator)
-  GAME:FadeOut(false, 10)
-  GAME:EnterGroundMap("EntohTownCenter", "HomeMarker")
+  EXPLCOMMON.FadeEnterGround("EntohTownCenter", "HomeMarker")
 end
 
 function ApartmentRooms.RexioHome_Enter_Touch(obj, activator)
-  GAME:FadeOut(false, 10)
-  GAME:EnterGroundMap("RexioHome", "RexioHomeWay")
+  EXPLCOMMON.FadeEnterGround("RexioHome", "RexioHomeWay")
 end
 
 function ApartmentRooms.EmptyEnter_Touch(obj, activator)

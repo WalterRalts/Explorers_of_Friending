@@ -28,7 +28,6 @@ end
 --Engine callback function
 function tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
   if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
-    print("Get out!")
     if segmentID == 0 then
       if SV.Story.chap == -1 and SV.Story.sect < 3 then
         SV.Story.flag = 1
@@ -56,9 +55,9 @@ function tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
       end
     else
       if segmentID == 0 then
-        COMMON.EndDungeonDay(result, "tarro_forest", -1, 1, 0)
         SV.tarro_forest.dungpoints = SV.tarro_forest.dungpoints + 50
         SV.tarro_forest.apple_tree_get = false
+        COMMON.EndDungeonDay(result, "tarro_forest", -1, 0, 0)
       end
     end
   end

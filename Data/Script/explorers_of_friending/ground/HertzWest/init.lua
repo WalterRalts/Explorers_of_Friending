@@ -5,6 +5,7 @@
 ]]--
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
+require 'explorers_of_friending.ground.HertzWest.cutscene'
 
 -- Package name
 local HertzWest = {}
@@ -15,7 +16,12 @@ local HertzWest = {}
 ---HertzWest.Init(map)
 --Engine callback function
 function HertzWest.Init(map)
-  EXPLCOMMON.AllyFollow(true, true)
+  if West_visit then
+    EXPLCOMMON.AllyFollow(true, true)
+  else
+    Line.Mission()
+    West_visit = true
+  end
 end
 
 ---HertzWest.Enter(map)
@@ -58,6 +64,12 @@ end
 -------------------------------
 -- Entities Callbacks
 -------------------------------
+
+-- Characters
+
+function HertzWest.Cook_Action(obj, activator)
+  
+end
 
 -- Entrances
 

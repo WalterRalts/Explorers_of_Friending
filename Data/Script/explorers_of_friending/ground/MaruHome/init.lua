@@ -24,25 +24,31 @@ function MaruHome.Init(map)
   if SV.Story.chap == -1 then
     if SV.Story.sect == 0 then
       Bluetails.PieTime()
-    elseif SV.Story.sect == 2 then -- Apple secured
+    elseif SV.Story.sect == 2 then
       Bluetails.RealPieTime()
       Bluetails.AfterPieTime()
     end
-  elseif SV.Story.chap == -3 and SV.Story.sect == 0 then -- before mail
-    GROUND:Hide("Arama")
-    GROUND:TeleportTo(CH("Amazuru"), 229, 248, Direction.DownRight, 0)
-    if mail_read == nil then
-      Bluetails.MailTime()
-    elseif mail_read == 1 then
-      Bluetails.AfterMailTime()
-    elseif mail_read == 2 then
-      Bluetails.AfterCook()
+  elseif SV.Story.chap == -2 then
+    GROUND:TeleportTo(CH("Amazuru"), 175, 200, Direction.DownRight, 0)
+    COMMON.CreateWalkArea("Amazuru", 175, 200, 72, 72)
+    GROUND:TeleportTo(CH("Arama"), 290, 170, Direction.Up, 0)
+  elseif SV.Story.chap == -3 then
+    if SV.Story.sect == 0 then
+      GROUND:Hide("Arama")
+      GROUND:TeleportTo(CH("Amazuru"), 229, 248, Direction.DownRight, 0)
+      if mail_read == nil then
+        Bluetails.MailTime()
+      elseif mail_read == 1 then
+        Bluetails.AfterMailTime()
+      elseif mail_read == 2 then
+        Bluetails.AfterCook()
+      end
+      COMMON.CreateWalkArea("Amazuru", 195, 225, 72, 72)
     end
-    COMMON.CreateWalkArea("Amazuru", 195, 225, 72, 72)
-
-  elseif SV.Story.chap == -3 and SV.Story.sect == 1 then -- after mail and cooking
-    GROUND:Hide("Arama")
-    GROUND:Hide("Amazuru")
+    if SV.Story.sect == 1 then
+      GROUND:Hide("Arama")
+      GROUND:Hide("Amazuru")
+    end
   end
   if OutEnter == 2 then
     GROUND:TeleportTo(partner, 273, 176, Direction.Down, 0)
@@ -218,8 +224,8 @@ function MaruHome.MaruHomeExit_Touch(obj, activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Hang on there, bud!")
 
-    GROUND:MoveToPosition(amazuru, maru.Position.X, maru.Position.Y - 24, false, 6)
-   EXPLCOMMON.FaceEachother(maru, amazuru)
+    GROUND:MoveToPosition(amazuru, maru.Position.X, maru.Position.Y - 24, false, 8)
+    EXPLCOMMON.FaceEachother(maru, amazuru)
     COMMON.GiftItem(CH("PLAYER"), "berry_oran")
 
     UI:SetSpeaker(amazuru)
@@ -235,19 +241,19 @@ function MaruHome.MaruHomeExit_Touch(obj, activator)
     SV.GroundTutorial = 2
   end
   if SV.Story.chap == -1 then
-    print("Exiting?")
+    PrintInfo("Exiting?")
     GAME:FadeOut(false, 20)
     GAME:EnterGroundMap("TarroTownEast", "TTEast_MaruHomeEnter")
   elseif SV.Story.chap == -2 then
-    print("Exiting?")
+    PrintInfo("Exiting?")
     GAME:FadeOut(false, 20)
     GAME:EnterGroundMap("TarroTownEast_ch2", "TTEast_MaruHomeEnter")
   elseif SV.Story.chap == -3 then
-    print("Exiting?")
+    PrintInfo("Exiting?")
     GAME:FadeOut(false, 20)
     GAME:EnterGroundMap("TarroTownEast_ch3", "TTEast_MaruHomeEnter")
   else
-    print("Exiting?")
+    PrintInfo("Exiting?")
     GAME:EnterGroundMap("TarroTownEast_extra", "TTEast_MaruHomeEnter")
   end
 end
@@ -287,9 +293,35 @@ function MaruHome.WaterHole_Action(obj, activator)
 end
 
 function MaruHome.MaruOven_Action(obj, activator)
+  if SV.Story.chap == -1 then
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("This is what mom uses to cook with...")
 
-  if SV.Story.sect == 1 then
-    if oven_perms_given == true then
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Can't use it now, though. I have other stuff to do.")
+  elseif SV.Story.chap == -2 then
+    UI:SetSpeaker(activator)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("This is what mom uses to cook with...")
+
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Can't use it now, though. I have other stuff to do.")
+  elseif SV.Story.chap == -3 then
+    if SV.Story.sect == 1 then
+      if oven_perms_given == true then
+        GAME:EnterGroundMap("MaruHomeFood", "Marker")
+      else
+        UI:SetSpeaker(activator)
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("This is what mom uses to cook with...")
+
+        UI:SetSpeakerEmotion("Worried")
+        UI:WaitShowDialogue("Though[pause=25], I should probably ask her for permission to use it while she's away...")
+        oven_perms_given = false
+        oven_perms_need = true
+      end
+    elseif SV.Story.sect > 1 then
       GAME:EnterGroundMap("MaruHomeFood", "Marker")
     else
       UI:SetSpeaker(activator)
@@ -297,19 +329,8 @@ function MaruHome.MaruOven_Action(obj, activator)
       UI:WaitShowDialogue("This is what mom uses to cook with...")
 
       UI:SetSpeakerEmotion("Worried")
-      UI:WaitShowDialogue("Though[pause=25], I should probably ask her for permission to use it while she's away...")
-      oven_perms_given = false
-      oven_perms_need = true
+      UI:WaitShowDialogue("Can't use it now, though. I have other stuff to do.")
     end
-  elseif SV.Story.sect > 1 then
-    GAME:EnterGroundMap("MaruHomeFood", "Marker")
-  else
-    UI:SetSpeaker(activator)
-    UI:SetSpeakerEmotion("Normal")
-    UI:WaitShowDialogue("This is what mom uses to cook with...")
-
-    UI:SetSpeakerEmotion("Worried")
-    UI:WaitShowDialogue("Can't use it now, though. I have other stuff to do.")
   end
 end
 

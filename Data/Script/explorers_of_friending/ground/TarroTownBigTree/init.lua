@@ -67,7 +67,7 @@ function TarroTownBigTree.Init(map)
     if SV.tarro_tree_hollows.tree_entered == false then
       Tree.FirstEnter()
     end
-    EXPLCOMMON.AllyFollow(true, false)
+    EXPLCOMMON.AllyFollow(false, false)
     puchi_tired = true
   elseif SV.tarro_tree_hollows.tree_entered == true then --after cutscene
 

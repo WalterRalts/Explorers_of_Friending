@@ -67995,7 +67995,7 @@
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -68076,12 +68076,12 @@
 }
 },
 {
-"EntName": "NewObject_2",
+"EntName": "ExitN",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
-"triggerType": 0,
+"triggerType": 2,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -68119,7 +68119,7 @@
 }
 },
 {
-"EntName": "NewObject_3",
+"EntName": "ExitE",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,

@@ -22,10 +22,11 @@ function QuizTime.Init(map)
   local senna = CH("Senna")
   local ziggy = CH("Ziggy")
 
-  GAME:FadeIn(5)
+  GAME:FadeIn(15)
   GAME:WaitFrames(10)
   OutEnter = 1
   if Quiz[2] == 0 then
+    EXPLCOMMON.CharRealizeHeavy("Maru")
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Surprised")
     UI:WaitShowDialogue("Whoa!")
@@ -39,18 +40,19 @@ function QuizTime.Init(map)
     UI:SetSpeakerEmotion("Surprised")
     UI:WaitShowDialogue("Z-[pause=30]ziggy...! H[emote=Stunned]ow did you...?!")
   end
-  
+
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("First question!")
-    
+
   if Quiz[2] == 0 then
     GROUND:CharTurnToCharAnimated(senna, puchi, 4)
     UI:SetSpeaker(senna)
     UI:SetSpeakerEmotion("Sigh")
     UI:WaitShowDialogue("[speed=0.7]Hm...")
+    Quiz[2] = 1
   end
-  
+
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Normal")
   UI:WaitShowDialogue("What color are the Tarro town flowers?")
@@ -69,13 +71,14 @@ function QuizTime.Init(map)
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Worried")
     local choices = {("Blue!"),
-        ("White!"), 
-        ("Green!"), 
+        ("White!"),
+        ("Green!"),
         ("Red!")}
     UI:BeginChoiceMenu("(What color were the flowers...?)", choices, 1, 4)
     UI:WaitForChoice()
     result = UI:ChoiceResult()
     if result == 2 then
+        EXPLCOMMON.CharHappyHop("Ziggy")
         UI:SetSpeaker(ziggy)
         UI:SetSpeakerEmotion("Joyous")
         UI:WaitShowDialogue("Correct!")
@@ -87,7 +90,7 @@ function QuizTime.Init(map)
         UI:SetSpeaker(ziggy)
         UI:SetSpeakerEmotion("Joyous")
         UI:WaitShowDialogue("Now then...")
-            
+
         GROUND:CharTurnToCharAnimated(ziggy, puchi, 4)
         UI:SetSpeaker(puchi)
         UI:SetSpeakerEmotion("Determined")
@@ -115,24 +118,26 @@ function QuizTime.Init(map)
         UI:SetSpeaker(ziggy)
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("Yeah, well, it was in the town!")
+
+        GROUND:CharTurnToCharAnimated(senna, maru, 4)
         UI:SetSpeaker(maru)
         UI:SetSpeakerEmotion("Worried")
         local choices = {("Height!"),
-            ("Flowers!"), 
-            ("Color!"), 
+            ("Flowers!"),
+            ("Color!"),
             ("Speed!")}
         UI:BeginChoiceMenu("(What were they fighting about...?)", choices, 1, 4)
         UI:WaitForChoice()
         result = UI:ChoiceResult()
-        if result == 1 then    
+        if result == 1 then
             UI:SetSpeaker(ziggy)
             UI:SetSpeakerEmotion("Stunned")
             UI:WaitShowDialogue("They're the same size, aren't they?")
-    
+
             UI:SetSpeaker(puchi)
             UI:SetSpeakerEmotion("Worried")
             UI:WaitShowDialogue("Sounds like, even then, they'd still fight about it...")
-    
+
             UI:SetSpeaker(azura)
             UI:SetSpeakerEmotion("Stunned")
             UI:WaitShowDialogue("Yeesh...")
@@ -140,24 +145,25 @@ function QuizTime.Init(map)
             UI:SetSpeaker(ziggy)
             UI:SetSpeakerEmotion("Normal")
             UI:WaitShowDialogue("Right,[pause=15] you guys can come back later and try it again.")
-            Quiz[2] = 1
         elseif result == 2 then
+            EXPLCOMMON.CharSweatdrop("Senna")
+            GAME:WaitFrames(20)
             UI:SetSpeaker(senna)
             UI:SetSpeakerEmotion("Normal")
             UI:WaitShowDialogue("They all look the same.[pause=30] Doubt it.")
-    
+
             UI:SetSpeaker(ziggy)
             UI:SetSpeakerEmotion("Stunned")
             UI:WaitShowDialogue("But some are taller than others...")
-    
+
             UI:SetSpeaker(puchi)
             UI:SetSpeakerEmotion("Worried")
             UI:WaitShowDialogue("Would that really even matter...?")
-    
+
             UI:SetSpeaker(ziggy)
             UI:SetSpeakerEmotion("Stunned")
             UI:WaitShowDialogue("...probably not.")
-    
+
             UI:SetSpeaker(azura)
             UI:SetSpeakerEmotion("Stunned")
             UI:WaitShowDialogue("Yeesh...")
@@ -165,8 +171,8 @@ function QuizTime.Init(map)
             UI:SetSpeaker(ziggy)
             UI:SetSpeakerEmotion("Normal")
             UI:WaitShowDialogue("Right,[pause=15] you guys can come back later and try it again.")
-            Quiz[2] = 1
         elseif result == 3 then
+            EXPLCOMMON.CharHappyHop("Ziggy")
             UI:SetSpeaker(ziggy)
             UI:SetSpeakerEmotion("Happy")
             UI:WaitShowDialogue("Well done, junior explorers!")
@@ -178,7 +184,7 @@ function QuizTime.Init(map)
             UI:SetSpeaker(puchi)
             UI:SetSpeakerEmotion("Worried")
             UI:WaitShowDialogue("Don't you have any harder questions?")
-    
+
             UI:SetSpeaker(ziggy)
             UI:SetSpeakerEmotion("Normal")
             UI:WaitShowDialogue("I'm willing to take any ideas.")
@@ -198,8 +204,8 @@ function QuizTime.Init(map)
             UI:SetSpeaker(azura)
             UI:SetSpeakerEmotion("Worried")
             local choices = {("Togekiss!"),
-                ("Linoone!"), 
-                ("Azumarill!"), 
+                ("Linoone!"),
+                ("Azumarill!"),
                 ("Plusle and Minun!")}
             UI:BeginChoiceMenu("(What shape is the house next to [color=#01FE10]Tarro Tree[color]?)", choices, 1, 4)
             UI:WaitForChoice()
@@ -208,15 +214,15 @@ function QuizTime.Init(map)
                 UI:SetSpeaker(ziggy)
                 UI:SetSpeakerEmotion("Happy")
                 UI:WaitShowDialogue("Alright, three in a row!")
-        
+
                 UI:SetSpeaker(puchi)
                 UI:SetSpeakerEmotion("Dizzy")
                 UI:WaitShowDialogue("I'mma sleep now.")
-        
+
                 UI:SetSpeaker(ziggy)
                 UI:SetSpeakerEmotion("Normal")
                 UI:WaitShowDialogue("Nuh-uh.")
-        
+
                 UI:SetSpeaker(puchi)
                 UI:SetSpeakerEmotion("Angry")
                 UI:WaitShowDialogue("[speed=0.6].........")
@@ -229,14 +235,14 @@ function QuizTime.Init(map)
                 UI:SetSpeaker(maru)
                 UI:SetSpeakerEmotion("Worried")
                 local choices = {("2!"),
-                    ("3!"), 
-                    ("4!"), 
+                    ("3!"),
+                    ("4!"),
                     ("5!")}
                 UI:BeginChoiceMenu("(How many stores are there...?)", choices, 1, 4)
                 UI:WaitForChoice()
                 result = UI:ChoiceResult()
                 if result == 1 then
-                    Quiz = {false, 2}
+                    Quiz = {true, 2}
                     UI:SetSpeaker(ziggy)
                     UI:SetSpeakerEmotion("Happy")
                     UI:WaitShowDialogue("Hahahaha!")
@@ -257,12 +263,13 @@ function QuizTime.Init(map)
                     UI:WaitShowTimedDialogue("That mean I wiiiiii-!")
                     SV.Story.sect = 2
                     --explosion sound
+                    Quiz = {true, 2}
                     SOUND:PlayBattleSE("DUN_Explosion")
                     GROUND:MoveScreen(RogueEssence.Content.ScreenMover(0, 8, 30))
                     SOUND:PlayBGM("None", true, 30)
                     GAME:EnterGroundMap("TarroTownSquare", "Quiz_Fail")
                 elseif result == 2 then
-                    Quiz = {false, 2}
+                    Quiz = {true, 2}
                     UI:SetSpeaker(ziggy)
                     UI:SetSpeakerEmotion("Happy")
                     UI:WaitShowDialogue("Hahahaha!")
@@ -285,14 +292,15 @@ function QuizTime.Init(map)
                     UI:WaitShowTimedDialogue("Oof,[pause=25] so close.")
                     UI:SetSpeakerEmotion("Normal")
                     UI:WaitShowDialogue("But since you're wrong, you can come back later and try again.")
-                    Quiz[2] = 1
+                    
                 end
             elseif result == 2 then
                 EXPLCOMMON.CharSweatdrop("Senna")
                 UI:SetSpeaker(senna)
                 UI:SetSpeakerEmotion("Stunned")
-                UI:WaitShowTimedDialogue("That's [speed=0.6]not...?")
+                UI:WaitShowTimedDialogue("That's [speed=0.6]not...?", 10)
 
+                EXPLCOMMON.CharHappyHop("Ziggy")
                 UI:SetSpeaker(ziggy)
                 UI:SetSpeakerEmotion("Inspired")
                 UI:WaitShowDialogue("We live next to the [color=#01FE10]Big Tree[color]?!")
@@ -301,17 +309,21 @@ function QuizTime.Init(map)
                 UI:SetSpeakerEmotion("Worried")
                 UI:WaitShowDialogue("No, Ziggy...")
 
+                EXPLCOMMON.CharExclaim("Ziggy")
+                EXPLCOMMON.FaceEachother(ziggy, senna)
+                GAME:WaitFrames(45)
                 UI:SetSpeaker(ziggy)
                 UI:SetSpeakerEmotion("Sad")
                 UI:WaitShowDialogue("Aww...")
                 UI:WaitShowDialogue("I'm sorry... [pause=55]but you got it wrong...")
+                EXPLCOMMON.StartTremble(ziggy)
+                GROUND:CharTurnToCharAnimated(ziggy, maru, 8)
                 UI:SetSpeakerEmotion("Teary-Eyed")
                 UI:WaitShowDialogue("[speed=0.6]You can...[pause=55] try again... [pause=43]*sniffle*...")
 
                 UI:SetSpeaker(senna)
                 UI:SetSpeakerEmotion("Worried")
                 UI:WaitShowDialogue("Aww... Ziggy.")
-                Quiz[2] = 1
             elseif result == 3 then
                 EXPLCOMMON.CharSweatdrop("Senna")
                 EXPLCOMMON.CharSweatdrop("Ziggy")
@@ -334,7 +346,6 @@ function QuizTime.Init(map)
                 UI:SetSpeaker(ziggy)
                 UI:SetSpeakerEmotion("Happy")
                 UI:WaitShowDialogue("I'd want to be next to it, too. But since you're wrong, you can come back later and try again.")
-                Quiz[2] = 1
             elseif result == 4 then
                 GROUND:CharTurnToCharAnimated(senna, azura, 4)
                 GROUND:CharTurnToCharAnimated(puchi, azura, 4)
@@ -344,24 +355,23 @@ function QuizTime.Init(map)
                 UI:WaitShowTimedDialogue("Oof,[pause=25] so close.")
                 UI:SetSpeakerEmotion("Normal")
                 UI:WaitShowDialogue("But since you're wrong, you can come back later and try again.")
-                Quiz[2] = 1
             end
         elseif result == 4 then
             UI:SetSpeaker(ziggy)
             UI:SetSpeakerEmotion("Happy")
             UI:WaitShowDialogue("Nope, that was last week![pause=30] Haha!")
-    
-           EXPLCOMMON.FaceEachother(ziggy, puchi)
+
+            EXPLCOMMON.FaceEachother(ziggy, puchi)
             UI:SetSpeaker(puchi)
             UI:SetSpeakerEmotion("Determined")
             UI:WaitShowDialogue("How come I wasn't woken up for that one?")
-    
+
             UI:SetSpeaker(ziggy)
             UI:SetSpeakerEmotion("Stunned")
             UI:WaitShowDialogue("Uh, well... i-it... uh...")
-    
-           EXPLCOMMON.CharAngry("Puchi")
-           EXPLCOMMON.CharRealize("Ziggy")
+
+            EXPLCOMMON.CharAngry("Puchi")
+            EXPLCOMMON.CharRealize("Ziggy")
             UI:SetSpeaker(puchi)
             UI:SetSpeakerEmotion("Angry")
             UI:WaitShowDialogue("Grrrrr...!")
@@ -370,11 +380,11 @@ function QuizTime.Init(map)
             UI:SetSpeaker(ziggy)
             UI:SetSpeakerEmotion("Pain")
             UI:WaitShowDialogue("Eep!")
-    
+
             UI:SetSpeaker(senna)
             UI:SetSpeakerEmotion("Stunned")
             UI:WaitShowDialogue("Oooo[pause=15]kaaaaay,[pause=30] y[emote=Happy]ou two can come back and try again.")
-    
+
             UI:SetSpeaker(puchi)
             UI:SetSpeakerEmotion("Determined")
             UI:WaitShowDialogue("You [pause=25]o[emote=Angry]we me, Ziggy...!")
@@ -382,7 +392,6 @@ function QuizTime.Init(map)
             UI:SetSpeaker(ziggy)
             UI:SetSpeakerEmotion("Normal")
             UI:WaitShowDialogue("Nope, nuh-uh, can't hear you.")
-            Quiz[2] = 1
         end
     else
         UI:SetSpeaker(ziggy)
@@ -398,7 +407,6 @@ function QuizTime.Init(map)
         UI:SetSpeaker(ziggy)
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("You guys must be rushing![pause=0] Go explore for real and come back for a rematch!")
-        Quiz[2] = 1
     end
     GAME:EnterGroundMap("TarroTownSquare", "Quiz_Fail")
 end

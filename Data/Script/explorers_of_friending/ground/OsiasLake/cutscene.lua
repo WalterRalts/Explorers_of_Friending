@@ -1,0 +1,260 @@
+require 'explorers_of_friending.common'
+
+Osiases = {}
+
+function Osiases.GoingIn()
+    Todungeonscene = true
+    GAME:CutsceneMode(true)
+    COMMON.RespawnAllies()
+    local azura = CH("Teammate1")
+    local rexio = CH("Teammate2")
+    local maru = CH("PLAYER")
+    local hertz = CH("HertzMaster")
+    GAME:MoveCamera(300, 500, 1, false)
+
+    local coro3 = TASK:BranchCoroutine(function()
+        GROUND:AnimateToPosition(azura, "Walk", Dir8.Up, azura.Position.X, azura.Position.Y - 45, 0.3, 0.6, 0)
+        end)
+    local coro4 = TASK:BranchCoroutine(function()
+        GROUND:AnimateToPosition(rexio, "Walk", Dir8.Up, rexio.Position.X, rexio.Position.Y - 45, 0.3, 0.6, 0)
+        end)
+    local coro5 = TASK:BranchCoroutine(function()
+        GROUND:AnimateToPosition(maru, "Walk", Dir8.Up, maru.Position.X, maru.Position.Y - 65, 0.3, 0.6, 0)
+        end)
+    local coro6 = TASK:BranchCoroutine(function()
+        GAME:FadeIn(100)
+        EXPLCOMMON.CharSweating("Teammate2")
+        end)
+    TASK:JoinCoroutines({coro3, coro4, coro5, coro6})
+
+    GROUND:CharTurnToCharAnimated(maru, rexio, 4)
+    GROUND:CharTurnToCharAnimated(azura, rexio, 4)
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Pain")
+    UI:WaitShowDialogue("[speed=0.5]...no, no... I can't...")
+    
+
+    EXPLCOMMON.SetCharAndEmotion(azura, "Worried")
+    UI:WaitShowDialogue("Rexio?")
+    EXPLCOMMON.StartAndStop(rexio, "Sit")
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Dizzy")
+    UI:WaitShowDialogue("[speed=0.5]I don't know why we came out here[pause=0], I can't stand this heat, so I sits now...")
+
+    GROUND:CharAnimateTurnTo(maru, Dir8.Up, 4)
+    EXPLCOMMON.SetCharAndEmotion(maru, "Stunned")
+    UI:WaitShowDialogue("...but Rexio, there's water right there.")
+    GROUND:CharAnimateTurnTo(maru, Dir8.DownRight, 4)
+    GAME:WaitFrames(90)
+
+    EXPLCOMMON.SetCharAndEmotion(maru, "Sigh")
+    UI:WaitShowDialogue("...[pause=0]come[emote=Worried] on, Azura. Help me out.")
+
+    local drag0 = TASK:BranchCoroutine(function()
+        EXPLCOMMON.SetCharAndEmotion(azura, "Happy")
+        UI:WaitShowTimedDialogue("Okay!", 60)
+        GROUND:AnimateToPosition(azura, "Walk", Dir8.Right, rexio.Position.X + 15, rexio.Position.Y - 15, 0.3, 0.6, 0)
+        end)
+    local drag1 = TASK:BranchCoroutine(function()
+        GROUND:AnimateToPosition(maru, "Walk", Dir8.DownRight, rexio.Position.X - 15, rexio.Position.Y - 20, 0.3, 0.6, 0)
+        end)
+    local drag2 = TASK:BranchCoroutine(function()
+        GAME:MoveCamera(300, 400, 90, false)
+        end)
+    local drag3 = TASK:BranchCoroutine(function()
+        GAME:FadeOut(true, 90)
+        end)
+    TASK:JoinCoroutines({drag0, drag1, drag2, drag3})
+
+    EXPLCOMMON.TeleportToMarker(rexio, "lake1", Direction.Up)
+    EXPLCOMMON.TeleportToMarker(maru, "lake2", Direction.Right)
+    EXPLCOMMON.TeleportToMarker(azura, "lake3", Direction.UpLeft)
+    GROUND:CharSetAnim(azura, "Idle", true)
+    GAME:FadeIn(60)
+
+    EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
+    UI:WaitShowDialogue("You still think missions are boring?")
+
+    EXPLCOMMON.CharAngry("Teammate2")
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Happy")
+    EXPLCOMMON.FaceEachother(rexio, maru)
+    GROUND:CharSetAnim(rexio, "None", true)
+    UI:WaitShowTimedDialogue("Ha ha ha,[pause=45] so funny, Bluetail,[pause=50] so so so funny!", 80)
+    GAME:WaitFrames(20)
+
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
+    UI:WaitShowDialogue("This treasure thing better be worth it...")
+
+    GAME:WaitFrames(70)
+    GROUND:CharAnimateTurnTo(maru, Dir8.Up, 4)
+    GAME:WaitFrames(10)
+    EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
+    UI:WaitShowDialogue("I think it will be.")
+    GAME:WaitFrames(10)
+    UI:WaitShowDialogue("They went through all the effort to get us here, it has to be something.")
+
+    GAME:WaitFrames(50)
+    EXPLCOMMON.SetCharAndEmotion("none")
+    UI:WaitShowDialogue("Heeeeey!")
+    GAME:MoveCamera(275, 295, 30, false)
+    EXPLCOMMON.CharRealize("PLAYER")
+    EXPLCOMMON.FaceEachother(rexio, hertz)
+
+    GAME:FadeOut(false, 50)
+    GAME:MoveCamera(hertz.Position.X, hertz.Position.Y, 1, false)
+
+    EXPLCOMMON.TeleportToMarker(azura, "dun1", Direction.DownRight)
+    EXPLCOMMON.TeleportToMarker(maru, "dun2", Direction.Right)
+    EXPLCOMMON.TeleportToMarker(rexio, "dun3", Direction.DownLeft)
+    EXPLCOMMON.GroupFacer({azura, maru, rexio}, hertz)
+    GAME:FadeIn(60)
+    EXPLCOMMON.SetCharAndEmotion(hertz, "Worried")
+    UI:WaitShowDialogue("[speed=0.5]Hmmm...")
+
+    local function charger()
+        SOUND:PlaySE("Battle/DUN_Charge_Start")
+        GAME:WaitFrames(15)
+        SOUND:PlaySE("Battle/DUN_Charge")
+        GROUND:CharWaitAnim(hertz, "Charge")
+        SOUND:PlaySE("Battle/DUN_Discharge_2")
+        GROUND:CharWaitAnim(hertz, "Shock")
+        GROUND:CharSetAnim(hertz, "Idle", false)
+    end
+
+    GROUND:CharTurnToCharAnimated(hertz, azura, 5)
+    EXPLCOMMON.SetCharAndEmotion(hertz, "Happy")
+    UI:WaitShowDialogue("You kids sure you don't wanna try battling[script=0] the Hertz Master!", {charger})
+
+    EXPLCOMMON.SetCharAndEmotion(azura, "Stunned")
+    UI:WaitShowDialogue("Scary...")
+
+    EXPLCOMMON.SetCharAndEmotion(hertz, "Sigh")
+    UI:WaitShowDialogue("No fun,[pause=45] but yeah,[pause=10] I know about the treasure.")
+    UI:WaitShowDialogue("Right in the dungeon, up ahead.")
+
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Normal")
+    UI:WaitShowDialogue("'Kay, thanks.")
+
+    local coro11 = TASK:BranchCoroutine(function()
+        GROUND:AnimateToPosition(azura, "Walk", Dir8.Up, azura.Position.X, azura.Position.Y - 20, 0.3, 0.6, 0)
+        end)
+    local coro111 = TASK:BranchCoroutine(function()
+        GROUND:AnimateToPosition(rexio, "Walk", Dir8.Up, rexio.Position.X, rexio.Position.Y - 20, 0.3, 0.6, 0)
+        end)
+    local coro1111 = TASK:BranchCoroutine(function()
+        GROUND:AnimateToPosition(maru, "Walk", Dir8.Up, maru.Position.X, maru.Position.Y - 20, 0.3, 0.6, 0)
+        end)
+    local coro11111 = TASK:BranchCoroutine(function()
+        GAME:WaitFrames(35)
+        EXPLCOMMON.SetCharAndEmotion(hertz, "Shouting")
+        GROUND:CharAnimateTurnTo(hertz, Direction.Up, 1)
+        GROUND:CharSetAnim(hertz, "Charge", true)
+        UI:WaitShowTimedDialogue("Waaaaaaaaaaaait!!", 60)
+        end)
+    TASK:JoinCoroutines({coro11, coro111, coro1111, coro11111})
+
+    EXPLCOMMON.GroupFacer({azura, maru, rexio}, hertz, 4)
+    EXPLCOMMON.SetCharAndEmotion(hertz, "Normal")
+    UI:WaitShowDialogue("I need to come with, you guys are just kids and you'll need help in there.")
+
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Determined")
+    UI:WaitShowDialogue("For whaaaaaaat?!")
+
+    EXPLCOMMON.SetCharAndEmotion(hertz, "Happy")
+    UI:WaitShowDialogue("You'll see, you'll see.")
+
+    local mon_id = RogueEssence.Dungeon.MonsterID("pawmot", 0, "normal", Gender.Female)
+
+    local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 40, "", 0)
+    p.IsFounder = false
+    p.IsPartner = false
+    p.Nickname = "Hertz Guildmaster"
+
+    _DATA.Save.ActiveTeam.Players:Add(p)
+
+    local coro2 = TASK:BranchCoroutine(function()
+        GROUND:AnimateToPosition(azura, "Walk", Dir8.Up, azura.Position.X, azura.Position.Y - 45, 0.3, 0.6, 0)
+        end)
+    local coro22 = TASK:BranchCoroutine(function()
+        GROUND:AnimateToPosition(rexio, "Walk", Dir8.Up, rexio.Position.X, rexio.Position.Y - 45, 0.3, 0.6, 0)
+        end)
+    local coro222 = TASK:BranchCoroutine(function()
+        GROUND:AnimateToPosition(maru, "Walk", Dir8.Up, maru.Position.X, maru.Position.Y - 65, 0.3, 0.6, 0)
+        end)
+    local coro2222 = TASK:BranchCoroutine(function()
+        GROUND:AnimateToPosition(hertz, "Walk", Dir8.Up, maru.Position.X, maru.Position.Y - 65, 0.3, 0.6, 0)
+        end)
+    local coro22222 = TASK:BranchCoroutine(function()
+        GAME:FadeOut(false, 50)
+        COMMON.UnlockWithFanfare("osias_ruins", false)
+        end)
+    TASK:JoinCoroutines({coro2, coro22, coro222, coro2222, coro22222})
+    GAME:CutsceneMode(false)
+    GAME:EnterZone("osias_ruins", 0, 0, 0)
+end
+
+function Osiases.Yikes()
+    COMMON.RespawnAllies()
+    Todungeonscene = true
+    local azura = CH("Teammate1")
+    local rexio = CH("Teammate2")
+    local maru = CH("PLAYER")
+    local hertz = CH("HertzMaster")
+    EXPLCOMMON.TeleportToMarker(azura, "dun1", Direction.DownRight)
+    EXPLCOMMON.TeleportToMarker(maru, "dun2", Direction.Right)
+    EXPLCOMMON.TeleportToMarker(rexio, "dun3", Direction.DownLeft)
+    EXPLCOMMON.GroupFacer({azura, maru, rexio}, hertz)
+    GAME:MoveCamera(hertz.Position.X, hertz.Position.Y, 1, false)
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Angry")
+    UI:WaitShowDialogue("Whaaaaaaat?![pause=65] What just happened?!")
+    GAME:FadeIn(50)
+
+    EXPLCOMMON.SetCharAndEmotion(hertz, "Worried")
+    UI:WaitShowDialogue("Weird... why did you three all get transported out...?")
+    GAME:WaitFrames(25)
+    EXPLCOMMON.CharExclaim("HertzMaster")
+    GROUND:CharTurnToCharAnimated(hertz, maru, 2)
+    EXPLCOMMON.SetCharAndEmotion(hertz, "Surprised")
+    UI:WaitShowDialogue("You're not a part of a guild, are you?!")
+
+    EXPLCOMMON.SetCharAndEmotion(maru, "Worried")
+    UI:WaitShowDialogue("Well, kinda.")
+
+    EXPLCOMMON.CharHappyHop("HertzMaster")
+    EXPLCOMMON.SetCharAndEmotion(hertz, "Inspired")
+    UI:WaitShowDialogue("That means we can battle,[pause=40] you have guild experience!!")
+
+    EXPLCOMMON.SetCharAndEmotion(azura, "Surprised")
+    UI:WaitShowTimedDialogue("Meep!", 30)
+
+    EXPLCOMMON.SetCharAndEmotion(maru, "Happy")
+    UI:WaitShowTimedDialogue("Nope nope nope nope we're going back in for treasure!", 50)
+
+    local runm = TASK:BranchCoroutine(function()
+        GAME:WaitFrames(20)
+        GROUND:AnimateToPosition(azura, "Walk", Dir8.Up, azura.Position.X, azura.Position.Y - 200, 2, 2, 0)
+        end)
+    local runa = TASK:BranchCoroutine(function()
+        GROUND:AnimateToPosition(maru, "Walk", Dir8.Up, maru.Position.X, maru.Position.Y - 200, 2, 2, 0)
+        end)
+    local norunr = TASK:BranchCoroutine(function()
+        GAME:WaitFrames(60)
+        EXPLCOMMON.FaceEachother(rexio, hertz)
+
+        EXPLCOMMON.SetCharAndEmotion(rexio, "Normal")
+        UI:WaitShowTimedDialogue("If it means anything,[pause=30] [emote=Happy]I would've battled you.", 100)
+
+        GROUND:AnimateToPosition(rexio, "Walk", Dir8.Up, rexio.Position.X, rexio.Position.Y - 200, 1, 1, 0)
+        end)
+    TASK:JoinCoroutines({runm, runa, norunr})
+
+    EXPLCOMMON.SetCharAndEmotion(hertz, "Worried")
+    UI:WaitShowTimedDialogue("...", 60)
+
+    local walkf = TASK:BranchCoroutine(function()
+        GAME:FadeOut(false, 50)
+        GAME:EnterZone("osias_ruins", 0, 0, 0)
+        end)
+    local walkh = TASK:BranchCoroutine(function()
+        GROUND:AnimateToPosition(hertz, "Walk", Dir8.Up, hertz.Position.X, hertz.Position.Y - 200, 1, 1, 0)
+        end)
+    TASK:JoinCoroutines({walkh, walkf})
+end

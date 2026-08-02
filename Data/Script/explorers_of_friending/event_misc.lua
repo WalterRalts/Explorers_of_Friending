@@ -154,8 +154,4 @@ function SKILL_CHANGE_SCRIPT.Test(owner, character, skillIndices, args)
   PrintInfo("Test")
 end
 
-function ITEM_SCRIPT.HoneySummoning(owner, ownerChar, context, args)
-	PrintInfo("Test")
-end
-
 

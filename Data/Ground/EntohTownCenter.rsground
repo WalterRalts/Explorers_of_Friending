@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.11.0",
+"Version": "0.8.12.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -59704,7 +59704,7 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 13,
+"X": 14,
 "Y": 392,
 "Width": 16,
 "Height": 16
@@ -60104,7 +60104,7 @@
 "InteractOrder": 0,
 "serializationLoc": {
 "X": 274,
-"Y": 437
+"Y": 436
 },
 "serializationHeight": 0,
 "serializationDir": 0,
@@ -60185,7 +60185,7 @@
 "CollisionDisabled": false,
 "Collider": {
 "X": 274,
-"Y": 437,
+"Y": 436,
 "Width": 16,
 "Height": 16
 }
@@ -60200,7 +60200,7 @@
 "InteractOrder": 0,
 "serializationLoc": {
 "X": 100,
-"Y": 475
+"Y": 477
 },
 "serializationHeight": 0,
 "serializationDir": 4,
@@ -60281,7 +60281,7 @@
 "CollisionDisabled": false,
 "Collider": {
 "X": 100,
-"Y": 475,
+"Y": 477,
 "Width": 16,
 "Height": 16
 }
@@ -60295,8 +60295,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 587,
-"Y": 196
+"X": 595,
+"Y": 197
 },
 "serializationHeight": 0,
 "serializationDir": 2,
@@ -60376,7 +60376,7 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 587,
+"X": 583,
 "Y": 196,
 "Width": 16,
 "Height": 16
@@ -60561,9 +60561,9 @@
 },
 "Collider": {
 "X": 72,
-"Y": 480,
+"Y": 496,
 "Width": 72,
-"Height": 24
+"Height": 8
 }
 },
 {
@@ -60603,9 +60603,9 @@
 "Y": 0
 },
 "Collider": {
-"X": 600,
+"X": 616,
 "Y": 168,
-"Width": 24,
+"Width": 8,
 "Height": 72
 }
 },
@@ -60647,7 +60647,7 @@
 },
 "Collider": {
 "X": 264,
-"Y": 144,
+"Y": 141,
 "Width": 80,
 "Height": 18
 }
@@ -60820,8 +60820,8 @@
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 578,
-"Y": 219,
+"X": 589,
+"Y": 221,
 "Width": 16,
 "Height": 16
 }

@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.11.0",
+"Version": "0.8.12.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -62653,7 +62653,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62662,7 +62662,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62671,7 +62671,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62680,7 +62680,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62689,7 +62689,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62698,7 +62698,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62707,7 +62707,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62716,7 +62716,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62725,7 +62725,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62734,7 +62734,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62743,7 +62743,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62752,7 +62752,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62761,7 +62761,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62770,7 +62770,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62779,7 +62779,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62788,7 +62788,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62797,7 +62797,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62806,7 +62806,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62815,7 +62815,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62824,7 +62824,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62833,7 +62833,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {
@@ -62842,7 +62842,7 @@
 "Width": 8,
 "Height": 8
 },
-"Tags": 0
+"Tags": 1
 },
 {
 "Bounds": {

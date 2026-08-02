@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.11.0",
+"Version": "0.8.12.0",
 "Object": {
 "$type": "RogueEssence.Data.TileData, RogueEssence",
 "Name": {
@@ -113,7 +113,7 @@
 "Y": 0
 }
 },
-"Rate": 500
+"Rate": 400
 },
 {
 "Spawn": {
@@ -158,7 +158,7 @@
 "Y": 0
 }
 },
-"Rate": 15
+"Rate": 25
 },
 {
 "Spawn": {
@@ -177,6 +177,21 @@
 },
 {
 "Spawn": {
+"IsMoney": true,
+"Cursed": false,
+"Value": "",
+"HiddenValue": "",
+"Amount": 100,
+"Price": 0,
+"TileLoc": {
+"X": 0,
+"Y": 0
+}
+},
+"Rate": 5
+},
+{
+"Spawn": {
 "IsMoney": false,
 "Cursed": false,
 "Value": "loot_nugget",
@@ -188,10 +203,10 @@
 "Y": 0
 }
 },
-"Rate": 1
+"Rate": 5
 }
 ],
-"MinAmount": 3,
+"MinAmount": 5,
 "MaxAmount": 15,
 "MaxRangeWidth": 7,
 "MaxRangeHeight": 7
@@ -217,7 +232,50 @@
 "$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
 "LocHeight": 0
 },
-"PreActions": [],
+"PreActions": [
+{
+"Delay": 20,
+"AbsoluteDelay": false,
+"Sound": "DUN_Money",
+"Emitter": {
+"$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
+"LocHeight": 0
+},
+"ScreenMovement": {
+"MinShake": 0,
+"MaxShake": 0,
+"MaxShakeTime": 0
+}
+},
+{
+"Delay": 20,
+"AbsoluteDelay": false,
+"Sound": "DUN_Money",
+"Emitter": {
+"$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
+"LocHeight": 0
+},
+"ScreenMovement": {
+"MinShake": 0,
+"MaxShake": 0,
+"MaxShakeTime": 0
+}
+},
+{
+"Delay": 20,
+"AbsoluteDelay": false,
+"Sound": "DUN_Money",
+"Emitter": {
+"$type": "RogueEssence.Content.EmptyFiniteEmitter, RogueEssence",
+"LocHeight": 0
+},
+"ScreenMovement": {
+"MinShake": 0,
+"MaxShake": 0,
+"MaxShakeTime": 0
+}
+}
+],
 "ActionFX": {
 "Delay": 0,
 "AbsoluteDelay": false,

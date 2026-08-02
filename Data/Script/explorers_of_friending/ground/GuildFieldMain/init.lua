@@ -16,8 +16,7 @@ local GuildFieldMain = {}
 ---GuildFieldMain.Init(map)
 --Engine callback function
 function GuildFieldMain.Init(map)
-  COMMON.RespawnAllies()
-  SV.checkpoint = 
+  SV.checkpoint =
   {
     Zone = 'guild_field',
     Segment = -1,
@@ -26,22 +25,25 @@ function GuildFieldMain.Init(map)
   }
   if SV.guild.day == 1 then
     if IntroCutscene == true then
+      COMMON:RespawnAllies()
       Guild.Day1()
+    else
+      EXPLCOMMON.AllyFollow(true, false)
     end
     IntroCutscene = false
   elseif SV.guild.day == 2 then
     if IntroCutscene == true then
+      COMMON:RespawnAllies()
       Guild.Day2()
     else
       GROUND:Unhide("Kitkit")
-     EXPLCOMMON.TeleportToMarker(CH("Kitkit"), "mKit_1", Dir8.DownLeft)
+      EXPLCOMMON.TeleportToMarker(CH("Kitkit"), "mKit_1", Dir8.DownLeft)
+      EXPLCOMMON.AllyFollow(true, false)
     end
     IntroCutscene = false
+  else
+    EXPLCOMMON.AllyFollow(true, true)
   end
-  CH("Teammate1").CollisionDisabled = true
-  CH("Teammate2").CollisionDisabled = true
-  AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
-  AI:SetCharacterAI(CH("Teammate2"), "origin.ai.ground_partner", CH("Teammate1"), CH("Teammate2").Position)
 end
 
 ---GuildFieldMain.Enter(map)
@@ -93,9 +95,22 @@ function GuildFieldMain.NorthEast_Touch(obj, activator)
 end
 
 function GuildFieldMain.NorthWest_Touch(obj, activator)
-  SV.Story.dunsect = 0
-  COMMON.UnlockWithFanfare("apple_forest", false)
-  COMMON.ShowDestinationMenu(SV.guild.dungeons.west, SV.guild.areas.west)
+  if SV.Story.sect >= 3 then
+    if activator.Nickname == "Rexio" then
+      EXPLCOMMON.SetCharAndEmotion(activator, "Worried")
+      UI:WaitShowDialogue("No thanks...")
+    elseif activator.Nickname == "Maru" then
+      EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
+      UI:WaitShowDialogue("No need to go back there now.")
+    elseif activator.Nickname == "Azura" then
+      EXPLCOMMON.SetCharAndEmotion(activator, "Pain")
+      UI:WaitShowDialogue("Tired...")
+    end
+  else
+    SV.Story.dunsect = 0
+    COMMON.UnlockWithFanfare("apple_forest", false)
+    COMMON.ShowDestinationMenu(SV.guild.dungeons.west, SV.guild.areas.west)
+  end
 end
 
 function GuildFieldMain.StaleApple_Action(obj, activator)

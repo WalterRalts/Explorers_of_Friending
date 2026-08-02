@@ -450,7 +450,7 @@
 "KeepTreasure": false,
 "BagSize": -1,
 "Rescues": 0,
-"CountedFloors": 12,
+"CountedFloors": 9,
 "Rogue": 0,
 "Grounds": [
 "AppleTown",
@@ -473,10 +473,7 @@
 5,
 6,
 7,
-8,
-9,
-10,
-11
+8
 ],
 [
 0
@@ -516,13 +513,15 @@
 "HertzEntrance",
 "HertzCenter",
 "HertzShopsA",
-"HertzLeftT",
 "HertzVault",
 "HertzWest",
+"HertzRightT",
+"HertzLeftT",
 "HertzUpT",
 "HertzGuildOut",
 "Osias",
-"DarkGuild"
+"DarkGuild",
+"OsiasLake"
 ],
 "Maps": [
 [
@@ -576,6 +575,41 @@
 },
 "Released": true,
 "Comment": "",
+"SortOrder": 0
+},
+"osias_ruins": {
+"$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
+"ExpPercent": 10,
+"Level": -1,
+"LevelCap": false,
+"KeepSkills": false,
+"TeamRestrict": false,
+"TeamSize": -1,
+"MoneyRestrict": false,
+"BagRestrict": -1,
+"KeepTreasure": false,
+"BagSize": -1,
+"Rescues": 0,
+"CountedFloors": 0,
+"Rogue": 0,
+"Grounds": [
+"OsiasRuinsBottom"
+],
+"Maps": [
+[
+0,
+1,
+2,
+3,
+4
+]
+],
+"Name": {
+"DefaultText": "Osias Ruins",
+"LocalTexts": {}
+},
+"Released": true,
+"Comment": "The Hertz Guild holds this within its depths.",
 "SortOrder": 0
 }
 }

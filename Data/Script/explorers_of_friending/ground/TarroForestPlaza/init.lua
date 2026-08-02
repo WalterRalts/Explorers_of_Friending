@@ -5,6 +5,7 @@
 ]]--
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
+require 'explorers_of_friending.ground.TarroForestPlaza.cutscene'
 
 -- Package name
 local TarroForestPlaza = {}
@@ -20,6 +21,9 @@ function TarroForestPlaza.Init(map)
   local partner = CH('Teammate1')
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   partner.CollisionDisabled = true
+  if DUN_failure then
+    Plaza.Fail()
+  end
 
   COMMON.CreateWalkArea("Catering", 48, 264, 72, 72)
 end
@@ -68,13 +72,22 @@ function TarroForestPlaza.Catering_Action(obj, activator)
   local cater = CH("Catering")
   local maru = CH("PLAYER")
 
-  GROUND:CharTurnToCharAnimated(cater, maru, 4)
-  UI:SetSpeaker(cater)
-  UI:SetSpeakerEmotion("Inspired")
-  UI:WaitShowDialogue("Oh, man, I can't wait to get out of here!")
-  UI:WaitShowDialogue("It's gonna be fun not walking around that boring dungeon!")
-  UI:SetSpeakerEmotion("Joyous")
-  UI:WaitShowDialogue("And I get have fun with others, too!")
+  if SV.Story.chap == -3 then
+    GROUND:CharTurnToCharAnimated(cater, maru, 4)
+    UI:SetSpeaker(cater)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Turns out all the space in town is taken.")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("Guess I have to be here a little longer...")
+  else
+    GROUND:CharTurnToCharAnimated(cater, maru, 4)
+    UI:SetSpeaker(cater)
+    UI:SetSpeakerEmotion("Inspired")
+    UI:WaitShowDialogue("Oh, man, I can't wait to get out of here!")
+    UI:WaitShowDialogue("It's gonna be fun not walking around that boring dungeon!")
+    UI:SetSpeakerEmotion("Joyous")
+    UI:WaitShowDialogue("And I get have fun with others, too!")
+  end
 end
 
 function TarroForestPlaza.TFPlaza_Exit_Touch(obj, activator)
@@ -140,13 +153,13 @@ function TarroForestPlaza.Caterpie_Action(obj, activator)
    EXPLCOMMON.FaceEachother(butterboss, bug3)
   else
     bug1.Data.Nickname = SV.tarro_forest.caterpie_name
-   EXPLCOMMON.FaceEachother(activator, bug1)
+    EXPLCOMMON.FaceEachother(activator, bug1)
     UI:SetSpeaker(bug1)
     UI:SetSpeakerEmotion("Inspired")
     UI:WaitShowDialogue("Thank you...!")
 
-   EXPLCOMMON.FaceEachother(butterboss, bug1)
-   EXPLCOMMON.FaceEachother(butterboss, bug3)
+    EXPLCOMMON.FaceEachother(butterboss, bug1)
+    EXPLCOMMON.FaceEachother(butterboss, bug3)
   end
 end
 

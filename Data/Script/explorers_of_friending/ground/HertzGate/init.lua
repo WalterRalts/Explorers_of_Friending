@@ -91,7 +91,7 @@ function HertzGate.Durian_Action(obj, activator)
 
    EXPLCOMMON.SetCharAndEmotion(obj, "Angry")
     UI:WaitShowDialogue("Just say the stupid password already!")
-    local password = "442149"
+    local password = "482179"
     UI:NameMenu("Just say the stupid password already!", "Password", 200, "Numbers")
     UI:WaitForChoice()
     if UI:ChoiceResult() ~= password then
@@ -111,20 +111,20 @@ function HertzGate.Durian_Action(obj, activator)
 
       GROUND:MoveToPosition(obj, obj.Position.X - 26, obj.Position.Y, false, 2)
       GROUND:CharAnimateTurnTo(obj, Dir8.DownRight, 3)
-     EXPLCOMMON.SetCharAndEmotion(obj, "Sigh")
+      EXPLCOMMON.SetCharAndEmotion(obj, "Sigh")
       UI:WaitShowDialogue("You may enter the stupid town.")
 
       GROUND:ObjectSetAnim(OBJ("Door"), 50, 0, 4, RogueElements.Dir8.Down, 1)
       DoorClosed = false
 
-     EXPLCOMMON.CharHappy("Teammate1")
-     EXPLCOMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(1), "Joyous")
+      EXPLCOMMON.CharHappy("Teammate1")
+      EXPLCOMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(1), "Joyous")
       UI:WaitShowDialogue("Let's go!")
 
       SV.Story.sect = 1
     end
   else
-   EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
+    EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
     UI:WaitShowDialogue("You guys aren't so stupid,[pause=50] not[emote=Happy] bad not bad.")
   end
 end

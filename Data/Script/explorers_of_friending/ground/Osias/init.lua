@@ -41,8 +41,7 @@ end
 ---Osias.Update(map)
 --Engine callback function
 function Osias.Update(map)
-
-
+  Partner()
 end
 
 ---Osias.GameSave(map)
@@ -64,6 +63,29 @@ end
 -- Entities Callbacks
 -------------------------------
 
+function Osias.ExitN_Touch(obj, activator)
+  EXPLCOMMON.FadeEnterGround("OsiasLake", "EnterS")
+end
+
+function Osias.ExitS_Touch(obj, activator)
+  EXPLCOMMON.FadeEnterGround("HertzGuildOut", "EnterN")
+end
+
+function Osias.ExitE_Touch(obj, activator)
+  --EXPLCOMMON.FadeEnterGround("HertzGuildOut", "EnterN")
+end
+
+function Osias.ExitW_Touch(obj, activator)
+  --EXPLCOMMON.FadeEnterGround("HertzGuildOut", "EnterN")
+end
+
+function Osias.Emburst_Action(obj, activator)
+  EXPLCOMMON.FaceEachother(obj, activator)
+
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("...I'm not the guildmaster, kids.")
+end
 
 return Osias
 

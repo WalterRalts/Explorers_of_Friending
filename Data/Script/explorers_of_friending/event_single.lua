@@ -1459,7 +1459,7 @@ function SINGLE_CHAR_SCRIPT.AllyDeathCheck(owner, ownerChar, context, args)
 end
 
 function SINGLE_CHAR_SCRIPT.DungeonTalker(owner, ownerChar, context, args) --Thank you, Halcyon scripters.
-	if context.User == nil then return else PrintInfo(context.User.Name .. " is on this floor.") end
+	if context.User == nil then return end
 	if context.User == GAME:GetPlayerPartyMember(0) then --this check is needed so that the script runs only once, otherwise it'll run for each entity in the map.
 		GAME:QueueLeaderEvent(function() SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args) end)
 	end
@@ -1470,58 +1470,90 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 	local azura = GAME:GetPlayerPartyMember(1)
 	local area_name = DUNGEON:DungeonDisplayName()
 	local floor_no = DUNGEON:DungeonCurrentFloor()
-	if area_name == "Tarro Forest" and SV.Story.chap == -1 then
-		if floor_no == 0 then
-			if SV.Story.dunsect == 1 then
-			else
+	PrintInfo(floor_no)
+	PrintInfo(area_name)
+	if area_name == "Tarro Forest" then
+		if SV.Story.chap == -1 then
+			if floor_no == 0 then
+				if SV.Story.dunsect == 1 then
+					UI:SetSpeaker(maru)
+					UI:SetSpeakerEmotion("Normal")
+					UI:WaitShowDialogue("This is where we need to take our time and think of our moves.")
+
+					DUNGEON:CharTurnToChar(azura, maru)
+					UI:SetSpeaker(azura)
+					UI:SetSpeakerEmotion("Worried")
+					UI:WaitShowDialogue("...so he's just gonna stand there until we move?")
+
+					DUNGEON:CharTurnToChar(maru, azura)
+					UI:SetSpeaker(maru)
+					UI:SetSpeakerEmotion("Determined")
+					UI:WaitShowDialogue("Yeah, like he thinks he's the boss or something.")
+					UI:WaitShowDialogue("Let's show him what we can do!")
+					
+					UI:SetSpeaker(azura)
+					UI:SetSpeakerEmotion("Determined")
+					UI:WaitShowDialogue("For the PIE!!!")
+				else
+					UI:SetSpeaker(maru)
+					UI:SetSpeakerEmotion("Normal")
+					UI:WaitShowDialogue("Okay, so we need to find some stairs.")
+
+					UI:SetSpeaker(azura)
+					UI:SetSpeakerEmotion("Worried")
+					UI:WaitShowDialogue("Stairs?[pause=30] Where stairs?")
+
+					UI:SetSpeaker(maru)
+					UI:SetSpeakerEmotion("Happy")
+					UI:WaitShowDialogue("I dunno, but we won't find them just sitting here.")
+					UI:SetSpeakerEmotion("Normal")
+					UI:WaitShowDialogue("Let's use the arrow keys to walk, and hold " .. STRINGS:LocalKeyString(4) .. " to use a move.")
+
+					UI:SetSpeaker(azura)
+					UI:SetSpeakerEmotion("Worried")
+					UI:WaitShowDialogue("...[pause=50]h[emote=Stunned]uh...?")
+				end
+			elseif floor_no == 1 then
 				UI:SetSpeaker(maru)
 				UI:SetSpeakerEmotion("Normal")
-				UI:WaitShowDialogue("Okay, so we need to find some stairs.")
+				UI:WaitShowDialogue("Pretty simple stuff, right?")
 
 				UI:SetSpeaker(azura)
-				UI:SetSpeakerEmotion("Worried")
-				UI:WaitShowDialogue("Stairs?[pause=30] Where stairs?")
+				UI:SetSpeakerEmotion("Happy")
+				UI:WaitShowDialogue("Yeah! Big Apple!")
 
 				UI:SetSpeaker(maru)
 				UI:SetSpeakerEmotion("Happy")
-				UI:WaitShowDialogue("I dunno, but we won't find them just sitting here.")
+				UI:WaitShowDialogue("Not yet.[pause=40] Now let's see if we can't find any items around.")
 				UI:SetSpeakerEmotion("Normal")
-				UI:WaitShowDialogue("Let's use the arrow keys to walk, and hold " .. STRINGS:LocalKeyString(4) .. " to use a move.")
-
+				UI:WaitShowDialogue("Once we do, we can press " .. STRINGS:LocalKeyString(12) .. " to open the bag.")
+			elseif floor_no == 2 then
 				UI:SetSpeaker(azura)
 				UI:SetSpeakerEmotion("Worried")
-				UI:WaitShowDialogue("...[pause=50]h[emote=Stunned]uh...?")
+				UI:WaitShowDialogue("Hey, how come we can't use the apples on the ground for pies?")
+
+				UI:SetSpeaker(maru)
+				UI:SetSpeakerEmotion("Normal")
+				UI:WaitShowDialogue("I think the size of Big Apples make it taste better.")
+
+				UI:SetSpeaker(azura)
+				UI:SetSpeakerEmotion("Stunned")
+				UI:WaitShowDialogue("(How does that work...?)")
+
+				UI:SetSpeaker(maru)
+				UI:SetSpeakerEmotion("Happy")
+				UI:WaitShowDialogue("It's easier to get hungry in a dungeon anyway, so we should munch on them in here.")
 			end
-		elseif floor_no == 1 then
-			UI:SetSpeaker(maru)
-			UI:SetSpeakerEmotion("Normal")
-			UI:WaitShowDialogue("Pretty simple stuff, right?")
+		else
+			if floor_no == 0 then
+				UI:SetSpeaker(maru)
+				UI:SetSpeakerEmotion("Normal")
+				UI:WaitShowDialogue("It would be nice to work on our skills here.")
 
-			UI:SetSpeaker(azura)
-			UI:SetSpeakerEmotion("Happy")
-			UI:WaitShowDialogue("Yeah! Big Apple!")
-
-			UI:SetSpeaker(maru)
-			UI:SetSpeakerEmotion("Happy")
-			UI:WaitShowDialogue("Not yet.[pause=40] Now let's see if we can't find any items around.")
-			UI:SetSpeakerEmotion("Normal")
-			UI:WaitShowDialogue("Once we do, we can press " .. STRINGS:LocalKeyString(12) .. " to open the bag.")
-		elseif floor_no == 2 then
-			UI:SetSpeaker(azura)
-			UI:SetSpeakerEmotion("Worried")
-			UI:WaitShowDialogue("Hey, how come we can't use the apples on the ground for pies?")
-
-			UI:SetSpeaker(maru)
-			UI:SetSpeakerEmotion("Normal")
-			UI:WaitShowDialogue("I think the size of Big Apples make it taste better.")
-
-			UI:SetSpeaker(azura)
-			UI:SetSpeakerEmotion("Stunned")
-			UI:WaitShowDialogue("(How does that work...?)")
-
-			UI:SetSpeaker(maru)
-			UI:SetSpeakerEmotion("Happy")
-			UI:WaitShowDialogue("It's easier to get hungry in a dungeon anyway, so we should munch on them in here.")
+				UI:SetSpeaker(azura)
+				UI:SetSpeakerEmotion("Joyous")
+				UI:WaitShowDialogue("ANOTHER BIG APPLE FOR PIIIIE!!")
+			end
 		end
 	elseif area_name == "Tarro Tree Hallows" and SV.Story.chap == -2 then
 		local senna = GAME:GetPlayerPartyMember(2)
@@ -1626,20 +1658,20 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 
 			UI:SetSpeaker(maru)
 			UI:SetSpeakerEmotion("Worried")
-			UI:WaitShowDialogue("Um... maybe we shouldn't do that...")
+			UI:WaitShowDialogue("Um, maybe we shouldn't do that.")
 		end
 	elseif area_name == "Entoh Thicket" then
 		local rexio = GAME:GetPlayerPartyMember(0)
 		if floor_no == 0 then
 			UI:SetSpeaker(rexio)
 			UI:SetSpeakerEmotion("Worried")
-			UI:WaitShowDialogue("I guess now would be a good time to practice my aura.")
-			UI:WaitShowDialogue("That way Dad would be less angry about me not getting his package, haha.")
+			UI:WaitShowDialogue("(I guess now would be a good time to practice aura sensy whatever.)")
+			UI:WaitShowDialogue("(That way Dad would be less angry about me not getting his package.)")
 			UI:SetSpeakerEmotion("Normal")
-			UI:WaitShowDialogue("It's a pretty open space. This'll be easy.")
+			UI:WaitShowDialogue("(It's a pretty open space. This'll be easy.)")
 
 			UI:ResetSpeaker()
-			UI:WaitShowDialogue("While playing as Rexio, use the B key to sense items within 10 tiles")
+			UI:WaitShowDialogue("While playing as Rexio, use the B key to sense items within 15 tiles.")
 		end
 	elseif area_name == "Entoh Town" then
 		local rexio = GAME:GetPlayerPartyMember(0)
@@ -1676,18 +1708,94 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 			UI:SetSpeaker(second)
 			UI:SetSpeakerEmotion("Joyous")
 			UI:WaitShowDialogue("Yeah, flip flip flip!")
+		elseif floor_no == 6 then
+			local leader = GAME:GetPlayerPartyMember(0)
+			local second = GAME:GetPlayerPartyMember(1)
+			local third = GAME:GetPlayerPartyMember(2)
+			UI:SetSpeaker(second)
+			UI:SetSpeakerEmotion("Joyous")
+			UI:WaitShowDialogue("Apples! Apples! Apples!")
+
+			UI:SetSpeaker(third)
+			UI:SetSpeakerEmotion("Stunned")
+			UI:WaitShowDialogue("...is your sister usually this obsessed?")
+
+			UI:SetSpeaker(leader)
+			UI:SetSpeakerEmotion("Normal")
+			UI:WaitShowDialogue("They're her favorite food, I think.")
+
+			UI:SetSpeaker(second)
+			UI:SetSpeakerEmotion("Joyous")
+			UI:WaitShowDialogue("Yay! Apples!")
 		end
 	elseif string.sub(area_name, 1, 5) == "Hertz" and string.find(area_name, "T") > 5 then
+		if Tunnel_discovered == nil then
+			local leader = GAME:GetPlayerPartyMember(0)
+			local second = GAME:GetPlayerPartyMember(1)
+			local third = GAME:GetPlayerPartyMember(2)
+			UI:SetSpeaker(third)
+			UI:SetSpeakerEmotion("Normal")
+			UI:WaitShowDialogue("...wow, dungeon tunnel.")
+
+			UI:SetSpeaker(leader)
+			UI:SetSpeakerEmotion("Normal")
+			UI:WaitShowDialogue("Cool.")
+			Tunnel_discovered = true
+		end
+	elseif area_name == "Osias Ruins" then
 		local leader = GAME:GetPlayerPartyMember(0)
 		local second = GAME:GetPlayerPartyMember(1)
 		local third = GAME:GetPlayerPartyMember(2)
-		UI:SetSpeaker(third)
-		UI:SetSpeakerEmotion("Normal")
-		UI:WaitShowDialogue("...wow, dungeon tunnel.")
+		local fourth = GAME:GetPlayerPartyMember(3)
+		if floor_no == 0 then
+			UI:SetSpeaker(leader)
+			UI:SetSpeakerEmotion("Normal")
+			UI:WaitShowDialogue("Nothing different so far.")
 
-		UI:SetSpeaker(leader)
-		UI:SetSpeakerEmotion("Normal")
-		UI:WaitShowDialogue("Cool.")
+			UI:SetSpeaker(second)
+			UI:SetSpeakerEmotion("Worried")
+			UI:WaitShowDialogue("Just more sand...")
+
+			DUNGEON:CharTurnToChar(leader, fourth)
+			DUNGEON:CharTurnToChar(second, fourth)
+			DUNGEON:CharTurnToChar(third, fourth)
+			UI:SetSpeaker(leader)
+			UI:SetSpeakerEmotion("Normal")
+			UI:WaitShowDialogue("Where are the stairs?")
+
+			fourth.CharDir = Dir8.UpRight
+			UI:SetSpeaker(fourth)
+			UI:SetSpeakerEmotion("Normal")
+			UI:WaitShowDialogue("Right there.")
+
+			UI:SetSpeaker(third)
+			UI:SetSpeakerEmotion("Stunned")
+			UI:WaitShowDialogue("There's nothing there...")
+
+			UI:SetSpeaker(fourth)
+			UI:SetSpeakerEmotion("Happy")
+			UI:WaitShowDialogue("Well duh, that's where they're going to be.[pause=0] Don't you see that trap right there?")
+			UI:SetSpeakerEmotion("Normal")
+			UI:WaitShowDialogue("We need to deliver items to the tile to reveal the stairs.")
+			fourth.CharDir = Dir8.Down
+			UI:SetSpeakerEmotion("Happy")
+			UI:WaitShowDialogue("It's great training on item management, but you guys are newbies, so you'll need me around here.")
+
+			UI:SetSpeaker(leader)
+			UI:SetSpeakerEmotion("Normal")
+			UI:WaitShowDialogue("Right, let's go.")
+		elseif floor_no == 1 then
+			UI:SetSpeaker(third)
+			UI:SetSpeakerEmotion("Surprised")
+			UI:WaitShowDialogue("Wait, it feels like we were just here!")
+
+			UI:SetSpeaker(fourth)
+			UI:SetSpeakerEmotion("Happy")
+			UI:WaitShowDialogue("Of course!")
+			UI:SetSpeakerEmotion("Normal")
+			UI:WaitShowDialogue("Dungeons act differently nowadays,[pause=45] and some of the will put you in the same spot a lot.")
+			UI:WaitShowDialogue("Not too big of an issue here, but you never know what other dungeons'll do.")
+		end
 	end
 end
 
@@ -1806,7 +1914,7 @@ local apple = 0
 
 function SINGLE_CHAR_SCRIPT.AddApple(owner, ownerChar, context, args)
 	if context.User ~= nil then
-    	return
+    		return
   	end
 	local map = _ZONE.CurrentMap
 	local placex = map.Rand:Next(0, map.Width)
@@ -1824,7 +1932,7 @@ function SINGLE_CHAR_SCRIPT.AddApple(owner, ownerChar, context, args)
 		else
 			new_item = RogueEssence.Dungeon.MapItem("food_apple")
 		end
-		
+
 		new_item.TileLoc = loc
 		map.Items:Add(new_item)
 		apple = -1
@@ -1883,47 +1991,224 @@ local ij = 0
 function SINGLE_CHAR_SCRIPT.TreeHeal(owner, ownerChar, context, args)
 	local map = DUNGEON:DungeonDisplayName()
 	local player_count = GAME:GetPlayerPartyCount()
-	if context.User ~= nil then
+	if context.User.Name ~= "???" then
 		if map == "Tarro Tree Hallows" and SV.tarro_tree_hollows.in_boss == true then
 			local player = GAME:GetPlayerPartyMember(ij)
-			print("Healing: " .. GAME:GetPlayerPartyMember(ij).HP)
+			PrintInfo(player.MapLoc.X .. ", " .. player.MapLoc.Y)
+			SOUND:PlayBattleSE("DUN_Leer")
+			local emitter = RogueEssence.Content.SingleEmitter(RogueEssence.Content.AnimData("Absorb", 3))
+			DUNGEON:PlayVFX(emitter, player.MapLoc.X, player.MapLoc.Y)
+			GAME:WaitFrames(30)
+
+			PrintInfo("Healing: " .. GAME:GetPlayerPartyMember(ij).Name .. " that has " .. GAME:GetPlayerPartyMember(ij).HP)
 			if player.HP + 2 >= player.MaxHP then
 				player.HP = player.MaxHP
 			else
 				player.HP = player.HP + 2
 			end
 
-			print("Heal checking: " .. GAME:GetPlayerPartyMember(ij).Nickname .. " has " .. GAME:GetPlayerPartyMember(ij).HP)
+			PrintInfo("Heal checking: " .. GAME:GetPlayerPartyMember(ij).Nickname .. " has " .. GAME:GetPlayerPartyMember(ij).HP)
 			ij = ij + 1
 			if ij == player_count then
 				ij = 0
 			end
+		else return
 		end
 	end
 end
 
 function SINGLE_CHAR_SCRIPT.CleanTidy(owner, ownerChar, context, args)
 	local turns = _DATA.Save.TotalTurns
-	if SV.Story.chap == -6 and GAME:GetPlayerPartyMember(2).BaseForm.Species == "minccino" and turns % 10 == 0 then
-		PrintInfo("Tidy is on your team!")
-		local clean = false
-		local tidy = GAME:GetPlayerPartyMember(2)
-		local flow = GAME:GetPlayerPartyMember(1)
-		local poison = RogueEssence.Dungeon.StatusEffect("poison")
-		local heal = RogueEssence.Dungeon.StatusEffect("aqua_ring")
-		if (tidy.CharLoc - flow.CharLoc):Dist8() <= 3 then
-			clean = true
-		end
-		if clean == true then
-			heal:LoadFromData()
-			TASK:WaitTask(tidy:AddStatusEffect(nil, heal, false))
+	if GAME:GetPlayerPartyCount() > 2 then
+		if SV.Story.chap == -6 and GAME:GetPlayerPartyMember(2).BaseForm.Species == "minccino" and turns % 15 == 0 then
+			PrintInfo("Tidy is on your team!")
+			local clean = false
+			local tidy = GAME:GetPlayerPartyMember(2)
+			local flow = GAME:GetPlayerPartyMember(1)
+			local poison = RogueEssence.Dungeon.StatusEffect("poison")
+			local heal = RogueEssence.Dungeon.StatusEffect("aqua_ring")
+			if (tidy.CharLoc - flow.CharLoc):Dist8() <= 3 then
+				clean = true
+			end
+			if clean == true then
+				heal:LoadFromData()
+				TASK:WaitTask(tidy:AddStatusEffect(nil, heal, false))
+			else
+				if GAME:GetPlayerPartyMember(2):GetStatusEffect("poison") == nil then
+					poison:LoadFromData()
+					TASK:WaitTask(tidy:AddStatusEffect(nil, poison, false))
+				end
+			end
 		else
-			if GAME:GetPlayerPartyMember(2):GetStatusEffect("poison") == nil then
-				poison:LoadFromData()
-				TASK:WaitTask(tidy:AddStatusEffect(nil, poison, false))
+			return
+		end
+	end
+end
+
+function SINGLE_CHAR_SCRIPT.ItemGoal(owner, ownerChar, context, args)
+	GAME:WaitFrames(45)
+	--up to four random items with four random amounts in a table
+	--compare with pairs to get item check and compare tables
+	local tile_check = {}
+	local bag_check = {}
+	local slot = 0
+	local a = 0
+
+	--define each item
+	local function addToTable(itemID)
+		for i = 0, SV.OsiasTile.item_amount[a] - 1, 1 do
+			tile_check[slot + i] = itemID
+		end
+		slot = slot + SV.OsiasTile.item_amount[a]
+		a = a + 1
+	end
+	--define each item
+	for i = 0, SV.OsiasTile.total_count - 1 do
+		PrintInfo(SV.OsiasTile.item_id[i])
+		if SV.OsiasTile.item_id[i] == 1 then
+			addToTable("food_apple")
+		elseif SV.OsiasTile.item_id[i] == 2 then
+			addToTable("berry_leppa")
+		elseif SV.OsiasTile.item_id[i] == 3 then
+			addToTable("berry_oran")
+		elseif SV.OsiasTile.item_id[i] == 4 then
+			addToTable("berry_lum")
+		elseif SV.OsiasTile.item_id[i] == 5 then
+			addToTable("seed_plain")
+		end
+	end
+	PrintInfo("The tile wants " .. (#tile_check + 1) .. " things.")
+	EXPLCOMMON.SetCharAndEmotion("none")
+	UI:WaitShowDialogue("Feels like this tile wants...")
+	for i = 0, SV.OsiasTile.total_count - 1, 1 do
+		if SV.OsiasTile.item_id[i] == 1 then
+			thing = "food_apple"
+		elseif SV.OsiasTile.item_id[i] == 2 then
+			thing = "berry_leppa"
+		elseif SV.OsiasTile.item_id[i] == 3 then
+			thing = "berry_oran"
+		elseif SV.OsiasTile.item_id[i] == 4 then
+			thing = "berry_lum"
+		elseif SV.OsiasTile.item_id[i] == 5 then
+			thing = "seed_plain"
+		end
+		UI:WaitShowDialogue("" .. SV.OsiasTile.item_amount[i] .. " " .. _DATA:GetItem(thing):GetColoredName() .. ";")
+	end
+	EXPLCOMMON.PrintTable(tile_check)
+
+	local slot_list = {}
+	local goodCheck = 0
+	slotshift = 0
+	for i = 0, slot - 1, 1 do
+		if GAME:GetPlayerBagItem(0) == nil then
+			UI:WaitShowDialogue("But the bag is empty!")
+			break
+		end
+		local v = tile_check[i]
+		print("This tile wants the " .. i .. " slot to have " .. v)
+		for ii = 0, GAME:GetPlayerBagCount() - 1, 1 do
+			local w = GAME:GetPlayerBagItem(ii).ID
+			print("The player's bag has the " .. ii .. " slot with " .. w .. ".")
+			if v == w then
+				local confirmed = false
+				for iii = 0, #slot_list, 1 do
+					if slot_list[iii] ~= nil then
+						print("Is " .. slot_list[iii] .. " equal to " .. ii .. "?")
+						if slot_list[iii] == ii then
+							confirmed = true
+						end
+					else
+						break
+					end
+				end
+
+				if confirmed then
+					PrintInfo("This slot has already been confirmed as a match.")
+				else
+					print("MATCH FOUND! Let's put " .. w .. " in slot " .. goodCheck)
+					bag_check[goodCheck] = w
+					goodCheck = goodCheck + 1
+					slot_list[i] = ii
+					break
+				end
+			else
+				PrintInfo("Not a match...")
+				slot_list[i] = -1
 			end
 		end
-	else
-		return
 	end
+	PrintInfo("After the check, the match is...")
+	EXPLCOMMON.PrintTable(bag_check)
+	if equals(tile_check, bag_check, true) then
+		SOUND:PlaySE("Battle/EVT_Minigame_Correct")
+		GAME:WaitFrames(45)
+		UI:WaitShowDialogue("Looks like the tile is satisfied.")
+
+		SOUND:PlayBattleSE("EVT_Door_Open")
+		local tile = _ZONE.CurrentMap:GetTile(RogueElements.Loc(54, 47))
+  		tile.Effect = RogueEssence.Dungeon.EffectTile("none", true)
+
+		for i = 0, slot - 1, 1 do
+			local v = tile_check[i]
+			print("This tile wants the " .. i .. " slot to have " .. v)
+			for ii = 0, GAME:GetPlayerBagCount() - 1, 1 do
+				local w = GAME:GetPlayerBagItem(ii).ID
+				print("The player's bag has the " .. ii .. " slot with " .. w .. ".")
+				if v == w then
+					print("MATCH FOUND! YOINKING " .. w .. "!")
+					GAME:TakePlayerBagItem(ii, true)
+					break
+				else
+					PrintInfo("Not a match...")
+				end
+			end
+		end
+		UI:WaitShowDialogue("The tile took what it wanted.")
+
+		GAME:WaitFrames(30)
+		local stairs = _ZONE.CurrentMap:GetTile(RogueElements.Loc(54, 46))
+  		stairs.Effect = RogueEssence.Dungeon.EffectTile("stairs_go_down", true)
+		SOUND:PlayBattleSE("EVT_Door_Open")
+	else
+		SOUND:PlaySE("Battle/EVT_Minigame_Wrong")
+		GAME:WaitFrames(45)
+		UI:WaitShowDialogue("...the tile is displeased.")
+		for i = 0, GAME:GetPlayerPartyCount() - 1, 1 do
+			GAME:GetPlayerPartyMember(i).CharLoc.Y = GAME:GetPlayerPartyMember(i).CharLoc.Y + 1
+		end
+	end
+end
+
+---@param o1 any|table First object to compare
+---@param o2 any|table Second object to compare
+---@param ignore_mt boolean True to ignore metatables (a recursive function to tests tables inside tables)
+function equals(o1, o2, ignore_mt)
+    if o1 == o2 then return true end
+    local o1Type = type(o1)
+    local o2Type = type(o2)
+    if o1Type ~= o2Type then return false end
+    if o1Type ~= 'table' then return false end
+
+    if not ignore_mt then
+        local mt1 = getmetatable(o1)
+        if mt1 and mt1.__eq then
+            --compare using built in method
+            return o1 == o2
+        end
+    end
+
+    local keySet = {}
+
+    for key1, value1 in pairs(o1) do
+        local value2 = o2[key1]
+        if value2 == nil or equals(value1, value2, ignore_mt) == false then
+            return false
+        end
+        keySet[key1] = true
+    end
+
+    for key2, _ in pairs(o2) do
+        if not keySet[key2] then return false end
+    end
+    return true
 end

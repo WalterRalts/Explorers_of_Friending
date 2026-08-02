@@ -30,8 +30,7 @@ end
 --Engine callback function
 function swamp_line.ExitSegment(zone, result, rescue, segmentID, mapID)
     if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
-        print("Get out!")
-        COMMON.EndDungeonDay(result, "entoh_town", -1, 12, 0)
+        COMMON.EndDungeonDay(result, "swamp_town", -1, 0, 0)
     else
         SV.dreaded_depths.revisit = true
         SV.entoh_thicket.dungpoints = SV.entoh_thicket.dungpoints + 120

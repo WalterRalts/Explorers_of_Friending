@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.9.0",
+"Version": "0.8.12.0",
 "Object": {
 "$type": "RogueEssence.Dungeon.Map, RogueEssence",
 "Name": {
@@ -18,13 +18,12 @@
 "Element1": "poison",
 "Element2": "flying",
 "TurnWait": 0,
-"TiersUsed": 0,
 "TurnUsed": false,
 "movementSpeed": 0,
 "dead": false,
 "serializationLoc": {
 "X": 7,
-"Y": 4
+"Y": 5
 },
 "serializationDir": 0,
 "ProxyName": "",
@@ -168,6 +167,7 @@
 "IntrinsicDisabled": false,
 "CanRemoveStuck": false,
 "StopItemAtHit": false,
+"ForceAI": false,
 "MovesScrambled": false,
 "ChargeSaver": false,
 "WaitToAttack": false,
@@ -184,10 +184,9 @@
 "SeeTraps": false,
 "CharStates": [],
 "BackRef": {
-"Assembly": false,
 "Index": -1
 },
-"Nickname": "Zoomer",
+"Nickname": "???",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -286,7 +285,20 @@
 "MapEffect": {
 "UniversalStates": [],
 "BeforeTryActions": [],
-"BeforeActions": [],
+"BeforeActions": [
+{
+"Key": {
+"str": [
+0
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.BattleScriptEvent, RogueEssence",
+"Script": "ZoomerSass",
+"ArgTable": "{}"
+}
+}
+],
 "OnActions": [],
 "BeforeExplosions": [],
 "BeforeHits": [],
@@ -331,8 +343,8 @@
 },
 {
 "Loc": {
-"X": 3,
-"Y": -2
+"X": 4,
+"Y": 0
 },
 "Dir": 3
 }

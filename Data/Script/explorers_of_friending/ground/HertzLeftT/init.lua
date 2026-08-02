@@ -5,9 +5,11 @@
 ]]--
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
+require 'explorers_of_friending.ground.HertzLeftT.cutscene'
 
 -- Package name
 local HertzLeftT = {}
+local cross = 0
 
 -------------------------------
 -- Map Callbacks
@@ -15,7 +17,12 @@ local HertzLeftT = {}
 ---HertzLeftT.Init(map)
 --Engine callback function
 function HertzLeftT.Init(map)
-  EXPLCOMMON.ThreeTeam()
+  if Line_discovered == nil then
+    Line_discovered = true
+    Line.Mission()
+  else
+    EXPLCOMMON.ThreeTeam()
+  end
 end
 
 ---HertzLeftT.Enter(map)
@@ -58,12 +65,11 @@ end
 -- Entities Callbacks
 -------------------------------
 
-function HertzLeftT.ExitW_Touch(obj, activator)
-  EXPLCOMMON.FadeEnterGround("HertzWest", "EnterE")
-end
+-- Characters
 
-function HertzLeftT.ExitE_Touch(obj, activator)
-  EXPLCOMMON.FadeEnterGround("HertzCenter", "EnterW")
+function HertzLeftT.Pass_Action(obj, activator)
+  EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
+  UI:WaitShowDialogue("Don't pass me.")
 end
 
 function HertzLeftT.Kazen_Action(obj, activator)
@@ -72,6 +78,95 @@ end
 
 function HertzLeftT.Secret_Touch(obj, activator)
   GAME:EnterDungeon("dane_desert", 0, 0, 0, RogueEssence.Data.GameProgress.DungeonStakes.Risk, false, false)
+end
+
+function HertzLeftT.Red_Action(obj, activator)
+  EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
+  UI:WaitShowDialogue("Hey, could you please move just a little, we have to get through.")
+
+  EXPLCOMMON.FaceEachother(obj, activator)
+  GAME:WaitFrames(40)
+  EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
+  UI:WaitShowDialogue("...for what?")
+
+  EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
+  UI:WaitShowDialogue("Behind you...")
+
+  GROUND:CharAnimateTurnTo(obj, Dir8.Up, 8)
+  GAME:WaitFrames(75)
+  EXPLCOMMON.FaceEachother(obj, activator)
+  EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
+  GROUND:CharAnimateTurnTo(obj, Dir8.Down, 8)
+  UI:WaitShowDialogue("There's nothing in there.")
+
+  EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
+  UI:WaitShowDialogue("Can we check?")
+
+  GAME:WaitFrames(45)
+  GROUND:CharAnimateTurnTo(obj, Dir8.Left, 4)
+  GAME:WaitFrames(45)
+  EXPLCOMMON.CharSweatdrop("PLAYER")
+  GAME:WaitFrames(45)
+end
+
+function HertzLeftT.Yellow_Action(obj, activator)
+  EXPLCOMMON.SetCharAndEmotion(obj, "Angry")
+  UI:WaitShowDialogue("Get in line, bub!")
+end
+
+function HertzLeftT.Blue_Action(obj, activator)
+  EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
+  UI:WaitShowDialogue("Sorry, can't talk, I'm too busy being in line.")
+end
+
+function HertzLeftT.Pure_Action(obj, activator)
+  EXPLCOMMON.SetCharAndEmotion(obj, "Happy")
+  UI:WaitShowDialogue("Hello, children,[pause=30] are you here for the battle event as well?")
+end
+
+function HertzLeftT.Esp_Action(obj, activator)
+  EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
+  UI:WaitShowDialogue("My child is not a fan of all the fighting in this event, so she's waiting near home.")
+end
+
+function HertzLeftT.line_cross_Touch(obj, activator)
+  cross = cross + 1
+  PrintInfo(cross)
+  local m1 = CH("Esp")
+  local m2 = CH("Pure")
+  if cross == 3 then
+    EXPLCOMMON.CharSweatdrop("Pure")
+  elseif cross == 7 then
+    EXPLCOMMON.CharSweating("Pure")
+    GAME:WaitFrames(20)
+    EXPLCOMMON.SetCharAndEmotion(m2, "Normal")
+    UI:WaitShowDialogue("Usually, I don't like to ask about strange things happening in front of me...")
+    GROUND:CharTurnToCharAnimated(activator, m1, 4)
+    EXPLCOMMON.SetCharAndEmotion(m2, "Stunned")
+    UI:WaitShowDialogue("But why are you constantly moving back and forth in front of us?")
+
+    EXPLCOMMON.SetCharAndEmotion(m1, "Normal")
+    UI:WaitShowDialogue("Very irregular.[pause=0] Is this a tactic to try and cut the line?")
+  elseif cross == 15 then
+    EXPLCOMMON.CharSweating("Esp")
+    EXPLCOMMON.CharSweatdrop("Teammate2")
+    GAME:WaitFrames(20)
+    EXPLCOMMON.SetCharAndEmotion(m1, "Worried")
+    UI:WaitShowDialogue("The kids have lost their minds...")
+
+    EXPLCOMMON.SetCharAndEmotion(CH("Teammate2"), "Stunned")
+    UI:WaitShowDialogue("Bluetail,[pause=30] whatever your reason is, it's embarrassing to follow you right now...")
+  end
+end
+
+-- Entrances
+
+function HertzLeftT.ExitW_Touch(obj, activator)
+  EXPLCOMMON.FadeEnterGround("HertzWest", "EnterE")
+end
+
+function HertzLeftT.ExitE_Touch(obj, activator)
+  EXPLCOMMON.FadeEnterGround("HertzCenter", "EnterW")
 end
 
 return HertzLeftT

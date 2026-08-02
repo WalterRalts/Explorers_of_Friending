@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.11.0",
+"Version": "0.8.12.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -55661,7 +55661,7 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 151,
+"X": 150,
 "Y": 419,
 "Width": 16,
 "Height": 16
@@ -55759,6 +55759,390 @@
 "Collider": {
 "X": 227,
 "Y": 333,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"Direction": 0,
+"IsInteracting": false,
+"AIEnabled": true,
+"EntName": "Bal5_0",
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"serializationLoc": {
+"X": 352,
+"Y": 232
+},
+"serializationHeight": 0,
+"serializationDir": 0,
+"triggerType": 1,
+"<AI>k__BackingField": null,
+"Data": {
+"Nickname": "",
+"OriginalUUID": "",
+"OriginalTeam": "",
+"BaseForm": {
+"Species": "baltoy",
+"Form": 0,
+"Skin": "normal",
+"Gender": 0
+},
+"Level": 1,
+"EXP": 0,
+"MaxHPBonus": 0,
+"AtkBonus": 0,
+"DefBonus": 0,
+"MAtkBonus": 0,
+"MDefBonus": 0,
+"SpeedBonus": 0,
+"BaseSkills": [
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+}
+],
+"BaseIntrinsics": [
+""
+],
+"FormIntrinsicSlot": -1,
+"Relearnables": {},
+"Discriminator": 0,
+"MetAt": "",
+"MetLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"DefeatAt": "",
+"DefeatLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"IsFounder": false,
+"IsPartner": false,
+"NameLocked": false,
+"IsFavorite": false,
+"Unrecruitable": false,
+"ActionEvents": [],
+"ScriptVars": null
+},
+"CollisionDisabled": false,
+"Collider": {
+"X": 352,
+"Y": 232,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"Direction": 6,
+"IsInteracting": false,
+"AIEnabled": true,
+"EntName": "Bal5_1",
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"serializationLoc": {
+"X": 330,
+"Y": 255
+},
+"serializationHeight": 0,
+"serializationDir": 6,
+"triggerType": 1,
+"<AI>k__BackingField": null,
+"Data": {
+"Nickname": "",
+"OriginalUUID": "",
+"OriginalTeam": "",
+"BaseForm": {
+"Species": "baltoy",
+"Form": 0,
+"Skin": "normal",
+"Gender": 0
+},
+"Level": 1,
+"EXP": 0,
+"MaxHPBonus": 0,
+"AtkBonus": 0,
+"DefBonus": 0,
+"MAtkBonus": 0,
+"MDefBonus": 0,
+"SpeedBonus": 0,
+"BaseSkills": [
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+}
+],
+"BaseIntrinsics": [
+""
+],
+"FormIntrinsicSlot": -1,
+"Relearnables": {},
+"Discriminator": 0,
+"MetAt": "",
+"MetLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"DefeatAt": "",
+"DefeatLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"IsFounder": false,
+"IsPartner": false,
+"NameLocked": false,
+"IsFavorite": false,
+"Unrecruitable": false,
+"ActionEvents": [],
+"ScriptVars": null
+},
+"CollisionDisabled": false,
+"Collider": {
+"X": 330,
+"Y": 255,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"Direction": 2,
+"IsInteracting": false,
+"AIEnabled": true,
+"EntName": "Bal5_2",
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"serializationLoc": {
+"X": 374,
+"Y": 256
+},
+"serializationHeight": 0,
+"serializationDir": 2,
+"triggerType": 1,
+"<AI>k__BackingField": null,
+"Data": {
+"Nickname": "",
+"OriginalUUID": "",
+"OriginalTeam": "",
+"BaseForm": {
+"Species": "baltoy",
+"Form": 0,
+"Skin": "normal",
+"Gender": 0
+},
+"Level": 1,
+"EXP": 0,
+"MaxHPBonus": 0,
+"AtkBonus": 0,
+"DefBonus": 0,
+"MAtkBonus": 0,
+"MDefBonus": 0,
+"SpeedBonus": 0,
+"BaseSkills": [
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+}
+],
+"BaseIntrinsics": [
+""
+],
+"FormIntrinsicSlot": -1,
+"Relearnables": {},
+"Discriminator": 0,
+"MetAt": "",
+"MetLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"DefeatAt": "",
+"DefeatLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"IsFounder": false,
+"IsPartner": false,
+"NameLocked": false,
+"IsFavorite": false,
+"Unrecruitable": false,
+"ActionEvents": [],
+"ScriptVars": null
+},
+"CollisionDisabled": false,
+"Collider": {
+"X": 374,
+"Y": 256,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"Direction": 4,
+"IsInteracting": false,
+"AIEnabled": true,
+"EntName": "Bal5_3",
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"serializationLoc": {
+"X": 352,
+"Y": 279
+},
+"serializationHeight": 0,
+"serializationDir": 4,
+"triggerType": 1,
+"<AI>k__BackingField": null,
+"Data": {
+"Nickname": "",
+"OriginalUUID": "",
+"OriginalTeam": "",
+"BaseForm": {
+"Species": "baltoy",
+"Form": 0,
+"Skin": "normal",
+"Gender": 0
+},
+"Level": 1,
+"EXP": 0,
+"MaxHPBonus": 0,
+"AtkBonus": 0,
+"DefBonus": 0,
+"MAtkBonus": 0,
+"MDefBonus": 0,
+"SpeedBonus": 0,
+"BaseSkills": [
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+}
+],
+"BaseIntrinsics": [
+""
+],
+"FormIntrinsicSlot": -1,
+"Relearnables": {},
+"Discriminator": 0,
+"MetAt": "",
+"MetLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"DefeatAt": "",
+"DefeatLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"IsFounder": false,
+"IsPartner": false,
+"NameLocked": false,
+"IsFavorite": false,
+"Unrecruitable": false,
+"ActionEvents": [],
+"ScriptVars": null
+},
+"CollisionDisabled": false,
+"Collider": {
+"X": 352,
+"Y": 279,
 "Width": 16,
 "Height": 16
 }

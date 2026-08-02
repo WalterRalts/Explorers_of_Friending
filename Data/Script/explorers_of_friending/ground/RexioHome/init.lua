@@ -21,7 +21,7 @@ function RexioHome.Init(map)
       Aurm.Feeling()
     elseif SV.entoh_town.package_received == true and SV.Story.sect == 3 and SV.Story.flag ~= 1 then
       Aurm.Home()
-    elseif KeyGet and SV.Story.sect == 3 then
+    elseif KeyGet and SV.Story.sect == 4 then
       Aurm.OpenIt()
     end
   elseif SV.Story.chap == -5 then
@@ -58,7 +58,7 @@ end
 function RexioHome.Update(map)
   local baggy = {}
   local held = false
-  if SV.Story.sect == 4 then
+  if SV.Story.sect == 5 then
     for i = 0, GAME:GetPlayerBagCount() - 1, 1 do
       baggy[i] = GAME:GetPlayerBagItem(i).ID
     end
@@ -70,7 +70,7 @@ function RexioHome.Update(map)
 
     if held == false then
       Aurm.Slipped()
-    elseif GAME:GetPlayerEquippedItem(0).ID == "held_power_band" and SV.Story.sect == 4 then
+    elseif GAME:GetPlayerEquippedItem(0).ID == "held_power_band" and SV.Story.sect == 5 then
       Aurm.Fashion()
     end
   end
@@ -95,7 +95,7 @@ end
 -- Entities Callbacks
 -------------------------------
 function RexioHome.ApartmentEnter_Touch(obj, activator)
-  if SV.Story.sect == 4 then
+  if SV.Story.sect == 5 then
     local rexio = CH("PLAYER")
     local luke = CH("Luke")
 

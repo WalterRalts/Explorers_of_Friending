@@ -122,28 +122,28 @@ function AppleMayor.Whisp_Action(obj, activator)
 end
 
 function AppleMayor.Galeo_Action(obj, activator)
- EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
-  UI:WaitShowDialogue("Greeatings, child. Are you here for a story?")
+  EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
+  UI:WaitShowDialogue("Greetings, child. Are you here for a story?")
 
   if SV.guild.day <= 1 then
     if activator.Nickname == "Maru" then
-     EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
+      EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
       UI:WaitShowDialogue("No thanks, we're looking for apples right now.")
     elseif activator.Nickname == "Azura" then
-     EXPLCOMMON.SetCharAndEmotion(activator, "Joyous")
+      EXPLCOMMON.SetCharAndEmotion(activator, "Joyous")
       UI:WaitShowDialogue("Yeah! Story time!")
 
-     EXPLCOMMON.SetCharAndEmotion(CH("Teammate1"), "Stunned")
+      EXPLCOMMON.SetCharAndEmotion(CH("Teammate1"), "Stunned")
       UI:WaitShowDialogue("Um,[pause=35] Azu...")
 
-     EXPLCOMMON.CharExclaim("PLAYER")
-     EXPLCOMMON.SetCharAndEmotion(activator, "Surprised")
+      EXPLCOMMON.CharExclaim("PLAYER")
+      EXPLCOMMON.SetCharAndEmotion(activator, "Surprised")
       UI:WaitShowDialogue("Oh! Um, n-no...[pause=40] [emote=Pain]no story time...")
     else
-     EXPLCOMMON.SetCharAndEmotion(activator, "Worried")
+      EXPLCOMMON.SetCharAndEmotion(activator, "Worried")
       UI:WaitShowDialogue("Sounds boring.")
 
-     EXPLCOMMON.SetCharAndEmotion(obj, "Surprised")
+      EXPLCOMMON.SetCharAndEmotion(obj, "Surprised")
       UI:WaitShowDialogue("Ah-! How dare you...!")
     end
   end

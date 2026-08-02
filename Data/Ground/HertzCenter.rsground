@@ -115318,15 +115318,15 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 400,
-"Y": 96
+"X": 399,
+"Y": 97
 },
 "serializationHeight": 0,
 "serializationDir": 7,
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Cal",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -115422,7 +115422,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Grym",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -116094,7 +116094,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Esna",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -116190,7 +116190,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Meteor",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -116286,7 +116286,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Moon",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -116382,7 +116382,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "",
+"Nickname": "Lilily",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {

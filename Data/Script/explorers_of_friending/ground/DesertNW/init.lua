@@ -95,8 +95,8 @@ end
 
 function DesertNW.InfoTablet_Action(obj, activator)
   UI:ResetSpeaker()
-  UI:WaitShowDialogue("\"A few words this tablet holds.\nOne that flows before what grows.\nLast is one the second hates.\nAll can only be one.\"")
-  UI:WaitShowDialogue("The number four is also lazily etched on the side.")
+  EXPLCOMMON.SignDialogue("\"A few words this tablet holds.\nOne that flows before what grows.\nLast is one the second hates.\nAll can only be one.\"")
+  EXPLCOMMON.SignDialogue("The number seven (7) is also lazily etched on the side.")
 end
 
 function DesertNW.WaterTablet_Action(obj, activator)

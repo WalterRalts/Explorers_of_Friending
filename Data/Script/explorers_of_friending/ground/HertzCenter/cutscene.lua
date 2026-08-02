@@ -20,7 +20,7 @@ function Hertz.DesertTown()
     two.CollisionDisabled = true
     thr.CollisionDisabled = true
     fou.CollisionDisabled = true
-    local coro3 = TASK:BranchCoroutine(function() 
+    local coro3 = TASK:BranchCoroutine(function()
         GROUND:AnimateToPosition(azura, "Walk", Dir8.Up, azura.Position.X, azura.Position.Y - 45, 0.3, 0.6, 0)
         end)
     local coro4 = TASK:BranchCoroutine(function()
@@ -56,7 +56,7 @@ function Hertz.DesertTown()
             end)
         local cor6 = TASK:BranchCoroutine(function()
             GAME:WaitFrames(10)
-            GROUND:MoveToMarker(fou, MRKR("m3"), false, 6)
+            GROUND:MoveToMarker(fou, MRKR("m3"), true, 6)
             end)
         TASK:JoinCoroutines({cor5, cor6})
         end)
@@ -64,47 +64,37 @@ function Hertz.DesertTown()
 
     --maybe put a song here...?
 
-    local look = TASK:BranchCoroutine(function()
+    local look = function()
         local ca3 = TASK:BranchCoroutine(function()
-            while turner do
-                    GROUND:CharAnimateTurnTo(one, GAME:RandomDirection(), 4)
-                    GAME:WaitFrames(30)
-                end
+            GROUND:CharAnimateTurnTo(one, GAME:RandomDirection(), 4)
+            GAME:WaitFrames(30)
             end)
         local ca4 = TASK:BranchCoroutine(function()
-            while turner do
-                    GROUND:CharAnimateTurnTo(two, GAME:RandomDirection(), 4)
-                    GAME:WaitFrames(20)
-                end
+            GROUND:CharAnimateTurnTo(two, GAME:RandomDirection(), 4)
+            GAME:WaitFrames(20)
             end)
         local ca5 = TASK:BranchCoroutine(function()
-            while turner do
-                    GROUND:CharAnimateTurnTo(thr, GAME:RandomDirection(), 4)
-                    GAME:WaitFrames(25)
-                end
+            GROUND:CharAnimateTurnTo(thr, GAME:RandomDirection(), 4)
+            GAME:WaitFrames(25)
             end)
         local ca6 = TASK:BranchCoroutine(function()
-            while turner do
-                    GROUND:CharAnimateTurnTo(fou, GAME:RandomDirection(), 4)
-                    GAME:WaitFrames(20)
-                end
+            GROUND:CharAnimateTurnTo(fou, GAME:RandomDirection(), 4)
+            GAME:WaitFrames(20)
             end)
         TASK:JoinCoroutines({ca3, ca4, ca5, ca6})
-        end)
-    local talk = TASK:BranchCoroutine(function()
-        EXPLCOMMON.SetCharAndEmotion(one, "Worried")
-        UI:WaitShowDialogue("Where is he!?")
-        UI:WaitShowDialogue("He said he would meet us here!")
+    end
+    EXPLCOMMON.SetCharAndEmotion(one, "Worried")
+    UI:WaitShowDialogue("Where is he!?")
+    UI:WaitShowDialogue("He said he would meet us here!")
+    look()
 
-        EXPLCOMMON.CharHop("two")
-        EXPLCOMMON.SetCharAndEmotion(two, "Shouting")
-        UI:WaitShowDialogue("He's late! He's late!")
+    EXPLCOMMON.CharHop("two")
+    EXPLCOMMON.SetCharAndEmotion(two, "Shouting")
+    UI:WaitShowDialogue("He's late! He's late!")
+    look()
 
-        turner = false
-        EXPLCOMMON.SetCharAndEmotion(thr, "Worried")
-        UI:WaitShowDialogue("It's whatever, we can find and steal the treasure ourselves!")
-        end)
-    TASK:JoinCoroutines({look, talk})
+    EXPLCOMMON.SetCharAndEmotion(thr, "Worried")
+    UI:WaitShowDialogue("It's whatever, we can find and steal the treasure ourselves!")
 
     EXPLCOMMON.SetCharAndEmotion(one, "Worried")
     EXPLCOMMON.FaceEachother(one, two)
@@ -119,7 +109,7 @@ function Hertz.DesertTown()
     EXPLCOMMON.CharHop("one")
     UI:WaitShowDialogue("Gang, to the hideout!")
 
-    local co3 = TASK:BranchCoroutine(function() 
+    local co3 = TASK:BranchCoroutine(function()
         GROUND:MoveToMarker(one, MRKR("m0_1"), true, 3)
         end)
     local co4 = TASK:BranchCoroutine(function()
@@ -138,7 +128,7 @@ function Hertz.DesertTown()
     UI:WaitShowDialogue("...are we gonna pretend we didn't see or hear that?")
 
     EXPLCOMMON.SetCharAndEmotion(rexio, "Stunned")
-    UI:WaitShowDialogue("Out loud.[pause=30] No stopping.[pause=30] Their entire plan.")
+    UI:WaitShowDialogue("Out loud.[pause=30] Their entire plan...")
 
     EXPLCOMMON.SetCharAndEmotion(azura, "Stunned")
     UI:WaitShowDialogue("Wow...")
@@ -152,4 +142,5 @@ function Hertz.DesertTown()
     UI:WaitShowDialogue("Guess we have to find it first.")
     GAME:CutsceneMode(false)
     EXPLCOMMON.AllyFollow(false, false)
+    SOUND:PlayBGM("HertzFull.ogg", true)
 end

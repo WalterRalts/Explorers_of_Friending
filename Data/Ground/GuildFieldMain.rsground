@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.11.0",
+"Version": "0.8.12.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -492734,8 +492734,8 @@
 "Y": 0
 },
 "Collider": {
-"X": 1072,
-"Y": 614,
+"X": 1070,
+"Y": 613,
 "Width": 40,
 "Height": 30
 }
@@ -492779,8 +492779,8 @@
 "Collider": {
 "X": 0,
 "Y": 0,
-"Width": 152,
-"Height": 24
+"Width": 168,
+"Height": 12
 }
 },
 {
@@ -492886,7 +492886,7 @@
 "Alpha": 255,
 "AnimFlip": 0
 },
-"Passable": true,
+"Passable": false,
 "CurrentAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -492909,7 +492909,7 @@
 "X": 1584,
 "Y": 0,
 "Width": 288,
-"Height": 24
+"Height": 8
 }
 },
 {
@@ -492972,7 +492972,7 @@
 "Alpha": 255,
 "AnimFlip": 0
 },
-"Passable": true,
+"Passable": false,
 "CurrentAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
 "AnimIndex": "",
@@ -492992,9 +492992,9 @@
 "Y": 0
 },
 "Collider": {
-"X": 1848,
+"X": 1864,
 "Y": 0,
-"Width": 24,
+"Width": 8,
 "Height": 288
 }
 },
@@ -493037,7 +493037,7 @@
 "Collider": {
 "X": 0,
 "Y": 0,
-"Width": 24,
+"Width": 12,
 "Height": 152
 }
 }
@@ -493257,8 +493257,8 @@
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 1066,
-"Y": 644,
+"X": 1063,
+"Y": 645,
 "Width": 16,
 "Height": 16
 }
@@ -493285,8 +493285,8 @@
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 1033,
-"Y": 526,
+"X": 1031,
+"Y": 523,
 "Width": 16,
 "Height": 16
 }
@@ -493299,7 +493299,7 @@
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 1033,
+"X": 1032,
 "Y": 620,
 "Width": 16,
 "Height": 16
