@@ -15,7 +15,7 @@ local deep_tarro_forest = {}
 ---deep_tarro_forest.Init(zone)
 --Engine callback function
 function deep_tarro_forest.Init(zone)
-    DUN_failure = false
+
 end
 
 ---deep_tarro_forest.EnterSegment(zone, rescuing, segmentID, mapID)
@@ -27,10 +27,9 @@ end
 ---deep_tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
 --Engine callback function
 function deep_tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
+    GAME:SetTeamLeaderIndex(0)
     if SV.deep_tarro_forest.revisit == false then --first time
-        GAME:SetTeamLeaderIndex(0)
         if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
-            DUN_failure = true
             if segmentID == 0 then
                 COMMON.EndDungeonDay(result, "tarro_forest", -1, 2, 0)
             elseif segmentID == 1 then
@@ -47,7 +46,6 @@ function deep_tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
             end
         end
     else --if you've been here
-        GAME:SetTeamLeaderIndex(0)
         if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
             if segmentID == 0 then
                 COMMON.EndDungeonDay(result, "tarro_forest", -1, 2, 0)

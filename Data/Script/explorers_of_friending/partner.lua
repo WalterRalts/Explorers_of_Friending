@@ -389,6 +389,11 @@ function Partner(turn)
                         UI:SetSpeakerEmotion("Happy")
                         UI:WaitShowDialogue("Whoo, town!")
                     end
+                elseif area_name == "TarroTownBigTree" then
+                    UI:SetSpeaker(azura)
+                    GROUND:CharTurnToCharAnimated(maru, azura, 4)
+                    UI:SetSpeakerEmotion("Happy")
+                    UI:WaitShowDialogue("...whatever blew up in there, we can deal with it together!")
                 elseif area_name == "TarroTownBigTree_ch3" then
                     UI:SetSpeaker(azura)
                     GROUND:CharTurnToCharAnimated(maru, azura, 4)

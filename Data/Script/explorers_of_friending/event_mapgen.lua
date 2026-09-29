@@ -507,10 +507,10 @@ function FLOOR_GEN_SCRIPT.SleepingCalderaRevisit(map, args)
   local item = nil
 
   for ii = 0, map.Items.Count - 1, 1 do
-	if map.Items[ii].Value == "loot_secret_slab" then
-	  item = map.Items[ii]
-	  break
-	end
+    if map.Items[ii].Value == "loot_secret_slab" then
+      item = map.Items[ii]
+      break
+    end
   end
 
   if item ~= nil then
@@ -520,20 +520,20 @@ function FLOOR_GEN_SCRIPT.SleepingCalderaRevisit(map, args)
 end
 
 function FLOOR_GEN_SCRIPT.EntohThicketWall(map, args) --randomly change the inner walls of the dungeon into water or floor
-  local Entoh_chance = SV.rent_number
-  for x = 0, map.Width - 2, 1 do
-    for y = 0, map.Height - 2, 1 do
+  local Entoh_chance = 0
+  for xx = 0, map.Width - 2, 1 do
+    for yy = 0, map.Height - 2, 1 do
       --print(Entoh_chance)
-      local point = RogueElements.Loc(x, y)
+      local point = RogueElements.Loc(xx, yy)
       local floorno_mult = 100
-      WallTileChance = map.Rand:Next(1, 101)
-      WaterTileChance = map.Rand:Next(1, 101)
+      local wallTileChance = map.Rand:Next(1, 101)
+      local waterTileChance = map.Rand:Next(1, 101)
 
       if not map:GetTile(point):TileEquivalent(map.RoomTerrain) then
-        if WallTileChance >= floorno_mult - (1 + (8 * Entoh_chance)) then
+        if wallTileChance >= floorno_mult - (1 + (8 * Entoh_chance)) then
           Entoh_chance = Entoh_chance - 2
           map:TrySetTile(point, map.RoomTerrain)
-        elseif WaterTileChance >= floorno_mult - (10 + Entoh_chance) then
+        elseif waterTileChance >= floorno_mult - (10 + Entoh_chance) then
           Entoh_chance = Entoh_chance - 2
           map:TrySetTile(point, RogueEssence.Dungeon.Tile("water"))
         else

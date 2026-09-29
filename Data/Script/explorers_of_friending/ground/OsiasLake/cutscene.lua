@@ -31,7 +31,6 @@ function Osiases.GoingIn()
     GROUND:CharTurnToCharAnimated(azura, rexio, 4)
     EXPLCOMMON.SetCharAndEmotion(rexio, "Pain")
     UI:WaitShowDialogue("[speed=0.5]...no, no... I can't...")
-    
 
     EXPLCOMMON.SetCharAndEmotion(azura, "Worried")
     UI:WaitShowDialogue("Rexio?")
@@ -89,7 +88,10 @@ function Osiases.GoingIn()
     EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
     UI:WaitShowDialogue("I think it will be.")
     GAME:WaitFrames(10)
-    UI:WaitShowDialogue("They went through all the effort to get us here, it has to be something.")
+    UI:WaitShowDialogue("We went through all the effort to get here, it has to be something.")
+    EXPLCOMMON.FaceEachother(rexio, maru)
+    GAME:WaitFrames(10)
+    UI:WaitShowDialogue("Don't think Guildmaster would send us out here for no reason.")
 
     GAME:WaitFrames(50)
     EXPLCOMMON.SetCharAndEmotion("none")
@@ -162,13 +164,10 @@ function Osiases.GoingIn()
     UI:WaitShowDialogue("You'll see, you'll see.")
 
     local mon_id = RogueEssence.Dungeon.MonsterID("pawmot", 0, "normal", Gender.Female)
-
     local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 40, "", 0)
-    p.IsFounder = false
-    p.IsPartner = false
-    p.Nickname = "Hertz Guildmaster"
-
-    _DATA.Save.ActiveTeam.Players:Add(p)
+    _DATA.Save.ActiveTeam.Guests:Add(p)
+    local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("HertzInteract")
+        p.ActionEvents:Add(talk_evt)
 
     local coro2 = TASK:BranchCoroutine(function()
         GROUND:AnimateToPosition(azura, "Walk", Dir8.Up, azura.Position.X, azura.Position.Y - 45, 0.3, 0.6, 0)

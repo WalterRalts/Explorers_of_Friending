@@ -123,6 +123,7 @@ end
 -- Let's get makin'!
 function Cooking(player, partner, location)
     local arama = CH('Arama')
+    local maru = CH('PLAYER')
     --check if the player has done a tutorial
     if SV.tarro_town.cooking_tutorial_done == 1 then
         SV.tarro_town.cooking_tutorial_done = 2
@@ -137,7 +138,6 @@ function Cooking(player, partner, location)
         UI:BeginChoiceMenu("It's fine if you don't, but[emote=Worried] I don't need you two burning something.", choices, 1, 2)
         UI:WaitForChoice()
         local result = UI:ChoiceResult()
-        
         if result == 1 then
             --tutorial here
             UI:SetSpeaker(arama)

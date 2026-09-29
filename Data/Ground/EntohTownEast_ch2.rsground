@@ -38944,8 +38944,8 @@
 "EntOrder": 0,
 "InteractOrder": 0,
 "serializationLoc": {
-"X": 155,
-"Y": 194
+"X": 159,
+"Y": 193
 },
 "serializationHeight": 0,
 "serializationDir": 3,
@@ -39553,8 +39553,8 @@
 "triggerType": 0,
 "EntityCallbacks": [],
 "Collider": {
-"X": 149,
-"Y": 200,
+"X": 156,
+"Y": 199,
 "Width": 16,
 "Height": 16
 }

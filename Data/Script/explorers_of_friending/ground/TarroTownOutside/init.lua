@@ -22,7 +22,7 @@ end
 --Engine callback function
 function TarroTownOutside.Init(map)
   GAME:SetCanSwitch(false)
-  GAME:GetPlayerPartyMember(0).IsPartner = true
+
   if SV.Story.chap == 0 then
     Outside.CloudWatch()
   else
@@ -30,6 +30,9 @@ function TarroTownOutside.Init(map)
   end
   if SV.Story.chap < -1 then
     GROUND:Hide("Puchi")
+    GROUND:Hide("Reeshi")
+    GROUND:Hide("Roll")
+    GROUND:Hide("Oink")
   end
   local partner = CH('Teammate1')
   if OutEnter == 1 then
@@ -324,7 +327,7 @@ function TarroTownOutside.Roll_Action(obj, activator)
  EXPLCOMMON.FaceEachother(obj, activator)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("Comin' outtaf th' Jugnion Distric' 'cuza all the monsters movin' in.[pause=0] It'sso calm here, an' me pa'n I can fin'lly get some walkin' in.")
+  UI:WaitShowDialogue("Comin' outtaf th' Jugnion Distric' 'cuza all the monsters movin' in.[br] It'sso calm here, an' me pa'n I can fin'lly get some walkin' in.")
 end
 
 -- Other --
@@ -383,7 +386,7 @@ function TarroTownOutside.TTOutside_WExit_Touch(obj, activator)
       UI:ResetSpeaker()
 			UI:WaitShowDialogue("Sometimes, you may get lost on your adventure.[pause=10] Or maybe you just need to talk to someone.")
       UI:WaitShowDialogue("If you press [B] on your keyboard,[pause=10] you can talk to whoever is in your second slot.")
-      UI:WaitShowDialogue("There's currently no button for this on a controller,[pause=10] please be patient as the game continues to be patched.")
+      UI:WaitShowDialogue("Use " .. STRINGS:LocalKeyString(9) .. " to check the Others menu and change settings.")
       SV.GroundTutorial = SV.GroundTutorial + 1
     end
     GAME:EnterGroundMap("TarroTownEast", "TTEast_WEnter")

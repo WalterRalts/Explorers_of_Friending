@@ -122,7 +122,7 @@ end
 
 function RexioHome.Luke_Action(obj, activator)
  EXPLCOMMON.FaceEachother(obj, activator)
-  if SV.Story.sect < 3 then
+  if SV.Story.sect <= 3 then
     UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Go on, Rexio. [pause=30]Don't [emote=Happy]let me stop you.")
@@ -138,7 +138,7 @@ function RexioHome.Luke_Action(obj, activator)
     UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Kidding, kidding.")
-  elseif SV.Story.sect == 3 then
+  elseif SV.Story.sect == 4 then
     UI:SetSpeaker(obj)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("If you're asking for a hint, then I can't really help.")

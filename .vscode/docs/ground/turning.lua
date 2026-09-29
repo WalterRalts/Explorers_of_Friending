@@ -15,7 +15,6 @@ function GROUND:CharTurnToChar(turner, turnTo) end
 ---@param turner GroundCH The character that is turning.
 ---@param turnTo GroundCH The character to turn to.
 ---@param dur integer Time spent on each direction, in frames
----@return self
 function GROUND:CharTurnToCharAnimated(turner, turnTo, dur) end
 
 ---Makes a ground entity turn to face a direction.

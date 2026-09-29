@@ -9,7 +9,7 @@
 "Released": true,
 "Comment": "Maru and Azura's initiation.",
 "NoEXP": false,
-"ExpPercent": 25,
+"ExpPercent": 20,
 "Level": 10,
 "LevelCap": false,
 "KeepSkills": false,
@@ -2480,13 +2480,44 @@
 "Spawn": {
 "Spawn": {
 "BaseForm": {
+"Species": "litwick",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 4,
+"Max": 7
+},
+"SpecifiedSkills": [],
+"Intrinsic": "",
+"Tactic": "wander_normal",
+"SpawnConditions": [],
+"SpawnFeatures": [
+{
+"$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+}
+]
+},
+"Role": 0
+},
+"Rate": 40,
+"Range": {
+"Min": 0,
+"Max": 6
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
 "Species": "oddish",
 "Form": 0,
 "Skin": "",
 "Gender": -1
 },
 "Level": {
-"Min": 2,
+"Min": 1,
 "Max": 8
 },
 "SpecifiedSkills": [
@@ -2519,7 +2550,7 @@
 "Gender": -1
 },
 "Level": {
-"Min": 3,
+"Min": 2,
 "Max": 8
 },
 "SpecifiedSkills": [
@@ -2577,7 +2608,7 @@
 },
 "Rate": 5,
 "Range": {
-"Min": 1,
+"Min": 2,
 "Max": 6
 }
 },
@@ -2591,7 +2622,7 @@
 "Gender": -1
 },
 "Level": {
-"Min": 3,
+"Min": 2,
 "Max": 7
 },
 "SpecifiedSkills": [
@@ -2655,9 +2686,9 @@
 },
 "Role": 3
 },
-"Rate": 20,
+"Rate": 10,
 "Range": {
-"Min": 0,
+"Min": 1,
 "Max": 6
 }
 },
@@ -2729,7 +2760,7 @@
 },
 "Role": 3
 },
-"Rate": 30,
+"Rate": 10,
 "Range": {
 "Min": 0,
 "Max": 6
@@ -2763,7 +2794,7 @@
 },
 "Role": 1
 },
-"Rate": 25,
+"Rate": 5,
 "Range": {
 "Min": 2,
 "Max": 6
@@ -2820,7 +2851,7 @@
 },
 "Level": {
 "Min": 1,
-"Max": 16
+"Max": 11
 },
 "SpecifiedSkills": [
 "astonish",
@@ -2889,7 +2920,7 @@
 },
 "Role": 1
 },
-"Rate": 25,
+"Rate": 30,
 "Range": {
 "Min": 3,
 "Max": 6
@@ -2898,16 +2929,8 @@
 ],
 "TeamSizes": [
 {
-"Spawn": 3,
-"Rate": 1,
-"Range": {
-"Min": 4,
-"Max": 6
-}
-},
-{
 "Spawn": 2,
-"Rate": 9,
+"Rate": 15,
 "Range": {
 "Min": 2,
 "Max": 6
@@ -2916,14 +2939,6 @@
 {
 "Spawn": 1,
 "Rate": 30,
-"Range": {
-"Min": 0,
-"Max": 6
-}
-},
-{
-"Spawn": 0,
-"Rate": 10,
 "Range": {
 "Min": 0,
 "Max": 6
@@ -2997,7 +3012,7 @@
 {
 "Item": {
 "$type": "RogueElements.DueSpawnStep`3[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence],[RogueEssence.Dungeon.EffectTile, RogueEssence],[RogueEssence.LevelGen.MapGenEntrance, RogueEssence]], RogueElements",
-"SuccessPercent": 60,
+"SuccessPercent": 40,
 "IncludeHalls": false,
 "Filters": [
 {
@@ -3009,7 +3024,7 @@
 "$type": "RogueElements.ContextSpawner`2[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence],[RogueEssence.Dungeon.EffectTile, RogueEssence]], RogueElements",
 "Amount": {
 "Min": 2,
-"Max": 9
+"Max": 7
 }
 }
 },
@@ -3294,7 +3309,7 @@
 {
 "Spawn": {
 "$type": "RogueElements.RandomRoomSpawnStep`2[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence],[RogueEssence.Dungeon.EffectTile, RogueEssence]], RogueElements",
-"SuccessPercent": 75,
+"SuccessPercent": 40,
 "IncludeHalls": false,
 "Filters": [
 {
@@ -3305,8 +3320,8 @@
 "Spawn": {
 "$type": "RogueElements.ContextSpawner`2[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence],[RogueEssence.Dungeon.EffectTile, RogueEssence]], RogueElements",
 "Amount": {
-"Min": 7,
-"Max": 16
+"Min": 2,
+"Max": 7
 }
 }
 },
@@ -6366,7 +6381,44 @@
 "Rate": 5,
 "Range": {
 "Min": 0,
-"Max": 5
+"Max": 7
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
+"Species": "litwick",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 4,
+"Max": 9
+},
+"SpecifiedSkills": [],
+"Intrinsic": "",
+"Tactic": "wander_normal",
+"SpawnConditions": [],
+"SpawnFeatures": [
+{
+"$type": "PMDC.LevelGen.MobSpawnBoost, PMDC",
+"MaxHPBonus": -3,
+"AtkBonus": -3,
+"DefBonus": -3,
+"SpAtkBonus": -3,
+"SpDefBonus": -3,
+"SpeedBonus": -3
+}
+]
+},
+"Role": 0
+},
+"Rate": 10,
+"Range": {
+"Min": 2,
+"Max": 7
 }
 },
 {
@@ -6383,7 +6435,6 @@
 "Max": 9
 },
 "SpecifiedSkills": [
-"beat_up",
 "foul_play"
 ],
 "Intrinsic": "early_bird",
@@ -6397,7 +6448,7 @@
 },
 "Role": 1
 },
-"Rate": 20,
+"Rate": 5,
 "Range": {
 "Min": 0,
 "Max": 7
@@ -6552,7 +6603,7 @@
 },
 "Rate": 10,
 "Range": {
-"Min": 5,
+"Min": 4,
 "Max": 7
 }
 }
@@ -6690,8 +6741,8 @@
 "Spawn": {
 "$type": "RogueElements.ContextSpawner`2[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence],[RogueEssence.Dungeon.EffectTile, RogueEssence]], RogueElements",
 "Amount": {
-"Min": 7,
-"Max": 16
+"Min": 1,
+"Max": 11
 }
 }
 },

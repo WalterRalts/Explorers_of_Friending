@@ -29,8 +29,7 @@ end
 ---guild_field.ExitSegment(zone, result, rescue, segmentID, mapID)
 --Engine callback function
 function guild_field.ExitSegment(zone, result, rescue, segmentID, mapID)
-
-
+    GAME:SetTeamLeaderIndex(0)
 end
 
 ---guild_field.Rescued(zone, name, mail)

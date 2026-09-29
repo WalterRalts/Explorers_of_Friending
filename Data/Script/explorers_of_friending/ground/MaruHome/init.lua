@@ -40,14 +40,17 @@ function MaruHome.Init(map)
         Bluetails.MailTime()
       elseif mail_read == 1 then
         Bluetails.AfterMailTime()
-      elseif mail_read == 2 then
-        Bluetails.AfterCook()
       end
       COMMON.CreateWalkArea("Amazuru", 195, 225, 72, 72)
     end
     if SV.Story.sect == 1 then
       GROUND:Hide("Arama")
       GROUND:Hide("Amazuru")
+      if mail_read == 2 then
+        Bluetails.AfterCook()
+        mail_read = 3
+      end
+      
     end
   end
   if OutEnter == 2 then

@@ -15,6 +15,13 @@ function Chapcheck:GameCheck()
     PrintInfo("Chapter " .. SV.Story.chap .. ", part " .. SV.Story.sect .. ", with a flag of... wait... ")
     PrintInfo("What type of flag is this?")
   end
+
+  PrintInfo("")
+  PrintInfo("Team is:")
+  PrintInfo("========")
+  for i = 1, GAME:GetPlayerPartyCount() do
+    PrintInfo(i .. ": " .. GAME:GetPlayerPartyMember(i - 1).Name)
+  end
 end
 
 function Chapcheck:Subscribe(med)
@@ -25,4 +32,4 @@ function Chapcheck:UnSubscribe(med)
 end
 
 SCRIPT:AddService("Chapcheck", Chapcheck:new())
-return RexioScan
+return Chapcheck

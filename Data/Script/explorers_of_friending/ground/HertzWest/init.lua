@@ -19,7 +19,7 @@ function HertzWest.Init(map)
   if West_visit then
     EXPLCOMMON.AllyFollow(true, true)
   else
-    Line.Mission()
+    Line.Short()
     West_visit = true
   end
 end

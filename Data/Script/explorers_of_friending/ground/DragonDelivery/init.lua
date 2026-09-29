@@ -102,7 +102,6 @@ end
 
 function DragonDelivery.Delivery_Action(obj, activator)
   local dragon = CH("Dragon")
-
   if dragon_talk == 0 then
     UI:SetSpeaker(dragon)
     UI:SetSpeakerEmotion("Normal")
@@ -115,7 +114,7 @@ function DragonDelivery.Delivery_Action(obj, activator)
     UI:SetSpeaker(dragon)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Oh, and uh, sorry about what you saw days ago.")
-    UI:WaitShowDialogue("Your packages won't be late,[pause=30] Pelipper[emote=Happy] taught me a thing or three.")
+    UI:WaitShowDialogue("Your packages won't be late, at least.[pause=30] Pelipper[emote=Happy] taught me a thing or three.")
 
     UI:SetSpeaker(activator)
     GROUND:CharAnimateTurnTo(activator, Dir8.Left, 3)
@@ -134,7 +133,12 @@ function DragonDelivery.Delivery_Action(obj, activator)
   end
 end
 
+function DragonDelivery.Dragon_Action(obj, activator)
+  DragonDelivery.Delivery_Action(obj, activator)
+end
+
 function DragonDelivery.RexioExit_Touch(obj, activator)
+  EXPLCOMMON.FaceEachother(obj, activator)
   GAME:FadeOut(false, 20)
   GAME:EnterGroundMap("EntohTownDelivery", "DragonExit")
 end

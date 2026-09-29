@@ -19,6 +19,7 @@
 ---| '"Wake"'
 ---| '"Rotate"'
 ---| '"Trip"'
+---| '"Hop"'
 
 ---@alias Emote
 ---| '"angry"'          # Angry

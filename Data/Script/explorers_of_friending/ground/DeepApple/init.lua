@@ -19,10 +19,12 @@ function DeepApple.Init(map)
   print(map)
   if SV.Story.sect == 2 then
     Core.AppleOut()
-    CH("Teammate1").CollisionDisabled = true
-    CH("Teammate2").CollisionDisabled = true
-    AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
-    AI:SetCharacterAI(CH("Teammate2"), "origin.ai.ground_partner", CH("Teammate1"), CH("Teammate2").Position)
+    if CH("Teammate1") ~= nil then
+      CH("Teammate1").CollisionDisabled = true
+      CH("Teammate2").CollisionDisabled = true
+      AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH('PLAYER'), CH("Teammate1").Position)
+      AI:SetCharacterAI(CH("Teammate2"), "origin.ai.ground_partner", CH("Teammate1"), CH("Teammate2").Position)
+    end
     GROUND:Unhide("Exit")
   elseif SV.Story.sect == 3 then
     Core.Oof()
@@ -93,6 +95,18 @@ function DeepApple.Exit_Touch(obj, activator)
 end
 
 function DeepApple.Enter_Touch(obj, activator)
+  if DUNGEON:LastDungeonResult() ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
+    EXPLCOMMON.FaceEachother(CH("PLAYER"), CH("Teammate2"))
+    GAME:WaitFrames(45)
+    EXPLCOMMON.SetCharAndEmotion(CH("Teammate2"), "Normal")
+    UI:WaitShowDialogue("Hey, we can try this dungeon again.")
+
+    EXPLCOMMON.SetCharAndEmotion(CH("PLAYER"), "Stunned")
+    UI:WaitShowTimedDialogue("Rexio, you got pretty beaten up before. And Azura...", 45)
+
+    EXPLCOMMON.SetCharAndEmotion(CH("Teammate2"), "Stunned")
+    UI:WaitShowDialogue("Nope, let's go!")
+  end
   local dungeon_entrances = {"dense_apple"}
   local ground_entrances = {}
   COMMON.ShowDestinationMenu(dungeon_entrances, ground_entrances)

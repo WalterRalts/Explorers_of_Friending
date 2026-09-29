@@ -29,6 +29,7 @@ end
 ---entoh_thicket.ExitSegment(zone, result, rescue, segmentID, mapID)
 --Engine callback function
 function entoh_thicket.ExitSegment(zone, result, rescue, segmentID, mapID)
+    GAME:SetTeamLeaderIndex(0)
     if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
         if SV.Story.sect <= 1 then
             SV.Story.sect = 2

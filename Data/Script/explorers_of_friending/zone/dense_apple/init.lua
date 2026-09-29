@@ -30,7 +30,7 @@ end
 function dense_apple.ExitSegment(zone, result, rescue, segmentID, mapID)
     DEBUG.EnableDbgCoro() --Enable debugging this coroutine
     PrintInfo("=>> ExitSegment result "..tostring(result).." segment "..tostring(segmentID))
-
+    GAME:SetTeamLeaderIndex(0)
     local exited = COMMON.ExitDungeonMissionCheck(result, rescue, zone.ID, segmentID)
 
     if exited == true then
@@ -40,6 +40,7 @@ function dense_apple.ExitSegment(zone, result, rescue, segmentID, mapID)
         SV.guild.time = 100
         SV.Story.sect = 3
     else
+        GAME:SetTeamLeaderIndex(0)
         if segmentID == 0 then
             COMMON.EndDungeonDay(result, "dense_apple", -1, 1, 0)
             SV.guild.time = 100
@@ -47,7 +48,6 @@ function dense_apple.ExitSegment(zone, result, rescue, segmentID, mapID)
         else -- this is a fallback branch, in case we went through all of the branches and hit nothing (which should not happen!)
             PrintInfo("No exit procedure found!")
             -- just send the player to their last checkpoint
-            DUN_failure = true
             COMMON.EndDungeonDay(result, SV.checkpoint.Zone, SV.checkpoint.Segment, SV.checkpoint.Map, SV.checkpoint.Entry)
         end
     end

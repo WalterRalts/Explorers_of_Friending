@@ -1,7 +1,10 @@
 Some code was outsourced, thanks will be given to:
 PMD:Halcyon creators -
 The people on the Discord
+PMDO wiki for documentation
 
 Game Testers:
 Kyunova on YT
+GlitzyBunny on Discord
+Devin_Fozrah on CMD
 Trio- on the PMDO Discord

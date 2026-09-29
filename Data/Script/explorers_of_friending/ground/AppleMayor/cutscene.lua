@@ -71,6 +71,7 @@ function AppleBoss.Roomy()
         GROUND:MoveToMarker(azura, MRKR("r3"), false, 1)
         GROUND:MoveToMarker(azura, MRKR("a2"), false, 1)
         azura.CollisionDisabled = false
+        EXPLCOMMON.FaceEachother(azura, maru)
         end)
     TASK:JoinCoroutines({c0, c1, c2})
 

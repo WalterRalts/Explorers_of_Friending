@@ -29,12 +29,12 @@ function CupShufflePlay(difficulty, speed)
         TASK:JoinCoroutines({coro1, coro2})
         PrintInfo(cup1 .. " and " .. cup2 .. " have been swapped.")
     end
-    
-    
+
+
     --function for playing the game
     local function challenge_start()
         GROUND:Hide("Ball")
-        
+
         --shuffle based on difficulty
         for i = 1, difficulty, 1 do
             switch_cups()

@@ -61,7 +61,7 @@ function Core.AppleOut()
     UI:SetSpeaker(maru, false)
     UI:SetSpeakerEmotion("Sad")
     UI:WaitShowDialogue("(...it's getting late...)")
-    GROUND:CharTurnToChar(maru, azura)
+    GROUND:CharTurnToCharAnimated(maru, azura, 4)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("(...and Azura's barely holding out.)")
 
@@ -105,14 +105,12 @@ function Core.AppleOut()
         SV.tablestats.bluetail_stats = GAME:GetPlayerPartyTable()
         GAME:RemovePlayerTeam(0)
         GAME:RemovePlayerTeam(0)
-        COMMON.RespawnStarterPartner()
-
-        GROUND:TeleportTo("PLAYER", new_x, new_y, Dir8.Up, 0)
-
-        EXPLCOMMON.SetCharAndEmotion(rexio, "Determined")
-        UI:WaitShowDialogue("Let's go. [pause=40][emote=Happy]I've got this!")
+        COMMON.RespawnAllies()
+        GROUND:TeleportTo(CH("PLAYER"), new_x, new_y, Dir8.Up, 0)
 
         GAME:FadeIn(30)
+        EXPLCOMMON.SetCharAndEmotion(CH("PLAYER"), "Determined")
+        UI:WaitShowDialogue("Let's go. [pause=40][emote=Happy]I've got this!")
     else
         SV.apple_town.teamed = true
         EXPLCOMMON.SetCharAndEmotion(maru, "Worried")
@@ -143,15 +141,15 @@ function Core.Oof()
     local moverex = GAME:GetPlayerPartyTable()
     EXPLCOMMON.PrintTable(SV.tablestats.bluetail_stats)
     EXPLCOMMON.PrintTable(moverex)
-    if GAME:GetPlayerPartyCount() <= 1 then
-      for i, p in ipairs(SV.tablestats.bluetail_stats) do
-        GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
-        --GROUND:GiveCharIdleChatter(chara)  
-      end
-      GAME:RemovePlayerTeam(0)
-      for i, p in ipairs(moverex) do
-        GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
-      end
+    if GAME:GetPlayerPartyCount() == 1 then
+        for i, p in ipairs(SV.tablestats.bluetail_stats) do
+            GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
+            --GROUND:GiveCharIdleChatter(chara)  
+        end
+        GAME:RemovePlayerTeam(0)
+        for i, p in ipairs(moverex) do
+            GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
+        end
     end
 
     EXPLCOMMON.SetLeaderFront()

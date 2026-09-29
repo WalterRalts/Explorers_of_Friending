@@ -24,6 +24,7 @@ function Dreset.Guild()
       local function up()
             GROUND:CharAnimateTurnTo(embu, Dir8.Up, 5)
       end
+
       UI:SetSpeaker(embu)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("Nah, guild master does, she's outside.[script=0] Just go straight ahead.", {up})

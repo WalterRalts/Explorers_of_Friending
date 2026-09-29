@@ -23,7 +23,7 @@ function Dark.Darkness()
   local coro03 = TASK:BranchCoroutine(function()
     GAME:FadeIn(120)
     end)
-  
+
   TASK:JoinCoroutines({coro01, coro02, coro03})
 
   UI:SetSpeaker(azura)
@@ -74,28 +74,29 @@ function Dark.Darkness()
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("Even if you two have the experience...")
 
-  EXPLCOMMON.CharSweatdrop("PLAYER")
-  GAME:WaitFrames(5)
-  EXPLCOMMON.CharSweatdrop("Teammate1")
-  GAME:WaitFrames(5)
+  
 
-  local coro1 = TASK:BranchCoroutine(function()
+  local c1 = TASK:BranchCoroutine(function()
     UI:SetSpeakerEmotion("Sad")
     UI:WaitShowDialogue("But what kind of mother would I be if I just kept you two stuck here...?")
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("Difficult decision...")
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("You know what,[pause=10] sure! You two can do it!")
-    end)	
-  local coro2 = TASK:BranchCoroutine(function()
+    end)
+  local c2 = TASK:BranchCoroutine(function()
+    EXPLCOMMON.CharSweatdrop("PLAYER")
+    GAME:WaitFrames(5)
+    EXPLCOMMON.CharSweatdrop("Teammate1")
+    GAME:WaitFrames(5)
     GAME:WaitFrames(60)
-   EXPLCOMMON.FaceEachother(maru, azura)
+    EXPLCOMMON.FaceEachother(maru, azura)
     GAME:WaitFrames(30)
     GROUND:CharTurnToCharAnimated(azura, arama, 8)
     GROUND:CharTurnToCharAnimated(maru, arama, 8)
     end)
-  
-  TASK:JoinCoroutines({coro1, coro2})
+
+  TASK:JoinCoroutines({c1, c2})
 
   GROUND:MoveToPosition(arama, arama.Position.X, azura.Position.Y + 20, true, 9)
   GROUND:MoveToPosition(arama, azura.Position.X, azura.Position.Y + 20, true, 9)
@@ -103,7 +104,7 @@ function Dark.Darkness()
 
   local coro001 = TASK:BranchCoroutine(function()
     GROUND:AnimateToPosition(azura, "None", Dir8.Up, 120, 80, 0.5, 2, 0)
-    end)	
+    end)
   local coro002 = TASK:BranchCoroutine(function()
     GROUND:AnimateToPosition(arama, "Walk", Dir8.Up, 120, 100, 5, 2, 0)
     end)
@@ -128,7 +129,7 @@ function Dark.Darkness()
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Oh? What do you mean, there's not a single thing wrong! [pause=40][emote=Joyous]Hahaha!")
     end)
-  
+
   TASK:JoinCoroutines({coro001, coro002, coro003, coro004})
 
   GROUND:CharTurnToCharAnimated(arama, maru, 8)
@@ -139,7 +140,7 @@ function Dark.Darkness()
   SOUND:PlayFanfare("Fanfare/Item")
   UI:ResetSpeaker()
   UI:WaitShowDialogue("Arama gives Maru a treasure bag!")
-  
+
   SV.bag_size = 30
   UI:SetSpeaker(azura)
   UI:SetSpeakerEmotion("Inspired")
@@ -174,17 +175,17 @@ function Dark.Darkness()
   SOUND:PlayBGM("None", true, 120)
   GAME:MoveCameraToChara(0, 0, 0, arama)
   GROUND:TeleportTo(amazuru, 80, 500, Direction.Up, 0)
-  
+
   local coro00001 = TASK:BranchCoroutine(function()
     GAME:MoveCamera(0, 500, 240, false)
-    end)	
+    end)
   local coro00002 = TASK:BranchCoroutine(function()
     GROUND:MoveToPosition(arama, arama.Position.X, azura.Position.Y + 100, true, 5)
     GROUND:MoveToPosition(arama, arama.Position.X, azura.Position.Y + 200, false, 3)
     GROUND:MoveToPosition(arama, arama.Position.X, azura.Position.Y + 300, false, 2)
     GROUND:MoveToPosition(arama, arama.Position.X, azura.Position.Y + 400, false, 0.5)
     end)
-  
+
   TASK:JoinCoroutines({coro00001, coro00002})
 
   UI:SetSpeaker(amazuru)
@@ -196,6 +197,9 @@ function Dark.Darkness()
   UI:SetSpeakerEmotion("Pain")
   UI:WaitShowDialogue("...")
 
+  GAME:WaitFrames(25)
+
+  EXPLCOMMON.FaceEachother(amazuru, arama)
   UI:SetSpeaker(amazuru)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("They can do it, you know...")
@@ -210,8 +214,8 @@ function Dark.Darkness()
   SV.Story.sect = 2
 
   GAME:SetCanSwitch(true)
+  GAME:FadeOut(false, 120)
   GAME:CutsceneMode(false)
-  GAME:FadeOut(false, 240)
-  COMMON.UnlockWithFanfare("deep_tarro_forest", false)  
+  COMMON.UnlockWithFanfare("deep_tarro_forest", false)
   GAME:EnterZone("deep_tarro_forest", 0, 0, 0)
 end

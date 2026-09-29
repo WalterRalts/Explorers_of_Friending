@@ -3,9 +3,33 @@ require 'explorers_of_friending.common'
 Entoh = {}
 
 function Entoh.PanchChallenge()
+    
+
     Todungeonscene = true
     local panch = CH("Panch")
     local rexio = CH("PLAYER")
+    local function accepted()
+        UI:SetSpeaker(rexio)
+        UI:SetSpeakerEmotion("Sigh")
+        UI:WaitShowDialogue("Fine,[pause=20] but if I get in trouble,[pause=10] you[emote=Worried] probably won't see me outside again.")
+
+        UI:SetSpeaker(panch)
+        UI:SetSpeakerEmotion("Happy")
+        UI:WaitShowDialogue("I'll take that risk, come on!")
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("In ya go!")
+
+        local coro1 = TASK:BranchCoroutine(function()
+            GAME:FadeOut(false, 20)
+        end)
+        local coro2 = TASK:BranchCoroutine(function()
+            GROUND:AnimateToPosition(rexio, "Walk", Dir8.Up, rexio.Position.X, rexio.Position.Y - 30, 0.5, 1, 0)
+        end)
+        TASK:JoinCoroutines({coro1, coro2})
+        GAME:WaitFrames(30)
+        COMMON.UnlockWithFanfare("entoh_thicket", false)
+        GAME:EnterDungeon("entoh_thicket", 0, 0, 0, RogueEssence.Data.GameProgress.DungeonStakes.Progress, false, false)
+    end
     local asd = TASK:BranchCoroutine(function()
         GAME:FadeIn(60)
         UI:SetSpeaker(panch)
@@ -125,7 +149,6 @@ function Entoh.PanchChallenge()
     UI:BeginChoiceMenu("Hmmmmmmmmmmmm...", choices, 1, 2)
     UI:WaitForChoice()
     local result = UI:ChoiceResult()
-    ::continue::
     if result == 1 then
         UI:SetSpeaker(rexio)
         UI:SetSpeakerEmotion("Normal")
@@ -183,35 +206,19 @@ function Entoh.PanchChallenge()
                     SV.Story.sect = 2
                     SV.entoh_town.thicket.result = 0
                 else
-                    goto continue
+                    accepted()
                 end
             else
-                goto continue
+                accepted()
             end
         else
-            goto continue
+            accepted()
         end
     else
-        UI:SetSpeaker(rexio)
-        UI:SetSpeakerEmotion("Sigh")
-        UI:WaitShowDialogue("Fine,[pause=20] but if I get in trouble,[pause=10] you[emote=Worried] probably won't see me outside again.")
-
-        UI:SetSpeaker(panch)
-        UI:SetSpeakerEmotion("Happy")
-        UI:WaitShowDialogue("I'll take that risk, come on!")
-        UI:SetSpeakerEmotion("Normal")
-        UI:WaitShowDialogue("In ya go!")
-
-        local coro1 = TASK:BranchCoroutine(function()
-            GAME:FadeOut(false, 20)
-        end)
-        local coro2 = TASK:BranchCoroutine(function()
-            GROUND:AnimateToPosition(rexio, "Walk", Dir8.Up, rexio.Position.X, rexio.Position.Y - 30, 0.5, 1, 0)
-        end)
-        COMMON.UnlockWithFanfare("entoh_thicket", false)
-        GAME:EnterZone("entoh_thicket", 0, 0, 0)
-        TASK:JoinCoroutines({coro1, coro2})
+        accepted()
     end
+
+
 end
 
 function Entoh.Resulting()

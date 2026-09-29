@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.11.0",
+"Version": "0.8.12.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -43333,7 +43333,7 @@
 {
 "Frames": [
 {
-"Sheet": "EntohTownDeliveryInside",
+"Sheet": "EntohTownDeliveryInsideFront",
 "TexLoc": {
 "X": 9,
 "Y": 8
@@ -43753,7 +43753,7 @@
 {
 "Frames": [
 {
-"Sheet": "EntohTownDeliveryInside",
+"Sheet": "EntohTownDeliveryInsideFront",
 "TexLoc": {
 "X": 10,
 "Y": 8
@@ -44173,7 +44173,7 @@
 {
 "Frames": [
 {
-"Sheet": "EntohTownDeliveryInside",
+"Sheet": "EntohTownDeliveryInsideFront",
 "TexLoc": {
 "X": 11,
 "Y": 8
@@ -44593,7 +44593,7 @@
 {
 "Frames": [
 {
-"Sheet": "EntohTownDeliveryInside",
+"Sheet": "EntohTownDeliveryInsideFront",
 "TexLoc": {
 "X": 12,
 "Y": 8
@@ -50106,39 +50106,13 @@
 {
 "AutoTileset": "",
 "Associates": [],
-"Layers": [
-{
-"Frames": [
-{
-"Sheet": "EntohTownDeliveryInsideFront",
-"TexLoc": {
-"X": 9,
-"Y": 8
-}
-}
-],
-"FrameLength": 60
-}
-],
+"Layers": [],
 "NeighborCode": -1
 },
 {
 "AutoTileset": "",
 "Associates": [],
-"Layers": [
-{
-"Frames": [
-{
-"Sheet": "EntohTownDeliveryInsideFront",
-"TexLoc": {
-"X": 9,
-"Y": 9
-}
-}
-],
-"FrameLength": 60
-}
-],
+"Layers": [],
 "NeighborCode": -1
 },
 {
@@ -50331,39 +50305,13 @@
 {
 "AutoTileset": "",
 "Associates": [],
-"Layers": [
-{
-"Frames": [
-{
-"Sheet": "EntohTownDeliveryInsideFront",
-"TexLoc": {
-"X": 10,
-"Y": 8
-}
-}
-],
-"FrameLength": 60
-}
-],
+"Layers": [],
 "NeighborCode": -1
 },
 {
 "AutoTileset": "",
 "Associates": [],
-"Layers": [
-{
-"Frames": [
-{
-"Sheet": "EntohTownDeliveryInsideFront",
-"TexLoc": {
-"X": 10,
-"Y": 9
-}
-}
-],
-"FrameLength": 60
-}
-],
+"Layers": [],
 "NeighborCode": -1
 },
 {
@@ -50556,39 +50504,13 @@
 {
 "AutoTileset": "",
 "Associates": [],
-"Layers": [
-{
-"Frames": [
-{
-"Sheet": "EntohTownDeliveryInsideFront",
-"TexLoc": {
-"X": 11,
-"Y": 8
-}
-}
-],
-"FrameLength": 60
-}
-],
+"Layers": [],
 "NeighborCode": -1
 },
 {
 "AutoTileset": "",
 "Associates": [],
-"Layers": [
-{
-"Frames": [
-{
-"Sheet": "EntohTownDeliveryInsideFront",
-"TexLoc": {
-"X": 11,
-"Y": 9
-}
-}
-],
-"FrameLength": 60
-}
-],
+"Layers": [],
 "NeighborCode": -1
 },
 {
@@ -50781,39 +50703,13 @@
 {
 "AutoTileset": "",
 "Associates": [],
-"Layers": [
-{
-"Frames": [
-{
-"Sheet": "EntohTownDeliveryInsideFront",
-"TexLoc": {
-"X": 12,
-"Y": 8
-}
-}
-],
-"FrameLength": 60
-}
-],
+"Layers": [],
 "NeighborCode": -1
 },
 {
 "AutoTileset": "",
 "Associates": [],
-"Layers": [
-{
-"Frames": [
-{
-"Sheet": "EntohTownDeliveryInsideFront",
-"TexLoc": {
-"X": 12,
-"Y": 9
-}
-}
-],
-"FrameLength": 60
-}
-],
+"Layers": [],
 "NeighborCode": -1
 },
 {
@@ -51462,20 +51358,7 @@
 {
 "AutoTileset": "",
 "Associates": [],
-"Layers": [
-{
-"Frames": [
-{
-"Sheet": "EntohTownDeliveryInsideFront",
-"TexLoc": {
-"X": 15,
-"Y": 9
-}
-}
-],
-"FrameLength": 60
-}
-],
+"Layers": [],
 "NeighborCode": -1
 },
 {
@@ -51661,39 +51544,13 @@
 {
 "AutoTileset": "",
 "Associates": [],
-"Layers": [
-{
-"Frames": [
-{
-"Sheet": "EntohTownDeliveryInsideFront",
-"TexLoc": {
-"X": 16,
-"Y": 9
-}
-}
-],
-"FrameLength": 60
-}
-],
+"Layers": [],
 "NeighborCode": -1
 },
 {
 "AutoTileset": "",
 "Associates": [],
-"Layers": [
-{
-"Frames": [
-{
-"Sheet": "EntohTownDeliveryInsideFront",
-"TexLoc": {
-"X": 16,
-"Y": 10
-}
-}
-],
-"FrameLength": 60
-}
-],
+"Layers": [],
 "NeighborCode": -1
 },
 {
@@ -51873,39 +51730,13 @@
 {
 "AutoTileset": "",
 "Associates": [],
-"Layers": [
-{
-"Frames": [
-{
-"Sheet": "EntohTownDeliveryInsideFront",
-"TexLoc": {
-"X": 17,
-"Y": 9
-}
-}
-],
-"FrameLength": 60
-}
-],
+"Layers": [],
 "NeighborCode": -1
 },
 {
 "AutoTileset": "",
 "Associates": [],
-"Layers": [
-{
-"Frames": [
-{
-"Sheet": "EntohTownDeliveryInsideFront",
-"TexLoc": {
-"X": 17,
-"Y": 10
-}
-}
-],
-"FrameLength": 60
-}
-],
+"Layers": [],
 "NeighborCode": -1
 },
 {
@@ -52104,20 +51935,7 @@
 {
 "AutoTileset": "",
 "Associates": [],
-"Layers": [
-{
-"Frames": [
-{
-"Sheet": "EntohTownDeliveryInsideFront",
-"TexLoc": {
-"X": 18,
-"Y": 10
-}
-}
-],
-"FrameLength": 60
-}
-],
+"Layers": [],
 "NeighborCode": -1
 },
 {

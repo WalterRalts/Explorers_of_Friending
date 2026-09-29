@@ -32,8 +32,8 @@ end
 ---tarro_tree_hollows.ExitSegment(zone, result, rescue, segmentID, mapID)
 --Engine callback function
 function tarro_tree_hollows.ExitSegment(zone, result, rescue, segmentID, mapID)
+  GAME:SetTeamLeaderIndex(0)
   if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then -- failing or otherwise
-    DUN_failure = true
     GAME:SetTeamLeaderIndex(0)
     if segmentID == 0 then
       COMMON.EndDungeonDay(result, "tarro_town", -1, 2, 0)
@@ -43,7 +43,6 @@ function tarro_tree_hollows.ExitSegment(zone, result, rescue, segmentID, mapID)
       COMMON.EndDungeonDay(result, "tarro_tree_hollows", -1, 0, 0)
     end
   else -- succeed
-    DUN_failure = false
     GAME:SetTeamLeaderIndex(0)
     if SV.tarro_tree_hollows.AmasDefeat == false then -- boss undefeated
       if segmentID == 0 then

@@ -54,19 +54,19 @@ function GAME:EnterDungeon(dunID, structID, mapID, entry, stakes, recorded, sile
 function GAME:ContinueDungeon(dunID, structID, mapID, entry) end
 
 ---Ends the current adventure, sending the player to a specified destination.
----@param result Result
----@param zoneID string
----@param structID string
----@param mapID string
----@param entryID string
----@param display any
----@param fanfare boolean
----@param completedZone boolean
+---@param result Result The result of the adventure.
+---@param zoneID string | integer The id of the dungeon to travel to.
+---@param structID string | integer The segment within the dungeon to start in. -1 represents ground maps
+---@param mapID string | integer The id of the ground map or dungeon map within the dungeon segment.
+---@param entryID string | integer The entry point on the resulting map
+---@param display boolean Display an epitaph marking the end of the adventure.
+---@param fanfare boolean Play a fanfare.
+---@param completedZone? string Zone to mark as completed. Defaults to current zone.
 function GAME:EndDungeonRun(result, zoneID, structID, mapID, entryID, display, fanfare, completedZone) end
 
 ---Enters a zone and begins a new adventure.
----@param dunID integer
----@param structID integer
----@param mapID integer
----@param entry string
+---@param dunID string | integer
+---@param structID string | integer
+---@param mapID string | integer
+---@param entry string | integer
 function GAME:EnterZone(dunID, structID, mapID, entry) end

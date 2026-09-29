@@ -43,7 +43,7 @@ function SINGLE_CHAR_SCRIPT.BagCount(owner, ownerChar, context, args)
 	end
 
 	if item_count > bag_limit then
-		print("too many items!")
+		PrintInfo("Too many items!")
 		local extra_item = GAME:GetPlayerBagItem(SV.bag_size)
 		GAME:GivePlayerStorageItem(extra_item)
 		GAME:TakePlayerBagItem(SV.bag_size, true)
@@ -1507,7 +1507,7 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 					UI:SetSpeakerEmotion("Happy")
 					UI:WaitShowDialogue("I dunno, but we won't find them just sitting here.")
 					UI:SetSpeakerEmotion("Normal")
-					UI:WaitShowDialogue("Let's use the arrow keys to walk, and hold " .. STRINGS:LocalKeyString(4) .. " to use a move.")
+					UI:WaitShowDialogue("Let's go around and hold " .. STRINGS:LocalKeyString(4) .. " or press " .. STRINGS:LocalKeyString(2) .. " to attack.")
 
 					UI:SetSpeaker(azura)
 					UI:SetSpeakerEmotion("Worried")
@@ -1553,6 +1553,18 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 				UI:SetSpeaker(azura)
 				UI:SetSpeakerEmotion("Joyous")
 				UI:WaitShowDialogue("ANOTHER BIG APPLE FOR PIIIIE!!")
+			elseif floor_no == 1 then
+				UI:SetSpeaker(maru)
+				UI:SetSpeakerEmotion("Normal")
+				UI:WaitShowDialogue("Hey, Azura, if you're having trouble aiming, try adjusting with " .. STRINGS:LocalKeyString(5) .. ".")
+
+				UI:SetSpeaker(azura)
+				UI:SetSpeakerEmotion("Stunned")
+				UI:WaitShowDialogue("Uhh... okay?")
+
+				UI:SetSpeaker(maru)
+				UI:SetSpeakerEmotion("Normal")
+				UI:WaitShowDialogue("Diagonals are tricky, too, so use " .. STRINGS:LocalKeyString(6) .. " for those.")
 			end
 		end
 	elseif area_name == "Tarro Tree Hallows" and SV.Story.chap == -2 then
@@ -1633,7 +1645,7 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 
 				UI:SetSpeaker(maru)
 				UI:SetSpeakerEmotion("Worried")
-				UI:WaitShowDialogue("To be fair, you never told us about why it's so important...")
+				UI:WaitShowDialogue("Ziggy, you never told us about why it's so important...")
 
 				UI:SetSpeaker(ziggy)
 				UI:SetSpeakerEmotion("Sad")
@@ -1643,7 +1655,7 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 
 				UI:SetSpeaker(senna)
 				UI:SetSpeakerEmotion("Worried")
-				UI:WaitShowDialogue("I s-still don't believe it but...")
+				UI:WaitShowDialogue("I still don't believe it but...")
 				UI:SetSpeakerEmotion("Determined")
 				UI:WaitShowDialogue("We'll fight for her if this tree is her friend.")
 			end
@@ -1680,6 +1692,53 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 		UI:WaitShowDialogue("Mm... the usual exit is blocked now...")
 		UI:SetSpeakerEmotion("Determined")
 		UI:WaitShowDialogue("Where else can we get out...?")
+	elseif area_name == "Dreaded Depths" then
+		local rexio = GAME:GetPlayerPartyMember(0)
+		local flow = GAME:GetPlayerPartyMember(1)
+		local tidy = GAME:GetPlayerPartyMember(2)
+		local wurp = GAME:GetPlayerPartyMember(3)
+		local snow = GAME:GetPlayerPartyMember(4)
+		if floor_no == 0 then
+			UI:SetSpeaker(tidy)
+			UI:SetSpeakerEmotion("Shouting")
+			UI:WaitShowDialogue("Aaaaaaaaaaa!!!!")
+
+			UI:SetSpeaker(flow)
+			UI:SetSpeakerEmotion("Surprised")
+			UI:WaitShowDialogue("Tidy! Stay close, stay close!")
+
+			UI:SetSpeaker(snow)
+			UI:SetSpeakerEmotion("Stunned")
+			UI:WaitShowDialogue("...n-never seen it get... th-this bad...!")
+
+			UI:SetSpeaker(rexio)
+			UI:SetSpeakerEmotion("Sigh")
+			UI:WaitShowDialogue("Great, just another thing to worry about...")
+		elseif floor_no == 2 then
+			UI:SetSpeaker(rexio)
+			UI:SetSpeakerEmotion("Worried")
+			UI:WaitShowDialogue("Tidy's right, this grime is gross.")
+
+			UI:SetSpeaker(flow)
+			UI:SetSpeakerEmotion("Happy")
+			UI:WaitShowDialogue("Not to worry,[pause=50] I can block all those bad effects if you eat them next to me.")
+
+			UI:SetSpeaker(wurp)
+			UI:SetSpeakerEmotion("Happy")
+			UI:WaitShowDialogue("We could thwow the yucky stuff at the dungeon mons, too!")
+
+			UI:SetSpeaker(rexio)
+			UI:SetSpeakerEmotion("Normal")
+			UI:WaitShowDialogue("If it'll help, it'll help.")
+
+			UI:SetSpeaker(flow)
+			UI:SetSpeakerEmotion("Normal")
+			UI:WaitShowDialogue("Grime's not too bad when it helps.")
+
+			UI:SetSpeaker(tidy)
+			UI:SetSpeakerEmotion("Dizzy")
+			UI:WaitShowDialogue(".....................................................")
+		end
 	elseif area_name == "Apple Forest" then
 		if floor_no == 2 then
 			local leader = GAME:GetPlayerPartyMember(0)
@@ -1793,7 +1852,7 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 			UI:SetSpeakerEmotion("Happy")
 			UI:WaitShowDialogue("Of course!")
 			UI:SetSpeakerEmotion("Normal")
-			UI:WaitShowDialogue("Dungeons act differently nowadays,[pause=45] and some of the will put you in the same spot a lot.")
+			UI:WaitShowDialogue("Dungeons act differently nowadays,[pause=45] and some of them will put you in the same spot a lot.")
 			UI:WaitShowDialogue("Not too big of an issue here, but you never know what other dungeons'll do.")
 		end
 	end
@@ -2027,7 +2086,7 @@ function SINGLE_CHAR_SCRIPT.CleanTidy(owner, ownerChar, context, args)
 			local flow = GAME:GetPlayerPartyMember(1)
 			local poison = RogueEssence.Dungeon.StatusEffect("poison")
 			local heal = RogueEssence.Dungeon.StatusEffect("aqua_ring")
-			if (tidy.CharLoc - flow.CharLoc):Dist8() <= 3 then
+			if (tidy.CharLoc - flow.CharLoc):Dist8() <= 2 then
 				clean = true
 			end
 			if clean == true then
@@ -2181,7 +2240,7 @@ end
 
 ---@param o1 any|table First object to compare
 ---@param o2 any|table Second object to compare
----@param ignore_mt boolean True to ignore metatables (a recursive function to tests tables inside tables)
+---@param ignore_mt boolean True to ignore metatables
 function equals(o1, o2, ignore_mt)
     if o1 == o2 then return true end
     local o1Type = type(o1)

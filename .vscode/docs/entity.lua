@@ -1,7 +1,5 @@
 ---@meta _
-
----@alias Entity string An object on the ground map
----@alias DungeonCH string Any character on the dungeon map
+---@diagnostic disable: duplicate-set-field
 
 ---@class GroundCH
 ---The name of the character

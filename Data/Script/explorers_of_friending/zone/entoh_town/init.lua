@@ -27,6 +27,7 @@ end
 ---entoh_town.ExitSegment(zone, result, rescue, segmentID, mapID)
 --Engine callback function
 function entoh_town.ExitSegment(zone, result, rescue, segmentID, mapID)
+    GAME:SetTeamLeaderIndex(0)
     GAME:EnterZone("entoh_town", -1, 11, 0)
 end
 

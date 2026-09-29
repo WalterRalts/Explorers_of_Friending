@@ -25,7 +25,12 @@ end
 --Engine callback function
 function DeepAppleEnd.Enter(map)
 
-  GAME:FadeIn(20)
+  if SV.Story.sect == 2 then
+    
+  else
+    GAME:FadeIn(20)
+  end
+  
 
 end
 
@@ -68,13 +73,13 @@ end
 
 function DeepAppleEnd.Exit_Touch(obj, activator)
   if SV.apple_town.teamed == true then
-   EXPLCOMMON.FaceEachother(CH("PLAYER"), CH("Teammate2"))
+    EXPLCOMMON.FaceEachother(CH("PLAYER"), CH("Teammate2"))
     GAME:WaitFrames(45)
-   EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
+    EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
     UI:WaitShowDialogue("(Rexio's giving me the stare of his life,[pause=35] backing out isn't an option yet.)")
     GROUND:AnimateToPosition(activator, "Walk", Dir8.Up, activator.Position.X, activator.Position.Y - 24, 0.7, 0.5, 0)
   else
-   EXPLCOMMON.SetCharAndEmotion(activator, "Determined")
+    EXPLCOMMON.SetCharAndEmotion(activator, "Determined")
     UI:WaitShowDialogue("(No, no...! I need to prove myself!)")
   end
 end

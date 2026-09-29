@@ -4,7 +4,7 @@
 "$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[RogueEssence.Data.EntrySummary, RogueEssence]], System.Private.CoreLib",
 "deep_tarro_forest": {
 "$type": "RogueEssence.Data.ZoneEntrySummary, RogueEssence",
-"ExpPercent": 25,
+"ExpPercent": 20,
 "Level": 10,
 "LevelCap": false,
 "KeepSkills": false,

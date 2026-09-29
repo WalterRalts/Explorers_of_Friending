@@ -2,6 +2,35 @@
 "Version": "0.8.12.0",
 "Object": {
 "$type": "System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib],[RogueEssence.Data.EntrySummary, RogueEssence]], System.Private.CoreLib",
+"ammo_geo_pebble": {
+"$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
+"Icon": 0,
+"UsageType": 3,
+"States": [
+{
+"assembly": "PMDC, Version=0.8.12.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.AmmoState"
+}
+],
+"MaxStack": 9,
+"CannotDrop": false,
+"BagEffect": false,
+"Name": {
+"DefaultText": "Geo Pebble",
+"LocalTexts": {
+"fr": "Racaillasse",
+"de": "Kleinkiesel",
+"it": "Geosasso",
+"ko": "돌멩이",
+"ja": "いしのつぶて",
+"ja-jp": "いしのつぶて",
+"zh-hans": "小拳石之石"
+}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 2
+},
 "berry_oran": {
 "$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
 "Icon": 3,
@@ -37,6 +66,41 @@
 "Released": true,
 "Comment": "",
 "SortOrder": 6
+},
+"food_apple": {
+"$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
+"Icon": 2,
+"UsageType": 4,
+"States": [
+{
+"assembly": "PMDC, Version=0.8.12.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.EdibleState"
+},
+{
+"assembly": "PMDC, Version=0.8.12.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.FoodState"
+}
+],
+"MaxStack": 0,
+"CannotDrop": false,
+"BagEffect": false,
+"Name": {
+"DefaultText": "Apple",
+"LocalTexts": {
+"fr": "Pomme",
+"de": "Apfel",
+"es": "Manzanita",
+"pt": "Maçã",
+"it": "[female]Mela",
+"ko": "사과",
+"ja": "リンゴ",
+"ja-jp": "リンゴ",
+"zh-hans": "苹果"
+}
+},
+"Released": true,
+"Comment": "",
+"SortOrder": 4
 },
 "food_apple_big": {
 "$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
@@ -341,6 +405,31 @@
 "Released": false,
 "Comment": "",
 "SortOrder": 0
+},
+"food_entohnut": {
+"$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
+"Icon": 2,
+"UsageType": 0,
+"States": [
+{
+"assembly": "PMDC, Version=0.8.12.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.EdibleState"
+},
+{
+"assembly": "PMDC, Version=0.8.12.0, Culture=neutral, PublicKeyToken=null",
+"type": "PMDC.Dungeon.FoodState"
+}
+],
+"MaxStack": 0,
+"CannotDrop": false,
+"BagEffect": false,
+"Name": {
+"DefaultText": "Entoh Nut",
+"LocalTexts": {}
+},
+"Released": false,
+"Comment": "",
+"SortOrder": 4
 }
 }
 }

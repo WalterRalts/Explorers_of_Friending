@@ -29,8 +29,7 @@ end
 ---tarro_town_outside.ExitSegment(zone, result, rescue, segmentID, mapID)
 --Engine callback function
 function tarro_town_outside.ExitSegment(zone, result, rescue, segmentID, mapID)
-
-
+    GAME:SetTeamLeaderIndex(0)
 end
 
 ---tarro_town_outside.Rescued(zone, name, mail)

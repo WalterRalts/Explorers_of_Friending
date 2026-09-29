@@ -28,9 +28,8 @@ function TarroTownTreeBreak.Init(map)
     GROUND:Hide("Senna")
     GROUND:Hide("Ziggy")
   else
-    GROUND:CharSetEmote(puchi, "Sleep", 0)
     GROUND:CharSetAnim(puchi, "Sleep", true)
-    if DUN_failure == false then
+    if DUNGEON:LastDungeonResult() == RogueEssence.Data.GameProgress.ResultType.Cleared or DUNGEON:LastDungeonResult() == RogueEssence.Data.GameProgress.ResultType.Unknown then
       Cute_talk = false
       TarroTownTreeBreak.BreakTime()
     else
@@ -361,7 +360,7 @@ function TarroTownTreeBreak.TarroTreeHollows_Continue_Touch(obj, activator)
     _DATA.Save.ActiveTeam.Players[4]:RefreshTraits()
     GAME:FadeOut(false, 20)
     COMMON:RespawnAllies()
-    if DUN_failure then
+    if DUNGEON:LastDungeonResult() == RogueEssence.Data.GameProgress.ResultType.Failed then
       GAME:EnterDungeon("tarro_tree_hollows", 1, 0, 0, RogueEssence.Data.GameProgress.DungeonStakes.Risk, true, false)
     else
       GAME:ContinueDungeon("tarro_tree_hollows", 1, 0, 0)

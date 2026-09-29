@@ -29,6 +29,7 @@ end
 ---swamp_line.ExitSegment(zone, result, rescue, segmentID, mapID)
 --Engine callback function
 function swamp_line.ExitSegment(zone, result, rescue, segmentID, mapID)
+    GAME:SetTeamLeaderIndex(0)
     if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
         COMMON.EndDungeonDay(result, "swamp_town", -1, 0, 0)
     else

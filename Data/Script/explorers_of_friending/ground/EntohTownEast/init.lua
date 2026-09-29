@@ -19,7 +19,7 @@ function EntohTownEast.Init(map)
   if SV.Story.flag[1] == 0 or (SV.Story.flag[1] == "Flow" and SV.Story.flag[2] == 0) then
     East.TidyUp()
   else
-    EXPLCOMMON.AllyFollow(true, true)
+    EXPLCOMMON.AllyFollow(true, false)
   end
   TidyRexTalk = 0
 end

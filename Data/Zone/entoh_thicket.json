@@ -34,7 +34,7 @@
 {
 "Key": {
 "str": [
--7
+-6
 ]
 },
 "Value": {
@@ -49,7 +49,7 @@
 {
 "Key": {
 "str": [
--6
+-5
 ]
 },
 "Value": {
@@ -62,7 +62,7 @@
 {
 "Key": {
 "str": [
--5
+-4
 ]
 },
 "Value": {
@@ -73,8 +73,8 @@
 },
 "HallPercent": 50,
 "BranchRatio": {
-"Min": 5,
-"Max": 201
+"Min": 1,
+"Max": 101
 },
 "NoForcedBranches": false,
 "GenericRooms": {
@@ -151,24 +151,12 @@
 {
 "Key": {
 "str": [
--4
+-3
 ]
 },
 "Value": {
 "$type": "RogueElements.DrawFloorToTileStep`1[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence]], RogueElements",
 "Padding": 1
-}
-},
-{
-"Key": {
-"str": [
--4,
-1
-]
-},
-"Value": {
-"$type": "RogueEssence.LevelGen.UnbreakableBorderStep`1[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence]], RogueEssence",
-"Thickness": 1
 }
 },
 {
@@ -225,79 +213,20 @@
 {
 "Key": {
 "str": [
-3,
-2,
+0,
 1
 ]
 },
 "Value": {
-"$type": "RogueElements.DropDiagonalBlockStep`1[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence]], RogueElements",
-"Terrain": {
-"$type": "RogueEssence.Dungeon.Tile, RogueEssence",
-"Data": {
-"ID": "floor",
-"TileTex": {
-"AutoTileset": "",
-"Associates": [],
-"Layers": [],
-"NeighborCode": -1
-},
-"StableTex": false
-},
-"Effect": {
-"TileLoc": {
-"X": 0,
-"Y": 0
-},
-"ID": "",
-"Revealed": false,
-"Owner": 0,
-"TileStates": []
-}
-}
+"$type": "RogueEssence.LevelGen.UnbreakableBorderStep`1[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence]], RogueEssence",
+"Thickness": 1
 }
 },
 {
 "Key": {
 "str": [
 3,
-2,
 2
-]
-},
-"Value": {
-"$type": "RogueElements.DropDiagonalBlockStep`1[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence]], RogueElements",
-"Terrain": {
-"$type": "RogueEssence.Dungeon.Tile, RogueEssence",
-"Data": {
-"ID": "water",
-"TileTex": {
-"AutoTileset": "",
-"Associates": [],
-"Layers": [],
-"NeighborCode": -1
-},
-"StableTex": false
-},
-"Effect": {
-"TileLoc": {
-"X": 0,
-"Y": 0
-},
-"ID": "",
-"Revealed": true,
-"Owner": 0,
-"TileStates": []
-}
-}
-}
-},
-{
-"Key": {
-"str": [
-3,
-2,
-3
 ]
 },
 "Value": {
@@ -393,59 +322,6 @@
 },
 "Ally": false,
 "ClumpFactor": 25
-}
-},
-{
-"Key": {
-"str": [
-7
-]
-},
-"Value": {
-"$type": "RogueEssence.LevelGen.MapEffectStep`1[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence]], RogueEssence",
-"Effect": {
-"UniversalStates": [],
-"BeforeTryActions": [],
-"BeforeActions": [],
-"OnActions": [],
-"BeforeExplosions": [],
-"BeforeHits": [],
-"OnHits": [],
-"OnHitTiles": [],
-"AfterActions": [],
-"ElementEffects": [],
-"OnEquips": [],
-"OnPickups": [],
-"BeforeStatusAdds": [],
-"OnStatusAdds": [],
-"OnStatusRemoves": [],
-"OnMapStatusAdds": [],
-"OnMapStatusRemoves": [],
-"OnMapStarts": [
-{
-"Key": {
-"str": [
-6
-]
-},
-"Value": {
-"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
-"Script": "DungeonTalker",
-"ArgTable": "{}"
-}
-}
-],
-"OnTurnStarts": [],
-"OnTurnEnds": [],
-"OnMapTurnEnds": [],
-"OnWalks": [],
-"OnDeaths": [],
-"OnRefresh": [],
-"OnMapRefresh": [],
-"ModifyHPs": [],
-"RestoreHPs": [],
-"InitActionData": []
-}
 }
 }
 ],

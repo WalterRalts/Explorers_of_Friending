@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.11.0",
+"Version": "0.8.12.0",
 "Object": {
 "$type": "RogueEssence.Data.ZoneData, RogueEssence",
 "Name": {
@@ -623,7 +623,7 @@
 },
 "Role": 0
 },
-"Rate": 50,
+"Rate": 60,
 "Range": {
 "Min": 0,
 "Max": 10
@@ -639,7 +639,7 @@
 "Gender": -1
 },
 "Level": {
-"Min": 2,
+"Min": 10,
 "Max": 21
 },
 "SpecifiedSkills": [
@@ -674,7 +674,7 @@
 },
 "Level": {
 "Min": 5,
-"Max": 7
+"Max": 11
 },
 "SpecifiedSkills": [
 "defense_curl",
@@ -697,7 +697,7 @@
 },
 "Role": 0
 },
-"Rate": 50,
+"Rate": 55,
 "Range": {
 "Min": 0,
 "Max": 10
@@ -713,8 +713,8 @@
 "Gender": -1
 },
 "Level": {
-"Min": 2,
-"Max": 13
+"Min": 4,
+"Max": 14
 },
 "SpecifiedSkills": [
 "bug_buzz"
@@ -727,6 +727,37 @@
 "Role": 0
 },
 "Rate": 10,
+"Range": {
+"Min": 0,
+"Max": 10
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
+"Species": "flapple",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 15,
+"Max": 26
+},
+"SpecifiedSkills": [],
+"Intrinsic": "",
+"Tactic": "wander_normal",
+"SpawnConditions": [],
+"SpawnFeatures": [
+{
+"$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+}
+]
+},
+"Role": 0
+},
+"Rate": 5,
 "Range": {
 "Min": 0,
 "Max": 10

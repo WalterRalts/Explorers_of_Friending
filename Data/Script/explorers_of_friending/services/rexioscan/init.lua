@@ -3,8 +3,8 @@ require 'origin.services.baseservice'
 local RexioScan = Class('RexioScan', BaseService)
 
 function RexioScan:initialize()
-  rfocus_cooldown = 0
-  in_dungeon = false
+  self.rfocus_cooldown = 0
+  self.in_dungeon = false
 end
 
 function RexioScan:Scan()
@@ -13,14 +13,14 @@ function RexioScan:Scan()
       return
     else
       local leader = GAME:GetPlayerPartyMember(GAME:GetTeamLeaderIndex())
-      if leader.Name == "Rexio" and rfocus_cooldown <= 0 then
+      if leader.Name == "Rexio" and self.rfocus_cooldown <= 0 then
         if GAME:IsKeyDown(66) then
-          rfocus_cooldown = 100
+          self.rfocus_cooldown = 100
           --services are coroutines, apparently
-          if in_dungeon == true then
+          if self.in_dungeon == true then
             PrintInfo("Scan ready at level " .. SV.tablestats.scan_level .. "!") --Print scan level for debugging.
             --Rexio should focus
-            if rfocus_cooldown > 80 then
+            if self.rfocus_cooldown > 80 then
               local rexx = GAME:GetPlayerPartyMember(GAME:GetTeamLeaderIndex()).CharLoc.X
               local rexy = GAME:GetPlayerPartyMember(GAME:GetTeamLeaderIndex()).CharLoc.Y
               local iircount = 0 --"item in range" count
@@ -44,23 +44,21 @@ function RexioScan:Scan()
                   end
                 end
               end
-              print(iircount)
               if iircount > 1 then
                 UI:SetSpeaker(leader)
                 UI:SetSpeakerEmotion("Inspired")
                 UI:WaitShowDialogue("Whoa, there's a bunch of stuff here!")
-                UI:SetSpeakerEmotion("Happy")
-                UI:WaitShowDialogue("At least " .. iircount .. " things, I think!")
+                _DUNGEON:LogMsg("Rexio scanned " .. iircount .. " items.")
               elseif iircount > 0 then
                 UI:SetSpeaker(leader)
                 UI:SetSpeakerEmotion("Happy")
                 UI:WaitShowDialogue("Knew it, there's something here!")
+                _DUNGEON:LogMsg("Rexio scanned something.")
               else
                 UI:SetSpeaker(leader)
                 UI:SetSpeakerEmotion("Worried")
                 UI:WaitShowDialogue("Darn,[pause=30] can't sense anything here.")
               end
-              GAME:WaitFrames(10)
               GAME:CutsceneMode(false)
             end
           elseif GAME:GetPlayerPartyCount() == 1 then
@@ -82,6 +80,7 @@ function RexioScan:Scan()
               end
               GAME:CutsceneMode(false)
             else
+              return
               --[[GAME:CutsceneMode(true)
               UI:SetSpeaker(leader)
               UI:SetSpeakerEmotion("Worried")
@@ -89,20 +88,23 @@ function RexioScan:Scan()
               GAME:CutsceneMode(false)]]
             end
           end
+        else
+          return
         end
-      elseif rfocus_cooldown > 0 then
-        rfocus_cooldown = rfocus_cooldown - 1
+      elseif self.rfocus_cooldown > 0 then
+        self.rfocus_cooldown = self.rfocus_cooldown - 1
       end
+      return
     end
   end)
 end
 
 function RexioScan:EnterDungeon()
-  in_dungeon = true
+  self.in_dungeon = true
 end
 
 function RexioScan:ExitDungeon()
-  in_dungeon = false
+  self.in_dungeon = false
 end
 
 function RexioScan:Subscribe(med)

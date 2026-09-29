@@ -29,8 +29,7 @@ end
 ---swamp_town.ExitSegment(zone, result, rescue, segmentID, mapID)
 --Engine callback function
 function swamp_town.ExitSegment(zone, result, rescue, segmentID, mapID)
-
-
+    GAME:SetTeamLeaderIndex(0)
 end
 
 ---swamp_town.Rescued(zone, name, mail)

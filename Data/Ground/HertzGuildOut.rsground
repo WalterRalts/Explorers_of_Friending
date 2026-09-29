@@ -108683,6 +108683,20 @@
 "Width": 16,
 "Height": 16
 }
+},
+{
+"EntName": "ExitGuild",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 472,
+"Y": 382,
+"Width": 16,
+"Height": 16
+}
 }
 ]
 }

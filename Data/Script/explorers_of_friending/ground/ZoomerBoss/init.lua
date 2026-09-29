@@ -38,20 +38,30 @@ function ZoomerBoss.NoBattle()
   GAME:MoveCamera(180, 200, 1, false)
   GAME:FadeIn(20)
 
-  GROUND:MoveInDirection(maru, Direction.Up, 24, false, 2)
-  GROUND:MoveToPosition(maru, 130, 200, false, 2)
-  GROUND:MoveInDirection(azura, Direction.Up, 24, false, 2)
-  GROUND:MoveToPosition(azura, 220, 200, false, 2)
+  local coro1 = TASK:BranchCoroutine(function()
+    GROUND:MoveToPosition(maru, 130, 200, false, 2)
+    end)
+  local coro2 = TASK:BranchCoroutine(function()
+    GROUND:MoveToPosition(azura, 220, 200, false, 3)
+    end)
+  TASK:JoinCoroutines({coro1, coro2})
 
+  EXPLCOMMON.FaceEachother(maru, azura)
   UI:ResetSpeaker()
   UI:WaitShowDialogue("Nothing's here.")
 
-  GROUND:MoveToPosition(azura, 186, -50, true, 5)
-  GROUND:MoveToPosition(maru, 156, 127, false, 5)
+  local c1 = TASK:BranchCoroutine(function()
+    GROUND:MoveToPosition(azura, 186, -50, true, 3)
+    end)
+  local c2 = TASK:BranchCoroutine(function()
+    GROUND:MoveToPosition(maru, 156, -50, false, 2)
+    end)
+  TASK:JoinCoroutines({c1, c2})
 
   SV.tarro_forest.dungpoints = SV.tarro_forest.dungpoints + 1
   GAME:CutsceneMode(false)
   GAME:EnterZone("tarro_forest", -1, 1, 0)
+  GAME:FadeOut(false, 20)
 end
 
 function ZoomerBoss.PreBattle()

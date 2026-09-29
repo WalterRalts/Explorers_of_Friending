@@ -20,7 +20,7 @@ function DeepForestBreak.Init(map)
 end
 
 function DeepForestBreak.ZoomUp(map)
-  if DUN_failure == true or SV.deep_tarro_forest.revisit == true then
+  if DUNGEON:LastDungeonResult() == RogueEssence.Data.GameProgress.ResultType.Failed or SV.deep_tarro_forest.revisit == true then
     print("Oops!")
   else
     local mon_id = RogueEssence.Dungeon.MonsterID("zubat", 0, "normal", Gender.Male)
@@ -143,18 +143,21 @@ function DeepForestBreak.ZoomUp(map)
 
   local coro3 = TASK:BranchCoroutine(function()
     GAME:WaitFrames(15)
-    GROUND:MoveInDirection(maru, Dir8.Up, 150, false, 2)
+    GROUND:MoveInDirection(maru, Dir8.Up, 120, false, 2)
     end)
   local coro4 = TASK:BranchCoroutine(function()
-    GROUND:MoveInDirection(zoomer, Dir8.Up, 150, false, 2)
+    GROUND:MoveInDirection(zoomer, Dir8.Up, 120, false, 2)
     end)
   local coro5 = TASK:BranchCoroutine(function()
     GAME:WaitFrames(25)
-    GROUND:MoveInDirection(azura, Dir8.Up, 150, false, 3)
+    GROUND:MoveInDirection(azura, Dir8.Up, 120, false, 3)
     end)
-  TASK:JoinCoroutines({coro3, coro4, coro5})
+  local coro6 = TASK:BranchCoroutine(function()
+    GAME:WaitFrames(30)
+    GAME:FadeOut(false, 40)
+    end)
+  TASK:JoinCoroutines({coro3, coro4, coro5, coro6})
   GAME:SetCanSwitch(true)
-  GAME:FadeOut(false, 40)
   GAME:ContinueDungeon("deep_tarro_forest", 1, 0, 0)
 end
 

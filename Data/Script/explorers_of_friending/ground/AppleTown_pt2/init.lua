@@ -14,7 +14,7 @@ local function magnet_out()
   CH("Gaurd").CollisionDisabled = true
   local coro01 = TASK:BranchCoroutine(function()
     GROUND:MoveToMarker(CH("Police"), MRKR("Enter2"), false, 2)
-    end)	
+    end)
   local coro02 = TASK:BranchCoroutine(function()
     AI:SetCharacterAI(CH("Gaurd"), "origin.ai.ground_partner", CH("Police"), CH("Gaurd").Position)
     GAME:WaitFrames(35)
@@ -123,7 +123,7 @@ function AppleTown_pt2.AppleWay_Touch(obj, activator)
      EXPLCOMMON.SetCharAndEmotion(activator, "Worried")
       UI:WaitShowDialogue("(A dungeon? ...I can't go in there...)")
     else
-     EXPLCOMMON.SetCharAndEmotion(activator, "Worried")
+      EXPLCOMMON.SetCharAndEmotion(activator, "Worried")
       UI:WaitShowDialogue("(Got sent on a mission. I can't skip it, so I can't do another dungeon trip.)")
     end
   elseif SV.Story.sect == 2 then
@@ -161,7 +161,7 @@ function AppleTown_pt2.AppleTown_Exit_Touch(obj, activator)
     else
       COMMON.ShowDestinationMenu("apple_forest", guild)
     end
-    
+
   else
    EXPLCOMMON.FaceEachother(CH("Gaurd"), activator)
     AppleTown_pt2.Gaurd_Action(CH("Gaurd"), activator)
@@ -204,137 +204,126 @@ function AppleTown_pt2.MagnetA_Action(obj, activator)
 end
 
 function AppleTown_pt2.MagnetB_Action(obj, activator)
- EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
+  EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("Looking around the scene.[pause=30] BZZT.")
 end
 
 function AppleTown_pt2.Police_Action(obj, activator)
-  local second = CH("Teammate1")
-  local third = CH("Teammate2")
-  AI:DisableCharacterAI(second)
-  AI:DisableCharacterAI(third)
-  EXPLCOMMON.FaceEachother(obj, activator)
+  local maru = CH("PLAYER")
+  local azura = CH("Teammate1")
+  local rexio = CH("Teammate2")
+  AI:DisableCharacterAI(azura)
+  AI:DisableCharacterAI(rexio)
+  EXPLCOMMON.FaceEachother(obj, maru)
 
   EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("Ah,[quickscan_action()][pause=20][emote=Worried] you don't seem to be from around here.")
 
-  ::continue::
-  if activator.Nickname == "Maru" then
-    EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
-    UI:WaitShowDialogue("Yeah, we aren't. We're here to get apples for the guild.")
+  EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
+  UI:WaitShowDialogue("Yeah, we aren't. We're here to get apples for the guild.")
 
-    EXPLCOMMON.SetCharAndEmotion(third, "Sigh")
-    UI:WaitShowDialogue("(Fake guild...)")
+  EXPLCOMMON.SetCharAndEmotion(rexio, "Sigh")
+  UI:WaitShowDialogue("(Fake guild...)")
 
-   EXPLCOMMON.SetCharAndEmotion(second, "Worried")
-    UI:WaitShowDialogue("We weren't here for long, Mr. Police. What happened?")
+  EXPLCOMMON.SetCharAndEmotion(azura, "Worried")
+  UI:WaitShowDialogue("We weren't here for long, Mr. Police. What happened?")
 
-   EXPLCOMMON.SetCharAndEmotion(obj, "Stunned")
-    UI:WaitShowDialogue("[acknowledge()][pause=20] Right,[pause=30] you kids shouldn't be here.[pause=20] Strange things have been occuring recently and we don't need kids on the suspect list...")
-   EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
-    UI:WaitShowDialogue("If you see anything that can assist in our searching function, then don't hesitate.")
-    
-   EXPLCOMMON.SetCharAndEmotion(third, "Worried")
-    UI:WaitShowDialogue("We fought these weird gooey things;[pause=30] I[emote=Happy] had to punch 'em.")
+  EXPLCOMMON.SetCharAndEmotion(obj, "Stunned")
+  UI:WaitShowDialogue("[acknowledge()][pause=20] Right,[pause=30] you kids shouldn't be here.[pause=20] Strange things have been occuring recently and we don't need kids on the suspect list...")
+  EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
+  UI:WaitShowDialogue("If you see anything that can assist in our searching function, then don't hesitate.")
 
-   EXPLCOMMON.SetCharAndEmotion(obj, "Stunned")
-    UI:WaitShowDialogue("[familiar_mem()][pause=20] Wait, was it wobbly and night-shaded?")
+  EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
+  UI:WaitShowDialogue("We fought these weird gooey things;[pause=30] I[emote=Happy] had to punch 'em.")
 
-   EXPLCOMMON.CharHop("Teammate1")
-   EXPLCOMMON.SetCharAndEmotion(second, "Happy")
-    UI:WaitShowDialogue("It was!")
+  EXPLCOMMON.SetCharAndEmotion(obj, "Stunned")
+  UI:WaitShowDialogue("[familiar_mem()][pause=20] Wait, was it wobbly and night-shaded?")
 
-   EXPLCOMMON.SetCharAndEmotion(obj, "Happy")
-    UI:WaitShowDialogue("Great,[pause=30] that means we're on the trail. [interrogate()][pause=40] Our detectives would do good knowing this info, where did you find it?")
-    
-    GROUND:CharTurnToCharAnimated(obj, third, 2)
-   EXPLCOMMON.SetCharAndEmotion(third, "Worried")
-    UI:WaitShowDialogue("The mayor's untouched room, apparently.")
+  EXPLCOMMON.CharHop("Teammate1")
+  EXPLCOMMON.SetCharAndEmotion(azura, "Happy")
+  UI:WaitShowDialogue("It was!")
 
-    GROUND:CharTurnToCharAnimated(obj, second, 2)
-   EXPLCOMMON.SetCharAndEmotion(second, "Happy")
-    UI:WaitShowDialogue("With the books!")
+  EXPLCOMMON.SetCharAndEmotion(obj, "Happy")
+  UI:WaitShowDialogue("Great,[pause=30] that means we're on the trail. [interrogate()][pause=40] Our detectives would do good knowing this info, where did you find it?")
 
-   EXPLCOMMON.FaceEachother(obj, CH("Gaurd"))
-   EXPLCOMMON.SetCharAndEmotion(obj, "Happy")
-    UI:WaitShowDialogue("[signal()][pause=30] Magnet force![pause=20] New directive! [goto] The Library!")
-    TASK:StartEntityTask(CH("Police"), magnet_out)
-    GAME:WaitFrames(60)
-    GROUND:CharTurnToCharAnimated(activator, obj, 2)
-    GROUND:CharTurnToCharAnimated(second, obj, 2)
-    GROUND:CharTurnToCharAnimated(third, obj, 2)
+  GROUND:CharTurnToCharAnimated(obj, rexio, 2)
+  EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
+  UI:WaitShowDialogue("The mayor's untouched room, apparently.")
 
-    GAME:FadeOut(false, 80)
-    GAME:SetTeamLeaderIndex(0)
-   EXPLCOMMON.TeleportToMarker(CH("PLAYER"), "a1", Dir8.Down)
-   EXPLCOMMON.TeleportToMarker(CH("Teammate1"), "a2", Dir8.UpRight)
-   EXPLCOMMON.TeleportToMarker(CH("Teammate2"), "a3", Dir8.UpLeft)
-   EXPLCOMMON.SetCharAndEmotion(third, "Worried")
-    UI:WaitShowDialogue("So, what now?")
-    GAME:FadeIn(30)
+  GROUND:CharTurnToCharAnimated(obj, azura, 2)
+  EXPLCOMMON.SetCharAndEmotion(azura, "Happy")
+  UI:WaitShowDialogue("With the books!")
 
-   EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
-    UI:WaitShowDialogue("Well, we can get the apples from the dungeon, right?")
-    UI:WaitShowDialogue("Probably not a good idea to stay if we can't do anything.")
+  EXPLCOMMON.FaceEachother(obj, CH("Gaurd"))
+  EXPLCOMMON.SetCharAndEmotion(obj, "Happy")
+  UI:WaitShowDialogue("[signal()][pause=30] Magnet force![pause=20] New directive! [goto] The Library!")
+  TASK:StartEntityTask(CH("Police"), magnet_out)
+  GAME:WaitFrames(60)
+  GROUND:CharTurnToCharAnimated(maru, obj, 2)
+  GROUND:CharTurnToCharAnimated(azura, obj, 2)
+  GROUND:CharTurnToCharAnimated(rexio, obj, 2)
 
-    EXPLCOMMON.SetCharAndEmotion(second, "Worried")
-    UI:WaitShowDialogue("I'm tired...")
+  GAME:FadeOut(false, 80)
+  GAME:SetTeamLeaderIndex(0)
+  EXPLCOMMON.TeleportToMarker(CH("PLAYER"), "a1", Dir8.Down)
+  EXPLCOMMON.TeleportToMarker(CH("Teammate1"), "a2", Dir8.UpRight)
+  EXPLCOMMON.TeleportToMarker(CH("Teammate2"), "a3", Dir8.UpLeft)
+  EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
+  UI:WaitShowDialogue("So, what now?")
+  GAME:FadeIn(30)
 
-    EXPLCOMMON.SetCharAndEmotion(third, "Worried")
-    UI:WaitShowDialogue("...")
-    
-    MagnetForce_out = true
+  EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
+  UI:WaitShowDialogue("Well, we can get the apples from the dungeon, right?")
+  UI:WaitShowDialogue("Probably not a good idea to stay if we can't do anything.")
 
-    EXPLCOMMON.CharHop("Teammate1")
-    EXPLCOMMON.SetCharAndEmotion(second, "Normal")
-    UI:WaitShowDialogue("Let's go back to the guild!")
+  EXPLCOMMON.SetCharAndEmotion(azura, "Worried")
+  UI:WaitShowDialogue("I'm tired...")
 
-    GAME:WaitFrames(65)
-    SOUND:StopBGM()
+  EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
+  UI:WaitShowDialogue("...")
 
-    local coro01 = TASK:BranchCoroutine(function()
-      GROUND:MoveToMarker(third, MRKR("a3_1"), true, 4)
-      GROUND:MoveToMarker(third, MRKR("a3_2"), true, 4)
-      GROUND:MoveToMarker(third, MRKR("a3_3"), true, 4)
-      GROUND:Hide("Teammate2")
-      end)
-    local coro02 = TASK:BranchCoroutine(function()
-      GAME:WaitFrames(15)
-      GROUND:CharAnimateTurnTo(activator, Dir8.UpRight, 3)
-      GROUND:CharAnimateTurnTo(second, Dir8.UpRight, 3)
-     EXPLCOMMON.SetCharAndEmotion(second, "Surprised")
-      UI:WaitShowDialogue("Wah!!")
+  MagnetForce_out = true
 
-     EXPLCOMMON.SetCharAndEmotion(activator, "Surprised")
-      UI:WaitShowDialogue("Rexio!!")
+  EXPLCOMMON.CharHop("Teammate1")
+  EXPLCOMMON.SetCharAndEmotion(azura, "Normal")
+  UI:WaitShowDialogue("Let's go back to the guild...!")
 
-      GROUND:CharAnimateTurnTo(activator, Dir8.DownLeft, 3)
-     EXPLCOMMON.SetCharAndEmotion(second, "Angry")
-      UI:WaitShowDialogue("I wanted to go home...!")
+  GAME:WaitFrames(65)
+  SOUND:StopBGM()
 
-      EXPLCOMMON.CharSweatdrop("PLAYER")
-     EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
-      UI:WaitShowDialogue("(Why would he do that...?)")
-      
-     EXPLCOMMON.SetCharAndEmotion(second, "Worried")
-      UI:WaitShowDialogue("D-do we get him?")
-      
-     EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
-      UI:WaitShowDialogue("No other choice, I think.")
-      end)
-    TASK:JoinCoroutines({coro01, coro02})
-  elseif activator.Nickname == "Azura" then
-    activator = CH("Teammate1")
-    second = CH("PLAYER")
-    third = CH("Teammate2")
-    goto continue
-  else
-    activator = CH("Teammate1")
-    second = CH("Teammate2")
-    third = CH("PLAYER")
-    goto continue
-  end
-  AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH("PLAYER"), CH("Teammate1").Position)
+  local coro01 = TASK:BranchCoroutine(function()
+    GROUND:MoveToMarker(rexio, MRKR("a3_1"), true, 4)
+    GROUND:MoveToMarker(rexio, MRKR("a3_2"), true, 4)
+    GROUND:MoveToMarker(rexio, MRKR("a3_3"), true, 4)
+    GROUND:Hide("Teammate2")
+    end)
+  local coro02 = TASK:BranchCoroutine(function()
+    GAME:WaitFrames(15)
+    GROUND:CharTurnToCharAnimated(maru, rexio, 3)
+    GROUND:CharTurnToCharAnimated(azura, rexio, 3)
+    EXPLCOMMON.SetCharAndEmotion(azura, "Surprised")
+    UI:WaitShowDialogue("Wah!!")
+
+    EXPLCOMMON.SetCharAndEmotion(maru, "Surprised")
+    UI:WaitShowDialogue("Rexio!!")
+
+    GROUND:CharAnimateTurnTo(maru, Dir8.DownLeft, 3)
+    EXPLCOMMON.SetCharAndEmotion(azura, "Angry")
+    UI:WaitShowDialogue("I wanted to go home...!")
+
+    EXPLCOMMON.CharSweatdrop("PLAYER")
+    EXPLCOMMON.SetCharAndEmotion(maru, "Stunned")
+    UI:WaitShowDialogue("(Why would he do that...?)")
+
+    EXPLCOMMON.SetCharAndEmotion(azura, "Worried")
+    UI:WaitShowDialogue("D-do we get him?")
+
+    EXPLCOMMON.SetCharAndEmotion(maru, "Stunned")
+    UI:WaitShowDialogue("No other choice, I think.")
+
+    AI:EnableCharacterAI(azura)
+    end)
+  TASK:JoinCoroutines({coro01, coro02})
   SV.Story.sect = 2
 end
 

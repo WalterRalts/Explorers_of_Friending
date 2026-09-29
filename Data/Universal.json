@@ -685,7 +685,7 @@
 {
 "Key": {
 "str": [
-6
+0
 ]
 },
 "Value": {
@@ -700,43 +700,7 @@
 {
 "Key": {
 "str": [
--6
-]
-},
-"Value": {
-"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
-"Script": "TreeHeal",
-"ArgTable": "{}"
-}
-},
-{
-"Key": {
-"str": [
--6
-]
-},
-"Value": {
-"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
-"Script": "BagCount",
-"ArgTable": "{}"
-}
-},
-{
-"Key": {
-"str": [
--6
-]
-},
-"Value": {
-"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
-"Script": "SlumberPollen",
-"ArgTable": "{}"
-}
-},
-{
-"Key": {
-"str": [
--6
+-10
 ]
 },
 "Value": {
@@ -748,7 +712,55 @@
 {
 "Key": {
 "str": [
-0
+-10
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
+"Script": "SlumberPollen",
+"ArgTable": "{}"
+}
+},
+{
+"Key": {
+"str": [
+-10
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
+"Script": "BagCount",
+"ArgTable": "{}"
+}
+},
+{
+"Key": {
+"str": [
+-10
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
+"Script": "TreeHeal",
+"ArgTable": "{}"
+}
+},
+{
+"Key": {
+"str": [
+15
+]
+},
+"Value": {
+"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
+"Script": "AzuNotLeader",
+"ArgTable": "{}"
+}
+},
+{
+"Key": {
+"str": [
+15
 ]
 },
 "Value": {
@@ -761,7 +773,7 @@
 {
 "Key": {
 "str": [
-0
+15
 ]
 },
 "Value": {
@@ -772,18 +784,6 @@
 "EnemyHungerRate": 1,
 "AllyHungerRate": 5,
 "Denominator": 1000
-}
-},
-{
-"Key": {
-"str": [
-6
-]
-},
-"Value": {
-"$type": "RogueEssence.Dungeon.SingleCharScriptEvent, RogueEssence",
-"Script": "AzuNotLeader",
-"ArgTable": "{}"
 }
 }
 ],

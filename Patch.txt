@@ -1,121 +1,109 @@
-0.7.4 - Take a fire, kill the bug. Take the earth, draw the land.
+0.7.5 - Oh boy, let's get complicated!
 Once the newest area is done, there will be no updates to the version number ingame until a major update.
 
 GAME
 
-- Add more incentive to do things.
-- credits.txt added
+- Fix an issue where if the wrong Pokemon leads when exiting a dungeon, it would be the one in cutscenes.
+- Fix an issue where signs would set the center of all text.
 
 TOWN SPECIFIC
 
 TARRO
 
-- Attempt to fix an issue where the cutscene after the Friend Circle quiz would play by re-entering the zone.
-- Added multiple new names to NPCs without.
+- Fixed an issue where some NPCs would be in the wrong position.
 
 ENTOH
 
-- Fix multiple issues that remained from previous update concerning story flags.
-- Fix an issue when fighting the apple-themed boss without both Flow and Tidy.
+- Fixed layering issues in Dragon's Delivery.
 
 APPLE TOWN
 
+- Fix an issue that stopped Azura from following you after a cutscene.
+- A long cutscene will no longer play is the boss was failed.
+
 HERTZ
 
-- Password changed
 - Added a few more zones
 
 ============================
 
 DUNGEONS
 
-- Allow character to turn back to original position after interacting with them.
+- Fixed an issue that stopped the player from losing PP.
+- Allow characters in dungeons to turn back to original position after interacting with them.
 
 --- TARRO
 
 -- Tarro Forest
+There should be no more major changes to the main dungeon here.
 
-- Lessened the decrease of of Bellsprout's attack and special attack. 
--4 -> -2
+- Reduced the max HP of ???
 
-- Adjusted positions of starting points in the boss room of this dungeon.
-- Added more to the second half of the dungeon.
+Enemy Respawn Rate: 50 -> 60
 
 -- Tarro Treetops
 
-- Added a placeholder effect whenever the tree heals you.
+- Fixed an issue where the wrong dialogue would be initialized when the halfway point is reached.
+- Lowered the chance of teams of three spawning in the dungeon.
+- Grubbin is no longer confirmed to know Protect.
+- Reduce the amount of money that can be gained per floor.
+
+Money (per floor): 10 - 30 (+10 - 60) -> 20 - 30 (+10 - 40)
 
 -- Dark Tarro
-Money everywhere... and you can't even use it yet...
+...you fight a lot of Grass-types in this game...
 
-- Changed the quality of the track instruments to sound a little more dungeony.
-- Decreased the amount of money that can be earned in this dungeon
-Base: 50 - 100 -> 1 -> 50
-Add per floor: 5 - 100 -> 1 - 25
+- Fix an issue where the game would softlock when you fail this dungeon.
+- Lowered the minimum level of some spawnable entities in the first half of the dungeon by one.
+- Lowered the maximum number of traps in the first half of the dungeon.
+- Shroomish and Oddish spawn less, Litwick will now spawn.
+- Seedot spawn less and no longer learn Beat Up.
+- Teams of 0 will no longer spawn.
 
+Success Percent: 60% -> 40%
+Max Traps: 8 -> 6
 
+- Team of three will no longer spawn.
+
+EXP Gain: 25% -> 20%
 
 --- ENTOH
 
 -- Entoh Thicket
-My QA tester is really good at telling me bad things that happen.
 
-- Decreased overall dungeon size
-40x40 -> 30x30
-
-- Decreased the maximum number of enemies on a floor. 
-1F - 6F: 40 -> 20
-
-- Teams of 4 will no longer spawn.
-- Teams of 3 will only spawn in the latter half of the dungeon.
-- Stairs will now spawn closer to the player.
-- Tiles now spawn.
+- Fixed an issue considering incorrect priority values.
 
 -- Dreaded Depths
 
-- Added Yanma to the lowest third of the dungeon.
-- Allowed things to actually spawn on all floors.
-- Lowered the max level of Duskull on the floor.
-9 -> 6
-
-- Reduced item spawning on all floors.
-- Reduced the rate of Gloom spawning.
+- Shortened the distance of Tidy's germophobia.
 
 -- Swamp Line
 
-- Moved the fail point to the beginning of the dungeon.
-- Added failpoint.
-
 --- APPLE TOWN
 
--- Apple Forest (12F -> 9F)
-Oops, the Applin are being one-shot.
-
-- Lessened the decrease of Applin's defense. 
--6 -> -1
-
-- Increase the chance of a Gluttony Applin to drop an apple. 
-1/2 -> 3/4
-
-- Decreased the maximum number of enemies on a floor. 
-1F - 6F: 10 -> 8
-7F - 9F: 15 -> 10
-
-- Teams of 4 will no longer spawn.
-- Teams of 2 will now only spawn on higher floors.
-- Decreased the size of base generation on the first few floors.
-- Removed tunnel generation on the first few floors.
+-- Apple Forest
 
 -- Deep Apple Forest
+You are not meant to win this dungeon at the current part of the story, but it should be possible to beat.
+
+- Partially fix an issue that softlocks the game if Maru and Azura are left behind.
+- Flapple can now spawn.
+- Increased the overall levels of most entities in this dungeon.
+
+--- HERTZ
+
+-- Osias Ruins
+
+- The Hertz Guildmaster will no longer be added as a playable character, but instead as a guest.
 
 ============================
 
 ITEMS
 
--- Packed Honey
-
-- I am aware of an issue that causes enemies to repetitively teleport to whoever healed, no idea how to fix it.
-
 ============================
 
 TECHNICAL (may contain spoilers)
+
+- No longer use a whole different variable to track dungeon failure
+- End ChapCheck with correct return value
+- Azura will no longer be set as a partner every time you load in to Tarro Town Outskirts

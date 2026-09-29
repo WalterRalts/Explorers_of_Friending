@@ -112,6 +112,7 @@ function GuildLvl1.MarTouch_Touch(obj, activator)
       GAME:FadeOut(false, 60)
       SV.guild.day = 1
       SV.guild.time = 0
+      rextalk = 0
       EXPLCOMMON.SetNewChapter(1)
       Tent.Day1()
       local partner = CH('Teammate1')

@@ -32,8 +32,7 @@ function East.TidyUp()
 
             GROUND:CharSetAnim(CH("Teammate2"), "Trip", true)
             GROUND:CharSetAction(tidy, RogueEssence.Ground.PoseGroundAction(tidy.Position, tidy.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Trip")))
-            
-        end)	
+        end)
         local cor2 = TASK:BranchCoroutine(function()
             GAME:FadeIn(80)
         end)
@@ -64,7 +63,7 @@ function East.TidyUp()
         UI:WaitShowDialogue("Tidy...![pause=25] Tidy,[pause=10] stay with me![pause=25] Smell the fresh flowers,[pause=25] smell it!")
 
         GROUND:CharSetAnim(tidy, "Idle", false)
-        
+
         UI:SetSpeaker(tidy)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("Your flowers always smelled great, Flow...")

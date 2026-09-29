@@ -2147,7 +2147,7 @@
 "Respawn": {
 "$type": "PMDC.Dungeon.RespawnFromEligibleEvent, PMDC",
 "MaxFoes": 15,
-"RespawnTime": 50
+"RespawnTime": 60
 },
 "MaxFoes": 0,
 "RespawnTime": 0

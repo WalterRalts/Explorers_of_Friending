@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.11.0",
+"Version": "0.8.12.0",
 "Object": {
 "$type": "RogueEssence.Data.ZoneData, RogueEssence",
 "Name": {
@@ -5580,7 +5580,7 @@
 },
 "Role": 0
 },
-"Rate": 10,
+"Rate": 15,
 "Range": {
 "Min": 0,
 "Max": 3
@@ -5610,9 +5610,38 @@
 },
 "Role": 0
 },
-"Rate": 15,
+"Rate": 5,
 "Range": {
 "Min": 1,
+"Max": 3
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
+"Species": "grubbin",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 3,
+"Max": 8
+},
+"SpecifiedSkills": [
+"bug_bite"
+],
+"Intrinsic": "",
+"Tactic": "wander_smart",
+"SpawnConditions": [],
+"SpawnFeatures": []
+},
+"Role": 0
+},
+"Rate": 10,
+"Range": {
+"Min": 0,
 "Max": 3
 }
 },
@@ -5645,7 +5674,7 @@
 },
 "Role": 0
 },
-"Rate": 5,
+"Rate": 15,
 "Range": {
 "Min": 0,
 "Max": 3
@@ -5895,12 +5924,12 @@
 ]
 },
 "StartAmount": {
-"Min": 10,
+"Min": 20,
 "Max": 31
 },
 "AddAmount": {
 "Min": 10,
-"Max": 61
+"Max": 41
 },
 "ModStates": []
 },

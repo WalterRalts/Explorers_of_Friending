@@ -75,6 +75,8 @@ local rextalk = {
   moon = false,
   mstidy = false,
   msflow = false,
+  tidy = false,
+  flow = false,
   paris = false,
   beutt = false,
   wurm = false
@@ -134,6 +136,9 @@ function EntohTownSouth_ch2.Snow_Action(obj, activator)
   else
     EXPLCOMMON.SetCharAndEmotion(snow, "Happy")
     UI:WaitShowDialogue("M-mama says that she's making some frost snacks l-later to help me g-get my mind off of... whatever th-that was...")
+    EXPLCOMMON.SetCharAndEmotion(snow, "Stunned")
+    UI:WaitShowDialogue("...whatever th-that was...")
+    EXPLCOMMON.SetCharAndEmotion(snow, "Happy")
     UI:ChoiceMenuYesNo("Sh-should I give some to you later, m-maybe?", false)
     UI:WaitForChoice()
     local result = UI:ChoiceResult()
@@ -249,16 +254,16 @@ function EntohTownSouth_ch2.Flowerson_Action(obj, activator)
     rextalk.msflow = true
   else
     if SV.Story.flag[2] == 0 then
-     EXPLCOMMON.SetCharAndEmotion(clean, "Worried")
+      EXPLCOMMON.SetCharAndEmotion(flow, "Worried")
       UI:WaitShowDialogue("The flowers will help Flow well, I would hope.")
-    else
-     EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
+    elseif SV.Story.flag[1] == "Tidy" or SV.Story.flag[2] == "Tidy" then
+      EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
       UI:WaitShowDialogue("Do try to calm down, Tidy.")
 
-     EXPLCOMMON.SetCharAndEmotion(flow, "Stunned")
+      EXPLCOMMON.SetCharAndEmotion(flow, "Stunned")
       UI:WaitShowDialogue("No point in trying, ma...")
 
-     EXPLCOMMON.SetCharAndEmotion(obj, "Stunned")
+      EXPLCOMMON.SetCharAndEmotion(obj, "Stunned")
       UI:WaitShowDialogue("Their need for cleanliness is astoundingly persistent...!")
     end
   end
@@ -281,12 +286,46 @@ function EntohTownSouth_ch2.Wurp_Action(obj, activator)
 
    EXPLCOMMON.SetCharAndEmotion(beutt, "Angry")
     UI:WaitShowDialogue("Wurp,[pause=30] I'm pretty sure you still have chores to do!")
-    
+
    EXPLCOMMON.SetCharAndEmotion(obj, "Stunned")
     UI:WaitShowDialogue("But maaaaaaaaaa...!")
 
    EXPLCOMMON.SetCharAndEmotion(activator, "Happy")
     UI:WaitShowDialogue("Ha ha ha!")
+  end
+end
+
+function EntohTownSouth_ch2.Tidy_Action(obj, activator)
+  if rextalk.tidy == false then
+    EXPLCOMMON.FaceEachother(obj, activator)
+    EXPLCOMMON.SetCharAndEmotion(obj, "Teary-Eyed")
+    UI:WaitShowDialogue("I... never seen 'im...!")
+
+    EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
+    UI:WaitShowDialogue("Uh... are you okay?")
+    GAME:WaitFrames(45)
+
+    EXPLCOMMON.FaceEachother(obj, CH("Beutt"))
+    EXPLCOMMON.SetCharAndEmotion(obj, "Teary-Eyed")
+    UI:WaitShowDialogue("No...!")
+    rextalk.tidy = true
+  elseif rextalk.beutt then
+    EXPLCOMMON.SetCharAndEmotion(obj, "Teary-Eyed")
+    UI:WaitShowDialogue("...")
+  else
+    EntohTownSouth_ch2.Clean_Action(CH("Beutt"), activator)
+  end
+end
+
+function EntohTownSouth_ch2.Flow_Action(obj, activator)
+  EXPLCOMMON.FaceEachother(obj, activator)
+  if rextalk.flow == false then
+    EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
+    UI:WaitShowDialogue("Um... Rexio. I was next to you the whole time. I dunno where he is.")
+    rextalk.flow = true
+  else
+    EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
+    UI:WaitShowDialogue("Tidy is my bestie, but she's gotta work on... that...")
   end
 end
 
@@ -344,9 +383,10 @@ end
 -- Exits --
 
 function EntohTownSouth_ch2.EntohSouth_NExit_Touch(obj, activator)
+  GAME:FadeOut(false, 30)
   SV.Story.flag = 0
   SV.Story.sect = 3
-  GAME:EnterGroundMap("EntohTownCenter_ch2", "EnterMark_South")
+  EXPLCOMMON.FadeEnterGround("EntohTownCenter_ch2", "EnterMark_South")
 end
 
 return EntohTownSouth_ch2

@@ -3,18 +3,25 @@ require 'explorers_of_friending.common'
 Outside = {}
 
 function Outside.CloudWatch()
-      local mon_id = RogueEssence.Dungeon.MonsterID("azurill", 0, "normal", Gender.Female)
+      if GAME:GetPlayerPartyCount() ~= 2 then
+            local mon_id = RogueEssence.Dungeon.MonsterID("azurill", 0, "normal", Gender.Female)
 
-      local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 4, "", 0)
-      p.IsFounder = false
-      p.IsPartner = true
-      p.Nickname = "Azura"
+            local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 4, "", 0)
+            p.IsFounder = false
+            p.IsPartner = true
+            p.Nickname = "Azura"
 
-      _DATA.Save.ActiveTeam.Players:Add(p)
+            _DATA.Save.ActiveTeam.Players:Add(p)
+      end
+      GAME:GetPlayerPartyMember(0).IsPartner = true
       COMMON.RespawnAllies()
 
       SOUND:PlayBGM("Heroes.ogg", true)
       GAME:WaitFrames(50)
+
+      --opening
+      --The game happens after the events of PSMD, assuming that all games are canon in chronological order. 
+      --Before revealing the main villain, the story should be narrated as if they are the ones speaking.
       UI:ResetSpeaker()
       UI:SetCenter(true)
       UI:WaitShowVoiceOver("The world of Pokemon.[pause=20] It's been through many stories in the past.", -1)
@@ -26,10 +33,12 @@ function Outside.CloudWatch()
       SOUND:StopBGM()
       UI:WaitHideBG(5)
       UI:WaitShowVoiceOver("The hero was introduced.", -1)
+      --The hero here is just the many humans that saved the world. Not particularly a one, but a several.
       SOUND:PlayBGM("HeroesOf.ogg", true)
+      GAME:WaitFrames(30)
       UI:WaitShowBG("LegacyA", 0, 30)
       UI:WaitShowVoiceOver("This creature,[pause=20] disguised as a monster,[pause=20] mysteriously appeared in times of need.", -1)
-      UI:WaitShowVoiceOver("No one knows where they came from.[pause=30]\nThey don't remember where they came from.", -1)
+      UI:WaitShowVoiceOver("No one knows where it came from.[pause=30]\nIt doesn't remember where it came from.", -1)
       UI:WaitShowVoiceOver("But with a friends help,[pause=20] this creature achieved great things.", -1)
       UI:WaitShowBG("LegacyB", 0, 0)
       UI:WaitShowVoiceOver("Stopping a meteor.", -1)
@@ -43,6 +52,7 @@ function Outside.CloudWatch()
       UI:WaitShowBG("LegacyA", 0, 0)
       UI:WaitShowVoiceOver("Chaos has been cured; the hero hasn't shown up for ages.", -1)
       UI:WaitHideBG(30)
+      --Now that everything is over, there's nothing but peace and stuff, yada yada bla bla bla...
       UI:WaitShowVoiceOver("Stories spread as the world grew.[pause=20] Towns advanced, dungeon grow and shrink.", -1)
       UI:WaitShowVoiceOver("Question rise:[pause=20] \"What will happen to our world without the hero?\"", -1)
       UI:WaitShowVoiceOver("\"Will our world go back into turmoil again?\"", -1)
@@ -68,6 +78,7 @@ function Outside.CloudWatch()
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("Ooh! That one looks like me! Look!")
 
+      --replace this
       UI:WaitShowBG("WalkClouds", 0, 60)
 
       UI:SetSpeaker(maru)

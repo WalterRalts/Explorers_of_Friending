@@ -27,6 +27,7 @@ end
 ---tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
 --Engine callback function
 function tarro_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
+  GAME:SetTeamLeaderIndex(0)
   if result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
     if segmentID == 0 then
       if SV.Story.chap == -1 and SV.Story.sect < 3 then

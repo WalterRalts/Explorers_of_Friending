@@ -39,4 +39,5 @@ function Plaza.Fail()
       UI:WaitShowDialogue("Oh...")
       GROUND:CharAnimateTurnTo(cater, Dir8.Down, 6)
       UI:WaitShowDialogue("Okay.")
+      GAME:CutsceneMode(false)
 end

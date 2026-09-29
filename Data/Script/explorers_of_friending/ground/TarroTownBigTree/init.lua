@@ -89,7 +89,7 @@ function TarroTownBigTree.Init(map)
     _DATA.Save.ActiveTeam.Players[4]:RefreshTraits()
   end
 
-  if DUN_failure == true then
+  if DUNGEON:LastDungeonResult() == RogueEssence.Data.GameProgress.ResultType.Failed then
     GROUND:Hide("Thing")
     TarroTownBigTree.TryAgain()
   end

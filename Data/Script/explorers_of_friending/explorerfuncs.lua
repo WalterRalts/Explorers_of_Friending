@@ -84,6 +84,7 @@ function EXPLCOMMON.SignDialogue(string)
   UI:SetCenter(true)
   UI:WaitShowDialogue(string)
   UI:SetAutoFinish(false)
+  UI:SetCenter(false)
 end
 
 
@@ -157,10 +158,14 @@ function EXPLCOMMON.FaceEachother(char1, char2)
   TASK:JoinCoroutines({coro1, coro2})
 end
 
+---Turns a group of characters to face someone
+---@param group table
+---@param char GroundCH
+---@param time? number
 function EXPLCOMMON.GroupFacer(group, char, time)
   for i = 1, #group, 1 do
     if time ~= nil then
-      GROUND:CharTurnToCharAnimated(group[i], char, 4)
+      GROUND:CharTurnToCharAnimated(group[i], char, time)
       GAME:WaitFrames(math.random(2, 15))
     else
       GROUND:CharTurnToChar(group[i], char)
@@ -278,7 +283,7 @@ function EXPLCOMMON.DebugWithBudeg()
     UI:SetSpeaker(budeg)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("Zzt, this town is weird.[pause=30] A little too natural for me.")
-    UI:WaitShowDialogue("Flowers everywhere,[pause=30] stone buildings,[pause=30] and a Drampa telling stories like he's 300 years old.")
+    UI:WaitShowDialogue("Flowers everywhere,[pause=30] stone buildings.[pause=30] That Drampa over there, too, telling stories like he's 300 years old.")
     UI:SetSpeakerEmotion("Happy")
     UI:WaitShowDialogue("Very informative stories.")
     UI:SetSpeakerEmotion("Stunned")
@@ -316,6 +321,10 @@ function EXPLCOMMON.DebugWithBudeg()
   UI:WaitShowDialogue("Zzt, welcome to dev mode. Bzzt, I am made to skip scenes and jump bewteen characters.")
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("Krzzt, I really hope this get to the right person...")
+  EXPLCOMMON.PrintTable(GAME:GetPlayerPartyTable())
+  for i = 1, #GAME:GetPlayerPartyTable() do
+    print(GAME:GetPlayerPartyTable()[i].Name, GAME:GetPlayerPartyTable()[i].species)
+  end
 
   local password = "Aa1Bb2devdebug;345"
   UI:NameMenu("Please enter the password.", "Password", 200, "Catbug")
@@ -352,6 +361,7 @@ function EXPLCOMMON.DebugWithBudeg()
       GAME:FadeOut(false, 20)
       if CH("PLAYER").Nickname == "Rexio" then
         SV.tablestats.aurm_stats = GAME:GetPlayerPartyTable()
+        
         GAME:RemovePlayerTeam(0)
         for i, p in ipairs(SV.tablestats.bluetail_stats) do
           GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
@@ -426,15 +436,18 @@ function EXPLCOMMON.DebugWithBudeg()
         UI:BeginChoiceMenu("Please choose a chapter for dev work.", choices, 1, 2)
         UI:WaitForChoice()
         result = UI:ChoiceResult()
-        if result == 1 then --Prologue 4
+        if result == 1 then --Right before Chapter 1
           EXPLCOMMON.SetNewChapter(-6)
-          GAME:EnterGroundMap("entoh_town", "RexioHome", "RexioStart")
-        elseif result == 2 then --Prologue 5
+          SV.bag_size = 999
+          GAME:EnterGroundMap("guild_field", "GuildField", "Start")
+        elseif result == 2 then --Chapter 1 in Apple Town
           EXPLCOMMON.SetNewChapter(1)
-          GAME:EnterGroundMap("entoh_town", "RexioHome_ch2", "RexioStart")
-        else --Prologue 6
+          SV.bag_size = 999
+          GAME:EnterGroundMap("guild_field", "GuildField", "Start")
+        else --Chapter 2 in Hertz Desert
           EXPLCOMMON.SetNewChapter(2)
-          GAME:EnterGroundMap("entoh_town", "RexioHome", "RexioStart")
+          SV.bag_size = 999
+          GAME:EnterGroundMap("guild_field", "GuildField", "Start")
         end
         GAME:FadeOut(false, 60)
         --Begin replacement

@@ -78,22 +78,22 @@ end
 function AppleMayor.MayorDesk_Action(obj, activator)
   local galia = CH("Galia")
 
- EXPLCOMMON.CharRealize("Galia")
+  EXPLCOMMON.CharRealize("Galia")
   GROUND:CharTurnToCharAnimated(galia, activator, 2)
   GROUND:MoveToPosition(galia, activator.Position.X, galia.Position.Y, false, 1)
   GROUND:CharAnimateTurnTo(galia, Dir8.Down, 2)
 
   if SV.guild.day <= 1 then
-   EXPLCOMMON.SetCharAndEmotion(galia, "Normal")
+    EXPLCOMMON.SetCharAndEmotion(galia, "Normal")
     UI:WaitShowDialogue("Greetings, child.[pause=35] If you are looking for the mayor, he is out for the week, I believe.")
 
-   EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
+    EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
     UI:WaitShowDialogue("I'm actually just looking for apples.[pause=30] This building looked important enough.")
 
-   EXPLCOMMON.SetCharAndEmotion(galia, "Worried")
+    EXPLCOMMON.SetCharAndEmotion(galia, "Worried")
     UI:WaitShowDialogue("Ah, yes,[pause=30] I can't do that for you. That is the mayor's job and[pause=20] he isn't present.")
 
-   EXPLCOMMON.SetCharAndEmotion(galia, "Happy")
+    EXPLCOMMON.SetCharAndEmotion(galia, "Happy")
     UI:WaitShowDialogue("Apologies for the inconvenience.")
   end
 
@@ -109,7 +109,10 @@ end
 function AppleMayor.MayorBack_Touch(obj, activator)
   GAME:FadeOut(false, 25)
   if SV.guild.day <= 1 then
-    AppleBoss.Roomy()
+    if DUNGEON:LastDungeonResult() == RogueEssence.Data.GameProgress.ResultType.Cleared then
+      AppleBoss.Roomy()
+    end
+    GAME:EnterGroundMap("MayorRoom", "Enter")
   else
     GAME:EnterGroundMap("MayorRoom", "Enter")
   end

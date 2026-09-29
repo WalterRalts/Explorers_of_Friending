@@ -5,6 +5,7 @@
 ]]--
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
+require 'explorers_of_friending.ground.HertzVault.cutscene'
 
 -- Package name
 local HertzVault = {}

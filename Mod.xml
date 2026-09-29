@@ -2,9 +2,9 @@
   <Name>Chaos Rest</Name>
   <Author>Walter Ralts</Author>
   <Description>Chaos, chaos!</Description>
-  <Namespace>explorers_of_friending</Namespace>
+  <Namespace>chaos_rest</Namespace>
   <UUID>5C7B6D21-F2F6-4215-95F2-10287A7A3FC3</UUID>
-  <Version>0.7.4</Version>
+  <Version>0.7.5</Version>
   <GameVersion>0.4.2.629</GameVersion>
   <ModType>Quest</ModType>
   <Relationships />

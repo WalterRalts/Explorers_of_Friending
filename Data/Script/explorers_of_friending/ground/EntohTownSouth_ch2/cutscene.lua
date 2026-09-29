@@ -18,7 +18,7 @@ function South_ch2.GoingIn()
     UI:WaitShowDialogue("...whatever that was...")
 
     GAME:FadeIn(50)
-    
+
     GROUND:CharAnimateTurnTo(rexio, Dir8.Left, 3)
     GAME:WaitFrames(20)
     GROUND:CharAnimateTurnTo(rexio, Dir8.Up, 3)

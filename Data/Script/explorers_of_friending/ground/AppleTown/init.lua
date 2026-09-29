@@ -69,35 +69,38 @@ local azutalk = 0
 
 function AppleTown.Teammate1_Action(obj, activator)
   local tour = CH("AppleTG")
-EXPLCOMMON.FaceEachother(activator, obj)
+  EXPLCOMMON.FaceEachother(activator, obj)
   if azutalk == 1 then
-   EXPLCOMMON.FaceEachother(activator, obj)
-   EXPLCOMMON.SetCharAndEmotion(obj, "Inspired")
+    EXPLCOMMON.FaceEachother(activator, obj)
+    EXPLCOMMON.SetCharAndEmotion(obj, "Inspired")
     UI:WaitShowDialogue("Maru! Imagine how good of a pie mama could make with this!!")
 
-   EXPLCOMMON.SetCharAndEmotion(obj, "Joyous")
+    EXPLCOMMON.SetCharAndEmotion(obj, "Joyous")
     UI:WaitShowDialogue("Let's bring it back!!")
 
-   EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
+    EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
     UI:WaitShowDialogue("Azu,[pause=30] I think that would be illegal.")
 
     GROUND:CharAnimateTurnTo(obj, Direction.UpRight, 4)
-   EXPLCOMMON.SetCharAndEmotion(obj, "Angry")
+    EXPLCOMMON.SetCharAndEmotion(obj, "Angry")
     UI:WaitShowDialogue("Hmmph!")
-   EXPLCOMMON.CharHop("Teammate1")
+    EXPLCOMMON.CharHop("Teammate1")
     UI:WaitShowDialogue("No fair...!")
   else
-    azutalk = 1
-   EXPLCOMMON.FaceEachother(obj, tour)
-   EXPLCOMMON.FaceEachother(activator, tour)
-   EXPLCOMMON.SetCharAndEmotion(tour, "Happy")
-    UI:WaitShowDialogue("And this is the favorite, and famous, largest apple to discover.")
+    EXPLCOMMON.FaceEachother(obj, tour)
+    EXPLCOMMON.FaceEachother(activator, tour)
+    EXPLCOMMON.SetCharAndEmotion(tour, "Happy")
+    UI:WaitShowDialogue("This is the largest apple in all of Apple Town.")
+
+    EXPLCOMMON.SetCharAndEmotion(obj, "Inspired")
+    UI:WaitShowDialogue("Whooaaaaa...!")
     UI:WaitShowDialogue("We hope that by keeping it infused with the ground,[pause=25] we will grow a whole big tree!")
 
-   EXPLCOMMON.SetCharAndEmotion(obj, "Inspired")
+    GROUND:CharAnimateTurnTo(obj, Direction.UpRight, 4)
+    EXPLCOMMON.SetCharAndEmotion(obj, "Inspired")
     UI:WaitShowDialogue("Whooaaaaa...!")
 
-   EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
+    EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
     UI:WaitShowDialogue("Pretty cool.")
   end
 end
@@ -163,39 +166,39 @@ end
 
 function AppleTown.Chum_Action(obj, activator)
   local rexio = CH("Teammate2")
- EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
+  EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("[speed=0.2]...so you want apples...?")
 
- EXPLCOMMON.SetCharAndEmotion(rexio, "Angry")
+  EXPLCOMMON.SetCharAndEmotion(rexio, "Angry")
   UI:WaitShowDialogue("Yes![pause=30] Please![pause=60] And I mean, PLEASE!")
 
- EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
+  EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowDialogue("[speed=0.1]Well...")
   GROUND:CharAnimateTurnTo(obj, Direction.Left, 12)
- EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
+  EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
   UI:WaitShowTimedDialogue("[speed=0.2]...maybe they're...")
 
- EXPLCOMMON.CharAngry("Teammate2")
- EXPLCOMMON.CharHop("Teammate2")
- EXPLCOMMON.SetCharAndEmotion(rexio, "Shouting")
+  EXPLCOMMON.CharAngry("Teammate2")
+  EXPLCOMMON.CharHop("Teammate2")
+  EXPLCOMMON.SetCharAndEmotion(rexio, "Shouting")
   UI:WaitShowDialogue("WHERE ARE THEY?!?!")
 
   GROUND:CharAnimateTurnTo(obj, Direction.DownRight, 12)
- EXPLCOMMON.SetCharAndEmotion(obj, "Pain")
+  EXPLCOMMON.SetCharAndEmotion(obj, "Pain")
   UI:WaitShowTimedDialogue("[speed=0.2]Geez, brother.[pause=80] No need to get all feisty.", 20)
 
- EXPLCOMMON.FaceEachother(rexio, activator)
- EXPLCOMMON.SetCharAndEmotion(rexio, "Teary-Eyed")
+  EXPLCOMMON.FaceEachother(rexio, activator)
+  EXPLCOMMON.SetCharAndEmotion(rexio, "Teary-Eyed")
   UI:WaitShowDialogue("Maru, please...!")
 
- EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
+  EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
   UI:WaitShowDialogue("I don't think I can help...")
 
   GROUND:CharAnimateTurnTo(rexio, Direction.UpLeft, 3)
- EXPLCOMMON.SetCharAndEmotion(rexio, "Pain")
+  EXPLCOMMON.SetCharAndEmotion(rexio, "Pain")
   UI:WaitShowDialogue("Waaa...")
 
- EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
+  EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
   UI:WaitShowDialogue("(I think I'll need to look for the apples before Rexio loses it.)")
 end
 
@@ -204,7 +207,7 @@ function AppleTown.Teammate2_Action(obj, activator)
 end
 
 function AppleTown.AppleWay_Touch(obj, activator)
- EXPLCOMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(0), "Normal")
+  EXPLCOMMON.SetCharAndEmotion(GAME:GetPlayerPartyMember(0), "Normal")
   UI:WaitShowDialogue("Apples first.")
 end
 

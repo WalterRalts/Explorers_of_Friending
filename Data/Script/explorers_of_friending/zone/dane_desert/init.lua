@@ -31,7 +31,7 @@ end
 function dane_desert.ExitSegment(zone, result, rescue, segmentID, mapID)
 DEBUG.EnableDbgCoro() --Enable debugging this coroutine
   PrintInfo("=>> ExitSegment result "..tostring(result).." segment "..tostring(segmentID))
-
+    GAME:SetTeamLeaderIndex(0)
   --first check for rescue flag; if we're in rescue mode then take a different path
   local exited = COMMON.ExitDungeonMissionCheck(result, rescue, zone.ID, segmentID) --check if we cleared while doing a rescue
     if exited == true then
@@ -41,7 +41,8 @@ DEBUG.EnableDbgCoro() --Enable debugging this coroutine
         COMMON.EndDungeonDay(result, SV.checkpoint.Zone, SV.checkpoint.Segment, SV.checkpoint.Map, SV.checkpoint.Entry)
         
     else -- we didn't resolve true for being in rescue or losing the dungeon, so we must have cleared the dungeon
-         -- now we will check what segment we took, so we can make the game do what we want to depending on the segment
+        -- now we will check what segment we took, so we can make the game do what we want to depending on the segment
+        GAME:SetTeamLeaderIndex(0)
         if segmentID == 0 then
             COMMON.EndDungeonDay(result, "apple_forest", -1, 0, 0)
         elseif segmentID == 1 then
@@ -50,7 +51,6 @@ DEBUG.EnableDbgCoro() --Enable debugging this coroutine
         else -- this is a fallback branch, in case we went through all of the branches and hit nothing (which should not happen!)
             PrintInfo("No exit procedure found!")
             -- just send the player to their last checkpoint
-            DUN_failure = true
 	        COMMON.EndDungeonDay(result, SV.checkpoint.Zone, SV.checkpoint.Segment, SV.checkpoint.Map, SV.checkpoint.Entry)
         end
     end

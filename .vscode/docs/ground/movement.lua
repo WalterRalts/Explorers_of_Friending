@@ -8,7 +8,7 @@
 ---@param x integer
 ---@param y integer
 ---@param direction Dir8
----@param height integer
+---@param height? integer
 function GROUND:TeleportTo(ent, x, y, direction, height) end
 
 ---Make ground character move in a direction.
@@ -52,11 +52,12 @@ function GROUND:MoveObjectToPosition(ent, x, y, speed) end
 function GROUND:AnimateInDirection(chara, anim, animDir, direction, duration, animSpeed, speed) end
 
 ---Make a ground entity move to a position with custom animation
----@param ent Entity
+---@param ent GroundCH
 ---@param anim Anim
 ---@param animDir Dir8
 ---@param direction integer
 ---@param duration integer
 ---@param animSpeed number Speed of animation, where 1.0 represents normal speed
 ---@param speed integer
-function GROUND:AnimateToPosition(ent, anim, animDir, direction, duration, animSpeed, speed) end
+---@param height? integer
+function GROUND:AnimateToPosition(ent, anim, animDir, direction, duration, animSpeed, speed, height) end
