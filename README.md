@@ -5,3 +5,4 @@ Installion
 1. Download Pokemon Mystery Dungeon: Origins. https://github.com/audinowho/PMDODump/releases
 2. Download the release or the source code.
 3. Put the unzipped file in the PMDO MODS folder.
+4. Say hi to WalterRalts.
