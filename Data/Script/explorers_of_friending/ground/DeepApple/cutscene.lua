@@ -102,7 +102,7 @@ function Core.AppleOut()
         --remove the other two, add Rexio back as leader
         local new_x = rexio.Position.X
         local new_y = rexio.Position.Y
-        SV.tablestats.bluetail_stats = GAME:GetPlayerPartyTable()
+        SV.tablestats.bluetail_stats = {GAME:GetPlayerPartyMember(0), GAME:GetPlayerPartyMember(1)}
         GAME:RemovePlayerTeam(0)
         GAME:RemovePlayerTeam(0)
         COMMON.RespawnAllies()

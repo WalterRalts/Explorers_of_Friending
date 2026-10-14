@@ -67890,7 +67890,296 @@
 {
 "Name": "New EntLayer",
 "Visible": true,
-"MapChars": [],
+"MapChars": [
+{
+"Direction": 4,
+"IsInteracting": false,
+"AIEnabled": true,
+"EntName": "Kassy",
+"EntEnabled": false,
+"EntOrder": 0,
+"InteractOrder": 0,
+"serializationLoc": {
+"X": 152,
+"Y": 450
+},
+"serializationHeight": 0,
+"serializationDir": 4,
+"triggerType": 1,
+"<AI>k__BackingField": null,
+"Data": {
+"Nickname": "???",
+"OriginalUUID": "",
+"OriginalTeam": "",
+"BaseForm": {
+"Species": "cacturne",
+"Form": 0,
+"Skin": "normal",
+"Gender": 0
+},
+"Level": 1,
+"EXP": 0,
+"MaxHPBonus": 0,
+"AtkBonus": 0,
+"DefBonus": 0,
+"MAtkBonus": 0,
+"MDefBonus": 0,
+"SpeedBonus": 0,
+"BaseSkills": [
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+}
+],
+"BaseIntrinsics": [
+""
+],
+"FormIntrinsicSlot": -1,
+"Relearnables": {},
+"Discriminator": 0,
+"MetAt": "",
+"MetLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"DefeatAt": "",
+"DefeatLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"IsFounder": false,
+"IsPartner": false,
+"NameLocked": false,
+"IsFavorite": false,
+"Unrecruitable": false,
+"ActionEvents": [],
+"ScriptVars": null
+},
+"CollisionDisabled": false,
+"Collider": {
+"X": 146,
+"Y": 450,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"Direction": 4,
+"IsInteracting": false,
+"AIEnabled": true,
+"EntName": "cac1",
+"EntEnabled": false,
+"EntOrder": 0,
+"InteractOrder": 0,
+"serializationLoc": {
+"X": 171,
+"Y": 462
+},
+"serializationHeight": 0,
+"serializationDir": 4,
+"triggerType": 1,
+"<AI>k__BackingField": null,
+"Data": {
+"Nickname": "",
+"OriginalUUID": "",
+"OriginalTeam": "",
+"BaseForm": {
+"Species": "cacnea",
+"Form": 0,
+"Skin": "normal",
+"Gender": 0
+},
+"Level": 1,
+"EXP": 0,
+"MaxHPBonus": 0,
+"AtkBonus": 0,
+"DefBonus": 0,
+"MAtkBonus": 0,
+"MDefBonus": 0,
+"SpeedBonus": 0,
+"BaseSkills": [
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+}
+],
+"BaseIntrinsics": [
+""
+],
+"FormIntrinsicSlot": -1,
+"Relearnables": {},
+"Discriminator": 0,
+"MetAt": "",
+"MetLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"DefeatAt": "",
+"DefeatLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"IsFounder": false,
+"IsPartner": false,
+"NameLocked": false,
+"IsFavorite": false,
+"Unrecruitable": false,
+"ActionEvents": [],
+"ScriptVars": null
+},
+"CollisionDisabled": false,
+"Collider": {
+"X": 173,
+"Y": 448,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"Direction": 4,
+"IsInteracting": false,
+"AIEnabled": true,
+"EntName": "HertzMaster",
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"serializationLoc": {
+"X": 275,
+"Y": 587
+},
+"serializationHeight": 0,
+"serializationDir": 4,
+"triggerType": 1,
+"<AI>k__BackingField": null,
+"Data": {
+"Nickname": "Hertz Guildmaster",
+"OriginalUUID": "",
+"OriginalTeam": "",
+"BaseForm": {
+"Species": "pawmot",
+"Form": 0,
+"Skin": "normal",
+"Gender": 2
+},
+"Level": 1,
+"EXP": 0,
+"MaxHPBonus": 0,
+"AtkBonus": 0,
+"DefBonus": 0,
+"MAtkBonus": 0,
+"MDefBonus": 0,
+"SpeedBonus": 0,
+"BaseSkills": [
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+}
+],
+"BaseIntrinsics": [
+""
+],
+"FormIntrinsicSlot": -1,
+"Relearnables": {},
+"Discriminator": 0,
+"MetAt": "",
+"MetLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"DefeatAt": "",
+"DefeatLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"IsFounder": false,
+"IsPartner": false,
+"NameLocked": false,
+"IsFavorite": false,
+"Unrecruitable": false,
+"ActionEvents": [],
+"ScriptVars": null
+},
+"CollisionDisabled": false,
+"Collider": {
+"X": 275,
+"Y": 587,
+"Width": 16,
+"Height": 16
+}
+}
+],
 "GroundObjects": [
 {
 "EntName": "Key",
@@ -68112,99 +68401,11 @@
 "Width": 16,
 "Height": 16
 }
-},
-{
-"NPCName": "Teammate3",
-"NPCChar": {
-"Nickname": "",
-"OriginalUUID": "",
-"OriginalTeam": "",
-"BaseForm": {
-"Species": "missingno",
-"Form": 0,
-"Skin": "normal",
-"Gender": 0
-},
-"Level": 0,
-"EXP": 0,
-"MaxHPBonus": 0,
-"AtkBonus": 0,
-"DefBonus": 0,
-"MAtkBonus": 0,
-"MDefBonus": 0,
-"SpeedBonus": 0,
-"BaseSkills": [
-{
-"SkillNum": "",
-"Charges": 0,
-"CanForget": true
-},
-{
-"SkillNum": "",
-"Charges": 0,
-"CanForget": true
-},
-{
-"SkillNum": "",
-"Charges": 0,
-"CanForget": true
-},
-{
-"SkillNum": "",
-"Charges": 0,
-"CanForget": true
-}
-],
-"BaseIntrinsics": [
-""
-],
-"FormIntrinsicSlot": -1,
-"Relearnables": {},
-"Discriminator": 0,
-"MetAt": "",
-"MetLoc": {
-"ID": "",
-"StructID": {
-"Segment": -1,
-"ID": -1
-},
-"EntryPoint": -1
-},
-"DefeatAt": "",
-"DefeatLoc": {
-"ID": "",
-"StructID": {
-"Segment": -1,
-"ID": -1
-},
-"EntryPoint": -1
-},
-"IsFounder": false,
-"IsPartner": false,
-"NameLocked": false,
-"IsFavorite": false,
-"Unrecruitable": false,
-"ActionEvents": [],
-"ScriptVars": null
-},
-"EntName": "TEAMMATE_3",
-"Direction": 0,
-"EntEnabled": true,
-"EntOrder": 0,
-"InteractOrder": 0,
-"triggerType": 0,
-"EntityCallbacks": [],
-"Collider": {
-"X": 280,
-"Y": 588,
-"Width": 16,
-"Height": 16
-}
 }
 ],
 "Markers": [
 {
-"EntName": "TEAMMATE_4",
+"EntName": "Mark",
 "Direction": 0,
 "EntEnabled": true,
 "EntOrder": 0,
@@ -68212,7 +68413,49 @@
 "triggerType": 0,
 "Collider": {
 "X": 328,
-"Y": 569,
+"Y": 567,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "a1",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 197,
+"Y": 200,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "h1",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 129,
+"Y": 212,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "m1",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 198,
+"Y": 168,
 "Width": 16,
 "Height": 16
 }

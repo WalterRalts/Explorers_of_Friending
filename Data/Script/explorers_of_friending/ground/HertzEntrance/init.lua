@@ -116,8 +116,9 @@ end
 function HertzEntrance.Gonk_Action(obj, activator)
   if CH("PLAYER").Position.Y >= CH("Gonk").Position.Y then
     if SV.hertz_town.passcount == 0 then
-     EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
+      EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
       UI:WaitShowDialogue("[speed=0.5]You do not seem to be holding a pass. I cannot let you through.")
+      UI:WaitShowDialogue("[speed=0.5]Please purchase one to the left.")
     else
      EXPLCOMMON.SetCharAndEmotion(obj, "Happy")
       UI:WaitShowDialogue("[speed=0.5]You do seem to be holding a pass. I can let you through.")
@@ -131,12 +132,11 @@ function HertzEntrance.Gonk_Action(obj, activator)
       UI:WaitForChoice()
       result = UI:ChoiceResult()
       if result == 1 then
-       EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
+        EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
         UI:WaitShowDialogue("[speed=0.5]You may enter.")
         go_in = true
 
-        GAME:WaitFrames(50)
-       EXPLCOMMON.SetCharAndEmotion(activator, "Happy")
+        EXPLCOMMON.SetCharAndEmotion(activator, "Happy")
         UI:WaitShowDialogue("Alright, let's go.")
       end
     end
@@ -147,7 +147,7 @@ function HertzEntrance.Gonk_Action(obj, activator)
       UI:WaitShowDialogue("[speed=0.5]If it isn't too much to ask, if the thief you're talking about did happen to get in.")
       UI:WaitShowDialogue("[speed=0.5]Please report it to me...[pause=45][emote=Stunned] and no one else.")
     else
-     EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
+      EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
       UI:WaitShowDialogue("[speed=0.5]Well, go on.")
       UI:WaitShowDialogue("[speed=0.5]I'm not in the way.")
     end

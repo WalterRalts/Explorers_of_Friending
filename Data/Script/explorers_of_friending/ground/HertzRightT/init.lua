@@ -16,6 +16,13 @@ local HertzRightT = {}
 --Engine callback function
 function HertzRightT.Init(map)
   EXPLCOMMON.ThreeTeam()
+
+  if SV.hertz_town.solvedNW then
+    GROUND:Hide("Nibble")
+    for i = 1, 4, 1 do
+      GROUND:Hide("Puzzle_" .. i)
+    end
+  end
 end
 
 ---HertzRightT.Enter(map)
@@ -64,6 +71,18 @@ end
 
 function HertzRightT.ExitW_Touch(obj, activator)
   EXPLCOMMON.FadeEnterGround("HertzCenter", "EnterE")
+end
+
+function HertzRightT.Budeg_Action(obj, activator)
+  EXPLCOMMON.DebugWithBudeg()
+end
+
+function HertzRightT.Nibble_Action(obj, activator)
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Angry")
+  UI:WaitShowDialogue("AAAAAA!![pause=60] THIS IS THE THIRD TIME THIS WEEK I'VE BEEN LOCKED OUT OF MY HOME!!")
+  UI:SetSpeakerEmotion("Angry")
+  UI:WaitShowDialogue("IF THIS TOWN WASN'T BUILT IN A STABILIZED DUNGEON, I WOULD BITE SOMEONE'S HEAD OFF!!!")
 end
 
 function HertzRightT.Kazen_Action(obj, activator)

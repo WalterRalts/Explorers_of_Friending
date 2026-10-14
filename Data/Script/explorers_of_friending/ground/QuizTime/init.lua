@@ -98,7 +98,7 @@ function QuizTime.Init(map)
 
         UI:SetSpeaker(ziggy)
         UI:SetSpeakerEmotion("Angry")
-        UI:WaitShowDialogue("...")
+        UI:WaitShowDialogue("...!")
 
         UI:SetSpeaker(puchi)
         UI:SetSpeakerEmotion("Pain")

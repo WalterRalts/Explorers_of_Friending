@@ -2486,16 +2486,24 @@
 "Gender": -1
 },
 "Level": {
-"Min": 4,
+"Min": 3,
 "Max": 7
 },
-"SpecifiedSkills": [],
+"SpecifiedSkills": [
+"ember",
+"astonish"
+],
 "Intrinsic": "",
-"Tactic": "wander_normal",
+"Tactic": "wander_dumb",
 "SpawnConditions": [],
 "SpawnFeatures": [
 {
 "$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+},
+{
+"$type": "PMDC.LevelGen.MobSpawnMovesOff, PMDC",
+"StartAt": 2,
+"Remove": false
 }
 ]
 },
@@ -2763,7 +2771,7 @@
 "Rate": 10,
 "Range": {
 "Min": 0,
-"Max": 6
+"Max": 3
 }
 },
 {
@@ -2851,7 +2859,7 @@
 },
 "Level": {
 "Min": 1,
-"Max": 11
+"Max": 13
 },
 "SpecifiedSkills": [
 "astonish",
@@ -6380,7 +6388,7 @@
 },
 "Rate": 5,
 "Range": {
-"Min": 0,
+"Min": 2,
 "Max": 7
 }
 },
@@ -6395,27 +6403,30 @@
 },
 "Level": {
 "Min": 4,
-"Max": 9
+"Max": 10
 },
-"SpecifiedSkills": [],
-"Intrinsic": "",
-"Tactic": "wander_normal",
+"SpecifiedSkills": [
+"ember",
+"acid_armor",
+"minimize"
+],
+"Intrinsic": "infiltrator",
+"Tactic": "wander_dumb",
 "SpawnConditions": [],
 "SpawnFeatures": [
 {
-"$type": "PMDC.LevelGen.MobSpawnBoost, PMDC",
-"MaxHPBonus": -3,
-"AtkBonus": -3,
-"DefBonus": -3,
-"SpAtkBonus": -3,
-"SpDefBonus": -3,
-"SpeedBonus": -3
+"$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+},
+{
+"$type": "PMDC.LevelGen.MobSpawnMovesOff, PMDC",
+"StartAt": 3,
+"Remove": false
 }
 ]
 },
 "Role": 0
 },
-"Rate": 10,
+"Rate": 15,
 "Range": {
 "Min": 2,
 "Max": 7
@@ -6488,7 +6499,7 @@
 },
 "Role": 0
 },
-"Rate": 10,
+"Rate": 15,
 "Range": {
 "Min": 0,
 "Max": 7
@@ -6601,7 +6612,7 @@
 },
 "Role": 0
 },
-"Rate": 10,
+"Rate": 15,
 "Range": {
 "Min": 4,
 "Max": 7

@@ -11,7 +11,7 @@ function Seed.AppleOut()
     maru.CollisionDisabled = true
     azura.CollisionDisabled = true
     rexio.CollisionDisabled = true
-    UI:SetBounds(10, 16, 300, 50)
+    EXPLCOMMON.SetUpper()
 
     local the1 = TASK:BranchCoroutine(function()
         local wh2 = TASK:BranchCoroutine(function()

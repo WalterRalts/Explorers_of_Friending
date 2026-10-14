@@ -1456,7 +1456,7 @@ function BATTLE_SCRIPT.AzuraInteract(owner, ownerChar, context, args)
         UI:WaitShowDialogue("I think that sand is overated now...")
       else
         UI:SetSpeaker(target)
-        UI:SetSpeakerEmotion("Happy")
+        UI:SetSpeakerEmotion("Worried")
         UI:WaitShowDialogue("What did the tile want again... can't remember...")
       end
     else
@@ -2190,7 +2190,7 @@ function BATTLE_SCRIPT.RexioInteract(owner, ownerChar, context, args)
 
         elseif say_choice == 2 then
           UI:SetSpeaker(target)
-          UI:SetSpeakerEmotion("Worried")
+          UI:SetSpeakerEmotion("Normal")
           UI:WaitShowDialogue("I can sense for stuff on the ground! Helpful!")
         else
           UI:SetSpeaker(target)

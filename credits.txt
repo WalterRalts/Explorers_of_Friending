@@ -1,9 +1,13 @@
 Some code was outsourced, thanks will be given to:
-PMD:Halcyon creators -
+PMD:Halcyon creators
+PMD:EoN creators
 The people on the Discord
 PMDO wiki for documentation
 
-Game Testers:
+==Dev Work==
+GlitzyBunny on Discord
+
+==GameTesters==
 Kyunova on YT
 GlitzyBunny on Discord
 Devin_Fozrah on CMD

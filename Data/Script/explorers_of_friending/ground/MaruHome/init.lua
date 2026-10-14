@@ -47,10 +47,10 @@ function MaruHome.Init(map)
       GROUND:Hide("Arama")
       GROUND:Hide("Amazuru")
       if mail_read == 2 then
+        PrintInfo("Mail read and cook done.")
         Bluetails.AfterCook()
         mail_read = 3
       end
-      
     end
   end
   if OutEnter == 2 then

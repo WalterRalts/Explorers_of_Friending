@@ -20,6 +20,7 @@
 ---| '"Rotate"'
 ---| '"Trip"'
 ---| '"Hop"'
+---| '"Shock"'
 
 ---@alias Emote
 ---| '"angry"'          # Angry
@@ -52,4 +53,5 @@
 ---| '"Angry"'
 ---| '"Shouting"'
 ---| '"Inspired"'
----| '""'
+---| '"Dizzy"'
+---| '"Special1"'

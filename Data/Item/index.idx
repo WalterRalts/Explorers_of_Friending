@@ -409,7 +409,7 @@
 "food_entohnut": {
 "$type": "RogueEssence.Data.ItemEntrySummary, RogueEssence",
 "Icon": 2,
-"UsageType": 0,
+"UsageType": 4,
 "States": [
 {
 "assembly": "PMDC, Version=0.8.12.0, Culture=neutral, PublicKeyToken=null",

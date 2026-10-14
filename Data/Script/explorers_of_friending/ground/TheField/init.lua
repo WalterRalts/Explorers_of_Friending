@@ -191,7 +191,7 @@ function TheField.SceneEnd_Touch(obj, activator)
     
     ]]--
 
-    SOUND:PlayBGM("HeroesOf", true)
+    --SOUND:PlayBGM("HeroesOf", true)? Maybe a different song...
     UI:WaitShowVoiceOver("It was strange.[pause=50] Ever since the creature slipped away from this world...", -1)
     UI:WaitShowVoiceOver("...nothing ever really happens.", -1)
     UI:WaitShowVoiceOver("Though it's not completely free of worry,[pause=19] as a balanced world should be...", -1)

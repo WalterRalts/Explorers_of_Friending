@@ -66,7 +66,6 @@ end
 -- Characters
 
 local azutalk = 0
-
 function AppleTown.Teammate1_Action(obj, activator)
   local tour = CH("AppleTG")
   EXPLCOMMON.FaceEachother(activator, obj)
@@ -94,6 +93,8 @@ function AppleTown.Teammate1_Action(obj, activator)
 
     EXPLCOMMON.SetCharAndEmotion(obj, "Inspired")
     UI:WaitShowDialogue("Whooaaaaa...!")
+
+    EXPLCOMMON.SetCharAndEmotion(tour, "Inspired")
     UI:WaitShowDialogue("We hope that by keeping it infused with the ground,[pause=25] we will grow a whole big tree!")
 
     GROUND:CharAnimateTurnTo(obj, Direction.UpRight, 4)
@@ -102,19 +103,20 @@ function AppleTown.Teammate1_Action(obj, activator)
 
     EXPLCOMMON.SetCharAndEmotion(activator, "Normal")
     UI:WaitShowDialogue("Pretty cool.")
+    azutalk = 1
   end
 end
 
 function AppleTown.AppleTG_Action(obj, activator)
   local azura = CH("Teammate1")
- EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
+  EXPLCOMMON.SetCharAndEmotion(obj, "Worried")
   UI:WaitShowDialogue("Sir, are you related to the Azurill drooling at the Grand Apple?")
 
   GROUND:CharTurnToCharAnimated(activator, azura, 4)
- EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
+  EXPLCOMMON.SetCharAndEmotion(activator, "Stunned")
   UI:WaitShowDialogue("...um, yeah...?")
 
- EXPLCOMMON.SetCharAndEmotion(obj, "Pain")
+  EXPLCOMMON.SetCharAndEmotion(obj, "Pain")
   UI:WaitShowDialogue("Please control her...")
 end
 

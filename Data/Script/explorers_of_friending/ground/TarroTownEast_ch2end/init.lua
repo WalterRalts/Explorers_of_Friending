@@ -46,7 +46,7 @@ function TarroTownEast_ch2end.WentWhere()
   UI:WaitShowDialogue("[speed=0.5]You two went w[emote=Angry]heeeere?!")
   GAME:FadeIn(35)
 
-  UI:SetBounds(10, 16, 300, 50)
+  EXPLCOMMON.SetUpper()
   UI:SetSpeaker(furie)
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("I can't believe it...!")

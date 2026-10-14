@@ -91,7 +91,7 @@ function EntohTownNorth.Panch_Action(obj, activator)
   local rexio = CH("PLAYER")
  EXPLCOMMON.FaceEachother(obj, activator)
   if SV.Story.chap == -4 then
-    if SV.Story.sect < 3 then
+    if SV.Story.sect < 4 then
       if SV.entoh_town.thicket.result == 0 then
         UI:SetSpeaker(panch)
         UI:SetSpeakerEmotion("Angry")

@@ -96,15 +96,14 @@ end
 
 function DeepApple.Enter_Touch(obj, activator)
   if DUNGEON:LastDungeonResult() ~= RogueEssence.Data.GameProgress.ResultType.Cleared then
-    EXPLCOMMON.FaceEachother(CH("PLAYER"), CH("Teammate2"))
-    GAME:WaitFrames(45)
     EXPLCOMMON.SetCharAndEmotion(CH("Teammate2"), "Normal")
-    UI:WaitShowDialogue("Hey, we can try this dungeon again.")
+    UI:WaitShowDialogue("Hey, we couuuuld try this dungeon again.")
 
+    EXPLCOMMON.FaceEachother(CH("PLAYER"), CH("Teammate2"))
     EXPLCOMMON.SetCharAndEmotion(CH("PLAYER"), "Stunned")
     UI:WaitShowTimedDialogue("Rexio, you got pretty beaten up before. And Azura...", 45)
 
-    EXPLCOMMON.SetCharAndEmotion(CH("Teammate2"), "Stunned")
+    EXPLCOMMON.SetCharAndEmotion(CH("Teammate2"), "Happy")
     UI:WaitShowDialogue("Nope, let's go!")
   end
   local dungeon_entrances = {"dense_apple"}

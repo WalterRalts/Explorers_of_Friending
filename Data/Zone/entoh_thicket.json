@@ -463,7 +463,7 @@
 "Amount": 0,
 "Price": 0
 },
-"Rate": 20
+"Rate": 10
 },
 {
 "Spawn": {
@@ -474,6 +474,16 @@
 "Price": 0
 },
 "Rate": 20
+},
+{
+"Spawn": {
+"ID": "food_entohnut",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0
+},
+"Rate": 15
 }
 ],
 "Rate": 20

@@ -18,8 +18,13 @@ local Osias = {}
 function Osias.Init(map)
   if SV.Story.sect == 2 then
     Dreset.Guild()
+  elseif SV.Story.sect == 3 then
+    Dreset.Exiting()
+    SV.Story.sect = 4
   else
-    EXPLCOMMON.TeleportToMarker(CH("Emburst"), "Flared", Dir8.DownLeft)
+    GROUND:Unhide("Hertz Guildmaster")
+    EXPLCOMMON.TeleportToMarker(CH("Emburst"), "Flared", Dir8.Left)
+    EXPLCOMMON.TeleportToMarker(CH("Hertz Guildmaster"), "h1", Dir8.Right)
   end
 end
 
@@ -64,27 +69,63 @@ end
 -------------------------------
 
 function Osias.ExitN_Touch(obj, activator)
-  EXPLCOMMON.FadeEnterGround("OsiasLake", "EnterS")
+  if SV.Story.sect == 2 then
+    EXPLCOMMON.FadeEnterGround("OsiasLake", "EnterS")
+  else
+    UI:SetSpeaker(CH("Hertz Guildmaster"))
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("I appreciate you three trying to go exploring again, but...")
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("You do need to leave now. There are important things we have to do.")
+  end
 end
 
 function Osias.ExitS_Touch(obj, activator)
-  EXPLCOMMON.FadeEnterGround("HertzGuildOut", "EnterN")
+  EXPLCOMMON.FadeEnterGround("HertzGuildOut", "ExitGuild")
 end
 
 function Osias.ExitE_Touch(obj, activator)
-  --EXPLCOMMON.FadeEnterGround("HertzGuildOut", "EnterN")
+  if SV.Story.sect == 2 then
+    UI:SetSpeaker(CH("Emburst"))
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("Not that way...")
+  else
+    EXPLCOMMON.FadeEnterGround("HertzGuildOut", "EnterN")
+  end
 end
 
 function Osias.ExitW_Touch(obj, activator)
-  --EXPLCOMMON.FadeEnterGround("HertzGuildOut", "EnterN")
+  if SV.Story.sect == 2 then
+  else
+    EXPLCOMMON.FadeEnterGround("HertzGuildOut", "EnterN")
+  end
+end
+
+function Osias.Hertz_Guildmaster_Action(obj, activator)
+  if SV.Story.sect == 2 then
+  else
+    EXPLCOMMON.FaceEachother(obj, activator)
+
+    UI:SetSpeaker(obj)
+    UI:SetSpeakerEmotion("Happy")
+    UI:WaitShowDialogue("Whenever you guys can, come back for a battle!")
+  end
 end
 
 function Osias.Emburst_Action(obj, activator)
-  EXPLCOMMON.FaceEachother(obj, activator)
+  if SV.Story.sect == 2 then
+    EXPLCOMMON.FaceEachother(obj, activator)
 
-  UI:SetSpeaker(obj)
-  UI:SetSpeakerEmotion("Worried")
-  UI:WaitShowDialogue("...I'm not the guildmaster, kids.")
+    UI:SetSpeaker(obj)
+    UI:SetSpeakerEmotion("Worried")
+    UI:WaitShowDialogue("...I'm not the guildmaster, kids.")
+  else
+    EXPLCOMMON.FaceEachother(obj, activator)
+
+    UI:SetSpeaker(obj)
+    UI:SetSpeakerEmotion("Normal")
+    UI:WaitShowDialogue("You kids stay safe.")
+  end
 end
 
 return Osias

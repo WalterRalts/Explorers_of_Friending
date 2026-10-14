@@ -524,7 +524,7 @@ function Bluetails.AfterPieTime()
 end
 
 function Bluetails.MailTime()
-  UI:SetBounds(10, 16, 300, 50)
+  EXPLCOMMON.SetUpper()
   GROUND:TeleportTo(maru, 221, 240, Direction.Left, 0)
   GROUND:TeleportTo(azura, 186, 240, Direction.Right, 0)
   UI:WaitShowTitle("Prologue A-2:\nMysteries", 120)
@@ -582,7 +582,7 @@ function Bluetails.AfterMailTime()
 
   TASK:JoinCoroutines({coro1, coro2})
 
-  UI:SetBounds(10, 16, 300, 50)
+  EXPLCOMMON.SetUpper()
   UI:SetSpeaker(amazuru)
   UI:SetSpeakerEmotion("Worried")
   UI:WaitShowDialogue("Well, let's see here...")
@@ -653,7 +653,6 @@ function Bluetails.AfterMailTime()
     end)
   TASK:JoinCoroutines({coro21, coro22})
 
-  mail_read = 2
   UI:SetSpeaker(maru)
   UI:SetSpeakerEmotion("Inspired")
   UI:WaitShowDialogue("Really?")

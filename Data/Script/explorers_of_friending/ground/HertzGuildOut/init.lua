@@ -15,7 +15,7 @@ local HertzGuildOut = {}
 ---HertzGuildOut.Init(map)
 --Engine callback function
 function HertzGuildOut.Init(map)
-  EXPLCOMMON.AllyFollow(true, false)
+  EXPLCOMMON.AllyFollow(true, true)
 end
 
 ---HertzGuildOut.Enter(map)
@@ -59,7 +59,11 @@ end
 -------------------------------
 
 function HertzGuildOut.GuildEnter_Touch(obj, activator)
-  EXPLCOMMON.FadeEnterGround("DarkGuild", "cutmark")
+  if SV.Story.sect < 3 then
+    EXPLCOMMON.FadeEnterGround("DarkGuild", "cutmark")
+  else
+    EXPLCOMMON.FadeEnterGround("Osias", "EnterS")
+  end
 end
 
 function HertzGuildOut.ExitS_Touch(obj, activator)

@@ -32,11 +32,11 @@ function RexioScan:Scan()
               SOUND:PlaySE("Battle/_UNK_DUN_Charge")
               DUNGEON:CharWaitAnim(leader, "DeepBreath")
               GAME:WaitFrames(45)
-              for x = 1, 19, 1 do
-                for y = 1, 19, 1 do
-                  local scanx = rexx + 10 - x
-                  local scany = rexy + 10 - y
-                  item_ref = _ZONE.CurrentMap:GetItem(RogueElements.Loc(scanx, scany))
+              for x = 0, 30, 1 do
+                for y = 0, 30, 1 do
+                  local scanx = rexx + 15 - x
+                  local scany = rexy + 15 - y
+                  local item_ref = _ZONE.CurrentMap:GetItem(RogueElements.Loc(scanx, scany))
                   if item_ref > -1 then
                     PrintInfo("Rexio, at (" .. rexx .. ", " .. rexy .. ") scanned a tile: (" .. scanx .. ", " .. scany .. ").")
                     PrintInfo("There is an item here! It's the " .. _ZONE.CurrentMap.Items[item_ref]:GetDungeonName() .. ".")

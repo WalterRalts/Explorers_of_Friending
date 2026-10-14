@@ -1107,7 +1107,7 @@ function Tent.Day0()
     local azura = CH("Teammate1")
     local rexio = CH("Teammate2")
 
-    UI:SetBounds(10, 16, 300, 50)
+    EXPLCOMMON.SetUpper()
 
     EXPLCOMMON.SetCharAndEmotion(maru, "Normal")
     UI:WaitShowDialogue("I guess this doesn't look so bad.")

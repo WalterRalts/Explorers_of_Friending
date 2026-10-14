@@ -142,7 +142,7 @@ function Rexio.Luke()
     local talk_npc = RogueEssence.Dungeon.BattleScriptEvent("SnowInteract")
         _DATA.Save.ActiveTeam.Players[4].ActionEvents:Add(talk_npc)
 
-    EXPLCOMMON.AllyFollow(true, true)
+    EXPLCOMMON.AllyFollow(true, false)
     GAME:CutsceneMode(false)
     local flow = CH('Teammate1')
     local tidy = CH('Teammate2')

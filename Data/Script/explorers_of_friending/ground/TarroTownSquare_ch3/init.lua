@@ -133,27 +133,169 @@ function TarroTownSquare_ch3.Ribbon_Action(obj, activator)
   UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Welcome to our little setup, friend.")
   UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("We aren't ready yet, though. [color=#EFBF04][pause=20]Do come back later.[color]")
+  UI:WaitShowDialogue("We're travellers, going out and about, getting important things for our mayor.")
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("We've been picking up a lot, so we thought it'd be a good idea to share with the town.")
+  UI:SetSpeakerEmotion("Happy")
+  UI:WaitShowDialogue("Feel free to buy something, we're really cheap for the kids, too!")
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("It's one-at-a-time buy, just so we can keep track and all.")
   GROUND:CharAnimateTurn(ribbon, Direction.DownLeft, 4, false)
 end
 
 function TarroTownSquare_ch3.BuzzStore_Action(obj, activator)
+  local confirm = false
+  local store_state = 0
   local buzzer = CH("Buzzer")
   local maru = CH("PLAYER")
+  local choices = {}
+  local bought = false
   GROUND:CharTurnToCharAnimated(buzzer, maru, 2)
+
   UI:SetSpeaker(buzzer)
-  UI:SetSpeakerEmotion("Normal")
-  UI:WaitShowDialogue("Sorry, buzzas.")
-  UI:SetSpeakerEmotion("Pain")
-  UI:WaitShowDialogue("Can't open the store up yet,[pause=35] [color=#EFBF04]setting it up perfectly iz harder then it lookz, buzz.[color]")
-  --[[local menu = BuzzerShopMenu:new()
-  UI:SetCustomMenu(menu.menu)
-  UI:WaitForChoice()
-  UI:SetSpeakerEmotion("Happy")
   UI:WaitShowDialogue("Welcome, welcome, buzz!")
   UI:SetSpeakerEmotion("Happy")
-  UI:WaitShowDialogue("Got some quick stuff here, so buy something, will ya!")
-  BuzzerShopStart()]]
+	UI:BeginChoiceMenu("Got some quick stuff here, so buy something, will ya!", {"Buy", "Info", "Exit"}, 1, 3)
+  UI:WaitForChoice()
+  store_state = UI:ChoiceResult()
+
+  local function continue_shop()
+    UI:SetSpeaker(CH("Buzzer"))
+    UI:BeginChoiceMenu("Anything else?", {"Buy", "Info", "Exit"}, 1, 3)
+    UI:WaitForChoice()
+    local choose = UI:ChoiceResult()
+    return choose
+  end
+
+  local function buy_item(item)
+    SV.buzzers_store[item].count = SV.buzzers_store[item].count - 1
+    GAME:RemoveFromPlayerMoney(SV.buzzers_store[item].price)
+    SOUND:PlayBattleSE("DUN_Money")
+    GAME:GivePlayerItem(SV.buzzers_store[item].item)
+  end
+
+  while store_state > -1 do
+    if store_state == 1 then
+      for i = 1, #SV.buzzers_store, 1 do
+        if SV.buzzers_store[i].count ~= 0 then
+          choices[i] = {Item = RogueEssence.Dungeon.InvItem(SV.buzzers_store[i].item, false, 0), Price = SV.buzzers_store[i].price}
+          print(choices[i].Item, choices[i].Price)
+        end
+      end
+      if #choices > 0 then
+        local bag_count = GAME:GetPlayerBagCount() + GAME:GetPlayerEquippedCount()
+        local bag_cap = GAME:GetPlayerBagLimit()
+        local hold_cap = SV.bag_size
+        if bag_count == bag_cap or bag_count == hold_cap then
+          UI:SetSpeakerEmotion("Stunned")
+          UI:WaitShowDialogue("Don't think you can carry any more, buzz...")
+          store_state = -1
+        elseif GAME:GetPlayerMoney() == 0 then
+          UI:SetSpeakerEmotion("Angry")
+          UI:WaitShowDialogue("Thiz stand isn't free, buzz! Go get zome money!")
+          store_state = -1
+        else
+          UI:ShopMenu(choices)
+          UI:WaitForChoice()
+          local result = UI:ChoiceResult()
+          if GAME:GetPlayerMoney() < SV.buzzers_store[result[1]].price then
+            EXPLCOMMON.CharSweatdrop("Buzzer")
+            GAME:WaitFrames(10)
+            UI:SetSpeakerEmotion("Normal")
+            UI:WaitShowDialogue("You don't have enough for that, buzz...")
+          elseif result[1] == 1 then
+            
+            UI:SetSpeakerEmotion("Sigh")
+            UI:WaitShowDialogue("Oh, thoze thingz.[pause=45][emote=Stunned] Usually I put zome in my bag thinking it'z a different zeed, but...")
+            UI:SetSpeakerEmotion("Happy")
+            UI:ChoiceMenuYesNo("I'll happily give it to you little buzzies!", false)
+            UI:WaitForChoice()
+            confirm = UI:ChoiceResult()
+            if confirm then
+              bought = true
+              buy_item(result[1])
+
+              UI:SetSpeakerEmotion("Happy")
+              UI:WaitShowDialogue("Heh, have fun with it, I guezz...!")
+              
+              store_state = continue_shop()
+            else
+              UI:SetSpeakerEmotion("Happy")
+              UI:WaitShowDialogue("Wize.")
+              store_state = continue_shop()
+            end
+          elseif result[1] == 2 then
+            UI:SetSpeakerEmotion("Happy")
+            UI:WaitShowDialogue("Clazzic buzzy berry. Me and Ribbon love theze thingz, so we alwayz have a few extra from our tripz.")
+            UI:SetSpeakerEmotion("Normal")
+            UI:ChoiceMenuYesNo("You want?", false)
+            UI:WaitForChoice()
+            confirm = UI:ChoiceResult()
+
+            if confirm then
+              bought = true
+              buy_item(result[1])
+
+              UI:SetSpeakerEmotion("Happy")
+              UI:WaitShowDialogue("It's good eatz, buzz!")
+              store_state = continue_shop()
+            else
+              UI:SetSpeakerEmotion("Happy")
+              UI:WaitShowDialogue("More for uz, buzz!")
+              store_state = continue_shop()
+            end
+          elseif result[1] == 3 then
+            UI:SetSpeakerEmotion("Stunned")
+            UI:WaitShowDialogue("Oh.[pause=30][emote=Normal] Don't tell the honey seller, but I'm pretty sure she dropped thiz on the way back here...")
+            UI:SetSpeakerEmotion("Happy")
+            UI:ChoiceMenuYesNo("Take it off my stingerz; I won't tell her, obviouzly.", false)
+            UI:WaitForChoice()
+            confirm = UI:ChoiceResult()
+            if confirm then
+              bought = true
+              buy_item(result[1])
+
+              UI:SetSpeakerEmotion("Happy")
+              UI:WaitShowDialogue("You're welcome, it waz 50% off the usual.")
+              store_state = continue_shop()
+            else
+              UI:SetSpeakerEmotion("Stunned")
+              UI:WaitShowDialogue("If it'z not gone, I'll have to give it back.")
+              store_state = continue_shop()
+            end
+          end
+
+          if SV.buzzers_store[result[1]].count == 0 then
+            UI:SetSpeakerEmotion("Stunned")
+            UI:WaitShowDialogue("Lookz like we ran out of what you lil' buzzies juzt bought...")
+          end
+        end
+      end
+    elseif store_state == 2 then
+      UI:SetSpeakerEmotion("Stunned")
+      UI:WaitShowTimedDialogue("Buzz... it's a shop.[pause=70] You... buy our things.", 80)
+      GAME:WaitFrames(60)
+      EXPLCOMMON.CharSweatdrop("Buzzer")
+      GAME:WaitFrames(10)
+      UI:SetSpeakerEmotion("Sigh")
+      UI:WaitShowDialogue("Just ask Ribbon.")
+
+      UI:SetSpeaker(CH("Ribbon"))
+      UI:SetSpeakerEmotion("Happy")
+      UI:WaitShowDialogue("At your service!")
+
+      store_state = continue_shop()
+    elseif store_state == 3 then
+      if bought then
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("Thanks, lil' buzzies!")
+      else
+        UI:SetSpeakerEmotion("Normal")
+        UI:WaitShowDialogue("Nothin' interest you, buzz?[pause=30] Ah well, safe travels.")
+      end
+      store_state = -1
+    end
+  end
 end
 
 function TarroTownSquare_ch3.TTown_SouthExit_Touch(obj, activator)

@@ -3,6 +3,16 @@ require 'explorers_of_friending.common'
 Outside = {}
 
 function Outside.CloudWatch()
+      UI:ChoiceMenuYesNo("The base game of PMD:Origins plays differently from the original PMD games. Would you like to skip tutorials?", true)
+      UI:WaitForChoice()
+      SV.TutorialSkip = UI:ChoiceResult()
+      if SV.TutorialSkip == 1 then
+            SV.TutorialSkip = true
+            UI:WaitShowDialogue("Most tutorials will be skipped.")
+      else
+            SV.TutorialSkip = false
+            UI:WaitShowDialogue("Tutorials will remain.")
+      end
       if GAME:GetPlayerPartyCount() ~= 2 then
             local mon_id = RogueEssence.Dungeon.MonsterID("azurill", 0, "normal", Gender.Female)
 
@@ -53,8 +63,8 @@ function Outside.CloudWatch()
       UI:WaitShowVoiceOver("Chaos has been cured; the hero hasn't shown up for ages.", -1)
       UI:WaitHideBG(30)
       --Now that everything is over, there's nothing but peace and stuff, yada yada bla bla bla...
-      UI:WaitShowVoiceOver("Stories spread as the world grew.[pause=20] Towns advanced, dungeon grow and shrink.", -1)
-      UI:WaitShowVoiceOver("Question rise:[pause=20] \"What will happen to our world without the hero?\"", -1)
+      UI:WaitShowVoiceOver("Stories spread as the world grew.[pause=20] Towns advanced, dungeons grew and shrank.", -1)
+      UI:WaitShowVoiceOver("Questions rose:[pause=20] \"What will happen to our world without the hero?\"", -1)
       UI:WaitShowVoiceOver("\"Will our world go back into turmoil again?\"", -1)
       UI:WaitShowVoiceOver("\"Can't we defend ourselves?\"", -1)
       UI:WaitShowVoiceOver("No one was there to answer.\n[pause=20]But there didn't seem to be a reason for one.", -1)

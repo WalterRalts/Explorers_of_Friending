@@ -1,25 +1,26 @@
-0.7.5 - Oh boy, let's get complicated!
+0.7.6 - Just a bit more...
 Once the newest area is done, there will be no updates to the version number ingame until a major update.
 
 GAME
 
-- Fix an issue where if the wrong Pokemon leads when exiting a dungeon, it would be the one in cutscenes.
-- Fix an issue where signs would set the center of all text.
+- Added GlitzyBunny to the dev team
+- 
 
 TOWN SPECIFIC
 
 TARRO
 
-- Fixed an issue where some NPCs would be in the wrong position.
+- New art has been made for the outskirts of Tarro Town (GlitzyBunny)
+- Fixed an issue where Cup2 moved to position 3 regardless of anything in the cup shuffle game.
+- Buzzer's store is now open.
 
 ENTOH
 
-- Fixed layering issues in Dragon's Delivery.
+- 
 
 APPLE TOWN
 
-- Fix an issue that stopped Azura from following you after a cutscene.
-- A long cutscene will no longer play is the boss was failed.
+- 
 
 HERTZ
 
@@ -29,72 +30,44 @@ HERTZ
 
 DUNGEONS
 
-- Fixed an issue that stopped the player from losing PP.
-- Allow characters in dungeons to turn back to original position after interacting with them.
-
 --- TARRO
 
--- Tarro Forest
-There should be no more major changes to the main dungeon here.
+-- *Tarro Forest
+There should be no more major changes to the main dungeon here, so it will be marked with stars.
 
-- Reduced the max HP of ???
-
-Enemy Respawn Rate: 50 -> 60
+- EXP rate: 35 -> 50
 
 -- Tarro Treetops
 
-- Fixed an issue where the wrong dialogue would be initialized when the halfway point is reached.
-- Lowered the chance of teams of three spawning in the dungeon.
-- Grubbin is no longer confirmed to know Protect.
-- Reduce the amount of money that can be gained per floor.
-
-Money (per floor): 10 - 30 (+10 - 60) -> 20 - 30 (+10 - 40)
+- Phantump has a lower chance of spawning and will no longer slow wander.
+- Kricketot and Deerling will now spawn.
+- 
 
 -- Dark Tarro
-...you fight a lot of Grass-types in this game...
-
-- Fix an issue where the game would softlock when you fail this dungeon.
-- Lowered the minimum level of some spawnable entities in the first half of the dungeon by one.
-- Lowered the maximum number of traps in the first half of the dungeon.
-- Shroomish and Oddish spawn less, Litwick will now spawn.
-- Seedot spawn less and no longer learn Beat Up.
-- Teams of 0 will no longer spawn.
-
-Success Percent: 60% -> 40%
-Max Traps: 8 -> 6
-
-- Team of three will no longer spawn.
-
-EXP Gain: 25% -> 20%
 
 --- ENTOH
 
 -- Entoh Thicket
 
-- Fixed an issue considering incorrect priority values.
-
 -- Dreaded Depths
 
-- Shortened the distance of Tidy's germophobia.
-
 -- Swamp Line
+
+- Stairs are now reduced to one per floor.
+- The third floor is slightly bigger.
 
 --- APPLE TOWN
 
 -- Apple Forest
 
 -- Deep Apple Forest
-You are not meant to win this dungeon at the current part of the story, but it should be possible to beat.
 
-- Partially fix an issue that softlocks the game if Maru and Azura are left behind.
-- Flapple can now spawn.
-- Increased the overall levels of most entities in this dungeon.
+- Decreased EXP Gain drastically
+EXP Gain: 100% -> 25%
 
 --- HERTZ
 
 -- Osias Ruins
-
-- The Hertz Guildmaster will no longer be added as a playable character, but instead as a guest.
 
 ============================
 
@@ -103,7 +76,3 @@ ITEMS
 ============================
 
 TECHNICAL (may contain spoilers)
-
-- No longer use a whole different variable to track dungeon failure
-- End ChapCheck with correct return value
-- Azura will no longer be set as a partner every time you load in to Tarro Town Outskirts

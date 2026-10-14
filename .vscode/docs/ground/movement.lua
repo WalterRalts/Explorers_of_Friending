@@ -58,6 +58,6 @@ function GROUND:AnimateInDirection(chara, anim, animDir, direction, duration, an
 ---@param direction integer
 ---@param duration integer
 ---@param animSpeed number Speed of animation, where 1.0 represents normal speed
----@param speed integer
+---@param speed number
 ---@param height? integer
 function GROUND:AnimateToPosition(ent, anim, animDir, direction, duration, animSpeed, speed, height) end

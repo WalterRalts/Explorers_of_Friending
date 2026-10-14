@@ -172,7 +172,7 @@ SV.hertz_town =
 {
   passcount = 0,
   visited = false,
-  solvedNW = true,
+  solvedNW = false,
   desert_scene = true,
   TunnelCheck = "none",
   fastvisited = {
@@ -237,21 +237,25 @@ SV.item =
 SV.buzzers_store =
 {
   {
-    item = "plain_seed",
+    item = "seed_plain",
     count = 10,
-    price = 5,
-    sprite = "Seed_White"
+    price = 1
   },
   {
     item = "berry_oran",
-    count = 10,
-    price = 5,
-    sprite = "Berry_Oran"
+    count = 5,
+    price = 10
+  },
+  {
+    item = "packed_honey",
+    count = 1,
+    price = 50
   }
 }
 
 --Dungeon Stuff
 
+SV.TutorialSkip = -1
 SV.rent_number = 0
 SV.dungeon_tutorial = 0
 SV.bag_size = 5

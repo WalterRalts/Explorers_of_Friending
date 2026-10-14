@@ -30,7 +30,14 @@ function HertzCenter.Init(map)
     Hertz.DesertTown()
     SV.Story.sect = 2
   else
-   EXPLCOMMON.AllyFollow(true, true)
+    EXPLCOMMON.AllyFollow(true, true)
+  end
+
+  if SV.Story.sect >= 4 then
+    GROUND:Hide("cacnea_1")
+    GROUND:Hide("cacnea_2")
+    GROUND:Hide("cacnea_3")
+    GROUND:Hide("cacnea_4")
   end
 
   GROUND:Hide("one")

@@ -29,7 +29,7 @@ function UI:SetSpeaker(name, keysound, specie, form, skin, gender) end
 ---It takes an existing GroundChar as a parameter.
 ---It resets speaker emotion.
 ---@param chara GroundCH
----@param keysound boolean
+---@param keysound? boolean
 function UI:SetSpeaker(chara, keysound) end
 
 ---Reverses the speaker orientation to face left instead of right. This depends on the boolean passed in.
@@ -56,7 +56,7 @@ function UI:ResetBounds() end
 
 ---Sets the centering of the text in the textbox.
 ---@param centerH boolean
----@param centerV boolean
+---@param centerV? boolean
 function UI:SetCenter(centerH, centerV) end
 
 ---Sets the position of the speaker in a dialogue box.

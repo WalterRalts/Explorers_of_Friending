@@ -126,6 +126,7 @@ function Cooking(player, partner, location)
     local maru = CH('PLAYER')
     --check if the player has done a tutorial
     if SV.tarro_town.cooking_tutorial_done == 1 then
+        mail_read = 2
         SV.tarro_town.cooking_tutorial_done = 2
         UI:SetSpeaker(arama)
         UI:SetSpeakerEmotion("Normal")

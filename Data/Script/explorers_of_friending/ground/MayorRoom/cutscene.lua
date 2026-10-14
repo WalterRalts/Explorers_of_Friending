@@ -88,7 +88,7 @@ function Mayor.Intro()
 end
 
 function Mayor.Ender()
-    UI:SetBounds(10, 16, 300, 50)
+    EXPLCOMMON.SetUpper()
     GAME:SetCanSwitch(false)
     GAME:FadeIn(30)
     local maru = CH("PLAYER")

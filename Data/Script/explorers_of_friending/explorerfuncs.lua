@@ -266,21 +266,19 @@ function EXPLCOMMON.DebugWithBudeg()
   local budeg = CH("Budeg")
   local area_name = GAME:GetCurrentGround().AssetName
   EXPLCOMMON.FaceEachother(budeg, CH("PLAYER"))
+  UI:SetSpeaker(budeg)
   if area_name == "TarroTownEast" then
-    UI:SetSpeaker(budeg)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("Zzrk, this town is a little boring,[pause=50] but it's not... [pause=30]zzzt,[pause=30] [emote=Stunned]bad???")
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("...almost as if it's the first town ever.")
     UI:WaitShowDialogue("...")
   elseif area_name == "TarroTownEast_ch2" then
-    UI:SetSpeaker(budeg)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("...this tree corner...")
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("...it does not compute...")
   elseif area_name == "EntohTownCenter" then
-    UI:SetSpeaker(budeg)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("Zzt, this town is weird.[pause=30] A little too natural for me.")
     UI:WaitShowDialogue("Flowers everywhere,[pause=30] stone buildings.[pause=30] That Drampa over there, too, telling stories like he's 300 years old.")
@@ -291,7 +289,6 @@ function EXPLCOMMON.DebugWithBudeg()
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("If you're testing the game out and have the password, I recommend not trying to use the Bluetail's teleports for now.")
   elseif area_name == "EntohTownCenter_ch2" then
-    UI:SetSpeaker(budeg)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("...something happened.")
 
@@ -309,11 +306,8 @@ function EXPLCOMMON.DebugWithBudeg()
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("If you're testing the game out and have the password, I recommend not trying to use the Bluetail's teleports for now.")
   elseif area_name == "GuildFieldMain" then
-    UI:SetSpeaker(budeg)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("I'm zzt sorry, this is supposed to be a guild?")
-
-    UI:SetSpeaker(budeg)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Good luck with that.")
   end
@@ -567,4 +561,9 @@ function EXPLCOMMON.CheckHeld(item)
     end
   end
   return held
+end
+
+function EXPLCOMMON.SetUpper()
+  UI:SetBounds(10, 16, 300, 50)
+  UI:SetSpeakerLoc(10, 70)
 end

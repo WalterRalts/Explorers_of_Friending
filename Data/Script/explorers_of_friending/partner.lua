@@ -595,7 +595,7 @@ function Partner(turn)
                 local leader = GAME:GetPlayerPartyMember(0)
                 local second = GAME:GetPlayerPartyMember(1)
                 local third = GAME:GetPlayerPartyMember(2)
-               EXPLCOMMON.FaceEachother(CH("PLAYER"), CH("Teammate1"))
+                EXPLCOMMON.FaceEachother(CH("PLAYER"), CH("Teammate1"))
                 if area_name == "GuildFieldMain" then
                     if SV.guild.day == 1 then
                         if talk == 1 then
@@ -801,6 +801,36 @@ function Partner(turn)
                             UI:WaitShowDialogue("Ready to go... let's do it...!")
                         end
                     end
+                elseif area_name == "HertzEntrance" then
+                    if talk == 1 then
+                        UI:SetSpeaker(leader)
+                        UI:SetSpeakerEmotion("Normal")
+                        UI:WaitShowDialogue("Looks like someone's gaurding the front.")
+
+                        UI:SetSpeaker(second)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("Why are there two gaurds?")
+
+                        UI:SetSpeaker(third)
+                        UI:SetSpeakerEmotion("Happy")
+                        UI:WaitShowDialogue("Duh! They have to gaurd treasure!")
+
+                        UI:SetSpeaker(leader)
+                        UI:SetSpeakerEmotion("Normal")
+                        UI:WaitShowDialogue("But we can buy a pass into the town...?")
+
+                        UI:SetSpeaker(third)
+                        UI:SetSpeakerEmotion("Stunned")
+                        UI:WaitShowDialogue("Uh...[pause=50] ex[emote=Happy]clusive treasure!")
+                    elseif talk == 2 then
+                        UI:SetSpeaker(second)
+                        UI:SetSpeakerEmotion("Worried")
+                        UI:WaitShowDialogue("Mission time! Mission time!")
+                    elseif talk == 3 then
+                        UI:SetSpeaker(third)
+                        UI:SetSpeakerEmotion("Happy")
+                        UI:WaitShowDialogue("Treasure! Treasure! Treasure!")
+                    end
                 else
                     if talk == 1 then
                         UI:SetSpeaker(leader)
@@ -814,6 +844,14 @@ function Partner(turn)
                         UI:SetSpeaker(third)
                         UI:SetSpeakerEmotion("Normal")
                         UI:WaitShowDialogue("Ready to go wherever.")
+                    elseif talk == 4 then
+                        UI:SetSpeaker(third)
+                        UI:SetSpeakerEmotion("Happy")
+                        UI:WaitShowDialogue("C'mon, Bluetail, let's go.")
+                    elseif talk == 5 then
+                        UI:SetSpeaker(second)
+                        UI:SetSpeakerEmotion("Happy")
+                        UI:WaitShowDialogue("Yay! Adventure!")
                     end
                 end
             end

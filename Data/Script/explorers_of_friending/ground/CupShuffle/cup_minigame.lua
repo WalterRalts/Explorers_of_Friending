@@ -21,7 +21,7 @@ function CupShufflePlay(difficulty, speed)
         end
         local coro1 = TASK:BranchCoroutine(function() 
             TASK:WaitTask(GROUND:MoveObjectToPosition(OBJ("Cup_" .. cup1), OBJ("Cup_" .. cup2).Position.X, 111, speed))
-            GAME:WaitFrames(math.floor(50 / speed) + 5)
+            GAME:WaitFrames(math.floor(200 / speed) + 5)
             end)	
         local coro2 = TASK:BranchCoroutine(function() 
             TASK:WaitTask(GROUND:MoveObjectToPosition(OBJ("Cup_" .. cup2), OBJ("Cup_" .. cup1).Position.X, 111, speed))
@@ -72,6 +72,7 @@ function CupShufflePlay(difficulty, speed)
             if OBJ("Cup_1").Position.X > pos_2 and pos_3_occ == false then
                 GROUND:MoveObjectToPosition(OBJ("Cup_1"), pos_3, 111, 9) --pos 3 filled
                 pos_3_occ = true
+                PrintInfo("Position 3 was taken.")
 
                 if cup_center_check2 < math.abs(OBJ("Cup_3").Position.X - pos_3) and pos_2_occ == false then
                     GROUND:MoveObjectToPosition(OBJ("Cup_2"), pos_2, 111, 9) -- 2
@@ -91,6 +92,7 @@ function CupShufflePlay(difficulty, speed)
             elseif OBJ("Cup_1").Position.X < pos_2 and pos_1_occ == false then
                 GROUND:MoveObjectToPosition(OBJ("Cup_1"), pos_1, 111, 9) -- pos 1 filled
                 pos_1_occ = true
+                PrintInfo("Position 1 was taken.")
 
                 if cup_center_check2 < math.abs(OBJ("Cup_3").Position.X - pos_3) and pos_2_occ == false then
                     GROUND:MoveObjectToPosition(OBJ("Cup_2"), pos_2, 111, 9) -- 2
@@ -101,7 +103,7 @@ function CupShufflePlay(difficulty, speed)
                 end
     
                 if pos_2_occ == false then
-                    GROUND:MoveObjectToPosition(OBJ("Cup_3"), pos_3, 111, 9) -- 2
+                    GROUND:MoveObjectToPosition(OBJ("Cup_3"), pos_2, 111, 9) -- 2
                     pos_2_occ = true
                 elseif pos_3_occ == false then
                     GROUND:MoveObjectToPosition(OBJ("Cup_3"), pos_3, 111, 9) -- 3
@@ -109,6 +111,10 @@ function CupShufflePlay(difficulty, speed)
                 end
             end
         end
+
+        PrintInfo("Cup position 1: " .. tostring(OBJ("Cup_1").Position.X))
+        PrintInfo("Cup position 2: " .. tostring(OBJ("Cup_2").Position.X))
+        PrintInfo("Cup position 3: " .. tostring(OBJ("Cup_3").Position.X))
 
         PrintInfo("The ball is under cup " .. ball_position)
 
@@ -136,10 +142,11 @@ function CupShufflePlay(difficulty, speed)
             GAME:WaitFrames(14)
             GROUND:MoveObjectToPosition(OBJ("Cup_3"), OBJ("Cup_3").Position.X, 80, 9)
             end)
+        TASK:JoinCoroutines({coro00, coro01, coro02})
+
         GROUND:Unhide("Ball")
         GROUND:MoveObjectToPosition(OBJ("Ball"), begin_position[ball_position], 133, 100)
         PrintInfo("The ball is under cup " .. ball_position .. " and was revealed.")
-        
         if cup_choice == ball_position then
             SOUND:PlaySE("Battle/EVT_Minigame_Correct")
             cup_win = cup_win + 1

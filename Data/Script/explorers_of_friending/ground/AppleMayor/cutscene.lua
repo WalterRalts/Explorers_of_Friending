@@ -30,7 +30,7 @@ function AppleBoss.Roomy()
         EXPLCOMMON.SetCharAndEmotion(galia, "Stunned")
         UI:WaitShowTimedDialogue("I would much prefer it if you didn't.[pause=30] Maybe with someone else with you...?", 10)
 
-        UI:SetBounds(10, 16, 300, 50)
+        EXPLCOMMON.SetUpper()
         EXPLCOMMON.SetCharAndEmotion(rexio, "Happy")
         UI:WaitShowTimedDialogue("Oi! Clever blue nickname!", 60)
 

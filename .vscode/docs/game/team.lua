@@ -34,7 +34,7 @@ function GAME:GetPlayerPartyTable() end
 
 ---Gets the character at the specified index within the player's team.
 ---@param index integer
----@return DungeonCH | GroundCH
+---@return GroundCH
 function GAME:GetPlayerPartyMember(index) end
 
 ---Adds a character to the player's team.
@@ -52,85 +52,36 @@ function GAME:GetPlayerGuestCount() end
 ---Return the guests as a LuaTable
 ---@return table
 function GAME:GetPlayerGuestTable() end
---[[
-GetPlayerGuestMember
-GAME:GetPlayerGuestMember(index)
 
-Gets the character at the specified index within the player's guests.
+---Gets the character at the specified index within the player's guests.
+---@param index integer
+---@return DungeonCH
+function GAME:GetPlayerGuestMember(index) end
 
-Parameters
-Name	Type	Description
-System.Int32	System.Int32	The specified index
-Returns
-Type	Description
-RogueEssence.Dungeon.Character	The team member retrieved.
+---Adds a character to the player's guests.
+---@param character any
+function GAME:AddPlayerGuest(character) end
 
+---Removes the character from the team's guests, placing its item back in the inventory.
+---@param slot integer
+function GAME:RemovePlayerGuest(slot) end
 
-AddPlayerGuest
-GAME:AddPlayerGuest(character)
+---Gets the number of characters currently in the player's assembly.
+---@return integer
+function GAME:GetPlayerAssemblyCount() end
 
-Adds a character to the player's guests.
+---Return the assembly as a LuaTable
+---@return table
+function GAME:GetPlayerAssemblyTable() end
 
-Parameters
-Name	Type	Description
-RogueEssence.Dungeon.Character	RogueEssence.Dungeon.Character	The character to add.
+---Gets the character at the specified index within the player's assembly.
+---@param index any
+---@return DungeonCH
+function GAME:GetPlayerAssemblyMember(index) end
 
-
-RemovePlayerGuest
-GAME:RemovePlayerGuest(slot)
-
-Removes the character from the team's guests, placing its item back in the inventory.
-
-Parameters
-Name	Type	Description
-System.Int32	System.Int32	The slot of the player to remove.
-
-
-GetPlayerAssemblyCount
-GAME:GetPlayerAssemblyCount()
-
-Gets the number of characters currently in the player's assembly.
-
-
-
-Returns
-Type	Description
-System.Object	The number of characters
-
-
-GetPlayerAssemblyTable
-GAME:GetPlayerAssemblyTable()
-
-Return the assembly as a LuaTable
-
-
-
-Returns
-Type	Description
-NLua.LuaTable	A Lua Table of Characters
-
-
-GetPlayerAssemblyMember
-GAME:GetPlayerAssemblyMember(index)
-
-Gets the character at the specified index within the player's assembly.
-
-Parameters
-Name	Type	Description
-System.Int32	System.Int32	The specified index
-Returns
-Type	Description
-RogueEssence.Dungeon.Character	The assembly member retrieved.
-
-
-AddPlayerAssembly
-GAME:AddPlayerAssembly(character)
-
-Adds a character to the player's assembly.
-
-Parameters
-Name	Type	Description
-RogueEssence.Dungeon.Character	RogueEssence.Dungeon.Character	The character to add.]]
+---Adds a character to the player's assembly.
+---@param character DungeonCH
+function GAME:AddPlayerAssembly(character) end
 
 ---Removes the character from the assembly, placing its item back in the inventory.
 ---@param slot integer

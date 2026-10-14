@@ -19,8 +19,12 @@ function HertzWest.Init(map)
   if West_visit then
     EXPLCOMMON.AllyFollow(true, true)
   else
-    Line.Short()
-    West_visit = true
+    if SV.Story.sect < 4 then
+      Line.Short()
+      West_visit = true
+    else
+      Line.Interrupt()
+    end
   end
 end
 

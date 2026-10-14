@@ -3338,7 +3338,7 @@
 },
 "Role": 0
 },
-"Rate": 100,
+"Rate": 15,
 "Range": {
 "Min": 0,
 "Max": 7
@@ -3372,7 +3372,7 @@
 },
 "Role": 0
 },
-"Rate": 200,
+"Rate": 20,
 "Range": {
 "Min": 2,
 "Max": 7
@@ -3440,44 +3440,9 @@
 },
 "Role": 0
 },
-"Rate": 100,
+"Rate": 10,
 "Range": {
 "Min": 0,
-"Max": 7
-}
-},
-{
-"Spawn": {
-"Spawn": {
-"BaseForm": {
-"Species": "phantump",
-"Form": 0,
-"Skin": "",
-"Gender": -1
-},
-"Level": {
-"Min": 3,
-"Max": 5
-},
-"SpecifiedSkills": [
-"cut",
-"tackle",
-"round"
-],
-"Intrinsic": "",
-"Tactic": "slow_patrol",
-"SpawnConditions": [],
-"SpawnFeatures": [
-{
-"$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
-}
-]
-},
-"Role": 3
-},
-"Rate": 150,
-"Range": {
-"Min": 2,
 "Max": 7
 }
 },
@@ -3502,7 +3467,7 @@
 },
 "Role": 0
 },
-"Rate": 50,
+"Rate": 5,
 "Range": {
 "Min": 3,
 "Max": 7
@@ -3542,9 +3507,113 @@
 },
 "Role": 3
 },
-"Rate": 100,
+"Rate": 10,
 "Range": {
 "Min": 4,
+"Max": 7
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
+"Species": "deerling",
+"Form": 2,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 3,
+"Max": 7
+},
+"SpecifiedSkills": [
+"agility",
+"facade"
+],
+"Intrinsic": "chlorophyll",
+"Tactic": "wander_dumb_itemless",
+"SpawnConditions": [],
+"SpawnFeatures": [
+{
+"$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+}
+]
+},
+"Role": 1
+},
+"Rate": 10,
+"Range": {
+"Min": 1,
+"Max": 7
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
+"Species": "kricketot",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 3,
+"Max": 7
+},
+"SpecifiedSkills": [
+"growl",
+"mud_slap",
+"struggle_bug"
+],
+"Intrinsic": "",
+"Tactic": "wander_dumb_itemless",
+"SpawnConditions": [],
+"SpawnFeatures": [
+{
+"$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+},
+{
+"$type": "PMDC.LevelGen.MobSpawnMovesOff, PMDC",
+"StartAt": 3,
+"Remove": false
+},
+{
+"$type": "PMDC.LevelGen.MobSpawnItem, PMDC",
+"Items": [
+{
+"Spawn": {
+"ID": "seed_plain",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0
+},
+"Rate": 8
+},
+{
+"Spawn": {
+"ID": "seed_reviver",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0
+},
+"Rate": 2
+}
+],
+"MapStartOnly": false,
+"Chance": {
+"Numerator": 1,
+"Denominator": 5
+}
+}
+]
+},
+"Role": 0
+},
+"Rate": 15,
+"Range": {
+"Min": 2,
 "Max": 7
 }
 }
@@ -5620,6 +5689,40 @@
 "Spawn": {
 "Spawn": {
 "BaseForm": {
+"Species": "deerling",
+"Form": 2,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 3,
+"Max": 7
+},
+"SpecifiedSkills": [
+"agility",
+"facade"
+],
+"Intrinsic": "chlorophyll",
+"Tactic": "wander_dumb_itemless",
+"SpawnConditions": [],
+"SpawnFeatures": [
+{
+"$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+}
+]
+},
+"Role": 1
+},
+"Rate": 10,
+"Range": {
+"Min": 0,
+"Max": 3
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
 "Species": "grubbin",
 "Form": 0,
 "Skin": "",
@@ -5708,6 +5811,76 @@
 "Role": 0
 },
 "Rate": 5,
+"Range": {
+"Min": 0,
+"Max": 3
+}
+},
+{
+"Spawn": {
+"Spawn": {
+"BaseForm": {
+"Species": "kricketot",
+"Form": 0,
+"Skin": "",
+"Gender": -1
+},
+"Level": {
+"Min": 3,
+"Max": 7
+},
+"SpecifiedSkills": [
+"growl",
+"mud_slap",
+"struggle_bug"
+],
+"Intrinsic": "",
+"Tactic": "wander_dumb_itemless",
+"SpawnConditions": [],
+"SpawnFeatures": [
+{
+"$type": "PMDC.LevelGen.MobSpawnWeak, PMDC"
+},
+{
+"$type": "PMDC.LevelGen.MobSpawnMovesOff, PMDC",
+"StartAt": 3,
+"Remove": false
+},
+{
+"$type": "PMDC.LevelGen.MobSpawnItem, PMDC",
+"Items": [
+{
+"Spawn": {
+"ID": "seed_reviver",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0
+},
+"Rate": 4
+},
+{
+"Spawn": {
+"ID": "seed_plain",
+"Cursed": false,
+"HiddenValue": "",
+"Amount": 0,
+"Price": 0
+},
+"Rate": 6
+}
+],
+"MapStartOnly": false,
+"Chance": {
+"Numerator": 1,
+"Denominator": 5
+}
+}
+]
+},
+"Role": 0
+},
+"Rate": 10,
 "Range": {
 "Min": 0,
 "Max": 3

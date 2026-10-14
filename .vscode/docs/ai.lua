@@ -4,8 +4,8 @@
 ---Assign the given scripted AI class to the specified GroundChar.
 ---@param ch GroundCH The character to apply the AI to.
 ---@param classpath string The Scripted AI to apply.
----@param args? table
-function AI:SetCharacterAI(ch, classpath, args) end
+---@param ... string | GroundCH Tags to add to this entry
+function AI:SetCharacterAI(ch, classpath, ...) end
 
 ---Disable a given groundchar's AI processing until its enabled again.
 ---@param ch GroundCH

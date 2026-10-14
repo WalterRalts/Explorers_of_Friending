@@ -320,10 +320,9 @@ function AppleTown_pt2.Police_Action(obj, activator)
 
     EXPLCOMMON.SetCharAndEmotion(maru, "Stunned")
     UI:WaitShowDialogue("No other choice, I think.")
-
-    AI:EnableCharacterAI(azura)
     end)
   TASK:JoinCoroutines({coro01, coro02})
+  AI:SetCharacterAI(CH("Teammate1"), "origin.ai.ground_partner", CH("PLAYER"), CH("Teammate1").Position)
   SV.Story.sect = 2
 end
 
