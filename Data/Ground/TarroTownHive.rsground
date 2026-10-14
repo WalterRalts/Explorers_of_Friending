@@ -80031,6 +80031,102 @@
 "Width": 16,
 "Height": 16
 }
+},
+{
+"Direction": 6,
+"IsInteracting": false,
+"AIEnabled": true,
+"EntName": "Glitzy",
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"serializationLoc": {
+"X": 391,
+"Y": 365
+},
+"serializationHeight": 0,
+"serializationDir": 6,
+"triggerType": 1,
+"<AI>k__BackingField": null,
+"Data": {
+"Nickname": "",
+"OriginalUUID": "",
+"OriginalTeam": "",
+"BaseForm": {
+"Species": "buneary",
+"Form": 0,
+"Skin": "normal",
+"Gender": 0
+},
+"Level": 1,
+"EXP": 0,
+"MaxHPBonus": 0,
+"AtkBonus": 0,
+"DefBonus": 0,
+"MAtkBonus": 0,
+"MDefBonus": 0,
+"SpeedBonus": 0,
+"BaseSkills": [
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+},
+{
+"SkillNum": "",
+"Charges": 0,
+"CanForget": true
+}
+],
+"BaseIntrinsics": [
+""
+],
+"FormIntrinsicSlot": -1,
+"Relearnables": {},
+"Discriminator": 0,
+"MetAt": "",
+"MetLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"DefeatAt": "",
+"DefeatLoc": {
+"ID": "",
+"StructID": {
+"Segment": -1,
+"ID": -1
+},
+"EntryPoint": -1
+},
+"IsFounder": false,
+"IsPartner": false,
+"NameLocked": false,
+"IsFavorite": false,
+"Unrecruitable": false,
+"ActionEvents": [],
+"ScriptVars": null
+},
+"CollisionDisabled": false,
+"Collider": {
+"X": 0,
+"Y": 0,
+"Width": 16,
+"Height": 16
+}
 }
 ],
 "GroundObjects": [

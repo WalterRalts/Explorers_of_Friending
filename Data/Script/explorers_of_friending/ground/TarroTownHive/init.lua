@@ -211,19 +211,27 @@ function TarroTownHive.Walter_Action(obj, activator)
 end
 
 function TarroTownHive.Ether_Action(obj, activator)
-  TarroTownHive.Walter_Action()
+  UI:ResetSpeaker()
+  UI:WaitShowDialogue("A Ralts and Buneary are enjoying themselves with their friends.")
+  UI:WaitShowDialogue("They'd say something, but they all look too busy talking about something stupid probably.")
 end
 
 function TarroTownHive.Wurm_Action(obj, activator)
-  TarroTownHive.Walter_Action()
+  TarroTownHive.Ether_Action()
 end
 
 function TarroTownHive.Toast_Action(obj, activator)
-  TarroTownHive.Walter_Action()
+  TarroTownHive.Ether_Action()
 end
 
 function TarroTownHive.Jeffrey_Action(obj, activator)
-  TarroTownHive.Walter_Action()
+  TarroTownHive.Ether_Action()
+end
+
+function TarroTownHive.Glitzy_Action(obj, activator)
+  UI:ResetSpeaker()
+  UI:WaitShowDialogue("A Buneary is enjoying themself with her friends.")
+  UI:WaitShowDialogue("She'd say something, but they are currently trying to bother the Ralts.")
 end
 
 return TarroTownHive
