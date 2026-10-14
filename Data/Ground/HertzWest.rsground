@@ -108407,7 +108407,7 @@
 "Direction": 2,
 "IsInteracting": false,
 "AIEnabled": true,
-"EntName": "NewObject",
+"EntName": "Excaliber",
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,
@@ -108493,7 +108493,7 @@
 },
 "CollisionDisabled": false,
 "Collider": {
-"X": 580,
+"X": 604,
 "Y": 364,
 "Width": 16,
 "Height": 16
