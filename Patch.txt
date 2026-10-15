@@ -4,7 +4,6 @@ Once the newest area is done, there will be no updates to the version number ing
 GAME
 
 - Added GlitzyBunny to the dev team
-- 
 
 TOWN SPECIFIC
 

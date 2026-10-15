@@ -24,6 +24,7 @@ function HertzWest.Init(map)
       West_visit = true
     else
       Line.Interrupt()
+      SV.Story.sect = 5
     end
   end
 end

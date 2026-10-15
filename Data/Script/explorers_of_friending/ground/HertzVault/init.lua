@@ -19,7 +19,7 @@ function HertzVault.Init(map)
   GAME:MoveCamera(180, 240, 1, false)
   if SV.Story.sect <= 2 then
     Vault.CannotOpen()
-  elseif SV.hertz_town.guild_entered then
+  elseif SV.Story.sect >= 4 then
     Vault.OpenUp()
   end
 
