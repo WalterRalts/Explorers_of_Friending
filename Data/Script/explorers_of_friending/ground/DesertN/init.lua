@@ -5,6 +5,7 @@
 ]]--
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
+require 'explorers_of_friending.ground.DesertN.cutscene'
 
 -- Package name
 local DesertN = {}
@@ -15,15 +16,22 @@ local DesertN = {}
 ---DesertN.Init(map)
 --Engine callback function
 function DesertN.Init(map)
-  EXPLCOMMON.AllyFollow(true, true)
+  
 end
 
 ---DesertN.Enter(map)
 --Engine callback function
 function DesertN.Enter(map)
-
-  GAME:FadeIn(20)
-
+  if SV.Story.chap == 2 then
+    if SV.Story.sect >= 4 then
+      North.Upward()
+    else
+      EXPLCOMMON.AllyFollow(true, true)
+    end
+  else
+    EXPLCOMMON.AllyFollow(true, true)
+    GAME:FadeIn(20)
+  end
 end
 
 ---DesertN.Exit(map)

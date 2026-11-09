@@ -16,6 +16,13 @@ local TarroForestPassage = {}
 ---TarroForestPassage.Init(map)
 --Engine callback function
 function TarroForestPassage.Init(map)
+
+end
+
+---TarroForestPassage.Enter(map)
+--Engine callback function
+function TarroForestPassage.Enter(map)
+  
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
   local partner = CH('Teammate1')
@@ -44,11 +51,6 @@ function TarroForestPassage.Init(map)
   if SV.Story.sect == 1 and SV.Story.chap == -3 then
     Dark.Darkness()
   end
-end
-
----TarroForestPassage.Enter(map)
---Engine callback function
-function TarroForestPassage.Enter(map)
   if not Todungeonscene then
     GAME:FadeIn(20)
   else

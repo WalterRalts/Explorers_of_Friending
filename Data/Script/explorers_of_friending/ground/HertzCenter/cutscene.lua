@@ -6,8 +6,7 @@ function Hertz.DesertTown()
     local azura = CH("Teammate1")
     local rexio = CH("Teammate2")
     local maru = CH("PLAYER")
-    local turner = true
-
+    
     GROUND:Unhide("one")
     GROUND:Unhide("two")
     GROUND:Unhide("three")

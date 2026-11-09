@@ -16,5 +16,7 @@ require 'origin.services.upgrade_tools'
 require 'origin.services.menu_tools'
 require 'explorers_of_friending.services.rexioscan'
 require 'explorers_of_friending.services.chapcheck'
+require 'explorers_of_friending.services.menu_up'
+require 'explorers_of_friending.services.power_move'
 
 math.randomseed(os.time())

@@ -233,8 +233,6 @@ function Bottom.Key()
 
       EXPLCOMMON.SetCharAndEmotion(kassy, "Determined")
       UI:WaitShowDialogue("(I'll... do it myself...)")
-      GAME:FadeOut(false, 240)
-      GROUND:MoveInDirection(kassy, Direction.Down, 200, false, 3)
 
       local a4 = TASK:BranchCoroutine(function()
             GAME:FadeOut(false, 240)

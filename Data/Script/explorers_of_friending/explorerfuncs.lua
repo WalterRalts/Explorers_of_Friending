@@ -263,6 +263,19 @@ function EXPLCOMMON.SetNewChapter(number)
 end
 
 function EXPLCOMMON.DebugWithBudeg()
+  local function add_rexio()
+    local mon_id = RogueEssence.Dungeon.MonsterID("riolu", 0, "normal", Gender.Male)
+
+    local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 7, "", 0)
+    p.IsFounder = true
+    p.IsPartner = true
+    p.Nickname = "Rexio"
+
+    _DATA.Save.ActiveTeam.Players:Add(p)
+    local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("RexioInteract")
+    _DATA.Save.ActiveTeam.Players[0].ActionEvents:Add(talk_evt)
+  end
+
   local budeg = CH("Budeg")
   local area_name = GAME:GetCurrentGround().AssetName
   EXPLCOMMON.FaceEachother(budeg, CH("PLAYER"))
@@ -382,16 +395,8 @@ function EXPLCOMMON.DebugWithBudeg()
         GAME:RemovePlayerTeam(0)
       end
       GAME:RemovePlayerTeam(0)
-      local mon_id = RogueEssence.Dungeon.MonsterID("riolu", 0, "normal", Gender.Male)
 
-      local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 7, "", 0)
-      p.IsFounder = true
-      p.IsPartner = true
-      p.Nickname = "Rexio"
-
-      _DATA.Save.ActiveTeam.Players:Add(p)
-      local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("RexioInteract")
-        _DATA.Save.ActiveTeam.Players[0].ActionEvents:Add(talk_evt)
+      add_rexio()
       GAME:DepositAll()
       --COMMON.SaveStorage()
 
@@ -434,30 +439,27 @@ function EXPLCOMMON.DebugWithBudeg()
           EXPLCOMMON.SetNewChapter(-6)
           SV.bag_size = 999
           GAME:EnterGroundMap("guild_field", "GuildField", "Start")
+
+          --Begin replacement
+          --Save Maru and Azura's stats
+          SV.tablestats.bluetail_stats = GAME:GetPlayerPartyTable()
+          --Replace them with Rexio
+          GAME:RemovePlayerTeam(0)
+          GAME:RemovePlayerTeam(0)
+          add_rexio()
         elseif result == 2 then --Chapter 1 in Apple Town
           EXPLCOMMON.SetNewChapter(1)
           SV.bag_size = 999
-          GAME:EnterGroundMap("guild_field", "GuildField", "Start")
+          GAME:EnterGroundMap("guild_field", "GuildLvl1", "GuildEnter1")
+          add_rexio()
         else --Chapter 2 in Hertz Desert
           EXPLCOMMON.SetNewChapter(2)
           SV.bag_size = 999
-          GAME:EnterGroundMap("guild_field", "GuildField", "Start")
+          GAME:EnterGroundMap("guild_field", "GuildLvl1", "GuildEnter1")
         end
         GAME:FadeOut(false, 60)
-        --Begin replacement
-        --Save Maru and Azura's stats
-        SV.tablestats.bluetail_stats = GAME:GetPlayerPartyTable()
-        --Replace them with Rexio
-        GAME:RemovePlayerTeam(0)
-        GAME:RemovePlayerTeam(0)
-        local mon_id = RogueEssence.Dungeon.MonsterID("riolu", 0, "normal", Gender.Male)
-
-        local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 7, "", 0)
-        p.IsFounder = true
-        p.IsPartner = true
-        p.Nickname = "Rexio"
-
-        _DATA.Save.ActiveTeam.Players:Add(p)
+        
+        
         local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("RexioInteract")
         _DATA.Save.ActiveTeam.Players[0].ActionEvents:Add(talk_evt)
         GAME:DepositAll()

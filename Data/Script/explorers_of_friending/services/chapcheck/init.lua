@@ -20,7 +20,8 @@ function Chapcheck:GameCheck()
   PrintInfo("Team is:")
   PrintInfo("========")
   for i = 1, GAME:GetPlayerPartyCount() do
-    PrintInfo(i .. ": " .. GAME:GetPlayerPartyMember(i - 1).Name)
+    local mem = GAME:GetPlayerPartyMember(i - 1)
+    PrintInfo(i .. ": " .. mem.Name)
   end
 end
 

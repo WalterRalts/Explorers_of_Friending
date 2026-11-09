@@ -29,8 +29,6 @@ function Tree.FirstEnter()
       local senna = CH('Teammate2')
       local puchi = CH("Teammate3")
 
-      GROUND:MoveInDirection(player, Direction.Down, 24, false, 2)
-
       local coro3 = TASK:BranchCoroutine(function()
             GAME:WaitFrames(50)
             UI:SetSpeaker(maru)

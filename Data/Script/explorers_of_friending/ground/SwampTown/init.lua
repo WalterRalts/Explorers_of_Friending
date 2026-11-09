@@ -16,6 +16,12 @@ local SwampTown = {}
 ---SwampTown.Init(map)
 --Engine callback function
 function SwampTown.Init(map)
+  
+end
+
+---SwampTown.Enter(map)
+--Engine callback function
+function SwampTown.Enter(map)
   local wurp = CH("Wurp")
   local snow = CH("Snow")
   local tidy = CH("Tidy")
@@ -32,14 +38,7 @@ function SwampTown.Init(map)
     GROUND:TeleportTo(wurp, 140, 150, Direction.DownLeft, 0)
     GROUND:TeleportTo(snow, 160, 170, Direction.DownLeft, 0)
   end
-end
-
----SwampTown.Enter(map)
---Engine callback function
-function SwampTown.Enter(map)
-
   GAME:FadeIn(20)
-
 end
 
 ---SwampTown.Exit(map)
@@ -108,7 +107,7 @@ function SwampTown.Poli_Action(obj, activator)
 end
 
 function SwampTown.Snow_Action(obj, activator)
- EXPLCOMMON.FaceEachother(activator, obj)
+  EXPLCOMMON.FaceEachother(activator, obj)
   UI:SetSpeaker(obj)
   UI:SetSpeakerEmotion("Stunned")
   UI:WaitShowDialogue("I-... I don't get it...")

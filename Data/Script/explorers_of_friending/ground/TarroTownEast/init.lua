@@ -15,17 +15,14 @@ local TarroTownEast = {}
 ---TarroTownEast.Init(map)
 --Engine callback function
 function TarroTownEast.Init(map)
-  MapStrings = STRINGS.MapStrings
-  COMMON.RespawnAllies()
-  local partner = CH('Teammate1')
-  local azura = CH("Teammate1")
+  
+end
+
+---TarroTownEast.Enter(map)
+--Engine callback function
+function TarroTownEast.Enter(map)
   local tango = CH("Tango")
-
   GROUND:Hide("MrSeed")
-
-  if OutEnter == 1 then
-    GROUND:TeleportTo(partner, 355, 401, Direction.Down, 0)
-  end
   if SV.Story.sect == 1 then
     if SV.Story.flag == 1 then
       TarroTownEast.TarroForrestFailed()
@@ -35,21 +32,10 @@ function TarroTownEast.Init(map)
   elseif SV.Story.sect == 2 then
     GROUND:TeleportTo(tango, 476, 279, Direction.UpLeft, 0)
     GROUND:Unhide("MrSeed")
-    if OutEnter == 4 then
-      GROUND:TeleportTo(azura, 244, 96, Direction.Down, 0)
-    end
   end
 
-  AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
-  partner.CollisionDisabled = true
-end
-
----TarroTownEast.Enter(map)
---Engine callback function
-function TarroTownEast.Enter(map)
-
+  EXPLCOMMON.AllyFollow(true, true)
   GAME:FadeIn(20)
-
 end
 
 ---TarroTownEast.Exit(map)

@@ -32,6 +32,7 @@
 ---| '"sweatdrop"'       # Singular Sweatdrop
 ---| '"happy"'
 ---| '"exclaim"'
+---| '"none"'
 
 ---@alias Effect
 ---| '"notice"'

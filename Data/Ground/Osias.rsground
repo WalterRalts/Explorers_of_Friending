@@ -68488,7 +68488,7 @@
 "triggerType": 0,
 "Collider": {
 "X": 304,
-"Y": 52,
+"Y": 32,
 "Width": 16,
 "Height": 16
 }
@@ -68516,7 +68516,7 @@
 "triggerType": 0,
 "Collider": {
 "X": 324,
-"Y": 36,
+"Y": 19,
 "Width": 16,
 "Height": 16
 }
@@ -68529,7 +68529,7 @@
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 304,
+"X": 305,
 "Y": 226,
 "Width": 16,
 "Height": 16
@@ -68543,8 +68543,50 @@
 "InteractOrder": 0,
 "triggerType": 0,
 "Collider": {
-"X": 343,
+"X": 344,
 "Y": 226,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "r3",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 305,
+"Y": 265,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "a2",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 323,
+"Y": 248,
+"Width": 16,
+"Height": 16
+}
+},
+{
+"EntName": "m1",
+"Direction": 0,
+"EntEnabled": true,
+"EntOrder": 0,
+"InteractOrder": 0,
+"triggerType": 0,
+"Collider": {
+"X": 286,
+"Y": 251,
 "Width": 16,
 "Height": 16
 }

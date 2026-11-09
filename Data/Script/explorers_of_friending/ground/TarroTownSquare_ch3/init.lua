@@ -5,7 +5,6 @@
 ]]--
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
-require 'explorers_of_friending.menu.buzzers_shop'
 
 -- Package name
 local TarroTownSquare_ch3 = {}

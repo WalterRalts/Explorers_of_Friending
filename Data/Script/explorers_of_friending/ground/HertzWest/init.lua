@@ -16,16 +16,13 @@ local HertzWest = {}
 ---HertzWest.Init(map)
 --Engine callback function
 function HertzWest.Init(map)
-  if West_visit then
     EXPLCOMMON.AllyFollow(true, true)
+  if SV.Story.sect < 4 then
+    Line.Short()
+    West_visit = true
   else
-    if SV.Story.sect < 4 then
-      Line.Short()
-      West_visit = true
-    else
-      Line.Interrupt()
-      SV.Story.sect = 5
-    end
+    Line.Interrupt()
+    SV.Story.sect = 5
   end
 end
 

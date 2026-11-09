@@ -57855,7 +57855,7 @@
 "AssetName": "SwampTown",
 "Music": "Muddy Valley.ogg",
 "EdgeView": 1,
-"NoSwitching": false,
+"NoSwitching": true,
 "ViewCenter": null,
 "ViewOffset": {
 "X": 0,

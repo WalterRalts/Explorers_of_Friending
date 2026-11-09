@@ -22,38 +22,31 @@ end
 --Engine callback function
 function TarroTownOutside.Init(map)
   GAME:SetCanSwitch(false)
-
-  if SV.Story.chap == 0 then
-    Outside.CloudWatch()
-  else
-    COMMON.RespawnAllies()
-  end
-  if SV.Story.chap < -1 then
-    GROUND:Hide("Puchi")
-    GROUND:Hide("Reeshi")
-    GROUND:Hide("Roll")
-    GROUND:Hide("Oink")
-  end
-  local partner = CH('Teammate1')
-  if OutEnter == 1 then
-    GROUND:TeleportTo(partner, 478, 379, Direction.Left, 0)
-  elseif OutEnter == 2 then
-    GROUND:TeleportTo(partner, 53, 379, Direction.Right, 0)
-  end
-  AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
-  partner.CollisionDisabled = true
-  if (wager_up ~= 0 and cup_total_points ~= 0) and (wager_up ~= nil and cup_total_points ~= nil) then
-    TarroTownOutside.Reward()
-  end
-  GAME:CutsceneMode(false)
 end
 
 ---TarroTownOutside.Enter(map)
 --Engine callback function
 function TarroTownOutside.Enter(map)
-    
-  GAME:FadeIn(20)
+  TASK:StartEntityTask(CH("Brasion"), Coro)
+  if SV.Story.chap == 0 then
+    Outside.CloudWatch()
+    EXPLCOMMON.AllyFollow(false, false)
+  elseif SV.Story.chap == -1 then
+    GAME:FadeIn(20)
+    EXPLCOMMON.AllyFollow(true, true)
+  elseif SV.Story.chap < -1 then
+    GAME:FadeIn(20)
+    GROUND:Hide("Puchi")
+    GROUND:Hide("Reeshi")
+    GROUND:Hide("Roll")
+    GROUND:Hide("Oink")
+    EXPLCOMMON.AllyFollow(true, true)
+  end
 
+  if (wager_up ~= 0 and cup_total_points ~= 0) and (wager_up ~= nil and cup_total_points ~= nil) then
+    TarroTownOutside.Reward()
+  end
+  GAME:CutsceneMode(false)
 end
 
 
@@ -66,9 +59,8 @@ end
 
 ---TarroTownOutside.Update(map)
 --Engine callback function
-function TarroTownOutside.Update(map)  
+function TarroTownOutside.Update(map)
   Partner()
-  TASK:StartEntityTask(CH("Brasion"), Coro)
 end
 
 ---TarroTownOutside.GameSave(map)
@@ -432,7 +424,7 @@ function TarroTownOutside.TTOutside_EExit_Touch(obj, activator)
     UI:WaitShowDialogue("Probably not the time...")
   else
     GAME:FadeOut(false, 20)
-    GAME:EnterGroundMap("TarroTownWest", "TarroTownWest_Enter")
+    GAME:EnterGroundMap("TarroTownWest", "EnterW")
   end
 end
 

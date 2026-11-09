@@ -1,6 +1,6 @@
 ---@meta
 ---@diagnostic disable: duplicate-set-field
----Functions to control things on the ground
+---Functions to control routines and coroutines
 ---@class TASK
 
 ---Helper function to make an entity run the specified task.
@@ -14,20 +14,13 @@ function TASK:StartEntityTask(ent, fn) end
 ---Helper function to force stop an entity's current task.
 ---@param ent GroundCH
 function TASK:StopEntityTask(ent) end
+
+---Makes an entity run a specified task, and waits for it to complete.
+---@param obj object The task to wait on.
+function TASK:WaitStartEntityTask(obj) end
+
+
 --[[
-WaitStartEntityTask
-TASK:WaitStartEntityTask(obj)
-
-Makes an entity run a specified task, and waits for it to complete.
-
-Parameters
-Name	Type	Description
-System.Object	System.Object	The task to wait on.
-Returns
-Type	Description
-NLua.LuaFunction	
-
-
 WaitEntityTask
 TASK.WaitEntityTask
 
@@ -73,22 +66,12 @@ Name	Type	Description
 System.Object	System.Object	The task to run in parallel
 Returns
 Type	Description
-RogueEssence.Coroutine	
-
-
-JoinCoroutines
-TASK:JoinCoroutines(coroTable)
-
-Waits for all specified coroutines to finish before continuing execution.
-Often used for coroutines created using TASK:BranchCoroutine()
-
-Parameters
-Name	Type	Description
-NLua.LuaTable	NLua.LuaTable	A table of coroutines to wait on.
-Returns
-Type	Description
-NLua.LuaFunction
+RogueEssence.Coroutine
 ]]
+---Waits for all specified coroutines to finish before continuing execution.
+---Often used for coroutines created using TASK:BranchCoroutine()
+---@param coroTable table A table of coroutines to wait on.
+function TASK:JoinCoroutines(coroTable) end
 
 ---Initializes any LuaFunctions found in the class.
 ---Automatically on lua initialization.

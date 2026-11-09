@@ -112,7 +112,6 @@ end
 function COMMON.RespawnAllies()
   GROUND:RefreshPlayer()
 
-
   local party = GAME:GetPlayerPartyTable()
   local playeridx = GAME:GetTeamLeaderIndex()
 

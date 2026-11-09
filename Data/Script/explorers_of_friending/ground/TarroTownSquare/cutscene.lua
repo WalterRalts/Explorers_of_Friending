@@ -401,4 +401,5 @@ function Square.AfterQuiz()
   GAME:CutsceneMode(false)
   AI:EnableCharacterAI(partner)
   Quiz[1] = false
+  Quiz[2] = 2
 end

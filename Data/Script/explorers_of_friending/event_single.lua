@@ -1463,6 +1463,8 @@ function SINGLE_CHAR_SCRIPT.DungeonTalker(owner, ownerChar, context, args) --Tha
 	if context.User == nil then return end
 	if context.User == GAME:GetPlayerPartyMember(0) then --this check is needed so that the script runs only once, otherwise it'll run for each entity in the map.
 		GAME:QueueLeaderEvent(function() SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args) end)
+	else
+		print("It is " .. context.User .. "'s turn.")
 	end
 end
 

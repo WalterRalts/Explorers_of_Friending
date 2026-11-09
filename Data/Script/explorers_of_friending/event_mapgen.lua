@@ -562,6 +562,9 @@ function FLOOR_GEN_SCRIPT.HertzDesert(map, args)
       if (x == 50 and y == 45) or (x == 45 and y == 50) or (x == 55 and y == 50) or (x == 50 and y == 55) then
         map:TrySetTile(point, map.RoomTerrain)
       end
+      if (x == 50 and y == 44) or (x == 44 and y == 50) or (x == 56 and y == 50) or (x == 50 and y == 56) then
+        map:TrySetTile(point, map.RoomTerrain)
+      end
     end
   end
 

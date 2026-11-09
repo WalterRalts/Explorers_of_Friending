@@ -19,8 +19,12 @@ function Osias.Init(map)
   if SV.Story.sect == 2 then
     Dreset.Guild()
   elseif SV.Story.sect == 3 then
-    Dreset.Exiting()
-    SV.Story.sect = 4
+    if OsKey then
+      Dreset.Exiting()
+      SV.Story.sect = 4
+    else
+      EXPLCOMMON.TeleportToMarker(CH("Emburst"), "Flared", Dir8.DownLeft)
+    end
   else
     GROUND:Unhide("Hertz Guildmaster")
     EXPLCOMMON.TeleportToMarker(CH("Emburst"), "Flared", Dir8.Left)
@@ -69,7 +73,7 @@ end
 -------------------------------
 
 function Osias.ExitN_Touch(obj, activator)
-  if SV.Story.sect == 2 then
+  if SV.Story.sect <= 3 then
     EXPLCOMMON.FadeEnterGround("OsiasLake", "EnterS")
   else
     UI:SetSpeaker(CH("Hertz Guildmaster"))

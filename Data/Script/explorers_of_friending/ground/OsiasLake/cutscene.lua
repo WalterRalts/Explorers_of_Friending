@@ -100,7 +100,9 @@ function Osiases.GoingIn()
     EXPLCOMMON.CharRealize("PLAYER")
     EXPLCOMMON.FaceEachother(rexio, hertz)
 
-    GAME:FadeOut(false, 50)
+    EXPLCOMMON.SetCharAndEmotion(hertz, "Happy")
+    UI:WaitShowDialogue("What are you kids doing here?!")
+    GAME:FadeOut(true, 50)
     GAME:MoveCamera(hertz.Position.X, hertz.Position.Y, 1, false)
 
     EXPLCOMMON.TeleportToMarker(azura, "dun1", Direction.DownRight)
@@ -166,6 +168,7 @@ function Osiases.GoingIn()
 
     local mon_id = RogueEssence.Dungeon.MonsterID("pawmot", 0, "normal", Gender.Female)
     local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 40, "", 0)
+    p.Nickname = "Hertz Guildmaster"
     _DATA.Save.ActiveTeam.Guests:Add(p)
     local talk_evt = RogueEssence.Dungeon.BattleScriptEvent("HertzInteract")
         p.ActionEvents:Add(talk_evt)

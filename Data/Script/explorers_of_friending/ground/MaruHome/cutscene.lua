@@ -525,14 +525,16 @@ end
 
 function Bluetails.MailTime()
   EXPLCOMMON.SetUpper()
+  local amazuru = CH("Amazuru")
+  local maru = CH("PLAYER")
+  local azura = CH("Teammate1")
+
   GROUND:TeleportTo(maru, 221, 240, Direction.Left, 0)
   GROUND:TeleportTo(azura, 186, 240, Direction.Right, 0)
   UI:WaitShowTitle("Prologue A-2:\nMysteries", 120)
   GAME:WaitFrames(30)
   UI:WaitHideTitle(120)
-
-  local amazuru = CH("Amazuru")
-  local maru = CH("PLAYER")
+  
   GAME:MoveCamera(229, 248, 1, false)
   GAME:FadeIn(20)
   GROUND:CharTurnToCharAnimated(amazuru, maru, 4)

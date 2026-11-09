@@ -273,7 +273,7 @@ function GuildFieldMain.DayCheck_Touch(obj, activator)
       UI:SetSpeaker(third)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("Uhh...")
-     EXPLCOMMON.FaceEachother(activator, third)
+      EXPLCOMMON.FaceEachother(activator, third)
 
       UI:SetSpeaker(leader)
       UI:SetSpeakerEmotion("Worried")

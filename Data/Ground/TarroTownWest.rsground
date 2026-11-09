@@ -1,5 +1,5 @@
 ﻿{
-"Version": "0.8.11.0",
+"Version": "0.8.12.0",
 "Object": {
 "$type": "RogueEssence.Ground.GroundMap, RogueEssence",
 "TexSize": 3,
@@ -55100,7 +55100,7 @@
 "triggerType": 1,
 "<AI>k__BackingField": null,
 "Data": {
-"Nickname": "Sir Sproutious",
+"Nickname": "Sire Sproutious",
 "OriginalUUID": "",
 "OriginalTeam": "",
 "BaseForm": {
@@ -55810,7 +55810,7 @@
 ],
 "Markers": [
 {
-"EntName": "TarroTownWest_Enter",
+"EntName": "EnterW",
 "Direction": 2,
 "EntEnabled": true,
 "EntOrder": 0,

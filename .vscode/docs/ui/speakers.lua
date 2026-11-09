@@ -72,17 +72,10 @@ function UI:ResetSpeakerLoc() end
 ---@param reverse? boolean Faces right if false or nil, left if true.
 function UI:SetSpeakerEmotion(emo, reverse) end
 
+---Makes the text automatically finish when it shows up.
+---@param autoFinish boolean Auto-finishes text if true.
+function UI:SetAutoFinish(autoFinish) end
 --[[
-SetAutoFinish
-UI:SetAutoFinish(autoFinish)
-
-Makes the text automatically finish when it shows up.
-
-Parameters
-Name	Type	Description
-System.Boolean	System.Boolean	Auto-finishes text if true.
-
-
 SetSe
 UI:SetSe(newSe, speakTime)
 

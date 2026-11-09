@@ -12,116 +12,159 @@ function GAME:SetCharacterNickname(chara, name) end
 ---@param chara GroundID The character to get the nickname of
 ---@return string
 function GAME:GetCharacterNickname(chara) end
+
+---Sets the name of the player's team
+---@param teamname string The new team name
+function GAME:SetTeamName(teamname) end
+
+---Gets the name of the player's team
+---@return string 
+function GAME:GetTeamName() end
+
+---Checks if the character can relearn any skills.
+---@param character GroundCH | DungeonCH The character to check
+function GAME:CanRelearn(character) end
+
+---Checks if the character can forget any skills.
+---@param character GroundCH | DungeonCH The character to check
+---@return boolean
+function GAME:CanForget(character) end
+
+---Checks if the character can learn any skills.
+---@param character GroundCH | DungeonCH The character to check
+---@return boolean
+function GAME:CanLearn(character) end
+
+---Checks the levels gained by a character and prompts to learn all skills along the levels.
+---Waits until all skills have been accepted or declined before continuing.
+---@param chara DungeonCH
+---@param oldLevel integer
+---@return function
+function GAME:CheckLevelSkills(chara, oldLevel) end
 --[[
-CanRelearn
-Checks if the character can relearn any skills. Returns true if they can, false if they can't.Argument order is GAME:CanRelearn(chara).
-
-CanForget
-Checks if the character can forget any skills. Argument order is GAME:CanForget(chara).
-
-Name	Type	Technical Type	Purpose
-chara	Dungeon Character	RogueEssence.Dungeon.Character	The character to check
-CanLearn
-Checks if the character can learn any skills. Argument order is GAME:CanLearn(chara).
-
-Name	Type	Technical Type	Purpose
-chara	Dungeon Character	RogueEssence.Dungeon.Character	The character to check
-CheckLevelSkills
-Checks the levels gained by a character and prompts to learn all skills along the levels. Waits until all skills have been accepted or declined before continuing. Argument order is GAME:CheckLevelSkills(chara, pastLevel).
-
-Arguments
-Name	Type	Technical Type	Purpose
-chara	Dungeon Character	RogueEssence.Dungeon.Character	The character to check
-Name	Type	Technical Type	Purpose
-chara	(Undocumented)	(Undocumented)	The character to prompt for learning.
-pastLevel	Integer	System.Int32	The level that the character leveled up from.
-rom.
-
-Example
-
-GAME:CheckLevelSkills(player, 5)
-
 TryLearnSkill
-Attempts to give a new skill to the specified character, prompting to replace an old one if they are full. Waits until all the skill has been accepted or declined before continuing. Argument order is GAME:TryLearnSkill(chara, skill).
+GAME:TryLearnSkill(chara, skill)
 
-Arguments
-Name	Type	Technical Type	Purpose
-chara	Dungeon Character	RogueEssence.Dungeon.Character	The character to learn the skill
-skill	String	System.String	The skill to learn
-Example
+Attempts to give a new skill to the specified character, prompting to replace an old one if they are full.
+Waits until the skill has been accepted or declined before continuing.
 
-GAME:TryLearnSkill(player, "thunder")
+Parameters
+Name	Type	Description
+RogueEssence.Dungeon.Character	RogueEssence.Dungeon.Character	The character to learn the skill
+System.String	System.String	The skill to learn
+Returns
+Type	Description
+NLua.LuaFunction	
+
 
 LearnSkill
-Gives a new skill to a specified character. Fails if the character's skills are full. Argument order is GAME:LearnSkill(chara, skill).
+GAME:LearnSkill(chara, skill)
+
+Gives a new skill to a specified character.
+Fails if the character's skills are full.
+
+Parameters
+Name	Type	Description
+RogueEssence.Dungeon.Character	RogueEssence.Dungeon.Character	The character to learn the skill
+System.String	System.String	The skill to learn
 
 
-
-Arguments
-Name	Type	Technical Type	Purpose
-chara	Dungeon Character	RogueEssence.Dungeon.Character	The character to learn the skill
-skill	String	System.String	The skill to learn
 ForgetSkill
-Removes a skill from the specified character. Argument order is GAME:ForgetSkill(chara, slot).
+GAME:ForgetSkill(chara, slot)
 
-Arguments
-Name	Type	Technical Type	Purpose
-chara	Dungeon Character	RogueEssence.Dungeon.Character	The character to forget the skill
-Slot	Integer	System.Int32	The slot of the skill to forget
+Removed a skill from the specified character.
+
+Parameters
+Name	Type	Description
+RogueEssence.Dungeon.Character	RogueEssence.Dungeon.Character	The character to forget the skill
+System.Int32	System.Int32	The slot of the skill to forget
+
+
 LockSkill
-Makes a skill impossible to forget or replace for the specified character. Note that this only affects normal gameplay. Scripts can still freely get rid of the skill. Argument order is GAME:LockSkill(chara, slot).
+GAME:LockSkill(chara, slot)
 
-Arguments
-Name	Type	Technical Type	Purpose
-chara	Dungeon Character	RogueEssence.Dungeon.Character	The character to lock the skill of
-Slot	Integer	System.Int32	The slot of the skill to lock
+Makes a skill impossible to forget or replace for the specified character.
+Note that this only affects normal gameplay. Scripts can still freely get rid of the skill.
+
+Parameters
+Name	Type	Description
+RogueEssence.Dungeon.Character	RogueEssence.Dungeon.Character	The character to lock the skill
+System.Int32	System.Int32	The slot of the skill to lock
+
+
 UnlockSkill
-Unlocks a previously locked skill for the specified character, making it possible to be forgotten or replaced during normal gameplay. Argument order is GAME:UnlockSkill(chara, slot).
+GAME:UnlockSkill(chara, slot)
 
-Arguments
-Name	Type	Technical Type	Purpose
-chara	Dungeon Character	RogueEssence.Dungeon.Character	The character to unlock the skill of
-Slot	Integer	System.Int32	The slot of the skill to unlock
+Unlocks a previously locked skill for the specified character, making it possible to be forgotten or replaced during normal gameplay.
+
+Parameters
+Name	Type	Description
+RogueEssence.Dungeon.Character	RogueEssence.Dungeon.Character	The character to unlock the skill
+System.Int32	System.Int32	The slot of the skill to unlock
+
+
 SetCharacterSkill
-Gives a new skill to a specified character, replacing a specifically chosen slot. Argument order is GAME:SetCharacterSkill(chara, skillID, slot).
+GAME:SetCharacterSkill(character, skillId, slot, enabled)
 
-Arguments
-Name	Type	Technical Type	Purpose
-chara	Dungeon Character	RogueEssence.Dungeon.Character	The character to learn the skill
-skillID	String	System.String	The skill to learn
-slot	Integer	System.Int32	The slot to replace
+Gives a new skill to a specified character, replacing a specifically chosen slot.
+
+Parameters
+Name	Type	Description
+RogueEssence.Dungeon.Character	RogueEssence.Dungeon.Character	The character to learn the skill
+System.String	System.String	The skill to learn
+System.Int32	System.Int32	The slot to replace
+System.Boolean	System.Boolean	
+
+
 GetCharacterSkill
-Gets the skill from a specified character and specified slot. Argument order is GAME:GetCharacterSkill(chara, slot).
+GAME:GetCharacterSkill(chara, slot)
 
-Arguments
-Name	Type	Technical Type	Purpose
-chara	Dungeon Character	RogueEssence.Dungeon.Character	The character to get the skill from.
-slot	Integer	System.Int32	The slot to get the skill from.
+Gets the skill from a specified character and specified slot.
+
+Parameters
+Name	Type	Description
+RogueEssence.Dungeon.Character	RogueEssence.Dungeon.Character	The character to get the skill from.
+System.Int32	System.Int32	The slot to get the skill from.
 Returns
-The ID of the skill in the slot
+Type	Description
+System.String	The ID of the skill in the slot
+
 
 CanPromote
-Checks if the character can be promoted to a new class. Argument order is GAME:CanPromote(chara).
+GAME:CanPromote(character)
 
-Arguments
-Name	Type	Technical Type	Purpose
-chara	Dungeon Character	RogueEssence.Dungeon.Character	The character to check
+Checks if the character can be promoted to a new class.
+
+Parameters
+Name	Type	Description
+RogueEssence.Dungeon.Character	RogueEssence.Dungeon.Character	The character to check
 Returns
-True if the character can be promoted, false otherwise.
+Type	Description
+System.Boolean	True if the character can be promoted, false otherwise.
+
 
 GetAvailablePromotions
-Gets a list of possible classes that the character can promote to. Returns a lua table of PromoteBranch objects.
+GAME:GetAvailablePromotions(character, bypassItem)
 
-Arguments
-Name	Type	Technical Type	Purpose
-chara	Dungeon Character	RogueEssence.Dungeon.Character	The character to check
-bypassItem	String	System.String	An exception item that can bypass checks for promotion, for "evolution item"
+Gets a list of possible classes that the character can prmote to.
+
+Parameters
+Name	Type	Description
+RogueEssence.Dungeon.Character	RogueEssence.Dungeon.Character	The character to check
+System.String	System.String	An exception item that can bypass checks for promotion
+Returns
+Type	Description
+NLua.LuaTable	A lua table of PromoteBranch objects
+
+
 PromoteCharacter
-Promotes a character to a new class.
+GAME:PromoteCharacter(character, branch, bypassItem)
 
-Arguments
-Name	Type	Technical Type	Purpose
-chara	Dungeon Character	RogueEssence.Dungeon.Character	The character to check
-branch	Promote Branch	RogueEssence.Data.PromoteBranch	The branch of promotion to use.
-bypassItem	String	System.String	An exception item that can bypass checks for promotion, for "evolution item"
+Promotes a character ot a new class.
+
+Parameters
+Name	Type	Description
+RogueEssence.Dungeon.Character	RogueEssence.Dungeon.Character	The character to promote
+RogueEssence.Data.PromoteBranch	RogueEssence.Data.PromoteBranch	The PromoteBranch to promote with
+System.String	System.String	An exception item that can bypass checks for promotion
 ]]

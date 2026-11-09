@@ -4,6 +4,7 @@ Once the newest area is done, there will be no updates to the version number ing
 GAME
 
 - Added GlitzyBunny to the dev team
+- Fixed an issue concerning warps to later chapters
 
 TOWN SPECIFIC
 
@@ -12,6 +13,7 @@ TARRO
 - New art has been made for the outskirts of Tarro Town (GlitzyBunny)
 - Fixed an issue where Cup2 moved to position 3 regardless of anything in the cup shuffle game.
 - Buzzer's store is now open.
++ Map consistency issues fixed
 
 ENTOH
 
@@ -32,7 +34,7 @@ DUNGEONS
 --- TARRO
 
 -- *Tarro Forest
-There should be no more major changes to the main dungeon here, so it will be marked with stars.
+There should be no more major changes to the main dungeon here, so it will be marked with a star.
 
 - EXP rate: 35 -> 50
 
@@ -40,7 +42,6 @@ There should be no more major changes to the main dungeon here, so it will be ma
 
 - Phantump has a lower chance of spawning and will no longer slow wander.
 - Kricketot and Deerling will now spawn.
-- 
 
 -- Dark Tarro
 
@@ -68,6 +69,9 @@ EXP Gain: 100% -> 25%
 
 -- Osias Ruins
 
+- Fixed a rare issue with the starting room not having any exits.
+- Reduced the maximum level of most entities by 5.
+
 ============================
 
 ITEMS
@@ -75,3 +79,6 @@ ITEMS
 ============================
 
 TECHNICAL (may contain spoilers)
+
+Renamed multiple markers for simpler code transitions.
+Move most Init code to Enter

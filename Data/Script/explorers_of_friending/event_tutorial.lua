@@ -388,5 +388,19 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 			UI:WaitShowDialogue("Dungeons act differently nowadays,[pause=45] and some of them will put you in the same spot a lot.")
 			UI:WaitShowDialogue("Not too big of an issue here, but you never know what other dungeons'll do.")
 		end
+	elseif area_name == "Osias Ruins" then
+		local leader = GAME:GetPlayerPartyMember(0)
+		local second = GAME:GetPlayerPartyMember(1)
+		UI:SetSpeaker(leader)
+		UI:SetSpeakerEmotion("Surprised")
+		UI:WaitShowDialogue("Mhm, time to use our tactics, hm.")
+
+		UI:SetSpeaker(second)
+		UI:SetSpeakerEmotion("Happy")
+		UI:WaitShowDialogue("Hm, of course, on my signal, mhm!")
+
+		UI:ResetSpeaker()
+		UI:WaitShowDialogue("When two Pokemon are adjacent to eachother and share a move, hold F and select that move to make it extra powerful!")
+		UI:WaitShowDialogue("It costs a bit of belly to use, though!")
 	end
 end

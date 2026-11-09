@@ -16,8 +16,13 @@ local MaruHome = {}
 ---MaruHome.Init(map)
 --Engine callback function
 function MaruHome.Init(map)
+  
+end
+
+---MaruHome.Enter(map)
+--Engine callback function
+function MaruHome.Enter(map)
   GROUND:Hide("NotApple")
-  MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
   local partner = CH('Teammate1')
   partner.CollisionDisabled = true
@@ -42,8 +47,7 @@ function MaruHome.Init(map)
         Bluetails.AfterMailTime()
       end
       COMMON.CreateWalkArea("Amazuru", 195, 225, 72, 72)
-    end
-    if SV.Story.sect == 1 then
+    elseif SV.Story.sect == 1 then
       GROUND:Hide("Arama")
       GROUND:Hide("Amazuru")
       if mail_read == 2 then
@@ -60,12 +64,6 @@ function MaruHome.Init(map)
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   GAME:CutsceneMode(false)
   GAME:FadeIn(20)
-end
-
----MaruHome.Enter(map)
---Engine callback function
-function MaruHome.Enter(map)
-
 end
 
 ---MaruHome.Exit(map)

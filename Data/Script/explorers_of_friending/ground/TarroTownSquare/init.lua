@@ -6,7 +6,6 @@
 -- Commonly included lua functions and data
 require 'explorers_of_friending.common'
 require 'explorers_of_friending.ground.TarroTownSquare.cutscene'
-require 'explorers_of_friending.menu.buzzers_shop'
 
 -- Package name
 local TarroTownSquare = {}
@@ -17,8 +16,17 @@ local TarroTownSquare = {}
 ---TarroTownSquare.Init(map)
 --Engine callback function
 function TarroTownSquare.Init(map)
+  if SV.Story.sect == 0 then
+    Quiz = {false, 0}
+    Square.FightFightFight()
+  elseif Quiz == nil then
+    Quiz = {true, -1}
+  end
+end
 
-  MapStrings = STRINGS.MapStrings
+---TarroTownSquare.Enter(map)
+--Engine callback function
+function TarroTownSquare.Enter(map)
   COMMON.RespawnAllies()
   local getic = CH('Getic')
   local gekis = CH("Gekis")
@@ -29,14 +37,7 @@ function TarroTownSquare.Init(map)
   local lax = CH("Lax")
   GROUND:CharSetAnim(lax, "Sleep", true)
   partner.CollisionDisabled = true
-  
-  if SV.Story.sect == 0 then
-    Quiz = {false, 0}
-    Square.FightFightFight()
-  elseif Quiz == nil then
-    Quiz = {true, -1}
-  end
-  
+
   if Quiz[2] == 1 and OutEnter == 1 then
     GROUND:TeleportTo(partner, 504, 378, Direction.Left, 0)
   end
@@ -46,32 +47,28 @@ function TarroTownSquare.Init(map)
   if OutEnter == 4 then
     GROUND:TeleportTo(partner, 405, 230, Direction.Down, 0)
   end
-  if SV.Story.sect == 2 and Quiz[2] == 2 then
+  if SV.Story.sect == 2 then
+    if Quiz[2] == 2 then
+      if SV.tarro_tree_hollows.tree_entered == true then
+        GROUND:Hide("Senna")
+        GROUND:Hide("Puchi")
+        GROUND:Hide("Ziggy")
+      end
+    end
     ziggy.CollisionDisabled = true
     if SV.tarro_tree_hollows.tree_entered == false and Quiz[1] == true then
       Square.AfterQuiz()
+      GROUND:Hide("Ziggy")
     end
     SOUND:PlayBGM("None", false, 0)
     GROUND:TeleportTo(munch, 455, 210, Direction.Down, 0)
     GROUND:TeleportTo(lax, 390, 210, Direction.Left, 0)
-    GROUND:Hide("Ziggy")
-    if SV.tarro_tree_hollows.tree_entered == true then
-      GROUND:Hide("Senna")
-      GROUND:Hide("Puchi")
-    end
   end
   if plus_minus ~= nil then
     GROUND:TeleportTo(getic, 1685, 220, Direction.Down, 0)
   end
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
-end
-
----TarroTownSquare.Enter(map)
---Engine callback function
-function TarroTownSquare.Enter(map)
-  
   GAME:FadeIn(20)
-
 end
 
 ---TarroTownSquare.Exit(map)
@@ -177,7 +174,18 @@ function TarroTownSquare.BuzzStore_Action(obj, activator)
   UI:WaitForChoice()
   store_state = UI:ChoiceResult()
 
+  local function refresh_shop()
+    for i = 1, #SV.buzzers_store, 1 do
+      if SV.buzzers_store[i].count > 0 then
+        choices[i] = {Item = RogueEssence.Dungeon.InvItem(SV.buzzers_store[i].item, false, 0), Price = SV.buzzers_store[i].price}
+        print(choices[i].Item, choices[i].Price)
+        PrintInfo("The number of " .. SV.buzzers_store[i].item .. " is " .. SV.buzzers_store[i].count)
+      end
+    end
+  end
+
   local function continue_shop()
+    refresh_shop()
     UI:SetSpeaker(CH("Buzzer"))
     UI:BeginChoiceMenu("Anything else?", {"Buy", "Info", "Exit"}, 1, 3)
     UI:WaitForChoice()
@@ -193,13 +201,15 @@ function TarroTownSquare.BuzzStore_Action(obj, activator)
   end
 
   while store_state > -1 do
-    if store_state == 1 then
-      for i = 1, #SV.buzzers_store, 1 do
-        if SV.buzzers_store[i].count ~= 0 then
-          choices[i] = {Item = RogueEssence.Dungeon.InvItem(SV.buzzers_store[i].item, false, 0), Price = SV.buzzers_store[i].price}
-          print(choices[i].Item, choices[i].Price)
-        end
+    refresh_shop()
+    for i = 1, #SV.buzzers_store, 1 do
+      if SV.buzzers_store[i].count > 0 then
+        choices[i] = {Item = RogueEssence.Dungeon.InvItem(SV.buzzers_store[i].item, false, 0), Price = SV.buzzers_store[i].price}
+        print(choices[i].Item, choices[i].Price)
+        PrintInfo("The number of " .. SV.buzzers_store[i].item .. " is " .. SV.buzzers_store[i].count)
       end
+    end
+    if store_state == 1 then
       if #choices > 0 then
         local bag_count = GAME:GetPlayerBagCount() + GAME:GetPlayerEquippedCount()
         local bag_cap = GAME:GetPlayerBagLimit()
@@ -222,7 +232,7 @@ function TarroTownSquare.BuzzStore_Action(obj, activator)
             UI:SetSpeakerEmotion("Normal")
             UI:WaitShowDialogue("You don't have enough for that, buzz...")
           elseif result[1] == 1 then
-            
+
             UI:SetSpeakerEmotion("Sigh")
             UI:WaitShowDialogue("Oh, thoze thingz.[pause=45][emote=Stunned] Usually I put zome in my bag thinking it'z a different zeed, but...")
             UI:SetSpeakerEmotion("Happy")
@@ -235,7 +245,7 @@ function TarroTownSquare.BuzzStore_Action(obj, activator)
 
               UI:SetSpeakerEmotion("Happy")
               UI:WaitShowDialogue("Heh, have fun with it, I guezz...!")
-              
+
               store_state = continue_shop()
             else
               UI:SetSpeakerEmotion("Happy")
@@ -485,12 +495,12 @@ function TarroTownSquare.Puchi_Action()
         GROUND:MoveToPosition(azura, 540, 366, false, 2)
         GROUND:CharTurnToCharAnimated(maru, puchi, 4)
         GROUND:CharTurnToCharAnimated(azura, puchi, 4)
-        end)	
+        end)
       local coro02 = TASK:BranchCoroutine(function()
         UI:SetSpeaker(puchi)
         UI:SetSpeakerEmotion("Pain")
         UI:WaitShowDialogue("[speed=0.6]Ugh...[pause=35] I'm so tired...")
-    
+
         UI:SetSpeaker(senna)
         UI:SetSpeakerEmotion("Worried")
         UI:WaitShowDialogue("Why did you come out here...?")
@@ -503,66 +513,66 @@ function TarroTownSquare.Puchi_Action()
       GROUND:CharTurnToCharAnimated(puchi, ziggy, 2)
       UI:SetSpeakerEmotion("Determined")
       UI:WaitShowDialogue("[speed=0.6]...")
-  
+
       UI:SetSpeaker(senna)
       GROUND:CharTurnToCharAnimated(senna, ziggy, 2)
       UI:SetSpeakerEmotion("Sigh")
       UI:WaitShowDialogue("Figured.")
-  
+
       UI:SetSpeaker(ziggy)
       UI:SetSpeakerEmotion("Stunned")
       UI:WaitShowDialogue("[speed=0.6]Well...[pause=15] u-[pause=10]uh...[emote=Normal] h[speed=1.0]ear me out.")
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("If one of us got zapped,[emote=Worried][pause=20] then what are we gonna do?")
-      
+
       UI:SetSpeaker(senna)
       GROUND:CharTurnToCharAnimated(senna, puchi, 2)
       UI:SetSpeakerEmotion("Stunned")
       UI:WaitShowDialogue("...th-[pause=15]that is a good point...")
-  
+
       UI:SetSpeaker(puchi)
       UI:SetSpeakerEmotion("Worried")
       UI:WaitShowDialogue("[speed=0.6]I should've stayed home...")
-  
+
       UI:SetSpeaker(senna)
       GROUND:CharTurnToCharAnimated(puchi, senna, 2)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("Not like we're stopping you.")
-  
+
       UI:SetSpeaker(puchi)
       UI:SetSpeakerEmotion("Worried")
       UI:WaitShowTimedDialogue("[speed=0.6]You're right... I'll jus")
-  
+
       GROUND:CharTurnToCharAnimated(senna, ziggy, 7)
       GROUND:CharTurnToCharAnimated(puchi, ziggy, 7)
       UI:SetSpeaker(ziggy)
       UI:SetSpeakerEmotion("Shouting")
       UI:WaitShowDialogue("[speed=1.5]Waaaaaaaaaaait!")
-  
+
       GROUND:CharTurnToCharAnimated(ziggy, maru, 7)
       GROUND:CharTurnToCharAnimated(senna, maru, 7)
       UI:SetSpeaker(ziggy)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("Fwends!")
-  
+
       GROUND:CharTurnToCharAnimated(puchi, maru, 2)
       UI:SetSpeaker(senna)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("Welcome to town, Maru, Azura!")
-  
+
       UI:SetSpeaker(ziggy)
       UI:SetSpeakerEmotion("Inspired")
       UI:WaitShowDialogue("Gasp,[pause=15] that means it's time for [color=#FFFE11]the thing[color]!")
-  
+
       UI:SetSpeaker(senna)
       UI:SetSpeakerEmotion("Stunned")
       GROUND:CharTurnToCharAnimated(senna, ziggy, 4)
       UI:WaitShowDialogue("[speed=0.6]...[color=#FFFE11]the thing[color]?")
-  
+
       UI:SetSpeaker(puchi)
       UI:SetSpeakerEmotion("Pain")
       UI:WaitShowDialogue("[speed=0.5]No... I'm too tired for the [color=#FFFE11]Friend Circle[color]...")
-  
+
       UI:SetSpeaker(ziggy)
       UI:SetSpeakerEmotion("Normal")
       GAME:MoveCamera(480, 364, 1, false)
@@ -573,9 +583,9 @@ function TarroTownSquare.Puchi_Action()
         GROUND:CharAnimateTurn(puchi, Direction.Down, 2, true)
        EXPLCOMMON.FaceEachother(maru, azura)
         TASK:JoinCoroutines({coro1, coro2})
-        end)	
+        end)
       local coro3 = TASK:BranchCoroutine(function()
-        GAME:WaitFrames(90)        
+        GAME:WaitFrames(90)
         UI:SetSpeaker(ziggy)
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("Alrighty, then![pause=50] Report in with what ya did today!")
@@ -584,23 +594,23 @@ function TarroTownSquare.Puchi_Action()
         UI:SetSpeaker(puchi)
         UI:SetSpeakerEmotion("Determined")
         UI:WaitShowDialogue("Sleeping...")
-    
+
         GROUND:CharTurnToCharAnimated(ziggy, senna, 4)
         UI:SetSpeaker(senna)
         UI:SetSpeakerEmotion("Pain")
         UI:WaitShowDialogue("Hiding...")
         end)
       TASK:JoinCoroutines({coro3, coro4})
-  
+
      EXPLCOMMON.CharHop("Teammate1")
       UI:SetSpeaker(azura)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("Exploring!")
-  
+
       UI:SetSpeaker(maru)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("Ye.")
-  
+
      EXPLCOMMON.CharExclaim("Ziggy")
      EXPLCOMMON.FaceEachother(ziggy, maru)
       UI:SetSpeaker(ziggy)
@@ -608,65 +618,65 @@ function TarroTownSquare.Puchi_Action()
       UI:WaitShowDialogue("You guys went exploring!?")
       UI:SetSpeakerEmotion("Inspired")
       UI:WaitShowDialogue("You HAVE to invite me next time.[pause=50] I've got this!")
-  
+
       UI:SetSpeaker(senna)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("A-[pause=20]as long as I'm not dragged along.")
-  
+
      EXPLCOMMON.FaceEachother(puchi, maru)
       UI:SetSpeaker(puchi)
       UI:SetSpeakerEmotion("Worried")
       UI:WaitShowDialogue("Where did you two explore?")
-  
+
       UI:SetSpeaker(maru)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("Tarro Forest. Had to get a Big Apple.")
-  
+
       UI:SetSpeaker(puchi)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("Oh, in East Tarro. [pause=30]Was it a nice stroll, then?")
-  
+
       UI:SetSpeaker(maru)
       UI:SetSpeakerEmotion("Stunned")
       UI:WaitShowDialogue("...is it that easy to go through.")
-  
+
       UI:SetSpeaker(senna)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("I'm sure it still counts as exploration.")
-  
+
       UI:SetSpeaker(azura)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("Does exploring town count, too?")
-  
+
      EXPLCOMMON.FaceEachother(puchi, azura)
       UI:SetSpeaker(puchi)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("You've...[pause=35] n[emote=Worried]ever been here?")
-  
+
       UI:SetSpeaker(maru)
       UI:SetSpeakerEmotion("Stunned")
       UI:WaitShowDialogue("Only when mom and dad get food.")
-  
+
       UI:SetSpeaker(ziggy)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("[speed=1.4]You guys have got to see the inside of the [color=#01FE10]Big Tree[color]![pause=35] A[emote=Joyous]ll of the newest new is happening in there!")
-  
+
       UI:SetSpeaker(senna)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("[speed=0.7] Lots of hiding spots in there, too.[pause=30] Good for having some time to yourself.")
-  
+
       UI:SetSpeaker(maru)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowTimedDialogue("Sounds fun, we should g")
-  
+
       UI:SetSpeaker(ziggy)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("[speed=1.4]Oh, oh, oh, oh![pause=25] [speed=0.9]What about a quiz first![pause=30] To see if you've really explored!")
-  
+
       UI:SetSpeaker(senna)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("Oooh, like a test!")
-  
+
       UI:SetSpeaker(ziggy)
       UI:SetSpeakerEmotion("Normal")
       UI:WaitShowDialogue("Let us know when you're ready ready ready!")
@@ -691,15 +701,15 @@ function TarroTownSquare.Puchi_Action()
           UI:SetSpeaker(maru)
           UI:SetSpeakerEmotion("Happy")
           UI:WaitShowDialogue("Sure.")
-  
+
           UI:SetSpeaker(ziggy)
           UI:SetSpeakerEmotion("Joyous")
           UI:WaitShowDialogue("Okay! Quiz time!")
-  
+
           UI:SetSpeaker(puchi)
           UI:SetSpeakerEmotion("Happy")
           UI:WaitShowDialogue("Sleep time...")
-  
+
           UI:SetSpeaker(ziggy)
           UI:SetSpeakerEmotion("Angry")
           UI:WaitShowDialogue("Nuh-uh.")
@@ -709,10 +719,10 @@ function TarroTownSquare.Puchi_Action()
           UI:SetSpeaker(ziggy)
           UI:SetSpeakerEmotion("Normal")
           UI:WaitShowDialogue("Oh, take your time, then.")
-  
+
           UI:SetSpeaker(senna)
           UI:SetSpeakerEmotion("Happy")
-          UI:WaitShowDialogue("We'll be here waiting.") 
+          UI:WaitShowDialogue("We'll be here waiting.")
       end
     end
   else
@@ -841,11 +851,13 @@ function TarroTownSquare.Minus_Action()
 
         UI:SetSpeaker(minus)
         UI:SetSpeakerEmotion("Teary-Eyed")
-        UI:WaitShowDialogue("Azi... why?");
+        UI:WaitShowDialogue("Azi... why?")
 
         UI:SetSpeaker(azura)
         UI:SetSpeakerEmotion("Happy")
         UI:WaitShowDialogue("We're already blue! I pick red because red is different and cool!")
+        UI:SetSpeakerEmotion("Joyous")
+        UI:WaitShowDialogue("And apples are red and cool!")
 
         UI:SetSpeaker(plus)
         UI:SetSpeakerEmotion("Stunned")
@@ -899,7 +911,7 @@ function TarroTownSquare.Minus_Action()
         UI:SetSpeaker(maru)
         UI:SetSpeakerEmotion("Stunned")
         UI:WaitShowDialogue("I dunno,[pause=25] do I have to answer this?")
-        
+
         UI:SetSpeaker(minus)
         UI:SetSpeakerEmotion("Angry")
         UI:WaitShowDialogue("Yes!")
@@ -913,7 +925,7 @@ function TarroTownSquare.Minus_Action()
         UI:WaitShowDialogue("Ugh,[pause=20] fine,[emote=Worried] it's...")
         goto retry_question
     end
-    
+
     UI:SetSpeaker(maru)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Glad that's over.")
@@ -931,7 +943,7 @@ function TarroTownSquare.Minus_Action()
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("If there were, like[pause=20], a fork in the road[pause=0], would you go left or right?")
     UI:WaitShowDialogue("I think left is best.")
-    
+
     UI:SetSpeaker(plus)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("I would go right.")
@@ -943,7 +955,7 @@ function TarroTownSquare.Minus_Action()
     UI:SetSpeaker(minus)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("Why would you go right?!")
-    
+
     UI:SetSpeaker(plus)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("Why would you go left?!")
@@ -984,7 +996,7 @@ function TarroTownSquare.Minus_Action()
     UI:SetSpeaker(getic)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowTimedDialogue("[speed=0.4]Stooooooop!!", 40)
-    
+
     GROUND:CharSetAnim(minus, "None", true)
     GROUND:CharSetAnim(plus, "None", true)
     UI:SetSpeaker(minus)
@@ -1058,7 +1070,7 @@ function TarroTownSquare.Teddums_Action(obj, activator)
       UI:SetSpeakerEmotion("Happy")
       UI:WaitShowDialogue("Just gotta ask all nice and they'll give you the most delicious honey.")
     end
-   
+
     if Quiz[1] == true then
         UI:SetSpeaker(azura)
         UI:SetSpeakerEmotion("Worried")
@@ -1106,7 +1118,7 @@ function TarroTownSquare.Gepii_Action(obj, activator)
         GROUND:CharTurnToCharAnimated(gepii, maru, 3)
         UI:WaitShowDialogue("...oh, hey![pause=45] Mars and Azure!")
         UI:WaitShowDialogue("You guys are a great help in stopping those two!")
-        
+
         GROUND:CharTurnToCharAnimated(gepii, happy, 3)
         UI:SetSpeaker(happy)
         UI:SetSpeakerEmotion("Sigh")
@@ -1140,7 +1152,7 @@ function TarroTownSquare.Gepii_Action(obj, activator)
         UI:SetSpeaker(gepii)
         UI:SetSpeakerEmotion("Normal")
         UI:WaitShowDialogue("Does the hospital need extra funds?")
-        
+
         GROUND:CharTurnToCharAnimated(doc, happy, 3)
         UI:SetSpeaker(happy)
         UI:SetSpeakerEmotion("Normal")
@@ -1158,7 +1170,7 @@ function TarroTownSquare.Gepii_Action(obj, activator)
         UI:SetSpeaker(gepii)
         UI:SetSpeakerEmotion("Inspired")
         UI:WaitShowDialogue("I love this town.[pause=35] The job my dad has lets us live in luxury.")
-        
+
         EXPLCOMMON.CharSweatdrop("Happy")
         UI:SetSpeaker(happy)
         UI:SetSpeakerEmotion("Stunned")
@@ -1168,7 +1180,7 @@ function TarroTownSquare.Gepii_Action(obj, activator)
         UI:SetSpeakerEmotion("Worried")
         UI:WaitShowDialogue("Huh?[pause=35] There's no reason to be...")
     end
-    
+
 end
 
 function TarroTownSquare.Happy_Action(obj, activator)

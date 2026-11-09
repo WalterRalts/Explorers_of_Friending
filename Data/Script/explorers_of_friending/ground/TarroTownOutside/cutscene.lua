@@ -6,11 +6,9 @@ function Outside.CloudWatch()
       UI:ChoiceMenuYesNo("The base game of PMD:Origins plays differently from the original PMD games. Would you like to skip tutorials?", true)
       UI:WaitForChoice()
       SV.TutorialSkip = UI:ChoiceResult()
-      if SV.TutorialSkip == 1 then
-            SV.TutorialSkip = true
+      if SV.TutorialSkip then
             UI:WaitShowDialogue("Most tutorials will be skipped.")
       else
-            SV.TutorialSkip = false
             UI:WaitShowDialogue("Tutorials will remain.")
       end
       if GAME:GetPlayerPartyCount() ~= 2 then
@@ -68,7 +66,7 @@ function Outside.CloudWatch()
       UI:WaitShowVoiceOver("\"Will our world go back into turmoil again?\"", -1)
       UI:WaitShowVoiceOver("\"Can't we defend ourselves?\"", -1)
       UI:WaitShowVoiceOver("No one was there to answer.\n[pause=20]But there didn't seem to be a reason for one.", -1)
-      UI:WaitShowVoiceOver("No chaos to solve,[pause=30] growth continued,[pause=30] cultures advancing...", -1)
+      UI:WaitShowVoiceOver("Growth continued,[pause=30] cultures advancing...", -1)
       SOUND:StopBGM()
       UI:WaitShowVoiceOver("[speed=0.4] ...what's even happening now...?", 120)
 
@@ -135,4 +133,5 @@ function Outside.CloudWatch()
             _DATA.Save.ActiveTeam.Players[0].ActionEvents:Add(talk_evt1)
       local talk_evt2 = RogueEssence.Dungeon.BattleScriptEvent("AzuraInteract")
             _DATA.Save.ActiveTeam.Players[1].ActionEvents:Add(talk_evt2)
+      GAME:CutsceneMode(false)
 end

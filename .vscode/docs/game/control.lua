@@ -1,3 +1,8 @@
+---@meta _
+---@diagnostic disable: duplicate-set-field
+---Functions to control things on the ground
+---@class GAME
+
 ---Saves the game while in ground mode.
 function GAME:GroundSave() end
 --[[

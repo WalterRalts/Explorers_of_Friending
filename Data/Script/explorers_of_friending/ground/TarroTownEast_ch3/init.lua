@@ -212,7 +212,7 @@ end
 function TarroTownEast_ch3.TarroForestEntrance_Touch(obj, activator)
   OutEnter = 0
   local azura = CH("Teammate1")
-  if SV.Story.sect == 1 then
+  if SV.Story.sect <= 2 then
     UI:SetSpeaker(activator)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("...hey, wanna try this dungeon again?")

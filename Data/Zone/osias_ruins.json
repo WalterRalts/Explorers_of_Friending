@@ -761,7 +761,7 @@
 },
 "Level": {
 "Min": 1,
-"Max": 16
+"Max": 11
 },
 "SpecifiedSkills": [],
 "Intrinsic": "",
@@ -832,9 +832,11 @@
 },
 "Level": {
 "Min": 1,
-"Max": 16
+"Max": 11
 },
-"SpecifiedSkills": [],
+"SpecifiedSkills": [
+"calm_mind"
+],
 "Intrinsic": "",
 "Tactic": "wander_normal",
 "SpawnConditions": [],
@@ -900,7 +902,7 @@
 },
 "Level": {
 "Min": 1,
-"Max": 16
+"Max": 11
 },
 "SpecifiedSkills": [
 "teleport"

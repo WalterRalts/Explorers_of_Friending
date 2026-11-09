@@ -3,6 +3,8 @@
 ---Functions to control essentials not given via base scripts like GROUND and UI
 ---@class RogueEssence
 ---@field Content content
+---@field Dungeon dungeon
+---@field 
 ---An AnimData object, which has the animation we want to display.
 ---@param animindex string The string ID of the particle animation to play.
 ---@param frametime integer An integer amount of time, in frames, to spend on each frame of the animation.
@@ -12,3 +14,7 @@
 ---@param animflip any Determines whether the particle is flipped in a particular direction.
 ---@return AnimData
 function RogueEssence.Content.AnimData(animindex, frametime, startframe, endframe, alpha, animflip) end
+
+---Returns the context of any single dungeoner
+---@param chara any
+function RogueEssence.Dungeon.SingleCharContext(chara) end

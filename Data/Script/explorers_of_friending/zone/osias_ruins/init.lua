@@ -34,7 +34,7 @@ function osias_ruins.ExitSegment(zone, result, rescue, segmentID, mapID)
         SV.Story.flag = 1
         COMMON.EndDungeonDay(result, "dane_desert", -1, 18, 0)
     else
-        SV.dreaded_depths.revisit = true
+        OsKey = true
         COMMON.EndDungeonDay(result, "osias_ruins", -1, 0, 0)
     end
 end

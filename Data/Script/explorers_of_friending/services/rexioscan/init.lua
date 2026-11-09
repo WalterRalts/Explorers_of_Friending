@@ -4,7 +4,6 @@ local RexioScan = Class('RexioScan', BaseService)
 
 function RexioScan:initialize()
   self.rfocus_cooldown = 0
-  self.in_dungeon = false
 end
 
 function RexioScan:Scan()
@@ -17,7 +16,7 @@ function RexioScan:Scan()
         if GAME:IsKeyDown(66) then
           self.rfocus_cooldown = 100
           --services are coroutines, apparently
-          if self.in_dungeon == true then
+          if RogueEssence.GameManager.Instance.CurrentScene == RogueEssence.Dungeon.DungeonScene.Instance then
             PrintInfo("Scan ready at level " .. SV.tablestats.scan_level .. "!") --Print scan level for debugging.
             --Rexio should focus
             if self.rfocus_cooldown > 80 then
@@ -99,18 +98,9 @@ function RexioScan:Scan()
   end)
 end
 
-function RexioScan:EnterDungeon()
-  self.in_dungeon = true
-end
-
-function RexioScan:ExitDungeon()
-  self.in_dungeon = false
-end
 
 function RexioScan:Subscribe(med)
   med:Subscribe("RexioScan", EngineServiceEvents.Update, function() self:Scan() end)
-  med:Subscribe("RexioScan", EngineServiceEvents.DungeonModeBegin, function() self:EnterDungeon() end)
-  med:Subscribe("RexioScan", EngineServiceEvents.DungeonModeEnd, function() self:ExitDungeon() end)
 end
 
 function RexioScan:UnSubscribe(med)

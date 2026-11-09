@@ -42,7 +42,13 @@ function HertzEntrance.Init(map)
     HertzTown.Cooldown()
     SV.guild.time = 11
   else
-   EXPLCOMMON.ThreeTeam()
+    if SV.Story.chap == 2 then
+      if SV.Story.sect >= 4 then
+        HertzTown.Coolup()
+      else
+        EXPLCOMMON.ThreeTeam()
+      end
+    end
   end
 end
 

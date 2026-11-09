@@ -1195,7 +1195,7 @@ function Tent.Day1()
     end)
     TASK:JoinCoroutines({cor1, cor2, cor3})
 
-   EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
+    EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
     UI:WaitShowDialogue("...hmm,[pause=40] I have a weird feeling about this...")
 
     GROUND:MoveToPosition(maru, 215, 230, false, 1)
@@ -1308,7 +1308,7 @@ function Tent.FreeDay()
             UI:WaitShowDialogue("Not a bad day, I think.")
 
            EXPLCOMMON.SetCharAndEmotion(azura, "Happy")
-            UI:WaitShowDialogue("Yippee")
+            UI:WaitShowDialogue("Yippee!")
 
             GROUND:MoveToMarker(rexio, MRKR("RexBed"), false, 2)
            EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
