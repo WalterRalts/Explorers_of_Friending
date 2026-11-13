@@ -18,10 +18,10 @@ local TarroTownSquare = {}
 function TarroTownSquare.Init(map)
   if SV.Story.sect == 0 then
     Quiz = {false, 0}
-    Square.FightFightFight()
   elseif Quiz == nil then
     Quiz = {true, -1}
   end
+  PrintInfo(Quiz[1] .. ", " .. Quiz[2])
 end
 
 ---TarroTownSquare.Enter(map)
@@ -30,7 +30,6 @@ function TarroTownSquare.Enter(map)
   COMMON.RespawnAllies()
   local getic = CH('Getic')
   local gekis = CH("Gekis")
-  gekis.CollisionDisabled = false
   local partner = CH('Teammate1')
   local munch = CH('Munch')
   local ziggy = CH("Ziggy")
@@ -38,16 +37,9 @@ function TarroTownSquare.Enter(map)
   GROUND:CharSetAnim(lax, "Sleep", true)
   partner.CollisionDisabled = true
 
-  if Quiz[2] == 1 and OutEnter == 1 then
-    GROUND:TeleportTo(partner, 504, 378, Direction.Left, 0)
-  end
-  if OutEnter == 3 then
-    GROUND:TeleportTo(partner, 30, 254, Direction.Right, 0)
-  end
-  if OutEnter == 4 then
-    GROUND:TeleportTo(partner, 405, 230, Direction.Down, 0)
-  end
-  if SV.Story.sect == 2 then
+  if SV.Story.sect == 0 then
+    Square.FightFightFight()
+  elseif SV.Story.sect == 2 then
     if Quiz[2] == 2 then
       if SV.tarro_tree_hollows.tree_entered == true then
         GROUND:Hide("Senna")
@@ -232,7 +224,6 @@ function TarroTownSquare.BuzzStore_Action(obj, activator)
             UI:SetSpeakerEmotion("Normal")
             UI:WaitShowDialogue("You don't have enough for that, buzz...")
           elseif result[1] == 1 then
-
             UI:SetSpeakerEmotion("Sigh")
             UI:WaitShowDialogue("Oh, thoze thingz.[pause=45][emote=Stunned] Usually I put zome in my bag thinking it'z a different zeed, but...")
             UI:SetSpeakerEmotion("Happy")

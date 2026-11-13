@@ -1044,8 +1044,6 @@ function COMMON.GroundInteract(chara, target)
 end
 
 function COMMON.Rescued(zone, name, mail)
-
-
   if _DATA.CurrentReplay ~= nil then
     SOUND:PlayBattleSE("EVT_Title_Intro")
     GAME:FadeOut(true, 0)

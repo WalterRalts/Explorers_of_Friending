@@ -72,7 +72,6 @@ function CookingMenu:initialize()
   
   if UI:ChoiceResult() == 100 then
       print("Exit chosen.")
-      Exit_cooking = true
       return "Exit"
   else
       Ingredient_chosen = UI:ChoiceResult()

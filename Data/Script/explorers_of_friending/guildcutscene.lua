@@ -631,7 +631,6 @@ function Guild.Day2()
             UI:WaitShowTimedDialogue("My dreams are being absolutely destroyed right now![pause=35] Zoomer,[pause=15] please!", 80)
 
             PrintInfo("Set to false.")
-            angy = false
             UI:SetSpeaker(zoomer)
             UI:SetSpeakerEmotion("Angry")
             UI:WaitShowTimedDialogue("Blame the kid!!", 80)

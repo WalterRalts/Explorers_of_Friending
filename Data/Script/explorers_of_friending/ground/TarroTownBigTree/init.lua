@@ -16,99 +16,7 @@ local TarroTownBigTree = {}
 ---TarroTownBigTree.Init(map)
 --Engine callback function
 function TarroTownBigTree.Init(map)
-  SV.Story.dunsect = 0
-  if thing_gone == true then
-    GROUND:Hide("Thing")
-  end
 
-  if SV.Story.sect == 2 or tarro_tree_fail == false then -- before cutscene
-    GAME:SetCanSwitch(true)
-    if GAME:GetPlayerPartyCount() == 2 or SV.tarro_tree_hollows.tree_entered == false then
-      local mon_id1 = RogueEssence.Dungeon.MonsterID("sentret", 0, "normal", Gender.Female)
-
-      local p1 = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id1, 5, "", 0)
-      p1.IsFounder = true
-      p1.IsPartner = true
-      p1.Nickname = "Senna"
-
-      _DATA.Save.ActiveTeam.Players:Add(p1)
-      --
-      local mon_id2 = RogueEssence.Dungeon.MonsterID("poochyena", 0, "normal", Gender.Male)
-
-      local p2 = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id2, 9, "", 0)
-      p2.IsFounder = true
-      p2.IsPartner = true
-      p2.Nickname = "Puchi"
-
-      _DATA.Save.ActiveTeam.Players:Add(p2)
-      --
-      local mon_id3 = RogueEssence.Dungeon.MonsterID("zigzagoon", 0, "normal", Gender.Male)
-
-      local p3 = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id3, 7, "pickup", 0)
-      p3.IsFounder = true
-      p3.IsPartner = true
-      p3.Nickname = "Ziggy"
-
-
-      _DATA.Save.ActiveTeam.Players:Add(p3)
-      _DATA.Save.ActiveTeam.Players[2]:RefreshTraits()
-      _DATA.Save.ActiveTeam.Players[3]:RefreshTraits()
-      _DATA.Save.ActiveTeam.Players[4]:RefreshTraits()
-      local talk_npc = RogueEssence.Dungeon.BattleScriptEvent("SennaInteract")
-            _DATA.Save.ActiveTeam.Players[2].ActionEvents:Add(talk_npc)
-            talk_npc = RogueEssence.Dungeon.BattleScriptEvent("PuchiInteract")
-            _DATA.Save.ActiveTeam.Players[3].ActionEvents:Add(talk_npc)
-            talk_npc = RogueEssence.Dungeon.BattleScriptEvent("ZiggyInteract")
-            _DATA.Save.ActiveTeam.Players[4].ActionEvents:Add(talk_npc)
-    end
-
-    MapStrings = STRINGS.MapStrings
-    COMMON.RespawnAllies()
-    if SV.tarro_tree_hollows.tree_entered == false then
-      Tree.FirstEnter()
-    end
-    EXPLCOMMON.AllyFollow(false, false)
-    puchi_tired = true
-  elseif SV.tarro_tree_hollows.tree_entered == true then --after cutscene
-
-    local total = 1
-    local playeridx = GAME:GetTeamLeaderIndex()
-    for i, p in ipairs(SV.tarro_tree_hollows.entering_party) do
-      if i ~= (playeridx + 1) and i ~= (playeridx + 2) then --Indices in lua tables begin at 1
-        GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
-        --GROUND:GiveCharIdleChatter(chara)
-        total = total + 1
-        print(total)
-      end
-    end
-    MapStrings = STRINGS.MapStrings
-    COMMON.RespawnAllies()
-
-    _DATA.Save.ActiveTeam.Players[2]:RefreshTraits()
-    _DATA.Save.ActiveTeam.Players[3]:RefreshTraits()
-    _DATA.Save.ActiveTeam.Players[4]:RefreshTraits()
-  end
-
-  if DUNGEON:LastDungeonResult() == RogueEssence.Data.GameProgress.ResultType.Failed then
-    GROUND:Hide("Thing")
-    TarroTownBigTree.TryAgain()
-  end
-
-  local partner = CH('Teammate1')
-  AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
-  partner.CollisionDisabled = true
-
-  local partner2 = CH('Teammate2')
-  AI:SetCharacterAI(partner2, "origin.ai.ground_partner", CH('Teammate1'), partner2.Position)
-  partner2.CollisionDisabled = true
-
-  local partner3 = CH('Teammate3')
-  AI:SetCharacterAI(partner3, "origin.ai.ground_partner", CH('Teammate2'), partner3.Position)
-  partner3.CollisionDisabled = true
-
-  local partner4 = CH('Teammate4')
-  AI:SetCharacterAI(partner4, "origin.ai.ground_partner", CH('Teammate3'), partner4.Position)
-  partner4.CollisionDisabled = true
 end
 
 function TarroTownBigTree.TryAgain(map)
@@ -192,7 +100,98 @@ end
 ---TarroTownBigTree.Enter(map)
 --Engine callback function
 function TarroTownBigTree.Enter(map)
+  SV.Story.dunsect = 0
+  if thing_gone == true then
+    GROUND:Hide("Thing")
+  end
 
+  if SV.Story.sect == 2 or tarro_tree_fail == false then -- before cutscene
+    GAME:SetCanSwitch(true)
+    if GAME:GetPlayerPartyCount() == 2 or SV.tarro_tree_hollows.tree_entered == false then
+      local mon_id1 = RogueEssence.Dungeon.MonsterID("sentret", 0, "normal", Gender.Female)
+
+      local p1 = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id1, 5, "", 0)
+      p1.IsFounder = true
+      p1.IsPartner = true
+      p1.Nickname = "Senna"
+
+      _DATA.Save.ActiveTeam.Players:Add(p1)
+      --
+      local mon_id2 = RogueEssence.Dungeon.MonsterID("poochyena", 0, "normal", Gender.Male)
+
+      local p2 = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id2, 9, "", 0)
+      p2.IsFounder = true
+      p2.IsPartner = true
+      p2.Nickname = "Puchi"
+
+      _DATA.Save.ActiveTeam.Players:Add(p2)
+      --
+      local mon_id3 = RogueEssence.Dungeon.MonsterID("zigzagoon", 0, "normal", Gender.Male)
+
+      local p3 = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id3, 7, "pickup", 0)
+      p3.IsFounder = true
+      p3.IsPartner = true
+      p3.Nickname = "Ziggy"
+
+
+      _DATA.Save.ActiveTeam.Players:Add(p3)
+      _DATA.Save.ActiveTeam.Players[2]:RefreshTraits()
+      _DATA.Save.ActiveTeam.Players[3]:RefreshTraits()
+      _DATA.Save.ActiveTeam.Players[4]:RefreshTraits()
+      local talk_npc = RogueEssence.Dungeon.BattleScriptEvent("SennaInteract")
+            _DATA.Save.ActiveTeam.Players[2].ActionEvents:Add(talk_npc)
+            talk_npc = RogueEssence.Dungeon.BattleScriptEvent("PuchiInteract")
+            _DATA.Save.ActiveTeam.Players[3].ActionEvents:Add(talk_npc)
+            talk_npc = RogueEssence.Dungeon.BattleScriptEvent("ZiggyInteract")
+            _DATA.Save.ActiveTeam.Players[4].ActionEvents:Add(talk_npc)
+    end
+
+    MapStrings = STRINGS.MapStrings
+    COMMON.RespawnAllies()
+    if SV.tarro_tree_hollows.tree_entered == false then
+      Tree.FirstEnter()
+    end
+    EXPLCOMMON.AllyFollow(false, false)
+    puchi_tired = true
+  elseif SV.tarro_tree_hollows.tree_entered == true then --after cutscene
+    local total = 1
+    local playeridx = GAME:GetTeamLeaderIndex()
+    for i, p in ipairs(SV.tarro_tree_hollows.entering_party) do
+      if i ~= (playeridx + 1) and i ~= (playeridx + 2) then --Indices in lua tables begin at 1
+        GAME:AddPlayerTeam(_DATA.Save.ActiveTeam.Players:Add(p))
+        --GROUND:GiveCharIdleChatter(chara)
+        total = total + 1
+        print(total)
+      end
+    end
+    MapStrings = STRINGS.MapStrings
+    COMMON.RespawnAllies()
+
+    _DATA.Save.ActiveTeam.Players[2]:RefreshTraits()
+    _DATA.Save.ActiveTeam.Players[3]:RefreshTraits()
+    _DATA.Save.ActiveTeam.Players[4]:RefreshTraits()
+  end
+
+  if DUNGEON:LastDungeonResult() == RogueEssence.Data.GameProgress.ResultType.Failed then
+    GROUND:Hide("Thing")
+    TarroTownBigTree.TryAgain()
+  end
+
+  local partner = CH('Teammate1')
+  AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
+  partner.CollisionDisabled = true
+
+  local partner2 = CH('Teammate2')
+  AI:SetCharacterAI(partner2, "origin.ai.ground_partner", CH('Teammate1'), partner2.Position)
+  partner2.CollisionDisabled = true
+
+  local partner3 = CH('Teammate3')
+  AI:SetCharacterAI(partner3, "origin.ai.ground_partner", CH('Teammate2'), partner3.Position)
+  partner3.CollisionDisabled = true
+
+  local partner4 = CH('Teammate4')
+  AI:SetCharacterAI(partner4, "origin.ai.ground_partner", CH('Teammate3'), partner4.Position)
+  partner4.CollisionDisabled = true
   GAME:FadeIn(20)
 
 end

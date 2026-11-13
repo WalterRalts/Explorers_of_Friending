@@ -56173,7 +56173,7 @@
 "triggerType": 1,
 "ObjectAnim": {
 "$type": "RogueEssence.Content.ObjAnimData, RogueEssence",
-"AnimIndex": "",
+"AnimIndex": "SignExist",
 "FrameTime": 1,
 "StartFrame": -1,
 "EndFrame": -1,
@@ -56197,12 +56197,12 @@
 },
 "Cycles": 0,
 "DrawOffset": {
-"X": 0,
-"Y": 0
+"X": 6,
+"Y": 6
 },
 "Collider": {
-"X": 51,
-"Y": 362,
+"X": 48,
+"Y": 360,
 "Width": 36,
 "Height": 37
 }

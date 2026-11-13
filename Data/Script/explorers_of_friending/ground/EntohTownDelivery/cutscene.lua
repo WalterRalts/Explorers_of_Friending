@@ -102,7 +102,6 @@ function Entoh.Dragon()
         end)
         TASK:JoinCoroutines({coror1, coror2})
 
-        
         local coror1 = TASK:BranchCoroutine(function()
            EXPLCOMMON.FaceEachother(ponya, bucks)
             GROUND:CharSetAnim(ponya, "RearUp", false)

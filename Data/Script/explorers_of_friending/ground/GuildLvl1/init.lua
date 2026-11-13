@@ -17,6 +17,11 @@ local GuildLvl1 = {}
 --Engine callback function
 function GuildLvl1.Init(map)
   COMMON.RespawnAllies()
+end
+
+---GuildLvl1.Enter(map)
+--Engine callback function
+function GuildLvl1.Enter(map)
   GAME:SetCanSwitch(false)
   if SV.Story.chap == -6 then
     Tent.Day0()
@@ -26,14 +31,7 @@ function GuildLvl1.Init(map)
     Tent.FreeDay()
   end
   rextalk = 0
-end
-
----GuildLvl1.Enter(map)
---Engine callback function
-function GuildLvl1.Enter(map)
-
   GAME:FadeIn(20)
-
 end
 
 ---GuildLvl1.Exit(map)
@@ -243,33 +241,33 @@ function GuildLvl1.Teammate1_Action(obj, activator)
      EXPLCOMMON.SetCharAndEmotion(azura, "Worried")
       UI:WaitShowDialogue("...yay, I think.")
     else
-     EXPLCOMMON.SetCharAndEmotion(azura, "Worried")
+      EXPLCOMMON.SetCharAndEmotion(azura, "Worried")
       UI:WaitShowDialogue("I still don't get it.")
 
-     EXPLCOMMON.SetCharAndEmotion(maru, "Happy")
+      EXPLCOMMON.SetCharAndEmotion(maru, "Happy")
       UI:WaitShowDialogue("We're going on adventures tomorrow, Azura.")
 
-     EXPLCOMMON.SetCharAndEmotion(azura, "Joyous")
+      EXPLCOMMON.SetCharAndEmotion(azura, "Joyous")
       UI:WaitShowDialogue("Yippee!")
 
-     EXPLCOMMON.SetCharAndEmotion(rexio, "Sad")
+      EXPLCOMMON.SetCharAndEmotion(rexio, "Sad")
       UI:WaitShowDialogue("...")
     end
   elseif SV.guild.day == 1 then
     if SV.Story.sect == 3 then
-     EXPLCOMMON.SetCharAndEmotion(azura, "Joyous")
+      EXPLCOMMON.SetCharAndEmotion(azura, "Joyous")
       UI:WaitShowDialogue("I hope they can share that apple once it's done growing!")
 
-     EXPLCOMMON.SetCharAndEmotion(rexio, "Stunned")
+      EXPLCOMMON.SetCharAndEmotion(rexio, "Stunned")
       UI:WaitShowDialogue("I think we've had enough apples...")
 
-     EXPLCOMMON.SetCharAndEmotion(azura, "Surprised")
+      EXPLCOMMON.SetCharAndEmotion(azura, "Surprised")
       UI:WaitShowDialogue("Gaaaaaaaaaaaaaaaaaaaaaaaaaaaaasp!")
 
-     EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
+      EXPLCOMMON.SetCharAndEmotion(rexio, "Worried")
       UI:WaitShowDialogue("...so shocking.")
 
-     EXPLCOMMON.SetCharAndEmotion(maru, "Stunned")
+      EXPLCOMMON.SetCharAndEmotion(maru, "Stunned")
       UI:WaitShowDialogue("You need different eats, Azura...")
     end
   end

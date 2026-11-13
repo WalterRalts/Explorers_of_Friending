@@ -27,12 +27,12 @@ end
 ---apple_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
 --Engine callback function
 function apple_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
-  DEBUG.EnableDbgCoro() --Enable debugging this coroutine
-  PrintInfo("=>> ExitSegment result "..tostring(result).." segment "..tostring(segmentID))
-  GAME:SetTeamLeaderIndex(0)
+    DEBUG.EnableDbgCoro() --Enable debugging this coroutine
+    PrintInfo("=>> ExitSegment result "..tostring(result).." segment "..tostring(segmentID))
+    GAME:SetTeamLeaderIndex(0)
 
-  --first check for rescue flag; if we're in rescue mode then take a different path
-  local exited = COMMON.ExitDungeonMissionCheck(result, rescue, zone.ID, segmentID) --check if we cleared while doing a rescue
+    --first check for rescue flag; if we're in rescue mode then take a different path
+    local exited = COMMON.ExitDungeonMissionCheck(result, rescue, zone.ID, segmentID) --check if we cleared while doing a rescue
     if exited == true then
         --do nothing; this is a dummy branch to stop us from going through the other branches
     elseif result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then -- resolves true if the dungeon was not cleared
@@ -40,7 +40,16 @@ function apple_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
     else -- we didn't resolve true for being in rescue or losing the dungeon, so we must have cleared the dungeon
         -- now we will check what segment we took, so we can make the game do what we want to depending on the segment
         GAME:SetTeamLeaderIndex(0)
-        COMMON.EndDungeonDay(result, "dane_forest", -1, 0, 0)
+        if segmentID == 0 then
+            COMMON.EndDungeonDay(result, "apple_forest", -1, 0, 0)
+        elseif segmentID == 1 then
+            COMMON.EndDungeonDay(result, "apple_forest", -1, 4, 0)
+            SV.Story.flag = 1
+        else -- this is a fallback branch, in case we went through all of the branches and hit nothing (which should not happen!)
+            PrintInfo("No exit procedure found!")
+            -- just send the player to their last checkpoint
+	        COMMON.EndDungeonDay(result, SV.checkpoint.Zone, SV.checkpoint.Segment, SV.checkpoint.Map, SV.checkpoint.Entry)
+        end
     end
 end
 

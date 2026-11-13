@@ -79,6 +79,7 @@ end
 
 local function ingredients_list()
     local item_name = {}
+    local cooking_exit
 
     for i = 0, GAME:GetPlayerBagCount() - 1, 1 do
         item_name[i] = GAME:GetPlayerBagItem(i):GetDisplayName()
@@ -100,22 +101,21 @@ local function ingredients_list()
     
     if UI:ChoiceResult() == exit_index then
         print("Exit chosen.")
-        Exit_cooking = true
         return nil
     else
-        Ingredient_chosen = UI:ChoiceResult()
-        print(Ingredient_chosen)
-        Ingredient_ID = GAME:GetPlayerBagItem(Ingredient_chosen).ID
+        local ingr_chosen = UI:ChoiceResult()
+        local ingr_id = GAME:GetPlayerBagItem(ingr_chosen).ID
+        local ingr_name = item_name[ingr_chosen]
 
-        Ingredient_name = item_name[Ingredient_chosen]
-        if Ingredient_chosen == nil then
+        PrintInfo(ingr_chosen)
+        PrintInfo(ingr_id)
+        if ingr_chosen == nil then
             print("Cooking skipped...?")
-            Exit_cooking = true
             return nil
         end
-        GAME:TakePlayerBagItem(Ingredient_chosen)
-        print(Ingredient_name .. ", also known as " .. Ingredient_ID .. " has been removed from slot " .. Ingredient_chosen + 1)
-        return Ingredient_ID
+        GAME:TakePlayerBagItem(ingr_chosen)
+        print(ingr_name .. ", also known as " .. ingr_id .. " has been removed from slot " .. ingr_chosen + 1)
+        return ingr_id
     end
 end
     
@@ -181,29 +181,40 @@ function Cooking(player, partner, location)
             UI:SetSpeakerEmotion("Inspired")
             UI:WaitShowDialogue("Cool...!")
         else
-            --make me somethin'
-            UI:SetSpeaker(arama)
-            UI:SetSpeakerEmotion("Happy")
-            UI:WaitShowDialogue("Okay then,[pause=30] make me somethin'.")
-            UI:SetSpeakerEmotion("Happy")
-            UI:WaitShowDialogue("I still gotta make sure you can control the kitchen well.")
+            if GAME:GetPlayerBagCount() ~= 0 then
+                --make me somethin'
+                UI:SetSpeaker(arama)
+                UI:SetSpeakerEmotion("Happy")
+                UI:WaitShowDialogue("Okay then,[pause=30] make me somethin'.")
+                UI:SetSpeakerEmotion("Happy")
+                UI:WaitShowDialogue("I still gotta make sure you can control the kitchen well.")
 
-            -- get items from bag
-            ingr = {}
-            
-            for i = 1, 3, 1 do
-                ::choose_again::
-                local ingritem = ingredients_list()
-                chosen = ingr_quip("Maru", ingritem)
-                if chosen == 1 then
-                    ingr[i] = ingritem
-                else
-                    if ingritem ~= nil and ingritem ~= "Exit" then
-                        GAME:GivePlayerItem(ingritem)
+                -- get items from bag
+                ingr = {}
+
+                for i = 1, 3, 1 do
+                    ::choose_again::
+                    local ingritem = ingredients_list()
+                    chosen = ingr_quip("Maru", ingritem)
+                    if chosen == 1 then
+                        ingr[i] = ingritem
+                    else
+                        if ingritem ~= nil and ingritem ~= "Exit" then
+                            PrintInfo(ingritem)
+                            GAME:GivePlayerItem(ingritem)
+                        end
+                        goto choose_again
                     end
-                    goto choose_again
                 end
+            else
+                UI:SetSpeaker(arama)
+                UI:SetSpeakerEmotion("Stunned")
+                UI:WaitShowDialogue("Uh, your bag is a little empty.")
+                UI:SetSpeakerEmotion("Happy")
+                UI:WaitShowDialogue("I still gotta make sure you can control the kitchen well.")
+
             end
+            
             Recipes(player)
             UI:SetSpeaker(arama)
             UI:SetSpeakerEmotion("Happy")

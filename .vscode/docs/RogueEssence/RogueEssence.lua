@@ -2,9 +2,9 @@
 ---@diagnostic disable: duplicate-set-field
 ---Functions to control essentials not given via base scripts like GROUND and UI
 ---@class RogueEssence
----@field Content content
----@field Dungeon dungeon
----@field 
+---@class Content content
+---@class Dungeon dungeon
+---@
 ---An AnimData object, which has the animation we want to display.
 ---@param animindex string The string ID of the particle animation to play.
 ---@param frametime integer An integer amount of time, in frames, to spend on each frame of the animation.
@@ -18,3 +18,11 @@ function RogueEssence.Content.AnimData(animindex, frametime, startframe, endfram
 ---Returns the context of any single dungeoner
 ---@param chara any
 function RogueEssence.Dungeon.SingleCharContext(chara) end
+
+---Returns the monster ID of a made mon
+---@param pokemon string
+---@param form integer
+---@param color string
+---@param gender Gender
+---@return MonID
+function RogueEssence.Dungeon.MonsterID(pokemon, form, color, gender) end

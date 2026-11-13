@@ -16,16 +16,15 @@ local MaruHome = {}
 ---MaruHome.Init(map)
 --Engine callback function
 function MaruHome.Init(map)
-  
+  COMMON.RespawnAllies()
+  local partner = CH('Teammate1')
+  partner.CollisionDisabled = true
 end
 
 ---MaruHome.Enter(map)
 --Engine callback function
 function MaruHome.Enter(map)
   GROUND:Hide("NotApple")
-  COMMON.RespawnAllies()
-  local partner = CH('Teammate1')
-  partner.CollisionDisabled = true
   if SV.Story.chap == -1 then
     if SV.Story.sect == 0 then
       Bluetails.PieTime()

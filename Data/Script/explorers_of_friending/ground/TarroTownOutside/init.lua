@@ -35,12 +35,12 @@ function TarroTownOutside.Enter(map)
     GAME:FadeIn(20)
     EXPLCOMMON.AllyFollow(true, true)
   elseif SV.Story.chap < -1 then
-    GAME:FadeIn(20)
     GROUND:Hide("Puchi")
     GROUND:Hide("Reeshi")
     GROUND:Hide("Roll")
     GROUND:Hide("Oink")
     EXPLCOMMON.AllyFollow(true, true)
+    GAME:FadeIn(20)
   end
 
   if (wager_up ~= 0 and cup_total_points ~= 0) and (wager_up ~= nil and cup_total_points ~= nil) then

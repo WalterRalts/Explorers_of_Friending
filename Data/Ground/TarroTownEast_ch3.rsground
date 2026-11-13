@@ -61828,14 +61828,14 @@
 },
 "Cycles": 0,
 "DrawOffset": {
-"X": 0,
+"X": 4,
 "Y": 4
 },
 "Collider": {
 "X": 48,
-"Y": 362,
-"Width": 48,
-"Height": 43
+"Y": 360,
+"Width": 40,
+"Height": 40
 }
 },
 {

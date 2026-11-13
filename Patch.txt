@@ -13,7 +13,7 @@ TARRO
 - New art has been made for the outskirts of Tarro Town (GlitzyBunny)
 - Fixed an issue where Cup2 moved to position 3 regardless of anything in the cup shuffle game.
 - Buzzer's store is now open.
-+ Map consistency issues fixed
+- Map consistency issues fixed
 
 ENTOH
 
