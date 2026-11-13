@@ -191,7 +191,7 @@ function TarroTownEast.SennaHomeEntrance_Touch(obj, activator)
   local ziggy = CH("Ziggy")
   UI:SetSpeaker(ziggy)
   UI:SetSpeakerEmotion("Angry")
- EXPLCOMMON.FaceEachother(maru, ziggy)
+  EXPLCOMMON.FaceEachother(maru, ziggy)
   UI:WaitShowDialogue("AHA! YOU'VE BEEN STEALING MY BERRIES![pause=45] E[emote=Worried]r, uh... [pause=20]OUR[emote=Determined] BERRIES!")
 
   UI:SetSpeaker(maru)

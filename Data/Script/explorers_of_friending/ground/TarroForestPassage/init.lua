@@ -22,7 +22,6 @@ end
 ---TarroForestPassage.Enter(map)
 --Engine callback function
 function TarroForestPassage.Enter(map)
-  
   MapStrings = STRINGS.MapStrings
   COMMON.RespawnAllies()
   local partner = CH('Teammate1')
@@ -48,8 +47,15 @@ function TarroForestPassage.Enter(map)
     GROUND:Hide("BigApple")
   end
 
-  if SV.Story.sect == 1 and SV.Story.chap == -3 then
-    Dark.Darkness()
+  if SV.Story.chap == -3 then
+    GROUND:Unhide("Storage")
+    if SV.Story.sect == 1 then
+      Dark.Darkness()
+    else
+      GROUND:Unhide("blockbug1")
+      GROUND:Unhide("blockbug2")
+      GROUND:Unhide("blockbug3")
+    end
   end
   if not Todungeonscene then
     GAME:FadeIn(20)
@@ -234,6 +240,9 @@ function TarroForestPassage.BigApple_Action(obj, activator)
   SV.Story.flag = 1
 end
 
+function TarroForestPassage.Storage_Action(obj, activator)
+  COMMON.ShowTeamStorageMenu()
+end
 
 function TarroForestPassage.AppleTree_Action(obj, activator)
   local apple_give = 0
@@ -290,7 +299,6 @@ function TarroForestPassage.TF_DeepForestEnter_Touch(obj, activator)
     UI:SetSpeakerEmotion("Worried")
     UI:WaitShowDialogue("(...maybe later...)")
   end
-  
 end
 
 function TarroForestPassage.TFPassage_DungeonExit_Touch(obj, activator)
@@ -319,6 +327,26 @@ function TarroForestPassage.TFPassage_DungeonExit_Touch(obj, activator)
     OutEnter = 4
     GAME:EnterGroundMap("tarro_town_outside", "TarroTownEast_ch3", "TTEast_TarroTownForest")
   end
+end
+
+function TarroForestPassage.blockbug1_Action(obj, activator)
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Worried")
+  UI:WaitShowDialogue("Very unfortunate that our thinking spot conveniently blocks the path out of the dungeon.")
+  UI:SetSpeakerEmotion("Normal")
+  UI:WaitShowDialogue("But we HAVE to think here,[pause=45] it's our THINKING spot.")
+end
+
+function TarroForestPassage.blockbug2_Action(obj, activator)
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("No room in town. Sucks, gotta think of what to do now...")
+end
+
+function TarroForestPassage.blockbug3_Action(obj, activator)
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Angry")
+  UI:WaitShowDialogue("They need to hurry it uuuuuup!!! I wanna leeeeeeave!!!")
 end
 
 return TarroForestPassage

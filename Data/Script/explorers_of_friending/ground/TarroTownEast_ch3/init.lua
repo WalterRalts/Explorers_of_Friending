@@ -209,6 +209,17 @@ function TarroTownEast_ch3.TTEast_WExit_Touch(obj, activator)
   GAME:EnterGroundMap("TarroTownOutside", "TTOutside_WEnter")
 end
 
+function TarroTownEast_ch3.TTEastSign_Action(obj, activator)
+  local maru = CH("PLAYER")
+  EXPLCOMMON.SignDialogue("<- Tarro Town Outskirts \n Tarro Town Square ^")
+
+  UI:SetSpeaker(maru)
+  UI:SetSpeakerEmotion("Normal")
+  GROUND:CharAnimateTurn(maru, Direction.Left, 4, true)
+  UI:WaitShowDialogue("(I see.[pause=40] So that's the way to the other side of town.)")
+  UI:WaitShowDialogue("(Praise be the deity of well-placed signs.)")
+end
+
 function TarroTownEast_ch3.TarroForestEntrance_Touch(obj, activator)
   OutEnter = 0
   local azura = CH("Teammate1")

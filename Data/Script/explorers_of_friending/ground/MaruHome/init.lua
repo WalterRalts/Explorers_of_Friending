@@ -25,6 +25,7 @@ end
 --Engine callback function
 function MaruHome.Enter(map)
   GROUND:Hide("NotApple")
+  local partner = CH('Teammate1')
   if SV.Story.chap == -1 then
     if SV.Story.sect == 0 then
       Bluetails.PieTime()
