@@ -30,8 +30,8 @@ function DesertN.Enter(map)
     end
   else
     EXPLCOMMON.AllyFollow(true, true)
-    GAME:FadeIn(20)
   end
+  GAME:FadeIn(20)
 end
 
 ---DesertN.Exit(map)
