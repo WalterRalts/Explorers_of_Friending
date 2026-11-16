@@ -15,7 +15,7 @@
 "KeepTreasure": false,
 "BagSize": -1,
 "Rescues": 0,
-"CountedFloors": 13,
+"CountedFloors": 11,
 "Rogue": 0,
 "Grounds": [
 "DeepForestBreak"
@@ -26,8 +26,7 @@
 1,
 2,
 3,
-4,
-5
+4
 ],
 [
 0,
@@ -35,8 +34,7 @@
 2,
 3,
 4,
-5,
-6
+5
 ]
 ],
 "Name": {

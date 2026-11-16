@@ -91,7 +91,7 @@ function TarroTownWest.Malia_Action(obj, activator)
 
   UI:SetSpeaker(malia)
   UI:SetSpeakerEmotion("Angry")
-  UI:WaitShowDialogue("So you went into the tree?!")
+  UI:WaitShowDialogue("So you went into the " .. EXPLCOMMON.BigTree("tree") .. "?!")
 
   UI:SetSpeaker(puchi)
   UI:SetSpeakerEmotion("Pain")

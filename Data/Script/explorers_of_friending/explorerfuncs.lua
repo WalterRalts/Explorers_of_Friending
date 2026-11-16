@@ -569,3 +569,7 @@ function EXPLCOMMON.SetUpper()
   UI:SetBounds(10, 16, 300, 50)
   UI:SetSpeakerLoc(10, 70)
 end
+
+function EXPLCOMMON.BigTree(word)
+  return "[color=#01FE10]" .. word .. "[color]"
+end

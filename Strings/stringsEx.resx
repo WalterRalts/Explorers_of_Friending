@@ -62,7 +62,7 @@
     <value>Ha! Fellow explorers, huh?[pause=60] You guys look like absolute noobies.[br]But hey, if we keep crossing paths like this, maybe we could fight it out.[br]If you[emote=Joyous] even know how to,[pause=40] heheheheeee!</value>
   </data>
   <data name="TARRO_NPC_0002" xml:space="preserve">
-    <value>Look at you two, ready to march on.[br] I hope you're prepped up,[pause=30] t[emote=Stunned]his dungeon isn't easy, ya know?</value>
+    <value>Look at you two, ready to march on.[br] I hope you're prepped up,[pause=30] t[emote=Stunned]his dungeon isn't easy for beginners, ya know?</value>
   </data>
   <data name="TARRO_NPC_0003" xml:space="preserve">
     <value>Are you two exploring, too? Doesn't look like you guys are a rescue team,[pause=25] but you[emote=Happy] have fun, regardless.[br]Oh,[pause=40] and don't forget to [emote=Inspired]use your nose.</value>

@@ -41,6 +41,7 @@
 
 ---@alias PortEmote
 ---| '"Normal"'
+---| '"Angry"'
 ---| '"Stunned"'
 ---| '"Joyous"'
 ---| '"Surprised"'

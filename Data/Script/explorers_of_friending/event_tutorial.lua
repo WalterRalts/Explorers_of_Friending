@@ -3,8 +3,7 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 	local azura = GAME:GetPlayerPartyMember(1)
 	local area_name = DUNGEON:DungeonDisplayName()
 	local floor_no = DUNGEON:DungeonCurrentFloor()
-	PrintInfo(floor_no)
-	PrintInfo(area_name)
+	PrintInfo(area_name .. ", on floor " .. floor_no)
 	if area_name == "Tarro Forest" then
 		if SV.Story.chap == -1 then
 			if floor_no == 0 then
@@ -205,6 +204,36 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 			UI:SetSpeakerEmotion("Worried")
 			UI:WaitShowDialogue("Um, maybe we shouldn't do that.")
 		end
+	elseif area_name == "Deep Tarro Forest" then
+		if SV.Story.dunsect == 0 then
+			if floor_no == 0 and not SV.TutorialSkip then
+				UI:SetSpeaker(maru)
+				UI:SetSpeakerEmotion("Worried")
+				UI:WaitShowDialogue("I guess we're in this dungeon now...")
+
+				UI:SetSpeaker(azura)
+				UI:SetSpeakerEmotion("Joyous")
+				UI:WaitShowDialogue("Maru! Check this bag out! We can hold so much stuff!")
+
+				UI:SetSpeaker(maru)
+				UI:SetSpeakerEmotion("Normal")
+				UI:WaitShowDialogue("Yeah, that'll be useful.[pause=40] If it ever gets messy, just use " .. STRINGS:LocalKeyString(5) .. " to sort it out.")
+			elseif floor_no == 4 then
+				UI:SetSpeaker(azura)
+				UI:SetSpeakerEmotion("Worried")
+				UI:WaitShowDialogue("Maru... where are we going?")
+
+				UI:SetSpeaker(maru)
+				UI:SetSpeakerEmotion("Normal")
+				UI:WaitShowDialogue("Uh,[pause=40] good question. Whoever wrote that letter seems to know our parents, though.")
+				UI:SetSpeakerEmotion("Happy")
+				UI:WaitShowDialogue("We'll be fine, I think.")
+
+				UI:SetSpeaker(azura)
+				UI:SetSpeakerEmotion("Worried")
+				UI:WaitShowDialogue("[speed=0.3]...[pause=60][speed=1.0][emote=Happy]okay!")
+			end
+		end
 	elseif area_name == "Entoh Thicket" then
 		local rexio = GAME:GetPlayerPartyMember(0)
 		if floor_no == 0 then
@@ -250,19 +279,19 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 		elseif floor_no == 2 and not SV.TutorialSkip then
 			UI:SetSpeaker(rexio)
 			UI:SetSpeakerEmotion("Worried")
-			UI:WaitShowDialogue("Tidy's right, this grime is gross.")
+			UI:WaitShowDialogue("Tidy's right, this stuff is yuck.")
 
 			UI:SetSpeaker(flow)
 			UI:SetSpeakerEmotion("Happy")
-			UI:WaitShowDialogue("Not to worry,[pause=50] I can block all those bad effects if you eat them next to me.")
+			UI:WaitShowDialogue("No problem![pause=50] I can block all those bad effects if you eat them next to me.")
 
 			UI:SetSpeaker(wurp)
 			UI:SetSpeakerEmotion("Happy")
-			UI:WaitShowDialogue("We could thwow the yucky stuff at the dungeon mons, too!")
+			UI:WaitShowDialogue("Or we could thwow the yucky stuff at them!")
 
 			UI:SetSpeaker(rexio)
 			UI:SetSpeakerEmotion("Normal")
-			UI:WaitShowDialogue("If it'll help, it'll help.")
+			UI:WaitShowDialogue("If it'll help, it'll help, sure.")
 
 			UI:SetSpeaker(flow)
 			UI:SetSpeakerEmotion("Normal")
@@ -389,7 +418,7 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 			UI:WaitShowDialogue("Not too big of an issue here, but you never know what other dungeons'll do.")
 		end
 	elseif area_name == "Osias Ruins" then
-		local leader = GAME:GetPlayerPartyMember(0)
+		--[[local leader = GAME:GetPlayerPartyMember(0)
 		local second = GAME:GetPlayerPartyMember(1)
 		UI:SetSpeaker(leader)
 		UI:SetSpeakerEmotion("Surprised")
@@ -401,6 +430,6 @@ function SINGLE_CHAR_SCRIPT.DungeonDialogue(owner, ownerChar, context, args)
 
 		UI:ResetSpeaker()
 		UI:WaitShowDialogue("When two Pokemon are adjacent to eachother and share a move, hold F and select that move to make it extra powerful!")
-		UI:WaitShowDialogue("It costs a bit of belly to use, though!")
+		UI:WaitShowDialogue("It costs a bit of belly to use, though!")]]
 	end
 end

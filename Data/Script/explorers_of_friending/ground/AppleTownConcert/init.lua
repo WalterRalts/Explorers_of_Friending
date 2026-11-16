@@ -41,9 +41,8 @@ end
 ---AppleTownConcert.Enter(map)
 --Engine callback function
 function AppleTownConcert.Enter(map)
-
+  TASK:StartEntityTask(CH("TheRai"), Coro)
   GAME:FadeIn(20)
-
 end
 
 ---AppleTownConcert.Exit(map)
@@ -56,7 +55,7 @@ end
 ---AppleTownConcert.Update(map)
 --Engine callback function
 function AppleTownConcert.Update(map)
-  TASK:StartEntityTask(CH("TheRai"), Coro)
+  
   Partner()
 end
 
@@ -96,8 +95,13 @@ end
 
 function AppleTownConcert.Barnacle_Action(obj, activator)
   EXPLCOMMON.FaceEachother(obj, activator)
-  EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
+  EXPLCOMMON.SetCharAndEmotion(obj, "Happy")
   UI:WaitShowDialogue("North of here are the oceans. Come visit if you want a splash.")
+end
+
+function AppleTownConcert.Madam_Action(obj, activator)
+  EXPLCOMMON.SetCharAndEmotion(obj, "Happy")
+  UI:WaitShowDialogue("I hope this show is sweet!")
 end
 
 return AppleTownConcert

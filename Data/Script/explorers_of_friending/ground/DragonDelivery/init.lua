@@ -137,6 +137,12 @@ function DragonDelivery.Dragon_Action(obj, activator)
   DragonDelivery.Delivery_Action(obj, activator)
 end
 
+function DragonDelivery.Evenish_Action(obj, activator)
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Stunned")
+  UI:WaitShowDialogue("I can't even begin to figure this pile out...")
+end
+
 function DragonDelivery.RexioExit_Touch(obj, activator)
   EXPLCOMMON.FaceEachother(obj, activator)
   GAME:FadeOut(false, 20)

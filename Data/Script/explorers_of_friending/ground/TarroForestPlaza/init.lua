@@ -21,7 +21,9 @@ function TarroForestPlaza.Init(map)
   local partner = CH('Teammate1')
   AI:SetCharacterAI(partner, "origin.ai.ground_partner", CH('PLAYER'), partner.Position)
   partner.CollisionDisabled = true
-  if DUNGEON:LastDungeonResult() == RogueEssence.Data.GameProgress.ResultType.Failed then
+  local heard = false
+  if DUNGEON:LastDungeonResult() == RogueEssence.Data.GameProgress.ResultType.Failed and heard == false then
+    heard = true
     Plaza.Fail()
   end
 

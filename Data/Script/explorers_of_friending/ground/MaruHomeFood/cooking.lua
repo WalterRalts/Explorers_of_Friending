@@ -181,7 +181,7 @@ function Cooking(player, partner, location)
             UI:SetSpeakerEmotion("Inspired")
             UI:WaitShowDialogue("Cool...!")
         else
-            if GAME:GetPlayerBagCount() ~= 0 then
+            if GAME:GetPlayerBagCount() < 3 then
                 --make me somethin'
                 UI:SetSpeaker(arama)
                 UI:SetSpeakerEmotion("Happy")
@@ -209,10 +209,18 @@ function Cooking(player, partner, location)
             else
                 UI:SetSpeaker(arama)
                 UI:SetSpeakerEmotion("Stunned")
-                UI:WaitShowDialogue("Uh, your bag is a little empty.")
-                UI:SetSpeakerEmotion("Happy")
-                UI:WaitShowDialogue("I still gotta make sure you can control the kitchen well.")
+                UI:WaitShowDialogue("Uh, your bag is a little light, isn't it dear?")
 
+                UI:SetSpeaker(maru)
+                UI:SetSpeakerEmotion("Stunned")
+                UI:WaitShowDialogue("Oh,[pause=20] uh, whoops...")
+
+                UI:SetSpeaker(arama)
+                UI:SetSpeakerEmotion("Happy")
+                UI:WaitShowDialogue("I'll give you a little something first. Can't cook the air, you know?")
+                GAME:GivePlayerItem("berry_oran", 2)
+                GAME:GivePlayerItem("berry_leppa", 2)
+                GAME:GivePlayerItem("ammo_stick", 5)
             end
             
             Recipes(player)
@@ -227,7 +235,7 @@ function Cooking(player, partner, location)
         
     else --Tutorial done or skipped
         ingr = {}
-            
+
         for i = 1, 3, 1 do
             ::choose_again::
             local ingritem = ingredients_list()

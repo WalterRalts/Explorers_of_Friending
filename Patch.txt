@@ -43,7 +43,14 @@ There should be no more major changes to the main dungeon here, so it will be ma
 - Phantump has a lower chance of spawning and will no longer slow wander.
 - Kricketot and Deerling will now spawn.
 
--- Dark Tarro
+-- Dark Tarro Forest (6 + 7F -> 5 + 6F)
+The dungeon seemed to pose immediate threat to Maru and Azura, with Pokemon learning moves that should've been weakened.
+
+- Oddish that know Double Edge will not spawn until after 4F on the first half of the dungeon.
+- Shroomish has a higher chance of dropping a seed.
+2/5 -> 5/8
+
+- Alolan Meowth can now spawn.
 
 --- ENTOH
 

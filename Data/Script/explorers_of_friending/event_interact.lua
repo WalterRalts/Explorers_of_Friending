@@ -702,7 +702,7 @@ function BATTLE_SCRIPT.PuchiInteract(owner, ownerChar, context, args)
           UI:WaitShowDialogue("[speed=0.4]Usually... not this difficult... so tired...")
         elseif say_choice == 4 then
           UI:SetSpeakerEmotion("Teary-Eyed")
-          UI:WaitShowDialogue("[speed=0.6]I'm sorry, [color=#01FE10]Big Tree[color]![pause=55] [emote=Pain]I'm just... too tired...!")
+          UI:WaitShowDialogue("[speed=0.6]I'm sorry, " .. EXPLCOMMON.BigTree("Big Tree") .. "![pause=55] [emote=Pain]I'm just... too tired...!")
         end
       elseif ratio <= 50 then
         UI:SetSpeaker(context.Target)

@@ -47,7 +47,7 @@ function MaruHome.Enter(map)
         Bluetails.AfterMailTime()
       end
       COMMON.CreateWalkArea("Amazuru", 195, 225, 72, 72)
-    elseif SV.Story.sect == 1 then
+    elseif SV.Story.sect >= 1 then
       GROUND:Hide("Arama")
       GROUND:Hide("Amazuru")
       if mail_read == 2 then
