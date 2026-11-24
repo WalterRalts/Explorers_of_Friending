@@ -258,7 +258,7 @@ function SwampUp.TransferB()
     GROUND:Hide("Marshal")
     GROUND:Hide("Wurp")
     GROUND:Hide("Flow")
-    right_house = 7
+    
     local mon_id = RogueEssence.Dungeon.MonsterID("zubat", 0, "normal", Gender.Male)
 
     local p = _DATA.Save.ActiveTeam:CreatePlayer(_DATA.Save.Rand, mon_id, 10, "", 0)

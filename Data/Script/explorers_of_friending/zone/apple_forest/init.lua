@@ -37,6 +37,7 @@ function apple_forest.ExitSegment(zone, result, rescue, segmentID, mapID)
         --do nothing; this is a dummy branch to stop us from going through the other branches
     elseif result ~= RogueEssence.Data.GameProgress.ResultType.Cleared then -- resolves true if the dungeon was not cleared
         --end the dungeon day by sending the player back to their last checkpoint, since they didn't clear
+        COMMON.EndDungeonDay(result, SV.checkpoint.Zone, SV.checkpoint.Segment, SV.checkpoint.Map, SV.checkpoint.Entry)
     else -- we didn't resolve true for being in rescue or losing the dungeon, so we must have cleared the dungeon
         -- now we will check what segment we took, so we can make the game do what we want to depending on the segment
         GAME:SetTeamLeaderIndex(0)

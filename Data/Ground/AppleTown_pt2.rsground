@@ -69354,7 +69354,7 @@
 "Direction": 4,
 "IsInteracting": false,
 "AIEnabled": true,
-"EntName": "Gaurd",
+"EntName": "Guard",
 "EntEnabled": true,
 "EntOrder": 0,
 "InteractOrder": 0,

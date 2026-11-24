@@ -15,7 +15,7 @@ local TarroTownEast = {}
 ---TarroTownEast.Init(map)
 --Engine callback function
 function TarroTownEast.Init(map)
-  
+  EXPLCOMMON.AllyFollow(true, true)
 end
 
 ---TarroTownEast.Enter(map)
@@ -34,7 +34,6 @@ function TarroTownEast.Enter(map)
     GROUND:Unhide("MrSeed")
   end
 
-  EXPLCOMMON.AllyFollow(true, true)
   GAME:FadeIn(20)
 end
 

@@ -21,7 +21,8 @@ function TarroTownSquare.Init(map)
   elseif Quiz == nil then
     Quiz = {true, -1}
   end
-  PrintInfo(Quiz[1] .. ", " .. Quiz[2])
+  GROUND:CharSetAnim(lax, "Sleep", true)
+  PrintInfo(tostring(Quiz[1]) .. ", " .. tostring(Quiz[2]))
 end
 
 ---TarroTownSquare.Enter(map)
@@ -34,7 +35,6 @@ function TarroTownSquare.Enter(map)
   local munch = CH('Munch')
   local ziggy = CH("Ziggy")
   local lax = CH("Lax")
-  GROUND:CharSetAnim(lax, "Sleep", true)
   partner.CollisionDisabled = true
 
   if SV.Story.sect == 0 then
@@ -194,13 +194,6 @@ function TarroTownSquare.BuzzStore_Action(obj, activator)
 
   while store_state > -1 do
     refresh_shop()
-    for i = 1, #SV.buzzers_store, 1 do
-      if SV.buzzers_store[i].count > 0 then
-        choices[i] = {Item = RogueEssence.Dungeon.InvItem(SV.buzzers_store[i].item, false, 0), Price = SV.buzzers_store[i].price}
-        print(choices[i].Item, choices[i].Price)
-        PrintInfo("The number of " .. SV.buzzers_store[i].item .. " is " .. SV.buzzers_store[i].count)
-      end
-    end
     if store_state == 1 then
       if #choices > 0 then
         local bag_count = GAME:GetPlayerBagCount() + GAME:GetPlayerEquippedCount()
@@ -287,6 +280,7 @@ function TarroTownSquare.BuzzStore_Action(obj, activator)
           if SV.buzzers_store[result[1]].count == 0 then
             UI:SetSpeakerEmotion("Stunned")
             UI:WaitShowDialogue("Lookz like we ran out of what you lil' buzzies juzt bought...")
+            refresh_shop()
           end
         end
       end

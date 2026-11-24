@@ -5713,7 +5713,7 @@
 },
 "Role": 1
 },
-"Rate": 10,
+"Rate": 20,
 "Range": {
 "Min": 0,
 "Max": 3
@@ -5729,8 +5729,8 @@
 "Gender": -1
 },
 "Level": {
-"Min": 3,
-"Max": 8
+"Min": 2,
+"Max": 7
 },
 "SpecifiedSkills": [
 "bug_bite"
@@ -5810,7 +5810,7 @@
 },
 "Role": 0
 },
-"Rate": 5,
+"Rate": 10,
 "Range": {
 "Min": 0,
 "Max": 3
@@ -5890,7 +5890,7 @@
 "TeamSizes": [
 {
 "Spawn": 1,
-"Rate": 15,
+"Rate": 75,
 "Range": {
 "Min": 0,
 "Max": 3
@@ -5898,7 +5898,7 @@
 },
 {
 "Spawn": 2,
-"Rate": 10,
+"Rate": 20,
 "Range": {
 "Min": 1,
 "Max": 3
@@ -5906,9 +5906,9 @@
 },
 {
 "Spawn": 3,
-"Rate": 10,
+"Rate": 5,
 "Range": {
-"Min": 2,
+"Min": 1,
 "Max": 3
 }
 }

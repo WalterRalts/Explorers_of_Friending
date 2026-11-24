@@ -11,20 +11,20 @@ local function magnet_out()
   CH("MagnetA").CollisionDisabled = true
   CH("Police").CollisionDisabled = true
   CH("MagnetB").CollisionDisabled = true
-  CH("Gaurd").CollisionDisabled = true
+  CH("Guard").CollisionDisabled = true
   local coro01 = TASK:BranchCoroutine(function()
     GROUND:MoveToMarker(CH("Police"), MRKR("Enter2"), false, 2)
     end)
   local coro02 = TASK:BranchCoroutine(function()
-    AI:SetCharacterAI(CH("Gaurd"), "origin.ai.ground_partner", CH("Police"), CH("Gaurd").Position)
+    AI:SetCharacterAI(CH("Guard"), "origin.ai.ground_partner", CH("Police"), CH("Guard").Position)
     GAME:WaitFrames(35)
-    AI:SetCharacterAI(CH("MagnetA"), "origin.ai.ground_partner", CH("Gaurd"), CH("MagnetA").Position)
+    AI:SetCharacterAI(CH("MagnetA"), "origin.ai.ground_partner", CH("Guard"), CH("MagnetA").Position)
     GAME:WaitFrames(10)
     AI:SetCharacterAI(CH("MagnetB"), "origin.ai.ground_partner", CH("MagnetA"), CH("MagnetB").Position)
     GAME:WaitFrames(120)
     GROUND:Hide("MagnetB")
     GROUND:Hide("MagnetA")
-    GROUND:Hide("Gaurd")
+    GROUND:Hide("Guard")
     GROUND:Hide("Police")
     end)
   TASK:JoinCoroutines({coro01, coro02})
@@ -43,7 +43,7 @@ function AppleTown_pt2.Init(map)
   if MagnetForce_out or SV.Story.sect >= 3 then
     GROUND:Hide("MagnetB")
     GROUND:Hide("MagnetA")
-    GROUND:Hide("Gaurd")
+    GROUND:Hide("Guard")
     GROUND:Hide("Police")
   end
   if SV.Story.sect == 3 then
@@ -163,8 +163,8 @@ function AppleTown_pt2.AppleTown_Exit_Touch(obj, activator)
     end
 
   else
-   EXPLCOMMON.FaceEachother(CH("Gaurd"), activator)
-    AppleTown_pt2.Gaurd_Action(CH("Gaurd"), activator)
+   EXPLCOMMON.FaceEachother(CH("Guard"), activator)
+    AppleTown_pt2.Guard_Action(CH("Guard"), activator)
   end
 end
 
@@ -191,7 +191,7 @@ function AppleTown_pt2.AppleTG_Action(obj, activator)
   UI:WaitShowDialogue("H-how did this happen?")
 end
 
-function AppleTown_pt2.Gaurd_Action(obj, activator)
+function AppleTown_pt2.Guard_Action(obj, activator)
  EXPLCOMMON.SetCharAndEmotion(obj, "Determined")
   UI:WaitShowDialogue("all personel originally within[pause=20] APPLE TOWN[pause=20] must stay within borders while the incident is under investigation")
  EXPLCOMMON.SetCharAndEmotion(obj, "Normal")
@@ -254,7 +254,7 @@ function AppleTown_pt2.Police_Action(obj, activator)
   EXPLCOMMON.SetCharAndEmotion(azura, "Happy")
   UI:WaitShowDialogue("With the books!")
 
-  EXPLCOMMON.FaceEachother(obj, CH("Gaurd"))
+  EXPLCOMMON.FaceEachother(obj, CH("Guard"))
   EXPLCOMMON.SetCharAndEmotion(obj, "Happy")
   UI:WaitShowDialogue("[signal()][pause=30] Magnet force![pause=20] New directive! [goto] The Library!")
   TASK:StartEntityTask(CH("Police"), magnet_out)

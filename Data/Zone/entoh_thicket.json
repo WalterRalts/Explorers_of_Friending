@@ -166,18 +166,6 @@
 ]
 },
 "Value": {
-"$type": "RogueEssence.LevelGen.ScriptGenStep`1[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence]], RogueEssence",
-"Script": "EntohThicketWall",
-"ArgTable": "{}"
-}
-},
-{
-"Key": {
-"str": [
--2
-]
-},
-"Value": {
 "$type": "RogueElements.FloorStairsStep`3[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence],[RogueEssence.LevelGen.MapGenEntrance, RogueEssence],[RogueEssence.LevelGen.MapGenExit, RogueEssence]], RogueElements",
 "MinDistance": 10,
 "Entrances": [
@@ -208,6 +196,18 @@
 }
 ],
 "Filters": []
+}
+},
+{
+"Key": {
+"str": [
+-2
+]
+},
+"Value": {
+"$type": "RogueEssence.LevelGen.ScriptGenStep`1[[RogueEssence.LevelGen.ListMapGenContext, RogueEssence]], RogueEssence",
+"Script": "EntohThicketWall",
+"ArgTable": "{}"
 }
 },
 {

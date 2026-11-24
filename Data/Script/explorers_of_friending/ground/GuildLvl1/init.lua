@@ -17,6 +17,10 @@ local GuildLvl1 = {}
 --Engine callback function
 function GuildLvl1.Init(map)
   COMMON.RespawnAllies()
+  local rexio = CH("Teammate2")
+  EXPLCOMMON.TeleportToMarker(rexio, "RexBed", Dir8.Down)
+  GROUND:CharSetAction(rexio, RogueEssence.Ground.PoseGroundAction(rexio.Position, rexio.Direction, RogueEssence.Content.GraphicsManager.GetAnimIndex("Trip")))
+  EXPLCOMMON.TeleportToMarker(CH("Teammate1"), "AzuBed", Dir8.Left)
 end
 
 ---GuildLvl1.Enter(map)

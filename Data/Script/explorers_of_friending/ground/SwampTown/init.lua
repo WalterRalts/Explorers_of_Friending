@@ -7,8 +7,10 @@
 require 'explorers_of_friending.common'
 require 'explorers_of_friending.ground.SwampTown.cutscene'
 
+
 -- Package name
 local SwampTown = {}
+local right_house = -1
 
 -------------------------------
 -- Map Callbacks
@@ -16,7 +18,9 @@ local SwampTown = {}
 ---SwampTown.Init(map)
 --Engine callback function
 function SwampTown.Init(map)
-  
+  if GAME:GetPlayerPartyCount() >= 2 then
+    right_house = 7
+  end
 end
 
 ---SwampTown.Enter(map)
@@ -74,7 +78,7 @@ end
 -- Entities Callbacks
 -------------------------------
 
-right_house = -1
+
 flowup = false
 local answer = false
 
@@ -118,7 +122,7 @@ function SwampTown.Marshal_Action(obj, activator)
   local marsh = CH("Marshal")
  EXPLCOMMON.FaceEachother(activator, obj)
 
-  if right_house == -1 then 
+  if right_house == -1 then
     UI:SetSpeaker(marsh)
     UI:SetSpeakerEmotion("Normal")
     UI:WaitShowDialogue("Oi, moit. The boss is awaitin' for ya.")
@@ -227,7 +231,7 @@ end
 function SwampTown.LHouse_Touch(obj, activator)
   local rexio = CH("PLAYER")
   local marsh = CH("Marshal")
-  if right_house == -1 then 
+  if right_house == -1 then
     EXPLCOMMON.SetCharAndEmotion(marsh, "Angry")
     UI:WaitShowDialogue("Ooooiiiiii!")
 
@@ -275,6 +279,7 @@ function SwampTown.LHouse_Touch(obj, activator)
    EXPLCOMMON.FaceEachother(activator, marsh)
     right_house = 5.1
   elseif right_house == 6 then
+    right_house = 7
     SwampUp.TransferB()
   end
 end
@@ -287,7 +292,7 @@ function SwampTown.RHouse_Touch(obj, activator)
     UI:SetSpeakerEmotion("Angry")
     UI:WaitShowDialogue("Ooooiiiiii!")
 
-   EXPLCOMMON.FaceEachother(activator, marsh)
+    EXPLCOMMON.FaceEachother(activator, marsh)
     UI:SetSpeaker(rexio)
     UI:SetSpeakerEmotion("Stunned")
     UI:WaitShowDialogue("What?")

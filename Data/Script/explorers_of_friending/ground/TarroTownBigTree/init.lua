@@ -16,7 +16,7 @@ local TarroTownBigTree = {}
 ---TarroTownBigTree.Init(map)
 --Engine callback function
 function TarroTownBigTree.Init(map)
-
+  EXPLCOMMON.AllyFollow(true, false)
 end
 
 function TarroTownBigTree.TryAgain(map)

@@ -805,15 +805,15 @@ function Partner(turn)
                     if talk == 1 then
                         UI:SetSpeaker(leader)
                         UI:SetSpeakerEmotion("Normal")
-                        UI:WaitShowDialogue("Looks like someone's gaurding the front.")
+                        UI:WaitShowDialogue("Looks like someone's guarding the front.")
 
                         UI:SetSpeaker(second)
                         UI:SetSpeakerEmotion("Worried")
-                        UI:WaitShowDialogue("Why are there two gaurds?")
+                        UI:WaitShowDialogue("Why are there two guards?")
 
                         UI:SetSpeaker(third)
                         UI:SetSpeakerEmotion("Happy")
-                        UI:WaitShowDialogue("Duh! They have to gaurd treasure!")
+                        UI:WaitShowDialogue("Duh! They have to guard treasure!")
 
                         UI:SetSpeaker(leader)
                         UI:SetSpeakerEmotion("Normal")

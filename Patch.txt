@@ -17,7 +17,7 @@ TARRO
 
 ENTOH
 
-- 
+- Fixed an issue where you could start a dungeon without seeing a cutscene
 
 APPLE TOWN
 
@@ -42,6 +42,7 @@ There should be no more major changes to the main dungeon here, so it will be ma
 
 - Phantump has a lower chance of spawning and will no longer slow wander.
 - Kricketot and Deerling will now spawn.
+- Slightly decreased the overall levels of Pokemon on this floor.
 
 -- Dark Tarro Forest (6 + 7F -> 5 + 6F)
 The dungeon seemed to pose immediate threat to Maru and Azura, with Pokemon learning moves that should've been weakened.
@@ -57,6 +58,10 @@ The dungeon seemed to pose immediate threat to Maru and Azura, with Pokemon lear
 -- Entoh Thicket
 
 -- Dreaded Depths
+
+- Gloom now only knows Absorb and Rest and spawn less often
+- Replace Phantump with Grimer
+- Added Inkay
 
 -- Swamp Line
 

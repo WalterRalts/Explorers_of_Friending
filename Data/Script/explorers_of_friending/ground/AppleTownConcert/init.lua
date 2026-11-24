@@ -55,7 +55,6 @@ end
 ---AppleTownConcert.Update(map)
 --Engine callback function
 function AppleTownConcert.Update(map)
-  
   Partner()
 end
 
@@ -102,6 +101,31 @@ end
 function AppleTownConcert.Madam_Action(obj, activator)
   EXPLCOMMON.SetCharAndEmotion(obj, "Happy")
   UI:WaitShowDialogue("I hope this show is sweet!")
+end
+
+function AppleTownConcert.Store_Action(obj, activator)
+  local pouch_money = GAME:GetPlayerMoney()
+  local cost = 50
+  UI:SetSpeaker(obj)
+  UI:SetSpeakerEmotion("Happy")
+  local choices = {("Yes!"),
+      ("No!")}
+  UI:BeginChoiceMenu("Need some extra apples?! " .. cost .. " each!", choices, 1, 2)
+  UI:WaitForChoice()
+  result = UI:ChoiceResult()
+  if result == 1 then
+    if pouch_money < cost then
+      UI:SetSpeakerEmotion("Normal")
+      UI:WaitShowDialogue("I did say the price right, yeah?" .. cost .. "! You need " .. cost)
+    else
+      GAME:WaitFrames(10)
+      UI:SetSpeakerEmotion("Happy")
+      GAME:GivePlayerItem("food_apple")
+      UI:WaitShowDialogue("There ya go!")
+    end
+  else
+    UI:WaitShowDialogue("Good luck out there, then!")
+  end
 end
 
 return AppleTownConcert
